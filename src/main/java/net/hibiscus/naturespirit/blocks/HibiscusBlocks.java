@@ -31,6 +31,7 @@ public class HibiscusBlocks {
         registerBlock(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.WOOD, PLANKS.getDefaultMapColor()).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
         registerBlock(name + "_button", new Block(FabricBlockSettings.of(Material.WOOD, topMapColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
         return PLANKS;
+        
     }
 
 
