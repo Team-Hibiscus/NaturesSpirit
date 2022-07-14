@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit;
 
 import net.fabricmc.api.ModInitializer;
+import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +13,6 @@ public class NatureSpirit implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
+        HibiscusBlocks.registerHibiscusBlocks();
     }
 }
