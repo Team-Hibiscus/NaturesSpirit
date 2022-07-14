@@ -15,7 +15,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "net.hibiscus.naturespirit.client.NaturespiritClient"
+      "net.hibiscus.naturespirit.client.NatureSpiritClient"
     ],
     "main": [
       "net.hibiscus.naturespirit.NatureSpirit"

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "hibiscus:redwood_log",
+    "hibiscus:redwood_wood",
+    "hibiscus:stripped_redwood_log",
+    "hibiscus:stripped_redwood_wood"
+  ]
+}

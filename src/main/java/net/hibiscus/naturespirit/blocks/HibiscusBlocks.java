@@ -1,47 +1,97 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.mixin.SignTypeAccessor;
 import net.minecraft.block.*;
+import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SignItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.SignType;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
 public class HibiscusBlocks {
 
-    public static final Block REDWOOD = registerWoodBlocks("redwood", MapColor.DARK_CRIMSON, MapColor.TERRACOTTA_BROWN);
+    public static final Block[] REDWOOD = registerWoodBlocks("redwood", MapColor.DARK_CRIMSON, MapColor.TERRACOTTA_BROWN);
+    public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood_leaves", MapColor.PALE_GREEN);
+    public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MapColor.OFF_WHITE, MapColor.GRAY);
+    public static final Block WHITE_WISTERIA_LEAVES = registerLeafBlock("white_wisteria_leaves", MapColor.OFF_WHITE);
+    public static final Block BLUE_WISTERIA_LEAVES = registerLeafBlock("blue_wisteria_leaves", MapColor.BRIGHT_TEAL);
+    public static final Block PINK_WISTERIA_LEAVES = registerLeafBlock("pink_wisteria_leaves", MapColor.PINK);
 
-    public static Block registerWoodBlocks(String name, MapColor topMapColor, MapColor sideMapColor) {
-        registerBlock(name + "_wood", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, sideMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock("stripped_" + name + "_wood", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, topMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_log", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock("stripped_" + name + "_log", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, topMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        final Block PLANKS = registerBlock(name + "_planks", new Block(FabricBlockSettings.of(Material.WOOD, topMapColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_stairs", new StairsBlock(PLANKS.getDefaultState(), FabricBlockSettings.copy(PLANKS)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_slab", new SlabBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_door", new DoorBlock(FabricBlockSettings.copy(PLANKS).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_fence", new FenceBlock(FabricBlockSettings.copy(PLANKS).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(PLANKS).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.WOOD, PLANKS.getDefaultMapColor()).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(name + "_button", new Block(FabricBlockSettings.of(Material.WOOD, topMapColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
-        return PLANKS;
+    public static Block[] registerWoodBlocks(String name, MapColor topMapColor, MapColor sideMapColor) {
+        SignType signType = SignTypeAccessor.registerNew(SignTypeAccessor.newSignType(name));
+         Block[] ARRAY = new Block[16];
+         ARRAY[0] = registerBlock(name + "_wood", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, sideMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[1] = registerBlock("stripped_" + name + "_wood", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, topMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[2] = registerBlock(name + "_log", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[3] = registerBlock("stripped_" + name + "_log", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, topMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[4] = registerBlock(name + "_planks", new Block(FabricBlockSettings.of(Material.WOOD, topMapColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[5] = registerBlock(name + "_stairs", new StairsBlock(ARRAY[4].getDefaultState(), FabricBlockSettings.copy(ARRAY[4])), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[6] = registerBlock(name + "_slab", new SlabBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[7] = registerBlock(name + "_door", new DoorBlock(FabricBlockSettings.copy(ARRAY[4]).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[8] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[9] = registerBlock(name + "_fence", new FenceBlock(FabricBlockSettings.copy(ARRAY[4]).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[10] = registerBlock(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(ARRAY[4]).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[11] = registerBlock(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.WOOD, ARRAY[4].getDefaultMapColor()).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[12] = registerBlock(name + "_button", new WoodenButtonBlock(FabricBlockSettings.of(Material.WOOD, topMapColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
+         ARRAY[13] = registerBlockWithoutItem(name + "_sign", new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), signType));
+        ARRAY[14] = registerBlockWithoutItem(name + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN).dropsLike(ARRAY[13]), signType));
+         registerItemWithoutBlock(name + "_sign",
+                 new SignItem(new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS).maxCount(16),
+                         ARRAY[13], ARRAY[14]));
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ARRAY[7], RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ARRAY[8], RenderLayer.getCutout());
+        StrippableBlockRegistry.register(ARRAY[0], ARRAY[1]);
+        StrippableBlockRegistry.register(ARRAY[2], ARRAY[3]);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[0], 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[1], 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[2], 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[3], 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[4], 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[5], 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[6], 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[9], 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ARRAY[10], 5, 20);
+        FuelRegistry.INSTANCE.add(ARRAY[9], 300);
+        FuelRegistry.INSTANCE.add(ARRAY[10], 300);
+        return ARRAY;
     }
 
+    public static Block registerLeafBlock(String name, MapColor color) {
+        Block LEAVES = registerBlock(name, new LeavesBlock(FabricBlockSettings.copy(Blocks.SPRUCE_LEAVES).nonOpaque().mapColor(color)), ItemGroup.BUILDING_BLOCKS);
+        BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderLayer.getCutout());
+        FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
+        return LEAVES;
+    }
 
     public static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, tab);
+        return Registry.register(Registry.BLOCK, new Identifier(NatureSpirit.MOD_ID, name), block);
+    }
+    public static Block registerBlockWithoutItem(String name, Block block) {
         return Registry.register(Registry.BLOCK, new Identifier(NatureSpirit.MOD_ID, name), block);
     }
 
     public static Item registerBlockItem(String name, Block block, ItemGroup tab) {
         return Registry.register(Registry.ITEM, new Identifier(NatureSpirit.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings().group(tab)));
+    }
+
+    public static Item registerItemWithoutBlock(String name, Item item) {
+        return Registry.register(Registry.ITEM, new Identifier(NatureSpirit.MOD_ID, name), item);
     }
 
     public static void registerHibiscusBlocks() {

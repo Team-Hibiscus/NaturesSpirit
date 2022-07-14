@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "hibiscus:block/stripped_redwood_log_top",
+    "side": "hibiscus:block/stripped_redwood_log"
+  }
+}

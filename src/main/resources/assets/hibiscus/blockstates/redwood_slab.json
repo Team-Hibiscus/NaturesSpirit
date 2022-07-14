@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "hibiscus:block/redwood_slab"
+    },
+    "type=double": {
+      "model": "hibiscus:block/redwood_planks"
+    },
+    "type=top": {
+      "model": "hibiscus:block/redwood_slab_top"
+    }
+  }
+}
