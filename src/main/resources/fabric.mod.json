@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "naturespirit",
+  "version": "${version}",
+  "name": "Nature's Spirit",
+  "description": "A mod which enhances the environment of Minecraft.",
+  "authors": [
+    "Eko",
+    "Kyle",
+    "Redd"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/naturespirit/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.hibiscus.naturespirit.client.NaturespiritClient"
+    ],
+    "main": [
+      "net.hibiscus.naturespirit.NatureSpirit"
+    ]
+  },
+  "mixins": [
+    "naturespirit.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.19"
+  }
+}
