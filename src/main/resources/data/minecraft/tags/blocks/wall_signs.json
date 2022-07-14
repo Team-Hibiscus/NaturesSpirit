@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_wall_sign"
+    "hibiscus:redwood_wall_sign",
+    "hibiscus:wisteria_wall_sign"
   ]
 }

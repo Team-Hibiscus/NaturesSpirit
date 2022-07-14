@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_door"
+    "hibiscus:redwood_door",
+    "hibiscus:wisteria_door"
   ]
 }

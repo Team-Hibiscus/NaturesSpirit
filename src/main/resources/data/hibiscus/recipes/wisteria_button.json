@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "hibiscus:wisteria_planks"
+    }
+  ],
+  "result": {
+    "item": "hibiscus:wisteria_button"
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "hibiscus:wisteria_sign",
     "hibiscus:redwood_sign"
   ]
 }

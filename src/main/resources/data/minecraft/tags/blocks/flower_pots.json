@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:potted_redwood_sapling"
+    "hibiscus:potted_redwood_sapling",
+    "hibiscus:potted_wisteria_sapling"
   ]
 }

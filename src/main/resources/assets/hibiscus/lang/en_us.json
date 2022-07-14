@@ -1,39 +1,44 @@
 {
+"block.hibiscus.wisteria_planks" : "Wisteria Planks",
+"block.hibiscus.wisteria_sapling": "Wisteria Sapling",
+"block.hibiscus.wisteria_door": "Wisteria Door",
+"block.hibiscus.wisteria_wood": "Wisteria Wood",
+"block.hibiscus.wisteria_log": "Wisteria Log",
+"block.hibiscus.stripped_wisteria_log": "Stripped Wisteria Log",
+"block.hibiscus.stripped_wisteria_wood": "Stripped Wisteria Wood",
+"block.hibiscus.white_wisteria_leaves": "White Wisteria Leaves",
+"block.hibiscus.blue_wisteria_leaves": "Blue Wisteria Leaves",
+"block.hibiscus.pink_wisteria_leaves": "Pink Wisteria Leaves",
+"block.hibiscus.wisteria_slab": "Wisteria Slab",
+"block.hibiscus.wisteria_stairs": "Wisteria Stairs",
+"block.hibiscus.wisteria_sign": "Wisteria Sign",
+"block.hibiscus.wisteria_wall_sign": "Wisteria Wall Sign",
+"block.hibiscus.wisteria_pressure_plate": "Wisteria Pressure Plate",
+"block.hibiscus.wisteria_button": "Wisteria Button",
+"block.hibiscus.wisteria_fence": "Wisteria Fence",
+"block.hibiscus.wisteria_fence_gate": "Wisteria Fence Gate",
+"block.hibiscus.wisteria_trapdoor": "Wisteria Trapdoor",
+"block.hibiscus.potted_wisteria_sapling": "Potted Wisteria Sapling",
+"item.hibiscus.wisteria_boat": "Wisteria Boat",
+
 "block.hibiscus.redwood_planks" : "Redwood Planks",
-
 "block.hibiscus.redwood_sapling": "Redwood Sapling",
-
 "block.hibiscus.redwood_door": "Redwood Door",
-
 "block.hibiscus.redwood_wood": "Redwood Wood",
-
 "block.hibiscus.redwood_log": "Redwood Log",
-
 "block.hibiscus.stripped_redwood_log": "Stripped Redwood Log",
-
 "block.hibiscus.stripped_redwood_wood": "Stripped Redwood Wood",
-
 "block.hibiscus.redwood_leaves": "Redwood Leaves",
-
 "block.hibiscus.redwood_slab": "Redwood Slab",
-
 "block.hibiscus.redwood_stairs": "Redwood Stairs",
-
 "block.hibiscus.redwood_sign": "Redwood Sign",
-
 "block.hibiscus.redwood_wall_sign": "Redwood Wall Sign",
-
 "block.hibiscus.redwood_pressure_plate": "Redwood Pressure Plate",
-
 "block.hibiscus.redwood_button": "Redwood Button",
-
 "block.hibiscus.redwood_fence": "Redwood Fence",
-
 "block.hibiscus.redwood_fence_gate": "Redwood Fence Gate",
-
 "block.hibiscus.redwood_trapdoor": "Redwood Trapdoor",
-
 "block.hibiscus.potted_redwood_sapling": "Potted Redwood Sapling",
-
 "item.hibiscus.redwood_boat": "Redwood Boat"
+
 }

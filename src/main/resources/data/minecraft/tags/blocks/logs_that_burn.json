@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#hibiscus:redwood_logs"
+    "#hibiscus:redwood_logs",
+    "#hibiscus:wisteria_logs"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hibiscus:wisteria_planks"
+    }
+  },
+  "result": {
+    "item": "hibiscus:wisteria_boat"
+  }
+}

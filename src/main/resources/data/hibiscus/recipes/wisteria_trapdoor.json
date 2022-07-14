@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hibiscus:wisteria_planks"
+    }
+  },
+  "result": {
+    "item": "hibiscus:wisteria_trapdoor",
+    "count": 2
+  }
+}

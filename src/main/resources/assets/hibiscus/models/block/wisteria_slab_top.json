@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "hibiscus:block/wisteria_planks",
+    "top": "hibiscus:block/wisteria_planks",
+    "side": "hibiscus:block/wisteria_planks"
+  }
+}

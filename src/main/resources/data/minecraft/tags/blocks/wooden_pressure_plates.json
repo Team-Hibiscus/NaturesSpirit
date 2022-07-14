@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_pressure_plate"
+    "hibiscus:redwood_pressure_plate",
+    "hibiscus:wisteria_pressure_plate"
   ]
 }

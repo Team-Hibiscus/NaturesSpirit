@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "hibiscus:block/wisteria_slab"
+    },
+    "type=double": {
+      "model": "hibiscus:block/wisteria_planks"
+    },
+    "type=top": {
+      "model": "hibiscus:block/wisteria_slab_top"
+    }
+  }
+}
