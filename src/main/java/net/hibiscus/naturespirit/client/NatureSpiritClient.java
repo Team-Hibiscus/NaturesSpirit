@@ -11,5 +11,11 @@ import net.minecraft.client.render.RenderLayer;
 public class NatureSpiritClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.WHITE_WISTERIA_VINES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLUE_WISTERIA_VINES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.PINK_WISTERIA_VINES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, RenderLayer.getCutout());
     }
 }

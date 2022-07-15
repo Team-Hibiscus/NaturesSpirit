@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "hibiscus:block/pink_wisteria_vines_plant"
+  }
+}

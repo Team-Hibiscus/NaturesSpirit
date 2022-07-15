@@ -11,6 +11,7 @@ import net.hibiscus.naturespirit.mixin.SignTypeAccessor;
 import net.minecraft.block.*;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -18,17 +19,29 @@ import net.minecraft.item.SignItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.SignType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.BlockView;
 
 public class HibiscusBlocks {
 
     public static final Block[] REDWOOD = registerWoodBlocks("redwood", MapColor.DARK_CRIMSON, MapColor.TERRACOTTA_BROWN);
     public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood_leaves", MapColor.PALE_GREEN);
+
     public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MapColor.OFF_WHITE, MapColor.GRAY);
+
     public static final Block WHITE_WISTERIA_LEAVES = registerLeafBlock("white_wisteria_leaves", MapColor.OFF_WHITE);
+    public static final Block WHITE_WISTERIA_VINES = registerBlock("white_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.OFF_WHITE).ticksRandomly().noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block WHITE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("white_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.OFF_WHITE).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
+
     public static final Block BLUE_WISTERIA_LEAVES = registerLeafBlock("blue_wisteria_leaves", MapColor.BRIGHT_TEAL);
+    public static final Block BLUE_WISTERIA_VINES = registerBlock("blue_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.BRIGHT_TEAL).ticksRandomly().noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.WEEPING_VINES)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block BLUE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("blue_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.BRIGHT_TEAL).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
+
     public static final Block PINK_WISTERIA_LEAVES = registerLeafBlock("pink_wisteria_leaves", MapColor.PINK);
+    public static final Block PINK_WISTERIA_VINES = registerBlock("pink_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).ticksRandomly().noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.WEEPING_VINES)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block PINK_WISTERIA_VINES_PLANT = registerBlockWithoutItem("pink_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
 
     public static Block[] registerWoodBlocks(String name, MapColor topMapColor, MapColor sideMapColor) {
         SignType signType = SignTypeAccessor.registerNew(SignTypeAccessor.newSignType(name));
@@ -70,8 +83,16 @@ public class HibiscusBlocks {
         return ARRAY;
     }
 
+    private static boolean never(BlockState state, BlockView world, BlockPos pos) {
+        return false;
+    }
+
+    private static Boolean canSpawnUponLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+        return type == EntityType.OCELOT || type == EntityType.PARROT;
+    }
+
     public static Block registerLeafBlock(String name, MapColor color) {
-        Block LEAVES = registerBlock(name, new LeavesBlock(FabricBlockSettings.copy(Blocks.SPRUCE_LEAVES).nonOpaque().mapColor(color)), ItemGroup.BUILDING_BLOCKS);
+        Block LEAVES = registerBlock(name, new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().nonOpaque().sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(color).allowsSpawning(HibiscusBlocks::canSpawnUponLeaves).suffocates(HibiscusBlocks::never).blockVision(HibiscusBlocks::never)), ItemGroup.BUILDING_BLOCKS);
         BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderLayer.getCutout());
         FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
         return LEAVES;
