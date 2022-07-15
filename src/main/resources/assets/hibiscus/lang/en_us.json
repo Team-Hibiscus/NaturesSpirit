@@ -42,6 +42,8 @@
 "block.hibiscus.redwood_fence_gate": "Redwood Fence Gate",
 "block.hibiscus.redwood_trapdoor": "Redwood Trapdoor",
 "block.hibiscus.potted_redwood_sapling": "Potted Redwood Sapling",
-"item.hibiscus.redwood_boat": "Redwood Boat"
+"item.hibiscus.redwood_boat": "Redwood Boat",
+
+  "itemGroup.minecraft.nature_spirit": "Nature's Spirit Blocks & Items Tab"
 
 }

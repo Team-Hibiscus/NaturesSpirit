@@ -9,7 +9,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "condition": "hibiscus:block_state_property",
+              "condition": "minecraft:block_state_property",
               "block": "hibiscus:redwood_door",
               "properties": {
                 "half": "lower"

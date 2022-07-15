@@ -1,10 +1,10 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.minecraft.block.AbstractPlantBlock;
-import net.minecraft.block.AbstractPlantStemBlock;
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.WorldView;
 
 public class WisteriaVinePlant extends AbstractPlantBlock {
     public static final VoxelShape SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
@@ -22,5 +22,16 @@ public class WisteriaVinePlant extends AbstractPlantBlock {
         }
         else
             return (AbstractPlantStemBlock) HibiscusBlocks.WHITE_WISTERIA_VINES;
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
+        BlockState blockState = world.getBlockState(blockPos);
+        if (!this.canAttachTo(blockState)) {
+            return false;
+        } else {
+            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection) || blockState.isOf(HibiscusBlocks.WHITE_WISTERIA_LEAVES);
+        }
     }
 }

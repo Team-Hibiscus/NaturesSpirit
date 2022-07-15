@@ -12,7 +12,7 @@
               "function": "minecraft:set_count",
               "conditions": [
                 {
-                  "condition": "hibiscus:block_state_property",
+                  "condition": "minecraft:block_state_property",
                   "block": "hibiscus:redwood_slab",
                   "properties": {
                     "type": "double"
