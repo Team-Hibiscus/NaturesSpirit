@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hibiscus:block/wisteria_sapling"
+    "layer0": "hibiscus:block/pink_wisteria_sapling"
   }
 }

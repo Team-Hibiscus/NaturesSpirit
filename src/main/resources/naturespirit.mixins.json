@@ -5,7 +5,10 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "SignTypeAccessor",
-    "BlockEntityTypeMixin"
+    "BlockEntityTypeMixin",
+    "TrunkPlacerTypeMixin",
+    "TreeDecoratorMixin",
+    "BlockStateProviderMixin"
   ],
   "client": [
   ],

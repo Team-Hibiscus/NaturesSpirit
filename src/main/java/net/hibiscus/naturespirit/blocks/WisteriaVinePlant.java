@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.minecraft.block.*;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -31,7 +32,7 @@ public class WisteriaVinePlant extends AbstractPlantBlock {
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection) || blockState.isOf(HibiscusBlocks.WHITE_WISTERIA_LEAVES);
+            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection) || blockState.isIn(BlockTags.LEAVES);
         }
     }
 }

@@ -1,6 +1,5 @@
 {
 "block.hibiscus.wisteria_planks" : "Wisteria Planks",
-"block.hibiscus.wisteria_sapling": "Wisteria Sapling",
 "block.hibiscus.wisteria_door": "Wisteria Door",
 "block.hibiscus.wisteria_wood": "Wisteria Wood",
 "block.hibiscus.wisteria_log": "Wisteria Log",
@@ -21,7 +20,12 @@
 "block.hibiscus.wisteria_fence": "Wisteria Fence",
 "block.hibiscus.wisteria_fence_gate": "Wisteria Fence Gate",
 "block.hibiscus.wisteria_trapdoor": "Wisteria Trapdoor",
-"block.hibiscus.potted_wisteria_sapling": "Potted Wisteria Sapling",
+"block.hibiscus.blue_wisteria_sapling": "Blue Wisteria Sapling",
+"block.hibiscus.potted_blue_wisteria_sapling": "Potted Blue Wisteria Sapling",
+"block.hibiscus.pink_wisteria_sapling": "Pink Wisteria Sapling",
+"block.hibiscus.potted_pink_wisteria_sapling": "Potted Pink Wisteria Sapling",
+"block.hibiscus.white_wisteria_sapling": "White Wisteria Sapling",
+"block.hibiscus.potted_white_wisteria_sapling": "Potted White Wisteria Sapling",
 "item.hibiscus.wisteria_boat": "Wisteria Boat",
 
 "block.hibiscus.redwood_planks" : "Redwood Planks",

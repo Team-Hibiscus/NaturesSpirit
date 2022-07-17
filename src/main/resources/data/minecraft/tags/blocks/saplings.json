@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
-    // "hibiscus:redwood_sapling",
-    // "hibiscus:wisteria_sapling"
+    "hibiscus:redwood_sapling",
+    "hibiscus:white_wisteria_sapling",
+    "hibiscus:blue_wisteria_sapling",
+    "hibiscus:pink_wisteria_sapling"
   ]
 }

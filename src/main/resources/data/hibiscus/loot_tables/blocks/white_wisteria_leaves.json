@@ -38,7 +38,7 @@
                   ]
                 }
               ],
-              "name": "hibiscus:wisteria_leaves"
+              "name": "hibiscus:white_wisteria_leaves"
             },
             {
               "type": "minecraft:item",
@@ -57,7 +57,7 @@
                   ]
                 }
               ],
-              "name": "hibiscus:wisteria_sapling"
+              "name": "hibiscus:white_wisteria_sapling"
             }
           ]
         }
