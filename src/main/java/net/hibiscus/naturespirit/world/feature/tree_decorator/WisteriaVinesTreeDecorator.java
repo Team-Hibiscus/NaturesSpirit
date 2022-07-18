@@ -50,11 +50,11 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator{
     private static void placeVines(BlockPos pos, BlockStateProvider block,  BlockStateProvider block2, TreeDecorator.Generator generator) {
         Random random = generator.getRandom();
         generator.replace(pos, block.getBlockState(random, pos));
-        int i = 4;
+        int i = 2;
 
         for(pos = pos.down(); i > 0; --i) {
             if (generator.isAir(pos)) {
-                if (i == 1 || !generator.isAir(pos.down())) {
+                if (i == 1 || !generator.isAir(pos.down()) || random.nextBoolean()) {
                     generator.replace(pos, block2.getBlockState(random, pos));
                     break;
                 }

@@ -63,8 +63,8 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
             if (this.getAndSetState(world, replacer, random, mutable.set(startPos.getX(), j, startPos.getZ()), config) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
                 Direction direction = Direction.Type.HORIZONTAL.random(random);
                 int k = this.extraBranchLength.get(random);
-                int l = (int)(Math.max(0, k - this.extraBranchLength.get(random) - 1) + (height / j)) - 1;
-                int m = this.extraBranchSteps.get(random);
+                int l = (int)(Math.max(0, k - this.extraBranchLength.get(random) - 1)) + 3;
+                int m = this.extraBranchSteps.get(random) + 1;
                 this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m);
             }
             if (i + 1 == height) {
