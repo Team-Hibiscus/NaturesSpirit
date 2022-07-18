@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hibiscus:block/white_sakura_sapling"
+  }
+}

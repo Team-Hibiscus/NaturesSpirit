@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_boat",
-    "hibiscus:wisteria_boat"
+    // "hibiscus:redwood_boat",
+    // "hibiscus:wisteria_boat",
+    // "hibiscus:sakura_boat"
   ]
 }

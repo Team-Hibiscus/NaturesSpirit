@@ -36,6 +36,10 @@ public class HibiscusBlocks {
     public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood_leaves", MapColor.PALE_GREEN);
     public static final Block REDWOOD_SAPLING = registerSapling("redwood", new RedwoodSaplingGenerator());
 
+    public static final Block[] SAKURA = registerWoodBlocks("sakura", MapColor.DIRT_BROWN, MapColor.DEEPSLATE_GRAY);
+    public static final Block PINK_SAKURA_LEAVES = registerLeafBlock("pink_sakura_leaves", MapColor.PINK);
+    public static final Block WHITE_SAKURA_LEAVES = registerLeafBlock("white_sakura_leaves", MapColor.PINK);
+
     public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MapColor.OFF_WHITE, MapColor.GRAY);
 
     public static final Block WHITE_WISTERIA_LEAVES = registerLeafBlock("white_wisteria_leaves", MapColor.OFF_WHITE);

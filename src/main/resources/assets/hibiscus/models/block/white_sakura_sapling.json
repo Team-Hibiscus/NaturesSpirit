@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "hibiscus:block/white_sakura_sapling"
+  }
+}

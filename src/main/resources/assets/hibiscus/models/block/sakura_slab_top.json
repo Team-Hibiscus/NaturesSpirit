@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "hibiscus:block/sakura_planks",
+    "top": "hibiscus:block/sakura_planks",
+    "side": "hibiscus:block/sakura_planks"
+  }
+}
