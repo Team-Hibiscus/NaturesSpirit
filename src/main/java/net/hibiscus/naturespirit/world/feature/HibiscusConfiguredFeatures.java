@@ -52,7 +52,7 @@ public class HibiscusConfiguredFeatures {
             ("white_wisteria_tree", Feature.TREE,
                     (new TreeFeatureConfig.Builder
                             (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
-                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(2, 7), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                                     BlockStateProvider.of(HibiscusBlocks.WHITE_WISTERIA_LEAVES),
                                     new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                                     new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(
@@ -65,7 +65,7 @@ public class HibiscusConfiguredFeatures {
             ("pink_wisteria_tree", Feature.TREE,
                     (new TreeFeatureConfig.Builder
                             (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
-                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(2, 7), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                                     BlockStateProvider.of(HibiscusBlocks.PINK_WISTERIA_LEAVES),
                                     new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                                     new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(
@@ -78,13 +78,26 @@ public class HibiscusConfiguredFeatures {
             ("blue_wisteria_tree", Feature.TREE,
                     (new TreeFeatureConfig.Builder
                             (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
-                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(2, 7), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                                     BlockStateProvider.of(HibiscusBlocks.BLUE_WISTERIA_LEAVES),
                                     new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                                     new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(
                             new WisteriaVinesTreeDecorator(0.25F,
                                     new HibiscusSimpleBlockStateProvider(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT.getDefaultState()),
                                     new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.BLUE_WISTERIA_VINES.getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(2, 15))
+                            )
+                    )).ignoreVines().build());
+    public static final RegistryEntry <ConfiguredFeature <TreeFeatureConfig, ?>> PURPLE_WISTERIA_TREE = ConfiguredFeatures.register
+            ("purple_wisteria_tree", Feature.TREE,
+                    (new TreeFeatureConfig.Builder
+                            (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    BlockStateProvider.of(HibiscusBlocks.PURPLE_WISTERIA_LEAVES),
+                                    new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
+                                    new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(
+                            new WisteriaVinesTreeDecorator(0.25F,
+                                    new HibiscusSimpleBlockStateProvider(HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT.getDefaultState()),
+                                    new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.PURPLE_WISTERIA_VINES.getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(2, 15))
                             )
                     )).ignoreVines().build());
 
@@ -109,6 +122,13 @@ public class HibiscusConfiguredFeatures {
             ConfiguredFeatures.register("pink_wisteria_spawn", Feature.RANDOM_SELECTOR,
                     new RandomFeatureConfig(List.of(new RandomFeatureEntry(PINK_WISTERIA_CHECKED, 0.20f)),
                             PINK_WISTERIA_CHECKED));
+    public static final RegistryEntry <PlacedFeature> PURPLE_WISTERIA_CHECKED =
+            PlacedFeatures.register("purple_wisteria_checked", PURPLE_WISTERIA_TREE,
+                    PlacedFeatures.wouldSurvive(HibiscusBlocks.PURPLE_WISTERIA_SAPLING));
+    public static final RegistryEntry <ConfiguredFeature <RandomFeatureConfig, ?>> PURPLE_WISTERIA_SPAWN =
+            ConfiguredFeatures.register("purple_wisteria_spawn", Feature.RANDOM_SELECTOR,
+                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(PURPLE_WISTERIA_CHECKED, 0.20f)),
+                            PURPLE_WISTERIA_CHECKED));
 
 
     public static void registerConfiguredFeatures() {

@@ -21,4 +21,7 @@ public class HibiscusPlacedFeatures {
     public static final RegistryEntry<PlacedFeature> PINK_WISTERIA_PLACED = PlacedFeatures.register("pink_wisteria_placed",
             HibiscusConfiguredFeatures.PINK_WISTERIA_SPAWN, VegetationPlacedFeatures.modifiers(
                     PlacedFeatures.createCountExtraModifier(1, 0.1f, 2)));
+    public static final RegistryEntry<PlacedFeature> PURPLE_WISTERIA_PLACED = PlacedFeatures.register("purple_wisteria_placed",
+            HibiscusConfiguredFeatures.PURPLE_WISTERIA_SPAWN, VegetationPlacedFeatures.modifiers(
+                    PlacedFeatures.createCountExtraModifier(1, 0.1f, 2)));
 }

@@ -9,10 +9,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.mixin.SignTypeAccessor;
-import net.hibiscus.naturespirit.world.feature.tree.BlueWisteriaSaplingGenerator;
-import net.hibiscus.naturespirit.world.feature.tree.PinkWisteriaSaplingGenerator;
-import net.hibiscus.naturespirit.world.feature.tree.RedwoodSaplingGenerator;
-import net.hibiscus.naturespirit.world.feature.tree.WhiteWisteriaSaplingGenerator;
+import net.hibiscus.naturespirit.world.feature.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.client.color.world.FoliageColors;
@@ -42,20 +39,25 @@ public class HibiscusBlocks {
 
     public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MapColor.OFF_WHITE, MapColor.GRAY);
 
-    public static final Block WHITE_WISTERIA_LEAVES = registerLeafBlock("white_wisteria_leaves", MapColor.OFF_WHITE);
+    public static final Block WHITE_WISTERIA_LEAVES = registerWisteriaLeafBlock("white_wisteria_leaves", MapColor.OFF_WHITE);
     public static final Block WHITE_WISTERIA_VINES = registerBlock("white_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.OFF_WHITE).ticksRandomly().noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroup);
     public static final Block WHITE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("white_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.OFF_WHITE).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES).dropsLike(WHITE_WISTERIA_VINES)));
     public static final Block WHITE_WISTERIA_SAPLING = registerSapling("white_wisteria", new WhiteWisteriaSaplingGenerator());
 
-    public static final Block BLUE_WISTERIA_LEAVES = registerLeafBlock("blue_wisteria_leaves", MapColor.BRIGHT_TEAL);
+    public static final Block BLUE_WISTERIA_LEAVES = registerWisteriaLeafBlock("blue_wisteria_leaves", MapColor.BRIGHT_TEAL);
     public static final Block BLUE_WISTERIA_VINES = registerBlock("blue_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.BRIGHT_TEAL).ticksRandomly().noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.WEEPING_VINES)),  HibiscusItemGroups.NatureSpiritItemGroup);
     public static final Block BLUE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("blue_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.BRIGHT_TEAL).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES).dropsLike(BLUE_WISTERIA_VINES)));
     public static final Block BLUE_WISTERIA_SAPLING = registerSapling("blue_wisteria", new BlueWisteriaSaplingGenerator());
 
-    public static final Block PINK_WISTERIA_LEAVES = registerLeafBlock("pink_wisteria_leaves", MapColor.PINK);
+    public static final Block PINK_WISTERIA_LEAVES = registerWisteriaLeafBlock("pink_wisteria_leaves", MapColor.PINK);
     public static final Block PINK_WISTERIA_VINES = registerBlock("pink_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).ticksRandomly().noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.WEEPING_VINES)),  HibiscusItemGroups.NatureSpiritItemGroup);
     public static final Block PINK_WISTERIA_VINES_PLANT = registerBlockWithoutItem("pink_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES).dropsLike(PINK_WISTERIA_VINES)));
     public static final Block PINK_WISTERIA_SAPLING = registerSapling("pink_wisteria", new PinkWisteriaSaplingGenerator());
+
+    public static final Block PURPLE_WISTERIA_LEAVES = registerWisteriaLeafBlock("purple_wisteria_leaves", MapColor.PALE_PURPLE);
+    public static final Block PURPLE_WISTERIA_VINES = registerBlock("purple_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MapColor.PALE_PURPLE).ticksRandomly().noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.WEEPING_VINES)),  HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block PURPLE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("purple_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MapColor.PALE_PURPLE).noCollision().nonOpaque().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES).dropsLike(PURPLE_WISTERIA_VINES)));
+    public static final Block PURPLE_WISTERIA_SAPLING = registerSapling("purple_wisteria", new PurpleWisteriaSaplingGenerator());
 
     public static Block[] registerWoodBlocks(String name, MapColor topMapColor, MapColor sideMapColor) {
         SignType signType = SignTypeAccessor.registerNew(SignTypeAccessor.newSignType(name));
@@ -107,6 +109,13 @@ public class HibiscusBlocks {
 
     public static Block registerLeafBlock(String name, MapColor color) {
         Block LEAVES = registerBlock(name, new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().nonOpaque().sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(color).allowsSpawning(HibiscusBlocks::canSpawnUponLeaves).suffocates(HibiscusBlocks::never).blockVision(HibiscusBlocks::never)),  HibiscusItemGroups.NatureSpiritItemGroup);
+        BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderLayer.getCutout());
+        FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
+        return LEAVES;
+    }
+
+    public static Block registerWisteriaLeafBlock(String name, MapColor color) {
+        Block LEAVES = registerBlock(name, new WisteriaLeaves(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().nonOpaque().sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(color).allowsSpawning(HibiscusBlocks::canSpawnUponLeaves).suffocates(HibiscusBlocks::never).blockVision(HibiscusBlocks::never)),  HibiscusItemGroups.NatureSpiritItemGroup);
         BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderLayer.getCutout());
         FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
         return LEAVES;

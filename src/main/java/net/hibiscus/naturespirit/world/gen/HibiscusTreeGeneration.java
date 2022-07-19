@@ -17,5 +17,7 @@ public class HibiscusTreeGeneration {
                 GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.BLUE_WISTERIA_PLACED.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.PINK_WISTERIA_PLACED.getKey().get());
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.PURPLE_WISTERIA_PLACED.getKey().get());
     }
 }

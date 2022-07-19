@@ -21,6 +21,9 @@ public class WisteriaVinePlant extends AbstractPlantBlock {
         if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_VINES_PLANT) {
             return (AbstractPlantStemBlock) HibiscusBlocks.PINK_WISTERIA_VINES;
         }
+        if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT) {
+            return (AbstractPlantStemBlock) HibiscusBlocks.PURPLE_WISTERIA_VINES;
+        }
         else
             return (AbstractPlantStemBlock) HibiscusBlocks.WHITE_WISTERIA_VINES;
     }
