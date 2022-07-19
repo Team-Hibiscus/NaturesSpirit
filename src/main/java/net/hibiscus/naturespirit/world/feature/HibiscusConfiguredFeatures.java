@@ -52,7 +52,7 @@ public class HibiscusConfiguredFeatures {
             ("white_wisteria_tree", Feature.TREE,
                     (new TreeFeatureConfig.Builder
                             (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
-                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(6, 9), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                                     BlockStateProvider.of(HibiscusBlocks.WHITE_WISTERIA_LEAVES),
                                     new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                                     new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(
@@ -65,7 +65,7 @@ public class HibiscusConfiguredFeatures {
             ("pink_wisteria_tree", Feature.TREE,
                     (new TreeFeatureConfig.Builder
                             (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
-                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(6, 9), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                                     BlockStateProvider.of(HibiscusBlocks.PINK_WISTERIA_LEAVES),
                                     new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                                     new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(
@@ -78,7 +78,7 @@ public class HibiscusConfiguredFeatures {
             ("blue_wisteria_tree", Feature.TREE,
                     (new TreeFeatureConfig.Builder
                             (BlockStateProvider.of(HibiscusBlocks.WISTERIA[2]),
-                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                                    new WisteriaTrunkPlacer(4, 3, 5, UniformIntProvider.create(1, 6), 0.55F, UniformIntProvider.create(6, 9), Registry.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                                     BlockStateProvider.of(HibiscusBlocks.BLUE_WISTERIA_LEAVES),
                                     new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                                     new TwoLayersFeatureSize(2, 0, 2))).decorators(List.of(

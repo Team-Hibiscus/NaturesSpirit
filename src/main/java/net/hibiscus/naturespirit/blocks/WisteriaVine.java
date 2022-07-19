@@ -20,7 +20,7 @@ public class WisteriaVine extends AbstractPlantStemBlock {
         return VineLogic.getGrowthLength(random);
     }
 
-    protected AbstractPlantBlock getPlant() {
+    public AbstractPlantBlock getPlant() {
         if (this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_VINES) {
             return (AbstractPlantBlock) HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
         }
@@ -34,8 +34,8 @@ public class WisteriaVine extends AbstractPlantStemBlock {
             return (AbstractPlantBlock) HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
     }
 
-    protected boolean chooseStemState(BlockState state) {
-        return VineLogic.isValidForWeepingStem(state);
+    public boolean chooseStemState(BlockState state) {
+        return state.isAir();
     }
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
