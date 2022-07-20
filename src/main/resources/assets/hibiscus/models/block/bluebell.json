@@ -1,0 +1,6 @@
+{
+  "parent": "hibiscus:block/tall_large_cross",
+  "textures": {
+    "cross": "hibiscus:block/bluebell"
+  }
+}

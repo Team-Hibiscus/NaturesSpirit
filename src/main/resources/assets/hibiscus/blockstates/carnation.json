@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "hibiscus:block/carnation_bottom"
+    },
+    "half=upper": {
+      "model": "hibiscus:block/carnation_top"
+    }
+  }
+}

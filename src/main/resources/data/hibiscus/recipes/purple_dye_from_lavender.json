@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "blue_dye",
+  "ingredients": [
+    {
+      "item": "hibiscus:lavender"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_dye",
+    "count": 4
+  }
+}

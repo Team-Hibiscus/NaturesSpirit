@@ -1,0 +1,6 @@
+{
+  "parent": "hibiscus:block/flower_pot_tall_cross",
+  "textures": {
+    "plant": "hibiscus:block/anemone"
+  }
+}

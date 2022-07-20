@@ -16,6 +16,7 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -29,6 +30,17 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
 public class HibiscusBlocks {
+
+    public static final Block LAVENDER = registerBlock("lavender", new LargeTallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block CARNATION = registerBlock("carnation", new TallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block GARDENIA = registerBlock("gardenia", new TallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block BLUEBELL = registerBlock("bluebell", new LargeFlowerBlock(StatusEffects.HASTE, 7, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block ANEMONE = registerBlock("anemone", new MidFlowerBlock(StatusEffects.RESISTANCE, 4, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block HIBISCUS = registerBlock("hibiscus", new FlowerBlock(StatusEffects.LUCK, 7, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroup);
+
+    public static final Block POTTED_ANEMONE = registerBlockWithoutItem("potted_anemone", new FlowerPotBlock(ANEMONE, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque()));
+    public static final Block POTTED_HIBISCUS = registerBlockWithoutItem("potted_hibiscus", new FlowerPotBlock(HIBISCUS, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque()));
+
 
     public static final Block[] REDWOOD = registerWoodBlocks("redwood", MapColor.DARK_CRIMSON, MapColor.TERRACOTTA_BROWN);
     public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood_leaves", MapColor.PALE_GREEN);

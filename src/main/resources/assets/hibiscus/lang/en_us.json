@@ -75,6 +75,17 @@
 "block.hibiscus.potted_redwood_sapling": "Potted Redwood Sapling",
 "item.hibiscus.redwood_boat": "Redwood Boat",
 
+
+"block.hibiscus.lavender" : "Lavender",
+"block.hibiscus.bluebell" : "Bluebell",
+"block.hibiscus.carnation" : "Carnation",
+"block.hibiscus.gardenia" : "Gardenia",
+"block.hibiscus.anemone" : "Anemone",
+"block.hibiscus.hibiscus" : "Hibiscus",
+
+"block.hibiscus.potted_anemone" : "Potted Anemone",
+"block.hibiscus.potted_hibiscus" : "Potted Hibiscus",
+
   "itemGroup.minecraft.nature_spirit": "Nature's Spirit Blocks & Items Tab"
 
 }

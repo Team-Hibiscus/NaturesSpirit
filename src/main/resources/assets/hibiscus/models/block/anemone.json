@@ -1,0 +1,6 @@
+{
+  "parent": "hibiscus:block/tall_cross",
+  "textures": {
+    "cross": "hibiscus:block/anemone"
+  }
+}
