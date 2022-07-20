@@ -41,13 +41,19 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
             placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 1));
             placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 2));
         }
-        for(int i = 0; i < 60; ++i) {
-            mutable.set(blockPos, random.nextInt(radius) - random.nextInt(radius), -2, random.nextInt(radius) - random.nextInt(radius));
+        for(int i = 0; i < 10; ++i) {
+            mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius +  2) - random.nextInt(radius + 2));
+            placeFoliageBlock(world, replacer, random, config, mutable);
+            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 1));
+            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 2));
+        }
+        for(int i = 0; i < 10; ++i) {
+            mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius +  2) - random.nextInt(radius + 2));
             placeFoliageBlock(world, replacer, random, config, mutable);
             placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 1));
         }
-        for(int i = 0; i < 60; ++i) {
-            mutable.set(blockPos, random.nextInt(radius) - random.nextInt(radius), -2, random.nextInt(radius) - random.nextInt(radius));
+        for(int i = 0; i < 10; ++i) {
+            mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius +  2) - random.nextInt(radius + 2));
             placeFoliageBlock(world, replacer, random, config, mutable);
         }
 

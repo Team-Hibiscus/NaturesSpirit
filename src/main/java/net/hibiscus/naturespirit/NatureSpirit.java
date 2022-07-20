@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.mixin.FoliagePlacerMixin;
@@ -36,5 +37,9 @@ public class NatureSpirit implements ModInitializer{
         HibiscusConfiguredFeatures.registerConfiguredFeatures();
         HibiscusWorldGeneration.generateHibiscusWorldGen();
         HibiscusBlocks.registerHibiscusBlocks();
+        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.BLUE_WISTERIA_VINES, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.PINK_WISTERIA_VINES, 0.3F);
+        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.WHITE_WISTERIA_VINES, 0.3F);
+        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.PURPLE_WISTERIA_VINES, 0.3F);
     }
 }

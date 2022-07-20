@@ -3,6 +3,7 @@ package net.hibiscus.naturespirit.blocks;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -111,6 +112,7 @@ public class HibiscusBlocks {
         Block LEAVES = registerBlock(name, new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().nonOpaque().sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(color).allowsSpawning(HibiscusBlocks::canSpawnUponLeaves).suffocates(HibiscusBlocks::never).blockVision(HibiscusBlocks::never)),  HibiscusItemGroups.NatureSpiritItemGroup);
         BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderLayer.getCutout());
         FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
+        CompostingChanceRegistry.INSTANCE.add(LEAVES, 0.3F);
         return LEAVES;
     }
 
@@ -118,6 +120,7 @@ public class HibiscusBlocks {
         Block LEAVES = registerBlock(name, new WisteriaLeaves(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().nonOpaque().sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(color).allowsSpawning(HibiscusBlocks::canSpawnUponLeaves).suffocates(HibiscusBlocks::never).blockVision(HibiscusBlocks::never)),  HibiscusItemGroups.NatureSpiritItemGroup);
         BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderLayer.getCutout());
         FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
+        CompostingChanceRegistry.INSTANCE.add(LEAVES, 0.3F);
         return LEAVES;
     }
 
@@ -126,6 +129,7 @@ public class HibiscusBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(SAPLING, RenderLayer.getCutout());
         Block POTTED_SAPLING = registerBlockWithoutItem("potted_" + name + "_sapling", new FlowerPotBlock(SAPLING, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque()));
         BlockRenderLayerMap.INSTANCE.putBlock(POTTED_SAPLING, RenderLayer.getCutout());
+        CompostingChanceRegistry.INSTANCE.add(SAPLING, 0.3F);
         return SAPLING;
     }
 
