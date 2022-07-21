@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sakura_trapdoor",
+  "pattern": [
+    "###",
+    "#a#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hibiscus:sakura_trapdoor"
+    },
+    "a": {
+      "tag": "hibiscus:sakura_leaves"
+    }
+  },
+  "result": {
+    "item": "hibiscus:blooming_sakura_trapdoor",
+    "count": 8
+  }
+}

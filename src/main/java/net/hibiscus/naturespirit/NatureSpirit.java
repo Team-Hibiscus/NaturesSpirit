@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.mixin.FoliagePlacerMixin;
 import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
+import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
@@ -34,6 +35,7 @@ public class NatureSpirit implements ModInitializer{
 
     @Override
     public void onInitialize() {
+//        HibiscusBiomes.registerBiomes();
         HibiscusConfiguredFeatures.registerConfiguredFeatures();
         HibiscusWorldGeneration.generateHibiscusWorldGen();
         HibiscusBlocks.registerHibiscusBlocks();

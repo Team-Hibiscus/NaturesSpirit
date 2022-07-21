@@ -21,6 +21,11 @@ public class NatureSpiritClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.PURPLE_WISTERIA_VINES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT, RenderLayer.getCutout());
 
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLOOMING_SAKURA_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLOOMING_SAKURA_TRAPDOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.FRAMED_SAKURA_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.FRAMED_SAKURA_TRAPDOOR, RenderLayer.getCutout());
+
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.LAVENDER,  RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLUEBELL,  RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.CARNATION,  RenderLayer.getCutout());

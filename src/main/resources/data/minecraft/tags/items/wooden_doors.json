@@ -3,6 +3,8 @@
   "values": [
     "hibiscus:redwood_door",
     "hibiscus:wisteria_door",
-    "hibiscus:sakura_door"
+    "hibiscus:sakura_door",
+    "hibiscus:framed_sakura_door",
+    "hibiscus:blooming_sakura_door"
   ]
 }

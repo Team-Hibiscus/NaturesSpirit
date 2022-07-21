@@ -48,7 +48,12 @@ public class HibiscusBlocks {
 
     public static final Block[] SAKURA = registerWoodBlocks("sakura", MapColor.DIRT_BROWN, MapColor.DEEPSLATE_GRAY);
     public static final Block PINK_SAKURA_LEAVES = registerLeafBlock("pink_sakura_leaves", MapColor.PINK);
-    public static final Block WHITE_SAKURA_LEAVES = registerLeafBlock("white_sakura_leaves", MapColor.PINK);
+    public static final Block WHITE_SAKURA_LEAVES = registerLeafBlock("white_sakura_leaves", MapColor.OFF_WHITE);
+    public static final Block BLOOMING_SAKURA_DOOR = registerBlock( "blooming_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).nonOpaque()),  HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block BLOOMING_SAKURA_TRAPDOOR  = registerBlock("blooming_sakura_trapdoor", new TrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque()),  HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block FRAMED_SAKURA_DOOR = registerBlock( "framed_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).nonOpaque()),  HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block FRAMED_SAKURA_TRAPDOOR  = registerBlock("framed_sakura_trapdoor", new TrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque()),  HibiscusItemGroups.NatureSpiritItemGroup);
+
 
     public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MapColor.OFF_WHITE, MapColor.GRAY);
 
