@@ -3,19 +3,19 @@ package net.hibiscus.naturespirit.world.feature.tree_decorator;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.TreeDecorator;
-import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
-public class WisteriaVinesTreeDecorator extends TreeDecorator{
+public class WisteriaVinesTreeDecorator extends TreeDecorator {
     public static final Codec<WisteriaVinesTreeDecorator> CODEC = RecordCodecBuilder.create((instance) -> {
         return instance.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> {
             return treeDecorator.probability;
-        }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> {
+        }), BlockStateProvider.CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> {
             return treeDecorator.blockProvider;
-        }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> {
+        }), BlockStateProvider.CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> {
             return treeDecorator.blockProvider2;
         })).apply(instance, WisteriaVinesTreeDecorator::new);
     });
@@ -23,44 +23,45 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator{
     protected final BlockStateProvider blockProvider;
     protected final BlockStateProvider blockProvider2;
 
-    protected TreeDecoratorType<?> getType() {
-        return NatureSpirit.WISTERIA_VINES_TREE_DECORATOR;
-    }
-
     public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2) {
         this.probability = probability;
         this.blockProvider = blockProvider;
         this.blockProvider2 = blockProvider2;
     }
 
-    public void generate(TreeDecorator.Generator generator) {
-        Random random = generator.getRandom();
-        generator.getLeavesPositions().forEach((pos) -> {
-            BlockPos blockPos;
-            if (random.nextFloat() < this.probability) {
-                blockPos = pos.down();
-                if (generator.isAir(blockPos)) {
-                    placeVines(blockPos, blockProvider, blockProvider2, generator);
+    @Override
+    protected TreeDecoratorType <?> type() {
+        return NatureSpirit.WISTERIA_VINES_TREE_DECORATOR;
+    }
+
+    public void place (Context context) {
+        RandomSource randomSource = context.random();
+        context.leaves().forEach((blockPos) -> {
+            BlockPos blockPos2;
+            if (randomSource.nextFloat() < this.probability) {
+                blockPos2 = blockPos.below();
+                if (context.isAir(blockPos2)) {
+                    placeVines(blockPos2, blockProvider, blockProvider2, context);
                 }
             }
 
         });
     }
 
-    private static void placeVines(BlockPos pos, BlockStateProvider block,  BlockStateProvider block2, TreeDecorator.Generator generator) {
-        Random random = generator.getRandom();
-        generator.replace(pos, block.getBlockState(random, pos));
+    private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, Context generator) {
+        RandomSource random = generator.random();
+        generator.setBlock(pos, block.getState(random, pos));
         int i = 2;
 
-        for(pos = pos.down(); i > 0; --i) {
+        for(pos = pos.below(); i > 0; --i) {
             if (generator.isAir(pos)) {
-                if (i == 1 || !generator.isAir(pos.down()) || random.nextBoolean()) {
-                    generator.replace(pos, block2.getBlockState(random, pos));
+                if (i == 1 || !generator.isAir(pos.below()) || random.nextBoolean()) {
+                    generator.setBlock(pos, block2.getState(random, pos));
                     break;
                 }
-                generator.replace(pos, block.getBlockState(random, pos));
+                generator.setBlock(pos, block.getState(random, pos));
             }
-            pos = pos.down();
+            pos = pos.below();
         }
 
     }

@@ -1,23 +1,23 @@
 package net.hibiscus.naturespirit.world.feature.tree;
 
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
-import net.minecraft.block.sapling.LargeTreeSaplingGenerator;
-import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.core.Holder;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
-public class RedwoodSaplingGenerator extends LargeTreeSaplingGenerator {
+public class RedwoodSaplingGenerator extends AbstractMegaTreeGrower {
+
     @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
+    protected Holder <? extends ConfiguredFeature <?, ?>> getConfiguredMegaFeature(RandomSource randomSource) {
         return HibiscusConfiguredFeatures.REDWOOD_TREE;
     }
 
     @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getLargeTreeFeature(Random random) {
+    protected Holder <? extends ConfiguredFeature <?, ?>> getConfiguredFeature(RandomSource randomSource, boolean bl) {
         return HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE;
     }
 }

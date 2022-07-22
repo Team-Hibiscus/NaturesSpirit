@@ -1,50 +1,54 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.*;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.WorldView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrowingPlantBodyBlock;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.NetherVines;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WisteriaVine extends AbstractPlantStemBlock {
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-    public WisteriaVine(Settings settings) {
-        super(settings, Direction.DOWN, SHAPE, false, 0.1D);
+public class WisteriaVine extends GrowingPlantHeadBlock {
+    protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+
+    public WisteriaVine(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false, 0.1D);
     }
 
-    protected int getGrowthLength(Random random) {
-        return VineLogic.getGrowthLength(random);
+    protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
+        return NetherVines.getBlocksToGrowWhenBonemealed(randomSource);
     }
 
-    public AbstractPlantBlock getPlant() {
+    public Block getBodyBlock() {
         if (this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_VINES) {
-            return (AbstractPlantBlock) HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
+            return (GrowingPlantBodyBlock) HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
         }
         if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_VINES) {
-            return (AbstractPlantBlock) HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
+            return (GrowingPlantBodyBlock) HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
         }
         if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_VINES) {
-            return (AbstractPlantBlock) HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
+            return (GrowingPlantBodyBlock) HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
         }
         else
-            return (AbstractPlantBlock) HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
+            return (GrowingPlantBodyBlock) HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
     }
 
-    public boolean chooseStemState(BlockState state) {
+    public boolean canGrowInto(BlockState state) {
         return state.isAir();
     }
     @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
-        BlockState blockState = world.getBlockState(blockPos);
+    public boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
+        BlockPos blockPos = pos.relative(this.growthDirection.getOpposite());
+        BlockState blockState = levelReader.getBlockState(blockPos);
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection) || blockState.isIn(BlockTags.LEAVES);
+            return blockState.is(this.getHeadBlock()) || blockState.is(this.getBodyBlock()) || blockState.isFaceSturdy(levelReader, blockPos, this.growthDirection) || blockState.is(BlockTags.LEAVES);
         }
     }
 }

@@ -1,18 +1,18 @@
 package net.hibiscus.naturespirit.mixin;
 
-import net.minecraft.util.SignType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Mixin(SignType.class)
-public interface SignTypeAccessor {
+@Mixin(WoodType.class)
+public interface WoodTypeAccessor {
     @Invoker("<init>")
-    static SignType newSignType(String name) {
+    static WoodType newWoodType(String name) {
         throw new AssertionError();
     }
 
     @Invoker("register")
-    static SignType registerNew(SignType type) {
+    static WoodType registerNew(WoodType type) {
         throw new AssertionError();
     }
 }

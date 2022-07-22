@@ -1,16 +1,16 @@
 package net.hibiscus.naturespirit.world.feature.tree;
 
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
-import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.core.Holder;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
-public class WhiteWisteriaSaplingGenerator extends SaplingGenerator {
+public class WhiteWisteriaSaplingGenerator extends AbstractTreeGrower {
     @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
+    protected Holder <? extends ConfiguredFeature <?, ?>> getConfiguredFeature(RandomSource randomSource, boolean bl) {
         return HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE;
     }
 }

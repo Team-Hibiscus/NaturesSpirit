@@ -7,9 +7,9 @@
     "BlockEntityTypeMixin",
     "BlockStateProviderMixin",
     "FoliagePlacerMixin",
-    "SignTypeAccessor",
     "TreeDecoratorMixin",
-    "TrunkPlacerTypeMixin"
+    "TrunkPlacerTypeMixin",
+    "WoodTypeAccessor"
   ],
   "client": [
   ],
