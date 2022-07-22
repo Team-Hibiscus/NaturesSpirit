@@ -3,32 +3,40 @@ package net.hibiscus.naturespirit.world.feature;
 import com.google.common.collect.ImmutableList;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.blocks.LargeTallFlowerBlock;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaPineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
 
@@ -111,31 +119,23 @@ public class HibiscusConfiguredFeatures {
     public static final Holder <PlacedFeature> WHITE_WISTERIA_CHECKED =
             PlacementUtils.register("white_wisteria_checked", WHITE_WISTERIA_TREE,
                     PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_WISTERIA_SAPLING));
-    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> WHITE_WISTERIA_SPAWN =
-            FeatureUtils.register("white_wisteria_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(WHITE_WISTERIA_CHECKED, 0.20f)),
-                            WHITE_WISTERIA_CHECKED));
     public static final Holder <PlacedFeature> BLUE_WISTERIA_CHECKED =
             PlacementUtils.register("blue_wisteria_checked", BLUE_WISTERIA_TREE,
                     PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.BLUE_WISTERIA_SAPLING));
-    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> BLUE_WISTERIA_SPAWN =
-            FeatureUtils.register("blue_wisteria_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(BLUE_WISTERIA_CHECKED, 0.20f)),
-                            BLUE_WISTERIA_CHECKED));
     public static final Holder <PlacedFeature> PINK_WISTERIA_CHECKED =
             PlacementUtils.register("pink_wisteria_checked", PINK_WISTERIA_TREE,
                     PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PINK_WISTERIA_SAPLING));
-    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> PINK_WISTERIA_SPAWN =
-            FeatureUtils.register("pink_wisteria_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(PINK_WISTERIA_CHECKED, 0.20f)),
-                            PINK_WISTERIA_CHECKED));
     public static final Holder <PlacedFeature> PURPLE_WISTERIA_CHECKED =
             PlacementUtils.register("purple_wisteria_checked", PURPLE_WISTERIA_TREE,
                     PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PURPLE_WISTERIA_SAPLING));
-    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> PURPLE_WISTERIA_SPAWN =
-            FeatureUtils.register("purple_wisteria_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(PURPLE_WISTERIA_CHECKED, 0.20f)),
-                            PURPLE_WISTERIA_CHECKED));
+
+    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> WISTERIA_SPAWN =
+            FeatureUtils.register("wisteria_spawn", Feature.RANDOM_SELECTOR,
+                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(WHITE_WISTERIA_CHECKED, 0.10f), new WeightedPlacedFeature(BLUE_WISTERIA_CHECKED, 0.325f), new WeightedPlacedFeature(PINK_WISTERIA_CHECKED, 0.325f), new WeightedPlacedFeature(PURPLE_WISTERIA_CHECKED, 0.25f) ),
+                            WHITE_WISTERIA_CHECKED));
+
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> FLOWER_WISTERIA_FOREST = FeatureUtils.register("flower_wisteria_forest", Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D, new double[0]), 0.020833334F, List.of(HibiscusBlocks.BLUEBELL.defaultBlockState(), Blocks.ALLIUM.defaultBlockState(), HibiscusBlocks.HIBISCUS.defaultBlockState(), HibiscusBlocks.ANEMONE.defaultBlockState(), HibiscusBlocks.GARDENIA.defaultBlockState(), HibiscusBlocks.LAVENDER.defaultBlockState(), Blocks.CORNFLOWER.defaultBlockState(), Blocks.LILY_OF_THE_VALLEY.defaultBlockState()))))));
+    public static final Holder<PlacedFeature> FLOWER_WISTERIA_PLACED = PlacementUtils.register("flower_wisteria_forest", HibiscusConfiguredFeatures.FLOWER_WISTERIA_FOREST, new PlacementModifier[]{CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()});
 
     public static void registerConfiguredFeatures() {
         System.out.println("Registering Configured Features For:" + NatureSpirit.MOD_ID);

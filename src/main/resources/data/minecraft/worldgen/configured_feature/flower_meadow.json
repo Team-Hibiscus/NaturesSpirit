@@ -30,12 +30,6 @@
                 }
               },
               {
-                "Name": "hibiscus:lavender",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
                 "Name": "minecraft:allium"
               },
               {
@@ -51,7 +45,10 @@
                 "Name": "minecraft:cornflower"
               },
               {
-                "Name": "hibiscus:bluebell"
+                "Name": "hibiscus:hibiscus"
+              },
+              {
+                "Name": "hibiscus:anemone"
               },
               {
                 "Name": "minecraft:oxeye_daisy"
