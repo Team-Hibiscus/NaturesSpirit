@@ -66,7 +66,7 @@ public class NatureSpiritOverworldBiomes {
         HibiscusTreeGeneration.addWisteriaFlowers(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_WATERLILY);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
         return biome(Biome.Precipitation.RAIN, 0.4F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 }
