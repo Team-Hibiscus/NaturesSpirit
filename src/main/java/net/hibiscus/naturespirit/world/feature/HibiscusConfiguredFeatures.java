@@ -20,12 +20,10 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.DeltaFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaPineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
@@ -41,6 +39,11 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import java.util.List;
 
 public class HibiscusConfiguredFeatures {
+
+    public static final Feature<DeltaFeatureConfiguration> HIBISCUS_DELTA_FEATURE = Registry.register(Registry.FEATURE, "water_delta_feature", new HibiscusDeltaFeature(DeltaFeatureConfiguration.CODEC));
+
+    public static final Holder<ConfiguredFeature<DeltaFeatureConfiguration, ?>> WISTERIA_DELTA = FeatureUtils.register("water_delta", HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), UniformInt.of(3, 7), UniformInt.of(0, 2)));
+
     public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> LARGE_REDWOOD_TREE = FeatureUtils.register("large_redwood_tree", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.REDWOOD[2]), new GiantTrunkPlacer(15, 2, 17), BlockStateProvider.simple(HibiscusBlocks.REDWOOD_LEAVES), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(15, 20)), new TwoLayersFeatureSize(1, 1, 2))).decorators(ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL)))).build());
 
     public static final Holder<PlacedFeature> LARGE_REDWOOD_CHECKED =
@@ -134,7 +137,7 @@ public class HibiscusConfiguredFeatures {
                     new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(WHITE_WISTERIA_CHECKED, 0.10f), new WeightedPlacedFeature(BLUE_WISTERIA_CHECKED, 0.325f), new WeightedPlacedFeature(PINK_WISTERIA_CHECKED, 0.325f), new WeightedPlacedFeature(PURPLE_WISTERIA_CHECKED, 0.25f) ),
                             WHITE_WISTERIA_CHECKED));
 
-    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> FLOWER_WISTERIA_FOREST = FeatureUtils.register("flower_wisteria_forest", Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D, new double[0]), 0.020833334F, List.of(HibiscusBlocks.BLUEBELL.defaultBlockState(), Blocks.ALLIUM.defaultBlockState(), HibiscusBlocks.HIBISCUS.defaultBlockState(), HibiscusBlocks.ANEMONE.defaultBlockState(), HibiscusBlocks.GARDENIA.defaultBlockState(), HibiscusBlocks.LAVENDER.defaultBlockState(), Blocks.CORNFLOWER.defaultBlockState(), Blocks.LILY_OF_THE_VALLEY.defaultBlockState()))))));
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> FLOWER_WISTERIA_FOREST = FeatureUtils.register("flower_wisteria_forest", Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2445L, new NormalNoise.NoiseParameters(0, 1.0D, new double[0]), 0.030833334F, List.of(Blocks.ALLIUM.defaultBlockState(), HibiscusBlocks.BLUEBELL.defaultBlockState(), HibiscusBlocks.ANEMONE.defaultBlockState(), HibiscusBlocks.GARDENIA.defaultBlockState(), HibiscusBlocks.LAVENDER.defaultBlockState(), Blocks.CORNFLOWER.defaultBlockState()))))));
     public static final Holder<PlacedFeature> FLOWER_WISTERIA_PLACED = PlacementUtils.register("flower_wisteria_forest", HibiscusConfiguredFeatures.FLOWER_WISTERIA_FOREST, new PlacementModifier[]{CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()});
 
     public static void registerConfiguredFeatures() {

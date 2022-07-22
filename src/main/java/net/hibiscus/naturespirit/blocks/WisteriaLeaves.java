@@ -41,7 +41,7 @@ public class WisteriaLeaves extends LeavesBlock implements BonemealableBlock {
             vineBlock2 = HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
         }
         Optional <BlockPos> optional = BlockUtil.getTopConnectedBlock(level, pos, vineBlock2, Direction.DOWN, vineBlock);
-        return (optional.isPresent() && level.getBlockState(((BlockPos)optional.get()).relative(Direction.DOWN)).isAir()) || level.getBlockState(pos.relative(Direction.DOWN)).isAir();
+        return (optional.isPresent() && level.getBlockState(optional.get().relative(Direction.DOWN)).isAir()) || level.getBlockState(pos.relative(Direction.DOWN)).isAir();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class WisteriaLeaves extends LeavesBlock implements BonemealableBlock {
         Optional <BlockPos> optional = BlockUtil.getTopConnectedBlock(serverLevel, blockPos, vineBlock2, Direction.DOWN, vineBlock);
         if (optional.isPresent()) {
             BlockState blockState2 = serverLevel.getBlockState((BlockPos)optional.get());
-            ((WisteriaVine)blockState2.getBlock()).performBonemeal(serverLevel, randomSource, (BlockPos)optional.get(), blockState);
+            ((WisteriaVine)blockState2.getBlock()).performBonemeal(serverLevel, randomSource, (BlockPos)optional.get(), blockState2);
         }
         if (optional.isEmpty()) {
             serverLevel.setBlock(blockPos.below(), vineBlock.defaultBlockState(), 2);

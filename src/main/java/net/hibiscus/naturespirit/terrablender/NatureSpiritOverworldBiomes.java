@@ -2,11 +2,18 @@ package net.hibiscus.naturespirit.terrablender;
 
 import net.hibiscus.naturespirit.world.gen.HibiscusTreeGeneration;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
 import javax.annotation.Nullable;
+
+import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.WISTERIA_WATER;
 
 public class NatureSpiritOverworldBiomes {
     @Nullable
@@ -42,16 +49,24 @@ public class NatureSpiritOverworldBiomes {
     public static Biome wisteriaForest()
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.COW, 5, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 5, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 5, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 5, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 5));
 
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder().addFeature(GenerationStep.Decoration.FLUID_SPRINGS, WISTERIA_WATER);;
         globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         HibiscusTreeGeneration.addWisteriaTrees(biomeBuilder);
         HibiscusTreeGeneration.addWisteriaFlowers(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_WATERLILY);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return biome(Biome.Precipitation.RAIN, 0.4F, 0.6F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+        return biome(Biome.Precipitation.RAIN, 0.4F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 }

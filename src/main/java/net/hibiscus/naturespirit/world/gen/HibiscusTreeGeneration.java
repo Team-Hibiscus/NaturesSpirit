@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -24,7 +25,7 @@ public class HibiscusTreeGeneration {
     }
     public static void addWisteriaFlowers(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HibiscusConfiguredFeatures.FLOWER_WISTERIA_PLACED);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FOREST_FLOWERS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HibiscusConfiguredFeatures.FLOWER_WISTERIA_PLACED);
     }
 }

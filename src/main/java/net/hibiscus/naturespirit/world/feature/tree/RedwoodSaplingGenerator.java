@@ -12,12 +12,12 @@ public class RedwoodSaplingGenerator extends AbstractMegaTreeGrower {
     @Nullable
     @Override
     protected Holder <? extends ConfiguredFeature <?, ?>> getConfiguredMegaFeature(RandomSource randomSource) {
-        return HibiscusConfiguredFeatures.REDWOOD_TREE;
+        return HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE;
     }
 
     @Nullable
     @Override
     protected Holder <? extends ConfiguredFeature <?, ?>> getConfiguredFeature(RandomSource randomSource, boolean bl) {
-        return HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE;
+        return HibiscusConfiguredFeatures.REDWOOD_TREE;
     }
 }
