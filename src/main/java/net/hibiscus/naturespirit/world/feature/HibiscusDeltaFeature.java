@@ -85,6 +85,8 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
             }
 
             return true;
+        } else {
+            return false;
         }
     }
 
