@@ -20,6 +20,7 @@ import java.util.Iterator;
 
 public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
     private static final ImmutableList <Block> CANNOT_REPLACE;
+    private static final ImmutableList <Block> CAN_REPLACE;
     private static final Direction[] DIRECTIONS;
     private static final double RIM_SPAWN_CHANCE = 0.9D;
 
@@ -71,7 +72,7 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
             return false;
         } else if (CANNOT_REPLACE.contains(blockState.getBlock())) {
             return false;
-        } else {
+        } else if (CAN_REPLACE.contains(blockState.getBlock()) && !blockState.is(config.contents().getBlock())) {
             Direction[] var4 = DIRECTIONS;
             int var5 = var4.length;
 
@@ -88,7 +89,8 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
     }
 
     static {
-        CANNOT_REPLACE = ImmutableList.of(Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER, HibiscusBlocks.BLUE_WISTERIA_LEAVES, HibiscusBlocks.WHITE_WISTERIA_LEAVES, HibiscusBlocks.PINK_WISTERIA_LEAVES, HibiscusBlocks.PURPLE_WISTERIA_LEAVES);
+        CANNOT_REPLACE = ImmutableList.of(Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER, HibiscusBlocks.BLUE_WISTERIA_LEAVES, HibiscusBlocks.WHITE_WISTERIA_LEAVES, HibiscusBlocks.PINK_WISTERIA_LEAVES);
+        CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.STONE, Blocks.COARSE_DIRT, Blocks.DIRT, Blocks.GRASS_BLOCK);
         DIRECTIONS = Direction.values();
     }
 }

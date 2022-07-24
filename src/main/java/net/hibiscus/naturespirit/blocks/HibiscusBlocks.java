@@ -1,12 +1,14 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.impl.datagen.FabricTagBuilder;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
@@ -15,7 +17,12 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -30,6 +37,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+
+import java.util.function.Consumer;
 
 public class HibiscusBlocks {
 
@@ -116,6 +125,7 @@ public class HibiscusBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(ARRAY[10], 5, 20);
         FuelRegistry.INSTANCE.add(ARRAY[9], 300);
         FuelRegistry.INSTANCE.add(ARRAY[10], 300);
+
         return ARRAY;
     }
 
