@@ -1,18 +1,22 @@
 package net.hibiscus.naturespirit;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerTypeHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.mixin.FoliagePlacerMixin;
 import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
 import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
+import net.hibiscus.naturespirit.terrablender.NatureSpiritBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.hibiscus.naturespirit.world.gen.HibiscusWorldGeneration;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.npc.VillagerType;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -30,10 +34,11 @@ public class NatureSpirit implements ModInitializer{
     public static final TreeDecoratorType <WisteriaVinesTreeDecorator> WISTERIA_VINES_TREE_DECORATOR = TreeDecoratorMixin.callRegister("wisteria_vines_tree_decorator", WisteriaVinesTreeDecorator.CODEC);
     public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("wisteria_foliage_placer", WisteriaFoliagePlacer.CODEC);
     public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider", HibiscusSimpleBlockStateProvider.CODEC);
-
+    public static final VillagerType WISTERIA = VillagerTypeHelper.register(new ResourceLocation(MOD_ID, "wisteria"));
 
     @Override
     public void onInitialize() {
+        VillagerTypeHelper.addVillagerTypeToBiome(NatureSpiritBiomes.WISTERIA_FOREST, WISTERIA);
         HibiscusBiomes.registerBiomes();
         HibiscusConfiguredFeatures.registerConfiguredFeatures();
         HibiscusWorldGeneration.generateHibiscusWorldGen();

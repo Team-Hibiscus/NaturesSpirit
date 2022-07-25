@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:feature_pool_element",
-        "feature": "minecraft:flower_wisteria_forest",
+        "feature": "minecraft:forest_flowers",
         "projection": "rigid"
       },
       "weight": 1
