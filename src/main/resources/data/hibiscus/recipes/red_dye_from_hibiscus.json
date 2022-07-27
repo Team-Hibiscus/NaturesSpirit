@@ -3,11 +3,11 @@
   "group": "red_dye",
   "ingredients": [
     {
-      "item": "hibiscus:carnation"
+      "item": "hibiscus:hibiscus"
     }
   ],
   "result": {
     "item": "minecraft:red_dye",
-    "count": 2
+    "count": 1
   }
 }

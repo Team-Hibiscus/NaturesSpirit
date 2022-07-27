@@ -15,7 +15,9 @@ import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePla
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.hibiscus.naturespirit.world.gen.HibiscusWorldGeneration;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.CatVariant;
 import net.minecraft.world.entity.npc.VillagerType;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
@@ -53,5 +55,6 @@ public class NatureSpirit implements ModInitializer{
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.GARDENIA, 0.4F);
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.ANEMONE, 0.4F);
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.HIBISCUS, 0.3F);
+        Registry.register(Registry.CAT_VARIANT,"trans", new CatVariant(new ResourceLocation("textures/entity/cat/trans.png")));
     }
 }
