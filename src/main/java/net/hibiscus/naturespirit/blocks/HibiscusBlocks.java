@@ -59,7 +59,9 @@ public class HibiscusBlocks {
 
     public static final Block[] SAKURA = registerWoodBlocks("sakura", MaterialColor.DIRT, MaterialColor.DEEPSLATE);
     public static final Block PINK_SAKURA_LEAVES = registerLeafBlock("pink_sakura_leaves", MaterialColor.COLOR_PINK);
+    public static final Block PINK_SAKURA_SAPLING = registerSapling("pink_sakura", new PinkSakuraSaplingGenerator());
     public static final Block WHITE_SAKURA_LEAVES = registerLeafBlock("white_sakura_leaves", MaterialColor.TERRACOTTA_WHITE);
+    public static final Block WHITE_SAKURA_SAPLING = registerSapling("white_sakura", new WhiteSakuraSaplingGenerator());
     public static final Block BLOOMING_SAKURA_DOOR = registerBlock( "blooming_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion()),  HibiscusItemGroups.NatureSpiritItemGroup);
     public static final Block BLOOMING_SAKURA_TRAPDOOR  = registerBlock("blooming_sakura_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion()),  HibiscusItemGroups.NatureSpiritItemGroup);
     public static final Block FRAMED_SAKURA_DOOR = registerBlock( "framed_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion()),  HibiscusItemGroups.NatureSpiritItemGroup);
