@@ -28,7 +28,7 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.19-2.0.0.120'
+    modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.19.2-2.0.1.125'
 }
 
 processResources {

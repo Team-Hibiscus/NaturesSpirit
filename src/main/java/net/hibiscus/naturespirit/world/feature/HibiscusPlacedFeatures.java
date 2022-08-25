@@ -22,4 +22,7 @@ public class HibiscusPlacedFeatures {
                     PlacementUtils.countExtra(1, 0.1f, 2)));
     public static final Holder <PlacedFeature> WISTERIA_PLACED = PlacementUtils.register("white_wisteria_placed",
             HibiscusConfiguredFeatures.WISTERIA_SPAWN, new PlacementModifier[]{CountPlacement.of(15), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
+
+    public static final Holder <PlacedFeature> SAKURA_PLACED = PlacementUtils.register("sakura_placed",
+            HibiscusConfiguredFeatures.SAKURA_SPAWN, new PlacementModifier[]{CountPlacement.of(15), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
 }

@@ -7,6 +7,7 @@ import net.hibiscus.naturespirit.blocks.LargeTallFlowerBlock;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.feature.trunk.SakuraTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -142,12 +143,12 @@ public class HibiscusConfiguredFeatures {
 
     public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> PINK_SAKURA_TREE = FeatureUtils.register("pink_sakura_tree", Feature.TREE, (
             new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.SAKURA[2]),
-                    new FancyTrunkPlacer(11, 3, 3), BlockStateProvider.simple(HibiscusBlocks.PINK_SAKURA_LEAVES),
+                    new SakuraTrunkPlacer(17, 4, 4), BlockStateProvider.simple(HibiscusBlocks.PINK_SAKURA_LEAVES),
                     new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                     new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build());
     public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> WHITE_SAKURA_TREE = FeatureUtils.register("white_sakura_tree", Feature.TREE, (
             new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.SAKURA[2]),
-                    new FancyTrunkPlacer(11, 3, 3), BlockStateProvider.simple(HibiscusBlocks.WHITE_SAKURA_LEAVES),
+                    new SakuraTrunkPlacer(17, 4, 4), BlockStateProvider.simple(HibiscusBlocks.WHITE_SAKURA_LEAVES),
                     new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                     new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build());
     public static final Holder <PlacedFeature> PINK_SAKURA_CHECKED =
