@@ -42,7 +42,7 @@ public class NatureSpirit implements ModInitializer{
 
     @Override
     public void onInitialize() {
-//        VillagerTypeHelper.addVillagerTypeToBiome(NatureSpiritBiomes.WISTERIA_FOREST, WISTERIA);
+        VillagerTypeHelper.addVillagerTypeToBiome(NatureSpiritBiomes.WISTERIA_FOREST, WISTERIA);
         HibiscusConfiguredFeatures.registerConfiguredFeatures();
         HibiscusWorldGeneration.generateHibiscusWorldGen();
         HibiscusBlocks.registerHibiscusBlocks();

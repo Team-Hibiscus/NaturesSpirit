@@ -9,7 +9,7 @@ public class HibiscusBiomes {
     public static void registerBiomes()
 {
     register(NatureSpiritBiomes.SAKURA_GROVE, NatureSpiritOverworldBiomes.sakuraGrove());
-//    register(NatureSpiritBiomes.WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest());
+    register(NatureSpiritBiomes.WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest());
 }
 
     private static void register(ResourceKey<Biome> key, Biome biome)
