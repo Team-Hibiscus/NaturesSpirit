@@ -25,7 +25,9 @@ public class HibiscusRegion extends Region {
     {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(Biomes.JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
-            builder.replaceBiome(Biomes.FOREST, NatureSpiritBiomes.WISTERIA_FOREST);
+            builder.replaceBiome(Biomes.SPARSE_JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
+            builder.replaceBiome(Biomes.BAMBOO_JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
+            builder.replaceBiome(Biomes.TAIGA, NatureSpiritBiomes.WISTERIA_FOREST);
 
 //            List<Climate.ParameterPoint> sakuraGroveParameterPoints = new ParameterUtils.ParameterPointListBuilder()
 //                    .temperature(ParameterUtils.Temperature.WARM, ParameterUtils.Temperature.HOT)

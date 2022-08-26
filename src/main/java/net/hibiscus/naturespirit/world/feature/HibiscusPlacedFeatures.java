@@ -24,5 +24,9 @@ public class HibiscusPlacedFeatures {
             HibiscusConfiguredFeatures.WISTERIA_SPAWN, new PlacementModifier[]{CountPlacement.of(15), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
 
     public static final Holder <PlacedFeature> SAKURA_PLACED = PlacementUtils.register("sakura_placed",
-            HibiscusConfiguredFeatures.SAKURA_SPAWN, new PlacementModifier[]{CountPlacement.of(15), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
+            HibiscusConfiguredFeatures.SAKURA_SPAWN, new PlacementModifier[]{CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
+    public static final Holder <PlacedFeature> OAK_BUSH_PLACED = PlacementUtils.register("oak_bush_placed",
+            HibiscusConfiguredFeatures.OAK_BUSH_SPAWN, new PlacementModifier[]{CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
+    public static final Holder <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = PlacementUtils.register("custom_fancy_oak_tree_placed",
+            HibiscusConfiguredFeatures.FANCY_OAK_TREE_SPAWN, new PlacementModifier[]{CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()});
 }

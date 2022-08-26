@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 
 public class NatureSpiritBiomes {
-    public static final ResourceKey<Biome> SAKURA_GROVE = register("sakura_grove");
     public static final ResourceKey<Biome> WISTERIA_FOREST = register("wisteria_forest");
+    public static final ResourceKey<Biome> SAKURA_GROVE = register("sakura_grove");
 
     private static ResourceKey<Biome> register(String name)
     {

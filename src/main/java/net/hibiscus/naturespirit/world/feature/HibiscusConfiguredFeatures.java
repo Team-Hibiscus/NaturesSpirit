@@ -13,8 +13,10 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -26,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaPineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
@@ -41,6 +44,10 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
 import java.util.OptionalInt;
+
+import static net.minecraft.data.worldgen.features.TreeFeatures.FANCY_OAK;
+import static net.minecraft.data.worldgen.features.TreeFeatures.FANCY_OAK_BEES;
+import static net.minecraft.data.worldgen.placement.TreePlacements.FANCY_OAK_CHECKED;
 
 public class HibiscusConfiguredFeatures {
 
@@ -143,12 +150,12 @@ public class HibiscusConfiguredFeatures {
 
     public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> PINK_SAKURA_TREE = FeatureUtils.register("pink_sakura_tree", Feature.TREE, (
             new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.SAKURA[2]),
-                    new SakuraTrunkPlacer(17, 4, 4), BlockStateProvider.simple(HibiscusBlocks.PINK_SAKURA_LEAVES),
+                    new SakuraTrunkPlacer(8, 7, 10), BlockStateProvider.simple(HibiscusBlocks.PINK_SAKURA_LEAVES),
                     new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                     new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build());
     public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> WHITE_SAKURA_TREE = FeatureUtils.register("white_sakura_tree", Feature.TREE, (
             new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.SAKURA[2]),
-                    new SakuraTrunkPlacer(17, 4, 4), BlockStateProvider.simple(HibiscusBlocks.WHITE_SAKURA_LEAVES),
+                    new SakuraTrunkPlacer(8, 7, 10), BlockStateProvider.simple(HibiscusBlocks.WHITE_SAKURA_LEAVES),
                     new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                     new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build());
     public static final Holder <PlacedFeature> PINK_SAKURA_CHECKED =
@@ -159,11 +166,29 @@ public class HibiscusConfiguredFeatures {
                     PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_SAKURA_SAPLING));
     public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> SAKURA_SPAWN =
             FeatureUtils.register("sakura_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(WHITE_SAKURA_CHECKED, 0.10f), new WeightedPlacedFeature(PINK_SAKURA_CHECKED, 0.325f)),
-                            WHITE_SAKURA_CHECKED));
+                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(WHITE_SAKURA_CHECKED, 0.325f)),
+                            PINK_SAKURA_CHECKED));
+
+    public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> OAK_BUSH = FeatureUtils.register("oak_bush", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build());
+    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> FANCY_OAK_TREE_SPAWN =
+            FeatureUtils.register("custom_fancy_oak_tree_spawn", Feature.RANDOM_SELECTOR,
+                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(TreePlacements.FANCY_OAK_BEES, 0.03F)),
+                            FANCY_OAK_CHECKED));
+
+    public static final Holder <PlacedFeature> OAK_BUSH_CHECKED =
+            PlacementUtils.register("oak_bush_checked", OAK_BUSH,
+                    PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+    public static final Holder <ConfiguredFeature <RandomFeatureConfiguration, ?>> OAK_BUSH_SPAWN =
+            FeatureUtils.register("oak_bush_spawn", Feature.RANDOM_SELECTOR,
+                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(OAK_BUSH_CHECKED, 0.5f)),
+                            OAK_BUSH_CHECKED));
 
     public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> FLOWER_WISTERIA_FOREST = FeatureUtils.register("flower_wisteria_forest", Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2445L, new NormalNoise.NoiseParameters(0, 1.0D, new double[0]), 0.030833334F, List.of(Blocks.ALLIUM.defaultBlockState(), HibiscusBlocks.BLUEBELL.defaultBlockState(), HibiscusBlocks.ANEMONE.defaultBlockState(), Blocks.OXEYE_DAISY.defaultBlockState(), Blocks.PINK_TULIP.defaultBlockState(), HibiscusBlocks.GARDENIA.defaultBlockState(), HibiscusBlocks.LAVENDER.defaultBlockState(), HibiscusBlocks.HIBISCUS.defaultBlockState(), Blocks.CORNFLOWER.defaultBlockState()))))));
     public static final Holder<PlacedFeature> FLOWER_WISTERIA_PLACED = PlacementUtils.register("flower_wisteria_forest", HibiscusConfiguredFeatures.FLOWER_WISTERIA_FOREST, new PlacementModifier[]{CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()});
+
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> FLOWER_SAKURA_GROVE = FeatureUtils.register("flower_sakura_grove", Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2445L, new NormalNoise.NoiseParameters(0, 1.0D, new double[0]), 0.030833334F, List.of(Blocks.ALLIUM.defaultBlockState(), Blocks.LILAC.defaultBlockState(), HibiscusBlocks.ANEMONE.defaultBlockState(), Blocks.LILY_OF_THE_VALLEY.defaultBlockState(), Blocks.PINK_TULIP.defaultBlockState(), HibiscusBlocks.GARDENIA.defaultBlockState(), HibiscusBlocks.LAVENDER.defaultBlockState(), Blocks.PEONY.defaultBlockState()))))));
+    public static final Holder<PlacedFeature> FLOWER_SAKURA_PLACED = PlacementUtils.register("flower_sakura_grove", HibiscusConfiguredFeatures.FLOWER_SAKURA_GROVE, new PlacementModifier[]{CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()});
+
 
     public static void registerConfiguredFeatures() {
         System.out.println("Registering Configured Features For:" + NatureSpirit.MOD_ID);

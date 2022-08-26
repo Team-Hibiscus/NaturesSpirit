@@ -153,7 +153,7 @@ public class SakuraTrunkPlacer extends TrunkPlacer {
         if ((float)j < (float)i * 0.5F) {
             return -1.0F;
         } else {
-            float f = (float)i / 5F;
+            float f = (float)i / 4F;
             float g = f - (float)j;
             float h = Mth.sqrt(f * f - g * g);
             if (g == 0.0F) {
