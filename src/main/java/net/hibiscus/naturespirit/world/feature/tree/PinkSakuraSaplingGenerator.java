@@ -11,6 +11,6 @@ public class PinkSakuraSaplingGenerator extends AbstractTreeGrower {
     @Nullable
     @Override
     protected Holder <? extends ConfiguredFeature <?, ?>> getConfiguredFeature(RandomSource randomSource, boolean bl) {
-        return HibiscusConfiguredFeatures.PINK_SAKURA_TREE;
+        return HibiscusConfiguredFeatures.PINK_SAKURA_TREE_SAPLING;
     }
 }

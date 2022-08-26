@@ -35,6 +35,7 @@ public class NatureSpirit implements ModInitializer{
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final TrunkPlacerType <WisteriaTrunkPlacer> WISTERIA_TRUNK_PLACER = callRegister("wisteria_trunk_placer", WisteriaTrunkPlacer.CODEC);
     public static final TrunkPlacerType <SakuraTrunkPlacer> SAKURA_TRUNK_PLACER = callRegister("sakura_trunk_placer", SakuraTrunkPlacer.CODEC);
+    public static final TrunkPlacerType <SakuraTrunkPlacer> SAKURA_TRUNK_PLACER_SAPLING = callRegister("sakura_trunk_placer_sapling", SakuraTrunkPlacer.CODEC);
     public static final TreeDecoratorType <WisteriaVinesTreeDecorator> WISTERIA_VINES_TREE_DECORATOR = TreeDecoratorMixin.callRegister("wisteria_vines_tree_decorator", WisteriaVinesTreeDecorator.CODEC);
     public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("wisteria_foliage_placer", WisteriaFoliagePlacer.CODEC);
     public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider", HibiscusSimpleBlockStateProvider.CODEC);
