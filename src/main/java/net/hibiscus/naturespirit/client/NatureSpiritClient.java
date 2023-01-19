@@ -25,13 +25,13 @@ public class NatureSpiritClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.FRAMED_SAKURA_DOOR, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.FRAMED_SAKURA_TRAPDOOR, RenderType.cutout());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.LAVENDER,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLUEBELL,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.CARNATION,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.GARDENIA,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.ANEMONE,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_ANEMONE,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.HIBISCUS,  RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_HIBISCUS,  RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.LAVENDER, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.BLUEBELL, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.CARNATION, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.GARDENIA, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.ANEMONE, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_ANEMONE, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.HIBISCUS, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_HIBISCUS, RenderType.cutout());
     }
 }

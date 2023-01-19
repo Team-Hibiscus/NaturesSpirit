@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 
 public class HibiscusSimpleBlockStateProvider extends BlockStateProvider {
-    public static final Codec<HibiscusSimpleBlockStateProvider> CODEC;
+    public static final Codec <HibiscusSimpleBlockStateProvider> CODEC;
     private final BlockState state;
 
     public HibiscusSimpleBlockStateProvider(BlockState state) {

@@ -32,7 +32,7 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
         boolean bl = false;
         RandomSource randomSource = context.random();
         WorldGenLevel worldGenLevel = context.level();
-        DeltaFeatureConfiguration deltaFeatureConfiguration = (DeltaFeatureConfiguration)context.config();
+        DeltaFeatureConfiguration deltaFeatureConfiguration = context.config();
         BlockPos blockPos = context.origin();
         boolean bl2 = randomSource.nextDouble() < 0.9D;
         int i = bl2 ? deltaFeatureConfiguration.rimSize().sample(randomSource) : 0;
@@ -43,8 +43,8 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
         int m = Math.max(k, l);
         Iterator var14 = BlockPos.withinManhattan(blockPos, k, 0, l).iterator();
 
-        while(var14.hasNext()) {
-            BlockPos blockPos2 = (BlockPos)var14.next();
+        while (var14.hasNext()) {
+            BlockPos blockPos2 = (BlockPos) var14.next();
             if (blockPos2.distManhattan(blockPos) > m) {
                 break;
             }
@@ -76,7 +76,7 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
             Direction[] var4 = DIRECTIONS;
             int var5 = var4.length;
 
-            for(int var6 = 0; var6 < var5; ++var6) {
+            for (int var6 = 0; var6 < var5; ++var6) {
                 Direction direction = var4[var6];
                 boolean bl = level.getBlockState(pos.relative(direction)).isAir();
                 if (bl && direction != Direction.UP || !bl && direction == Direction.UP) {

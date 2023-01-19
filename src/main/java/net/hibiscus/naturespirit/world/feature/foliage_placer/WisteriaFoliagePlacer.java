@@ -16,7 +16,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import java.util.function.BiConsumer;
 
 public class WisteriaFoliagePlacer extends FoliagePlacer {
-    public static final Codec<WisteriaFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final Codec <WisteriaFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
         return foliagePlacerParts(instance).apply(instance, WisteriaFoliagePlacer::new);
     });
 
@@ -24,35 +24,35 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
         super(intProvider, intProvider2);
     }
 
-    protected FoliagePlacerType<?> type() {
+    protected FoliagePlacerType <?> type() {
         return NatureSpirit.WISTERIA_FOLIAGE_PLACER_TYPE;
     }
 
-    protected void createFoliage(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, TreeConfiguration config, int trunkHeight, FoliageAttachment treeNode, int foliageHeight, int radius, int offset) {
+    protected void createFoliage(LevelSimulatedReader world, BiConsumer <BlockPos, BlockState> replacer, RandomSource random, TreeConfiguration config, int trunkHeight, FoliageAttachment treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.pos().above(offset);
         BlockPos.MutableBlockPos mutable = blockPos.mutable();
-            this.placeLeavesRow(world, replacer, random, config, blockPos, radius , -1, true);
-            this.placeLeavesRow(world, replacer, random, config, blockPos, radius + 1, 0, true);
-            this.placeLeavesRow(world, replacer, random, config, blockPos, radius , 1, true);
-        for(int i = 0; i < 60; ++i) {
+        this.placeLeavesRow(world, replacer, random, config, blockPos, radius, -1, true);
+        this.placeLeavesRow(world, replacer, random, config, blockPos, radius + 1, 0, true);
+        this.placeLeavesRow(world, replacer, random, config, blockPos, radius, 1, true);
+        for (int i = 0; i < 60; ++i) {
             mutable.setWithOffset(blockPos, random.nextInt(radius) - random.nextInt(radius), -2, random.nextInt(radius) - random.nextInt(radius));
             tryPlaceLeaf(world, replacer, random, config, mutable);
             tryPlaceLeaf(world, replacer, random, config, mutable.relative(Direction.DOWN, 1));
             tryPlaceLeaf(world, replacer, random, config, mutable.relative(Direction.DOWN, 2));
         }
-        for(int i = 0; i < 10; ++i) {
-            mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius +  2) - random.nextInt(radius + 2));
+        for (int i = 0; i < 10; ++i) {
+            mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
             tryPlaceLeaf(world, replacer, random, config, mutable);
             tryPlaceLeaf(world, replacer, random, config, mutable.relative(Direction.DOWN, 1));
             tryPlaceLeaf(world, replacer, random, config, mutable.relative(Direction.DOWN, 2));
         }
-        for(int i = 0; i < 10; ++i) {
-            mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius +  2) - random.nextInt(radius + 2));
+        for (int i = 0; i < 10; ++i) {
+            mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
             tryPlaceLeaf(world, replacer, random, config, mutable);
             tryPlaceLeaf(world, replacer, random, config, mutable.relative(Direction.DOWN, 1));
         }
-        for(int i = 0; i < 10; ++i) {
-            mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius +  2) - random.nextInt(radius + 2));
+        for (int i = 0; i < 10; ++i) {
+            mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
             tryPlaceLeaf(world, replacer, random, config, mutable);
         }
 

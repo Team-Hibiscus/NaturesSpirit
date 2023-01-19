@@ -11,7 +11,7 @@ public class HibiscusTags {
         public static final TagKey <Biome> IS_WISTERIA =
                 createTag("is_wisteria");
 
-        private static TagKey<Biome> createTag(String name) {
+        private static TagKey <Biome> createTag(String name) {
             return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(NatureSpirit.MOD_ID, name));
         }
     }

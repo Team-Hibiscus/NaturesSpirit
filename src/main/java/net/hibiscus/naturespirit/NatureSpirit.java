@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 
 import static net.hibiscus.naturespirit.mixin.TrunkPlacerTypeMixin.callRegister;
 
-public class NatureSpirit implements ModInitializer{
+public class NatureSpirit implements ModInitializer {
 
     public static final String MOD_ID = "hibiscus";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -58,6 +58,6 @@ public class NatureSpirit implements ModInitializer{
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.GARDENIA, 0.4F);
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.ANEMONE, 0.4F);
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.HIBISCUS, 0.3F);
-        Registry.register(Registry.CAT_VARIANT,"trans", new CatVariant(new ResourceLocation("textures/entity/cat/trans.png")));
+        Registry.register(Registry.CAT_VARIANT, "trans", new CatVariant(new ResourceLocation("textures/entity/cat/trans.png")));
     }
 }

@@ -21,25 +21,21 @@ public class NatureSpiritOverworldBiomes {
     @Nullable
     private static final Music NORMAL_MUSIC = null;
 
-    protected static int calculateSkyColor(float color)
-    {
+    protected static int calculateSkyColor(float color) {
         float $$1 = color / 3.0F;
         $$1 = Mth.clamp($$1, -1.0F, 1.0F);
         return Mth.hsvToRgb(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
     }
 
-    private static Biome biome(Biome.Precipitation precipitation, float temperature, float downfall, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music)
-    {
+    private static Biome biome(Biome.Precipitation precipitation, float temperature, float downfall, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music) {
         return biome(precipitation, temperature, downfall, 4159204, 329011, spawnBuilder, biomeBuilder, music);
     }
 
-    private static Biome biome(Biome.Precipitation precipitation, float temperature, float downfall, int waterColor, int waterFogColor, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music)
-    {
+    private static Biome biome(Biome.Precipitation precipitation, float temperature, float downfall, int waterColor, int waterFogColor, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music) {
         return (new Biome.BiomeBuilder()).precipitation(precipitation).temperature(temperature).downfall(downfall).specialEffects((new BiomeSpecialEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).fogColor(12638463).skyColor(calculateSkyColor(temperature)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
-    private static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder)
-    {
+    private static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(builder);
         BiomeDefaultFeatures.addDefaultCrystalFormations(builder);
         BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
@@ -48,8 +44,7 @@ public class NatureSpiritOverworldBiomes {
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 
-    public static Biome wisteriaForest()
-    {
+    public static Biome wisteriaForest() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -59,7 +54,7 @@ public class NatureSpiritOverworldBiomes {
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 5, 2, 5));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 5));
 
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder().addFeature(GenerationStep.Decoration.FLUID_SPRINGS, WISTERIA_WATER);;
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder().addFeature(GenerationStep.Decoration.FLUID_SPRINGS, WISTERIA_WATER);
         globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
@@ -71,8 +66,8 @@ public class NatureSpiritOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
         return biome(Biome.Precipitation.RAIN, 0.4F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
-    public static Biome sakuraGrove()
-    {
+
+    public static Biome sakuraGrove() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -90,14 +85,14 @@ public class NatureSpiritOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST));
     }
-    public static Biome bambooSakura()
-    {
+
+    public static Biome bambooSakura() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PANDA, 1, 3,2));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PANDA, 1, 3, 2));
         globalOverworldGeneration(biomeBuilder);
         HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addFrozenSprings(biomeBuilder);
@@ -110,21 +105,23 @@ public class NatureSpiritOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST));
     }
-    public static Biome redwoodForest()
-    {
+
+    public static Biome redwoodForest() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         globalOverworldGeneration(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addRedwoodRock(biomeBuilder);
         BiomeDefaultFeatures.addFrozenSprings(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
         HibiscusTreeGeneration.addLargeRedwoodTrees(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addRedwoodTrees(biomeBuilder);
+        HibiscusTreeGeneration.addSpruceBush(biomeBuilder);
+        HibiscusTreeGeneration.addRedwoodSecondaryVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.4F, 0.6F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }

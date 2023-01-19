@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface TrunkPlacerTypeMixin {
 
     @Invoker
-    static <P extends TrunkPlacer> TrunkPlacerType<P> callRegister(String id, Codec<P> codec) {
+    static <P extends TrunkPlacer> TrunkPlacerType <P> callRegister(String id, Codec <P> codec) {
         throw new IllegalStateException();
     }
 }

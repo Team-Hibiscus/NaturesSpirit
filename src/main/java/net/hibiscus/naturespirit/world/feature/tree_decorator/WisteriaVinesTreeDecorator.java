@@ -10,7 +10,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class WisteriaVinesTreeDecorator extends TreeDecorator {
-    public static final Codec<WisteriaVinesTreeDecorator> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final Codec <WisteriaVinesTreeDecorator> CODEC = RecordCodecBuilder.create((instance) -> {
         return instance.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> {
             return treeDecorator.probability;
         }), BlockStateProvider.CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> {
@@ -34,7 +34,7 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
         return NatureSpirit.WISTERIA_VINES_TREE_DECORATOR;
     }
 
-    public void place (Context context) {
+    public void place(Context context) {
         RandomSource randomSource = context.random();
         context.leaves().forEach((blockPos) -> {
             BlockPos blockPos2;
@@ -53,7 +53,7 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
         generator.setBlock(pos, block.getState(random, pos));
         int i = 2;
 
-        for(pos = pos.below(); i > 0; --i) {
+        for (pos = pos.below(); i > 0; --i) {
             if (generator.isAir(pos)) {
                 if (i == 1 || !generator.isAir(pos.below()) || random.nextBoolean()) {
                     generator.setBlock(pos, block2.getState(random, pos));

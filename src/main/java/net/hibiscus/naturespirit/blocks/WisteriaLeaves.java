@@ -27,16 +27,13 @@ public class WisteriaLeaves extends LeavesBlock implements BonemealableBlock {
         if (this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_LEAVES) {
             vineBlock = HibiscusBlocks.BLUE_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
-        } else
-        if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_LEAVES) {
+        } else if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_LEAVES) {
             vineBlock = HibiscusBlocks.PINK_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
-        } else
-        if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_LEAVES) {
+        } else if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_LEAVES) {
             vineBlock = HibiscusBlocks.PURPLE_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
-        } else
-        {
+        } else {
             vineBlock = HibiscusBlocks.WHITE_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
         }
@@ -57,24 +54,21 @@ public class WisteriaLeaves extends LeavesBlock implements BonemealableBlock {
         if (this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_LEAVES) {
             vineBlock = HibiscusBlocks.BLUE_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
-        } else
-        if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_LEAVES) {
+        } else if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_LEAVES) {
             vineBlock = HibiscusBlocks.PINK_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
-        } else
-        if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_LEAVES) {
+        } else if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_LEAVES) {
             vineBlock = HibiscusBlocks.PURPLE_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
-        } else
-        {
+        } else {
             vineBlock = HibiscusBlocks.WHITE_WISTERIA_VINES;
             vineBlock2 = HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
         }
 
         Optional <BlockPos> optional = BlockUtil.getTopConnectedBlock(serverLevel, blockPos, vineBlock2, Direction.DOWN, vineBlock);
         if (optional.isPresent()) {
-            BlockState blockState2 = serverLevel.getBlockState((BlockPos)optional.get());
-            ((WisteriaVine)blockState2.getBlock()).performBonemeal(serverLevel, randomSource, (BlockPos)optional.get(), blockState2);
+            BlockState blockState2 = serverLevel.getBlockState(optional.get());
+            ((WisteriaVine) blockState2.getBlock()).performBonemeal(serverLevel, randomSource, optional.get(), blockState2);
         }
         if (optional.isEmpty()) {
             serverLevel.setBlock(blockPos.below(), vineBlock.defaultBlockState(), 2);

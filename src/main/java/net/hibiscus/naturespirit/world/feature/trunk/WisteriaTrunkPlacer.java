@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class WisteriaTrunkPlacer extends TrunkPlacer {
-    public static final Codec<WisteriaTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final Codec <WisteriaTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
         return trunkPlacerParts(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((WisteriaTrunkPlacer) -> {
             return WisteriaTrunkPlacer.extraBranchSteps;
         }), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((WisteriaTrunkPlacer) -> {
@@ -35,7 +35,7 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
     private final IntProvider extraBranchLength;
     private final HolderSet <Block> canGrowThrough;
 
-    public WisteriaTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight, IntProvider extraBranchSteps, float placeBranchPerLogProbability, IntProvider extraBranchLength, HolderSet<Block> canGrowThrough) {
+    public WisteriaTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight, IntProvider extraBranchSteps, float placeBranchPerLogProbability, IntProvider extraBranchLength, HolderSet <Block> canGrowThrough) {
         super(baseHeight, firstRandomHeight, secondRandomHeight);
         this.extraBranchSteps = extraBranchSteps;
         this.placeBranchPerLogProbability = placeBranchPerLogProbability;
@@ -47,16 +47,16 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
         return NatureSpirit.WISTERIA_TRUNK_PLACER;
     }
 
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, int height, BlockPos startPos, TreeConfiguration config) {
-        List<FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
+    public List <FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader world, BiConsumer <BlockPos, BlockState> replacer, RandomSource random, int height, BlockPos startPos, TreeConfiguration config) {
+        List <FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
-        for(int i = 0; i < height; ++i) {
+        for (int i = 0; i < height; ++i) {
             int j = startPos.getY() + i;
-            if (this.placeLog(world, replacer, random, mutable.set(startPos.getX(),  j, startPos.getZ()), config) && i < height - 3 && i > 2 && random.nextFloat() < this.placeBranchPerLogProbability) {
+            if (this.placeLog(world, replacer, random, mutable.set(startPos.getX(), j, startPos.getZ()), config) && i < height - 3 && i > 2 && random.nextFloat() < this.placeBranchPerLogProbability) {
                 Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
                 int k = this.extraBranchLength.sample(random);
-                int l = (int)(Math.max(0, k - this.extraBranchLength.sample(random) - 1));
+                int l = Math.max(0, k - this.extraBranchLength.sample(random) - 1);
                 int m = this.extraBranchSteps.sample(random);
                 int g = startPos.getY() + i - 1;
                 this.placeBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m);
@@ -69,12 +69,12 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
         return list;
     }
 
-    private void placeBranch(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, int height, TreeConfiguration config, List<FoliagePlacer.FoliageAttachment> nodes, BlockPos.MutableBlockPos pos, int yOffset, Direction direction, int length, int steps) {
+    private void placeBranch(LevelSimulatedReader world, BiConsumer <BlockPos, BlockState> replacer, RandomSource random, int height, TreeConfiguration config, List <FoliagePlacer.FoliageAttachment> nodes, BlockPos.MutableBlockPos pos, int yOffset, Direction direction, int length, int steps) {
         int i = yOffset + length;
         int j = pos.getX();
         int k = pos.getZ();
 
-        for(int l = length; l < height && steps > 0; --steps) {
+        for (int l = length; l < height && steps > 0; --steps) {
             if (l >= 1) {
                 int m = yOffset + l;
                 j += direction.getStepX();

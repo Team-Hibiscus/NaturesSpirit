@@ -26,21 +26,21 @@ public class WisteriaVine extends GrowingPlantHeadBlock {
 
     public Block getBodyBlock() {
         if (this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_VINES) {
-            return (GrowingPlantBodyBlock) HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
+            return HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
         }
         if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_VINES) {
-            return (GrowingPlantBodyBlock) HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
+            return HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
         }
         if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_VINES) {
-            return (GrowingPlantBodyBlock) HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
-        }
-        else
-            return (GrowingPlantBodyBlock) HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
+            return HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
+        } else
+            return HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
     }
 
     public boolean canGrowInto(BlockState state) {
         return state.isAir();
     }
+
     @Override
     public boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
         BlockPos blockPos = pos.relative(this.growthDirection.getOpposite());
