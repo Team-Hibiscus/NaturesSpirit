@@ -72,22 +72,22 @@ public class HibiscusBlocks {
 
     public static final Block WHITE_WISTERIA_LEAVES = registerWisteriaLeafBlock("white_wisteria_leaves", MaterialColor.TERRACOTTA_WHITE);
     public static final Block WHITE_WISTERIA_VINES = registerBlock("white_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).ticksRandomly().noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block WHITE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("white_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(WHITE_WISTERIA_VINES)));
+    public static final Block WHITE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("white_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(WHITE_WISTERIA_VINES), WHITE_WISTERIA_VINES));
     public static final Block WHITE_WISTERIA_SAPLING = registerSapling("white_wisteria", new WhiteWisteriaSaplingGenerator());
 
     public static final Block BLUE_WISTERIA_LEAVES = registerWisteriaLeafBlock("blue_wisteria_leaves", MaterialColor.COLOR_CYAN);
     public static final Block BLUE_WISTERIA_VINES = registerBlock("blue_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_CYAN).ticksRandomly().noCollision().instabreak().noOcclusion().sound(SoundType.WEEPING_VINES)),  HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block BLUE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("blue_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_CYAN).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(BLUE_WISTERIA_VINES)));
+    public static final Block BLUE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("blue_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_CYAN).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(BLUE_WISTERIA_VINES), BLUE_WISTERIA_VINES));
     public static final Block BLUE_WISTERIA_SAPLING = registerSapling("blue_wisteria", new BlueWisteriaSaplingGenerator());
 
     public static final Block PINK_WISTERIA_LEAVES = registerWisteriaLeafBlock("pink_wisteria_leaves", MaterialColor.COLOR_PINK);
     public static final Block PINK_WISTERIA_VINES = registerBlock("pink_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PINK).ticksRandomly().noCollision().instabreak().noOcclusion().sound(SoundType.WEEPING_VINES)),  HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block PINK_WISTERIA_VINES_PLANT = registerBlockWithoutItem("pink_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PINK).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PINK_WISTERIA_VINES)));
+    public static final Block PINK_WISTERIA_VINES_PLANT = registerBlockWithoutItem("pink_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PINK).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PINK_WISTERIA_VINES), PINK_WISTERIA_VINES));
     public static final Block PINK_WISTERIA_SAPLING = registerSapling("pink_wisteria", new PinkWisteriaSaplingGenerator());
 
     public static final Block PURPLE_WISTERIA_LEAVES = registerWisteriaLeafBlock("purple_wisteria_leaves", MaterialColor.COLOR_PURPLE);
     public static final Block PURPLE_WISTERIA_VINES = registerBlock("purple_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PURPLE).ticksRandomly().noCollision().instabreak().noOcclusion().sound(SoundType.WEEPING_VINES)),  HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block PURPLE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("purple_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PURPLE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PURPLE_WISTERIA_VINES)));
+    public static final Block PURPLE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("purple_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PURPLE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PURPLE_WISTERIA_VINES), PURPLE_WISTERIA_VINES));
     public static final Block PURPLE_WISTERIA_SAPLING = registerSapling("purple_wisteria", new PurpleWisteriaSaplingGenerator());
 
     public static Block[] registerWoodBlocks(String name, MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {

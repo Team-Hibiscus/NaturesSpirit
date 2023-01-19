@@ -13,23 +13,15 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class WisteriaVinePlant extends GrowingPlantBodyBlock {
     public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+    public Block headBlock;
 
-    public WisteriaVinePlant(BlockBehaviour.Properties properties) {
+    public WisteriaVinePlant(BlockBehaviour.Properties properties, Block headBlock) {
         super(properties, Direction.DOWN, SHAPE, false);
+        this.headBlock = headBlock;
     }
 
     protected GrowingPlantHeadBlock getHeadBlock() {
-        if (this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT) {
-            return (GrowingPlantHeadBlock) HibiscusBlocks.BLUE_WISTERIA_VINES;
-        }
-        if (this.asBlock() == HibiscusBlocks.PINK_WISTERIA_VINES_PLANT) {
-            return (GrowingPlantHeadBlock) HibiscusBlocks.PINK_WISTERIA_VINES;
-        }
-        if (this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT) {
-            return (GrowingPlantHeadBlock) HibiscusBlocks.PURPLE_WISTERIA_VINES;
-        }
-        else
-            return (GrowingPlantHeadBlock) HibiscusBlocks.WHITE_WISTERIA_VINES;
+        return (GrowingPlantHeadBlock) headBlock;
     }
 
     @Override

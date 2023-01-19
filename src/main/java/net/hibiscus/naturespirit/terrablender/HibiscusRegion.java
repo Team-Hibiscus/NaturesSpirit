@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.terrablender;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -10,6 +11,7 @@ import net.minecraft.world.level.biome.Climate;
 import terrablender.api.ParameterUtils;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
+import terrablender.worldgen.RegionUtils;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -26,21 +28,12 @@ public class HibiscusRegion extends Region {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(Biomes.JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
             builder.replaceBiome(Biomes.SPARSE_JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
-            builder.replaceBiome(Biomes.BAMBOO_JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
+            builder.replaceBiome(Biomes.BAMBOO_JUNGLE, NatureSpiritBiomes.BAMBOO_SAKURA);
             builder.replaceBiome(Biomes.TAIGA, NatureSpiritBiomes.WISTERIA_FOREST);
-
-//            List<Climate.ParameterPoint> sakuraGroveParameterPoints = new ParameterUtils.ParameterPointListBuilder()
-//                    .temperature(ParameterUtils.Temperature.WARM, ParameterUtils.Temperature.HOT)
-//                    .humidity(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.WET)
-//                    .continentalness(ParameterUtils.Continentalness.span(ParameterUtils.Continentalness.NEAR_INLAND, ParameterUtils.Continentalness.FAR_INLAND), ParameterUtils.Continentalness.span(ParameterUtils.Continentalness.MID_INLAND, ParameterUtils.Continentalness.FAR_INLAND))
-//                    .erosion(ParameterUtils.Erosion.EROSION_3, ParameterUtils.Erosion.EROSION_4)
-//                    .depth(ParameterUtils.Depth.SURFACE)
-//                    .weirdness(ParameterUtils.Weirdness.FULL_RANGE)
-//                    .build();
-//
-//            sakuraGroveParameterPoints.forEach(point -> builder.replaceBiome(point, NatureSpiritBiomes.SAKURA_GROVE));
+            builder.replaceBiome(Biomes.OLD_GROWTH_SPRUCE_TAIGA, NatureSpiritBiomes.REDWOOD_FOREST);
+            builder.replaceBiome(Biomes.OLD_GROWTH_PINE_TAIGA, NatureSpiritBiomes.REDWOOD_FOREST);
+            builder.replaceBiome(Biomes.SAVANNA, NatureSpiritBiomes.REDWOOD_FOREST);
         });
-
     }
 
 }

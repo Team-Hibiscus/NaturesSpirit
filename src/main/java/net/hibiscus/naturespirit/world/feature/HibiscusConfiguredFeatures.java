@@ -56,7 +56,7 @@ public class HibiscusConfiguredFeatures {
 
     public static final Holder<ConfiguredFeature<DeltaFeatureConfiguration, ?>> WISTERIA_DELTA = FeatureUtils.register("water_delta", HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), UniformInt.of(4, 8), UniformInt.of(0, 4)));
 
-    public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> LARGE_REDWOOD_TREE = FeatureUtils.register("large_redwood_tree", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.REDWOOD[2]), new GiantTrunkPlacer(15, 2, 17), BlockStateProvider.simple(HibiscusBlocks.REDWOOD_LEAVES), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(15, 20)), new TwoLayersFeatureSize(1, 1, 2))).decorators(ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL)))).build());
+    public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> LARGE_REDWOOD_TREE = FeatureUtils.register("large_redwood_tree", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.REDWOOD[2]), new GiantTrunkPlacer(20, 2, 17), BlockStateProvider.simple(HibiscusBlocks.REDWOOD_LEAVES), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(20, 25)), new TwoLayersFeatureSize(1, 1, 2))).decorators(ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL)))).build());
 
     public static final Holder<PlacedFeature> LARGE_REDWOOD_CHECKED =
             PlacementUtils.register("large_redwood_checked", LARGE_REDWOOD_TREE,
@@ -67,7 +67,7 @@ public class HibiscusConfiguredFeatures {
                     new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(LARGE_REDWOOD_CHECKED, 0.5f)),
                             LARGE_REDWOOD_CHECKED));
 
-    public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> REDWOOD_TREE = FeatureUtils.register("redwood_tree", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.REDWOOD[2]), new StraightTrunkPlacer(10, 2, 1), BlockStateProvider.simple(HibiscusBlocks.REDWOOD_LEAVES), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(2, 6), UniformInt.of(2, 10)), new TwoLayersFeatureSize(2, 0, 2))).ignoreVines().build());
+    public static final Holder <ConfiguredFeature <TreeConfiguration, ?>> REDWOOD_TREE = FeatureUtils.register("redwood_tree", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(HibiscusBlocks.REDWOOD[2]), new StraightTrunkPlacer(12, 1, 4), BlockStateProvider.simple(HibiscusBlocks.REDWOOD_LEAVES), new SpruceFoliagePlacer(UniformInt.of(1, 4), UniformInt.of(2, 4), UniformInt.of(4, 12)), new TwoLayersFeatureSize(2, 0, 2))).ignoreVines().build());
 
     public static final Holder <PlacedFeature> REDWOOD_CHECKED =
             PlacementUtils.register("redwood_checked", REDWOOD_TREE,

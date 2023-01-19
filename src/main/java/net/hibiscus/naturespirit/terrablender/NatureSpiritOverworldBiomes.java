@@ -90,4 +90,42 @@ public class NatureSpiritOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST));
     }
+    public static Biome bambooSakura()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PANDA, 1, 3,2));
+        globalOverworldGeneration(biomeBuilder);
+        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addFrozenSprings(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
+        HibiscusTreeGeneration.addSakuraTrees(biomeBuilder);
+        HibiscusTreeGeneration.addBamboo(biomeBuilder);
+        HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST));
+    }
+    public static Biome redwoodForest()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
+        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addFrozenSprings(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
+        HibiscusTreeGeneration.addLargeRedwoodTrees(biomeBuilder);
+        HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, 0.4F, 0.6F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
 }

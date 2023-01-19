@@ -12,7 +12,7 @@ public class NatureSpiritTerraBlender implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
         {
-            Regions.register(new HibiscusRegion(new ResourceLocation(MOD_ID, "overworld"), 2));
+            Regions.register(new HibiscusRegion(new ResourceLocation(MOD_ID, "overworld"), 3));
         }
     }
 }
