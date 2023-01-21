@@ -70,6 +70,7 @@ public class HibiscusTreeGeneration {
 
     public static void addRedwoodSecondaryVegetation(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HibiscusConfiguredFeatures.FLOWER_REDWOOD_PLACED);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FOREST_FLOWERS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_SWAMP);
     }
