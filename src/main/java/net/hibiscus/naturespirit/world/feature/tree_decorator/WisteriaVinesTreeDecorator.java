@@ -19,14 +19,32 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
             return treeDecorator.blockProvider2;
         })).apply(instance, WisteriaVinesTreeDecorator::new);
     });
-    private final float probability;
     protected final BlockStateProvider blockProvider;
     protected final BlockStateProvider blockProvider2;
+    private final float probability;
 
     public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2) {
         this.probability = probability;
         this.blockProvider = blockProvider;
         this.blockProvider2 = blockProvider2;
+    }
+
+    private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, Context generator) {
+        RandomSource random = generator.random();
+        generator.setBlock(pos, block.getState(random, pos));
+        int i = 2;
+
+        for (pos = pos.below(); i > 0; --i) {
+            if (generator.isAir(pos)) {
+                if (i == 1 || !generator.isAir(pos.below()) || random.nextBoolean()) {
+                    generator.setBlock(pos, block2.getState(random, pos));
+                    break;
+                }
+                generator.setBlock(pos, block.getState(random, pos));
+            }
+            pos = pos.below();
+        }
+
     }
 
     @Override
@@ -46,23 +64,5 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
             }
 
         });
-    }
-
-    private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, Context generator) {
-        RandomSource random = generator.random();
-        generator.setBlock(pos, block.getState(random, pos));
-        int i = 2;
-
-        for (pos = pos.below(); i > 0; --i) {
-            if (generator.isAir(pos)) {
-                if (i == 1 || !generator.isAir(pos.below()) || random.nextBoolean()) {
-                    generator.setBlock(pos, block2.getState(random, pos));
-                    break;
-                }
-                generator.setBlock(pos, block.getState(random, pos));
-            }
-            pos = pos.below();
-        }
-
     }
 }

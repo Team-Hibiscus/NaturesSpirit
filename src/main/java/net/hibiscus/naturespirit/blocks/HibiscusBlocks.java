@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -15,7 +16,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -54,10 +57,10 @@ public class HibiscusBlocks {
     public static final Block PINK_SAKURA_SAPLING = registerSapling("pink_sakura", new PinkSakuraSaplingGenerator());
     public static final Block WHITE_SAKURA_LEAVES = registerLeafBlock("white_sakura_leaves", MaterialColor.TERRACOTTA_WHITE);
     public static final Block WHITE_SAKURA_SAPLING = registerSapling("white_sakura", new WhiteSakuraSaplingGenerator());
-    public static final Block BLOOMING_SAKURA_DOOR = registerBlock("blooming_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block BLOOMING_SAKURA_TRAPDOOR = registerBlock("blooming_sakura_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block FRAMED_SAKURA_DOOR = registerBlock("framed_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
-    public static final Block FRAMED_SAKURA_TRAPDOOR = registerBlock("framed_sakura_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block BLOOMING_SAKURA_DOOR = registerBlock("blooming_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block BLOOMING_SAKURA_TRAPDOOR = registerBlock("blooming_sakura_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block FRAMED_SAKURA_DOOR = registerBlock("framed_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
+    public static final Block FRAMED_SAKURA_TRAPDOOR = registerBlock("framed_sakura_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
 
 
     public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MaterialColor.TERRACOTTA_WHITE, MaterialColor.COLOR_GRAY);
@@ -92,17 +95,18 @@ public class HibiscusBlocks {
         ARRAY[4] = registerBlock(name + "_planks", new Block(FabricBlockSettings.of(Material.WOOD, topMaterialColor).strength(2.0F, 3.0F).sound(SoundType.WOOD)), HibiscusItemGroups.NatureSpiritItemGroup);
         ARRAY[5] = registerBlock(name + "_stairs", new StairBlock(ARRAY[4].defaultBlockState(), FabricBlockSettings.copy(ARRAY[4])), HibiscusItemGroups.NatureSpiritItemGroup);
         ARRAY[6] = registerBlock(name + "_slab", new SlabBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sound(SoundType.WOOD)), HibiscusItemGroups.NatureSpiritItemGroup);
-        ARRAY[7] = registerBlock(name + "_door", new DoorBlock(FabricBlockSettings.copy(ARRAY[4]).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
-        ARRAY[8] = registerBlock(name + "_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
+        ARRAY[7] = registerBlock(name + "_door", new DoorBlock(FabricBlockSettings.copy(ARRAY[4]).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
+        ARRAY[8] = registerBlock(name + "_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
         ARRAY[9] = registerBlock(name + "_fence", new FenceBlock(FabricBlockSettings.copy(ARRAY[4]).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
-        ARRAY[10] = registerBlock(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(ARRAY[4]).noOcclusion()), HibiscusItemGroups.NatureSpiritItemGroup);
-        ARRAY[11] = registerBlock(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.of(Material.WOOD, ARRAY[4].defaultMaterialColor()).noCollision().strength(0.5f).sound(SoundType.WOOD)), HibiscusItemGroups.NatureSpiritItemGroup);
-        ARRAY[12] = registerBlock(name + "_button", new WoodButtonBlock(FabricBlockSettings.of(Material.WOOD, topMaterialColor).strength(2.0F, 3.0F).sound(SoundType.WOOD)), HibiscusItemGroups.NatureSpiritItemGroup);
+        ARRAY[10] = registerBlock(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(ARRAY[4]).noOcclusion(), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN), HibiscusItemGroups.NatureSpiritItemGroup);
+        ARRAY[11] = registerBlock(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.of(Material.WOOD, ARRAY[4].defaultMaterialColor()).noCollision().strength(0.5f).sound(SoundType.WOOD), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON), HibiscusItemGroups.NatureSpiritItemGroup);
+        ARRAY[12] = registerBlock(name + "_button", new ButtonBlock(FabricBlockSettings.of(Material.WOOD, topMaterialColor).strength(2.0F, 3.0F).sound(SoundType.WOOD), 30, true, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON), HibiscusItemGroups.NatureSpiritItemGroup);
         ARRAY[13] = registerBlockWithoutItem(name + "_sign", new StandingSignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), woodType));
         ARRAY[14] = registerBlockWithoutItem(name + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN).dropsLike(ARRAY[13]), woodType));
-        registerItemWithoutBlock(name + "_sign",
-                new SignItem(new FabricItemSettings().group(HibiscusItemGroups.NatureSpiritItemGroup).maxCount(16),
+       registerItemWithoutBlock(name + "_sign",
+                new SignItem(new FabricItemSettings().maxCount(16),
                         ARRAY[13], ARRAY[14]));
+//        ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NatureSpiritItemGroup).register(entries -> entries.accept(sign));
 
         BlockRenderLayerMap.INSTANCE.putBlock(ARRAY[7], RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ARRAY[8], RenderType.cutout());
@@ -158,20 +162,22 @@ public class HibiscusBlocks {
 
     public static Block registerBlock(String name, Block block, CreativeModeTab tab) {
         registerBlockItem(name, block, tab);
-        return Registry.register(Registry.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, name), block);
     }
 
     public static Block registerBlockWithoutItem(String name, Block block) {
-        return Registry.register(Registry.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, name), block);
     }
 
     public static Item registerBlockItem(String name, Block block, CreativeModeTab tab) {
-        return Registry.register(Registry.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings().group(tab)));
+        Item item = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings()));
+//        ItemGroupEvents.modifyEntriesEvent(tab.getId()).register(entries -> entries.accept(item));
+        return item;
     }
 
     public static Item registerItemWithoutBlock(String name, Item item) {
-        return Registry.register(Registry.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, name), item);
+        return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, name), item);
     }
 
     public static void registerHibiscusBlocks() {

@@ -4,7 +4,11 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
@@ -26,7 +30,7 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
             return WisteriaTrunkPlacer.placeBranchPerLogProbability;
         }), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((WisteriaTrunkPlacer) -> {
             return WisteriaTrunkPlacer.extraBranchLength;
-        }), RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("can_grow_through").forGetter((WisteriaTrunkPlacer) -> {
+        }), RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_grow_through").forGetter((WisteriaTrunkPlacer) -> {
             return WisteriaTrunkPlacer.canGrowThrough;
         }))).apply(instance, WisteriaTrunkPlacer::new);
     });

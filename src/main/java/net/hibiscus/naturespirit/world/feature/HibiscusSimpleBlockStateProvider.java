@@ -10,16 +10,17 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 public class HibiscusSimpleBlockStateProvider extends BlockStateProvider {
     public static final Codec <HibiscusSimpleBlockStateProvider> CODEC;
-    private final BlockState state;
-
-    public HibiscusSimpleBlockStateProvider(BlockState state) {
-        this.state = state;
-    }
 
     static {
         CODEC = BlockState.CODEC.fieldOf("state").xmap(HibiscusSimpleBlockStateProvider::new, (hibiscusSimpleBlockStateProvider) -> {
             return hibiscusSimpleBlockStateProvider.state;
         }).codec();
+    }
+
+    private final BlockState state;
+
+    public HibiscusSimpleBlockStateProvider(BlockState state) {
+        this.state = state;
     }
 
     @Override

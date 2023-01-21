@@ -20,12 +20,12 @@ public class HibiscusRegion extends Region {
     @Override
     public void addBiomes(Registry <Biome> registry, Consumer <Pair <Climate.ParameterPoint, ResourceKey <Biome>>> mapper) {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            builder.replaceBiome(Biomes.JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
-            builder.replaceBiome(Biomes.SPARSE_JUNGLE, NatureSpiritBiomes.SAKURA_GROVE);
-            builder.replaceBiome(Biomes.BAMBOO_JUNGLE, NatureSpiritBiomes.BAMBOO_SAKURA);
-            builder.replaceBiome(Biomes.TAIGA, NatureSpiritBiomes.WISTERIA_FOREST);
-            builder.replaceBiome(Biomes.OLD_GROWTH_SPRUCE_TAIGA, NatureSpiritBiomes.REDWOOD_FOREST);
-            builder.replaceBiome(Biomes.OLD_GROWTH_PINE_TAIGA, NatureSpiritBiomes.REDWOOD_FOREST);
+            builder.replaceBiome(Biomes.JUNGLE, HibiscusBiomes.SAKURA_GROVE);
+            builder.replaceBiome(Biomes.SPARSE_JUNGLE, HibiscusBiomes.SAKURA_GROVE);
+            builder.replaceBiome(Biomes.BAMBOO_JUNGLE, HibiscusBiomes.BAMBOO_SAKURA);
+            builder.replaceBiome(Biomes.TAIGA, HibiscusBiomes.WISTERIA_FOREST);
+            builder.replaceBiome(Biomes.OLD_GROWTH_SPRUCE_TAIGA, HibiscusBiomes.REDWOOD_FOREST);
+            builder.replaceBiome(Biomes.OLD_GROWTH_PINE_TAIGA, HibiscusBiomes.REDWOOD_FOREST);
         });
     }
 

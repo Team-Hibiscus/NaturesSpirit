@@ -24,8 +24,33 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
     private static final Direction[] DIRECTIONS;
     private static final double RIM_SPAWN_CHANCE = 0.9D;
 
+
     public HibiscusDeltaFeature(Codec <DeltaFeatureConfiguration> codec) {
         super(codec);
+    }
+
+    private static boolean isClear(LevelAccessor level, BlockPos pos, DeltaFeatureConfiguration config) {
+        BlockState blockState = level.getBlockState(pos);
+        if (blockState.is(config.contents().getBlock())) {
+            return false;
+        } else if (CANNOT_REPLACE.contains(blockState.getBlock())) {
+            return false;
+        } else if (CAN_REPLACE.contains(blockState.getBlock()) && !blockState.is(config.contents().getBlock())) {
+            Direction[] var4 = DIRECTIONS;
+            int var5 = var4.length;
+
+            for (int var6 = 0; var6 < var5; ++var6) {
+                Direction direction = var4[var6];
+                boolean bl = level.getBlockState(pos.relative(direction)).isAir();
+                if (bl && direction != Direction.UP || !bl && direction == Direction.UP) {
+                    return false;
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean place(FeaturePlaceContext <DeltaFeatureConfiguration> context) {
@@ -65,31 +90,6 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfiguration> {
 
         return bl;
     }
-
-    private static boolean isClear(LevelAccessor level, BlockPos pos, DeltaFeatureConfiguration config) {
-        BlockState blockState = level.getBlockState(pos);
-        if (blockState.is(config.contents().getBlock())) {
-            return false;
-        } else if (CANNOT_REPLACE.contains(blockState.getBlock())) {
-            return false;
-        } else if (CAN_REPLACE.contains(blockState.getBlock()) && !blockState.is(config.contents().getBlock())) {
-            Direction[] var4 = DIRECTIONS;
-            int var5 = var4.length;
-
-            for (int var6 = 0; var6 < var5; ++var6) {
-                Direction direction = var4[var6];
-                boolean bl = level.getBlockState(pos.relative(direction)).isAir();
-                if (bl && direction != Direction.UP || !bl && direction == Direction.UP) {
-                    return false;
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     static {
         CANNOT_REPLACE = ImmutableList.of(Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER, HibiscusBlocks.BLUE_WISTERIA_LEAVES, HibiscusBlocks.WHITE_WISTERIA_LEAVES, HibiscusBlocks.PINK_WISTERIA_LEAVES);
         CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.STONE, Blocks.COARSE_DIRT, Blocks.DIRT, Blocks.GRASS_BLOCK);

@@ -29,6 +29,23 @@ public class SakuraTrunkPlacer extends TrunkPlacer {
         super(i, j, k);
     }
 
+    private static float treeShape(int i, int j) {
+        if ((float) j < (float) i * 0.675F) {
+            return -1.0F;
+        } else {
+            float f = (float) i / 1.25F;
+            float g = f - (float) j;
+            float h = Mth.sqrt(f * f - g * g);
+            if (g == 0.0F) {
+                h = f;
+            } else if (Math.abs(g) >= f) {
+                return 0.0F;
+            }
+
+            return h * 0.5F;
+        }
+    }
+
     protected TrunkPlacerType <?> type() {
         return TrunkPlacerType.FANCY_TRUNK_PLACER;
     }
@@ -148,23 +165,6 @@ public class SakuraTrunkPlacer extends TrunkPlacer {
             }
         }
 
-    }
-
-    private static float treeShape(int i, int j) {
-        if ((float) j < (float) i * 0.675F) {
-            return -1.0F;
-        } else {
-            float f = (float) i / 1.25F;
-            float g = f - (float) j;
-            float h = Mth.sqrt(f * f - g * g);
-            if (g == 0.0F) {
-                h = f;
-            } else if (Math.abs(g) >= f) {
-                return 0.0F;
-            }
-
-            return h * 0.5F;
-        }
     }
 
     static class FoliageCoords {
