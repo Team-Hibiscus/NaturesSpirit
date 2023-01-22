@@ -20,6 +20,9 @@
     ],
     "terrablender": [
       "net.hibiscus.naturespirit.terrablender.NatureSpiritTerraBlender"
+    ],
+    "fabric-datagen": [
+    "net.hibiscus.naturespirit.datagen.NatureSpiritDataGen"
     ]
   },
   "mixins": [

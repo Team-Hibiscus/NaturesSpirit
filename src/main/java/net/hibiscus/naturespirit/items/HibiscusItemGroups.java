@@ -12,7 +12,7 @@ public class HibiscusItemGroups {
 
     public static CreativeModeTab NatureSpiritItemGroup;
 
-    public static void registerItemGroups() {
-        NatureSpiritItemGroup = FabricItemGroup.builder(new ResourceLocation(MOD_ID, "nature_spirit")).icon(() -> new ItemStack(HibiscusBlocks.REDWOOD[4])).build();
+    public static void registerItemGroup() {
+//        NatureSpiritItemGroup = FabricItemGroup.builder(new ResourceLocation(MOD_ID, "nature_spirit")).icon(() -> new ItemStack(HibiscusBlocks.REDWOOD[4])).build();
     }
 }

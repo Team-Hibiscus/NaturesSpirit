@@ -49,11 +49,11 @@ public class NatureSpirit implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        HibiscusItemGroups.registerItemGroup();
         VillagerTypeHelper.addVillagerTypeToBiome(HibiscusBiomes.WISTERIA_FOREST, WISTERIA);
         HibiscusConfiguredFeatures.registerConfiguredFeatures();
         HibiscusBiomes.registerBiomes();
         HibiscusBlocks.registerHibiscusBlocks();
-        HibiscusItemGroups.registerItemGroups();
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.BLUE_WISTERIA_VINES, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.PINK_WISTERIA_VINES, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.WHITE_WISTERIA_VINES, 0.5F);
