@@ -21,15 +21,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder) {
-        System.out.println("Built Registry");
         registryBuilder.add(Registries.CONFIGURED_FEATURE, HibiscusConfiguredFeatures::bootstrap);
         registryBuilder.add(Registries.PLACED_FEATURE, HibiscusPlacedFeatures::bootstrap);
-//        registryBuilder.add(Registries.BIOME, HibiscusBiomes::bootstrap);
+        registryBuilder.add(Registries.BIOME, HibiscusBiomes::bootstrap);
+        System.out.println("Built Registry");
     }
 
     @Override
     public String getEffectiveModId() {
-        return null;
+        return NatureSpirit.MOD_ID;
     }
 }
 

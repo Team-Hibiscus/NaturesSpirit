@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "hibiscus:block/stripped_sakura_log_top",
-    "side": "hibiscus:block/stripped_sakura_log"
-  }
-}

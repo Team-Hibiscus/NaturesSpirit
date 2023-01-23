@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_pressure_plate",
-    "hibiscus:wisteria_pressure_plate",
-    "hibiscus:sakura_pressure_plate"
+    "natures_spirit:redwood_pressure_plate",
+    "natures_spirit:wisteria_pressure_plate",
+    "natures_spirit:sakura_pressure_plate"
   ]
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button",
-  "textures": {
-    "texture": "hibiscus:block/redwood_planks"
-  }
-}

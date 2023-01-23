@@ -42,7 +42,7 @@ public class HibiscusTreeGeneration {
     }
 
     public static void addBamboo(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BAMBOO);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BAMBOO_VEGETATION);
     }
 
     public static void addOakTrees(BiomeGenerationSettings.Builder builder) {

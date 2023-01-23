@@ -1,12 +1,12 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_leaves",
-    "hibiscus:blue_wisteria_leaves",
-    "hibiscus:pink_wisteria_leaves",
-    "hibiscus:white_wisteria_leaves",
-    "hibiscus:purple_wisteria_leaves",
-    "hibiscus:pink_sakura_leaves",
-    "hibiscus:white_sakura_leaves"
+    "natures_spirit:redwood_leaves",
+    "natures_spirit:blue_wisteria_leaves",
+    "natures_spirit:pink_wisteria_leaves",
+    "natures_spirit:white_wisteria_leaves",
+    "natures_spirit:purple_wisteria_leaves",
+    "natures_spirit:pink_sakura_leaves",
+    "natures_spirit:white_sakura_leaves"
   ]
 }

@@ -35,7 +35,7 @@ import static net.hibiscus.naturespirit.mixin.TrunkPlacerTypeMixin.callRegister;
 
 public class NatureSpirit implements ModInitializer {
 
-    public static final String MOD_ID = "hibiscus";
+    public static final String MOD_ID = "natures_spirit";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final TrunkPlacerType <WisteriaTrunkPlacer> WISTERIA_TRUNK_PLACER = callRegister("wisteria_trunk_placer", WisteriaTrunkPlacer.CODEC);
     public static final TrunkPlacerType <SakuraTrunkPlacer> SAKURA_TRUNK_PLACER = callRegister("sakura_trunk_placer", SakuraTrunkPlacer.CODEC);

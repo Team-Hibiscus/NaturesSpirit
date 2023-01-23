@@ -1,15 +1,15 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:potted_redwood_sapling",
-    "hibiscus:potted_white_wisteria_sapling",
-    "hibiscus:potted_pink_wisteria_sapling",
-    "hibiscus:potted_blue_wisteria_sapling",
-    "hibiscus:potted_purple_wisteria_sapling",
-    // "hibiscus:potted_white_sakura_sapling",
-    // "hibiscus:potted_pink_sakura_sapling",
+    "natures_spirit:potted_redwood_sapling",
+    "natures_spirit:potted_white_wisteria_sapling",
+    "natures_spirit:potted_pink_wisteria_sapling",
+    "natures_spirit:potted_blue_wisteria_sapling",
+    "natures_spirit:potted_purple_wisteria_sapling",
+    // "natures_spirit:potted_white_sakura_sapling",
+    // "natures_spirit:potted_pink_sakura_sapling",
 
-    "hibiscus:potted_hibiscus",
-    "hibiscus:potted_anemone"
+    "natures_spirit:potted_natures_spirit",
+    "natures_spirit:potted_anemone"
   ]
 }

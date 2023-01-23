@@ -81,7 +81,7 @@ public class HibiscusConfiguredFeatures {
                 new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
 
         register(context, REDWOOD_TREE_SPAWN, Feature.RANDOM_SELECTOR,
-                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_PLACED),
+                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_CHECKED),
                         0.5f)), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_CHECKED)));
 
         register(context, WISTERIA_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), UniformInt.of(4, 8), UniformInt.of(0, 4)));
@@ -94,7 +94,7 @@ public class HibiscusConfiguredFeatures {
                 ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL)))).build());
 
         register(context, LARGE_REDWOOD_TREE_SPAWN, Feature.RANDOM_SELECTOR,
-                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_PLACED),
+                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED),
                         0.5f)), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED)));
 
 
@@ -187,7 +187,7 @@ public class HibiscusConfiguredFeatures {
                 new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
                 new TwoLayersFeatureSize(0, 0, 0)).build());
         register(context, OAK_BUSH_SPAWN, Feature.RANDOM_SELECTOR,
-                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OAK_BUSH_PLACED), 0.5f)),
+                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OAK_BUSH_CHECKED), 0.5f)),
                         placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OAK_BUSH_CHECKED)));
 
         register(context, SPRUCE_BUSH, Feature.TREE,
@@ -199,7 +199,7 @@ public class HibiscusConfiguredFeatures {
 
         register(context, SPRUCE_BUSH_SPAWN, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(List.of(
-                        new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SPRUCE_BUSH_PLACED), 0.5f)),
+                        new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OAK_BUSH_CHECKED), 0.5f)),
                         placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SPRUCE_BUSH_CHECKED)));
 
         register(context, FLOWER_WISTERIA_FOREST, Feature.FLOWER, new RandomPatchConfiguration(

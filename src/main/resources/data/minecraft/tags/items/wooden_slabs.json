@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_slab",
-    "hibiscus:wisteria_slab",
-    "hibiscus:sakura_slab"
+    "natures_spirit:redwood_slab",
+    "natures_spirit:wisteria_slab",
+    "natures_spirit:sakura_slab"
   ]
 }

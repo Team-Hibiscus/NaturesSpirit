@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:lavender",
-    "hibiscus:carnation",
-    "hibiscus:gardenia"
+    "natures_spirit:lavender",
+    "natures_spirit:carnation",
+    "natures_spirit:gardenia"
   ]
 }

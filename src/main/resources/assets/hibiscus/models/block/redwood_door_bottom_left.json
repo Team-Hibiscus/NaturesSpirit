@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom_left",
-  "textures": {
-    "top": "hibiscus:block/redwood_door_top",
-    "bottom": "hibiscus:block/redwood_door_bottom"
-  }
-}

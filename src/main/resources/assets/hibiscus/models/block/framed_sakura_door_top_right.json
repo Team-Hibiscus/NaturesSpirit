@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right",
-  "textures": {
-    "top": "hibiscus:block/framed_sakura_door_top",
-    "bottom": "hibiscus:block/framed_sakura_door_bottom"
-  }
-}

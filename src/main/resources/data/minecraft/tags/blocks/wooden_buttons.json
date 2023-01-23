@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_button",
-    "hibiscus:wisteria_button",
-    "hibiscus:sakura_button"
+    "natures_spirit:redwood_button",
+    "natures_spirit:wisteria_button",
+    "natures_spirit:sakura_button"
   ]
 }

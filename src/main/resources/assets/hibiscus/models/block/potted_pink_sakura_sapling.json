@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/flower_pot_cross",
-  "textures": {
-    "plant": "hibiscus:block/pink_sakura_sapling"
-  }
-}

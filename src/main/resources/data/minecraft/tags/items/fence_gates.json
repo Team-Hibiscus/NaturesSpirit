@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "hibiscus:redwood_fence_gate",
-    "hibiscus:wisteria_fence_gate",
-    "hibiscus:sakura_fence_gate"
+    "natures_spirit:redwood_fence_gate",
+    "natures_spirit:wisteria_fence_gate",
+    "natures_spirit:sakura_fence_gate"
   ]
 }

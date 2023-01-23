@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/large_cross",
+  "textures": {
+    "cross": "natures_spirit:block/lavender_bottom"
+  }
+}

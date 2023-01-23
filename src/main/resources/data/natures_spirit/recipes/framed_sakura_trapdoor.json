@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sakura_trapdoor",
+  "pattern": [
+    "###",
+    "#a#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "natures_spirit:sakura_trapdoor"
+    },
+    "a": {
+      "item": "natures_spirit:sakura_planks"
+    }
+  },
+  "result": {
+    "item": "natures_spirit:framed_sakura_trapdoor",
+    "count": 8
+  }
+}
