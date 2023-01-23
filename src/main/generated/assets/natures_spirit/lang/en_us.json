@@ -1,0 +1,20 @@
+{
+  "block.natures_spirit.potted_redwood_sapling": "Potted Redwood Sapling",
+  "block.natures_spirit.redwood_button": "Redwood Button",
+  "block.natures_spirit.redwood_door": "Redwood Door",
+  "block.natures_spirit.redwood_fence": "Redwood Fence",
+  "block.natures_spirit.redwood_fence_gate": "Redwood Fence Gate",
+  "block.natures_spirit.redwood_leaves": "Redwood Leaves",
+  "block.natures_spirit.redwood_log": "Redwood Log",
+  "block.natures_spirit.redwood_planks": "Redwood Planks",
+  "block.natures_spirit.redwood_pressure_plate": "Redwood Pressure Plate",
+  "block.natures_spirit.redwood_sapling": "Redwood Sapling",
+  "block.natures_spirit.redwood_sign": "Redwood Sign",
+  "block.natures_spirit.redwood_slab": "Redwood Slab",
+  "block.natures_spirit.redwood_stairs": "Redwood Stairs",
+  "block.natures_spirit.redwood_trapdoor": "Redwood Trapdoor",
+  "block.natures_spirit.redwood_wood": "Redwood Wood",
+  "block.natures_spirit.stripped_redwood_log": "Stripped Redwood Log",
+  "block.natures_spirit.stripped_redwood_wood": "Stripped Redwood Wood",
+  "itemGroup.natures_spirit.nature_spirit": "Nature's Spirit Blocks & Items"
+}

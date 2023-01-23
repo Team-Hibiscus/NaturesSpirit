@@ -50,13 +50,13 @@ public class HibiscusBlocks {
 
     public static final Block[] REDWOOD = registerWoodBlocks("redwood", MaterialColor.COLOR_RED, MaterialColor.TERRACOTTA_BROWN);
     public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood_leaves", MaterialColor.COLOR_LIGHT_GREEN);
-    public static final Block REDWOOD_SAPLING = registerSapling("redwood", new RedwoodSaplingGenerator());
+    public static final Block[] REDWOOD_SAPLING = registerSapling("redwood", new RedwoodSaplingGenerator());
 
     public static final Block[] SAKURA = registerWoodBlocks("sakura", MaterialColor.DIRT, MaterialColor.DEEPSLATE);
     public static final Block PINK_SAKURA_LEAVES = registerLeafBlock("pink_sakura_leaves", MaterialColor.COLOR_PINK);
-    public static final Block PINK_SAKURA_SAPLING = registerSapling("pink_sakura", new PinkSakuraSaplingGenerator());
+    public static final Block[] PINK_SAKURA_SAPLING = registerSapling("pink_sakura", new PinkSakuraSaplingGenerator());
     public static final Block WHITE_SAKURA_LEAVES = registerLeafBlock("white_sakura_leaves", MaterialColor.TERRACOTTA_WHITE);
-    public static final Block WHITE_SAKURA_SAPLING = registerSapling("white_sakura", new WhiteSakuraSaplingGenerator());
+    public static final Block[] WHITE_SAKURA_SAPLING = registerSapling("white_sakura", new WhiteSakuraSaplingGenerator());
     public static final Block BLOOMING_SAKURA_DOOR = registerBlock("blooming_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block BLOOMING_SAKURA_TRAPDOOR = registerBlock("blooming_sakura_trapdoor", new TrapDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0f).sound(SoundType.WOOD).noOcclusion(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block FRAMED_SAKURA_DOOR = registerBlock("framed_sakura_door", new DoorBlock(FabricBlockSettings.copy(SAKURA[4]).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
@@ -68,22 +68,22 @@ public class HibiscusBlocks {
     public static final Block WHITE_WISTERIA_LEAVES = registerWisteriaLeafBlock("white_wisteria_leaves", MaterialColor.TERRACOTTA_WHITE);
     public static final Block WHITE_WISTERIA_VINES = registerBlock("white_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).ticksRandomly().noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block WHITE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("white_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(WHITE_WISTERIA_VINES), WHITE_WISTERIA_VINES));
-    public static final Block WHITE_WISTERIA_SAPLING = registerSapling("white_wisteria", new WhiteWisteriaSaplingGenerator());
+    public static final Block[] WHITE_WISTERIA_SAPLING = registerSapling("white_wisteria", new WhiteWisteriaSaplingGenerator());
 
     public static final Block BLUE_WISTERIA_LEAVES = registerWisteriaLeafBlock("blue_wisteria_leaves", MaterialColor.COLOR_CYAN);
     public static final Block BLUE_WISTERIA_VINES = registerBlock("blue_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_CYAN).ticksRandomly().noCollision().instabreak().noOcclusion().sound(SoundType.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block BLUE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("blue_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_CYAN).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(BLUE_WISTERIA_VINES), BLUE_WISTERIA_VINES));
-    public static final Block BLUE_WISTERIA_SAPLING = registerSapling("blue_wisteria", new BlueWisteriaSaplingGenerator());
+    public static final Block[] BLUE_WISTERIA_SAPLING = registerSapling("blue_wisteria", new BlueWisteriaSaplingGenerator());
 
     public static final Block PINK_WISTERIA_LEAVES = registerWisteriaLeafBlock("pink_wisteria_leaves", MaterialColor.COLOR_PINK);
     public static final Block PINK_WISTERIA_VINES = registerBlock("pink_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PINK).ticksRandomly().noCollision().instabreak().noOcclusion().sound(SoundType.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block PINK_WISTERIA_VINES_PLANT = registerBlockWithoutItem("pink_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PINK).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PINK_WISTERIA_VINES), PINK_WISTERIA_VINES));
-    public static final Block PINK_WISTERIA_SAPLING = registerSapling("pink_wisteria", new PinkWisteriaSaplingGenerator());
+    public static final Block[] PINK_WISTERIA_SAPLING = registerSapling("pink_wisteria", new PinkWisteriaSaplingGenerator());
 
     public static final Block PURPLE_WISTERIA_LEAVES = registerWisteriaLeafBlock("purple_wisteria_leaves", MaterialColor.COLOR_PURPLE);
     public static final Block PURPLE_WISTERIA_VINES = registerBlock("purple_wisteria_vines", new WisteriaVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PURPLE).ticksRandomly().noCollision().instabreak().noOcclusion().sound(SoundType.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block PURPLE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("purple_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PURPLE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PURPLE_WISTERIA_VINES), PURPLE_WISTERIA_VINES));
-    public static final Block PURPLE_WISTERIA_SAPLING = registerSapling("purple_wisteria", new PurpleWisteriaSaplingGenerator());
+    public static final Block[] PURPLE_WISTERIA_SAPLING = registerSapling("purple_wisteria", new PurpleWisteriaSaplingGenerator());
 
     public static Block[] registerWoodBlocks(String name, MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
         WoodType woodType = WoodTypeAccessor.registerNew(WoodTypeAccessor.newWoodType(name));
@@ -150,13 +150,14 @@ public class HibiscusBlocks {
         return LEAVES;
     }
 
-    public static Block registerSapling(String name, AbstractTreeGrower sapling_generator) {
-        Block SAPLING = registerBlock(name + "_sapling", new SaplingBlock(sapling_generator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
-        BlockRenderLayerMap.INSTANCE.putBlock(SAPLING, RenderType.cutout());
-        Block POTTED_SAPLING = registerBlockWithoutItem("potted_" + name + "_sapling", new FlowerPotBlock(SAPLING, FabricBlockSettings.of(Material.DECORATION).instabreak().noOcclusion()));
-        BlockRenderLayerMap.INSTANCE.putBlock(POTTED_SAPLING, RenderType.cutout());
-        CompostingChanceRegistry.INSTANCE.add(SAPLING, 0.3F);
-        return SAPLING;
+    public static Block[] registerSapling(String name, AbstractTreeGrower sapling_generator) {
+        Block[] Plant = new Block[2];
+        Plant[0] = registerBlock(name + "_sapling", new SaplingBlock(sapling_generator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
+        BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderType.cutout());
+        Plant[1] = registerBlockWithoutItem("potted_" + name + "_sapling", new FlowerPotBlock(Plant[0], FabricBlockSettings.of(Material.DECORATION).instabreak().noOcclusion()));
+        BlockRenderLayerMap.INSTANCE.putBlock(Plant[1], RenderType.cutout());
+        CompostingChanceRegistry.INSTANCE.add(Plant[0], 0.3F);
+        return Plant;
     }
 
     public static Block registerBlock(String name, Block block, ResourceLocation tab) {

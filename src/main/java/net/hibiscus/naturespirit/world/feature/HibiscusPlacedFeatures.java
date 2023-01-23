@@ -50,21 +50,21 @@ public class HibiscusPlacedFeatures {
 
 
         registerKey(context, LARGE_REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE),
-                List.of(PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.REDWOOD_SAPLING)));
+                List.of(PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.REDWOOD_SAPLING[0])));
         registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.REDWOOD_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.REDWOOD_SAPLING[0]));
         registerKey(context, WHITE_WISTERIA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_WISTERIA_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_WISTERIA_SAPLING[0]));
         registerKey(context, BLUE_WISTERIA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.BLUE_WISTERIA_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.BLUE_WISTERIA_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.BLUE_WISTERIA_SAPLING[0]));
         registerKey(context, PINK_WISTERIA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PINK_WISTERIA_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PINK_WISTERIA_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PINK_WISTERIA_SAPLING[0]));
         registerKey(context, PURPLE_WISTERIA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PURPLE_WISTERIA_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PURPLE_WISTERIA_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PURPLE_WISTERIA_SAPLING[0]));
         registerKey(context, PINK_SAKURA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PINK_SAKURA_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PINK_SAKURA_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.PINK_SAKURA_SAPLING[0]));
         registerKey(context, WHITE_SAKURA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_SAKURA_TREE),
-                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_SAKURA_SAPLING));
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_SAKURA_SAPLING[0]));
         registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH),
                 PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
         registerKey(context, SPRUCE_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH),
