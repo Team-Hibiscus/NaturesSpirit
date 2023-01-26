@@ -33,6 +33,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
@@ -49,6 +50,8 @@ public class HibiscusConfiguredFeatures {
     public static final ResourceKey <ConfiguredFeature <?, ?>> REDWOOD_TREE = registerKey("redwood_tree");
     public static final ResourceKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE_SPAWN = registerKey("large_redwood_tree_spawn");
     public static final ResourceKey <ConfiguredFeature <?, ?>> REDWOOD_TREE_SPAWN = registerKey("redwood_tree_spawn");
+    public static final ResourceKey <ConfiguredFeature <?, ?>> WILLOW_TREE = registerKey("willow_tree");
+    public static final ResourceKey <ConfiguredFeature <?, ?>> WILLOW_TREE_SPAWN = registerKey("willow_tree_spawn");
     public static final ResourceKey <ConfiguredFeature <?, ?>> WHITE_WISTERIA_TREE = registerKey("white_wisteria_tree");
     public static final ResourceKey <ConfiguredFeature <?, ?>> BLUE_WISTERIA_TREE = registerKey("blue_wisteria_tree");
     public static final ResourceKey <ConfiguredFeature <?, ?>> PURPLE_WISTERIA_TREE = registerKey("purple_wisteria_tree");
@@ -98,6 +101,22 @@ public class HibiscusConfiguredFeatures {
                         0.5f)), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED)));
 
 
+        register(context, WILLOW_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(HibiscusBlocks.WILLOW[2]),
+                new FancyTrunkPlacer(10, 3, 5),
+                BlockStateProvider.simple(HibiscusBlocks.WILLOW_LEAVES),
+                new WisteriaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(3, 0, 2, OptionalInt.of(5))).decorators(List.of(
+                new WisteriaVinesTreeDecorator(0.65F,
+                        new HibiscusSimpleBlockStateProvider(HibiscusBlocks.WILLOW_VINES_PLANT.defaultBlockState()),
+                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.WILLOW_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(23, 25)),
+                        5
+                ))).ignoreVines().build());
+        register(context, WILLOW_TREE_SPAWN, Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.WILLOW_CHECKED),
+                        0.5f)), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.WILLOW_CHECKED)));
+
+
         register(context, WHITE_WISTERIA_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(HibiscusBlocks.WISTERIA[2]),
                 new WisteriaTrunkPlacer(7, 3, 4, UniformInt.of(1, 6), 0.80F, UniformInt.of(7, 10), holderGetter.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
@@ -106,7 +125,8 @@ public class HibiscusConfiguredFeatures {
                 new TwoLayersFeatureSize(2, 0, 2)).decorators(List.of(
                 new WisteriaVinesTreeDecorator(0.45F,
                         new HibiscusSimpleBlockStateProvider(HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT.defaultBlockState()),
-                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.WHITE_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25))
+                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.WHITE_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25)),
+                        2
                 ))).ignoreVines().build());
 
         register(context, PINK_WISTERIA_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -117,7 +137,8 @@ public class HibiscusConfiguredFeatures {
                 new TwoLayersFeatureSize(2, 0, 2)).decorators(List.of(
                 new WisteriaVinesTreeDecorator(0.45F,
                         new HibiscusSimpleBlockStateProvider(HibiscusBlocks.PINK_WISTERIA_VINES_PLANT.defaultBlockState()),
-                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.PINK_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25))
+                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.PINK_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25)),
+                        2
                 ))).ignoreVines().build());
 
         register(context, BLUE_WISTERIA_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -128,7 +149,8 @@ public class HibiscusConfiguredFeatures {
                 new TwoLayersFeatureSize(2, 0, 2)).decorators(List.of(
                 new WisteriaVinesTreeDecorator(0.45F,
                         new HibiscusSimpleBlockStateProvider(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT.defaultBlockState()),
-                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.BLUE_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25))
+                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.BLUE_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25)),
+                        2
                 ))).ignoreVines().build());
 
         register(context, PURPLE_WISTERIA_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -139,7 +161,8 @@ public class HibiscusConfiguredFeatures {
                 new TwoLayersFeatureSize(2, 0, 2)).decorators(List.of(
                 new WisteriaVinesTreeDecorator(0.45F,
                         new HibiscusSimpleBlockStateProvider(HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT.defaultBlockState()),
-                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.PURPLE_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25))
+                        new RandomizedIntStateProvider(BlockStateProvider.simple(HibiscusBlocks.PURPLE_WISTERIA_VINES.defaultBlockState()), WisteriaVine.AGE, UniformInt.of(22, 25)),
+                        2
                 ))).ignoreVines().build());
 
         register(context, WISTERIA_SPAWN, Feature.RANDOM_SELECTOR,

@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:redwood_slab"
+    "natures_spirit:redwood_slab",
+    "natures_spirit:wisteria_slab",
+    "natures_spirit:sakura_slab",
+    "natures_spirit:fir_slab",
+    "natures_spirit:willow_slab"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/flower_pot_tall_cross",
+  "textures": {
+    "plant": "natures_spirit:block/anemone"
+  }
+}

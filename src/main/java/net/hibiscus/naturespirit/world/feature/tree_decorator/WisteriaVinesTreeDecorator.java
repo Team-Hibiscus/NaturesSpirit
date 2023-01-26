@@ -17,26 +17,28 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
             return treeDecorator.blockProvider;
         }), BlockStateProvider.CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> {
             return treeDecorator.blockProvider2;
+        }), Codec.intRange(0, 10).fieldOf("number").forGetter((treeDecorator) -> {
+            return treeDecorator.number;
         })).apply(instance, WisteriaVinesTreeDecorator::new);
     });
     protected final BlockStateProvider blockProvider;
     protected final BlockStateProvider blockProvider2;
     private final float probability;
+    protected int number;
 
-    public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2) {
+    public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2, int number) {
         this.probability = probability;
         this.blockProvider = blockProvider;
         this.blockProvider2 = blockProvider2;
+        this.number = number;
     }
 
-    private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, Context generator) {
+    private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, Context generator, int number) {
         RandomSource random = generator.random();
         generator.setBlock(pos, block.getState(random, pos));
-        int i = 2;
-
-        for (pos = pos.below(); i > 0; --i) {
+        for (pos = pos.below(); number > 0; --number) {
             if (generator.isAir(pos)) {
-                if (i == 1 || !generator.isAir(pos.below()) || random.nextBoolean()) {
+                if (number == 1 || !generator.isAir(pos.below()) || random.nextBoolean()) {
                     generator.setBlock(pos, block2.getState(random, pos));
                     break;
                 }
@@ -59,7 +61,7 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
             if (randomSource.nextFloat() < this.probability) {
                 blockPos2 = blockPos.below();
                 if (context.isAir(blockPos2)) {
-                    placeVines(blockPos2, blockProvider, blockProvider2, context);
+                    placeVines(blockPos2, blockProvider, blockProvider2, context, this.number);
                 }
             }
 

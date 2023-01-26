@@ -32,7 +32,7 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
         BlockPos blockPos = treeNode.pos().above(offset);
         BlockPos.MutableBlockPos mutable = blockPos.mutable();
         this.placeLeavesRow(world, replacer, random, config, blockPos, radius, -1, true);
-        this.placeLeavesRow(world, replacer, random, config, blockPos, radius + 1, 0, true);
+        this.placeLeavesRow(world, replacer, random, config, blockPos, radius + 1 , 0, true);
         this.placeLeavesRow(world, replacer, random, config, blockPos, radius, 1, true);
         for (int i = 0; i < 60; ++i) {
             mutable.setWithOffset(blockPos, random.nextInt(radius) - random.nextInt(radius), -2, random.nextInt(radius) - random.nextInt(radius));
@@ -51,7 +51,7 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
             tryPlaceLeaf(world, replacer, random, config, mutable);
             tryPlaceLeaf(world, replacer, random, config, mutable.relative(Direction.DOWN, 1));
         }
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 80; ++i) {
             mutable.setWithOffset(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
             tryPlaceLeaf(world, replacer, random, config, mutable);
         }

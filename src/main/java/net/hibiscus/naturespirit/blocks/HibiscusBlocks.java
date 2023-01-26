@@ -39,10 +39,12 @@ public class HibiscusBlocks {
     public static final Block LAVENDER = registerBlock("lavender", new LargeTallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block CARNATION = registerBlock("carnation", new TallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block GARDENIA = registerBlock("gardenia", new TallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
+    public static final Block SNAPDRAGON = registerBlock("snapdragon", new TallFlowerBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block BLUEBELL = registerBlock("bluebell", new LargeFlowerBlock(MobEffects.DIG_SPEED, 7, FabricBlockSettings.of(Material.PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block TIGER_LILY = registerBlock("tiger_lily", new LargeFlowerBlock(MobEffects.DIG_SPEED, 7, FabricBlockSettings.of(Material.PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block ANEMONE = registerBlock("anemone", new MidFlowerBlock(MobEffects.DAMAGE_RESISTANCE, 4, FabricBlockSettings.of(Material.PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
     public static final Block HIBISCUS = registerBlock("hibiscus", new FlowerBlock(MobEffects.LUCK, 7, FabricBlockSettings.of(Material.PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
+    public static final Block CATTAIL = registerBlock("cattail", new Cattails(FabricBlockSettings.of(Material.PLANT).noCollision().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
 
     public static final Block POTTED_ANEMONE = registerBlockWithoutItem("potted_anemone", new FlowerPotBlock(ANEMONE, FabricBlockSettings.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final Block POTTED_HIBISCUS = registerBlockWithoutItem("potted_hibiscus", new FlowerPotBlock(HIBISCUS, FabricBlockSettings.of(Material.DECORATION).instabreak().noOcclusion()));
@@ -85,6 +87,18 @@ public class HibiscusBlocks {
     public static final Block PURPLE_WISTERIA_VINES_PLANT = registerBlockWithoutItem("purple_wisteria_vines_plant", new WisteriaVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.COLOR_PURPLE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(PURPLE_WISTERIA_VINES), PURPLE_WISTERIA_VINES));
     public static final Block[] PURPLE_WISTERIA_SAPLING = registerSapling("purple_wisteria", new PurpleWisteriaSaplingGenerator());
 
+
+    public static final Block[] FIR = registerWoodBlocks("fir", MaterialColor.DIRT, MaterialColor.COLOR_GRAY);
+    public static final Block FIR_LEAVES = registerLeafBlock("fir_leaves", MaterialColor.COLOR_LIGHT_GREEN);
+    public static final Block[] FIR_SAPLING = registerSapling("fir", new RedwoodSaplingGenerator());
+
+    public static final Block[] WILLOW = registerWoodBlocks("willow", MaterialColor.TERRACOTTA_BROWN, MaterialColor.TERRACOTTA_BLACK);
+    public static final Block WILLOW_LEAVES = registerWillowLeafBlock("willow_leaves", MaterialColor.COLOR_GREEN);
+    public static final Block WILLOW_VINES = registerBlock("willow_vines", new WillowVine(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).ticksRandomly().noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
+    public static final Block WILLOW_VINES_PLANT = registerBlockWithoutItem("willow_vines_plant", new WillowVinePlant(FabricBlockSettings.of(Material.PLANT, MaterialColor.TERRACOTTA_WHITE).noCollision().noOcclusion().instabreak().sound(SoundType.WEEPING_VINES).dropsLike(WILLOW_VINES)));
+    public static final Block[] WILLOW_SAPLING = registerSapling("willow", new WillowSaplingGenerator());
+
+
     public static Block[] registerWoodBlocks(String name, MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
         WoodType woodType = WoodTypeAccessor.registerNew(WoodTypeAccessor.newWoodType(name));
         Block[] ARRAY = new Block[15];
@@ -106,7 +120,6 @@ public class HibiscusBlocks {
        registerItemWithoutBlock(name + "_sign",
                 new SignItem(new FabricItemSettings().maxCount(16),
                         ARRAY[13], ARRAY[14]), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
-
         BlockRenderLayerMap.INSTANCE.putBlock(ARRAY[7], RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ARRAY[8], RenderType.cutout());
         StrippableBlockRegistry.register(ARRAY[0], ARRAY[1]);
@@ -136,6 +149,14 @@ public class HibiscusBlocks {
 
     public static Block registerLeafBlock(String name, MaterialColor color) {
         Block LEAVES = registerBlock(name, new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().noOcclusion().sound(SoundType.AZALEA_LEAVES).color(color).isValidSpawn(HibiscusBlocks::canSpawnUponLeaves).isSuffocating(HibiscusBlocks::never).isViewBlocking(HibiscusBlocks::never)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
+        BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderType.cutout());
+        FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
+        CompostingChanceRegistry.INSTANCE.add(LEAVES, 0.3F);
+        return LEAVES;
+    }
+
+    public static Block registerWillowLeafBlock(String name, MaterialColor color) {
+        Block LEAVES = registerBlock(name, new WillowLeaves(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().noOcclusion().sound(SoundType.AZALEA_LEAVES).color(color).isValidSpawn(HibiscusBlocks::canSpawnUponLeaves).isSuffocating(HibiscusBlocks::never).isViewBlocking(HibiscusBlocks::never)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
         BlockRenderLayerMap.INSTANCE.putBlock(LEAVES, RenderType.cutout());
         FlammableBlockRegistry.getDefaultInstance().add(LEAVES, 5, 20);
         CompostingChanceRegistry.INSTANCE.add(LEAVES, 0.3F);

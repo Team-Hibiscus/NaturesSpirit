@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "red_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:snapdragon"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:pink_dye"
+  }
+}

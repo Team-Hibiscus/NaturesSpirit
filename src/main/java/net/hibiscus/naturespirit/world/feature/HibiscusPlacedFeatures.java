@@ -23,6 +23,8 @@ public class HibiscusPlacedFeatures {
 
     public static final ResourceKey <PlacedFeature> LARGE_REDWOOD_CHECKED = registerKey("large_redwood_checked");
     public static final ResourceKey <PlacedFeature> REDWOOD_CHECKED = registerKey("redwood_checked");
+    public static final ResourceKey <PlacedFeature> WILLOW_CHECKED = registerKey("willow_checked");
+    public static final ResourceKey <PlacedFeature> WILLOW_PLACED = registerKey("willow_placed");
     public static final ResourceKey <PlacedFeature> WHITE_WISTERIA_CHECKED = registerKey("white_wisteria_checked");
     public static final ResourceKey <PlacedFeature> BLUE_WISTERIA_CHECKED = registerKey("blue_wisteria_checked");
     public static final ResourceKey <PlacedFeature> PINK_WISTERIA_CHECKED = registerKey("pink_wisteria_checked");
@@ -53,6 +55,8 @@ public class HibiscusPlacedFeatures {
                 List.of(PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.REDWOOD_SAPLING[0])));
         registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE),
                 PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.REDWOOD_SAPLING[0]));
+        registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE),
+                PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WILLOW_SAPLING[0]));
         registerKey(context, WHITE_WISTERIA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE),
                 PlacementUtils.filteredByBlockSurvival(HibiscusBlocks.WHITE_WISTERIA_SAPLING[0]));
         registerKey(context, BLUE_WISTERIA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.BLUE_WISTERIA_TREE),
@@ -77,6 +81,8 @@ public class HibiscusPlacedFeatures {
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE_SPAWN), CountPlacement.of(3), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, REDWOOD_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE_SPAWN), CountPlacement.of(7), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+        registerKey(context, WILLOW_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE_SPAWN), CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, SPRUCE_BUSH_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH_SPAWN), CountPlacement.of(4), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, REDWOOD_ROCK_PLACED,

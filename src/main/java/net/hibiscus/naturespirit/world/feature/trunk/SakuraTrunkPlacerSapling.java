@@ -56,7 +56,7 @@ public class SakuraTrunkPlacerSapling extends TrunkPlacer {
         int l = Mth.floor((double) k * 0.618D);
         setDirtAt(levelSimulatedReader, biConsumer, randomSource, blockPos.below(), treeConfiguration);
         double d = 1.0D;
-        int m = Math.min(2, Mth.floor(1.582D + Math.pow(1.2D * (double) k / 11.0D, 2.0D)));
+        int m = Math.min(2, Mth.floor(1.482D + Math.pow(1.0D * (double) k / 11.0D, 2.0D)));
         int n = blockPos.getY() + l;
         int o = k - 6;
         List <SakuraTrunkPlacerSapling.FoliageCoords> list = Lists.newArrayList();
