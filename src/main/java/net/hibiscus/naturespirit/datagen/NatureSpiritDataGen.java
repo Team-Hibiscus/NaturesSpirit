@@ -262,6 +262,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             blockStateModelGenerator.createDoublePlant(HibiscusBlocks.CARNATION, BlockModelGenerators.TintState.NOT_TINTED);
             blockStateModelGenerator.createDoublePlant(HibiscusBlocks.GARDENIA, BlockModelGenerators.TintState.NOT_TINTED);
             blockStateModelGenerator.createDoublePlant(HibiscusBlocks.SNAPDRAGON, BlockModelGenerators.TintState.NOT_TINTED);
+            blockStateModelGenerator.createDoublePlant(HibiscusBlocks.MARIGOLD, BlockModelGenerators.TintState.NOT_TINTED);
         }
 
         @Override
@@ -359,6 +360,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateBlockTranslations(HibiscusBlocks.PURPLE_WISTERIA_VINES, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.WILLOW_VINES, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.CATTAIL, translationBuilder);
+            generateBlockTranslations(HibiscusBlocks.MARIGOLD, translationBuilder);
         }
     }
 
@@ -384,11 +386,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             @Override
             public void buildRecipes(Consumer <FinishedRecipe> exporter) {
                 generateWoodRecipes(woodArrays, itemLogTags ,exporter);
-                generateFlowerRecipes(HibiscusBlocks.ANEMONE, Items.PINK_DYE, "pink_dye",1, exporter);
+                generateFlowerRecipes(HibiscusBlocks.ANEMONE, Items.MAGENTA_DYE, "magenta_dye",1, exporter);
                 generateFlowerRecipes(HibiscusBlocks.LAVENDER, Items.PURPLE_DYE, "purple_dye",4, exporter);
                 generateFlowerRecipes(HibiscusBlocks.BLUEBELL, Items.BLUE_DYE, "blue_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.CARNATION, Items.RED_DYE, "red_dye",2, exporter);
-                generateFlowerRecipes(HibiscusBlocks.SNAPDRAGON, Items.PINK_DYE, "red_dye",2, exporter);
+                generateFlowerRecipes(HibiscusBlocks.SNAPDRAGON, Items.PINK_DYE, "pink_dye",2, exporter);
+                generateFlowerRecipes(HibiscusBlocks.CATTAIL, Items.BROWN_DYE, "brown_dye",2, exporter);
+                generateFlowerRecipes(HibiscusBlocks.MARIGOLD, Items.ORANGE_DYE, "orange_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.HIBISCUS, Items.RED_DYE, "red_dye",1, exporter);
                 generateFlowerRecipes(HibiscusBlocks.GARDENIA, Items.WHITE_DYE, "white_dye",2, exporter);
             }
@@ -491,6 +495,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             addFlowerTags(HibiscusBlocks.GARDENIA, true, arg);
             addFlowerTags(HibiscusBlocks.CATTAIL, true, arg);
             addFlowerTags(HibiscusBlocks.SNAPDRAGON, true, arg);
+            addFlowerTags(HibiscusBlocks.MARIGOLD, true, arg);
             getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusBlocks.FRAMED_SAKURA_DOOR});
             getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusBlocks.BLOOMING_SAKURA_DOOR});
             getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusBlocks.BLOOMING_SAKURA_TRAPDOOR});

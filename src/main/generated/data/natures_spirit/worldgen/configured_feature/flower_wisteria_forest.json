@@ -32,6 +32,12 @@
                 "Name": "minecraft:pink_tulip"
               },
               {
+                "Name": "natures_spirit:snapdragon",
+                "Properties": {
+                  "half": "lower"
+                }
+              },
+              {
                 "Name": "natures_spirit:gardenia",
                 "Properties": {
                   "half": "lower"

@@ -6,11 +6,9 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.9,
+  "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": 6975545,
-    "grass_color_modifier": "swamp",
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -21,11 +19,11 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.swamp"
+      "sound": "minecraft:music.overworld.jungle_and_forest"
     },
-    "sky_color": 7907327,
-    "water_color": 6388580,
-    "water_fog_color": 2302743
+    "sky_color": 7842047,
+    "water_color": 4159204,
+    "water_fog_color": 329011
   },
   "features": [
     [],
@@ -37,8 +35,6 @@
       "minecraft:amethyst_geode"
     ],
     [
-      "minecraft:fossil_upper",
-      "minecraft:fossil_lower",
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
@@ -70,29 +66,30 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "minecraft:disk_clay"
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [],
     [
+      "natures_spirit:lavender_water_placed",
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
+      "minecraft:forest_rock",
       "minecraft:patch_tall_grass_2",
-      "natures_spirit:willow_placed",
-      "minecraft:flower_swamp",
-      "minecraft:patch_grass_normal",
-      "minecraft:patch_dead_bush",
+      "natures_spirit:custom_fancy_oak_tree2_placed",
+      "natures_spirit:oak_bush_placed",
+      "minecraft:patch_grass_plain",
+      "natures_spirit:flower_lavender_placed",
+      "minecraft:forest_flowers",
       "minecraft:patch_waterlily",
-      "minecraft:brown_mushroom_swamp",
-      "minecraft:red_mushroom_swamp",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_swamp",
-      "natures_spirit:cattails_placed",
+      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:seagrass_swamp"
+      "minecraft:seagrass_warm"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -134,12 +131,6 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 8
-      },
-      {
-        "type": "minecraft:frog",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 10
       }
     ],
     "misc": [],
@@ -191,12 +182,6 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
-      },
-      {
-        "type": "minecraft:slime",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 1
       }
     ],
     "underground_water_creature": [
@@ -210,5 +195,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.95
 }

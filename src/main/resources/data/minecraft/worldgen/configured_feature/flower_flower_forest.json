@@ -13,50 +13,41 @@
               ],
               "firstOctave": 0
             },
-            "scale": 0.030833334,
-            "seed": 2445,
+            "scale": 0.020833334,
+            "seed": 2345,
             "states": [
+              {
+                "Name": "minecraft:dandelion"
+              },
+              {
+                "Name": "minecraft:poppy"
+              },
               {
                 "Name": "minecraft:allium"
               },
               {
-                "Name": "minecraft:lilac",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "minecraft:azure_bluet"
               },
               {
-                "Name": "natures_spirit:anemone"
+                "Name": "minecraft:red_tulip"
               },
               {
-                "Name": "minecraft:lily_of_the_valley"
+                "Name": "minecraft:orange_tulip"
+              },
+              {
+                "Name": "minecraft:white_tulip"
               },
               {
                 "Name": "minecraft:pink_tulip"
               },
               {
-                "Name": "natures_spirit:gardenia",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "minecraft:oxeye_daisy"
               },
               {
-                "Name": "natures_spirit:snapdragon",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "minecraft:cornflower"
               },
               {
-                "Name": "natures_spirit:lavender",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
-                "Name": "minecraft:peony",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "minecraft:lily_of_the_valley"
               }
             ]
           }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_anemone": {
+    "has_marigold": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:anemone"
+              "natures_spirit:marigold"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye_from_anemone"
+        "recipe": "minecraft:orange_dye_from_marigold"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_anemone",
+      "has_marigold",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye_from_anemone"
+      "minecraft:orange_dye_from_marigold"
     ]
   }
 }

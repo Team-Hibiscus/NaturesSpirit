@@ -18,6 +18,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import javax.annotation.Nullable;
 
+import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.LAVENDER_WATER;
 import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.WISTERIA_WATER;
 
 public class NatureSpiritOverworldBiomes {
@@ -86,6 +87,25 @@ public class NatureSpiritOverworldBiomes {
         HibiscusTreeGeneration.addOakTrees(biomeBuilder);
         HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST));
+    }
+
+    public static Biome lavenderFields(HolderGetter <PlacedFeature> holderGetter, HolderGetter <ConfiguredWorldCarver <?>> holderGetter2) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(holderGetter, holderGetter2).addFeature(GenerationStep.Decoration.FLUID_SPRINGS, LAVENDER_WATER);
+        globalOverworldGeneration(biomeBuilder);
+        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
+        HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
+        HibiscusTreeGeneration.addLavenderFlowers(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_WATERLILY);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST));
     }
 

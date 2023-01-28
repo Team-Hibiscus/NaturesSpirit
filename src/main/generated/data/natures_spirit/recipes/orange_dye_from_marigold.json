@@ -1,13 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "pink_dye",
+  "group": "orange_dye",
   "ingredients": [
     {
-      "item": "natures_spirit:anemone"
+      "item": "natures_spirit:marigold"
     }
   ],
   "result": {
-    "item": "minecraft:pink_dye"
+    "count": 2,
+    "item": "minecraft:orange_dye"
   }
 }

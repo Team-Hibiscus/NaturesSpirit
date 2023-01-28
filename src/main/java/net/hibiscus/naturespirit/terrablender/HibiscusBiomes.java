@@ -18,6 +18,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public class HibiscusBiomes {
 
     public static final ResourceKey <Biome> SAKURA_GROVE = register("sakura_grove");
+    public static final ResourceKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
     public static final ResourceKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
     public static final ResourceKey <Biome> BAMBOO_SAKURA = register("bamboo_sakura");
     public static final ResourceKey <Biome> REDWOOD_FOREST = register("redwood_forest");
@@ -36,6 +37,7 @@ public class HibiscusBiomes {
         register(bootstapContext, SAKURA_GROVE, NatureSpiritOverworldBiomes.sakuraGrove(holderGetter, holderGetter2));
         register(bootstapContext, BAMBOO_SAKURA, NatureSpiritOverworldBiomes.bambooSakura(holderGetter, holderGetter2));
         register(bootstapContext, WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest(holderGetter, holderGetter2));
+        register(bootstapContext, LAVENDER_FIELDS, NatureSpiritOverworldBiomes.lavenderFields(holderGetter, holderGetter2));
         register(bootstapContext, REDWOOD_FOREST, NatureSpiritOverworldBiomes.redwoodForest(holderGetter, holderGetter2));
     }
 

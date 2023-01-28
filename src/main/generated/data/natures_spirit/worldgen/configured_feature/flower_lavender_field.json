@@ -17,9 +17,6 @@
             "seed": 2445,
             "states": [
               {
-                "Name": "minecraft:allium"
-              },
-              {
                 "Name": "minecraft:lilac",
                 "Properties": {
                   "half": "lower"
@@ -29,19 +26,7 @@
                 "Name": "natures_spirit:anemone"
               },
               {
-                "Name": "minecraft:lily_of_the_valley"
-              },
-              {
-                "Name": "minecraft:pink_tulip"
-              },
-              {
                 "Name": "natures_spirit:gardenia",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
-                "Name": "natures_spirit:snapdragon",
                 "Properties": {
                   "half": "lower"
                 }
@@ -72,7 +57,7 @@
         }
       ]
     },
-    "tries": 96,
+    "tries": 120,
     "xz_spread": 6,
     "y_spread": 2
   }

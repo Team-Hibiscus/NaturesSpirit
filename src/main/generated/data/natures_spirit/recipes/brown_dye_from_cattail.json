@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "pink_dye",
+  "group": "brown_dye",
   "ingredients": [
     {
-      "item": "natures_spirit:snapdragon"
+      "item": "natures_spirit:cattail"
     }
   ],
   "result": {
     "count": 2,
-    "item": "minecraft:pink_dye"
+    "item": "minecraft:brown_dye"
   }
 }

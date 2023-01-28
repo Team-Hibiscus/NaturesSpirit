@@ -9,20 +9,24 @@ import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeD
 import net.hibiscus.naturespirit.world.feature.trunk.SakuraTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.SakuraTrunkPlacerSapling;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -36,7 +40,11 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDeco
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -70,6 +78,8 @@ public class HibiscusConfiguredFeatures {
     public static final ResourceKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
     public static final ResourceKey <ConfiguredFeature <?, ?>> FLOWER_SAKURA_GROVE = registerKey("flower_sakura_grove");
     public static final ResourceKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey("flower_redwood_forest");
+    public static final ResourceKey <ConfiguredFeature <?, ?>> FLOWER_LAVENDER_FIELD = registerKey("flower_lavender_field");
+    public static final ResourceKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
 
 
     public static void bootstrap(BootstapContext <ConfiguredFeature <?, ?>> context) {
@@ -233,6 +243,7 @@ public class HibiscusConfiguredFeatures {
                         HibiscusBlocks.ANEMONE.defaultBlockState(),
                         Blocks.OXEYE_DAISY.defaultBlockState(),
                         Blocks.PINK_TULIP.defaultBlockState(),
+                        HibiscusBlocks.SNAPDRAGON.defaultBlockState(),
                         HibiscusBlocks.GARDENIA.defaultBlockState(),
                         HibiscusBlocks.LAVENDER.defaultBlockState(),
                         HibiscusBlocks.HIBISCUS.defaultBlockState(),
@@ -247,8 +258,19 @@ public class HibiscusConfiguredFeatures {
                         Blocks.LILY_OF_THE_VALLEY.defaultBlockState(),
                         Blocks.PINK_TULIP.defaultBlockState(),
                         HibiscusBlocks.GARDENIA.defaultBlockState(),
+                        HibiscusBlocks.SNAPDRAGON.defaultBlockState(),
                         HibiscusBlocks.LAVENDER.defaultBlockState(),
                         Blocks.PEONY.defaultBlockState()))))));
+
+        register(context, FLOWER_LAVENDER_FIELD, Feature.FLOWER, new RandomPatchConfiguration(
+                120, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                new NoiseProvider(2445L, new NormalNoise.NoiseParameters(0, 1.0D), 0.030833334F, List.of(
+                        Blocks.LILAC.defaultBlockState(),
+                        HibiscusBlocks.ANEMONE.defaultBlockState(),
+                        HibiscusBlocks.GARDENIA.defaultBlockState(),
+                        HibiscusBlocks.LAVENDER.defaultBlockState(),
+                        Blocks.PEONY.defaultBlockState()
+                ))))));
 
         register(context, FLOWER_REDWOOD_FOREST, Feature.FLOWER, new RandomPatchConfiguration(
                 36, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -258,6 +280,25 @@ public class HibiscusConfiguredFeatures {
                         Blocks.GRASS.defaultBlockState(),
                         HibiscusBlocks.CARNATION.defaultBlockState(),
                         HibiscusBlocks.GARDENIA.defaultBlockState()))))));
+
+        register(context, CATTAILS, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+                50, 6, 2, PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(BlockStateProvider.simple(HibiscusBlocks.CATTAIL)),
+                BlockPredicate.allOf(
+                        BlockPredicate.wouldSurvive(HibiscusBlocks.CATTAIL.defaultBlockState(), BlockPos.ZERO),
+                        BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE,
+                        BlockPredicate.anyOf(
+                                BlockPredicate.matchesFluids(new BlockPos(1, -1, 0),
+                                        Fluids.WATER, Fluids.FLOWING_WATER),
+                                BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0),
+                                        Fluids.WATER, Fluids.FLOWING_WATER),
+                                BlockPredicate.matchesFluids(new BlockPos(0, -1, 1),
+                                        Fluids.WATER, Fluids.FLOWING_WATER),
+                                BlockPredicate.matchesFluids(new BlockPos(0, -1, -1),
+                                        Fluids.WATER, Fluids.FLOWING_WATER),
+                                BlockPredicate.matchesFluids(new BlockPos(0, 0, 0),
+                                        Fluids.WATER, Fluids.FLOWING_WATER)
+                        )))));
 
     }
 

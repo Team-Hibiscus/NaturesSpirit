@@ -36,7 +36,9 @@ public class HibiscusPlacedFeatures {
     public static final ResourceKey <PlacedFeature> FLOWER_WISTERIA_PLACED = registerKey("flower_wisteria_placed");
     public static final ResourceKey <PlacedFeature> FLOWER_SAKURA_PLACED = registerKey("flower_sakura_placed");
     public static final ResourceKey <PlacedFeature> FLOWER_REDWOOD_PLACED = registerKey("flower_redwood_placed");
+    public static final ResourceKey <PlacedFeature> FLOWER_LAVENDER_PLACED = registerKey("flower_lavender_placed");
     public static final ResourceKey <PlacedFeature> WISTERIA_WATER = registerKey("wisteria_water_placed");
+    public static final ResourceKey <PlacedFeature> LAVENDER_WATER = registerKey("lavender_water_placed");
     public static final ResourceKey <PlacedFeature> LARGE_REDWOOD_PLACED = registerKey("large_redwood_placed");
     public static final ResourceKey <PlacedFeature> REDWOOD_PLACED = registerKey("redwood_placed");
     public static final ResourceKey <PlacedFeature> SPRUCE_BUSH_PLACED = registerKey("spruce_bush_placed");
@@ -45,6 +47,8 @@ public class HibiscusPlacedFeatures {
     public static final ResourceKey <PlacedFeature> SAKURA_PLACED = registerKey("sakura_placed");
     public static final ResourceKey <PlacedFeature> OAK_BUSH_PLACED = registerKey("oak_bush_placed");
     public static final ResourceKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = registerKey("custom_fancy_oak_tree_placed");
+    public static final ResourceKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE2_PLACED = registerKey("custom_fancy_oak_tree2_placed");
+    public static final ResourceKey <PlacedFeature> CATTAILS = registerKey("cattails_placed");
     private static final PlacementModifier TREE_THRESHOLD = SurfaceWaterDepthFilter.forMaxDepth(0);
 
     public static void bootstrap(BootstapContext <PlacedFeature> context) {
@@ -76,13 +80,15 @@ public class HibiscusPlacedFeatures {
         registerKey(context, FLOWER_WISTERIA_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_WISTERIA_FOREST), CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         registerKey(context, FLOWER_SAKURA_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_SAKURA_GROVE), CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         registerKey(context, FLOWER_REDWOOD_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_REDWOOD_FOREST), CountPlacement.of(3), RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        registerKey(context, FLOWER_LAVENDER_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_LAVENDER_FIELD), CountPlacement.of(5), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         registerKey(context, WISTERIA_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WISTERIA_DELTA), CountOnEveryLayerPlacement.of(20), BiomeFilter.biome());
+        registerKey(context, LAVENDER_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WISTERIA_DELTA), CountOnEveryLayerPlacement.of(12), BiomeFilter.biome());
         registerKey(context, LARGE_REDWOOD_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE_SPAWN), CountPlacement.of(3), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, REDWOOD_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE_SPAWN), CountPlacement.of(7), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, WILLOW_PLACED,
-                configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE_SPAWN), CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+                configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE_SPAWN), CountPlacement.of(2), InSquarePlacement.spread(), TREE_THRESHOLD, SurfaceWaterDepthFilter.forMaxDepth(2), BiomeFilter.biome());
         registerKey(context, SPRUCE_BUSH_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH_SPAWN), CountPlacement.of(4), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, REDWOOD_ROCK_PLACED,
@@ -95,7 +101,9 @@ public class HibiscusPlacedFeatures {
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH_SPAWN), CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         registerKey(context, CUSTOM_FANCY_OAK_TREE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FANCY_OAK_TREE_SPAWN), CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
-
+        registerKey(context, CUSTOM_FANCY_OAK_TREE2_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FANCY_OAK_TREE_SPAWN), RarityFilter.onAverageOnceEvery(35), CountPlacement.of(1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+        registerKey(context, CATTAILS, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CATTAILS), RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     }
 
     public static ResourceKey <PlacedFeature> registerKey(String name) {
