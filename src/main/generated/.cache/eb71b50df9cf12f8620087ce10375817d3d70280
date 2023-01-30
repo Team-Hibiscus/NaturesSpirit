@@ -1,4 +1,4 @@
-// 1.19.3	2023-01-30T12:31:59.7239458	Nature's Spirit/Tags for minecraft:block
+// 1.19.3	2023-01-30T13:03:23.0287838	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 69381570e94c54fe78e83c4eb4af3db50fb1d248 data\minecraft\tags\blocks\standing_signs.json
 cfde72ff00c7922a52d30a63b4f645b0ec2e44af data\minecraft\tags\blocks\small_flowers.json
@@ -18,8 +18,10 @@ a4ee337fb3784ac7a871097208ba66368a12027e data\minecraft\tags\blocks\mineable\hoe
 a4ee337fb3784ac7a871097208ba66368a12027e data\minecraft\tags\blocks\leaves.json
 6f2fb470f2f83355c2d51b1e55912b951def5338 data\minecraft\tags\blocks\wooden_fences.json
 d70f2534112b15efe277894787a59d1277f1afbb data\minecraft\tags\blocks\flower_pots.json
+061c2f05386034ccc39479eb437202f81a62f40d data\minecraft\tags\blocks\climbable.json
 f413671a383ed33b1c367d0993a5e3d9a37b0069 data\minecraft\tags\blocks\wooden_trapdoors.json
 15a7af969cc4feac5abf6309f722640cdbe0260c data\minecraft\tags\blocks\fence_gates.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\blocks\redwood_logs.json
 abf4bbfe24ddab104cb0d81fbb31db759966265b data\minecraft\tags\blocks\wall_signs.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\sakura_logs.json
+061c2f05386034ccc39479eb437202f81a62f40d data\minecraft\tags\blocks\bee_growables.json

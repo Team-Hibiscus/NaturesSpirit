@@ -367,7 +367,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             this.registerVineBlockState(plant, textureMap1, blockStateModelGenerators);
             TextureMap textureMap2 = TextureMap.crop(getId(plantStem));
             this.registerVineBlockState(plantStem, textureMap2, blockStateModelGenerators);
-            blockStateModelGenerators.registerItemModel(Blocks.WEEPING_VINES, "_plant");
+            blockStateModelGenerators.registerItemModel(plant, "_plant");
         }
         public final void generateTallLargeFlower(Block doubleBlock, BlockStateModelGenerator blockStateModelGenerators) {
             registerSpecificFlowerItemModel(doubleBlock, blockStateModelGenerators);
@@ -394,6 +394,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateLargeFlower(HibiscusBlocks.TIGER_LILY, blockStateModelGenerator);
             generateFlowerPotBlockStateModels(HibiscusBlocks.ANEMONE, HibiscusBlocks.POTTED_ANEMONE,blockStateModelGenerator);
             generateVineBlockStateModels(HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
+            generateVineBlockStateModels(HibiscusBlocks.WHITE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
+            generateVineBlockStateModels(HibiscusBlocks.PURPLE_WISTERIA_VINES, HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
+            generateVineBlockStateModels(HibiscusBlocks.PINK_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, blockStateModelGenerator);
+            generateVineBlockStateModels(HibiscusBlocks.WILLOW_VINES, HibiscusBlocks.WILLOW_VINES_PLANT, blockStateModelGenerator);
         }
 
         @Override
@@ -634,6 +638,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusBlocks.BLOOMING_SAKURA_DOOR});
             getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusBlocks.BLOOMING_SAKURA_TRAPDOOR});
             getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusBlocks.FRAMED_SAKURA_TRAPDOOR});
+            getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT, HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT, HibiscusBlocks.PINK_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, HibiscusBlocks.PURPLE_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, HibiscusBlocks.WILLOW_VINES_PLANT, HibiscusBlocks.WILLOW_VINES);
+            getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT, HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT, HibiscusBlocks.PINK_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, HibiscusBlocks.PURPLE_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, HibiscusBlocks.WILLOW_VINES_PLANT, HibiscusBlocks.WILLOW_VINES);
         }
     }
 }
