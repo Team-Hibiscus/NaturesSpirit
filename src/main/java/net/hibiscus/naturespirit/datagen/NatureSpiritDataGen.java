@@ -1,60 +1,41 @@
 package net.hibiscus.naturespirit.datagen;
 
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.booleans.AbstractBooleanCollection;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.loot.FabricBlockLootTableGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.fabricmc.fabric.mixin.datagen.loot.BlockLootTableGeneratorMixin;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamily;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.data.models.BlockModelGenerators;
-import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.model.*;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.data.client.*;
+import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.loot.LootTable;
+import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static net.minecraft.data.BlockFamilies.familyBuilder;
-import static net.minecraft.data.models.BlockModelGenerators.*;
+import static net.minecraft.data.client.BlockStateModelGenerator.*;
+import static net.minecraft.data.family.BlockFamilies.register;
 
 public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
@@ -74,10 +55,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
     }
 
     @Override
-    public void buildRegistry(RegistrySetBuilder registryBuilder) {
-        registryBuilder.add(Registries.CONFIGURED_FEATURE, HibiscusConfiguredFeatures::bootstrap);
-        registryBuilder.add(Registries.PLACED_FEATURE, HibiscusPlacedFeatures::bootstrap);
-        registryBuilder.add(Registries.BIOME, HibiscusBiomes::bootstrap);
+    public void buildRegistry(RegistryBuilder registryBuilder) {
+        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, HibiscusConfiguredFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, HibiscusPlacedFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.BIOME, HibiscusBiomes::bootstrap);
         System.out.println("Built Registry");
     }
 
@@ -114,17 +95,17 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         saplingArrays[7] = HibiscusBlocks.FIR_SAPLING;
         saplingArrays[8] = HibiscusBlocks.WILLOW_SAPLING;
 
-        blockLogTags[0] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "redwood_logs"));
-        blockLogTags[1] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "sakura_logs"));
-        blockLogTags[2] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "wisteria_logs"));
-        blockLogTags[3] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "fir_logs"));
-        blockLogTags[4] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "willow_logs"));
+        blockLogTags[0] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "redwood_logs"));
+        blockLogTags[1] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "sakura_logs"));
+        blockLogTags[2] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "wisteria_logs"));
+        blockLogTags[3] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "fir_logs"));
+        blockLogTags[4] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "willow_logs"));
 
-        itemLogTags[0] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "redwood_logs"));
-        itemLogTags[1] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "sakura_logs"));
-        itemLogTags[2] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "wisteria_logs"));
-        itemLogTags[3] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "fir_logs"));
-        itemLogTags[4] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "willow_logs"));
+        itemLogTags[0] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "redwood_logs"));
+        itemLogTags[1] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "sakura_logs"));
+        itemLogTags[2] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "wisteria_logs"));
+        itemLogTags[3] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "fir_logs"));
+        itemLogTags[4] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "willow_logs"));
     }
 
 
@@ -136,15 +117,89 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
     private static class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
 
-        private final Map<ResourceLocation, net.minecraft.world.level.storage.loot.LootTable.Builder> map = new HashMap();
+        private final Map<Identifier, LootTable.Builder> map = new HashMap();
 
         protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
             super(dataOutput);
         }
 
+        private void addWoodTable(Block[][] array) {
+            for (int i = 0; i < array.length; i++) {
+                addDrop(array[i][0]);
+                addDrop(array[i][1]);
+                addDrop(array[i][2]);
+                addDrop(array[i][3]);
+                addDrop(array[i][4]);
+                addDrop(array[i][12]);
+                this.addDrop(array[i][7], this::doorDrops);
+                addDrop(array[i][5]);
+                addDrop(array[i][6]);
+                addDrop(array[i][9]);
+                addDrop(array[i][2]);
+                addDrop(array[i][8]);
+                addDrop(array[i][13]);
+                addDrop(array[i][11]);
+                addDrop(array[i][10]);
+            }
+        }
+
+        private void addTreeTable(Block[][] array, Block[] array2) {
+            for (int i = 0; i < array.length; i++) {
+                addDrop(array[i][0]);
+                addPottedPlantDrops(array[i][1]);
+                int finalI = i;
+                this.addDrop(array2[i], (block) -> {
+                    return this.leavesDrops(block, array[finalI][0], SAPLING_DROP_CHANCE);
+                });
+            }
+        }
+
+        private void addVinesTable(Block vine, Block vinePlant) {
+            this.addVinePlantDrop(vine, vinePlant);
+        }
+
         @Override
         public void generate() {
-            dropSelf(HibiscusBlocks.REDWOOD[0]);
+            addWoodTable(woodArrays);
+            addTreeTable(saplingArrays, leavesArrays);
+
+            addVinesTable(HibiscusBlocks.WHITE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT);
+            addVinesTable(HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT);
+            addVinesTable(HibiscusBlocks.PURPLE_WISTERIA_VINES, HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT);
+            addVinesTable(HibiscusBlocks.PINK_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT);
+            addVinesTable(HibiscusBlocks.WILLOW_VINES, HibiscusBlocks.WILLOW_VINES_PLANT);
+
+            this.addDrop(HibiscusBlocks.CARNATION, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+            this.addDrop(HibiscusBlocks.CATTAIL, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+            this.addDrop(HibiscusBlocks.GARDENIA, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+            this.addDrop(HibiscusBlocks.SNAPDRAGON, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+            this.addDrop(HibiscusBlocks.MARIGOLD, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+            this.addDrop(HibiscusBlocks.LAVENDER, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+            this.addDrop(HibiscusBlocks.TIGER_LILY, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
+
+            this.addDrop(HibiscusBlocks.ANEMONE);
+            addPottedPlantDrops(HibiscusBlocks.POTTED_ANEMONE);
+            this.addDrop(HibiscusBlocks.HIBISCUS);
+            addPottedPlantDrops(HibiscusBlocks.POTTED_HIBISCUS);
+            this.addDrop(HibiscusBlocks.BLUEBELL);
+            this.addDrop(HibiscusBlocks.FRAMED_SAKURA_DOOR, this::doorDrops);
+            this.addDrop(HibiscusBlocks.FRAMED_SAKURA_TRAPDOOR);
+            this.addDrop(HibiscusBlocks.BLOOMING_SAKURA_DOOR, this::doorDrops);
+            this.addDrop(HibiscusBlocks.BLOOMING_SAKURA_TRAPDOOR);
         }
     }
 
@@ -156,93 +211,93 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
 
 
-        private void createWoodSlab(Block planks, Block slab, BlockModelGenerators blockStateModelGenerator) {
-            ResourceLocation resourceLocation = ModelLocationUtils.getModelLocation(planks);
-            TexturedModel texturedModel = TexturedModel.CUBE.get(planks);
-            ResourceLocation resourceLocation2 = ModelTemplates.SLAB_BOTTOM.create(slab, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation3 = ModelTemplates.SLAB_TOP.create(slab, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            blockStateModelGenerator.blockStateOutput.accept(createSlab(slab, resourceLocation2, resourceLocation3, resourceLocation));
+        private void createWoodSlab(Block planks, Block slab, BlockStateModelGenerator blockStateModelGenerator) {
+            Identifier resourceLocation = ModelIds.getBlockModelId(planks);
+            TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(planks);
+            Identifier resourceLocation2 = Models.SLAB.upload(slab, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation3 = Models.SLAB_TOP.upload(slab, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            blockStateModelGenerator.blockStateCollector.accept(createSlabBlockState(slab, resourceLocation2, resourceLocation3, resourceLocation));
         }
 
-        private void createWoodStairs(Block planks, Block stairs, BlockModelGenerators blockStateModelGenerator) {
-            TexturedModel texturedModel = TexturedModel.CUBE.get(planks);
-            ResourceLocation resourceLocation = ModelTemplates.STAIRS_INNER.create(stairs, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.STAIRS_STRAIGHT.create(stairs, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation3 = ModelTemplates.STAIRS_OUTER.create(stairs, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            blockStateModelGenerator.blockStateOutput.accept(createStairs(stairs, resourceLocation, resourceLocation2, resourceLocation3));
-            blockStateModelGenerator.delegateItemModel(stairs, resourceLocation2);
+        private void createWoodStairs(Block planks, Block stairs, BlockStateModelGenerator blockStateModelGenerator) {
+            TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(planks);
+            Identifier resourceLocation = Models.INNER_STAIRS.upload(stairs, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation2 = Models.STAIRS.upload(stairs, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation3 = Models.OUTER_STAIRS.upload(stairs, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            blockStateModelGenerator.blockStateCollector.accept(createStairsBlockState(stairs, resourceLocation, resourceLocation2, resourceLocation3));
+            blockStateModelGenerator.registerParentedItemModel(stairs, resourceLocation2);
         }
 
-        public void createWoodDoor(Block doorBlock, BlockModelGenerators blockStateModelGenerator) {
-            TextureMapping textureMapping = TextureMapping.door(doorBlock);
-            ResourceLocation resourceLocation = ModelTemplates.DOOR_BOTTOM_LEFT.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.DOOR_BOTTOM_LEFT_OPEN.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation3 = ModelTemplates.DOOR_BOTTOM_RIGHT.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation4 = ModelTemplates.DOOR_BOTTOM_RIGHT_OPEN.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation5 = ModelTemplates.DOOR_TOP_LEFT.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation6 = ModelTemplates.DOOR_TOP_LEFT_OPEN.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation7 = ModelTemplates.DOOR_TOP_RIGHT.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation8 = ModelTemplates.DOOR_TOP_RIGHT_OPEN.create(doorBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            blockStateModelGenerator.createSimpleFlatItemModel(doorBlock.asItem());
-            blockStateModelGenerator.blockStateOutput.accept(createDoor(doorBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4, resourceLocation5, resourceLocation6, resourceLocation7, resourceLocation8));
+        public void createWoodDoor(Block doorBlock, BlockStateModelGenerator blockStateModelGenerator) {
+            TextureMap textureMapping = TextureMap.topBottom(doorBlock);
+            Identifier resourceLocation = Models.DOOR_BOTTOM_LEFT.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation2 = Models.DOOR_BOTTOM_LEFT_OPEN.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation3 = Models.DOOR_BOTTOM_RIGHT.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation4 = Models.DOOR_BOTTOM_RIGHT_OPEN.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation5 = Models.DOOR_TOP_LEFT.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation6 = Models.DOOR_TOP_LEFT_OPEN.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation7 = Models.DOOR_TOP_RIGHT.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation8 = Models.DOOR_TOP_RIGHT_OPEN.upload(doorBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            blockStateModelGenerator.registerItemModel(doorBlock.asItem());
+            blockStateModelGenerator.blockStateCollector.accept(createDoorBlockState(doorBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4, resourceLocation5, resourceLocation6, resourceLocation7, resourceLocation8));
         }
 
-        public void createWoodTrapdoor(Block orientableTrapdoorBlock, BlockModelGenerators blockStateModelGenerators) {
-            TextureMapping textureMapping = TextureMapping.defaultTexture(orientableTrapdoorBlock);
-            ResourceLocation resourceLocation = ModelTemplates.ORIENTABLE_TRAPDOOR_TOP.create(orientableTrapdoorBlock, textureMapping, blockStateModelGenerators.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.ORIENTABLE_TRAPDOOR_BOTTOM.create(orientableTrapdoorBlock, textureMapping, blockStateModelGenerators.modelOutput);
-            ResourceLocation resourceLocation3 = ModelTemplates.ORIENTABLE_TRAPDOOR_OPEN.create(orientableTrapdoorBlock, textureMapping, blockStateModelGenerators.modelOutput);
-            blockStateModelGenerators.blockStateOutput.accept(createOrientableTrapdoor(orientableTrapdoorBlock, resourceLocation, resourceLocation2, resourceLocation3));
-            blockStateModelGenerators.delegateItemModel(orientableTrapdoorBlock, resourceLocation2);
+        public void createWoodTrapdoor(Block orientableTrapdoorBlock, BlockStateModelGenerator blockStateModelGenerators) {
+            TextureMap textureMapping = TextureMap.texture(orientableTrapdoorBlock);
+            Identifier resourceLocation = Models.TEMPLATE_ORIENTABLE_TRAPDOOR_TOP.upload(orientableTrapdoorBlock, textureMapping, blockStateModelGenerators.modelCollector);
+            Identifier resourceLocation2 = Models.TEMPLATE_ORIENTABLE_TRAPDOOR_BOTTOM.upload(orientableTrapdoorBlock, textureMapping, blockStateModelGenerators.modelCollector);
+            Identifier resourceLocation3 = Models.TEMPLATE_ORIENTABLE_TRAPDOOR_OPEN.upload(orientableTrapdoorBlock, textureMapping, blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(createOrientableTrapdoorBlockState(orientableTrapdoorBlock, resourceLocation, resourceLocation2, resourceLocation3));
+            blockStateModelGenerators.registerParentedItemModel(orientableTrapdoorBlock, resourceLocation2);
         }
 
-        public void createWoodFenceGate(Block planks, Block fenceGateBlock, BlockModelGenerators blockStateModelGenerator) {
-            TexturedModel texturedModel = TexturedModel.CUBE.get(planks);
-            ResourceLocation resourceLocation = ModelTemplates.FENCE_GATE_OPEN.create(fenceGateBlock, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.FENCE_GATE_CLOSED.create(fenceGateBlock, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation3 = ModelTemplates.FENCE_GATE_WALL_OPEN.create(fenceGateBlock, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation4 = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(fenceGateBlock, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            blockStateModelGenerator.blockStateOutput.accept(BlockModelGenerators.createFenceGate(fenceGateBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4, true));
+        public void createWoodFenceGate(Block planks, Block fenceGateBlock, BlockStateModelGenerator blockStateModelGenerator) {
+            TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(planks);
+            Identifier resourceLocation = Models.TEMPLATE_FENCE_GATE_OPEN.upload(fenceGateBlock, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation2 = Models.TEMPLATE_FENCE_GATE.upload(fenceGateBlock, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation3 = Models.TEMPLATE_FENCE_GATE_WALL_OPEN.upload(fenceGateBlock, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation4 = Models.TEMPLATE_FENCE_GATE_WALL.upload(fenceGateBlock, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createFenceGateBlockState(fenceGateBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4, true));
         }
 
-        public void createWoodFence(Block planks, Block fenceBlock, BlockModelGenerators blockStateModelGenerators) {
-            TexturedModel texturedModel = TexturedModel.CUBE.get(planks);
-            ResourceLocation resourceLocation = ModelTemplates.FENCE_POST.create(fenceBlock, texturedModel.getMapping(), blockStateModelGenerators.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.FENCE_SIDE.create(fenceBlock, texturedModel.getMapping(), blockStateModelGenerators.modelOutput);
-            blockStateModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFence(fenceBlock, resourceLocation, resourceLocation2));
-            ResourceLocation resourceLocation3 = ModelTemplates.FENCE_INVENTORY.create(fenceBlock, texturedModel.getMapping(), blockStateModelGenerators.modelOutput);
-            blockStateModelGenerators.delegateItemModel(fenceBlock, resourceLocation3);
+        public void createWoodFence(Block planks, Block fenceBlock, BlockStateModelGenerator blockStateModelGenerators) {
+            TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(planks);
+            Identifier resourceLocation = Models.FENCE_POST.upload(fenceBlock, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+            Identifier resourceLocation2 = Models.FENCE_SIDE.upload(fenceBlock, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(BlockStateModelGenerator.createFenceBlockState(fenceBlock, resourceLocation, resourceLocation2));
+            Identifier resourceLocation3 = Models.FENCE_INVENTORY.upload(fenceBlock, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.registerParentedItemModel(fenceBlock, resourceLocation3);
         }
 
-        public void createWoodPressurePlate(Block planks, Block pressurePlateBlock, BlockModelGenerators blockStateModelGenerator) {
-            TexturedModel texturedModel = TexturedModel.CUBE.get(planks);
-            ResourceLocation resourceLocation = ModelTemplates.PRESSURE_PLATE_UP.create(pressurePlateBlock, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.PRESSURE_PLATE_DOWN.create(pressurePlateBlock, texturedModel.getMapping(), blockStateModelGenerator.modelOutput);
-            blockStateModelGenerator.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(pressurePlateBlock, resourceLocation, resourceLocation2));
+        public void createWoodPressurePlate(Block planks, Block pressurePlateBlock, BlockStateModelGenerator blockStateModelGenerator) {
+            TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(planks);
+            Identifier resourceLocation = Models.PRESSURE_PLATE_UP.upload(pressurePlateBlock, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            Identifier resourceLocation2 = Models.PRESSURE_PLATE_DOWN.upload(pressurePlateBlock, texturedModel.getTextures(), blockStateModelGenerator.modelCollector);
+            blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createPressurePlateBlockState(pressurePlateBlock, resourceLocation, resourceLocation2));
         }
 
-        public void createWoodSign(Block signBlock, Block wallSignBlock, BlockModelGenerators blockStateModelGenerator) {
-            TextureMapping textureMapping = TextureMapping.defaultTexture(signBlock);
-                ResourceLocation resourceLocation = ModelTemplates.PARTICLE_ONLY.create(signBlock, textureMapping, blockStateModelGenerator.modelOutput);
-            blockStateModelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(signBlock, resourceLocation));
-            blockStateModelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallSignBlock, resourceLocation));
-            blockStateModelGenerator.createSimpleFlatItemModel(signBlock.asItem());
-            blockStateModelGenerator.skipAutoItemBlock(wallSignBlock);
+        public void createWoodSign(Block signBlock, Block wallSignBlock, BlockStateModelGenerator blockStateModelGenerator) {
+            TextureMap textureMapping = TextureMap.texture(signBlock);
+                Identifier resourceLocation = Models.PARTICLE.upload(signBlock, textureMapping, blockStateModelGenerator.modelCollector);
+            blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(signBlock, resourceLocation));
+            blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(wallSignBlock, resourceLocation));
+            blockStateModelGenerator.registerItemModel(signBlock.asItem());
+            blockStateModelGenerator.excludeFromSimpleItemModelGeneration(wallSignBlock);
         }
-        public void createWoodButton(Block planks, Block buttonBlock, BlockModelGenerators blockStateModelGenerators) {
-            TexturedModel texturedModel = TexturedModel.CUBE.get(planks);
-            ResourceLocation resourceLocation = ModelTemplates.BUTTON.create(buttonBlock, texturedModel.getMapping(), blockStateModelGenerators.modelOutput);
-            ResourceLocation resourceLocation2 = ModelTemplates.BUTTON_PRESSED.create(buttonBlock, texturedModel.getMapping(), blockStateModelGenerators.modelOutput);
-            blockStateModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(buttonBlock, resourceLocation, resourceLocation2));
-            ResourceLocation resourceLocation3 = ModelTemplates.BUTTON_INVENTORY.create(buttonBlock, texturedModel.getMapping(), blockStateModelGenerators.modelOutput);
-            blockStateModelGenerators.delegateItemModel(buttonBlock, resourceLocation3);
+        public void createWoodButton(Block planks, Block buttonBlock, BlockStateModelGenerator blockStateModelGenerators) {
+            TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(planks);
+            Identifier resourceLocation = Models.BUTTON.upload(buttonBlock, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+            Identifier resourceLocation2 = Models.BUTTON_PRESSED.upload(buttonBlock, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(BlockStateModelGenerator.createButtonBlockState(buttonBlock, resourceLocation, resourceLocation2));
+            Identifier resourceLocation3 = Models.BUTTON_INVENTORY.upload(buttonBlock, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.registerParentedItemModel(buttonBlock, resourceLocation3);
         }
 
-        private void generateWoodBlockStateModels (Block[][] ARRAY, BlockModelGenerators blockStateModelGenerator) {
+        private void generateWoodBlockStateModels (Block[][] ARRAY, BlockStateModelGenerator blockStateModelGenerator) {
             for (int i = 0; i < ARRAY.length; i++) {
-                blockStateModelGenerator.woodProvider(ARRAY[i][2]).logWithHorizontal(ARRAY[i][2]).wood(ARRAY[i][0]);
-                blockStateModelGenerator.woodProvider(ARRAY[i][3]).logWithHorizontal(ARRAY[i][3]).wood(ARRAY[i][1]);
-                blockStateModelGenerator.createTrivialBlock(ARRAY[i][4], TexturedModel.CUBE);
+                blockStateModelGenerator.registerLog(ARRAY[i][2]).log(ARRAY[i][2]).wood(ARRAY[i][0]);
+                blockStateModelGenerator.registerLog(ARRAY[i][3]).log(ARRAY[i][3]).wood(ARRAY[i][1]);
+                blockStateModelGenerator.registerSingleton(ARRAY[i][4], TexturedModel.CUBE_ALL);
                 createWoodSlab(ARRAY[i][4], ARRAY[i][6], blockStateModelGenerator);
                 createWoodStairs(ARRAY[i][4], ARRAY[i][5], blockStateModelGenerator);
                 createWoodDoor(ARRAY[i][7], blockStateModelGenerator);
@@ -254,31 +309,31 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                 createWoodSign(ARRAY[i][13], ARRAY[i][14], blockStateModelGenerator);
             }
         }
-        private void generateTreeBlockStateModels (Block[][] Sapling, Block[] Leaves, BlockModelGenerators blockStateModelGenerator) {
+        private void generateTreeBlockStateModels (Block[][] Sapling, Block[] Leaves, BlockStateModelGenerator blockStateModelGenerator) {
             for (int i = 0; i < Leaves.length; i++) {
-                blockStateModelGenerator.createTrivialBlock(Leaves[i], TexturedModel.LEAVES);
-                blockStateModelGenerator.createPlant(Sapling[i][0], Sapling[i][1], BlockModelGenerators.TintState.NOT_TINTED);
+                blockStateModelGenerator.registerSingleton(Leaves[i], TexturedModel.LEAVES);
+                blockStateModelGenerator.registerFlowerPotPlant(Sapling[i][0], Sapling[i][1], TintType.NOT_TINTED);
             }
         }
 
 
-        private void generateFlowerBlockStateModels (Block block, Block block2, BlockModelGenerators blockStateModelGenerator) {
-            blockStateModelGenerator.createPlant(block, block2, BlockModelGenerators.TintState.NOT_TINTED);
+        private void generateFlowerBlockStateModels (Block block, Block block2, BlockStateModelGenerator blockStateModelGenerator) {
+            blockStateModelGenerator.registerFlowerPotPlant(block, block2, TintType.NOT_TINTED);
         }
 
         @Override
-        public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
+        public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
             generateWoodBlockStateModels(woodArrays, blockStateModelGenerator);
             generateTreeBlockStateModels(saplingArrays, leavesArrays, blockStateModelGenerator);
             generateFlowerBlockStateModels(HibiscusBlocks.HIBISCUS, HibiscusBlocks.POTTED_HIBISCUS, blockStateModelGenerator);
-            blockStateModelGenerator.createDoublePlant(HibiscusBlocks.CARNATION, BlockModelGenerators.TintState.NOT_TINTED);
-            blockStateModelGenerator.createDoublePlant(HibiscusBlocks.GARDENIA, BlockModelGenerators.TintState.NOT_TINTED);
-            blockStateModelGenerator.createDoublePlant(HibiscusBlocks.SNAPDRAGON, BlockModelGenerators.TintState.NOT_TINTED);
-            blockStateModelGenerator.createDoublePlant(HibiscusBlocks.MARIGOLD, BlockModelGenerators.TintState.NOT_TINTED);
+            blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.CARNATION, TintType.NOT_TINTED);
+            blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.GARDENIA, TintType.NOT_TINTED);
+            blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.SNAPDRAGON, TintType.NOT_TINTED);
+            blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.MARIGOLD, TintType.NOT_TINTED);
         }
 
         @Override
-        public void generateItemModels(ItemModelGenerators itemModelGenerator) {
+        public void generateItemModels(ItemModelGenerator itemModelGenerator) {
 
         }
     }
@@ -318,7 +373,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             }
         }
 
-        private void generateTreeTranslations (Block[][] array, Block block[], TranslationBuilder translationBuilder) {
+        private void generateTreeTranslations (Block[][] array, Block[] block, TranslationBuilder translationBuilder) {
             for (int i = 0; i < array.length; i++) {
                 for (int g = 0; g < array[i].length; g++) {
 
@@ -381,22 +436,22 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                 super(output);
             }
 
-            private  void generateWoodRecipes(Block[][] array, TagKey <Item>[] tag,Consumer <FinishedRecipe> consumer) {
+            private  void generateWoodRecipes(Block[][] array, TagKey <Item>[] tag,Consumer <RecipeJsonProvider> consumer) {
                 for (int i = 0; i < array.length ; i++) {
-                    planksFromLogs(consumer, array[i][4], tag[i], 4);
-                    woodFromLogs(consumer, array[i][0], array[i][2]);
-                    woodFromLogs(consumer, array[i][1], array[i][3]);
-                    BlockFamily family = familyBuilder(array[i][4]).button(array[i][12]).fence(array[i][9]).fenceGate(array[i][10]).pressurePlate(array[i][11]).sign(array[i][13], array[i][14]).slab(array[i][6]).stairs(array[i][5]).door(array[i][7]).trapdoor(array[i][8]).recipeGroupPrefix("wooden").recipeUnlockedBy("has_planks").getFamily();
-                    generateRecipes(consumer, family);
+                    offerPlanksRecipe(consumer, array[i][4], tag[i], 4);
+                    offerBarkBlockRecipe(consumer, array[i][0], array[i][2]);
+                    offerBarkBlockRecipe(consumer, array[i][1], array[i][3]);
+                    BlockFamily family = register(array[i][4]).button(array[i][12]).fence(array[i][9]).fenceGate(array[i][10]).pressurePlate(array[i][11]).sign(array[i][13], array[i][14]).slab(array[i][6]).stairs(array[i][5]).door(array[i][7]).trapdoor(array[i][8]).group("wooden").unlockCriterionName("has_planks").build();
+                    generateFamily(consumer, family);
                 }
             }
 
-            private void generateFlowerRecipes (Block block, Item dye, String group, int amount, Consumer <FinishedRecipe> consumer) {
-                oneToOneConversionRecipe(consumer, dye, block, group, amount);
+            private void generateFlowerRecipes (Block block, Item dye, String group, int amount, Consumer <RecipeJsonProvider> consumer) {
+                offerShapelessRecipe(consumer, dye, block, group, amount);
             }
 
             @Override
-            public void buildRecipes(Consumer <FinishedRecipe> exporter) {
+            public void generate(Consumer <RecipeJsonProvider> exporter) {
                 generateWoodRecipes(woodArrays, itemLogTags ,exporter);
                 generateFlowerRecipes(HibiscusBlocks.ANEMONE, Items.MAGENTA_DYE, "magenta_dye",1, exporter);
                 generateFlowerRecipes(HibiscusBlocks.LAVENDER, Items.PURPLE_DYE, "purple_dye",4, exporter);
@@ -412,12 +467,12 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
     public static class NatureSpiritItemTagGenerator extends FabricTagProvider.ItemTagProvider  {
 
-            public NatureSpiritItemTagGenerator(FabricDataOutput output, CompletableFuture <HolderLookup.Provider> completableFuture, @Nullable BlockTagProvider blockTagProvider) {
+            public NatureSpiritItemTagGenerator(FabricDataOutput output, CompletableFuture <RegistryWrapper.WrapperLookup> completableFuture, @Nullable BlockTagProvider blockTagProvider) {
                 super(output, completableFuture, blockTagProvider);
             }
 
             @Override
-            protected void addTags(HolderLookup.Provider arg) {
+            protected void configure(RegistryWrapper.WrapperLookup arg) {
 
                 for (int i = 0; i < woodArrays.length; i++) {
                     this.copy(blockLogTags[i], itemLogTags[i]);
@@ -443,11 +498,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
     public static class NatureSpiritBlockTagGenerator extends FabricTagProvider.BlockTagProvider  {
 
-        public NatureSpiritBlockTagGenerator(FabricDataOutput output, CompletableFuture <HolderLookup.Provider> registriesFuture) {
+        public NatureSpiritBlockTagGenerator(FabricDataOutput output, CompletableFuture <RegistryWrapper.WrapperLookup> registriesFuture) {
             super(output, registriesFuture);
         }
 
-        private void addWoodTags(Block[][] array, TagKey <Block>[] tag, HolderLookup.Provider arg) {
+        private void addWoodTags(Block[][] array, TagKey <Block>[] tag, RegistryWrapper.WrapperLookup arg) {
             for (int i = 0; i < array.length; i++) {
                 getOrCreateTagBuilder(BlockTags.PLANKS).add(new Block[]{array[i][4]});
                 getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(new Block[]{array[i][12]});
@@ -465,16 +520,16 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                 getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(new Block[]{array[i][10]});
             }
         }
-        private void addTreeTags(Block[][] array, Block[] block, HolderLookup.Provider arg) {
+        private void addTreeTags(Block[][] array, Block[] block, RegistryWrapper.WrapperLookup arg) {
             for (int i = 0; i < array.length; i++) {
-                getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(block[i]);
+                getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(block[i]);
                 getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{array[i][0]});
                 getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{array[i][1]});
                 getOrCreateTagBuilder(BlockTags.LEAVES).add(block[i]);
             }
         }
 
-        private void addFlowerTags(Block block, Block flowerPot, Boolean isTall, HolderLookup.Provider arg) {
+        private void addFlowerTags(Block block, Block flowerPot, Boolean isTall, RegistryWrapper.WrapperLookup arg) {
             getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{flowerPot});
 
             if (isTall) {
@@ -485,7 +540,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
         }
 
-        private void addFlowerTags(Block block, Boolean isTall, HolderLookup.Provider arg) {
+        private void addFlowerTags(Block block, Boolean isTall, RegistryWrapper.WrapperLookup arg) {
 
             if (isTall) {
                 getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(block);
@@ -496,7 +551,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         }
 
         @Override
-        protected void addTags(HolderLookup.Provider arg) {
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
             addWoodTags(woodArrays, blockLogTags, arg);
             addTreeTags(saplingArrays, leavesArrays, arg);
             addFlowerTags(HibiscusBlocks.HIBISCUS, HibiscusBlocks.POTTED_HIBISCUS, false, arg);

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "natures_spirit:redwood_door",
+    "natures_spirit:wisteria_door",
+    "natures_spirit:sakura_door",
+    "natures_spirit:fir_door",
+    "natures_spirit:willow_door",
+    "natures_spirit:framed_sakura_door",
+    "natures_spirit:blooming_sakura_door"
+  ]
+}

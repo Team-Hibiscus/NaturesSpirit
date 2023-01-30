@@ -1,11 +1,5 @@
 package net.hibiscus.naturespirit.terrablender;
 
-import net.hibiscus.naturespirit.NatureSpirit;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biome;
-
 public class NatureSpiritBiomes {
 //    public static final ResourceKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
 //    public static final ResourceKey <Biome> SAKURA_GROVE = register("sakura_grove");

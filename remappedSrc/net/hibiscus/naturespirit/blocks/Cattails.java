@@ -1,0 +1,100 @@
+package net.hibiscus.naturespirit.blocks;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.Fertilizable;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.Waterloggable;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.*;
+
+public class Cattails extends TallPlantBlock implements Waterloggable, Fertilizable {
+    public static final EnumProperty <DoubleBlockHalf> HALF;
+    public static final BooleanProperty WATERLOGGED;
+    protected static final float AABB_OFFSET = 6.0F;
+    protected static final VoxelShape SHAPE;
+    public Cattails(Settings properties) {
+        super(properties);
+        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(WATERLOGGED, false).with(HALF, DoubleBlockHalf.LOWER));
+    }
+
+    public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
+        return false;
+    }
+
+    public boolean isFertilizable(WorldView levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+        return true;
+    }
+
+    public boolean canGrow(World level, Random randomSource, BlockPos blockPos, BlockState blockState) {
+        return true;
+    }
+
+    public void grow(ServerWorld serverLevel, Random randomSource, BlockPos blockPos, BlockState blockState) {
+        dropStack(serverLevel, blockPos, new ItemStack(this));
+    }
+
+    protected boolean canPlantOnTop(BlockState state, BlockView level, BlockPos pos) {
+        if (level.getFluidState(pos.up()).isIn(FluidTags.WATER)) {
+            return state.isSideSolidFullSquare(level, pos, Direction.UP) && !state.isOf(Blocks.MAGMA_BLOCK);
+        } else {
+            return state.isIn(BlockTags.DIRT) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.SAND) || state.isOf(Blocks.RED_SAND);
+        }
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext context) {
+        FluidState fluidState = context.getWorld().getFluidState(context.getBlockPos());
+        return (BlockState)this.getDefaultState().with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8);
+    }
+
+    public boolean canPlaceAt(BlockState state, WorldView level, BlockPos pos) {
+        if (state.get(HALF) == DoubleBlockHalf.UPPER) {
+            BlockState blockState = level.getBlockState(pos.down());
+            return blockState.isOf(this) && blockState.get(HALF) == DoubleBlockHalf.LOWER;
+        } else {
+            BlockPos blockPos = pos.down();
+            BlockPos blockPos2 = pos.up();
+            if (state.get(WATERLOGGED)) {
+                return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
+            } else {
+                return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos), level, blockPos);
+            }
+        }
+    }
+
+    protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
+        builder.add(new Property[]{WATERLOGGED});
+        builder.add(new Property[]{HALF});
+    }
+
+    public FluidState getFluidState(BlockState state) {
+        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    static {
+        WATERLOGGED = Properties.WATERLOGGED;
+        HALF = TallPlantBlock.HALF;
+        SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+    }
+}
