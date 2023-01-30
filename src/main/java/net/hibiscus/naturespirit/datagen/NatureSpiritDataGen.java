@@ -6,11 +6,13 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.blocks.WisteriaVinePlant;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -20,17 +22,20 @@ import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
@@ -196,6 +201,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             this.addDrop(HibiscusBlocks.HIBISCUS);
             addPottedPlantDrops(HibiscusBlocks.POTTED_HIBISCUS);
             this.addDrop(HibiscusBlocks.BLUEBELL);
+            this.addDrop(HibiscusBlocks.TIGER_LILY);
             this.addDrop(HibiscusBlocks.FRAMED_SAKURA_DOOR, this::doorDrops);
             this.addDrop(HibiscusBlocks.FRAMED_SAKURA_TRAPDOOR);
             this.addDrop(HibiscusBlocks.BLOOMING_SAKURA_DOOR, this::doorDrops);
@@ -205,11 +211,24 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
     private static class NatureSpiritModelGenerator extends FabricModelProvider {
 
+        private static Model block(String parent, TextureKey... requiredTextureKeys) {
+            return new Model(Optional.of(new Identifier("natures_spirit", "block/" + parent)), Optional.empty(), requiredTextureKeys);
+        }
+
+        private static final Model TALL_LARGE_CROSS = block("tall_large_cross", TextureKey.CROSS);
+        private static final Model LARGE_CROSS = block("large_cross", TextureKey.CROSS);
+        private static final Model TALL_CROSS = block("tall_cross", TextureKey.CROSS);
+        private static final Model FLOWER_POT_TALL_CROSS = block("flower_pot_tall_cross", TextureKey.PLANT);
+        private static final Model CROP = block("crop", TextureKey.CROP);
+
         public NatureSpiritModelGenerator(FabricDataOutput output) {
             super(output);
         }
 
-
+        public static Identifier getId(Block block) {
+            Identifier identifier = Registries.BLOCK.getId(block);
+            return identifier.withPrefixedPath("block/");
+        }
 
         private void createWoodSlab(Block planks, Block slab, BlockStateModelGenerator blockStateModelGenerator) {
             Identifier resourceLocation = ModelIds.getBlockModelId(planks);
@@ -316,9 +335,49 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             }
         }
 
-
+        public final void registerTallCrossBlockState(Block block, TextureMap crossTexture, BlockStateModelGenerator blockStateModelGenerators) {
+            Identifier identifier = TALL_CROSS.upload(block, crossTexture, blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(block, identifier));
+        }
+        public final void registerVineBlockState(Block block, TextureMap crossTexture, BlockStateModelGenerator blockStateModelGenerators) {
+            Identifier identifier = CROP.upload(block, crossTexture, blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(block, identifier));
+        }
+        public final void registerTallLargeBlockState(Block block, TextureMap crossTexture, BlockStateModelGenerator blockStateModelGenerators) {
+            Identifier identifier = TALL_LARGE_CROSS.upload(block, crossTexture, blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(block, identifier));
+        }
+        public final void registerSpecificFlowerItemModel(Block block, BlockStateModelGenerator blockStateModelGenerators) {
+            Item item = block.asItem();
+            Models.GENERATED.upload(ModelIds.getItemModelId(item), TextureMap.layer0(item), blockStateModelGenerators.modelCollector);
+        }
         private void generateFlowerBlockStateModels (Block block, Block block2, BlockStateModelGenerator blockStateModelGenerator) {
             blockStateModelGenerator.registerFlowerPotPlant(block, block2, TintType.NOT_TINTED);
+        }
+        private void generateFlowerPotBlockStateModels(Block block, Block flowerPot,BlockStateModelGenerator blockStateModelGenerators) {
+            registerSpecificFlowerItemModel(block, blockStateModelGenerators);
+            TextureMap textureMap1 = TextureMap.cross(block);
+            registerTallCrossBlockState(block, textureMap1, blockStateModelGenerators);
+            TextureMap textureMap = TextureMap.plant(block);
+            Identifier identifier =  FLOWER_POT_TALL_CROSS.upload(flowerPot, textureMap, blockStateModelGenerators.modelCollector);
+            blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier));
+        }
+        public final void generateVineBlockStateModels(Block plant, Block plantStem, BlockStateModelGenerator blockStateModelGenerators) {
+            TextureMap textureMap1 = TextureMap.crop(getId(plant));
+            this.registerVineBlockState(plant, textureMap1, blockStateModelGenerators);
+            TextureMap textureMap2 = TextureMap.crop(getId(plantStem));
+            this.registerVineBlockState(plantStem, textureMap2, blockStateModelGenerators);
+            blockStateModelGenerators.registerItemModel(Blocks.WEEPING_VINES, "_plant");
+        }
+        public final void generateTallLargeFlower(Block doubleBlock, BlockStateModelGenerator blockStateModelGenerators) {
+            registerSpecificFlowerItemModel(doubleBlock, blockStateModelGenerators);
+            Identifier identifier = blockStateModelGenerators.createSubModel(doubleBlock, "_top", LARGE_CROSS, TextureMap::cross);
+            Identifier identifier2 = blockStateModelGenerators.createSubModel(doubleBlock, "_bottom", LARGE_CROSS, TextureMap::cross);
+            blockStateModelGenerators.registerDoubleBlock(doubleBlock, identifier, identifier2);
+        }
+        public final void generateLargeFlower(Block block, BlockStateModelGenerator blockStateModelGenerators) {
+            registerSpecificFlowerItemModel(block, blockStateModelGenerators);
+            registerTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
         }
 
         @Override
@@ -330,6 +389,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.GARDENIA, TintType.NOT_TINTED);
             blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.SNAPDRAGON, TintType.NOT_TINTED);
             blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.MARIGOLD, TintType.NOT_TINTED);
+            generateTallLargeFlower(HibiscusBlocks.LAVENDER, blockStateModelGenerator);
+            generateLargeFlower(HibiscusBlocks.BLUEBELL, blockStateModelGenerator);
+            generateLargeFlower(HibiscusBlocks.TIGER_LILY, blockStateModelGenerator);
+            generateFlowerPotBlockStateModels(HibiscusBlocks.ANEMONE, HibiscusBlocks.POTTED_ANEMONE,blockStateModelGenerator);
+            generateVineBlockStateModels(HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
         }
 
         @Override
@@ -412,6 +476,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateBlockTranslations(HibiscusBlocks.POTTED_ANEMONE, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.LAVENDER, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.BLUEBELL, translationBuilder);
+            generateBlockTranslations(HibiscusBlocks.TIGER_LILY, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.CARNATION, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.HIBISCUS, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.POTTED_HIBISCUS, translationBuilder);
@@ -456,6 +521,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                 generateFlowerRecipes(HibiscusBlocks.ANEMONE, Items.MAGENTA_DYE, "magenta_dye",1, exporter);
                 generateFlowerRecipes(HibiscusBlocks.LAVENDER, Items.PURPLE_DYE, "purple_dye",4, exporter);
                 generateFlowerRecipes(HibiscusBlocks.BLUEBELL, Items.BLUE_DYE, "blue_dye",2, exporter);
+                generateFlowerRecipes(HibiscusBlocks.TIGER_LILY, Items.ORANGE_DYE, "orange_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.CARNATION, Items.RED_DYE, "red_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.SNAPDRAGON, Items.PINK_DYE, "pink_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.CATTAIL, Items.BROWN_DYE, "brown_dye",2, exporter);
@@ -557,6 +623,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             addFlowerTags(HibiscusBlocks.HIBISCUS, HibiscusBlocks.POTTED_HIBISCUS, false, arg);
             addFlowerTags(HibiscusBlocks.ANEMONE, HibiscusBlocks.POTTED_ANEMONE, false, arg);
             addFlowerTags(HibiscusBlocks.BLUEBELL, false, arg);
+            addFlowerTags(HibiscusBlocks.TIGER_LILY, false, arg);
             addFlowerTags(HibiscusBlocks.LAVENDER, true, arg);
             addFlowerTags(HibiscusBlocks.CARNATION, true, arg);
             addFlowerTags(HibiscusBlocks.GARDENIA, true, arg);
