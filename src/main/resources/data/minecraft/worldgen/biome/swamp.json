@@ -74,6 +74,7 @@
     ],
     [],
     [
+      "natures_spirit:swamp_water_placed",
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],

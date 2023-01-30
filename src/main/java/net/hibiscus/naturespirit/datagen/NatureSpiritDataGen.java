@@ -1,9 +1,14 @@
 package net.hibiscus.naturespirit.datagen;
 
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.booleans.AbstractBooleanCollection;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.loot.FabricBlockLootTableGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.mixin.datagen.loot.BlockLootTableGeneratorMixin;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
@@ -12,33 +17,41 @@ import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.*;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static net.minecraft.data.BlockFamilies.familyBuilder;
 import static net.minecraft.data.models.BlockModelGenerators.*;
@@ -53,6 +66,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(NatureSpiritModelGenerator::new);
         pack.addProvider(NatureSpiritLangGenerator::new);
         pack.addProvider(NatureSpiritRecipeGenerator::new);
+        pack.addProvider(NatureSpiritBlockLootTableProvider::new);
         NatureSpiritBlockTagGenerator blockTagProvider = pack.addProvider(NatureSpiritBlockTagGenerator::new);
         pack.addProvider((output, registries) -> new NatureSpiritItemTagGenerator(output, registries, blockTagProvider));
         System.out.println("Initialized Data Generator");
@@ -120,19 +134,17 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
     }
 
 
-    private static class NatureSpiritLootGenerator extends FabricBlockLootTableProvider {
+    private static class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
 
+        private final Map<ResourceLocation, net.minecraft.world.level.storage.loot.LootTable.Builder> map = new HashMap();
 
-        protected NatureSpiritLootGenerator(FabricDataOutput dataOutput) {
+        protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
             super(dataOutput);
         }
 
         @Override
         public void generate() {
-        }
-
-        @Override
-        public void accept(BiConsumer <ResourceLocation, LootTable.Builder> resourceLocationBuilderBiConsumer) {
+            dropSelf(HibiscusBlocks.REDWOOD[0]);
         }
     }
 

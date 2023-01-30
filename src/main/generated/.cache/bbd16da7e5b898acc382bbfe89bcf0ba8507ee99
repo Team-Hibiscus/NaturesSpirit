@@ -1,6 +1,6 @@
-// 1.19.3	2023-01-26T23:09:51.3928131	Nature's Spirit/Tags for minecraft:item
-e1c1f03284e915faeee0162239bcd1fe7b4d481a data\minecraft\tags\items\wooden_slabs.json
+// 1.19.3	2023-01-27T20:55:03.5496081	Nature's Spirit/Tags for minecraft:item
 92e44f121c07e799f38f65c67147cb0b4ec7ca70 data\minecraft\tags\items\wooden_doors.json
+e1c1f03284e915faeee0162239bcd1fe7b4d481a data\minecraft\tags\items\wooden_slabs.json
 ef30220f70a9ab1a4d1fb24847592593d39573a4 data\minecraft\tags\items\small_flowers.json
 80d1b1053ccfa5394166156cceceba92f79aebb7 data\natures_spirit\tags\items\fir_logs.json
 f413671a383ed33b1c367d0993a5e3d9a37b0069 data\minecraft\tags\items\wooden_trapdoors.json
@@ -10,12 +10,12 @@ a83a96bcdad67b927ec62e5ac1ed7be2d715cfc3 data\minecraft\tags\items\wooden_stairs
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\items\willow_logs.json
 d754eba559fc1c8cce053dec7939183c94444ed3 data\minecraft\tags\items\logs_that_burn.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\items\signs.json
-bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_logs.json
 15a7af969cc4feac5abf6309f722640cdbe0260c data\minecraft\tags\items\fence_gates.json
+bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_logs.json
 66bf71ea0502221fe7e14910a7210dcd5336ac72 data\minecraft\tags\items\tall_flowers.json
 9c4539df1c9caf44f746c1a0d16f1c37c5764a29 data\minecraft\tags\items\wooden_pressure_plates.json
 a4ee337fb3784ac7a871097208ba66368a12027e data\minecraft\tags\items\leaves.json
 30405d4353d35f251b58868e53f227f6935adac4 data\natures_spirit\tags\items\wisteria_logs.json
 4c994e19a4ce595d5972cb6d1f6251ff582de11c data\minecraft\tags\items\wooden_buttons.json
-ae7a6c8260d49ef3388e2b211b5271afd44f3ac7 data\minecraft\tags\items\saplings.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\items\sakura_logs.json
+ae7a6c8260d49ef3388e2b211b5271afd44f3ac7 data\minecraft\tags\items\saplings.json

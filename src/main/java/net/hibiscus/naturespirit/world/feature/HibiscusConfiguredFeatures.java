@@ -54,6 +54,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.HIBISCUS_DELTA_FEATURE;
 public class HibiscusConfiguredFeatures {
 
     public static final ResourceKey <ConfiguredFeature <?, ?>> WISTERIA_DELTA = registerKey("water_delta");
+    public static final ResourceKey <ConfiguredFeature <?, ?>> SWAMP_DELTA = registerKey("swamp_delta");
     public static final ResourceKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE = registerKey("large_redwood_tree");
     public static final ResourceKey <ConfiguredFeature <?, ?>> REDWOOD_TREE = registerKey("redwood_tree");
     public static final ResourceKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE_SPAWN = registerKey("large_redwood_tree_spawn");
@@ -97,7 +98,8 @@ public class HibiscusConfiguredFeatures {
                 new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_CHECKED),
                         0.5f)), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_CHECKED)));
 
-        register(context, WISTERIA_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), UniformInt.of(4, 8), UniformInt.of(0, 4)));
+        register(context, WISTERIA_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), UniformInt.of(5, 8), UniformInt.of(0, 4)));
+        register(context, SWAMP_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), Blocks.MUD.defaultBlockState(), UniformInt.of(2, 12), UniformInt.of(1, 3)));
 
         register(context, LARGE_REDWOOD_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(HibiscusBlocks.REDWOOD[2]),
@@ -282,7 +284,7 @@ public class HibiscusConfiguredFeatures {
                         HibiscusBlocks.GARDENIA.defaultBlockState()))))));
 
         register(context, CATTAILS, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-                50, 6, 2, PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                90, 6, 2, PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(BlockStateProvider.simple(HibiscusBlocks.CATTAIL)),
                 BlockPredicate.allOf(
                         BlockPredicate.wouldSurvive(HibiscusBlocks.CATTAIL.defaultBlockState(), BlockPos.ZERO),

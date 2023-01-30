@@ -3,14 +3,12 @@ package net.hibiscus.naturespirit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerTypeHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.mixin.FoliagePlacerMixin;
 import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
 import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
-import net.hibiscus.naturespirit.terrablender.NatureSpiritBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusDeltaFeature;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
@@ -56,16 +54,6 @@ public class NatureSpirit implements ModInitializer {
         HibiscusConfiguredFeatures.registerConfiguredFeatures();
         HibiscusBiomes.registerBiomes();
         HibiscusBlocks.registerHibiscusBlocks();
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.BLUE_WISTERIA_VINES, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.PINK_WISTERIA_VINES, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.WHITE_WISTERIA_VINES, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.PURPLE_WISTERIA_VINES, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.LAVENDER, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.BLUEBELL, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.CARNATION, 0.4F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.GARDENIA, 0.4F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.ANEMONE, 0.4F);
-        CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.HIBISCUS, 0.3F);
         Registry.register(BuiltInRegistries.CAT_VARIANT, "trans", new CatVariant(new ResourceLocation("textures/entity/cat/trans.png")));
     }
 }

@@ -3,6 +3,7 @@ package net.hibiscus.naturespirit.blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +47,11 @@ public class Cattails extends DoublePlantBlock implements SimpleWaterloggedBlock
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.isFaceSturdy(level, pos, Direction.UP) && !state.is(Blocks.MAGMA_BLOCK);
+        if (level.getFluidState(pos.above()).is(FluidTags.WATER)) {
+            return state.isFaceSturdy(level, pos, Direction.UP) && !state.is(Blocks.MAGMA_BLOCK);
+        } else {
+            return state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND) || state.is(Blocks.SAND) || state.is(Blocks.RED_SAND);
+        }
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -61,7 +66,11 @@ public class Cattails extends DoublePlantBlock implements SimpleWaterloggedBlock
         } else {
             BlockPos blockPos = pos.below();
             BlockPos blockPos2 = pos.above();
-            return super.canSurvive(state, level, pos) && level.getBlockState(blockPos).isFaceSturdy(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).is(FluidTags.WATER);
+            if (state.getValue(WATERLOGGED)) {
+                return super.canSurvive(state, level, pos) && level.getBlockState(blockPos).isFaceSturdy(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).is(FluidTags.WATER);
+            } else {
+                return super.canSurvive(state, level, pos) && this.mayPlaceOn(level.getBlockState(blockPos), level, blockPos);
+            }
         }
     }
 

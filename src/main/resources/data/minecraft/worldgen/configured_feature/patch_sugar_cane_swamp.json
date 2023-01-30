@@ -3,18 +3,34 @@
   "config": {
     "feature": {
       "feature": {
-        "type": "minecraft:simple_block",
+        "type": "minecraft:block_column",
         "config": {
-          "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "natures_spirit:cattail",
-              "Properties": {
-                "half": "lower",
-                "waterlogged": "false"
+          "allowed_placement": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          "direction": "up",
+          "layers": [
+            {
+              "height": {
+                "type": "minecraft:biased_to_bottom",
+                "value": {
+                  "max_inclusive": 4,
+                  "min_inclusive": 2
+                }
+              },
+              "provider": {
+                "type": "minecraft:simple_state_provider",
+                "state": {
+                  "Name": "minecraft:sugar_cane",
+                  "Properties": {
+                    "age": "0"
+                  }
+                }
               }
             }
-          }
+          ],
+          "prioritize_tip": false
         }
       },
       "placement": [
@@ -24,21 +40,17 @@
             "type": "minecraft:all_of",
             "predicates": [
               {
-                "type": "minecraft:would_survive",
-                "state": {
-                  "Name": "natures_spirit:cattail",
-                  "Properties": {
-                    "half": "lower",
-                    "waterlogged": "false"
-                  }
-                }
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:air"
               },
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": [
-                  "minecraft:air",
-                  "minecraft:water"
-                ]
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:sugar_cane",
+                  "Properties": {
+                    "age": "0"
+                  }
+                }
               },
               {
                 "type": "minecraft:any_of",
@@ -90,13 +102,6 @@
                       -1,
                       -1
                     ]
-                  },
-                  {
-                    "type": "minecraft:matching_fluids",
-                    "fluids": [
-                      "minecraft:water",
-                      "minecraft:flowing_water"
-                    ]
                   }
                 ]
               }
@@ -105,8 +110,8 @@
         }
       ]
     },
-    "tries": 90,
-    "xz_spread": 6,
-    "y_spread": 2
+    "tries": 40,
+    "xz_spread": 8,
+    "y_spread": 0
   }
 }

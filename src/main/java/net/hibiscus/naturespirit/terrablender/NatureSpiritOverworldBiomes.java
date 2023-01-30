@@ -18,8 +18,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import javax.annotation.Nullable;
 
-import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.LAVENDER_WATER;
-import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.WISTERIA_WATER;
+import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.*;
 
 public class NatureSpiritOverworldBiomes {
     @Nullable
