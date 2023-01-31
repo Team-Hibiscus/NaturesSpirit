@@ -23,9 +23,6 @@ public class HibiscusRegion extends Region {
             builder.replaceBiome(BiomeKeys.JUNGLE, HibiscusBiomes.SAKURA_GROVE);
             builder.replaceBiome(BiomeKeys.SPARSE_JUNGLE, HibiscusBiomes.SAKURA_GROVE);
             builder.replaceBiome(BiomeKeys.BAMBOO_JUNGLE, HibiscusBiomes.SAKURA_GROVE);
-            builder.replaceBiome(BiomeKeys.SUNFLOWER_PLAINS, HibiscusBiomes.LAVENDER_FIELDS);
-            builder.replaceBiome(BiomeKeys.FLOWER_FOREST, HibiscusBiomes.LAVENDER_FIELDS);
-            builder.replaceBiome(BiomeKeys.TAIGA, HibiscusBiomes.WISTERIA_FOREST);
         });
     }
 

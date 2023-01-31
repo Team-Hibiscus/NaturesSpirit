@@ -22,8 +22,7 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 import javax.annotation.Nullable;
 
-import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.LAVENDER_WATER;
-import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.WISTERIA_WATER;
+import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.*;
 
 public class NatureSpiritOverworldBiomes {
     @Nullable
@@ -50,6 +49,21 @@ public class NatureSpiritOverworldBiomes {
         DefaultBiomeFeatures.addMineables(builder);
         DefaultBiomeFeatures.addSprings(builder);
         DefaultBiomeFeatures.addFrozenTopLayer(builder);
+    }
+
+    public static Biome erodedRiver(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup) {
+        SpawnSettings.Builder builder = (new SpawnSettings.Builder()).spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(EntityType.SQUID, 2, 1, 4)).spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(EntityType.SALMON, 5, 1, 5));
+        DefaultBiomeFeatures.addBatsAndMonsters(builder);
+        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.DROWNED, 100, 1, 1));
+        GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup).feature(GenerationStep.Feature.FLUID_SPRINGS, RIVER_WATER);
+        globalOverworldGeneration(lookupBackedBuilder);
+        DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
+        HibiscusTreeGeneration.addErodedRiverFlowers(lookupBackedBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(lookupBackedBuilder);
+
+        return biome(Biome.Precipitation.RAIN, 0.67F, 0.7F, 4159204, 329011, builder, lookupBackedBuilder, NORMAL_MUSIC);
     }
 
     public static Biome wisteriaForest(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {

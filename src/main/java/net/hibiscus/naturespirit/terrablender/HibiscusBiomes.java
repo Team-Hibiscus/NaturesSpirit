@@ -15,6 +15,7 @@ public class HibiscusBiomes {
 
     public static final RegistryKey <Biome> SAKURA_GROVE = register("sakura_grove");
     public static final RegistryKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
+    public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
     public static final RegistryKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
     public static final RegistryKey <Biome> BAMBOO_SAKURA = register("bamboo_sakura");
     public static final RegistryKey <Biome> REDWOOD_FOREST = register("redwood_forest");
@@ -34,6 +35,7 @@ public class HibiscusBiomes {
         register(bootstapContext, BAMBOO_SAKURA, NatureSpiritOverworldBiomes.bambooSakura(holderGetter, holderGetter2));
         register(bootstapContext, WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest(holderGetter, holderGetter2));
         register(bootstapContext, LAVENDER_FIELDS, NatureSpiritOverworldBiomes.lavenderFields(holderGetter, holderGetter2));
+        register(bootstapContext, ERODED_RIVER, NatureSpiritOverworldBiomes.erodedRiver(holderGetter, holderGetter2));
         register(bootstapContext, REDWOOD_FOREST, NatureSpiritOverworldBiomes.redwoodForest(holderGetter, holderGetter2));
     }
 

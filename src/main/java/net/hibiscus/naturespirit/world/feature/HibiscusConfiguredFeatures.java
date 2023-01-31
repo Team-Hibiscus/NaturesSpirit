@@ -40,6 +40,7 @@ public class HibiscusConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_DELTA = registerKey("water_delta");
     public static final RegistryKey <ConfiguredFeature <?, ?>> SWAMP_DELTA = registerKey("swamp_delta");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> RIVER_DELTA = registerKey("river_delta");
     public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE = registerKey("large_redwood_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> REDWOOD_TREE = registerKey("redwood_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE_SPAWN = registerKey("large_redwood_tree_spawn");
@@ -65,6 +66,7 @@ public class HibiscusConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SAKURA_GROVE = registerKey("flower_sakura_grove");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey("flower_redwood_forest");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_LAVENDER_FIELD = registerKey("flower_lavender_field");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
     public static final RegistryKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
 
 
@@ -85,6 +87,7 @@ public class HibiscusConfiguredFeatures {
 
         register(context, WISTERIA_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(), Blocks.COARSE_DIRT.getDefaultState(), UniformIntProvider.create(5, 8), UniformIntProvider.create(0, 4)));
         register(context, SWAMP_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(), Blocks.MUD.getDefaultState(), UniformIntProvider.create(2, 12), UniformIntProvider.create(1, 3)));
+        register(context, RIVER_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(), Blocks.COARSE_DIRT.getDefaultState(), UniformIntProvider.create(2, 6), UniformIntProvider.create(1, 3)));
 
         register(context, LARGE_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(HibiscusBlocks.REDWOOD[2]),
@@ -257,6 +260,15 @@ public class HibiscusConfiguredFeatures {
                         HibiscusBlocks.GARDENIA.getDefaultState(),
                         HibiscusBlocks.LAVENDER.getDefaultState(),
                         Blocks.PEONY.getDefaultState()
+                ))))));
+
+        register(context, FLOWER_ERODED_RIVER, Feature.FLOWER, new RandomPatchFeatureConfig(
+                60, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(
+                new NoiseBlockStateProvider(2445L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.030833334F, List.of(
+                        Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
+                        HibiscusBlocks.BLEEDING_HEART.getDefaultState(),
+                        HibiscusBlocks.ANEMONE.getDefaultState(),
+                        HibiscusBlocks.HIBISCUS.getDefaultState()
                 ))))));
 
         register(context, FLOWER_REDWOOD_FOREST, Feature.FLOWER, new RandomPatchFeatureConfig(
