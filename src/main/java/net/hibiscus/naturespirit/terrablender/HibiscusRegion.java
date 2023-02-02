@@ -21,8 +21,12 @@ public class HibiscusRegion extends Region {
     public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(BiomeKeys.JUNGLE, HibiscusBiomes.SAKURA_GROVE);
-            builder.replaceBiome(BiomeKeys.SPARSE_JUNGLE, HibiscusBiomes.SAKURA_GROVE);
+            builder.replaceBiome(BiomeKeys.SPARSE_JUNGLE, HibiscusBiomes.SAKURA_CLEARING);
             builder.replaceBiome(BiomeKeys.BAMBOO_JUNGLE, HibiscusBiomes.SAKURA_GROVE);
+            builder.replaceBiome(BiomeKeys.FOREST, HibiscusBiomes.SAKURA_GROVE);
+            builder.replaceBiome(BiomeKeys.STONY_PEAKS, HibiscusBiomes.SAKURA_GROVE);
+            builder.replaceBiome(BiomeKeys.PLAINS, HibiscusBiomes.SAKURA_CLEARING);
+            builder.replaceBiome(BiomeKeys.MEADOW, HibiscusBiomes.SAKURA_CLEARING);
         });
     }
 

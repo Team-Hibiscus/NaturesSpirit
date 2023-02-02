@@ -14,6 +14,7 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 public class HibiscusBiomes {
 
     public static final RegistryKey <Biome> SAKURA_GROVE = register("sakura_grove");
+    public static final RegistryKey <Biome> SAKURA_CLEARING = register("sakura_clearing");
     public static final RegistryKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
     public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
     public static final RegistryKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
@@ -32,6 +33,7 @@ public class HibiscusBiomes {
 
 
         register(bootstapContext, SAKURA_GROVE, NatureSpiritOverworldBiomes.sakuraGrove(holderGetter, holderGetter2));
+        register(bootstapContext, SAKURA_CLEARING, NatureSpiritOverworldBiomes.sakuraClearing(holderGetter, holderGetter2));
         register(bootstapContext, BAMBOO_SAKURA, NatureSpiritOverworldBiomes.bambooSakura(holderGetter, holderGetter2));
         register(bootstapContext, WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest(holderGetter, holderGetter2));
         register(bootstapContext, LAVENDER_FIELDS, NatureSpiritOverworldBiomes.lavenderFields(holderGetter, holderGetter2));

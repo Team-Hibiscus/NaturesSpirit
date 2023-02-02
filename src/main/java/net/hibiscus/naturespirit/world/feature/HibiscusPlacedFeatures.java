@@ -44,6 +44,7 @@ public class HibiscusPlacedFeatures {
     public static final RegistryKey <PlacedFeature> REDWOOD_ROCK_PLACED = registerKey("redwood_rock_placed");
     public static final RegistryKey <PlacedFeature> WISTERIA_PLACED = registerKey("wisteria_placed");
     public static final RegistryKey <PlacedFeature> SAKURA_PLACED = registerKey("sakura_placed");
+    public static final RegistryKey <PlacedFeature> FEW_SAKURA_PLACED = registerKey("few_sakura_placed");
     public static final RegistryKey <PlacedFeature> OAK_BUSH_PLACED = registerKey("oak_bush_placed");
     public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = registerKey("custom_fancy_oak_tree_placed");
     public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE2_PLACED = registerKey("custom_fancy_oak_tree2_placed");
@@ -101,6 +102,8 @@ public class HibiscusPlacedFeatures {
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WISTERIA_SPAWN), CountPlacementModifier.of(15), SquarePlacementModifier.of(), TREE_THRESHOLD, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, BiomePlacementModifier.of());
         registerKey(context, SAKURA_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SAKURA_SPAWN), CountPlacementModifier.of(1), SquarePlacementModifier.of(), TREE_THRESHOLD, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, BiomePlacementModifier.of());
+        registerKey(context, FEW_SAKURA_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SAKURA_SPAWN), RarityFilterPlacementModifier.of(12),CountPlacementModifier.of(1), SquarePlacementModifier.of(), TREE_THRESHOLD, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, BiomePlacementModifier.of());
         registerKey(context, OAK_BUSH_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH_SPAWN), CountPlacementModifier.of(1), SquarePlacementModifier.of(), TREE_THRESHOLD, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, BiomePlacementModifier.of());
         registerKey(context, CUSTOM_FANCY_OAK_TREE_PLACED,

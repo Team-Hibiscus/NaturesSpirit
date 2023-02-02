@@ -31,6 +31,9 @@ public class HibiscusTreeGeneration {
     public static void addSakuraTrees(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.SAKURA_PLACED);
     }
+    public static void addFewSakuraTrees(GenerationSettings.LookupBackedBuilder builder) {
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FEW_SAKURA_PLACED);
+    }
 
 
     public static void addRedwoodTrees(GenerationSettings.LookupBackedBuilder builder) {
