@@ -23,7 +23,6 @@ public class HibiscusRegion2 extends Region {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(BiomeKeys.SUNFLOWER_PLAINS, HibiscusBiomes.LAVENDER_FIELDS);
             builder.replaceBiome(BiomeKeys.FLOWER_FOREST, HibiscusBiomes.LAVENDER_FIELDS);
-            builder.replaceBiome(HibiscusBiomes.SAKURA_CLEARING, HibiscusBiomes.LAVENDER_FIELDS);
             builder.replaceBiome(BiomeKeys.TAIGA, HibiscusBiomes.WISTERIA_FOREST);
             builder.replaceBiome(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, HibiscusBiomes.WISTERIA_FOREST);
             builder.replaceBiome(BiomeKeys.OLD_GROWTH_PINE_TAIGA, HibiscusBiomes.WISTERIA_FOREST);

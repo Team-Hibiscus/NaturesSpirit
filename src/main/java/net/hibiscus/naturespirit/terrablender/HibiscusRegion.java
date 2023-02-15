@@ -20,13 +20,16 @@ public class HibiscusRegion extends Region {
     @Override
     public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            builder.replaceBiome(BiomeKeys.JUNGLE, HibiscusBiomes.SAKURA_GROVE);
-            builder.replaceBiome(BiomeKeys.SPARSE_JUNGLE, HibiscusBiomes.SAKURA_CLEARING);
-            builder.replaceBiome(BiomeKeys.BAMBOO_JUNGLE, HibiscusBiomes.SAKURA_GROVE);
-            builder.replaceBiome(BiomeKeys.FOREST, HibiscusBiomes.SAKURA_GROVE);
-            builder.replaceBiome(BiomeKeys.STONY_PEAKS, HibiscusBiomes.SAKURA_GROVE);
-            builder.replaceBiome(BiomeKeys.PLAINS, HibiscusBiomes.SAKURA_CLEARING);
-            builder.replaceBiome(BiomeKeys.MEADOW, HibiscusBiomes.SAKURA_CLEARING);
+            builder.replaceBiome(BiomeKeys.JUNGLE, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.SPARSE_JUNGLE, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.BAMBOO_JUNGLE, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.FOREST, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.BIRCH_FOREST, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.OLD_GROWTH_BIRCH_FOREST, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.FLOWER_FOREST, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.STONY_PEAKS, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.WINDSWEPT_SAVANNA, HibiscusBiomes.SUGI_FOREST);
+            builder.replaceBiome(BiomeKeys.PLAINS, HibiscusBiomes.SUGI_FOREST);
         });
     }
 

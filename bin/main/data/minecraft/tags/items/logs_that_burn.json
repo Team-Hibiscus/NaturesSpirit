@@ -2,9 +2,10 @@
   "replace": false,
   "values": [
     "#natures_spirit:redwood_logs",
-    "#natures_spirit:sakura_logs",
+    "#natures_spirit:sugi_logs",
     "#natures_spirit:wisteria_logs",
     "#natures_spirit:fir_logs",
-    "#natures_spirit:willow_logs"
+    "#natures_spirit:willow_logs",
+    "#natures_spirit:aspen_logs"
   ]
 }

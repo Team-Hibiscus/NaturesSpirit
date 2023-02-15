@@ -3,8 +3,9 @@
   "values": [
     "natures_spirit:redwood_log",
     "natures_spirit:wisteria_log",
-    "natures_spirit:sakura_log",
+    "natures_spirit:sugi_log",
     "natures_spirit:fir_log",
-    "natures_spirit:willow_log"
+    "natures_spirit:willow_log",
+    "natures_spirit:aspen_log"
   ]
 }

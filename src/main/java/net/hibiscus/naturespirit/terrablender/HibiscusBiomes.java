@@ -13,13 +13,14 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class HibiscusBiomes {
 
-    public static final RegistryKey <Biome> SAKURA_GROVE = register("sakura_grove");
-    public static final RegistryKey <Biome> SAKURA_CLEARING = register("sakura_clearing");
+    public static final RegistryKey <Biome> SUGI_FOREST = register("sugi_forest");
     public static final RegistryKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
     public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
     public static final RegistryKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
-    public static final RegistryKey <Biome> BAMBOO_SAKURA = register("bamboo_sakura");
     public static final RegistryKey <Biome> REDWOOD_FOREST = register("redwood_forest");
+    public static final RegistryKey <Biome> GOLDEN_WILDS = register("golden_wilds");
+    public static final RegistryKey <Biome> GOLDEN_FIELDS = register("golden_fields");
+    public static final RegistryKey <Biome> FIR_FOREST = register("fir_forest");
 
     private static RegistryKey <Biome> register(String name) {
         System.out.println("Registered Resource Key for biome: " + name);
@@ -32,13 +33,14 @@ public class HibiscusBiomes {
         RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2 = bootstapContext.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
 
 
-        register(bootstapContext, SAKURA_GROVE, NatureSpiritOverworldBiomes.sakuraGrove(holderGetter, holderGetter2));
-        register(bootstapContext, SAKURA_CLEARING, NatureSpiritOverworldBiomes.sakuraClearing(holderGetter, holderGetter2));
-        register(bootstapContext, BAMBOO_SAKURA, NatureSpiritOverworldBiomes.bambooSakura(holderGetter, holderGetter2));
+        register(bootstapContext, SUGI_FOREST, NatureSpiritOverworldBiomes.sugiForest(holderGetter, holderGetter2));
         register(bootstapContext, WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest(holderGetter, holderGetter2));
         register(bootstapContext, LAVENDER_FIELDS, NatureSpiritOverworldBiomes.lavenderFields(holderGetter, holderGetter2));
         register(bootstapContext, ERODED_RIVER, NatureSpiritOverworldBiomes.erodedRiver(holderGetter, holderGetter2));
         register(bootstapContext, REDWOOD_FOREST, NatureSpiritOverworldBiomes.redwoodForest(holderGetter, holderGetter2));
+        register(bootstapContext, GOLDEN_WILDS, NatureSpiritOverworldBiomes.goldenWilds(holderGetter, holderGetter2));
+        register(bootstapContext, GOLDEN_FIELDS, NatureSpiritOverworldBiomes.goldenFields(holderGetter, holderGetter2));
+        register(bootstapContext, FIR_FOREST, NatureSpiritOverworldBiomes.firForest(holderGetter, holderGetter2));
     }
 
     private static void register(Registerable <Biome> context, RegistryKey <Biome> key, Biome biome) {

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "natures_spirit:block/marigold_bottom"
+    },
+    "half=upper": {
+      "model": "natures_spirit:block/marigold_top"
+    }
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom_right_open",
-  "textures": {
-    "top": "natures_spirit:block/blooming_sakura_door_top",
-    "bottom": "natures_spirit:block/blooming_sakura_door_bottom"
-  }
-}

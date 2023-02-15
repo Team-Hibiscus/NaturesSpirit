@@ -3,8 +3,9 @@
   "values": [
     "natures_spirit:redwood_wall_sign",
     "natures_spirit:wisteria_wall_sign",
-    "natures_spirit:sakura_wall_sign",
+    "natures_spirit:sugi_wall_sign",
     "natures_spirit:fir_wall_sign",
-    "natures_spirit:willow_wall_sign"
+    "natures_spirit:willow_wall_sign",
+    "natures_spirit:aspen_wall_sign"
   ]
 }

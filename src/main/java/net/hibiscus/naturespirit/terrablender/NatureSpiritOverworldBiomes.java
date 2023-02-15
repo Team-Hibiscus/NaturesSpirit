@@ -42,6 +42,14 @@ public class NatureSpiritOverworldBiomes {
         return (new Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).fogColor(12638463).skyColor(calculateSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
+    private static Biome biomeWithGrassColor(Biome.Precipitation precipitation, float temperature, float downfall, int grassColor,SpawnSettings.Builder spawnBuilder, GenerationSettings.LookupBackedBuilder biomeBuilder, @Nullable MusicSound music) {
+        return biomeWithGrassColor(precipitation, temperature, downfall, 4159204, 329011, grassColor,spawnBuilder, biomeBuilder, music);
+    }
+
+    private static Biome biomeWithGrassColor(Biome.Precipitation precipitation, float temperature, float downfall, int waterColor, int waterFogColor, int grassColor, SpawnSettings.Builder spawnBuilder, GenerationSettings.LookupBackedBuilder biomeBuilder, @Nullable MusicSound music) {
+        return (new Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).grassColor(grassColor).fogColor(12638463).skyColor(calculateSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+    }
+
     private static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
         DefaultBiomeFeatures.addLandCarvers(builder);
         DefaultBiomeFeatures.addAmethystGeodes(builder);
@@ -89,42 +97,75 @@ public class NatureSpiritOverworldBiomes {
         return biome(Biome.Precipitation.RAIN, 0.4F, 0.7F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
-    public static Biome sakuraGrove(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
+    public static Biome sugiForest(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
         GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
         globalOverworldGeneration(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
-        DefaultBiomeFeatures.addBamboo(biomeBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraTrees(biomeBuilder);
+        HibiscusTreeGeneration.addSugiTrees(biomeBuilder);
         HibiscusTreeGeneration.addOakTrees(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addSugiSecondaryVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
     }
 
-    public static Biome sakuraClearing(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
+    public static Biome goldenWilds(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
         GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
         globalOverworldGeneration(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-        HibiscusTreeGeneration.addFewSakuraTrees(biomeBuilder);
+        HibiscusTreeGeneration.addFirTrees(biomeBuilder);
+        HibiscusTreeGeneration.addAspenTrees(biomeBuilder);
         HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addGoldenWildsVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-        return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
+        return biomeWithGrassColor(Biome.Precipitation.RAIN, 0.45F, 0.3F, 14733927,spawnBuilder,biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
     }
+    public static Biome goldenFields(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
+        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
+
+        GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
+        globalOverworldGeneration(biomeBuilder);
+        HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
+        HibiscusTreeGeneration.adFewAspenTrees(biomeBuilder);
+        HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
+        HibiscusTreeGeneration.addGoldenFieldsVegetation(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+        return biomeWithGrassColor(Biome.Precipitation.RAIN, 0.45F, 0.3F, 14733927,spawnBuilder,biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
+    }
+    public static Biome firForest(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
+        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
+
+        GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
+        globalOverworldGeneration(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
+        HibiscusTreeGeneration.addDenseFirTrees(biomeBuilder);
+        HibiscusTreeGeneration.addFirVegetation(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+        return biomeWithGrassColor(Biome.Precipitation.RAIN, 0.45F, 0.3F, 11977352,spawnBuilder,biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
+    }
+
 
     public static Biome lavenderFields(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
@@ -133,7 +174,7 @@ public class NatureSpiritOverworldBiomes {
 
         GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2).feature(GenerationStep.Feature.FLUID_SPRINGS, LAVENDER_WATER);
         globalOverworldGeneration(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
+        HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
@@ -142,26 +183,6 @@ public class NatureSpiritOverworldBiomes {
         biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_WATERLILY);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
         biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM);
-        return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
-    }
-
-    public static Biome bambooSakura(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
-        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
-        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
-
-        GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PANDA, 1, 3, 2));
-        globalOverworldGeneration(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraVegetation(biomeBuilder);
-        DefaultBiomeFeatures.addFrozenLavaSpring(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
-        DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraTrees(biomeBuilder);
-        HibiscusTreeGeneration.addBamboo(biomeBuilder);
-        HibiscusTreeGeneration.addSakuraSecondaryVegetation(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
     }
 
@@ -182,6 +203,6 @@ public class NatureSpiritOverworldBiomes {
         HibiscusTreeGeneration.addSpruceBush(biomeBuilder);
         HibiscusTreeGeneration.addRedwoodSecondaryVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-        return biome(Biome.Precipitation.RAIN, 0.4F, 0.6F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return biomeWithGrassColor(Biome.Precipitation.RAIN, 0.4F, 0.6F, 11451757, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 }

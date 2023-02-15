@@ -3,8 +3,9 @@
   "values": [
     "natures_spirit:redwood_fence",
     "natures_spirit:wisteria_fence",
-    "natures_spirit:sakura_fence",
+    "natures_spirit:sugi_fence",
     "natures_spirit:fir_fence",
-    "natures_spirit:willow_fence"
+    "natures_spirit:willow_fence",
+    "natures_spirit:aspen_fence"
   ]
 }

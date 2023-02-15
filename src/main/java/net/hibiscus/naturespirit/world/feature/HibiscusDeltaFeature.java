@@ -92,7 +92,7 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
     }
     static {
         CANNOT_REPLACE = ImmutableList.of(Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER, HibiscusBlocks.BLUE_WISTERIA_LEAVES, HibiscusBlocks.WHITE_WISTERIA_LEAVES, HibiscusBlocks.PINK_WISTERIA_LEAVES, HibiscusBlocks.WILLOW_LEAVES);
-        CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.DIRT, Blocks.GRASS_BLOCK);
+        CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRASS_BLOCK);
         DIRECTIONS = Direction.values();
     }
 }
