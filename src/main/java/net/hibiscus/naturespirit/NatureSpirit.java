@@ -13,6 +13,7 @@ import net.hibiscus.naturespirit.world.feature.HibiscusDeltaFeature;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.AspenFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.FirFoliagePlacer;
+import net.hibiscus.naturespirit.world.feature.foliage_placer.SugiFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
@@ -41,6 +42,7 @@ public class NatureSpirit implements ModInitializer {
     public static final TrunkPlacerType <SugiTrunkPlacer> SUGI_TRUNK_PLACER = callRegister("sugi_trunk_placer", SugiTrunkPlacer.CODEC);
     public static final TreeDecoratorType <WisteriaVinesTreeDecorator> WISTERIA_VINES_TREE_DECORATOR = TreeDecoratorMixin.callRegister("wisteria_vines_tree_decorator", WisteriaVinesTreeDecorator.CODEC);
     public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("wisteria_foliage_placer", WisteriaFoliagePlacer.CODEC);
+    public static final FoliagePlacerType <SugiFoliagePlacer> SUGI_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("sugi_foliage_placer", SugiFoliagePlacer.CODEC);
     public static final FoliagePlacerType <AspenFoliagePlacer> ASPEN_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("aspen_foliage_placer", AspenFoliagePlacer.CODEC);
     public static final FoliagePlacerType <FirFoliagePlacer> FIR_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("fir_foliage_placer", FirFoliagePlacer.CODEC);
     public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider", HibiscusSimpleBlockStateProvider.CODEC);

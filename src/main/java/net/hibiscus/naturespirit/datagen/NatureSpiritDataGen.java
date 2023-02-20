@@ -340,7 +340,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         }
         private void generateTreeBlockStateModels (Block[][] Sapling, Block[] Leaves, BlockStateModelGenerator blockStateModelGenerator) {
             for (int i = 0; i < Leaves.length; i++) {
-                blockStateModelGenerator.registerSingleton(Leaves[i], TexturedModel.LEAVES);
+                    blockStateModelGenerator.registerSingleton(Leaves[i], TexturedModel.LEAVES);
                 blockStateModelGenerator.registerFlowerPotPlant(Sapling[i][0], Sapling[i][1], TintType.NOT_TINTED);
             }
         }

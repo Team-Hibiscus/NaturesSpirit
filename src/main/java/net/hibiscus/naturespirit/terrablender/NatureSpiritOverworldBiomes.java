@@ -109,7 +109,6 @@ public class NatureSpiritOverworldBiomes {
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
         HibiscusTreeGeneration.addSugiTrees(biomeBuilder);
-        HibiscusTreeGeneration.addOakTrees(biomeBuilder);
         HibiscusTreeGeneration.addSugiSecondaryVegetation(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, 0.95F, 0.6F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));

@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.AspenFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.FirFoliagePlacer;
+import net.hibiscus.naturespirit.world.feature.foliage_placer.SugiFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
@@ -211,8 +212,8 @@ public class HibiscusConfiguredFeatures {
 
         register(context, SUGI_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(HibiscusBlocks.SUGI[2]),
-                new SugiTrunkPlacer(13, 3, 3), BlockStateProvider.of(HibiscusBlocks.SUGI_LEAVES),
-                new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4),
+                new SugiTrunkPlacer(10, 1, 1, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)), BlockStateProvider.of(HibiscusBlocks.SUGI_LEAVES),
+                new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                 new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))).ignoreVines().build());
 
         register(context, SUGI_SPAWN, Feature.RANDOM_SELECTOR,
@@ -260,14 +261,12 @@ public class HibiscusConfiguredFeatures {
                         Blocks.CORNFLOWER.getDefaultState()))))));
 
         register(context, FLOWER_SUGI_FOREST, Feature.FLOWER, new RandomPatchFeatureConfig(
-                96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(
+                45, 8, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(
                 new NoiseBlockStateProvider(2445L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.030833334F, List.of(
-                        Blocks.ALLIUM.getDefaultState(),
-                        Blocks.LILAC.getDefaultState(),
+                        Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
                         Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
                         HibiscusBlocks.GARDENIA.getDefaultState(),
-                        HibiscusBlocks.SNAPDRAGON.getDefaultState(),
-                        Blocks.PEONY.getDefaultState()))))));
+                        Blocks.AZURE_BLUET.getDefaultState()))))));
 
         register(context, FLOWER_LAVENDER_FIELD, Feature.FLOWER, new RandomPatchFeatureConfig(
                 120, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(

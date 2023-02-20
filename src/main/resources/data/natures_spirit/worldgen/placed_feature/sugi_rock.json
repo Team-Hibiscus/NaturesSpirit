@@ -17,17 +17,17 @@
       "y_spread": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": -3,
-          "max_inclusive": -1
+          "min_inclusive": -4,
+          "max_inclusive": -2
         }
       },
       "xz_spread": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 0,
-          "max_inclusive": 0
-        }
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0,
+        "max_inclusive": 0
       }
+    }
     },
     {
       "type": "minecraft:block_predicate_filter",
@@ -43,6 +43,35 @@
             ],
             "blocks": [
               "minecraft:grass_block",
+              "minecraft:dirt",
+              "minecraft:stone"
+            ]
+          },
+
+          {
+            "type": "minecraft:matching_blocks",
+            "offset": [
+              0,
+              -2,
+              0
+            ],
+            "blocks": [
+              "minecraft:dirt",
+              "minecraft:stone"
+            ]
+          },
+
+          {
+            "type": "minecraft:matching_blocks",
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "blocks": [
+              "minecraft:grass_block",
+              "minecraft:grass",
+              "minecraft:air",
               "minecraft:dirt",
               "minecraft:stone"
             ]
