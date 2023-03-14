@@ -4,11 +4,9 @@ import com.google.common.collect.ImmutableList;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
-import net.hibiscus.naturespirit.world.feature.foliage_placer.AspenFoliagePlacer;
-import net.hibiscus.naturespirit.world.feature.foliage_placer.FirFoliagePlacer;
-import net.hibiscus.naturespirit.world.feature.foliage_placer.SugiFoliagePlacer;
-import net.hibiscus.naturespirit.world.feature.foliage_placer.WisteriaFoliagePlacer;
+import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.feature.trunk.OliveTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.block.Block;
@@ -44,6 +42,7 @@ public class HibiscusConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_DELTA = registerKey("water_delta");
     public static final RegistryKey <ConfiguredFeature <?, ?>> SWAMP_DELTA = registerKey("swamp_delta");
     public static final RegistryKey <ConfiguredFeature <?, ?>> RIVER_DELTA = registerKey("river_delta");
+
     public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE = registerKey("large_redwood_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> REDWOOD_TREE = registerKey("redwood_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE_SPAWN = registerKey("large_redwood_tree_spawn");
@@ -62,11 +61,17 @@ public class HibiscusConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_SPAWN = registerKey("wisteria_spawn");
     public static final RegistryKey <ConfiguredFeature <?, ?>> SUGI_TREE = registerKey("sugi_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> SUGI_SPAWN = registerKey("sugi_spawn");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> CYPRESS_TREE = registerKey("cypress_tree");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> CYPRESS_TREE_SPAWN = registerKey("cypress_tree_spawn");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> OLIVE_TREE = registerKey("olive_tree");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> OLIVE_TREE_SPAWN = registerKey("olive_tree_spawn");
+
     public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH = registerKey("oak_bush");
     public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH = registerKey("spruce_bush");
     public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH_SPAWN = registerKey("oak_bush_spawn");
     public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH_SPAWN = registerKey("spruce_bush_spawn");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FANCY_OAK_TREE_SPAWN = registerKey("custom_fancy_oak_tree_spawn");
+
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey("flower_redwood_forest");
@@ -74,6 +79,7 @@ public class HibiscusConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_GOLDEN_WILDS = registerKey("flower_golden_wilds");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FIR_FOREST = registerKey("flower_fir_forest");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_CYPRESS_FIELDS = registerKey("flower_cypress_fields");
     public static final RegistryKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
 
 
@@ -108,6 +114,13 @@ public class HibiscusConfiguredFeatures {
         register(context, ASPEN_TREE_SPAWN, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.ASPEN_BEES_CHECKED),
                         0.1f)), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.ASPEN_CHECKED)));
+
+        register(context, CYPRESS_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(HibiscusBlocks.CYPRESS[2]),
+                new StraightTrunkPlacer(11, 1, 2),
+                BlockStateProvider.of(HibiscusBlocks.CYPRESS_LEAVES),
+                new CypressFoliagePlacer(UniformIntProvider.create(2, 2), UniformIntProvider.create(3, 3), UniformIntProvider.create(11, 13)),
+                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
 
 
         register(context, FIR_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
@@ -212,14 +225,30 @@ public class HibiscusConfiguredFeatures {
 
         register(context, SUGI_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(HibiscusBlocks.SUGI[2]),
-                new SugiTrunkPlacer(10, 1, 1, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)), BlockStateProvider.of(HibiscusBlocks.SUGI_LEAVES),
+                new SugiTrunkPlacer(10, 1, 1, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                BlockStateProvider.of(HibiscusBlocks.SUGI_LEAVES),
                 new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                 new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))).ignoreVines().build());
 
         register(context, SUGI_SPAWN, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SUGI_CHECKED), 0.325f)),
                         placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SUGI_CHECKED)));
-//
+
+        register(context, OLIVE_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(HibiscusBlocks.OLIVE[2]),
+                new OliveTrunkPlacer(4, 1, 2, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                BlockStateProvider.of(HibiscusBlocks.OLIVE_LEAVES),
+                new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 60),
+                new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))).ignoreVines().build());
+
+        register(context, OLIVE_TREE_SPAWN, Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OLIVE_CHECKED), 0.325f)),
+                        placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OLIVE_CHECKED)));
+
+        register(context, CYPRESS_TREE_SPAWN, Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.CYPRESS_CHECKED), 0.325f)),
+                        placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.CYPRESS_CHECKED)));
+
         register(context, FANCY_OAK_TREE_SPAWN, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(TreePlacedFeatures.FANCY_OAK_BEES), 0.03F)),
                         placedFeatureRegistryEntryLookup.getOrThrow(TreePlacedFeatures.FANCY_OAK_CHECKED)));
@@ -313,6 +342,22 @@ public class HibiscusConfiguredFeatures {
                         Blocks.OXEYE_DAISY.getDefaultState(),
                         HibiscusBlocks.CARNATION.getDefaultState(),
                         Blocks.ALLIUM.getDefaultState()))))));
+
+        register(context, FLOWER_CYPRESS_FIELDS, Feature.FLOWER, new RandomPatchFeatureConfig(
+                120, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(
+                new NoiseBlockStateProvider(2445L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.030833334F, List.of(
+                        Blocks.GRASS.getDefaultState(),
+                        Blocks.TALL_GRASS.getDefaultState(),
+                        Blocks.POPPY.getDefaultState(),
+                        HibiscusBlocks.CARNATION.getDefaultState(),
+                        Blocks.POPPY.getDefaultState(),
+                        Blocks.GRASS.getDefaultState(),
+                        Blocks.POPPY.getDefaultState(),
+                        HibiscusBlocks.CARNATION.getDefaultState(),
+                        Blocks.POPPY.getDefaultState(),
+                        Blocks.TALL_GRASS.getDefaultState(),
+                        Blocks.GRASS.getDefaultState()
+                ))))));
 
         register(context, CATTAILS, Feature.RANDOM_PATCH, new RandomPatchFeatureConfig(
                 90, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,

@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:carrot",
+    "minecraft:cooked_chicken",
+    "minecraft:cooked_porkchop",
+    "minecraft:cooked_rabbit",
+    "minecraft:cooked_cod",
+    "natures_spirit:green_olives",
+    "natures_spirit:black_olives",
+    "minecraft:beetroot",
+    "minecraft:brown_mushroom"
+  ]
+}

@@ -21,6 +21,7 @@ public class HibiscusBiomes {
     public static final RegistryKey <Biome> GOLDEN_WILDS = register("golden_wilds");
     public static final RegistryKey <Biome> GOLDEN_FIELDS = register("golden_fields");
     public static final RegistryKey <Biome> FIR_FOREST = register("fir_forest");
+    public static final RegistryKey <Biome> CYPRESS_FIELDS = register("cypress_fields");
 
     private static RegistryKey <Biome> register(String name) {
         System.out.println("Registered Resource Key for biome: " + name);
@@ -41,6 +42,7 @@ public class HibiscusBiomes {
         register(bootstapContext, GOLDEN_WILDS, NatureSpiritOverworldBiomes.goldenWilds(holderGetter, holderGetter2));
         register(bootstapContext, GOLDEN_FIELDS, NatureSpiritOverworldBiomes.goldenFields(holderGetter, holderGetter2));
         register(bootstapContext, FIR_FOREST, NatureSpiritOverworldBiomes.firForest(holderGetter, holderGetter2));
+        register(bootstapContext, CYPRESS_FIELDS, NatureSpiritOverworldBiomes.cypressFields(holderGetter, holderGetter2));
     }
 
     private static void register(Registerable <Biome> context, RegistryKey <Biome> key, Biome biome) {

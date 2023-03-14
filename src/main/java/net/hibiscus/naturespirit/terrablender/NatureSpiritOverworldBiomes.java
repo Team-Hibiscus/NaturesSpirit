@@ -204,4 +204,22 @@ public class NatureSpiritOverworldBiomes {
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
         return biomeWithGrassColor(Biome.Precipitation.RAIN, 0.4F, 0.6F, 11451757, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
+
+
+    public static Biome cypressFields(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
+        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
+
+        GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
+        globalOverworldGeneration(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
+        HibiscusTreeGeneration.addOliveTrees(biomeBuilder);
+        HibiscusTreeGeneration.addCypressTrees(biomeBuilder);
+        HibiscusTreeGeneration.addCypressVegetation(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, 0.9F, 0.45F,spawnBuilder,biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST));
+    }
 }

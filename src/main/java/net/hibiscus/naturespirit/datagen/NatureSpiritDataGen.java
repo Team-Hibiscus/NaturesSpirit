@@ -15,10 +15,17 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.loot.condition.TableBonusLootCondition;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
@@ -29,6 +36,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -64,11 +72,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
     }
 
 
-    public static Block [][] woodArrays = new Block[6][];
-    public static Block [] leavesArrays = new Block[9];
-    public static Block [][] saplingArrays = new Block[9][];
-    public static TagKey <Block>[] blockLogTags = new TagKey[6];
-    public static TagKey <Item>[] itemLogTags = new TagKey[6];
+    public static Block [][] woodArrays = new Block[8][];
+    public static Block [] leavesArrays = new Block[11];
+    public static Block [][] saplingArrays = new Block[11][];
+    public static TagKey <Block>[] blockLogTags = new TagKey[8];
+    public static TagKey <Item>[] itemLogTags = new TagKey[8];
     private void registerWoodTypes () {
         woodArrays[0] = HibiscusBlocks.REDWOOD;
         woodArrays[1] = HibiscusBlocks.WISTERIA;
@@ -76,6 +84,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         woodArrays[3] = HibiscusBlocks.FIR;
         woodArrays[4] = HibiscusBlocks.WILLOW;
         woodArrays[5] = HibiscusBlocks.ASPEN;
+        woodArrays[6] = HibiscusBlocks.CYPRESS;
+        woodArrays[7] = HibiscusBlocks.OLIVE;
 
         leavesArrays[0] = HibiscusBlocks.REDWOOD_LEAVES;
         leavesArrays[1] = HibiscusBlocks.WHITE_WISTERIA_LEAVES;
@@ -86,6 +96,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         leavesArrays[6] = HibiscusBlocks.FIR_LEAVES;
         leavesArrays[7] = HibiscusBlocks.WILLOW_LEAVES;
         leavesArrays[8] = HibiscusBlocks.ASPEN_LEAVES;
+        leavesArrays[9] = HibiscusBlocks.CYPRESS_LEAVES;
+        leavesArrays[10] = HibiscusBlocks.OLIVE_LEAVES;
 
         saplingArrays[0] = HibiscusBlocks.REDWOOD_SAPLING;
         saplingArrays[1] = HibiscusBlocks.WHITE_WISTERIA_SAPLING;
@@ -96,6 +108,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         saplingArrays[6] = HibiscusBlocks.FIR_SAPLING;
         saplingArrays[7] = HibiscusBlocks.WILLOW_SAPLING;
         saplingArrays[8] = HibiscusBlocks.ASPEN_SAPLING;
+        saplingArrays[9] = HibiscusBlocks.CYPRESS_SAPLING;
+        saplingArrays[10] = HibiscusBlocks.OLIVE_SAPLING;
 
         blockLogTags[0] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "redwood_logs"));
         blockLogTags[1] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "sugi_logs"));
@@ -103,6 +117,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         blockLogTags[3] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "fir_logs"));
         blockLogTags[4] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "willow_logs"));
         blockLogTags[5] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "aspen_logs"));
+        blockLogTags[6] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "cypress_logs"));
+        blockLogTags[7] = TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, "olive_logs"));
 
         itemLogTags[0] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "redwood_logs"));
         itemLogTags[1] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "sugi_logs"));
@@ -110,6 +126,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         itemLogTags[3] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "fir_logs"));
         itemLogTags[4] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "willow_logs"));
         itemLogTags[5] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "aspen_logs"));
+        itemLogTags[6] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "cypress_logs"));
+        itemLogTags[7] = TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, "olive_logs"));
     }
 
 
@@ -120,7 +138,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
 
     private static class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
-
+        private static final LootCondition.Builder WITH_SILK_TOUCH_OR_SHEARS = WITH_SHEARS.or(WITH_SILK_TOUCH);
+        private static final LootCondition.Builder WITHOUT_SILK_TOUCH_NOR_SHEARS = WITH_SILK_TOUCH_OR_SHEARS.invert();
         private final Map<Identifier, LootTable.Builder> map = new HashMap();
 
         protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
@@ -148,14 +167,38 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             }
         }
 
+        public net.minecraft.loot.LootTable.Builder blackOlivesDrop(Block leaves, Block drop, float... chance) {
+            return this.leavesDrops(leaves, drop, chance)
+                    .pool(LootPool.builder()
+                            .rolls(ConstantLootNumberProvider.create(1.0F))
+                            .conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS)
+                            .with(((net.minecraft.loot.entry.LeafEntry.Builder <?>)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(HibiscusBlocks.BLACK_OLIVES)))
+                                    .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, new float[]{0.01F, 0.0111111114F, 0.0125F, 0.016666668F, 0.05F}))));
+        }
+        public net.minecraft.loot.LootTable.Builder greenOlivesDrop(Block leaves, Block drop, float... chance) {
+            return this.blackOlivesDrop(leaves, drop, chance)
+                    .pool(LootPool.builder()
+                            .rolls(ConstantLootNumberProvider.create(1.0F))
+                            .conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS)
+                            .with(((net.minecraft.loot.entry.LeafEntry.Builder <?>)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(HibiscusBlocks.GREEN_OLIVES)))
+                                    .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, new float[]{0.01F, 0.0111111114F, 0.0125F, 0.016666668F, 0.05F}))));
+        }
+
         private void addTreeTable(Block[][] array, Block[] array2) {
             for (int i = 0; i < array.length; i++) {
                 addDrop(array[i][0]);
                 addPottedPlantDrops(array[i][1]);
                 int finalI = i;
-                this.addDrop(array2[i], (block) -> {
-                    return this.leavesDrops(block, array[finalI][0], SAPLING_DROP_CHANCE);
-                });
+                if (i!=10) {
+                    this.addDrop(array2[i], (block) -> {
+                        return this.leavesDrops(block, array[finalI][0], SAPLING_DROP_CHANCE);
+                    });
+                }
+                if (i==10) {
+                    this.addDrop(array2[i], (block) -> {
+                        return this.greenOlivesDrop(block, array[finalI][0], SAPLING_DROP_CHANCE);
+                    });
+                }
             }
         }
 
@@ -413,7 +456,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
         @Override
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
+            itemModelGenerator.register(HibiscusBlocks.GREEN_OLIVES, Models.GENERATED);
+            itemModelGenerator.register(HibiscusBlocks.BLACK_OLIVES, Models.GENERATED);
         }
     }
 
@@ -487,6 +531,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateWoodTranslations(woodArrays, translationBuilder);
             generateTreeTranslations(saplingArrays, leavesArrays , translationBuilder);
             translationBuilder.add(HibiscusItemGroups.NatureSpiritItemGroup, "Nature's Spirit Blocks & Items");
+            translationBuilder.add(HibiscusBlocks.GREEN_OLIVES, "Green Olives");
+            translationBuilder.add(HibiscusBlocks.BLACK_OLIVES, "Black Olives");
+            translationBuilder.add(NatureSpirit.EAT_PIZZA_SLICE, "Pizza Slices Eaten");
             generateBlockTranslations(HibiscusBlocks.ANEMONE, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.POTTED_ANEMONE, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.LAVENDER, translationBuilder);
@@ -507,6 +554,19 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateBlockTranslations(HibiscusBlocks.WILLOW_VINES, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.CATTAIL, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.MARIGOLD, translationBuilder);
+            translationBuilder.add("block.natures_spirit.pizza.chicken_topping", "With Cooked Chicken");
+            translationBuilder.add("block.natures_spirit.pizza.green_olives_topping", "With Green Olives");
+            translationBuilder.add("block.natures_spirit.pizza.black_olives_topping", "With Black Olives");
+            translationBuilder.add("block.natures_spirit.pizza.mushroom_topping", "With Mushrooms");
+            translationBuilder.add("block.natures_spirit.pizza.beetroot_topping", "With Beetroots");
+            translationBuilder.add("block.natures_spirit.pizza.carrot_topping", "With Carrots");
+            translationBuilder.add("block.natures_spirit.pizza.cod_topping", "With Cooked Cod");
+            translationBuilder.add("block.natures_spirit.pizza.pork_topping", "With Cooked Pork");
+            translationBuilder.add("block.natures_spirit.pizza.rabbit_topping", "With Cooked Rabbit");
+            translationBuilder.add(HibiscusBlocks.HALF_PIZZA, "Half of a Pizza");
+            translationBuilder.add(HibiscusBlocks.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
+            translationBuilder.add(HibiscusBlocks.QUARTER_PIZZA, "Quarter of a Pizza");
+            translationBuilder.add(HibiscusBlocks.WHOLE_PIZZA, "Pizza");
         }
     }
 

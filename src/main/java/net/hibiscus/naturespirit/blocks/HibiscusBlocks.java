@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
+import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
 import net.hibiscus.naturespirit.world.feature.tree.*;
 import net.minecraft.block.*;
@@ -25,6 +26,7 @@ import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.SignType;
 import net.minecraft.util.math.BlockPos;
@@ -44,6 +46,16 @@ public class HibiscusBlocks {
     public static final Block TIGER_LILY = registerPlantBlock("tiger_lily", new LargeFlowerBlock(StatusEffects.HASTE, 7, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation, BLUEBELL, 0.4f);
     public static final Block ANEMONE = registerPlantBlock("anemone", new MidFlowerBlock(StatusEffects.RESISTANCE, 4, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation, TIGER_LILY, 0.4f);
     public static final Block HIBISCUS = registerPlantBlock("hibiscus", new FlowerBlock(StatusEffects.LUCK, 7, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation, ANEMONE, 0.3f);
+
+
+
+    public static final FoodComponent STANDARD_PIZZA_COMPONENT = (new FoodComponent.Builder()).hunger(2).saturationModifier(0.2F).build();
+    public static final Block PIZZA_BLOCK = registerBlockWithoutItem("pizza_block", new PizzaBlock(FabricBlockSettings.copy(Blocks.CAKE)));
+    public static final Item WHOLE_PIZZA = registerItem("whole_pizza", new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation, Items.BREAD, ItemGroups.FOOD_AND_DRINK);
+    public static final Item THREE_QUARTERS_PIZZA = registerItem("three_quarters_pizza", new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT)));
+    public static final Item HALF_PIZZA = registerItem("half_pizza", new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT)));
+    public static final Item QUARTER_PIZZA = registerItem("quarter_pizza", new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT)));
+
 
     public static final Block POTTED_ANEMONE = registerBlockWithoutItem("potted_anemone", new FlowerPotBlock(ANEMONE, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque()));
     public static final Block POTTED_HIBISCUS = registerBlockWithoutItem("potted_hibiscus", new FlowerPotBlock(HIBISCUS, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque()));
@@ -105,6 +117,20 @@ public class HibiscusBlocks {
     public static final Block ASPEN_LEAVES = registerLeafBlock("aspen_leaves", MapColor.LIME, WILLOW_LEAVES);
     public static final Block[] ASPEN_SAPLING = registerSapling("aspen", new AspenSaplingGenerator(), WILLOW_SAPLING[0]);
 
+    public static final Block[] CYPRESS = registerWoodBlocks("cypress", MapColor.OAK_TAN, MapColor.SPRUCE_BROWN, ASPEN[12], ASPEN[2], ASPEN);
+    public static final Block CYPRESS_LEAVES = registerLeafBlock("cypress_leaves", MapColor.DARK_GREEN, ASPEN_LEAVES);
+    public static final Block[] CYPRESS_SAPLING = registerSapling("cypress", new CypressSaplingGenerator(), ASPEN_SAPLING[0]);
+
+    public static final Block[] OLIVE = registerWoodBlocks("olive", MapColor.PALE_GREEN, MapColor.PALE_YELLOW, CYPRESS[12], CYPRESS[2], CYPRESS);
+    public static final Block OLIVE_LEAVES = registerLeafBlock("olive_leaves", MapColor.PALE_GREEN, CYPRESS_LEAVES);
+    public static final Block[] OLIVE_SAPLING = registerSapling("olive", new OliveSaplingGenerator(), CYPRESS_SAPLING[0]);
+
+    public static final FoodComponent GREEN_OLIVE_COMPONENT = (new FoodComponent.Builder()).hunger(2).saturationModifier(0.4F).build();
+    public static final FoodComponent BLACK_OLIVE_COMPONENT = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.5F).build();
+
+    public static final Item GREEN_OLIVES = registerPlantItem("green_olives", new Item(new FabricItemSettings().food(GREEN_OLIVE_COMPONENT)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation, Items.BEETROOT, ItemGroups.FOOD_AND_DRINK, 0.3F);
+    public static final Item BLACK_OLIVES = registerPlantItem("black_olives", new Item(new FabricItemSettings().food(BLACK_OLIVE_COMPONENT)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation, GREEN_OLIVES, ItemGroups.FOOD_AND_DRINK, 0.3F);;
+
     public static Block[] registerWoodBlocks(String name, MapColor topMaterialColor, MapColor sideMaterialColor, Block buttonPlacement, Block logPlacement, Block[] signPlacement) {
         SignType woodType = WoodTypeAccessor.registerNew(WoodTypeAccessor.newWoodType(name));
         Block[] ARRAY = new Block[17];
@@ -126,10 +152,10 @@ public class HibiscusBlocks {
         ARRAY[15]= registerBlockWithoutItem(name + "_hanging_sign", new HangingSignBlock(AbstractBlock.Settings.of(Material.WOOD, sideMaterialColor).noCollision().strength(1.0F).sounds(BlockSoundGroup.HANGING_SIGN).requires(new FeatureFlag[]{FeatureFlags.UPDATE_1_20}), woodType));
         ARRAY[16] = registerBlockWithoutItem(name + "_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.of(Material.WOOD, sideMaterialColor).noCollision().strength(1.0F).sounds(BlockSoundGroup.HANGING_SIGN).requires(new FeatureFlag[]{FeatureFlags.UPDATE_1_20}).dropsLike(ARRAY[15]), woodType));
 
-        registerItemWithoutBlock(name + "_sign",
+        registerItem(name + "_sign",
                 new SignItem(new FabricItemSettings().maxCount(16),
                         ARRAY[13], ARRAY[14]), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
-        registerItemWithoutBlock(name + "_hanging_sign",
+        registerItem(name + "_hanging_sign",
                 new HangingSignItem(ARRAY[15], ARRAY[16], new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NatureSpiritItemGroupResourceLocation);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(buttonPlacement, ARRAY[2], ARRAY[0], ARRAY[3], ARRAY[1], ARRAY[4], ARRAY[5], ARRAY[6], ARRAY[9], ARRAY[10], ARRAY[7], ARRAY[8], ARRAY[11], ARRAY[12]));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, ARRAY[2]));
@@ -153,6 +179,18 @@ public class HibiscusBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(ARRAY[10], 5, 20);
         FuelRegistry.INSTANCE.add(ARRAY[9], 300);
         FuelRegistry.INSTANCE.add(ARRAY[10], 300);
+
+//        List <Block[]> woodArray = new ArrayList <>(Arrays.stream(NatureSpiritDataGen.woodArrays.clone()).toList());
+//        woodArray.add(ARRAY);
+//        NatureSpiritDataGen.woodArrays = (Block[][]) woodArray.toArray();
+
+//        List <TagKey<Block>> blockLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.blockLogTags.clone()).toList());
+//        blockLogsArray.add(TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
+//        NatureSpiritDataGen.blockLogTags = (TagKey<Block>[]) blockLogsArray.toArray();
+//
+//        List <TagKey<Item>> itemLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.itemLogTags.clone()).toList());
+//        itemLogsArray.add(TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
+//        NatureSpiritDataGen.itemLogTags = (TagKey<Item>[]) itemLogsArray.toArray();
 
 
         return ARRAY;
@@ -254,8 +292,19 @@ public class HibiscusBlocks {
         return item;
     }
 
-    public static Item registerItemWithoutBlock(String name, Item item, Identifier tab) {
+    public static Item registerPlantItem(String name, Item item, Identifier tab, Item itemBefore, ItemGroup secondaryTab, float compost) {
+        CompostingChanceRegistry.INSTANCE.add(item, compost);
+        return registerItem(name, item, tab, itemBefore, secondaryTab);
+    }
+    public static Item registerItem(String name, Item item, Identifier tab, Item itemBefore, ItemGroup secondaryTab) {
+        ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
+        return registerItem(name, item, tab);
+    }
+    public static Item registerItem(String name, Item item, Identifier tab) {
         ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.add(item.asItem()));
+        return registerItem(name, item);
+    }
+    public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(NatureSpirit.MOD_ID, name), item);
     }
 

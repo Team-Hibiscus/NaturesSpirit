@@ -3,6 +3,7 @@ package net.hibiscus.naturespirit.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.minecraft.block.BlockState;
@@ -12,6 +13,7 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.collection.IdList;
@@ -33,6 +35,11 @@ public class NatureSpiritClient implements ClientModInitializer {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             return FoliageColors.getDefaultColor();
         }, HibiscusBlocks.SUGI_LEAVES);
+
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_HIBISCUS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_ANEMONE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.PIZZA_BLOCK, RenderLayer.getCutout());
+
     }
 
     private final IdList <BlockColorProvider> providers = new IdList(32);

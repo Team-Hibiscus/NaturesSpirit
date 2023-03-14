@@ -9,7 +9,8 @@
     "FoliagePlacerMixin",
     "TreeDecoratorMixin",
     "TrunkPlacerTypeMixin",
-    "WoodTypeAccessor"
+    "WoodTypeAccessor",
+    "StatsTypeAccessor"
   ],
   "client": [
   ],

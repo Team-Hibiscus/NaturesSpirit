@@ -73,17 +73,17 @@ public class SugiTrunkPlacer extends TrunkPlacer {
                 int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
                 int m = height - i - 1;
                 if (i > 1) {
-                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m);
+                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m, i);
                 }
                 if (i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.65) {
-                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, l, Math.round(m/2));
+                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, l, Math.round(m/2), i);
                 }
                 if (i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.85) {
-                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, l, Math.round(m/2));
+                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, l, Math.round(m/2), i);
                 }
             }
             if (i == height - 1) {
-                list.add(new TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 0, false));
+                list.add(new TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 1, false));
             }
         }
 
@@ -97,13 +97,13 @@ public class SugiTrunkPlacer extends TrunkPlacer {
                 int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
                 int m = height - i - 1;
                 if (i > 1) {
-                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m);
+                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m, i);
                 }
                 if (i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.65) {
-                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, l, Math.round(m/2));
+                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, l, Math.round(m/2), i);
                 }
                 if (i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.85) {
-                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, l, Math.round(m/2));
+                    this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, l, Math.round(m/2), i);
                 }
             }
         }
@@ -111,7 +111,7 @@ public class SugiTrunkPlacer extends TrunkPlacer {
         return list;
     }
 
-    private void generateExtraBranch(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, TreeFeatureConfig config, List<TreeNode> nodes, Mutable pos, int yOffset, Direction direction, int length, int steps) {
+    private void generateExtraBranch(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, TreeFeatureConfig config, List<TreeNode> nodes, Mutable pos, int yOffset, Direction direction, int length, int steps, int b) {
         int i = yOffset + length;
         int j = pos.getX();
         int k = pos.getZ();
@@ -139,7 +139,10 @@ public class SugiTrunkPlacer extends TrunkPlacer {
 
         if (i - yOffset >= 1) {
             BlockPos blockPos = new BlockPos(j, i, k);
-            nodes.add(new TreeNode(blockPos, Math.max(0, height - yOffset - 4), false));
+            nodes.add(new TreeNode(blockPos, Math.max(
+                    0, Math.min(
+                            Math.round(
+                                    (height - b )/7.5F), 2)), false));
         }
 
     }

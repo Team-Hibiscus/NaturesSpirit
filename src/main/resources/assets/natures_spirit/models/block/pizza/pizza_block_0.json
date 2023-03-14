@@ -1,0 +1,78 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "pizza_block_0",
+	"textures": {
+		"1": "natures_spirit:block/pizza/pizza_side",
+		"2": "natures_spirit:block/pizza/pizza_bottom",
+		"3": "natures_spirit:block/pizza/pizza_base",
+		"4": "natures_spirit:block/pizza/pizza_crust",
+		"particle": "natures_spirit:block/pizza/pizza_crust"
+	},
+	"elements": [
+		{
+			"name": "bb_main",
+			"from": [1, 0, 1],
+			"to": [15, 4, 15],
+			"faces": {
+				"north": {"uv": [1, 12, 15, 16], "texture": "#1"},
+				"east": {"uv": [1, 12, 15, 16], "texture": "#1"},
+				"south": {"uv": [1, 12, 15, 16], "texture": "#1"},
+				"west": {"uv": [1, 12, 15, 16], "texture": "#1"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#3"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#2"}
+			}
+		},
+		{
+			"name": "bb_main",
+			"from": [13, 4, 1],
+			"to": [15, 5, 15],
+			"faces": {
+				"north": {"uv": [1, 11, 3, 12], "texture": "#1"},
+				"east": {"uv": [1, 11, 15, 12], "texture": "#1"},
+				"south": {"uv": [13, 11, 15, 12], "texture": "#1"},
+				"west": {"uv": [1, 11, 15, 12], "texture": "#1"},
+				"up": {"uv": [13, 1, 15, 15], "texture": "#4"}
+			}
+		},
+		{
+			"name": "bb_main",
+			"from": [1, 4, 1],
+			"to": [3, 5, 15],
+			"faces": {
+				"north": {"uv": [13, 11, 15, 12], "texture": "#1"},
+				"east": {"uv": [1, 11, 15, 12], "texture": "#1"},
+				"south": {"uv": [1, 11, 3, 12], "texture": "#1"},
+				"west": {"uv": [1, 11, 15, 12], "texture": "#1"},
+				"up": {"uv": [1, 1, 3, 15], "texture": "#4"}
+			}
+		},
+		{
+			"name": "bb_main",
+			"from": [3, 4, 1],
+			"to": [13, 5, 3],
+			"faces": {
+				"north": {"uv": [3, 11, 13, 12], "texture": "#1"},
+				"south": {"uv": [3, 11, 13, 12], "texture": "#1"},
+				"up": {"uv": [3, 1, 13, 3], "texture": "#4"}
+			}
+		},
+		{
+			"name": "bb_main",
+			"from": [3, 4, 13],
+			"to": [13, 5, 15],
+			"faces": {
+				"north": {"uv": [3, 11, 13, 12], "texture": "#1"},
+				"south": {"uv": [3, 11, 13, 12], "texture": "#1"},
+				"up": {"uv": [3, 13, 13, 15], "texture": "#4"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "bb_main",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4]
+		}
+	]
+}

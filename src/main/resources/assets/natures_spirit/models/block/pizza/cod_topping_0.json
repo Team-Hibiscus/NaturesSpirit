@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "cod_topping_0",
+	"textures": {
+		"0": "natures_spirit:block/pizza/cod_topping",
+		"particle": "natures_spirit:block/pizza/cod_topping"
+	},
+	"elements": [
+		{
+			"name": "bb_main",
+			"from": [3, 4.02, 3],
+			"to": [13, 4.02, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 0, 0], "texture": "#missing"},
+				"east": {"uv": [0, 0, 0, 0], "texture": "#missing"},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#missing"},
+				"west": {"uv": [0, 0, 0, 0], "texture": "#missing"},
+				"up": {"uv": [3, 3, 13, 13], "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#0"}
+			}
+		}
+	]
+}
