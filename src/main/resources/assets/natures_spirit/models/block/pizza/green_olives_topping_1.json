@@ -7,8 +7,8 @@
 	"elements": [
 		{
 			"name": "bb_main",
-			"from": [8, 4.05, 3],
-			"to": [13, 4.05, 8],
+			"from": [8, 2.05, 3],
+			"to": [13, 2.05, 8],
 			"faces": {
 				"north": {"uv": [0, 0, 0, 0], "texture": "#missing"},
 				"east": {"uv": [0, 0, 0, 0], "texture": "#missing"},
@@ -20,8 +20,8 @@
 		},
 		{
 			"name": "bb_main",
-			"from": [3, 4.05, 3],
-			"to": [8, 4.05, 13],
+			"from": [3, 2.05, 3],
+			"to": [8, 2.05, 13],
 			"faces": {
 				"north": {"uv": [0, 0, 0, 0], "texture": "#missing"},
 				"east": {"uv": [0, 0, 0, 0], "texture": "#missing"},

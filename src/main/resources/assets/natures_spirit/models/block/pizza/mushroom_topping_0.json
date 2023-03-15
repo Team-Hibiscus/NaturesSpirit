@@ -8,8 +8,8 @@
 	"elements": [
 		{
 			"name": "bb_main",
-			"from": [3, 4.09, 3],
-			"to": [13, 4.09, 13],
+			"from": [3, 2.09, 3],
+			"to": [13, 2.09, 13],
 			"faces": {
 				"north": {"uv": [0, 0, 0, 0], "texture": "#missing"},
 				"east": {"uv": [0, 0, 0, 0], "texture": "#missing"},

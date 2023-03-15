@@ -234,9 +234,9 @@ public class PizzaBlock extends Block {
     static {
         DEFAULT_COMPARATOR_OUTPUT = getComparatorOutput(0);
         BITES_TO_SHAPE = new VoxelShape[]{
-                Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 5.0D, 15.0D),
-                VoxelShapes.union(Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 5.0D, 8.0D), Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 5.0D, 15.0D)),
-                Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 5.0D, 15.0D),
-                Block.createCuboidShape(1.0D, 0.0D, 8.0D, 8.0D, 5.0D, 15.0D)};
+                Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 3.0D, 15.0D),
+                VoxelShapes.union(Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 3.0D, 8.0D), Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 3.0D, 15.0D)),
+                Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 3.0D, 15.0D),
+                Block.createCuboidShape(1.0D, 0.0D, 8.0D, 8.0D, 3.0D, 15.0D)};
     }
 }
