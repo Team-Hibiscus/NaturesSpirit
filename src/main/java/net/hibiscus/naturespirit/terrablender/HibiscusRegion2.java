@@ -23,11 +23,548 @@ public class HibiscusRegion2 extends Region {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(BiomeKeys.SUNFLOWER_PLAINS, HibiscusBiomes.LAVENDER_FIELDS);
             builder.replaceBiome(BiomeKeys.FLOWER_FOREST, HibiscusBiomes.LAVENDER_FIELDS);
-            builder.replaceBiome(BiomeKeys.TAIGA, HibiscusBiomes.WISTERIA_FOREST);
-            builder.replaceBiome(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, HibiscusBiomes.WISTERIA_FOREST);
-            builder.replaceBiome(BiomeKeys.OLD_GROWTH_PINE_TAIGA, HibiscusBiomes.WISTERIA_FOREST);
             builder.replaceBiome(BiomeKeys.RIVER, HibiscusBiomes.ERODED_RIVER);
         });
+
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.93333334F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.93333334F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.93333334F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.93333334F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.19F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.19F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.45F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.45F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.26666668F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.26666668F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.4F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.4F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(-0.05F, 0.4F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.05F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.26666668F, 0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.4F, 0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.19F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.56666666F, 0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.45F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.56666666F, 0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.7666667F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.7666667F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(0F, 0F),
+                        MultiNoiseUtil.ParameterRange.of(0.93333334F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.93333334F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.93333334F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.93333334F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.93333334F, -0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.19F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.19F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.45F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.45F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.7666667F, -0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.26666668F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.26666668F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.56666666F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.4F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.15F, 0.2F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.4F, -0.05F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.05F, 0.4F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.05F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.26666668F, 0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.4F, 0.56666666F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.19F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-0.78F, -0.375F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.56666666F, 0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.375F, 0.45F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.56666666F, 0.7666667F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-0.11F, 0.03F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.7666667F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
+        this.addBiome(mapper, new MultiNoiseUtil.NoiseHypercube(
+                        MultiNoiseUtil.ParameterRange.of(-0.45F, -0.15F),
+                        MultiNoiseUtil.ParameterRange.of(0.3F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.03F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(-1F, 0.05F),
+                        MultiNoiseUtil.ParameterRange.of(1F, 1F),
+                        MultiNoiseUtil.ParameterRange.of(0.93333334F, 1F),
+                        0
+                ),
+                HibiscusBiomes.WISTERIA_FOREST
+        );
     }
 
 }
