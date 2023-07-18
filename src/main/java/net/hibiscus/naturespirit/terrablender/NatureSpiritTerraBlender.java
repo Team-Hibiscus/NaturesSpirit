@@ -15,6 +15,7 @@ public class NatureSpiritTerraBlender implements TerraBlenderApi {
             Regions.register(new HibiscusRegion2(new Identifier(MOD_ID, "overworld_2"), 3));
             Regions.register(new HibiscusRegion3(new Identifier(MOD_ID, "overworld_3"), 1));
             Regions.register(new HibiscusRegion4(new Identifier(MOD_ID, "overworld_4"), 1));
+            Regions.register(new HibiscusRegion5(new Identifier(MOD_ID, "overworld_5"), 1));
         }
     }
 }

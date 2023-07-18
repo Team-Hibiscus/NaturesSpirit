@@ -32,7 +32,7 @@ public class FirFoliagePlacer extends FoliagePlacer {
         return NatureSpirit.FIR_FOLIAGE_PLACER_TYPE;
     }
 
-    protected void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.getCenter();
         BlockPos.Mutable mutable = blockPos.mutableCopy();
         boolean nextBoolean = random.nextBoolean();
@@ -45,51 +45,51 @@ public class FirFoliagePlacer extends FoliagePlacer {
             if (l >= offset - 2) {
                 mutable.set(blockPos, 0, l, 0);
                 if ((nextBoolean && !nextBoolean2) && l == offset) {
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                 }
                 if ((nextBoolean || nextBoolean2) && l == offset - 1) {
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                 }
                 if (l == offset - 2) {
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                 }
             } else
             if (l == offset - 3) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.random(random), 1).offset(Direction.random(random), 1).up(1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.random(random), 1).offset(Direction.random(random), 1).up(1));
                 }
-                this.generateSquare(world, replacer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
+                this.generateSquare(world, placer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
             } else
             if (l == offset - 4) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
                 }
-                this.generateSquare(world, replacer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
+                this.generateSquare(world, placer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
             } else
             if (l == offset - 5) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
                     Direction m = random.nextBoolean() ? Direction.NORTH : Direction.SOUTH;
                     Direction n = random.nextBoolean() ? Direction.EAST : Direction.WEST;
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(m, 1).offset(n, 1));
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(m.getOpposite(), 1).offset(n.getOpposite(), 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(m, 1).offset(n, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(m.getOpposite(), 1).offset(n.getOpposite(), 1));
                 }
                 if (random.nextBoolean()) {
                     Direction m = random.nextBoolean() ? Direction.NORTH : Direction.SOUTH;
                     Direction n = random.nextBoolean() ? Direction.EAST : Direction.WEST;
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(m, 1).offset(n, 1));
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(m.getOpposite(), 1).offset(n.getOpposite(), 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(m, 1).offset(n, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(m.getOpposite(), 1).offset(n.getOpposite(), 1));
                 }
             } else
             if (l == offset - 6) {
@@ -97,93 +97,93 @@ public class FirFoliagePlacer extends FoliagePlacer {
                 if (random.nextBoolean()) {
                     Direction m = random.nextBoolean() ? Direction.NORTH : Direction.SOUTH;
                     Direction n = random.nextBoolean() ? Direction.EAST : Direction.WEST;
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(m, 1).offset(n, 1).up(1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(m, 1).offset(n, 1).up(1));
                 }
-            this.generateSquare(world, replacer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
+            this.generateSquare(world, placer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
              } else
             if (l == offset - 7) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
                 }
-                this.generateSquare(world, replacer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
+                this.generateSquare(world, placer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
             } else
             if (l == offset - 8) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
                 }
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 2));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.EAST, 2));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 2));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.WEST, 2));
-                this.generateSquare(world, replacer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 2));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.EAST, 2));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 2));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.WEST, 2));
+                this.generateSquare(world, placer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
             } else
             if (l == offset - 9) {
-                this.generateSquare(world, replacer, random, config, blockPos, 2, l, treeNode.isGiantTrunk());
+                this.generateSquare(world, placer, random, config, blockPos, 2, l, treeNode.isGiantTrunk());
             } else
             if (l == offset - 10) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
                 }
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 2).offset(Direction.EAST, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 2).offset(Direction.WEST, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.EAST, 2).offset(Direction.NORTH, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.EAST, 2).offset(Direction.SOUTH, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 2).offset(Direction.EAST, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 2).offset(Direction.WEST, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.WEST, 2).offset(Direction.NORTH, 1));
-                placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.WEST, 2).offset(Direction.SOUTH, 1));
-                this.generateSquare(world, replacer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 2).offset(Direction.EAST, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 2).offset(Direction.WEST, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.EAST, 2).offset(Direction.NORTH, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.EAST, 2).offset(Direction.SOUTH, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 2).offset(Direction.EAST, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 2).offset(Direction.WEST, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.WEST, 2).offset(Direction.NORTH, 1));
+                placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.WEST, 2).offset(Direction.SOUTH, 1));
+                this.generateSquare(world, placer, random, config, blockPos, 1, l, treeNode.isGiantTrunk());
             } else
             if (l == offset - 11) {
                 mutable.set(blockPos, 0, l, 0);
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
                 }
                 if (random.nextBoolean()) {
-                    placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
+                    placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
                 }
             }
         }
 
     }
 
-    protected void generateSquare(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, BlockPos centerPos, int radius, int y, boolean giantTrunk) {
+    protected void generateSquare(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, BlockPos centerPos, int radius, int y, boolean giantTrunk) {
         int i = giantTrunk ? 1 : 0;
         BlockPos.Mutable mutable = new BlockPos.Mutable();
 
@@ -191,7 +191,7 @@ public class FirFoliagePlacer extends FoliagePlacer {
             for(int k = -radius; k <= radius + i; ++k) {
                 if (!this.isPositionInvalid(random, j, y, k, radius, giantTrunk)) {
                     mutable.set(centerPos, j, y, k);
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                 }
             }
         }

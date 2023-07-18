@@ -76,6 +76,7 @@ public class HibiscusConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey("flower_redwood_forest");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_LAVENDER_FIELD = registerKey("flower_lavender_field");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FOXGLOVE_FIELD = registerKey("flower_foxglove_field");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_GOLDEN_WILDS = registerKey("flower_golden_wilds");
     public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FIR_FOREST = registerKey("flower_fir_forest");
@@ -304,6 +305,15 @@ public class HibiscusConfiguredFeatures {
                         HibiscusBlocks.ANEMONE.getDefaultState(),
                         HibiscusBlocks.GARDENIA.getDefaultState(),
                         HibiscusBlocks.LAVENDER.getDefaultState(),
+                        Blocks.PEONY.getDefaultState()
+                ))))));
+        register(context, FLOWER_FOXGLOVE_FIELD, Feature.FLOWER, new RandomPatchFeatureConfig(
+                120, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(
+                new NoiseBlockStateProvider(2445L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.030833334F, List.of(
+                        Blocks.LILAC.getDefaultState(),
+                        Blocks.GRASS.getDefaultState(),
+                        HibiscusBlocks.FOXGLOVE.getDefaultState(),
+                        Blocks.TALL_GRASS.getDefaultState(),
                         Blocks.PEONY.getDefaultState()
                 ))))));
 

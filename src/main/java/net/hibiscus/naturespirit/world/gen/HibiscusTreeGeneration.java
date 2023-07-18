@@ -61,6 +61,9 @@ public class HibiscusTreeGeneration {
     public static void addCypressTrees(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.CYPRESS_PLACED);
     }
+    public static void addDenseCypressTrees(GenerationSettings.LookupBackedBuilder builder) {
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.CYPRESS_PLACED);
+    }
 
     public static void addOakTrees(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.CUSTOM_FANCY_OAK_TREE_PLACED);
@@ -107,6 +110,12 @@ public class HibiscusTreeGeneration {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
     }
 
+    public static void addFoxgloveFlowers(GenerationSettings.LookupBackedBuilder builder) {
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FLOWER_FOXGLOVE_PLACED);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
+    }
+
     public static void addErodedRiverFlowers(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.OAK_BUSH_PLACED);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
@@ -126,6 +135,11 @@ public class HibiscusTreeGeneration {
     public static void addCypressVegetation(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FLOWER_CYPRESS_PLACED);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
+    }
+    public static void addCarnationVegetation(GenerationSettings.LookupBackedBuilder builder) {
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FLOWER_CARNATION_PLACED);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
     }
 }

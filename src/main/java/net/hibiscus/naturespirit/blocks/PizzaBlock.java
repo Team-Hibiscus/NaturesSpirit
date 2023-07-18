@@ -208,7 +208,8 @@ public class PizzaBlock extends Block {
     }
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return world.getBlockState(pos.down()).getMaterial().isSolid();
+        BlockPos pos1 = pos.down();
+        return world.getBlockState(pos1).isSolidBlock(world, pos1);
     }
 
     protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {

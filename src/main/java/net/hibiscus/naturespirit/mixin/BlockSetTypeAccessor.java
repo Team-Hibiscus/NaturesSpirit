@@ -1,13 +1,14 @@
 package net.hibiscus.naturespirit.mixin;
 
+import net.minecraft.block.BlockSetType;
 import net.minecraft.block.WoodType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Mixin(WoodType.class)
-public interface WoodTypeAccessor {
+@Mixin(BlockSetType.class)
+public interface BlockSetTypeAccessor {
     @Invoker("register")
-    static WoodType registerNew(WoodType type) {
+    static BlockSetType registerNew(BlockSetType type) {
         throw new AssertionError();
     }
 }

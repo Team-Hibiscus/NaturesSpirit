@@ -6,6 +6,7 @@
       "minecraft:canyon"
     ]
   },
+  "has_precipitation": true,
   "downfall": 0.21,
   "effects": {
     "sky_color": 7321324,
@@ -22,7 +23,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.jungle_and_forest"
+      "sound": "minecraft:music.overworld.forest"
     }
   },
   "features": [
@@ -80,7 +81,7 @@
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
       "natures_spirit:olive_placed",
-      "natures_spirit:cypress_placed",
+      "natures_spirit:dense_cypress_placed",
       "minecraft:patch_grass_plain",
       "natures_spirit:flower_cypress_placed",
       "minecraft:forest_flowers",

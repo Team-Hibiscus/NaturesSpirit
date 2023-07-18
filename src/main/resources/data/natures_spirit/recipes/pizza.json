@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Z": {
+      "item": "minecraft:milk_bucket"
+    },
+    "X": {
+      "item": "minecraft:wheat"
+    },
+    "Y": {
+      "item": "minecraft:beetroot"
+    }
+  },
+  "pattern": [
+    "ZYZ",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "item": "natures_spirit:whole_pizza"
+  },
+  "show_notification": true
+}

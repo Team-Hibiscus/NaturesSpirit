@@ -232,6 +232,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             this.addDrop(HibiscusBlocks.MARIGOLD, (block) -> {
                 return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
             });
+            this.addDrop(HibiscusBlocks.FOXGLOVE, (block) -> {
+                return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
+            });
             this.addDrop(HibiscusBlocks.LAVENDER, (block) -> {
                 return this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER);
             });
@@ -442,6 +445,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.GARDENIA, TintType.NOT_TINTED);
             blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.SNAPDRAGON, TintType.NOT_TINTED);
             blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.MARIGOLD, TintType.NOT_TINTED);
+            blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.FOXGLOVE, TintType.NOT_TINTED);
             generateTallLargeFlower(HibiscusBlocks.LAVENDER, blockStateModelGenerator);
             generateTallLargeFlower(HibiscusBlocks.BLEEDING_HEART, blockStateModelGenerator);
             generateLargeFlower(HibiscusBlocks.BLUEBELL, blockStateModelGenerator);
@@ -530,7 +534,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
         public void generateTranslations(TranslationBuilder translationBuilder) {
             generateWoodTranslations(woodArrays, translationBuilder);
             generateTreeTranslations(saplingArrays, leavesArrays , translationBuilder);
-            translationBuilder.add(HibiscusItemGroups.NatureSpiritItemGroup, "Nature's Spirit Blocks & Items");
+            translationBuilder.add(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, "Nature's Spirit Blocks & Items");
             translationBuilder.add(HibiscusBlocks.GREEN_OLIVES, "Green Olives");
             translationBuilder.add(HibiscusBlocks.BLACK_OLIVES, "Black Olives");
             translationBuilder.add(NatureSpirit.EAT_PIZZA_SLICE, "Pizza Slices Eaten");
@@ -554,6 +558,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateBlockTranslations(HibiscusBlocks.WILLOW_VINES, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.CATTAIL, translationBuilder);
             generateBlockTranslations(HibiscusBlocks.MARIGOLD, translationBuilder);
+            generateBlockTranslations(HibiscusBlocks.FOXGLOVE, translationBuilder);
             translationBuilder.add("block.natures_spirit.pizza.chicken_topping", "With Cooked Chicken");
             translationBuilder.add("block.natures_spirit.pizza.green_olives_topping", "With Green Olives");
             translationBuilder.add("block.natures_spirit.pizza.black_olives_topping", "With Black Olives");
@@ -602,6 +607,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                 generateFlowerRecipes(HibiscusBlocks.SNAPDRAGON, Items.PINK_DYE, "pink_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.CATTAIL, Items.BROWN_DYE, "brown_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.MARIGOLD, Items.ORANGE_DYE, "orange_dye",2, exporter);
+                generateFlowerRecipes(HibiscusBlocks.FOXGLOVE, Items.PURPLE_DYE, "purple_dye",2, exporter);
                 generateFlowerRecipes(HibiscusBlocks.HIBISCUS, Items.RED_DYE, "red_dye",1, exporter);
                 generateFlowerRecipes(HibiscusBlocks.GARDENIA, Items.WHITE_DYE, "white_dye",2, exporter);
             }
@@ -711,6 +717,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             addFlowerTags(HibiscusBlocks.CATTAIL, true, arg);
             addFlowerTags(HibiscusBlocks.SNAPDRAGON, true, arg);
             addFlowerTags(HibiscusBlocks.MARIGOLD, true, arg);
+            addFlowerTags(HibiscusBlocks.FOXGLOVE, true, arg);
             getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusBlocks.FRAMED_SUGI_DOOR});
             getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusBlocks.FRAMED_SUGI_TRAPDOOR});
             getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT, HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT, HibiscusBlocks.PINK_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT, HibiscusBlocks.PURPLE_WISTERIA_VINES, HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT, HibiscusBlocks.WILLOW_VINES_PLANT, HibiscusBlocks.WILLOW_VINES);

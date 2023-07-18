@@ -28,32 +28,32 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
         return NatureSpirit.WISTERIA_FOLIAGE_PLACER_TYPE;
     }
 
-    protected void generate(TestableWorld world, BiConsumer <BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.getCenter().up(offset);
         BlockPos.Mutable mutable = blockPos.mutableCopy();
-        this.generateSquare(world, replacer, random, config, blockPos, radius, -1, true);
-        this.generateSquare(world, replacer, random, config, blockPos, radius + 1 , 0, true);
-        this.generateSquare(world, replacer, random, config, blockPos, radius, 1, true);
+        this.generateSquare(world, placer, random, config, blockPos, radius, -1, true);
+        this.generateSquare(world, placer, random, config, blockPos, radius + 1 , 0, true);
+        this.generateSquare(world, placer, random, config, blockPos, radius, 1, true);
         for (int i = 0; i < 60; ++i) {
             mutable.set(blockPos, random.nextInt(radius) - random.nextInt(radius), -2, random.nextInt(radius) - random.nextInt(radius));
-            placeFoliageBlock(world, replacer, random, config, mutable);
-            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 1));
-            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 2));
+            placeFoliageBlock(world, placer, random, config, mutable);
+            placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 1));
+            placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 2));
         }
         for (int i = 0; i < 10; ++i) {
             mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
-            placeFoliageBlock(world, replacer, random, config, mutable);
-            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 1));
-            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 2));
+            placeFoliageBlock(world, placer, random, config, mutable);
+            placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 1));
+            placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 2));
         }
         for (int i = 0; i < 10; ++i) {
             mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
-            placeFoliageBlock(world, replacer, random, config, mutable);
-            placeFoliageBlock(world, replacer, random, config, mutable.offset(Direction.DOWN, 1));
+            placeFoliageBlock(world, placer, random, config, mutable);
+            placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 1));
         }
         for (int i = 0; i < 80; ++i) {
             mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
-            placeFoliageBlock(world, replacer, random, config, mutable);
+            placeFoliageBlock(world, placer, random, config, mutable);
         }
 
     }

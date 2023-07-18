@@ -32,7 +32,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
         return NatureSpirit.ASPEN_FOLIAGE_PLACER_TYPE;
     }
 
-    protected void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.getCenter();
         BlockPos.Mutable mutable = blockPos.up(offset).mutableCopy();
         int i = random.nextBetween(0, 3);
@@ -40,7 +40,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
         int k = 0;
 
         for(int l = offset; l >= -foliageHeight - 2; --l) {
-            this.generateSquare(world, replacer, random, config, blockPos, (l >= offset ? 0 : i), l, treeNode.isGiantTrunk());
+            this.generateSquare(world, placer, random, config, blockPos, (l >= offset ? 0 : i), l, treeNode.isGiantTrunk());
                 j = Math.min(j + 1, radius + treeNode.getFoliageRadius());
                 i = l <= -foliageHeight - 1 ? Math.max(i-2, 1) :
                 (l >= offset - 1 ? 0 :
