@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "pastel",
+  "ingredients": [
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "natures_spirit:pastel"
+    },
+    {
+      "item": "minecraft:brown_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:brown_pastel",
+    "count": 8
+  }
+}

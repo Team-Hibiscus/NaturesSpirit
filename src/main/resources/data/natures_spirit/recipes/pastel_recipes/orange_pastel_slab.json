@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pastel",
+  "pattern": [
+    "###"
+  ],
+  "key": [
+    {
+      "#": "natures_spirit:orange_pastel"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:orange_pastel_slab",
+    "count": 6
+  }
+}

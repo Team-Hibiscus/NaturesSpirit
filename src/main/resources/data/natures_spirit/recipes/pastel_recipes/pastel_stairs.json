@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pastel",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": [
+    {
+      "#": "natures_spirit:pastel"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:pastel_stairs",
+    "count": 4
+  }
+}

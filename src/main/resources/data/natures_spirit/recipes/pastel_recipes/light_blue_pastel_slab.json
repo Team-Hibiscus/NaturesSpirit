@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "light_blue_pastel",
+  "pattern": [
+    "###"
+  ],
+  "key": [
+    {
+      "#": "natures_spirit:light_blue_pastel"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:light_blue_pastel_slab",
+    "count": 6
+  }
+}

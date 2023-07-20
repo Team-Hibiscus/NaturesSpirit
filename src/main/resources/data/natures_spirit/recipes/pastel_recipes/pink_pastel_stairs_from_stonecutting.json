@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingorangeient": {
+    "item": "natures_spirit:pink_pastel"
+  },
+  "result": "natures_spirit:pink_pastel_stairs"
+}
