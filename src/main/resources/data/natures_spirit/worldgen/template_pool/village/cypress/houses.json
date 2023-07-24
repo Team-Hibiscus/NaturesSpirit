@@ -7,7 +7,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -16,7 +16,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -25,7 +25,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -34,7 +34,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -43,7 +43,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -52,7 +52,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -61,7 +61,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -70,7 +70,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -79,7 +79,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -88,7 +88,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -97,7 +97,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -106,7 +106,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -115,7 +115,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -124,7 +124,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -133,7 +133,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -142,7 +142,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -151,7 +151,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -160,7 +160,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -169,7 +169,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -178,7 +178,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -187,7 +187,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -196,7 +196,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -205,7 +205,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -214,7 +214,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -223,7 +223,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -232,7 +232,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -241,7 +241,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -250,7 +250,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -259,7 +259,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -268,7 +268,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -277,7 +277,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -286,7 +286,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -295,7 +295,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -304,7 +304,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -313,7 +313,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -322,7 +322,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -331,7 +331,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -340,7 +340,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -349,7 +349,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -358,7 +358,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -367,7 +367,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -376,7 +376,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -385,7 +385,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -394,7 +394,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 6
     },
     {
       "element": {
@@ -403,7 +403,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -412,7 +412,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 6
     },
     {
       "element": {
@@ -421,7 +421,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -430,7 +430,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 6
     },
     {
       "element": {
@@ -439,13 +439,22 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 8
+      "weight": 10
     },
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "natures_spirit:village/cypress/houses/cypress_fletcher_house_1",
         "processors": "natures_spirit:red_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 6
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_house_1",
+        "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
       "weight": 4
@@ -454,19 +463,10 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "natures_spirit:village/cypress/houses/cypress_fletcher_house_1",
-        "processors": "natures_spirit:orange_kaolin",
-        "projection": "rigid"
-      },
-      "weight": 2
-    },
-    {
-      "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
-        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_house_1",
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -475,7 +475,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -484,7 +484,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -493,7 +493,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -502,7 +502,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -511,7 +511,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -520,7 +520,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -529,7 +529,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -538,7 +538,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -547,7 +547,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -556,7 +556,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -565,7 +565,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -574,7 +574,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -583,7 +583,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -592,7 +592,7 @@
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 14
+      "weight": 18
     },
     {
       "element": {
@@ -601,7 +601,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -610,7 +610,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -619,7 +619,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -628,7 +628,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -637,7 +637,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -646,7 +646,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -655,7 +655,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -664,7 +664,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -673,8 +673,9 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 16
+      "weight": 18
     },
+    
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
@@ -745,7 +746,79 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:red_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:orange_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:yellow_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:lime_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:cyan_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:light_blue_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:pink_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_fletcher_2",
+        "processors": "natures_spirit:crack_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 1
     },
     {
       "element": {
@@ -826,7 +899,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 20
+      "weight": 24
     },
     {
       "element": {
@@ -835,7 +908,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 7
     },
     {
       "element": {
@@ -844,7 +917,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 7
     },
     {
       "element": {
@@ -853,7 +926,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 7
     },
     {
       "element": {
@@ -862,7 +935,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 7
     },
     {
       "element": {
@@ -871,7 +944,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 7
     },
     {
       "element": {
@@ -880,7 +953,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 7
     },
     {
       "element": {
@@ -889,7 +962,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 7
     },
     {
       "element": {
@@ -898,7 +971,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 7
     },
     {
       "element": {
@@ -907,7 +980,7 @@
         "processors": "minecraft:mossify_10_percent",
         "projection": "rigid"
       },
-      "weight": 20
+      "weight": 40
     },
     {
       "element": {
@@ -916,7 +989,7 @@
         "processors": "minecraft:mossify_10_percent",
         "projection": "rigid"
       },
-      "weight": 16
+      "weight": 22
     },
     {
       "element": {
@@ -925,7 +998,7 @@
         "processors": "natures_spirit:red_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -934,7 +1007,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -943,7 +1016,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -952,7 +1025,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -961,7 +1034,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -970,7 +1043,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 5
     },
     {
       "element": {
@@ -979,7 +1052,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -988,7 +1061,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 4
     },
     {
       "element": {
@@ -997,7 +1070,7 @@
         "processors": "minecraft:farm_plains",
         "projection": "rigid"
       },
-      "weight": 32
+      "weight": 25
     },
     {
       "element": {
@@ -1006,7 +1079,7 @@
         "processors": "minecraft:farm_plains",
         "projection": "rigid"
       },
-      "weight": 32
+      "weight": 30
     },
     {
       "element": {
@@ -1015,7 +1088,7 @@
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 6
+      "weight": 4
     },
     {
       "element": {
@@ -1024,7 +1097,7 @@
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 6
+      "weight": 4
     },
     {
       "element": {
@@ -1033,22 +1106,13 @@
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 6
-    },
-    {
-      "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
-        "location": "natures_spirit:village/cypress/town_centers/cypress_town_center_2",
-        "processors": "minecraft:empty",
-        "projection": "rigid"
-      },
-      "weight": 16
+      "weight": 4
     },
     {
       "element": {
         "element_type": "minecraft:empty_pool_element"
       },
-      "weight": 20
+      "weight": 22
     }
   ],
   "fallback": "natures_spirit:village/cypress/terminators",
