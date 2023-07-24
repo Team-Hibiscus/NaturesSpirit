@@ -1,0 +1,87 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:red_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:orange_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:yellow_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:lime_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:cyan_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },        
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:light_blue_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:pink_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:light_gray_kaolin",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },    
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/houses/cypress_butcher_extension",
+        "processors": "natures_spirit:crack_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 2
+    }
+  ],
+  "fallback": "minecraft:village/wisteria/terminators",
+  "name": "natures_spirit:village/cypress/cypress_butcher_extension"
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingorangeient": {
-    "item": "natures_spirit:yellow_pastel"
-  },
-  "result": "natures_spirit:yellow_pastel_slab"
-}

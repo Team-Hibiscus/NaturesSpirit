@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:sugi_pressure_plate"
-  }
+  },
+  "show_notification": true
 }

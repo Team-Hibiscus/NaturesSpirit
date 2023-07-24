@@ -28,5 +28,6 @@
     "recipes": [
       "natures_spirit:willow_planks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

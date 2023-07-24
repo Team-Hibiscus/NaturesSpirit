@@ -6,6 +6,8 @@
     "natures_spirit:sugi_sign",
     "natures_spirit:fir_sign",
     "natures_spirit:willow_sign",
-    "natures_spirit:aspen_sign"
+    "natures_spirit:aspen_sign",
+    "natures_spirit:cypress_sign",
+    "natures_spirit:olive_sign"
   ]
 }

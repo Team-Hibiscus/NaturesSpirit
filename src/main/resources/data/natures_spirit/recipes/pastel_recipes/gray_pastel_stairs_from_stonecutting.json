@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "natures_spirit:gray_pastel"
-  },
-  "result": "natures_spirit:gray_pastel_stairs"
-}

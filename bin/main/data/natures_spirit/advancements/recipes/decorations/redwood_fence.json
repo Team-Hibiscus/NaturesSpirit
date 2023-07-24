@@ -30,5 +30,6 @@
     "recipes": [
       "natures_spirit:redwood_fence"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

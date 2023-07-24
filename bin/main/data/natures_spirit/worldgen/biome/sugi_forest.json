@@ -6,6 +6,7 @@
       "minecraft:canyon"
     ]
   },
+  "has_precipitation": true,
   "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
@@ -19,17 +20,23 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.jungle_and_forest"
+      "sound": "minecraft:music.overworld.forest"
     },
     "sky_color": 7842047,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 10799444,
+    "foliage_color": 8567370
   },
   "features": [
-    [],
+    [
+      "natures_spirit:sugi_rock",
+      "natures_spirit:stone_cliff"
+    ],
     [
       "minecraft:lake_lava_underground",
-      "minecraft:lake_lava_surface"
+      "minecraft:lake_lava_surface",
+      "natures_spirit:spring_sugi_water"
     ],
     [
       "minecraft:amethyst_geode"
@@ -77,10 +84,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:forest_rock",
       "minecraft:patch_tall_grass_2",
       "natures_spirit:sugi_placed",
-      "natures_spirit:custom_fancy_oak_tree_placed",
       "natures_spirit:oak_bush_placed",
       "minecraft:patch_grass_plain",
       "natures_spirit:flower_sugi_placed",

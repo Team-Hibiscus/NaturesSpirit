@@ -202,7 +202,7 @@
       "element": {
         "element_type": "minecraft:empty_pool_element"
       },
-      "weight": 7
+      "weight": 5
     }
   ],
   "fallback": "minecraft:village/wisteria/terminators",

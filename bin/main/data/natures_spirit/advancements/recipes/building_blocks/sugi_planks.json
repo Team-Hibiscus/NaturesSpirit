@@ -28,5 +28,6 @@
     "recipes": [
       "natures_spirit:sugi_planks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

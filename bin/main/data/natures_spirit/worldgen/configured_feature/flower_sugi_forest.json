@@ -17,13 +17,7 @@
             "seed": 2445,
             "states": [
               {
-                "Name": "minecraft:allium"
-              },
-              {
-                "Name": "minecraft:lilac",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "minecraft:lily_of_the_valley"
               },
               {
                 "Name": "minecraft:lily_of_the_valley"
@@ -35,16 +29,7 @@
                 }
               },
               {
-                "Name": "natures_spirit:snapdragon",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
-                "Name": "minecraft:peony",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "minecraft:azure_bluet"
               }
             ]
           }
@@ -60,8 +45,8 @@
         }
       ]
     },
-    "tries": 96,
-    "xz_spread": 6,
+    "tries": 45,
+    "xz_spread": 8,
     "y_spread": 2
   }
 }

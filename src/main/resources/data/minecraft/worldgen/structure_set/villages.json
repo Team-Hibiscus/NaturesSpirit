@@ -10,7 +10,10 @@
       "structure": "minecraft:village_plains",
       "weight": 1
     },
-    
+    {
+      "structure": "natures_spirit:village_cypress",
+      "weight": 1
+    },
     {
       "structure": "minecraft:village_wisteria",
       "weight": 1

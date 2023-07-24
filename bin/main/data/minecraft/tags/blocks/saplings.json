@@ -6,9 +6,11 @@
     "natures_spirit:blue_wisteria_sapling",
     "natures_spirit:purple_wisteria_sapling",
     "natures_spirit:pink_wisteria_sapling",
-    "natures_spirit:pink_sugi_sapling",
+    "natures_spirit:sugi_sapling",
     "natures_spirit:fir_sapling",
     "natures_spirit:willow_sapling",
-    "natures_spirit:aspen_sapling"
+    "natures_spirit:aspen_sapling",
+    "natures_spirit:cypress_sapling",
+    "natures_spirit:olive_sapling"
   ]
 }

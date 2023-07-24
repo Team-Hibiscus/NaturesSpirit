@@ -5,8 +5,10 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BlockEntityTypeMixin",
+    "BlockSetTypeAccessor",
     "BlockStateProviderMixin",
     "FoliagePlacerMixin",
+    "StatsTypeAccessor",
     "TreeDecoratorMixin",
     "TrunkPlacerTypeMixin",
     "WoodTypeAccessor"

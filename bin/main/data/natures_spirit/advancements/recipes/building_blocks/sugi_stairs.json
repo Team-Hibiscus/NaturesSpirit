@@ -30,5 +30,6 @@
     "recipes": [
       "natures_spirit:sugi_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

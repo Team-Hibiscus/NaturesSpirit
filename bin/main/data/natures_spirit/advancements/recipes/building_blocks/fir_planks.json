@@ -28,5 +28,6 @@
     "recipes": [
       "natures_spirit:fir_planks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
