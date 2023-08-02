@@ -81,12 +81,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "natures_spirit:granite_rock",
       "minecraft:patch_tall_grass_2",
-      "natures_spirit:fir_placed",
       "natures_spirit:aspen_placed",
-      "natures_spirit:custom_fancy_oak_tree2_placed",
-      "natures_spirit:oak_bush_placed",
       "minecraft:patch_grass_plain",
       "natures_spirit:flower_golden_placed",
       "minecraft:forest_flowers",

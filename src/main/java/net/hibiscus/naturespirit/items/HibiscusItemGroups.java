@@ -15,17 +15,23 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 public class HibiscusItemGroups {
 
-    public static final RegistryKey <ItemGroup> NATURES_SPIRIT_ITEM_GROUP = register("natures_spirit");
-    public static void registerItemGroup() {
-        build(NATURES_SPIRIT_ITEM_GROUP, FabricItemGroup.builder().displayName(Text.translatable("itemGroup.natures_spirit.natures_spirit_item_group")).icon(() -> new ItemStack(HibiscusBlocks.REDWOOD[4])).build());
-    }
+   public static final RegistryKey <ItemGroup> NATURES_SPIRIT_ITEM_GROUP = register("natures_spirit");
 
-    private static RegistryKey <ItemGroup> register(String id) {
-        return RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, id));
-    }
+   public static void registerItemGroup() {
+      build(NATURES_SPIRIT_ITEM_GROUP,
+              FabricItemGroup.builder()
+                      .displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".natures_spirit_item_group"))
+                      .icon(() -> new ItemStack(HibiscusBlocks.REDWOOD[4]))
+                      .build()
+      );
+   }
 
-    private static void build(RegistryKey<ItemGroup> key, ItemGroup itemGroup) {
-        Registry.register(Registries.ITEM_GROUP, key, itemGroup);
-    }
+   private static RegistryKey <ItemGroup> register(String id) {
+      return RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, id));
+   }
+
+   private static void build(RegistryKey <ItemGroup> key, ItemGroup itemGroup) {
+      Registry.register(Registries.ITEM_GROUP, key, itemGroup);
+   }
 
 }

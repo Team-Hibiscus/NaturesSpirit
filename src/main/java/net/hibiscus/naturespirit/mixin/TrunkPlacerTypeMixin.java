@@ -6,11 +6,9 @@ import net.minecraft.world.gen.trunk.TrunkPlacerType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Mixin(TrunkPlacerType.class)
-public interface TrunkPlacerTypeMixin {
+@Mixin(TrunkPlacerType.class) public interface TrunkPlacerTypeMixin {
 
-    @Invoker
-    static <P extends TrunkPlacer> TrunkPlacerType <P> callRegister(String id, Codec <P> codec) {
-        throw new IllegalStateException();
-    }
+   @Invoker static <P extends TrunkPlacer> TrunkPlacerType <P> callRegister(String id, Codec <P> codec) {
+      throw new IllegalStateException();
+   }
 }

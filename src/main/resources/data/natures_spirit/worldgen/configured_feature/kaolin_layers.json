@@ -1,0 +1,154 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "minecraft:sand"
+            },
+            "target": {
+              "Name": "minecraft:terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 7,
+                "max_inclusive": 12
+              }
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "natures_spirit:white_kaolin"
+            },
+            "target": {
+              "Name": "minecraft:white_terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 7,
+                "max_inclusive": 12
+              }
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "natures_spirit:brown_kaolin"
+            },
+            "target": {
+              "Name": "minecraft:light_gray_terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 7,
+                "max_inclusive": 12
+              }
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "natures_spirit:light_gray_kaolin"
+            },
+            "target": {
+              "Name": "minecraft:yellow_terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 4,
+                "max_inclusive": 6
+              }
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "natures_spirit:yellow_kaolin"
+            },
+            "target": {
+              "Name": "minecraft:orange_terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 7,
+                "max_inclusive": 12
+              }
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "natures_spirit:white_kaolin"
+            },
+            "target": {
+              "Name": "minecraft:red_terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 7,
+                "max_inclusive": 12
+              }
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:netherrack_replace_blobs",
+          "config": {
+            "state": {
+              "Name": "natures_spirit:light_gray_kaolin"
+            },
+            "target": {
+              "Name": "minecraft:brown_terracotta"
+            },
+            "radius": {
+              "type": "minecraft:uniform",
+              "value": {
+                "min_inclusive": 7,
+                "max_inclusive": 12
+              }
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

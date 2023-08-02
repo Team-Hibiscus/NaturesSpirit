@@ -7,8 +7,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
 public class CypressSaplingGenerator extends SaplingGenerator {
-    @Override
-    protected RegistryKey <ConfiguredFeature <?, ?>> getTreeFeature(Random randomSource, boolean bl) {
-        return HibiscusConfiguredFeatures.CYPRESS_TREE_SPAWN;
-    }
+   @Override protected RegistryKey <ConfiguredFeature <?, ?>> getTreeFeature(Random randomSource, boolean bl) {
+      return HibiscusConfiguredFeatures.CYPRESS_TREE_SPAWN;
+   }
 }

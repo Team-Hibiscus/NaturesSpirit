@@ -7,18 +7,18 @@ import net.minecraft.util.shape.VoxelShape;
 
 
 public class WillowVine extends WisteriaVine {
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+   protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-    public WillowVine(Settings properties) {
-        super(properties);
-    }
+   public WillowVine(Settings properties) {
+      super(properties);
+   }
 
 
-    protected int getGrowthLength(Random randomSource) {
-        return VineLogic.getGrowthLength(randomSource);
-    }
+   protected int getGrowthLength(Random randomSource) {
+      return VineLogic.getGrowthLength(randomSource);
+   }
 
-    public Block getPlant() {
-        return HibiscusBlocks.WILLOW_VINES_PLANT;
-    }
+   public Block getPlant() {
+      return HibiscusBlocks.WILLOW_VINES_PLANT;
+   }
 }

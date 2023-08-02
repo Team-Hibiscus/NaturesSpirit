@@ -16,36 +16,45 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class WillowLeaves extends LeavesBlock implements Fertilizable {
-    public WillowLeaves(Settings properties) {
-        super(properties);
-    }
+   public WillowLeaves(Settings properties) {
+      super(properties);
+   }
 
-    @Override
-    public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
-        Block vineBlock = HibiscusBlocks.WILLOW_VINES;
-        Block vineBlock2 = HibiscusBlocks.WILLOW_VINES_PLANT;
-        Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader, blockPos, vineBlock2, Direction.DOWN, vineBlock);
-        return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN)).isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
-    }
+   @Override
+   public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
+      Block vineBlock = HibiscusBlocks.WILLOW_VINES;
+      Block vineBlock2 = HibiscusBlocks.WILLOW_VINES_PLANT;
+      Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader,
+              blockPos,
+              vineBlock2,
+              Direction.DOWN,
+              vineBlock
+      );
+      return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN))
+              .isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
+   }
 
 
-    @Override
-    public boolean canGrow(World level, Random randomSource, BlockPos blockPos, BlockState blockState) {
-        return true;
-    }
+   @Override public boolean canGrow(World level, Random randomSource, BlockPos blockPos, BlockState blockState) {
+      return true;
+   }
 
-    @Override
-    public void grow(ServerWorld serverLevel, Random randomSource, BlockPos blockPos, BlockState blockState) {
-        Block vineBlock = HibiscusBlocks.WILLOW_VINES;
-        Block vineBlock2 = HibiscusBlocks.WILLOW_VINES_PLANT;
+   @Override public void grow(ServerWorld serverLevel, Random randomSource, BlockPos blockPos, BlockState blockState) {
+      Block vineBlock = HibiscusBlocks.WILLOW_VINES;
+      Block vineBlock2 = HibiscusBlocks.WILLOW_VINES_PLANT;
 
-        Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel, blockPos, vineBlock2, Direction.DOWN, vineBlock);
-        if (optional.isPresent()) {
-            BlockState blockState2 = serverLevel.getBlockState(optional.get());
-            ((WisteriaVine) blockState2.getBlock()).grow(serverLevel, randomSource, optional.get(), blockState2);
-        }
-        if (optional.isEmpty()) {
-            serverLevel.setBlockState(blockPos.down(), vineBlock.getDefaultState(), 2);
-        }
-    }
+      Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel,
+              blockPos,
+              vineBlock2,
+              Direction.DOWN,
+              vineBlock
+      );
+      if(optional.isPresent()) {
+         BlockState blockState2 = serverLevel.getBlockState(optional.get());
+         ((WisteriaVine) blockState2.getBlock()).grow(serverLevel, randomSource, optional.get(), blockState2);
+      }
+      if(optional.isEmpty()) {
+         serverLevel.setBlockState(blockPos.down(), vineBlock.getDefaultState(), 2);
+      }
+   }
 }

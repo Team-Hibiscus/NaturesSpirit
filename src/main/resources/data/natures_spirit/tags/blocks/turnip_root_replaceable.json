@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "#minecraft:dirt",
+    "#minecraft:terracotta",
+    "#minecraft:sand",
+    "minecraft:sandstone",
+    "#natures_spirit:kaolin",
+    "minecraft:air"
+  ]
+}

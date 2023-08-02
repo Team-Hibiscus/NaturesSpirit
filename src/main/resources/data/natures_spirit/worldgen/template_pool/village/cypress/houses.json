@@ -43,7 +43,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -70,7 +70,7 @@
         "processors": "natures_spirit:crack_10_percent",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -88,7 +88,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -106,7 +106,7 @@
         "processors": "natures_spirit:lime_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -124,7 +124,7 @@
         "processors": "natures_spirit:light_blue_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -160,7 +160,7 @@
         "processors": "natures_spirit:orange_kaolin",
         "projection": "rigid"
       },
-      "weight": 4
+      "weight": 5
     },
     {
       "element": {
@@ -205,7 +205,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 4
     },
     {
       "element": {
@@ -241,7 +241,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 4
     },
     {
       "element": {
@@ -313,7 +313,7 @@
         "processors": "natures_spirit:yellow_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 4
     },
     {
       "element": {
@@ -331,7 +331,7 @@
         "processors": "natures_spirit:cyan_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 4
     },
     {
       "element": {
@@ -349,7 +349,7 @@
         "processors": "natures_spirit:pink_kaolin",
         "projection": "rigid"
       },
-      "weight": 3
+      "weight": 4
     },
     {
       "element": {

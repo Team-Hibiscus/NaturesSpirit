@@ -8,8 +8,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 
 public class WillowSaplingGenerator extends SaplingGenerator {
 
-    @Override
-    protected RegistryKey <ConfiguredFeature <?, ?>> getTreeFeature(Random randomSource, boolean bl) {
-        return HibiscusConfiguredFeatures.WILLOW_TREE;
-    }
+   @Override protected RegistryKey <ConfiguredFeature <?, ?>> getTreeFeature(Random randomSource, boolean bl) {
+      return HibiscusConfiguredFeatures.WILLOW_TREE;
+   }
 }

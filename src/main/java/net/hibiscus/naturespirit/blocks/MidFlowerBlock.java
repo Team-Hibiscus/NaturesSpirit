@@ -11,14 +11,14 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class MidFlowerBlock extends FlowerBlock {
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D);
+   protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 
-    public MidFlowerBlock(StatusEffect mobEffect, int i, Settings properties) {
-        super(mobEffect, i, properties);
-    }
+   public MidFlowerBlock(StatusEffect mobEffect, int i, Settings properties) {
+      super(mobEffect, i, properties);
+   }
 
-    public VoxelShape getOutlineShape(BlockState state, BlockView level, BlockPos pos, ShapeContext context) {
-        Vec3d vec3 = state.getModelOffset(level, pos);
-        return SHAPE.offset(vec3.x, vec3.y, vec3.z);
-    }
+   public VoxelShape getOutlineShape(BlockState state, BlockView level, BlockPos pos, ShapeContext context) {
+      Vec3d vec3 = state.getModelOffset(level, pos);
+      return SHAPE.offset(vec3.x, vec3.y, vec3.z);
+   }
 }

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:dirt",
+    "#minecraft:sand",
+    "#minecraft:terracotta",
+    "#natures_spirit:kaolin",
+    "natures_spirit:desert_turnip_root_block",
+    "natures_spirit:desert_turnip_block"
+  ]
+}
