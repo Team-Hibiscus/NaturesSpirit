@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "natures_spirit:joshua_logs"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "natures_spirit:joshua_planks"
+  }
+}
