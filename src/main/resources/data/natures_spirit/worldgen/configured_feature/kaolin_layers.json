@@ -7,7 +7,7 @@
           "type": "minecraft:netherrack_replace_blobs",
           "config": {
             "state": {
-              "Name": "minecraft:sand"
+              "Name": "natures_spirit:sandy_soil"
             },
             "target": {
               "Name": "minecraft:terracotta"

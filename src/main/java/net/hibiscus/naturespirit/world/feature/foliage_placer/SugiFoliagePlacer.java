@@ -3,6 +3,7 @@ package net.hibiscus.naturespirit.world.feature.foliage_placer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.random.Random;
@@ -21,7 +22,7 @@ public class SugiFoliagePlacer extends FoliagePlacer {
    }
 
    protected FoliagePlacerType <?> getType() {
-      return NatureSpirit.SUGI_FOLIAGE_PLACER_TYPE;
+      return HibiscusWorldGen.SUGI_FOLIAGE_PLACER_TYPE;
    }
 
    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, FoliagePlacer.TreeNode treeNode, int foliageHeight, int radius, int offset) {

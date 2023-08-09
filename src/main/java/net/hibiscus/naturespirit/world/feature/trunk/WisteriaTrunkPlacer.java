@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.RegistryCodecs;
@@ -57,7 +58,7 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
    }
 
    protected TrunkPlacerType <?> getType() {
-      return NatureSpirit.WISTERIA_TRUNK_PLACER;
+      return HibiscusWorldGen.WISTERIA_TRUNK_PLACER;
    }
 
    public List <FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer <BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {

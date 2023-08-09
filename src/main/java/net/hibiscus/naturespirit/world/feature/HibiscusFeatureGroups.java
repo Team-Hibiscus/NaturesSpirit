@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.world.gen;
+package net.hibiscus.naturespirit.world.feature;
 
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
 import net.minecraft.world.biome.GenerationSettings;
@@ -6,18 +6,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.MiscPlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
-public class HibiscusTreeGeneration {
-   public static void generateTrees() {
-      //        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-      //                GenerationStep.Decoration.VEGETAL_DECORATION, HibiscusPlacedFeatures.REDWOOD_PLACED.unwrapKey().get
-      //                ());
-      //        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-      //                GenerationStep.Decoration.VEGETAL_DECORATION, HibiscusPlacedFeatures.LARGE_REDWOOD_PLACED.unwrapKey
-      //                ().get());
-      //        BiomeModifications.addFeature(BiomeSelectors.tag(HibiscusTags.Biomes.IS_WISTERIA),
-      //                GenerationStep.Decoration.VEGETAL_DECORATION, HibiscusPlacedFeatures.WISTERIA_PLACED.unwrapKey()
-      //                .get());
-   }
+public class HibiscusFeatureGroups {
 
    public static void addSugiVegetation(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MiscPlacedFeatures.FOREST_ROCK);

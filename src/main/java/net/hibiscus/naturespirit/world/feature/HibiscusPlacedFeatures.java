@@ -37,6 +37,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> PURPLE_WISTERIA_CHECKED = registerKey("purple_wisteria_checked");
    public static final RegistryKey <PlacedFeature> SUGI_CHECKED = registerKey("sugi_checked");
    public static final RegistryKey <PlacedFeature> OLIVE_CHECKED = registerKey("olive_checked");
+   public static final RegistryKey <PlacedFeature> JOSHUA_CHECKED = registerKey("joshua_checked");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_CHECKED = registerKey("oak_bush_checked");
    public static final RegistryKey <PlacedFeature> SPRUCE_BUSH_CHECKED = registerKey("spruce_bush_checked");
@@ -52,6 +53,9 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> FLOWER_GOLDEN2_PLACED = registerKey("flower_golden2_placed");
    public static final RegistryKey <PlacedFeature> FLOWER_CYPRESS_PLACED = registerKey("flower_cypress_placed");
    public static final RegistryKey <PlacedFeature> FLOWER_CARNATION_PLACED = registerKey("flower_carnation_placed");
+   public static final RegistryKey <PlacedFeature> PATCH_SCORCHED_GRASS_PLACED = registerKey("patch_scorched_grass_placed");
+   public static final RegistryKey <PlacedFeature> FLOWER_BLOOMING_DUNES_PLACED = registerKey("flower_blooming_dunes_placed");
+   public static final RegistryKey <PlacedFeature> FLOWER_STRATIFIED_DESERT_PLACED = registerKey("flower_stratified_desert_placed");
 
    public static final RegistryKey <PlacedFeature> WISTERIA_WATER = registerKey("wisteria_water_placed");
    public static final RegistryKey <PlacedFeature> LAVENDER_WATER = registerKey("lavender_water_placed");
@@ -71,6 +75,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> WISTERIA_PLACED = registerKey("wisteria_placed");
    public static final RegistryKey <PlacedFeature> SUGI_PLACED = registerKey("sugi_placed");
    public static final RegistryKey <PlacedFeature> OLIVE_PLACED = registerKey("olive_placed");
+   public static final RegistryKey <PlacedFeature> JOSHUA_PLACED = registerKey("joshua_placed");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_PLACED = registerKey("oak_bush_placed");
    public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = registerKey(
@@ -110,6 +115,11 @@ public class HibiscusPlacedFeatures {
               CYPRESS_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CYPRESS_TREE),
               PlacedFeatures.wouldSurvive(HibiscusBlocks.CYPRESS_SAPLING[0])
+      );
+      registerKey(context,
+              JOSHUA_CHECKED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE),
+              PlacedFeatures.wouldSurvive(HibiscusBlocks.JOSHUA_SAPLING[0])
       );
       registerKey(context,
               FIR_CHECKED,
@@ -258,6 +268,35 @@ public class HibiscusPlacedFeatures {
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_CYPRESS_FIELDS),
               CountPlacementModifier.of(5),
               RarityFilterPlacementModifier.of(2),
+              SquarePlacementModifier.of(),
+              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              PATCH_SCORCHED_GRASS_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PATCH_SCORCHED_GRASS),
+              CountPlacementModifier.of(5),
+              RarityFilterPlacementModifier.of(2),
+              SquarePlacementModifier.of(),
+              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+
+      registerKey(context,
+              FLOWER_BLOOMING_DUNES_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_BLOOMING_DUNES),
+              CountPlacementModifier.of(5),
+              RarityFilterPlacementModifier.of(2),
+              SquarePlacementModifier.of(),
+              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+
+      registerKey(context,
+              FLOWER_STRATIFIED_DESERT_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_STRATIFIED_DESERT),
+              CountPlacementModifier.of(3),
+              RarityFilterPlacementModifier.of(15),
               SquarePlacementModifier.of(),
               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
               BiomePlacementModifier.of()
@@ -412,6 +451,16 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               OLIVE_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE_SPAWN),
+              CountPlacementModifier.of(20),
+              RarityFilterPlacementModifier.of(80),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              JOSHUA_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE_SPAWN),
               CountPlacementModifier.of(20),
               RarityFilterPlacementModifier.of(80),
               SquarePlacementModifier.of(),

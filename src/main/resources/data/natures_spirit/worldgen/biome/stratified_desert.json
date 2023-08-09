@@ -84,16 +84,15 @@
     [
       "minecraft:glow_lichen",
       "natures_spirit:rooted_desert_turnip_placed",
-      "minecraft:patch_tall_grass",
-      "minecraft:trees_savanna",
-      "minecraft:flower_warm",
-      "minecraft:patch_grass_savanna",
+      "natures_spirit:joshua_placed",
+      "natures_spirit:flower_stratified_desert_placed",
+      "natures_spirit:patch_scorched_grass_placed",
       "minecraft:patch_dead_bush_2",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_desert",
       "minecraft:patch_pumpkin",
-      "minecraft:patch_cactus_desert"
+      "natures_spirit:patch_cactus_stratified"
     ],
     [
       "minecraft:freeze_top_layer"

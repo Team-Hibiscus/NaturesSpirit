@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.terrablender;
 
-import net.hibiscus.naturespirit.world.gen.HibiscusTreeGeneration;
+import net.hibiscus.naturespirit.world.feature.HibiscusFeatureGroups;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -106,7 +106,7 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
       DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
-      HibiscusTreeGeneration.addErodedRiverFlowers(lookupBackedBuilder);
+      HibiscusFeatureGroups.addErodedRiverFlowers(lookupBackedBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(lookupBackedBuilder);
 
       return biome(true, 0.67F, 0.7F, 4159204, 329011, builder, lookupBackedBuilder, NORMAL_MUSIC);
@@ -129,8 +129,8 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
-      HibiscusTreeGeneration.addWisteriaTrees(biomeBuilder);
-      HibiscusTreeGeneration.addWisteriaFlowers(biomeBuilder);
+      HibiscusFeatureGroups.addWisteriaTrees(biomeBuilder);
+      HibiscusFeatureGroups.addWisteriaFlowers(biomeBuilder);
       biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_WATERLILY);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM);
@@ -146,12 +146,12 @@ public class NatureSpiritOverworldBiomes {
               holderGetter2
       );
       globalOverworldGeneration(biomeBuilder);
-      HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addSugiVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addSugiTrees(biomeBuilder);
-      HibiscusTreeGeneration.addSugiSecondaryVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addSugiTrees(biomeBuilder);
+      HibiscusFeatureGroups.addSugiSecondaryVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biome(true,
               0.95F,
@@ -171,14 +171,14 @@ public class NatureSpiritOverworldBiomes {
               holderGetter2
       );
       globalOverworldGeneration(biomeBuilder);
-      HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addSugiVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addFirTrees(biomeBuilder);
-      HibiscusTreeGeneration.addAspenTrees(biomeBuilder);
-      HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
-      HibiscusTreeGeneration.addGoldenWildsVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addFirTrees(biomeBuilder);
+      HibiscusFeatureGroups.addAspenTrees(biomeBuilder);
+      HibiscusFeatureGroups.addFewOakTrees(biomeBuilder);
+      HibiscusFeatureGroups.addGoldenWildsVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biomeWithGrassColor(true,
               0.45F,
@@ -199,13 +199,13 @@ public class NatureSpiritOverworldBiomes {
               holderGetter2
       );
       globalOverworldGeneration(biomeBuilder);
-      HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addSugiVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.adFewAspenTrees(biomeBuilder);
-      HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
-      HibiscusTreeGeneration.addGoldenFieldsVegetation(biomeBuilder);
+      HibiscusFeatureGroups.adFewAspenTrees(biomeBuilder);
+      HibiscusFeatureGroups.addFewOakTrees(biomeBuilder);
+      HibiscusFeatureGroups.addGoldenFieldsVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biomeWithGrassColor(true,
               0.45F,
@@ -229,8 +229,8 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addDenseFirTrees(biomeBuilder);
-      HibiscusTreeGeneration.addFirVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addDenseFirTrees(biomeBuilder);
+      HibiscusFeatureGroups.addFirVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biomeWithGrassColor(true,
               0.45F,
@@ -252,12 +252,12 @@ public class NatureSpiritOverworldBiomes {
               holderGetter2
       ).feature(GenerationStep.Feature.FLUID_SPRINGS, LAVENDER_WATER);
       globalOverworldGeneration(biomeBuilder);
-      HibiscusTreeGeneration.addSugiVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addSugiVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
-      HibiscusTreeGeneration.addLavenderFlowers(biomeBuilder);
+      HibiscusFeatureGroups.addFewOakTrees(biomeBuilder);
+      HibiscusFeatureGroups.addLavenderFlowers(biomeBuilder);
       biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_WATERLILY);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM);
@@ -282,8 +282,8 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addFewOakTrees(biomeBuilder);
-      HibiscusTreeGeneration.addFoxgloveFlowers(biomeBuilder);
+      HibiscusFeatureGroups.addFewOakTrees(biomeBuilder);
+      HibiscusFeatureGroups.addFoxgloveFlowers(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biome(true,
               0.95F,
@@ -303,15 +303,15 @@ public class NatureSpiritOverworldBiomes {
               holderGetter2
       );
       globalOverworldGeneration(biomeBuilder);
-      HibiscusTreeGeneration.addRedwoodRock(biomeBuilder);
+      HibiscusFeatureGroups.addRedwoodRock(biomeBuilder);
       DefaultBiomeFeatures.addFrozenLavaSpring(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addLargeRedwoodTrees(biomeBuilder);
-      HibiscusTreeGeneration.addRedwoodTrees(biomeBuilder);
-      HibiscusTreeGeneration.addSpruceBush(biomeBuilder);
-      HibiscusTreeGeneration.addRedwoodSecondaryVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addLargeRedwoodTrees(biomeBuilder);
+      HibiscusFeatureGroups.addRedwoodTrees(biomeBuilder);
+      HibiscusFeatureGroups.addSpruceBush(biomeBuilder);
+      HibiscusFeatureGroups.addRedwoodSecondaryVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biomeWithGrassColor(true,
               0.4F,
@@ -336,9 +336,9 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addOliveTrees(biomeBuilder);
-      HibiscusTreeGeneration.addDenseCypressTrees(biomeBuilder);
-      HibiscusTreeGeneration.addCypressVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addOliveTrees(biomeBuilder);
+      HibiscusFeatureGroups.addDenseCypressTrees(biomeBuilder);
+      HibiscusFeatureGroups.addCypressVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biome(true,
               0.9F,
@@ -361,8 +361,8 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusTreeGeneration.addCypressTrees(biomeBuilder);
-      HibiscusTreeGeneration.addCarnationVegetation(biomeBuilder);
+      HibiscusFeatureGroups.addCypressTrees(biomeBuilder);
+      HibiscusFeatureGroups.addCarnationVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       return biome(true,
               0.9F,

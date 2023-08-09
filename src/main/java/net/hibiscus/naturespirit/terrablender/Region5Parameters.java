@@ -18,21 +18,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class Region5Parameters {
-
-   public static final float MAX_MID_WEIRDNESS = 0.4F;
-   public static final float MAX_HIGH_WEIRDNESS = 0.56666666F;
-   public static final float field_35042 = -0.11F;
-   public static final float field_35043 = 0.03F;
-   public static final float field_35044 = 0.3F;
-   public static final float field_35045 = -0.78F;
-   public static final float field_35046 = -0.375F;
-   private static final float MAX_VALLEY_WEIRDNESS = 0.05F;
-   private static final float MAX_LOW_WEIRDNESS = 0.26666668F;
-   private static final float MAX_SECOND_HIGH_WEIRDNESS = 0.93333334F;
-   private static final float field_34501 = 0.1F;
-   private static final float MAX_PEAK_WEIRDNESS = 0.7666667F;
-   private static final float field_39134 = -0.225F;
-   private static final float field_39135 = 0.9F;
    private final MultiNoiseUtil.ParameterRange defaultParameter = MultiNoiseUtil.ParameterRange.of(-1.0F, 1.0F);
    private final MultiNoiseUtil.ParameterRange[] temperatureParameters = new MultiNoiseUtil.ParameterRange[]{
            MultiNoiseUtil.ParameterRange.of(-1.0F, -0.45F),
@@ -135,9 +120,9 @@ public class Region5Parameters {
               {
                       BiomeKeys.DESERT,
                       BiomeKeys.DESERT,
-                      BiomeKeys.DESERT,
-                      BiomeKeys.DESERT,
-                      BiomeKeys.DESERT
+                      HibiscusBiomes.LIVELY_DUNES,
+                      HibiscusBiomes.LIVELY_DUNES,
+                      HibiscusBiomes.LIVELY_DUNES
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
@@ -157,7 +142,7 @@ public class Region5Parameters {
                       BiomeKeys.FOREST,
                       BiomeKeys.BAMBOO_JUNGLE
               },
-              {null, null, null, null, null}
+              {null, null, null, HibiscusBiomes.BLOOMING_DUNES, HibiscusBiomes.BLOOMING_DUNES}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
@@ -252,45 +237,6 @@ public class Region5Parameters {
               {null, null, null, null, null},
               {null, null, null, null, null}
       };
-   }
-
-   public static boolean method_43718(DensityFunction densityFunction, DensityFunction densityFunction2, DensityFunction.NoisePos noisePos) {
-      return densityFunction.sample(noisePos) < -0.22499999403953552D && densityFunction2.sample(noisePos) > 0.8999999761581421D;
-   }
-
-   public static String getPeaksValleysDescription(double weirdness) {
-      if(weirdness < (double) DensityFunctions.getPeaksValleysNoise(0.05F)) {
-         return "Valley";
-      }
-      else if(weirdness < (double) DensityFunctions.getPeaksValleysNoise(0.26666668F)) {
-         return "Low";
-      }
-      else if(weirdness < (double) DensityFunctions.getPeaksValleysNoise(0.4F)) {
-         return "Mid";
-      }
-      else {
-         return weirdness < (double) DensityFunctions.getPeaksValleysNoise(0.56666666F) ? "High" : "Peak";
-      }
-   }
-
-   public List <MultiNoiseUtil.NoiseHypercube> getSpawnSuitabilityNoises() {
-      MultiNoiseUtil.ParameterRange parameterRange = MultiNoiseUtil.ParameterRange.of(0.0F);
-      float f = 0.16F;
-      return List.of(new MultiNoiseUtil.NoiseHypercube(this.defaultParameter,
-              this.defaultParameter,
-              MultiNoiseUtil.ParameterRange.combine(this.riverContinentalness, this.defaultParameter),
-              this.defaultParameter,
-              parameterRange,
-              MultiNoiseUtil.ParameterRange.of(-1.0F, -0.16F),
-              0L
-      ), new MultiNoiseUtil.NoiseHypercube(this.defaultParameter,
-              this.defaultParameter,
-              MultiNoiseUtil.ParameterRange.combine(this.riverContinentalness, this.defaultParameter),
-              this.defaultParameter,
-              parameterRange,
-              MultiNoiseUtil.ParameterRange.of(0.16F, 1.0F),
-              0L
-      ));
    }
 
    protected void writeOverworldBiomeParameters(Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> parameters) {
@@ -1433,73 +1379,5 @@ public class Region5Parameters {
               weirdness,
               offset
       ), biome));
-   }
-
-   public String getContinentalnessDescription(double continentalness) {
-      double d = (double) MultiNoiseUtil.toLong((float) continentalness);
-      if(d < (double) this.mushroomFieldsContinentalness.max()) {
-         return "Mushroom fields";
-      }
-      else if(d < (double) this.deepOceanContinentalness.max()) {
-         return "Deep ocean";
-      }
-      else if(d < (double) this.oceanContinentalness.max()) {
-         return "Ocean";
-      }
-      else if(d < (double) this.coastContinentalness.max()) {
-         return "Coast";
-      }
-      else if(d < (double) this.nearInlandContinentalness.max()) {
-         return "Near inland";
-      }
-      else {
-         return d < (double) this.midInlandContinentalness.max() ? "Mid inland" : "Far inland";
-      }
-   }
-
-   @Debug public MultiNoiseUtil.ParameterRange[] getTemperatureParameters() {
-      return this.temperatureParameters;
-   }
-
-   @Debug public MultiNoiseUtil.ParameterRange[] getHumidityParameters() {
-      return this.humidityParameters;
-   }
-
-   @Debug public MultiNoiseUtil.ParameterRange[] getErosionParameters() {
-      return this.erosionParameters;
-   }
-
-   @Debug public MultiNoiseUtil.ParameterRange[] getContinentalnessParameters() {
-      return new MultiNoiseUtil.ParameterRange[]{
-              this.mushroomFieldsContinentalness,
-              this.deepOceanContinentalness,
-              this.oceanContinentalness,
-              this.coastContinentalness,
-              this.nearInlandContinentalness,
-              this.midInlandContinentalness,
-              this.farInlandContinentalness
-      };
-   }
-
-   @Debug public MultiNoiseUtil.ParameterRange[] getWeirdnessParameters() {
-      return new MultiNoiseUtil.ParameterRange[]{
-              MultiNoiseUtil.ParameterRange.of(-2.0F, DensityFunctions.getPeaksValleysNoise(0.05F)),
-              MultiNoiseUtil.ParameterRange.of(DensityFunctions.getPeaksValleysNoise(0.05F),
-                      DensityFunctions.getPeaksValleysNoise(0.26666668F)
-              ),
-              MultiNoiseUtil.ParameterRange.of(DensityFunctions.getPeaksValleysNoise(0.26666668F),
-                      DensityFunctions.getPeaksValleysNoise(0.4F)
-              ),
-              MultiNoiseUtil.ParameterRange.of(DensityFunctions.getPeaksValleysNoise(0.4F),
-                      DensityFunctions.getPeaksValleysNoise(0.56666666F)
-              ),
-              MultiNoiseUtil.ParameterRange.of(DensityFunctions.getPeaksValleysNoise(0.56666666F), 2.0F)
-      };
-   }
-
-   @Debug public MultiNoiseUtil.ParameterRange[] method_40015() {
-      return new MultiNoiseUtil.ParameterRange[]{
-              MultiNoiseUtil.ParameterRange.of(-2.0F, 0.0F), MultiNoiseUtil.ParameterRange.of(0.0F, 2.0F)
-      };
    }
 }

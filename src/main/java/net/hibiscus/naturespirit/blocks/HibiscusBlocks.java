@@ -33,6 +33,16 @@ import net.minecraft.world.BlockView;
 
 public class HibiscusBlocks {
 
+   public static final Block SCORCHED_GRASS = registerPlantBlock("scorched_grass", new LargeDesertFernBlock(
+           FabricBlockSettings.create()
+                   .mapColor(MapColor.LICHEN_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Blocks.FERN, 0.3f);
+
    public static final Block LAVENDER = registerPlantBlock("lavender",
            new LargeTallFlowerBlock(FabricBlockSettings.create()
                    .mapColor(MapColor.DARK_GREEN)
@@ -147,7 +157,7 @@ public class HibiscusBlocks {
                    .pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Blocks.LILY_OF_THE_VALLEY, 0.4f);
 
-   public static final Block TIGER_LILY = registerPlantBlock("tiger_lily", new LargeFlowerBlock(StatusEffects.HASTE, 7,
+   public static final Block TIGER_LILY = registerPlantBlock("tiger_lily", new LargeFlowerBlock(StatusEffects.FIRE_RESISTANCE, 7,
            FabricBlockSettings.create()
                    .mapColor(MapColor.DARK_GREEN)
                    .noCollision()
@@ -156,6 +166,26 @@ public class HibiscusBlocks {
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, BLUEBELL, 0.4f);
+
+   public static final Block PURPLE_WILDFLOWER = registerPlantBlock("purple_wildflower", new LargeFlowerBlock(StatusEffects.SLOW_FALLING, 7,
+           FabricBlockSettings.create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, TIGER_LILY, 0.4f);
+
+   public static final Block YELLOW_WILDFLOWER = registerPlantBlock("yellow_wildflower", new LargeFlowerBlock(StatusEffects.SLOW_FALLING, 7,
+           FabricBlockSettings.create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, PURPLE_WILDFLOWER, 0.4f);
 
    public static final Block ANEMONE = registerPlantBlock("anemone", new MidFlowerBlock(StatusEffects.RESISTANCE, 4,
            FabricBlockSettings.create()
@@ -204,7 +234,8 @@ public class HibiscusBlocks {
    public static final Block WILLOW_LEAVES = registerLeafBlock("willow_leaves", MapColor.GREEN, FIR_LEAVES, false);
    public static final Block ASPEN_LEAVES = registerLeafBlock("aspen_leaves", MapColor.LIME, WILLOW_LEAVES);
    public static final Block CYPRESS_LEAVES = registerLeafBlock("cypress_leaves", MapColor.DARK_GREEN, ASPEN_LEAVES);
-   public static final Block OLIVE_LEAVES = registerLeafBlock("olive_leaves", MapColor.PALE_GREEN, CYPRESS_LEAVES);
+   public static final Block OLIVE_LEAVES = registerLeafBlock("olive_leaves", MapColor.DARK_GREEN, CYPRESS_LEAVES);
+   public static final Block JOSHUA_LEAVES = registerLeafBlock("joshua_leaves", MapColor.PALE_YELLOW, OLIVE_LEAVES);
 
    public static final Block[] REDWOOD_SAPLING = registerSapling("redwood",
            new RedwoodSaplingGenerator(),
@@ -241,11 +272,8 @@ public class HibiscusBlocks {
            new OliveSaplingGenerator(),
            CYPRESS_SAPLING[0]
    );
-   public static final BlockSetType WISTERIA_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType(
-           "wisteria"));
-   public static final WoodType WISTERIA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("wisteria",
-           WISTERIA_BLOCK_SET_TYPE
-   ));
+   public static final Block[] JOSHUA_SAPLING = registerJoshuaSapling("joshua", new JoshuaSaplingGenerator(), OLIVE_SAPLING[0]);
+
    public static final Block WHITE_WISTERIA_VINES = registerPlantBlock("white_wisteria_vines",
            new WisteriaVine(FabricBlockSettings.create()
                    .mapColor(MapColor.TERRACOTTA_WHITE)
@@ -361,28 +389,33 @@ public class HibiscusBlocks {
                    .sounds(BlockSoundGroup.WEEPING_VINES)
                    .dropsLike(WILLOW_VINES))
    );
+   public static final BlockSetType REDWOOD_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("redwood"));
+   public static final WoodType REDWOOD_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("redwood", REDWOOD_BLOCK_SET_TYPE));
+   public static final BlockSetType SUGI_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("sugi"));
+   public static final WoodType SUGI_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("sugi", SUGI_BLOCK_SET_TYPE));
    public static final BlockSetType FIR_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("fir"));
    public static final WoodType FIR_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("fir", FIR_BLOCK_SET_TYPE));
+   public static final BlockSetType WISTERIA_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("wisteria"));
+   public static final WoodType WISTERIA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("wisteria", WISTERIA_BLOCK_SET_TYPE));
    public static final BlockSetType WILLOW_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("willow"));
-   public static final WoodType WILLOW_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("willow",
-           WILLOW_BLOCK_SET_TYPE
-   ));
+   public static final WoodType WILLOW_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("willow", WILLOW_BLOCK_SET_TYPE));
    public static final BlockSetType ASPEN_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("aspen"));
-   public static final WoodType ASPEN_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("aspen",
-           ASPEN_BLOCK_SET_TYPE
-   ));
+   public static final WoodType ASPEN_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("aspen", ASPEN_BLOCK_SET_TYPE));
    public static final BlockSetType CYPRESS_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("cypress"));
-   public static final WoodType CYPRESS_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("cypress",
-           CYPRESS_BLOCK_SET_TYPE
-   ));
+   public static final WoodType CYPRESS_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("cypress", CYPRESS_BLOCK_SET_TYPE));
    public static final BlockSetType OLIVE_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("olive"));
-   public static final WoodType OLIVE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("olive",
-           OLIVE_BLOCK_SET_TYPE
-   ));
+   public static final WoodType OLIVE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("olive", OLIVE_BLOCK_SET_TYPE));
+   public static final BlockSetType JOSHUA_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("joshua"));
+   public static final WoodType JOSHUA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("joshua", JOSHUA_BLOCK_SET_TYPE));
+
    public static final FoodComponent GREEN_OLIVE_COMPONENT = (new FoodComponent.Builder()).hunger(2).saturationModifier(
            0.4F).build();
    public static final FoodComponent BLACK_OLIVE_COMPONENT = (new FoodComponent.Builder()).hunger(3).saturationModifier(
            0.5F).build();
+   public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(4)
+           .saturationModifier(0.6F)
+           .build();
+
    public static final Item GREEN_OLIVES = registerPlantItem("green_olives",
            new Item(new FabricItemSettings().food(GREEN_OLIVE_COMPONENT)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
@@ -397,9 +430,6 @@ public class HibiscusBlocks {
            ItemGroups.FOOD_AND_DRINK,
            0.3F
    );
-   public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(4)
-           .saturationModifier(0.6F)
-           .build();
    public static final Block DESERT_TURNIP_ROOT_BLOCK = registerBlock("desert_turnip_root_block",
            new PillarBlock(FabricBlockSettings.create()
                    .burnable()
@@ -454,30 +484,8 @@ public class HibiscusBlocks {
            new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT))
    );
 
-   public static final Block JOSHUA_LOG = registerBlock("joshua_log",
-           new JoshuaTrunkBlock(FabricBlockSettings.create()
-                   .mapColor(MapColor.GRAY)
-                   .instrument(Instrument.BASS)
-                   .requiresTool()
-                   .strength(1.25F, 4.2F)),
-           HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-   );
-
-   public static final Block STRIPPED_JOSHUA_LOG = registerBlock("stripped_joshua_log",
-           new JoshuaTrunkBlock(FabricBlockSettings.create()
-                   .mapColor(MapColor.GRAY)
-                   .instrument(Instrument.BASS)
-                   .requiresTool()
-                   .strength(1.25F, 4.2F)),
-           HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-   );
-
 
    private static final Block[] Sign = getCherrySign();
-   public static final BlockSetType REDWOOD_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("redwood"));
-   public static final WoodType REDWOOD_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("redwood",
-           REDWOOD_BLOCK_SET_TYPE
-   ));
    public static final Block[] REDWOOD = registerWoodBlocks("redwood",
            MapColor.RED,
            MapColor.TERRACOTTA_BROWN,
@@ -487,10 +495,6 @@ public class HibiscusBlocks {
            REDWOOD_BLOCK_SET_TYPE,
            REDWOOD_WOOD_TYPE
    );
-   public static final BlockSetType SUGI_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("sugi"));
-   public static final WoodType SUGI_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("sugi",
-           SUGI_BLOCK_SET_TYPE
-   ));
    public static final Block[] SUGI = registerWoodBlocks("sugi",
            MapColor.DIRT_BROWN,
            MapColor.DEEPSLATE_GRAY,
@@ -566,6 +570,27 @@ public class HibiscusBlocks {
            CYPRESS,
            OLIVE_BLOCK_SET_TYPE,
            OLIVE_WOOD_TYPE
+   );
+   public static final Block[] JOSHUA = registerJoshuaWoodBlocks("joshua",
+           MapColor.PALE_GREEN,
+           MapColor.PALE_YELLOW,
+           OLIVE[12],
+           OLIVE[2],
+           OLIVE,
+           JOSHUA_BLOCK_SET_TYPE,
+           JOSHUA_WOOD_TYPE
+   );
+
+   public static final Block SANDY_SOIL = registerBlock("sandy_soil",
+           new Block(FabricBlockSettings.create()
+                   .mapColor(MapColor.DIRT_BROWN)
+                   .instrument(Instrument.BASEDRUM)
+                   .strength(0.5F)
+                   .sounds(BlockSoundGroup.GRAVEL)
+           ),
+           HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
+           Blocks.FARMLAND,
+           ItemGroups.NATURAL
    );
 
    public static final Block KAOLIN = registerBlock("kaolin",
@@ -1309,477 +1334,183 @@ public class HibiscusBlocks {
 
       return Array;
    }
-//   public static Block[] registerJoshuaWoodBlocks(String name, MapColor topMaterialColor, MapColor sideMaterialColor, Block buttonPlacement, Block logPlacement, Block[] signPlacement, BlockSetType blockSetType, WoodType woodType) {
-//      Block[] Array = new Block[15];
-//      Array[0] = registerBlock(name + "_log",
-//              new PillarBlock(FabricBlockSettings.create()
-//                      .burnable()
-//                      .instrument(Instrument.BASS)
-//                      .mapColor((state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMaterialColor : sideMaterialColor)
-//                      .strength(2.0F)
-//                      .sounds(BlockSoundGroup.WOOD)),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[1] = registerBlock("stripped_" + name + "_log",
-//              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(
-//                      topMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[2] = registerBlock(name + "_planks",
-//              new Block(FabricBlockSettings.create()
-//                      .burnable()
-//                      .instrument(Instrument.BASS)
-//                      .mapColor(topMaterialColor)
-//                      .strength(2.0F, 3.0F)
-//                      .sounds(BlockSoundGroup.WOOD)),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[3] = registerBlock(name + "_stairs",
-//              new StairsBlock(Array[4].getDefaultState(), FabricBlockSettings.copy(Array[4])),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[4] = registerBlock(name + "_slab",
-//              new SlabBlock(FabricBlockSettings.create()
-//                      .instrument(Instrument.BASS)
-//                      .mapColor(topMaterialColor)
-//                      .strength(2.0f, 3.0f)
-//                      .sounds(BlockSoundGroup.WOOD)),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[5] = registerBlock(name + "_door",
-//              new DoorBlock(FabricBlockSettings.copy(Array[4]).nonOpaque(), blockSetType),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[6] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.create()
-//              .mapColor(topMaterialColor)
-//              .burnable()
-//              .instrument(Instrument.BASS)
-//              .strength(3.0f)
-//              .sounds(BlockSoundGroup.WOOD)
-//              .allowsSpawning(HibiscusBlocks::never)
-//              .nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
-//      Array[7] = registerBlock(name + "_fence",
-//              new FenceBlock(FabricBlockSettings.copy(Array[4]).nonOpaque().solid()),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[8] = registerBlock(name + "_fence_gate",
-//              new FenceGateBlock(FabricBlockSettings.copy(Array[4]).nonOpaque().solid(), woodType),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[9] = registerBlock(name + "_pressure_plate",
-//              new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-//                      FabricBlockSettings.create()
-//                              .solid()
-//                              .mapColor(topMaterialColor)
-//                              .noCollision()
-//                              .strength(0.5f)
-//                              .sounds(BlockSoundGroup.WOOD),
-//                      blockSetType
-//              ),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[10] = registerBlock(name + "_button",
-//              new ButtonBlock(FabricBlockSettings.create()
-//                      .mapColor(topMaterialColor)
-//                      .strength(0.5F)
-//                      .sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      Array[11] = registerBlock(name + "_sign", new SignBlock(FabricBlockSettings.create()
-//              .mapColor(topMaterialColor)
-//              .solid()
-//              .instrument(Instrument.BASS)
-//              .noCollision()
-//              .strength(1.0F)
-//              .burnable(), woodType));
-//      Array[12] = registerBlock(name + "_wall_sign", new WallSignBlock(FabricBlockSettings.create()
-//              .solid()
-//              .instrument(Instrument.BASS)
-//              .noCollision()
-//              .strength(1.0F)
-//              .burnable()
-//              .dropsLike(Array[13]), woodType));
-//      Array[13] = registerBlock(name + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.create()
-//              .mapColor(topMaterialColor)
-//              .solid()
-//              .instrument(Instrument.BASS)
-//              .noCollision()
-//              .strength(1.0F)
-//              .burnable()
-//              .sounds(BlockSoundGroup.HANGING_SIGN), woodType));
-//      Array[14] = registerBlock(name + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.create()
-//              .mapColor(topMaterialColor)
-//              .solid()
-//              .instrument(Instrument.BASS)
-//              .noCollision()
-//              .strength(1.0F)
-//              .burnable()
-//              .sounds(BlockSoundGroup.HANGING_SIGN)
-//              .dropsLike(Array[15]), woodType));
-//
-//      registerItem(name + "_sign",
-//              new SignItem(new FabricItemSettings().maxCount(16), Array[13], Array[14]),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//      registerItem(name + "_hanging_sign",
-//              new HangingSignItem(Array[15], Array[16], new FabricItemSettings().maxCount(16)),
-//              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-//      );
-//
-//      ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(
-//              buttonPlacement,
-//              Array[2],
-//              Array[0],
-//              Array[3],
-//              Array[1],
-//              Array[4],
-//              Array[5],
-//              Array[6],
-//              Array[9],
-//              Array[10],
-//              Array[7],
-//              Array[8],
-//              Array[11],
-//              Array[12]
-//      ));
-//      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement,
-//              Array[2]
-//      ));
-//      ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15],
-//              Array[13].asItem(),
-//              Array[15].asItem()
-//      ));
-//
-//      BlockRenderLayerMap.INSTANCE.putBlock(Array[7], RenderLayer.getCutout());
-//      BlockRenderLayerMap.INSTANCE.putBlock(Array[8], RenderLayer.getCutout());
-//
-//      StrippableBlockRegistry.register(Array[0], Array[1]);
-//      StrippableBlockRegistry.register(Array[2], Array[3]);
-//
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[0], 5, 5);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[1], 5, 5);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[2], 5, 5);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[3], 5, 5);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[4], 5, 20);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[5], 5, 20);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[6], 5, 20);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[9], 5, 20);
-//      FlammableBlockRegistry.getDefaultInstance().add(Array[10], 5, 20);
-//
-//      FuelRegistry.INSTANCE.add(Array[9], 300);
-//      FuelRegistry.INSTANCE.add(Array[10], 300);
-//
-//      //        List <Block[]> woodArray = new ArrayList <>(Arrays.stream(NatureSpiritDataGen.woodArrays.clone()).toList());
-//      //        woodArray.add(Array);
-//      //        NatureSpiritDataGen.woodArrays = (Block[][]) woodArray.toArray();
-//
-//      //        List <TagKey<Block>> blockLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.blockLogTags
-//      //        .clone()).toList());
-//      //        blockLogsArray.add(TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
-//      //        NatureSpiritDataGen.blockLogTags = (TagKey<Block>[]) blockLogsArray.toArray();
-//      //
-//      //        List <TagKey<Item>> itemLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.itemLogTags.clone()
-//      //        ).toList());
-//      //        itemLogsArray.add(TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
-//      //        NatureSpiritDataGen.itemLogTags = (TagKey<Item>[]) itemLogsArray.toArray();
-//
-//
-//      return Array;
-//   }
+   public static Block[] registerJoshuaWoodBlocks(String name, MapColor topMaterialColor, MapColor sideMaterialColor, Block buttonPlacement, Block logPlacement, Block[] signPlacement, BlockSetType blockSetType, WoodType woodType) {
+      Block[] Array = new Block[15];
+
+      Array[0] = registerBlock(name + "_log",
+              new JoshuaTrunkBlock(FabricBlockSettings.create()
+                      .burnable()
+                      .mapColor(MapColor.GRAY)
+                      .instrument(Instrument.BASS)
+                      .requiresTool()
+                      .strength(2.0F)
+                      .sounds(BlockSoundGroup.WOOD)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[1] = registerBlock("stripped_" + name + "_log",
+              new JoshuaTrunkBlock(FabricBlockSettings.create()
+                      .burnable()
+                      .mapColor(MapColor.GRAY)
+                      .instrument(Instrument.BASS)
+                      .requiresTool()
+                      .strength(2.0F)
+                      .sounds(BlockSoundGroup.WOOD)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[2] = registerBlock(name + "_planks",
+              new Block(FabricBlockSettings.create()
+                      .burnable()
+                      .instrument(Instrument.BASS)
+                      .mapColor(topMaterialColor)
+                      .strength(2.0F, 3.0F)
+                      .sounds(BlockSoundGroup.WOOD)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[3] = registerBlock(name + "_stairs",
+              new StairsBlock(Array[2].getDefaultState(), FabricBlockSettings.copy(Array[2])),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[4] = registerBlock(name + "_slab",
+              new SlabBlock(FabricBlockSettings.create()
+                      .instrument(Instrument.BASS)
+                      .mapColor(topMaterialColor)
+                      .strength(2.0f, 3.0f)
+                      .sounds(BlockSoundGroup.WOOD)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[5] = registerBlock(name + "_door",
+              new DoorBlock(FabricBlockSettings.copy(Array[2]).nonOpaque(), blockSetType),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[6] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.create()
+              .mapColor(topMaterialColor)
+              .burnable()
+              .instrument(Instrument.BASS)
+              .strength(3.0f)
+              .sounds(BlockSoundGroup.WOOD)
+              .allowsSpawning(HibiscusBlocks::never)
+              .nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[7] = registerBlock(name + "_fence",
+              new FenceBlock(FabricBlockSettings.copy(Array[2]).nonOpaque().solid()),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[8] = registerBlock(name + "_fence_gate",
+              new FenceGateBlock(FabricBlockSettings.copy(Array[2]).nonOpaque().solid(), woodType),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[9] = registerBlock(name + "_pressure_plate",
+              new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                      FabricBlockSettings.create()
+                              .solid()
+                              .mapColor(topMaterialColor)
+                              .noCollision()
+                              .strength(0.5f)
+                              .sounds(BlockSoundGroup.WOOD),
+                      blockSetType
+              ),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[10] = registerBlock(name + "_button",
+              new ButtonBlock(FabricBlockSettings.create()
+                      .mapColor(topMaterialColor)
+                      .strength(0.5F)
+                      .sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      Array[11] = registerBlock(name + "_sign", new SignBlock(FabricBlockSettings.create()
+              .mapColor(topMaterialColor)
+              .solid()
+              .instrument(Instrument.BASS)
+              .noCollision()
+              .strength(1.0F)
+              .burnable(), woodType));
+      Array[12] = registerBlock(name + "_wall_sign", new WallSignBlock(FabricBlockSettings.create()
+              .solid()
+              .instrument(Instrument.BASS)
+              .noCollision()
+              .strength(1.0F)
+              .burnable()
+              .dropsLike(Array[11]), woodType));
+      Array[13] = registerBlock(name + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.create()
+              .mapColor(topMaterialColor)
+              .solid()
+              .instrument(Instrument.BASS)
+              .noCollision()
+              .strength(1.0F)
+              .burnable()
+              .sounds(BlockSoundGroup.HANGING_SIGN), woodType));
+      Array[14] = registerBlock(name + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.create()
+              .mapColor(topMaterialColor)
+              .solid()
+              .instrument(Instrument.BASS)
+              .noCollision()
+              .strength(1.0F)
+              .burnable()
+              .sounds(BlockSoundGroup.HANGING_SIGN)
+              .dropsLike(Array[13]), woodType));
+
+      registerItem(name + "_sign",
+              new SignItem(new FabricItemSettings().maxCount(16), Array[11], Array[12]),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      registerItem(name + "_hanging_sign",
+              new HangingSignItem(Array[13], Array[14], new FabricItemSettings().maxCount(16)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(
+              buttonPlacement,
+              Array[0],
+              Array[1],
+              Array[2],
+              Array[3],
+              Array[4],
+              Array[7],
+              Array[8],
+              Array[5],
+              Array[6],
+              Array[9],
+              Array[10]
+      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement,
+              Array[2]
+      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15],
+              Array[11].asItem(),
+              Array[13].asItem()
+      ));
+
+      BlockRenderLayerMap.INSTANCE.putBlock(Array[5], RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(Array[6], RenderLayer.getCutout());
+
+      FlammableBlockRegistry.getDefaultInstance().add(Array[0], 5, 5);
+      FlammableBlockRegistry.getDefaultInstance().add(Array[1], 5, 5);
+      FlammableBlockRegistry.getDefaultInstance().add(Array[3], 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(Array[4], 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(Array[5], 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(Array[7], 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(Array[8], 5, 20);
+
+      FuelRegistry.INSTANCE.add(Array[7], 300);
+      FuelRegistry.INSTANCE.add(Array[8], 300);
+
+      //        List <Block[]> woodArray = new ArrayList <>(Arrays.stream(NatureSpiritDataGen.woodArrays.clone()).toList());
+      //        woodArray.add(Array);
+      //        NatureSpiritDataGen.woodArrays = (Block[][]) woodArray.toArray();
+
+      //        List <TagKey<Block>> blockLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.blockLogTags
+      //        .clone()).toList());
+      //        blockLogsArray.add(TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
+      //        NatureSpiritDataGen.blockLogTags = (TagKey<Block>[]) blockLogsArray.toArray();
+      //
+      //        List <TagKey<Item>> itemLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.itemLogTags.clone()
+      //        ).toList());
+      //        itemLogsArray.add(TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
+      //        NatureSpiritDataGen.itemLogTags = (TagKey<Item>[]) itemLogsArray.toArray();
 
 
-   //    public static final Block WHITE_PORCELAIN_POT = registerPorcelainPottedPlant("white_porcelain_pot", Blocks.AIR,
-   //    Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D), null);
-   //    public static final Block WHITE_PORCELAIN_POTTED_HIBISCUS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_hibiscus", HIBISCUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_ANEMONE = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_anemone", ANEMONE, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_OAK_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_oak_sapling", Blocks.OAK_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_SPRUCE_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_spruce_sapling", Blocks.SPRUCE_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_BIRCH_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_birch_sapling", Blocks.BIRCH_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_JUNGLE_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_jungle_sapling", Blocks.JUNGLE_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_ACACIA_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_acacia_sapling", Blocks.ACACIA_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_DARK_OAK_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_dark_oak_sapling", Blocks.DARK_OAK_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D,
-   //    12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_MANGROVE_PROPAGULE = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_mangrove_propagule", Blocks.MANGROVE_PROPAGULE, Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_CHERRY_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_cherry_sapling", Blocks.CHERRY_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_REDWOOD_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_redwood_sapling", REDWOOD_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_SUGI_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_sugi_sapling", SUGI_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_WHITE_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_white_wisteria_sapling", WHITE_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D,
-   //    2D, 14D, 12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_BLUE_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_blue_wisteria_sapling", BLUE_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_PINK_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_pink_wisteria_sapling", PINK_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_PURPLE_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_purple_wisteria_sapling", PURPLE_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D,
-   //    2D, 14D, 12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_FIR_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_fir_sapling", FIR_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_WILLOW_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_willow_sapling", WILLOW_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_ASPEN_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_aspen_sapling", ASPEN_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_CYPRESS_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_cypress_sapling", CYPRESS_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_OLIVE_SAPLING = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_olive_sapling", OLIVE_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_AZALEA = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_azalea", Blocks.AZALEA, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_FLOWERING_AZALEA = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_flowering_azalea", Blocks.FLOWERING_AZALEA, Block.createCuboidShape(2D, 0D, 2D, 14D,
-   //    12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_BROWN_MUSHROOM = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_brown_mushroom", Blocks.BROWN_MUSHROOM, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_RED_MUSHROOM = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_red_mushroom", Blocks.RED_MUSHROOM, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_CRIMSON_FUNGUS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_crimson_fungus", Blocks.CRIMSON_FUNGUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_WARPED_FUNGUS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_warped_fungus", Blocks.WARPED_FUNGUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_GRASS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_grass", Blocks.GRASS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_FERN = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_fern", Blocks.FERN, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_DEAD_BUSH = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_dead_bush", Blocks.DEAD_BUSH, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_DANDELION = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_dandelion", Blocks.DANDELION, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_POPPY = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_poppy", Blocks.POPPY, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_BLUE_ORCHID = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_blue_orchid", Blocks.BLUE_ORCHID, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_ALLIUM = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_allium", Blocks.ALLIUM, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_AZURE_BLUET = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_azure_bluet", Blocks.AZURE_BLUET, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_RED_TULIP = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_red_tulip", Blocks.RED_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_ORANGE_TULIP = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_orange_tulip", Blocks.ORANGE_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_WHITE_TULIP = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_white_tulip", Blocks.WHITE_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_PINK_TULIP = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_pink_tulip", Blocks.PINK_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_OXEYE_DAISY = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_oxeye_daisy", Blocks.OXEYE_DAISY, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_CORNFLOWER = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_cornflower", Blocks.CORNFLOWER, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_LILY_OF_THE_VALLEY = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_lily_of_the_valley", Blocks.LILY_OF_THE_VALLEY, Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_TORCHFLOWER = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_torchflower", Blocks.TORCHFLOWER, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_WITHER_ROSE = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_wither_rose", Blocks.WITHER_ROSE, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_BAMBOO = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_bamboo", Blocks.BAMBOO, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_CACTUS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_cactus", Blocks.CACTUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_CRIMSON_ROOTS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_crimson_roots", Blocks.CRIMSON_ROOTS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), WHITE_PORCELAIN_POT);
-   //    public static final Block WHITE_PORCELAIN_POTTED_WARPED_ROOTS = registerPorcelainPottedPlant
-   //    ("white_porcelain_potted_warped_roots", Blocks.WARPED_ROOTS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , WHITE_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POT = registerDoubleTallPorcelainPottedPlant("green_porcelain_pot",
-   //    Blocks.AIR, Block.createCuboidShape(3D, 0D, 3D, 13D, 16D, 13D), null);
-   //    public static final Block GREEN_PORCELAIN_POTTED_HIBISCUS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_hibiscus", HIBISCUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_ANEMONE = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_anemone", ANEMONE, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_OAK_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_oak_sapling", Blocks.OAK_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_SPRUCE_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_spruce_sapling", Blocks.SPRUCE_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_BIRCH_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_birch_sapling", Blocks.BIRCH_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_JUNGLE_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_jungle_sapling", Blocks.JUNGLE_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_ACACIA_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_acacia_sapling", Blocks.ACACIA_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_DARK_OAK_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_dark_oak_sapling", Blocks.DARK_OAK_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D,
-   //    12D, 14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_MANGROVE_PROPAGULE = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_mangrove_propagule", Blocks.MANGROVE_PROPAGULE, Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_CHERRY_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_cherry_sapling", Blocks.CHERRY_SAPLING, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_REDWOOD_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_redwood_sapling", REDWOOD_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D),GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_SUGI_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_sugi_sapling", SUGI_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_WHITE_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_white_wisteria_sapling", WHITE_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D,
-   //    2D, 14D, 12D, 14D),GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_BLUE_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_blue_wisteria_sapling", BLUE_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D),GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_PINK_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_pink_wisteria_sapling", PINK_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D),GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_PURPLE_WISTERIA_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_purple_wisteria_sapling", PURPLE_WISTERIA_SAPLING[0], Block.createCuboidShape(2D, 0D,
-   //    2D, 14D, 12D, 14D),GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_FIR_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_fir_sapling", FIR_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_WILLOW_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_willow_sapling", WILLOW_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    ,GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_ASPEN_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_aspen_sapling", ASPEN_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_CYPRESS_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_cypress_sapling", CYPRESS_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D),GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_OLIVE_SAPLING = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_olive_sapling", OLIVE_SAPLING[0], Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_AZALEA = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_azalea", Blocks.AZALEA, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_FLOWERING_AZALEA = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_flowering_azalea", Blocks.FLOWERING_AZALEA, Block.createCuboidShape(2D, 0D, 2D, 14D,
-   //    12D, 14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_BROWN_MUSHROOM = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_brown_mushroom", Blocks.BROWN_MUSHROOM, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_RED_MUSHROOM = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_red_mushroom", Blocks.RED_MUSHROOM, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_CRIMSON_FUNGUS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_crimson_fungus", Blocks.CRIMSON_FUNGUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_WARPED_FUNGUS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_warped_fungus", Blocks.WARPED_FUNGUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_GRASS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_grass", Blocks.GRASS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_FERN = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_fern", Blocks.FERN, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_DEAD_BUSH = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_dead_bush", Blocks.DEAD_BUSH, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_DANDELION = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_dandelion", Blocks.DANDELION, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_POPPY = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_poppy", Blocks.POPPY, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_BLUE_ORCHID = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_blue_orchid", Blocks.BLUE_ORCHID, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_ALLIUM = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_allium", Blocks.ALLIUM, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_AZURE_BLUET = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_azure_bluet", Blocks.AZURE_BLUET, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_RED_TULIP = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_red_tulip", Blocks.RED_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_ORANGE_TULIP = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_orange_tulip", Blocks.ORANGE_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_WHITE_TULIP = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_white_tulip", Blocks.WHITE_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_PINK_TULIP = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_pink_tulip", Blocks.PINK_TULIP, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_OXEYE_DAISY = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_oxeye_daisy", Blocks.OXEYE_DAISY, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_CORNFLOWER = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_cornflower", Blocks.CORNFLOWER, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_LILY_OF_THE_VALLEY = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_lily_of_the_valley", Blocks.LILY_OF_THE_VALLEY, Block.createCuboidShape(2D, 0D, 2D,
-   //    14D, 12D, 14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_TORCHFLOWER = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_torchflower", Blocks.TORCHFLOWER, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_WITHER_ROSE = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_wither_rose", Blocks.WITHER_ROSE, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_BAMBOO = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_bamboo", Blocks.BAMBOO, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_CACTUS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_cactus", Blocks.CACTUS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D),
-   //    GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_CRIMSON_ROOTS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_crimson_roots", Blocks.CRIMSON_ROOTS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D,
-   //    14D), GREEN_PORCELAIN_POT);
-   //    public static final Block GREEN_PORCELAIN_POTTED_WARPED_ROOTS = registerPorcelainPottedPlant
-   //    ("green_porcelain_potted_warped_roots", Blocks.WARPED_ROOTS, Block.createCuboidShape(2D, 0D, 2D, 14D, 12D, 14D)
-   //    , GREEN_PORCELAIN_POT);
+      return Array;
+   }
 
 
    private static Boolean canSpawnUponLeaves(BlockState state, BlockView world, BlockPos pos, EntityType <?> type) {
@@ -1861,6 +1592,21 @@ public class HibiscusBlocks {
       Block[] Plant = new Block[2];
       Plant[0] = registerBlock(name + "_sapling",
               new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
+      BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderLayer.getCutout());
+      Plant[1] = registerPottedPlant(name + "_sapling", Plant[0]);
+      CompostingChanceRegistry.INSTANCE.add(Plant[0], 0.3F);
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
+              Plant[0].asItem()
+      ));
+      return Plant;
+   }
+
+   public static Block[] registerJoshuaSapling(String name, SaplingGenerator saplingGenerator, Block blockBefore) {
+      Block[] Plant = new Block[2];
+      Plant[0] = registerBlock(name + "_sapling",
+              new JoshuaSapling(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderLayer.getCutout());

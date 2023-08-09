@@ -42,8 +42,7 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.List;
 import java.util.OptionalInt;
 
-import static net.hibiscus.naturespirit.NatureSpirit.HIBISCUS_DELTA_FEATURE;
-import static net.hibiscus.naturespirit.NatureSpirit.HIBISCUS_TURNIP_ROOT_FEATURE;
+import static net.hibiscus.naturespirit.util.HibiscusWorldGen.*;
 
 public class HibiscusConfiguredFeatures {
 
@@ -74,28 +73,27 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> CYPRESS_TREE_SPAWN = registerKey("cypress_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> OLIVE_TREE = registerKey("olive_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> OLIVE_TREE_SPAWN = registerKey("olive_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH = registerKey("oak_bush");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH = registerKey("spruce_bush");
    public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH_SPAWN = registerKey("oak_bush_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH_SPAWN = registerKey("spruce_bush_spawn");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FANCY_OAK_TREE_SPAWN = registerKey(
-           "custom_fancy_oak_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FANCY_OAK_TREE_SPAWN = registerKey("custom_fancy_oak_tree_spawn");
 
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey(
-           "flower_wisteria_forest");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey(
-           "flower_redwood_forest");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_LAVENDER_FIELD = registerKey(
-           "flower_lavender_field");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FOXGLOVE_FIELD = registerKey(
-           "flower_foxglove_field");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey("flower_redwood_forest");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_LAVENDER_FIELD = registerKey("flower_lavender_field");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FOXGLOVE_FIELD = registerKey("flower_foxglove_field");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_GOLDEN_WILDS = registerKey("flower_golden_wilds");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FIR_FOREST = registerKey("flower_fir_forest");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_CYPRESS_FIELDS = registerKey(
-           "flower_cypress_fields");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_CYPRESS_FIELDS = registerKey("flower_cypress_fields");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_SCORCHED_GRASS = registerKey("patch_scorched_grass");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_BLOOMING_DUNES = registerKey("flower_blooming_dunes");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_STRATIFIED_DESERT = registerKey("flower_stratified_desert");
    public static final RegistryKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
    public static final RegistryKey <ConfiguredFeature <?, ?>> DESERT_TURNIP_STEM = registerKey("desert_turnip_stem");
    public static final RegistryKey <ConfiguredFeature <?, ?>> ROOTED_DESERT_TURNIP = registerKey("rooted_desert_turnip");
@@ -433,6 +431,23 @@ public class HibiscusConfiguredFeatures {
       );
 
       register(context,
+              JOSHUA_TREE,
+              JOSHUA_TREE_FEATURE,
+              FeatureConfig.DEFAULT
+      );
+
+      register(context,
+              JOSHUA_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(
+                      List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.JOSHUA_CHECKED),
+                              0.325f
+                      )),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.JOSHUA_CHECKED)
+              )
+      );
+
+      register(context,
               CYPRESS_TREE_SPAWN,
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(
@@ -477,7 +492,6 @@ public class HibiscusConfiguredFeatures {
                       new TwoLayersFeatureSize(1, 0, 1)
               ).build()
       );
-
       register(context,
               SPRUCE_BUSH_SPAWN,
               Feature.RANDOM_SELECTOR,
@@ -680,6 +694,61 @@ public class HibiscusConfiguredFeatures {
                                               Blocks.POPPY.getDefaultState(),
                                               Blocks.TALL_GRASS.getDefaultState(),
                                               Blocks.GRASS.getDefaultState()
+                                      )
+                              ))
+                      )
+              )
+      );
+
+      register(context,
+              PATCH_SCORCHED_GRASS,
+              Feature.RANDOM_PATCH,
+              new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.SCORCHED_GRASS)))));
+
+
+      register(context,
+              FLOWER_BLOOMING_DUNES,
+              Feature.FLOWER,
+              new RandomPatchFeatureConfig(120,
+                      6,
+                      2,
+                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                              new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
+                                      new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
+                                      0.030833334F,
+                                      List.of(HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState()
+                                      )
+                              ))
+                      )
+              )
+      );
+
+      register(context,
+              FLOWER_STRATIFIED_DESERT,
+              Feature.FLOWER,
+              new RandomPatchFeatureConfig(10,
+                      6,
+                      2,
+                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                              new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
+                                      new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
+                                      0.030833334F,
+                                      List.of(
+                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
+                                              Blocks.AIR.getDefaultState(),
+                                              HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState()
                                       )
                               ))
                       )
