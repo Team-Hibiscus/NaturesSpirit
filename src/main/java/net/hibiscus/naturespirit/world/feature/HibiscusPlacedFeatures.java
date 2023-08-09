@@ -54,6 +54,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> FLOWER_CYPRESS_PLACED = registerKey("flower_cypress_placed");
    public static final RegistryKey <PlacedFeature> FLOWER_CARNATION_PLACED = registerKey("flower_carnation_placed");
    public static final RegistryKey <PlacedFeature> PATCH_SCORCHED_GRASS_PLACED = registerKey("patch_scorched_grass_placed");
+   public static final RegistryKey <PlacedFeature> PATCH_TALL_SCORCHED_GRASS_PLACED = registerKey("patch_tall_scorched_grass_placed");
    public static final RegistryKey <PlacedFeature> FLOWER_BLOOMING_DUNES_PLACED = registerKey("flower_blooming_dunes_placed");
    public static final RegistryKey <PlacedFeature> FLOWER_STRATIFIED_DESERT_PLACED = registerKey("flower_stratified_desert_placed");
 
@@ -275,7 +276,16 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               PATCH_SCORCHED_GRASS_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PATCH_SCORCHED_GRASS),
-              CountPlacementModifier.of(5),
+              CountPlacementModifier.of(4),
+              RarityFilterPlacementModifier.of(2),
+              SquarePlacementModifier.of(),
+              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              PATCH_TALL_SCORCHED_GRASS_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PATCH_TALL_SCORCHED_GRASS),
+              CountPlacementModifier.of(3),
               RarityFilterPlacementModifier.of(2),
               SquarePlacementModifier.of(),
               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,

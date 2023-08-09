@@ -80,11 +80,13 @@
       "minecraft:spring_lava"
     ],
     [
+      "natures_spirit:kaolin_rock",
       "minecraft:glow_lichen",
       "natures_spirit:rooted_desert_turnip_placed",
       "natures_spirit:dense_joshua_placed",
       "natures_spirit:flower_stratified_desert_placed",
       "natures_spirit:patch_scorched_grass_placed",
+      "natures_spirit:patch_tall_scorched_grass_placed",
       "minecraft:patch_dead_bush_2",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",

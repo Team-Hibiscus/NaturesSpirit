@@ -26,10 +26,9 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
-import net.minecraft.loot.condition.LootCondition;
-import net.minecraft.loot.condition.TableBonusLootCondition;
+import net.minecraft.loot.condition.*;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
@@ -42,6 +41,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -254,6 +254,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          return LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(WITH_SHEARS).with(ItemEntry.builder(drop)));
       }
 
+      public net.minecraft.loot.LootTable.Builder tallScorchedGrassDrops(Block tallGrass, Block grass) {
+         net.minecraft.loot.entry.LootPoolEntry.Builder<?> builder = ((net.minecraft.loot.entry.LeafEntry.Builder)ItemEntry.builder(grass).apply(
+                 SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F))));
+         return LootTable.builder().pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(tallGrass).properties(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(
+                 LocationCheckLootCondition.builder(net.minecraft.predicate.entity.LocationPredicate.Builder.create().block(net.minecraft.predicate.BlockPredicate.Builder.create().blocks(new Block[]{tallGrass}).state(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(tallGrass).properties(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER))).conditionally(LocationCheckLootCondition.builder(net.minecraft.predicate.entity.LocationPredicate.Builder.create().block(net.minecraft.predicate.BlockPredicate.Builder.create().blocks(new Block[]{tallGrass}).state(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
+      }
+
       @Override public void generate() {
          addWoodTable(woodArrays);
          addJoshuaWoodTable(HibiscusBlocks.JOSHUA);
@@ -361,6 +368,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusBlocks.DESERT_TURNIP_ROOT_BLOCK);
 
          dropsWithShears(HibiscusBlocks.SCORCHED_GRASS);
+         tallScorchedGrassDrops(HibiscusBlocks.TALL_SCORCHED_GRASS, HibiscusBlocks.SCORCHED_GRASS);
 
       }
    }
@@ -734,6 +742,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.SNAPDRAGON, TintType.NOT_TINTED);
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.MARIGOLD, TintType.NOT_TINTED);
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.FOXGLOVE, TintType.NOT_TINTED);
+         generateTallLargeFlower(HibiscusBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(HibiscusBlocks.LAVENDER, blockStateModelGenerator);
          generateTallLargeFlower(HibiscusBlocks.BLEEDING_HEART, blockStateModelGenerator);
          generateLargeFlower(HibiscusBlocks.BLUEBELL, blockStateModelGenerator);
@@ -931,6 +940,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusBlocks.TIGER_LILY, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.PURPLE_WILDFLOWER, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.YELLOW_WILDFLOWER, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.TALL_SCORCHED_GRASS, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.SCORCHED_GRASS, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.CARNATION, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.HIBISCUS, translationBuilder);
@@ -1244,9 +1254,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          );
          getOrCreateTagBuilder(BlockTags.CROPS).add(HibiscusBlocks.DESERT_TURNIP_STEM);
          getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(HibiscusBlocks.DESERT_TURNIP_STEM);
-         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(HibiscusBlocks.SCORCHED_GRASS);
-         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(HibiscusBlocks.SCORCHED_GRASS);
-         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(HibiscusBlocks.SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
       }
    }
 }

@@ -32,6 +32,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
 public class HibiscusBlocks {
+   public static final Block TALL_SCORCHED_GRASS = registerPlantBlock("tall_scorched_grass", new TallLargeDesertFernBlock(
+           FabricBlockSettings.create()
+                   .mapColor(MapColor.LICHEN_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Blocks.LARGE_FERN, 0.3f);
 
    public static final Block SCORCHED_GRASS = registerPlantBlock("scorched_grass", new LargeDesertFernBlock(
            FabricBlockSettings.create()

@@ -92,6 +92,7 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FIR_FOREST = registerKey("flower_fir_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_CYPRESS_FIELDS = registerKey("flower_cypress_fields");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_SCORCHED_GRASS = registerKey("patch_scorched_grass");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_TALL_SCORCHED_GRASS = registerKey("patch_tall_scorched_grass");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_BLOOMING_DUNES = registerKey("flower_blooming_dunes");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_STRATIFIED_DESERT = registerKey("flower_stratified_desert");
    public static final RegistryKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
@@ -704,6 +705,10 @@ public class HibiscusConfiguredFeatures {
               PATCH_SCORCHED_GRASS,
               Feature.RANDOM_PATCH,
               new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.SCORCHED_GRASS)))));
+      register(context,
+              PATCH_TALL_SCORCHED_GRASS,
+              Feature.RANDOM_PATCH,
+              new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.SCORCHED_GRASS)))));
 
 
       register(context,
@@ -717,7 +722,7 @@ public class HibiscusConfiguredFeatures {
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
                                       List.of(HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.TALL_SCORCHED_GRASS.getDefaultState(),
                                               HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
                                               HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
                                               HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
@@ -725,7 +730,7 @@ public class HibiscusConfiguredFeatures {
                                               HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
                                               HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
                                               HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocks.TALL_SCORCHED_GRASS.getDefaultState(),
                                               HibiscusBlocks.SCORCHED_GRASS.getDefaultState()
                                       )
                               ))
@@ -746,7 +751,7 @@ public class HibiscusConfiguredFeatures {
                                       List.of(
                                               HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
                                               HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              Blocks.AIR.getDefaultState(),
+                                              HibiscusBlocks.TALL_SCORCHED_GRASS.getDefaultState(),
                                               HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
                                               HibiscusBlocks.SCORCHED_GRASS.getDefaultState()
                                       )
