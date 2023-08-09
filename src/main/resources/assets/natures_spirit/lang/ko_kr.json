@@ -15,7 +15,6 @@
   "block.natures_spirit.aspen_stairs": "Aspen Stairs",
   "block.natures_spirit.aspen_trapdoor": "Aspen Trapdoor",
   "block.natures_spirit.aspen_wood": "Aspen Wood",
-  "block.natures_spirit.black_kaolin": "Black Kaolin",
   "block.natures_spirit.black_kaolin_slab": "Black Kaolin Slab",
   "block.natures_spirit.black_kaolin_stairs": "Black Kaolin Stairs",
   "block.natures_spirit.bleeding_heart": "Bleeding Heart",
@@ -264,5 +263,6 @@
   "item.natures_spirit.three_quarters_pizza": "Three Quarters of a Pizza",
   "item.natures_spirit.whole_pizza": "Pizza",
   "itemGroup.natures_spirit.natures_spirit_item_group": "Nature's Spirit Blocks & Items",
-  "stat.minecraft.eat_pizza_slice": "Pizza Slices Eaten"
+  "stat.minecraft.eat_pizza_slice": "Pizza Slices Eaten",
+  "block.natures_spirit.black_kaolin": "Black Kaolin"
 }
