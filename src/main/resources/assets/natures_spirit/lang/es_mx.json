@@ -15,6 +15,7 @@
   "block.natures_spirit.aspen_stairs": "Escaleras de álamo temblón",
   "block.natures_spirit.aspen_trapdoor": "Escotilla de álamo temblón",
   "block.natures_spirit.aspen_wood": "Madera de álamo temblón",
+  "block.natures_spirit.black_kaolin": "Caolín negro",
   "block.natures_spirit.black_kaolin_slab": "Losa de caolín negro",
   "block.natures_spirit.black_kaolin_stairs": "Escaleras de caolín negro",
   "block.natures_spirit.bleeding_heart": "Corazón sangrante",
@@ -263,6 +264,5 @@
   "item.natures_spirit.three_quarters_pizza": "Tres cuartos de pizza",
   "item.natures_spirit.whole_pizza": "Pizza",
   "itemGroup.natures_spirit.natures_spirit_item_group": "Bloques y objetos de Nature's Spirit",
-  "stat.minecraft.eat_pizza_slice": "Rebanadas de pizza comidas",
-  "block.natures_spirit.black_kaolin": "Caolín negro"
+  "stat.minecraft.eat_pizza_slice": "Rebanadas de pizza comidas"
 }
