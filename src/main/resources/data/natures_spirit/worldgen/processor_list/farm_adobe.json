@@ -1,0 +1,132 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block": "minecraft:wheat",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.3
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:carrots",
+            "Properties": {
+              "age": "0"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:wheat",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.2
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:potatoes",
+            "Properties": {
+              "age": "0"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:wheat",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.1
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:beetroots",
+            "Properties": {
+              "age": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block": "minecraft:farmland",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.3
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "natures_spirit:sandy_soil",
+            "Properties": {
+              "age": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block": "natures_spirit:joshua_button",
+            "predicate_type": "minecraft:block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "natures_spirit:kaolin"
+          },
+          "output_state": {
+            "Name": "natures_spirit:orange_kaolin"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "tag": "natures_spirit:kaolin_slabs",
+            "predicate_type": "minecraft:tag_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "natures_spirit:kaolin"
+          },
+          "output_state": {
+            "Name": "natures_spirit:orange_kaolin"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "tag": "natures_spirit:kaolin",
+            "predicate_type": "minecraft:tag_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "natures_spirit:joshua_door"
+          },
+          "output_state": {
+            "Name": "minecraft:air"
+          }
+        }
+      ]
+    }
+  ]
+}

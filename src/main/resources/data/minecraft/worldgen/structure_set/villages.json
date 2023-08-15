@@ -19,6 +19,10 @@
       "weight": 1
     },
     {
+      "structure": "natures_spirit:village_adobe",
+      "weight": 1
+    },
+    {
       "structure": "minecraft:village_desert",
       "weight": 1
     },

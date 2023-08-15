@@ -1,0 +1,23 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/houses/adobe_temple",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "minecraft:empty",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 15
+    }
+  ],
+  "fallback": "minecraft:village/wisteria/terminators"
+}
