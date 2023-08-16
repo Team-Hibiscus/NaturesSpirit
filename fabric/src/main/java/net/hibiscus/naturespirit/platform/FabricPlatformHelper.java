@@ -1,6 +1,6 @@
-package com.example.examplemod.platform;
+package net.hibiscus.naturespirit.platform;
 
-import com.example.examplemod.platform.services.IPlatformHelper;
+import net.hibiscus.naturespirit.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class FabricPlatformHelper implements IPlatformHelper {

@@ -7,7 +7,7 @@
     "mixins": [
     ],
     "client": [
-        "MixinMinecraft"
+      "net.example.examplemod.mixin.MixinMinecraft"
     ],
     "server": [
     ],

@@ -1,7 +1,7 @@
-package com.example.examplemod.platform;
+package net.hibiscus.naturespirit.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import net.hibiscus.naturespirit.Constants;
+import net.hibiscus.naturespirit.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
 

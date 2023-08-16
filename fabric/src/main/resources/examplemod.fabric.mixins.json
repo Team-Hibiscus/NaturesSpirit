@@ -7,7 +7,7 @@
     "mixins": [
     ],
     "client": [
-        "MixinTitleScreen"
+      "net.example.examplemod.mixin.MixinTitleScreen"
     ],
     "server": [
     ],
