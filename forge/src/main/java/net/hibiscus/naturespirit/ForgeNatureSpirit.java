@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit;
 
+import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(Constants.MOD_ID)
@@ -14,6 +15,6 @@ public class ForgeNatureSpirit {
         // Use Forge to bootstrap the Common mod.
         Constants.LOG.info("Hello Forge world!");
         CommonNatureSpirit.init();
-        
+        HibiscusBiomes.registerBiomes();
     }
 }

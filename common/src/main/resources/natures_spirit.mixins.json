@@ -1,0 +1,25 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "net.hibiscus.naturespirit.mixin",
+    "refmap": "${mod_id}.refmap.json",
+    "compatibilityLevel": "JAVA_17",
+    "mixins": [
+        "BlockEntityTypeMixin",
+        "BlockSetTypeAccessor",
+        "BlockStateProviderMixin",
+        "FoliagePlacerMixin",
+        "StatsTypeAccessor",
+        "TreeDecoratorMixin",
+        "TrunkPlacerTypeMixin",
+        "WoodTypeAccessor"
+    ],
+    "client": [
+    ],
+    "server": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
+
