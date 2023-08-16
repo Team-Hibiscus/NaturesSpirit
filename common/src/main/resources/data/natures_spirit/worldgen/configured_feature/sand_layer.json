@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [],
+    "default": {
+      "feature": {
+        "type": "minecraft:netherrack_replace_blobs",
+        "config": {
+          "state": {
+            "Name": "minecraft:sand"
+          },
+          "target": {
+            "Name": "natures_spirit:light_gray_kaolin"
+          },
+          "radius": {
+            "type": "minecraft:uniform",
+            "value": {
+              "min_inclusive": 3,
+              "max_inclusive": 5
+            }
+          }
+        }
+      },
+      "placement": [
+      ]
+    }
+  }
+}

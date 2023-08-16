@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/olive_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/olive_planks"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/olive_slab_top"
+    }
+  }
+}

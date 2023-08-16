@@ -1,0 +1,77 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_1",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_2",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_3",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_4",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_5",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_6",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_7",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/roof/adobe_roof_8",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    }
+  ],
+  "fallback": "natures_spirit:village/adobe/roof_terminators"
+}

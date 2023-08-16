@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "natures_spirit:block/aspen_planks"
+  }
+}

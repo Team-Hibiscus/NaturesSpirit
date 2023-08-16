@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/crop",
+  "textures": {
+    "crop": "natures_spirit:block/pink_wisteria_vines"
+  }
+}

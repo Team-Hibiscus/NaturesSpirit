@@ -60,6 +60,12 @@ subprojects {
         filesMatching(['pack.mcmeta', 'fabric.mod.json', 'mods.toml', '*.mixins.json']) {
             expand project.properties
         }
+        doLast {
+            copy {
+                from "fabric/src/main/resources/"
+                into "common/src/main/resources/"
+            }
+        }
     }
 
     // Disables Gradle's custom module metadata from being published to maven. The

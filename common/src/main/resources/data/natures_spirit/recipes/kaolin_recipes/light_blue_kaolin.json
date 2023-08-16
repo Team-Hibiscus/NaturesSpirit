@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "kaolin",
+  "ingredients": [
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "minecraft:light_blue_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:light_blue_kaolin",
+    "count": 8
+  }
+}

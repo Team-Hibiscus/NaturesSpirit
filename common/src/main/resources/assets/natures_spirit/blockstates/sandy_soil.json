@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "natures_spirit:block/sandy_soil"
+      },
+      {
+        "model": "natures_spirit:block/sandy_soil",
+        "y": 90
+      },
+      {
+        "model": "natures_spirit:block/sandy_soil",
+        "y": 180
+      },
+      {
+        "model": "natures_spirit:block/sandy_soil",
+        "y": 270
+      },
+      {
+        "model": "natures_spirit:block/rocky_sandy_soil"
+      },
+      {
+        "model": "natures_spirit:block/rocky_sandy_soil",
+        "y": 90
+      },
+      {
+        "model": "natures_spirit:block/rocky_sandy_soil",
+        "y": 180
+      },
+      {
+        "model": "natures_spirit:block/rocky_sandy_soil",
+        "y": 270
+      }
+    ]
+  }
+}

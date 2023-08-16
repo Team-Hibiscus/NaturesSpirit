@@ -1,0 +1,14 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "natures_spirit:village/adobe/houses/adobe_house_layer_2",
+        "processors": "natures_spirit:fix_button",
+        "projection": "rigid"
+      },
+      "weight": 2
+    }
+  ],
+  "fallback": "natures_spirit:village/adobe/adobe_houses_layer_2"
+}

@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "id": "mod_id",
+    "id": "natures_spirit",
     "version": "${version}",
     "name": "${mod_name}",
     "description": "This is an example description! Tell everyone what your mod is about!",
@@ -17,16 +17,22 @@
     "entrypoints": {
         "main": [
           "net.hibiscus.naturespirit.FabricNatureSpirit"
+        ],
+        "fabric-datagen": [
+            "net.hibiscus.naturespirit.datagen.NatureSpiritDataGen"
+        ],
+        "terrablender": [
+            "net.hibiscus.naturespirit.terrablender.NatureSpiritTerraBlender"
         ]
     },
     "mixins": [
-        "examplemod.mixins.json",
-        "examplemod.fabric.mixins.json"
+        "natures_spirit.mixins.json",
+        "natures_spirit.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=0.14",
         "fabric": "*",
-        "minecraft": "1.20",
+        "minecraft": "1.20.1",
         "java": ">=17"
     },
     "suggests": {

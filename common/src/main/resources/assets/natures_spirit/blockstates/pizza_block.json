@@ -1,0 +1,396 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "pizza_bites": "0"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pizza_block_0"
+      }
+    },
+    {
+      "when": {
+        "pizza_bites": "1"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pizza_block_1"
+      }
+    },
+    {
+      "when": {
+        "pizza_bites": "2"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pizza_block_2"
+      }
+    },
+    {
+      "when": {
+        "pizza_bites": "3"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pizza_block_3"
+      }
+    },
+    {
+      "when": {
+        "mushroom_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/mushroom_topping_0"
+      }
+    },
+    {
+      "when": {
+        "mushroom_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/mushroom_topping_1"
+      }
+    },
+    {
+      "when": {
+        "mushroom_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/mushroom_topping_2"
+      }
+    },
+    {
+      "when": {
+        "mushroom_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/mushroom_topping_3"
+      }
+    },
+    {
+      "when": {
+        "green_olives_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/green_olives_topping_0"
+      }
+    },
+    {
+      "when": {
+        "green_olives_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/green_olives_topping_1"
+      }
+    },
+    {
+      "when": {
+        "green_olives_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/green_olives_topping_2"
+      }
+    },
+    {
+      "when": {
+        "green_olives_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/green_olives_topping_3"
+      }
+    },
+    {
+      "when": {
+        "black_olives_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/black_olives_topping_0"
+      }
+    },
+    {
+      "when": {
+        "black_olives_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/black_olives_topping_1"
+      }
+    },
+    {
+      "when": {
+        "black_olives_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/black_olives_topping_2"
+      }
+    },
+    {
+      "when": {
+        "black_olives_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/black_olives_topping_3"
+      }
+    },
+    {
+      "when": {
+        "carrot_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/carrot_topping_0"
+      }
+    },
+    {
+      "when": {
+        "carrot_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/carrot_topping_1"
+      }
+    },
+    {
+      "when": {
+        "carrot_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/carrot_topping_2"
+      }
+    },
+    {
+      "when": {
+        "carrot_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/carrot_topping_3"
+      }
+    },
+    {
+      "when": {
+        "beetroot_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/beetroot_topping_0"
+      }
+    },
+    {
+      "when": {
+        "beetroot_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/beetroot_topping_1"
+      }
+    },
+    {
+      "when": {
+        "beetroot_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/beetroot_topping_2"
+      }
+    },
+    {
+      "when": {
+        "beetroot_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/beetroot_topping_3"
+      }
+    },
+    {
+      "when": {
+        "chicken_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/chicken_topping_0"
+      }
+    },
+    {
+      "when": {
+        "chicken_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/chicken_topping_1"
+      }
+    },
+    {
+      "when": {
+        "chicken_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/chicken_topping_2"
+      }
+    },
+    {
+      "when": {
+        "chicken_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/chicken_topping_3"
+      }
+    },
+    {
+      "when": {
+        "cod_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/cod_topping_0"
+      }
+    },
+    {
+      "when": {
+        "cod_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/cod_topping_1"
+      }
+    },
+    {
+      "when": {
+        "cod_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/cod_topping_2"
+      }
+    },
+    {
+      "when": {
+        "cod_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/cod_topping_3"
+      }
+    },
+    {
+      "when": {
+        "pork_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pork_topping_0"
+      }
+    },
+    {
+      "when": {
+        "pork_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pork_topping_1"
+      }
+    },
+    {
+      "when": {
+        "pork_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pork_topping_2"
+      }
+    },
+    {
+      "when": {
+        "pork_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/pork_topping_3"
+      }
+    },
+    {
+      "when": {
+        "rabbit_topping": "true",
+        "pizza_bites": "0",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/rabbit_topping_0"
+      }
+    },
+    {
+      "when": {
+        "rabbit_topping": "true",
+        "pizza_bites": "1",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/rabbit_topping_1"
+      }
+    },
+    {
+      "when": {
+        "rabbit_topping": "true",
+        "pizza_bites": "2",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/rabbit_topping_2"
+      }
+    },
+    {
+      "when": {
+        "rabbit_topping": "true",
+        "pizza_bites": "3",
+        "toppings": "1|2|3|4"
+      },
+      "apply": {
+        "model": "natures_spirit:block/pizza/rabbit_topping_3"
+      }
+    }
+  ]
+}

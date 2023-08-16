@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
-import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.Constants;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 
@@ -20,6 +20,6 @@ public class NatureSpiritWorldGenerator extends FabricDynamicRegistryProvider {
    }
 
    @Override public String getName() {
-      return NatureSpirit.MOD_ID;
+      return Constants.MOD_ID;
    }
 }

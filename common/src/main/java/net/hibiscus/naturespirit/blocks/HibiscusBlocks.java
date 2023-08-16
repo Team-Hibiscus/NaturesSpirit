@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.Constants;
 import net.hibiscus.naturespirit.blocks.vanilla.*;
-import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.mixin.BlockSetTypeAccessor;
 import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
@@ -936,21 +935,21 @@ public class HibiscusBlocks {
                       .strength(0.5F)
                       .sound(SoundType.WOOD), blockSetType, 30, true)
       );
-      Array[13] = registerBlock(name + "_sign", new StandingSignBlock(BlockBehaviour.Properties.of()
+      Array[13] = registerBlock1(name + "_sign", new StandingSignBlock(BlockBehaviour.Properties.of()
               .mapColor(topMaterialColor)
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
               .noCollission()
               .strength(1.0F)
               .ignitedByLava(), woodType));
-      Array[14] = registerBlock(name + "_wall_sign", new WallSignBlock(BlockBehaviour.Properties.of()
+      Array[14] = registerBlock1(name + "_wall_sign", new WallSignBlock(BlockBehaviour.Properties.of()
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
               .noCollission()
               .strength(1.0F)
               .ignitedByLava()
               .dropsLike(Array[13]), woodType));
-      Array[15] = registerBlock(name + "_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.of()
+      Array[15] = registerBlock1(name + "_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.of()
               .mapColor(topMaterialColor)
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
@@ -958,7 +957,7 @@ public class HibiscusBlocks {
               .strength(1.0F)
               .ignitedByLava()
               .sound(SoundType.HANGING_SIGN), woodType));
-      Array[16] = registerBlock(name + "_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.of()
+      Array[16] = registerBlock1(name + "_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.of()
               .mapColor(topMaterialColor)
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
@@ -1051,21 +1050,21 @@ public class HibiscusBlocks {
                       .strength(0.5F)
                       .sound(SoundType.WOOD), blockSetType, 30, true)
       );
-      Array[11] = registerBlock(name + "_sign", new StandingSignBlock(BlockBehaviour.Properties.of()
+      Array[11] = registerBlock1(name + "_sign", new StandingSignBlock(BlockBehaviour.Properties.of()
               .mapColor(topMaterialColor)
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
               .noCollission()
               .strength(1.0F)
               .ignitedByLava(), woodType));
-      Array[12] = registerBlock(name + "_wall_sign", new WallSignBlock(BlockBehaviour.Properties.of()
+      Array[12] = registerBlock1(name + "_wall_sign", new WallSignBlock(BlockBehaviour.Properties.of()
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
               .noCollission()
               .strength(1.0F)
               .ignitedByLava()
               .dropsLike(Array[11]), woodType));
-      Array[13] = registerBlock(name + "_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.of()
+      Array[13] = registerBlock1(name + "_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.of()
               .mapColor(topMaterialColor)
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
@@ -1073,7 +1072,7 @@ public class HibiscusBlocks {
               .strength(1.0F)
               .ignitedByLava()
               .sound(SoundType.HANGING_SIGN), woodType));
-      Array[14] = registerBlock(name + "_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.of()
+      Array[14] = registerBlock1(name + "_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.of()
               .mapColor(topMaterialColor)
               .forceSolidOn()
               .instrument(NoteBlockInstrument.BASS)
@@ -1189,11 +1188,11 @@ public class HibiscusBlocks {
 
    public static Block registerBlock(String name, Block block) {
       registerBlockItem(name, block);
-      return registerBlock(name, block);
+      return registerBlock1(name, block);
    }
 
-   public static Item registerBlockItem(String name, Block block) {
-      return registerItem(name, new BlockItem(block, new Item.Properties()));
+   public static void registerBlockItem(String name, Block block) {
+      registerItem(name, new BlockItem(block, new Item.Properties()));
    }
 
    public static Item registerItem(String name, Item item) {

@@ -3,9 +3,11 @@ package net.hibiscus.naturespirit.datagen;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.hibiscus.naturespirit.NatureSpirit;
+import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.hibiscus.naturespirit.Constants;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.platform.Services;
 import net.hibiscus.naturespirit.util.HibiscusItemGroups;
 import net.hibiscus.naturespirit.world.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.HibiscusPlacedFeatures;
@@ -15,13 +17,11 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
-import net.minecraft.data.client.*;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.*;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.loot.condition.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -60,19 +60,19 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    public static Block[][] saplingArrays = new Block[12][];
    public static TagKey <Block>[] blockLogTags = new TagKey[8];
    public static TagKey <Item>[] itemLogTags = new TagKey[8];
-   public static TagKey <Item> joshuaItemLogtag = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "joshua_logs"));
-   public static TagKey <Block> joshuaBlockLogtag = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "joshua_logs"));
+   public static TagKey <Item> joshuaItemLogtag = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "joshua_logs"));
+   public static TagKey <Block> joshuaBlockLogtag = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "joshua_logs"));
 
    @Override public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
       FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-
+      Constants.LOG.info("Hello from Common init on {}! we are currently in a {} environment! PIPLUP", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
       pack.addProvider(NatureSpiritWorldGenerator::new);
-      pack.addProvider(NatureSpiritModelGenerator::new);
-      pack.addProvider(NatureSpiritLangGenerator::new);
       pack.addProvider(NatureSpiritRecipeGenerator::new);
       pack.addProvider(NatureSpiritBlockLootTableProvider::new);
       NatureSpiritBlockTagGenerator blockTagProvider = pack.addProvider(NatureSpiritBlockTagGenerator::new);
       pack.addProvider((output, registries) -> new NatureSpiritItemTagGenerator(output, registries, blockTagProvider));
+      pack.addProvider(NatureSpiritModelGenerator::new);
+      pack.addProvider(NatureSpiritLangGenerator::new);
       System.out.println("Initialized Data Generator");
       registerWoodTypes();
    }
@@ -83,6 +83,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       registryBuilder.add(Registries.BIOME, HibiscusBiomes::bootstrap);
       System.out.println("Built Registry");
    }
+
+
 
    private void registerWoodTypes() {
       woodArrays[0] = HibiscusBlocks.REDWOOD;
@@ -120,28 +122,28 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       saplingArrays[10] = HibiscusBlocks.OLIVE_SAPLING;
       saplingArrays[11] = HibiscusBlocks.JOSHUA_SAPLING;
 
-      blockLogTags[0] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "redwood_logs"));
-      blockLogTags[1] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "sugi_logs"));
-      blockLogTags[2] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "wisteria_logs"));
-      blockLogTags[3] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "fir_logs"));
-      blockLogTags[4] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "willow_logs"));
-      blockLogTags[5] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "aspen_logs"));
-      blockLogTags[6] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "cypress_logs"));
-      blockLogTags[7] = TagKey.create(Registries.BLOCK, new ResourceLocation(NatureSpirit.MOD_ID, "olive_logs"));
+      blockLogTags[0] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "redwood_logs"));
+      blockLogTags[1] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "sugi_logs"));
+      blockLogTags[2] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "wisteria_logs"));
+      blockLogTags[3] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "fir_logs"));
+      blockLogTags[4] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "willow_logs"));
+      blockLogTags[5] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "aspen_logs"));
+      blockLogTags[6] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "cypress_logs"));
+      blockLogTags[7] = TagKey.create(Registries.BLOCK, new ResourceLocation(Constants.MOD_ID, "olive_logs"));
 
-      itemLogTags[0] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "redwood_logs"));
-      itemLogTags[1] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "sugi_logs"));
-      itemLogTags[2] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "wisteria_logs"));
-      itemLogTags[3] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "fir_logs"));
-      itemLogTags[4] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "willow_logs"));
-      itemLogTags[5] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "aspen_logs"));
-      itemLogTags[6] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "cypress_logs"));
-      itemLogTags[7] = TagKey.create(Registries.ITEM, new ResourceLocation(NatureSpirit.MOD_ID, "olive_logs"));
+      itemLogTags[0] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "redwood_logs"));
+      itemLogTags[1] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "sugi_logs"));
+      itemLogTags[2] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "wisteria_logs"));
+      itemLogTags[3] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "fir_logs"));
+      itemLogTags[4] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "willow_logs"));
+      itemLogTags[5] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "aspen_logs"));
+      itemLogTags[6] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "cypress_logs"));
+      itemLogTags[7] = TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, "olive_logs"));
    }
 
 
    @Override public String getEffectiveModId() {
-      return NatureSpirit.MOD_ID;
+      return Constants.MOD_ID;
    }
 
 
@@ -410,7 +412,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  texturedModel.getMapping(),
                  blockStateModelGenerator.modelOutput
          );
-         blockStateModelGenerator.blockStateOutput.accept(createSlab(slab,
+         blockStateModelGenerator.blockStateOutput.accept(BlockModelGenerators.createSlab(slab,
                  resourceLocation2,
                  resourceLocation3,
                  resourceLocation
@@ -431,7 +433,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  texturedModel.getMapping(),
                  blockStateModelGenerator.modelOutput
          );
-         blockStateModelGenerator.blockStateOutput.accept(createStairs(stairs,
+         blockStateModelGenerator.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs,
                  resourceLocation,
                  resourceLocation2,
                  resourceLocation3
@@ -838,21 +840,12 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  TexturedModel.COLUMN_ALT,
                  TexturedModel.COLUMN_HORIZONTAL_ALT
          );
-
-         //            generatePorcelainPotCrossModels(Blocks.AIR, HibiscusBlocks.WHITE_PORCELAIN_POT, "white_porcelain_pot",
-         //            blockStateModelGenerator);
-         //            generatePorcelainPotCrossModels(HibiscusBlocks.HIBISCUS, HibiscusBlocks
-         //            .WHITE_PORCELAIN_POTTED_HIBISCUS, "white_porcelain_pot", blockStateModelGenerator);
-         //            generateDoubleTallPorcelainPotCrossModels(Blocks.AIR, HibiscusBlocks.GREEN_PORCELAIN_POT,
-         //            "green_porcelain_pot", blockStateModelGenerator);
-         //            generateDoubleTallPorcelainPotCrossModels(HibiscusBlocks.HIBISCUS, HibiscusBlocks
-         //            .GREEN_PORCELAIN_POTTED_HIBISCUS, "green_porcelain_pot", blockStateModelGenerator);
       }
 
       @Override public void generateItemModels(ItemModelGenerators itemModelGenerator) {
          itemModelGenerator.generateFlatItem(HibiscusBlocks.GREEN_OLIVES, ModelTemplates.FLAT_ITEM);
          itemModelGenerator.generateFlatItem(HibiscusBlocks.BLACK_OLIVES, ModelTemplates.FLAT_ITEM);
-         itemModelGenerator.generateFlatItem(HibiscusBlocks.DESERT_TURNIP, ModelTemplates.FLAT_ITEM);
+//         itemModelGenerator.generateFlatItem(HibiscusBlocks.DESERT_TURNIP, ModelTemplates.FLAT_ITEM);
       }
    }
 
@@ -1138,62 +1131,62 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private void addWoodTags(Block[][] array, TagKey <Block>[] tag, HolderLookup.Provider arg) {
          for(int i = 0; i < array.length; i++) {
-            tag(BlockTags.PLANKS).add(new Block[]{array[i][4]});
-            tag(BlockTags.WOODEN_BUTTONS).add(new Block[]{array[i][12]});
-            tag(BlockTags.WOODEN_DOORS).add(new Block[]{array[i][7]});
-            tag(BlockTags.WOODEN_STAIRS).add(new Block[]{array[i][5]});
-            tag(BlockTags.WOODEN_SLABS).add(new Block[]{array[i][6]});
-            tag(BlockTags.WOODEN_FENCES).add(new Block[]{array[i][9]});
-            tag(tag[i]).add(array[i][3], array[i][2], array[i][1], array[i][0]);
-            tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{array[i][2]});
-            tag(BlockTags.LOGS_THAT_BURN).addTag(tag[i]);
-            tag(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{array[i][8]});
-            tag(BlockTags.STANDING_SIGNS).add(new Block[]{array[i][13]});
-            tag(BlockTags.WALL_SIGNS).add(new Block[]{array[i][14]});
-            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{array[i][11]});
-            tag(BlockTags.FENCE_GATES).add(new Block[]{array[i][10]});
-            tag(BlockTags.CEILING_HANGING_SIGNS).add(array[i][15]);
-            tag(BlockTags.WALL_HANGING_SIGNS).add(array[i][16]);
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(new Block[]{array[i][4]});
+            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(new Block[]{array[i][12]});
+            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{array[i][7]});
+            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(new Block[]{array[i][5]});
+            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{array[i][6]});
+            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{array[i][9]});
+            getOrCreateTagBuilder(tag[i]).add(array[i][3], array[i][2], array[i][1], array[i][0]);
+            getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{array[i][2]});
+            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(tag[i]);
+            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{array[i][8]});
+            getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{array[i][13]});
+            getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{array[i][14]});
+            getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{array[i][11]});
+            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(new Block[]{array[i][10]});
+            getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(array[i][15]);
+            getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(array[i][16]);
 
          }
       }
 
       private void addJoshuaWoodTags(Block[] array, TagKey <Block> tag, HolderLookup.Provider arg) {
-            tag(BlockTags.PLANKS).add(new Block[]{array[2]});
-            tag(BlockTags.WOODEN_BUTTONS).add(new Block[]{array[10]});
-            tag(BlockTags.WOODEN_DOORS).add(new Block[]{array[5]});
-            tag(BlockTags.WOODEN_STAIRS).add(new Block[]{array[3]});
-            tag(BlockTags.WOODEN_SLABS).add(new Block[]{array[4]});
-            tag(BlockTags.WOODEN_FENCES).add(new Block[]{array[7]});
-            tag(tag).add(array[1], array[0]);
-            tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{array[0]});
-            tag(BlockTags.LOGS_THAT_BURN).addTag(tag);
-            tag(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{array[6]});
-            tag(BlockTags.STANDING_SIGNS).add(new Block[]{array[11]});
-            tag(BlockTags.WALL_SIGNS).add(new Block[]{array[12]});
-            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{array[9]});
-            tag(BlockTags.FENCE_GATES).add(new Block[]{array[8]});
-            tag(BlockTags.CEILING_HANGING_SIGNS).add(array[13]);
-            tag(BlockTags.WALL_HANGING_SIGNS).add(array[14]);
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(new Block[]{array[2]});
+         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(new Block[]{array[10]});
+         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{array[5]});
+         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(new Block[]{array[3]});
+         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{array[4]});
+         getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{array[7]});
+         getOrCreateTagBuilder(tag).add(array[1], array[0]);
+         getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{array[0]});
+         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(tag);
+         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{array[6]});
+         getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{array[11]});
+         getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{array[12]});
+         getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{array[9]});
+         getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(new Block[]{array[8]});
+         getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(array[13]);
+         getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(array[14]);
       }
 
       private void addTreeTags(Block[][] array, Block[] block, HolderLookup.Provider arg) {
          for(int i = 0; i < array.length; i++) {
-            tag(BlockTags.MINEABLE_WITH_HOE).add(block[i]);
-            tag(BlockTags.SAPLINGS).add(new Block[]{array[i][0]});
-            tag(BlockTags.FLOWER_POTS).add(new Block[]{array[i][1]});
-            tag(BlockTags.LEAVES).add(block[i]);
+            getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(block[i]);
+            getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{array[i][0]});
+            getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{array[i][1]});
+            getOrCreateTagBuilder(BlockTags.LEAVES).add(block[i]);
          }
       }
 
       private void addFlowerTags(Block block, Block flowerPot, Boolean isTall, HolderLookup.Provider arg) {
-         tag(BlockTags.FLOWER_POTS).add(new Block[]{flowerPot});
+         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{flowerPot});
 
          if(isTall) {
-            tag(BlockTags.TALL_FLOWERS).add(block);
+            getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(block);
          }
          else {
-            tag(BlockTags.SMALL_FLOWERS).add(block);
+            getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(block);
          }
 
       }
@@ -1201,10 +1194,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private void addFlowerTags(Block block, Boolean isTall, HolderLookup.Provider arg) {
 
          if(isTall) {
-            tag(BlockTags.TALL_FLOWERS).add(block);
+            getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(block);
          }
          else {
-            tag(BlockTags.SMALL_FLOWERS).add(block);
+            getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(block);
          }
 
       }
@@ -1227,9 +1220,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addFlowerTags(HibiscusBlocks.SNAPDRAGON, true, arg);
          addFlowerTags(HibiscusBlocks.MARIGOLD, true, arg);
          addFlowerTags(HibiscusBlocks.FOXGLOVE, true, arg);
-         tag(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusBlocks.FRAMED_SUGI_DOOR});
-         tag(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusBlocks.FRAMED_SUGI_TRAPDOOR});
-         tag(BlockTags.CLIMBABLE).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT,
+         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusBlocks.FRAMED_SUGI_DOOR});
+         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusBlocks.FRAMED_SUGI_TRAPDOOR});
+         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT,
                  HibiscusBlocks.BLUE_WISTERIA_VINES,
                  HibiscusBlocks.WHITE_WISTERIA_VINES,
                  HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT,
@@ -1240,7 +1233,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  HibiscusBlocks.WILLOW_VINES_PLANT,
                  HibiscusBlocks.WILLOW_VINES
          );
-         tag(BlockTags.BEE_GROWABLES).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT,
+         getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT,
                  HibiscusBlocks.BLUE_WISTERIA_VINES,
                  HibiscusBlocks.WHITE_WISTERIA_VINES,
                  HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT,
@@ -1251,11 +1244,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  HibiscusBlocks.WILLOW_VINES_PLANT,
                  HibiscusBlocks.WILLOW_VINES
          );
-         tag(BlockTags.CROPS).add(HibiscusBlocks.DESERT_TURNIP_STEM);
-         tag(BlockTags.MAINTAINS_FARMLAND).add(HibiscusBlocks.DESERT_TURNIP_STEM);
-         tag(BlockTags.MINEABLE_WITH_HOE).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
-         tag(BlockTags.SWORD_EFFICIENT).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
-         tag(BlockTags.REPLACEABLE_BY_TREES).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.CROPS).add(HibiscusBlocks.DESERT_TURNIP_STEM);
+         getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(HibiscusBlocks.DESERT_TURNIP_STEM);
+         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
       }
    }
 }

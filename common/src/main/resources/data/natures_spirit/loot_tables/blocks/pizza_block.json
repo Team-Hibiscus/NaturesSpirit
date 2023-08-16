@@ -1,0 +1,139 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "natures_spirit:pizza_block",
+              "properties": {
+                "pizza_bites": 0
+              }
+            }
+          ],
+          "functions": [
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites",
+                "toppings",
+                "mushroom_topping",
+                "green_olives_topping",
+                "black_olives_topping",
+                "carrot_topping",
+                "beetroot_topping",
+                "chicken_topping",
+                "cod_topping",
+                "pork_topping",
+                "rabbit_topping"
+              ]
+            }
+          ],
+          "name": "natures_spirit:whole_pizza"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "natures_spirit:pizza_block",
+              "properties": {
+                "pizza_bites": 1
+              }
+            }
+          ],
+          "functions": [
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites",
+                "toppings",
+                "mushroom_topping",
+                "green_olives_topping",
+                "black_olives_topping",
+                "carrot_topping",
+                "beetroot_topping",
+                "chicken_topping",
+                "cod_topping",
+                "pork_topping",
+                "rabbit_topping"
+              ]
+            }
+          ],
+          "name": "natures_spirit:three_quarters_pizza"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "natures_spirit:pizza_block",
+              "properties": {
+                "pizza_bites": 2
+              }
+            }
+          ],
+          "functions": [
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites",
+                "toppings",
+                "mushroom_topping",
+                "green_olives_topping",
+                "black_olives_topping",
+                "carrot_topping",
+                "beetroot_topping",
+                "chicken_topping",
+                "cod_topping",
+                "pork_topping",
+                "rabbit_topping"
+              ]
+            }
+          ],
+          "name": "natures_spirit:half_pizza"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "natures_spirit:pizza_block",
+              "properties": {
+                "pizza_bites": 3
+              }
+            }
+          ],
+          "functions": [
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites",
+                "toppings",
+                "mushroom_topping",
+                "green_olives_topping",
+                "black_olives_topping",
+                "carrot_topping",
+                "beetroot_topping",
+                "chicken_topping",
+                "cod_topping",
+                "pork_topping",
+                "rabbit_topping"
+              ]
+            }
+          ],
+          "name": "natures_spirit:quarter_pizza"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

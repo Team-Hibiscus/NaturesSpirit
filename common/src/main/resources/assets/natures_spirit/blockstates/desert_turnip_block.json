@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "natures_spirit:block/desert_turnip_block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "natures_spirit:block/desert_turnip_block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "natures_spirit:block/desert_turnip_block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "natures_spirit:block/desert_turnip_block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "natures_spirit:block/desert_turnip_block"
+    },
+    "facing=west": {
+      "model": "natures_spirit:block/desert_turnip_block",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

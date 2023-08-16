@@ -1,0 +1,222 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/corner_01",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 18
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/corner_02",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 18
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/corner_03",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 12
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_01",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 20
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_red",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_orange",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_yellow",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_lime",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_cyan",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_light_blue",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress_pink",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_07",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_02",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 57
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_03",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 57
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_04",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 33
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_05",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 28
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/straight_06",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 32
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/crossroad_01",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 16
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/crossroad_02",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 16
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/crossroad_03",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 16
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/crossroad_04",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 16
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/crossroad_05",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 8
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/crossroad_06",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 16
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/cypress/streets/turn_01",
+        "processors": "natures_spirit:street_cypress",
+        "projection": "terrain_matching"
+      },
+      "weight": 24
+    }
+  ],
+  "fallback": "natures_spirit:village/cypress/terminators",
+  "name": "natures_spirit:village/cypress/streets"
+}
