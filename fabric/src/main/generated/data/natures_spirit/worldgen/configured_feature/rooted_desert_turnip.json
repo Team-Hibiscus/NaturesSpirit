@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:turnip_root_feature",
+  "type": "natures_spirit:turnip_root_feature",
   "config": {
     "allowed_tree_position": {
       "type": "minecraft:all_of",

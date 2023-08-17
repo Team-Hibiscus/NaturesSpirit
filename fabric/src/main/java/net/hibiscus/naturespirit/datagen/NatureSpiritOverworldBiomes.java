@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import javax.annotation.Nullable;
 
 import static net.hibiscus.naturespirit.world.HibiscusPlacedFeatures.*;
+import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatureKeys.*;
 
 public class NatureSpiritOverworldBiomes {
    @Nullable private static final Music NORMAL_MUSIC = null;

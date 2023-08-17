@@ -1,7 +1,8 @@
-package net.hibiscus.naturespirit.world.feature.tree_decorator;
+package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.hibiscus.naturespirit.util.HibiscusForgeWorldGen;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -50,7 +51,7 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
    }
 
    @Override protected TreeDecoratorType <?> type() {
-      return HibiscusWorldGen.WISTERIA_VINES_TREE_DECORATOR;
+      return HibiscusForgeWorldGen.WISTERIA_VINES_TREE_DECORATOR.get();
    }
 
    public void place(Context context) {

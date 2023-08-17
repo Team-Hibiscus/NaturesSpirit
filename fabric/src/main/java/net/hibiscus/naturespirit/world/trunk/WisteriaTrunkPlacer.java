@@ -1,8 +1,9 @@
-package net.hibiscus.naturespirit.world.feature.trunk;
+package net.hibiscus.naturespirit.world.trunk;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.hibiscus.naturespirit.util.HibiscusFabricWorldGen;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -57,7 +58,7 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
    }
 
    protected TrunkPlacerType <?> type() {
-      return HibiscusWorldGen.WISTERIA_TRUNK_PLACER;
+      return HibiscusFabricWorldGen.WISTERIA_TRUNK_PLACER;
    }
 
    public List <FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader world, BiConsumer <BlockPos, BlockState> replacer, RandomSource random, int height, BlockPos startPos, TreeConfiguration config) {

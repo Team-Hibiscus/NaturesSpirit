@@ -1,7 +1,7 @@
 plugins {
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle'
+    id 'net.neoforged.gradle'
     id 'org.spongepowered.mixin'
 }
 base {
@@ -73,7 +73,7 @@ minecraft {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.neoforged:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${terrablender_version}")
     compileOnly project(":common")
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")

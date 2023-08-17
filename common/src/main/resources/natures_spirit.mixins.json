@@ -7,11 +7,6 @@
     "mixins": [
         "BlockEntityTypeMixin",
         "BlockSetTypeAccessor",
-        "BlockStateProviderMixin",
-        "FoliagePlacerMixin",
-        "StatsTypeAccessor",
-        "TreeDecoratorMixin",
-        "TrunkPlacerTypeMixin",
         "WoodTypeAccessor"
     ],
     "client": [

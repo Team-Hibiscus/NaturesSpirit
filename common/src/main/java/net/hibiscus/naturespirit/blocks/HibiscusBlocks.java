@@ -29,10 +29,12 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
+import java.util.HashMap;
+
 public class HibiscusBlocks {
 
-   public static final RegistrationProvider <Block> BLOCKS = RegistrationProvider.get(Registries.BLOCK, Constants.MOD_ID);
-   public static final RegistrationProvider <Item> ITEMS = RegistrationProvider.get(Registries.ITEM, Constants.MOD_ID);
+   public static HashMap <String, Block> BlockHashMap = new HashMap<String, Block>();
+   public static HashMap <String, Item> ItemHashMap = new HashMap<String, Item>();
    public static final Block TALL_SCORCHED_GRASS = registerBlock("tall_scorched_grass", new TallLargeDesertFernBlock(
            BlockBehaviour.Properties.of()
                    .mapColor(MapColor.GLOW_LICHEN)
@@ -860,13 +862,6 @@ public class HibiscusBlocks {
       return false;
    }
 
-   private static Block[] getCherrySign() {
-      Block[] Array = new Block[16];
-      Array[13] = Blocks.CHERRY_SIGN;
-      Array[15] = Blocks.CHERRY_HANGING_SIGN;
-      return Array;
-   }
-
    public static Block[] registerWoodBlocks(String name, MapColor topMaterialColor, MapColor sideMaterialColor, BlockSetType blockSetType, WoodType woodType) {
       Block[] Array = new Block[17];
       Array[0] = registerBlock(name + "_wood",
@@ -1182,7 +1177,7 @@ public class HibiscusBlocks {
    }
 
    public static Block registerPottedPlant(String name, Block plant) {
-      Block pottedPlant = registerBlock("potted_" + name, new FlowerPotBlock(plant,
+      Block pottedPlant = registerBlock1("potted_" + name, new FlowerPotBlock(plant,
               BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
       ));
       return pottedPlant;
@@ -1190,9 +1185,9 @@ public class HibiscusBlocks {
 
 
    public static Block registerBlock1(String name, Block block) {
-      assert BLOCKS != null;
-      RegistryObject <Block> block2 = BLOCKS.register(name, () -> block);
-      return block2.get();
+
+      BlockHashMap.put(name, block);
+      return block;
    }
 
    public static Block registerBlock(String name, Block block) {
@@ -1206,9 +1201,8 @@ public class HibiscusBlocks {
 
 
    public static Item registerItem(String name, Item item) {
-      assert ITEMS != null;
-      RegistryObject <Item> item2 = ITEMS.register(name, () -> item);
-      return item2.get();
+      ItemHashMap.put(name, item);
+      return item;
    }
 
    public static void registerHibiscusBlocks() {

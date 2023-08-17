@@ -3,11 +3,12 @@
 // (powered by FernFlower decompiler)
 //
 
-package net.hibiscus.naturespirit.world.feature.trunk;
+package net.hibiscus.naturespirit.world.trunk;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.hibiscus.naturespirit.util.HibiscusFabricWorldGen;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
@@ -57,7 +58,7 @@ public class SugiTrunkPlacer extends TrunkPlacer {
    }
 
    protected TrunkPlacerType <?> type() {
-      return HibiscusWorldGen.SUGI_TRUNK_PLACER;
+      return HibiscusFabricWorldGen.SUGI_TRUNK_PLACER;
    }
 
    public List <FoliageAttachment> placeTrunk(LevelSimulatedReader world, BiConsumer <BlockPos, BlockState> replacer, RandomSource random, int height, BlockPos startPos, TreeConfiguration config) {

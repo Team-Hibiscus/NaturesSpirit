@@ -1,7 +1,8 @@
-package net.hibiscus.naturespirit.world.feature.foliage_placer;
+package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.hibiscus.naturespirit.util.HibiscusForgeWorldGen;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,7 +29,7 @@ public class FirFoliagePlacer extends FoliagePlacer {
    }
 
    protected FoliagePlacerType <?> type() {
-      return HibiscusWorldGen.FIR_FOLIAGE_PLACER_TYPE;
+      return HibiscusForgeWorldGen.FIR_FOLIAGE_PLACER_TYPE.get();
    }
 
    protected void createFoliage(LevelSimulatedReader world, FoliageSetter placer, RandomSource random, TreeConfiguration config, int trunkHeight, FoliageAttachment treeNode, int foliageHeight, int radius, int offset) {
