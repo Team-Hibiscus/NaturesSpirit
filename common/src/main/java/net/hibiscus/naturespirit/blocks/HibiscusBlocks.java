@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -30,8 +31,8 @@ import net.minecraft.world.level.material.PushReaction;
 
 public class HibiscusBlocks {
 
-   public static final RegistrationProvider <Block> BLOCKS = RegistrationProvider.get(BuiltInRegistries.BLOCK, Constants.MOD_ID);
-   public static final RegistrationProvider <Item> ITEMS = RegistrationProvider.get(BuiltInRegistries.ITEM, Constants.MOD_ID);
+   public static final RegistrationProvider <Block> BLOCKS = RegistrationProvider.get(Registries.BLOCK, Constants.MOD_ID);
+   public static final RegistrationProvider <Item> ITEMS = RegistrationProvider.get(Registries.ITEM, Constants.MOD_ID);
    public static final Block TALL_SCORCHED_GRASS = registerBlock("tall_scorched_grass", new TallLargeDesertFernBlock(
            BlockBehaviour.Properties.of()
                    .mapColor(MapColor.GLOW_LICHEN)

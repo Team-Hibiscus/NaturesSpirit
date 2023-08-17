@@ -8,6 +8,7 @@ import net.hibiscus.naturespirit.registration.RegistryObject;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.world.entity.animal.CatVariant;
@@ -18,7 +19,7 @@ public class CommonNatureSpirit {
     public static final ResourceLocation EAT_PIZZA_SLICE = StatsTypeAccessor.registerNew("eat_pizza_slice",
             StatFormatter.DEFAULT
     );
-    public static final RegistrationProvider <CatVariant> CAT_VARIANTS = RegistrationProvider.get(BuiltInRegistries.CAT_VARIANT, Constants.MOD_ID);
+    public static final RegistrationProvider <CatVariant> CAT_VARIANTS = RegistrationProvider.get(Registries.CAT_VARIANT, Constants.MOD_ID);
     public static CatVariant registerCatVariant(String name, CatVariant catVariant) {
         assert CAT_VARIANTS != null;
         RegistryObject <CatVariant> catVariant2 = CAT_VARIANTS.register(name, () -> catVariant);
@@ -34,7 +35,7 @@ public class CommonNatureSpirit {
             Constants.LOG.info("Hello to Nature's Spirit");
         }
         HibiscusBlocks.registerHibiscusBlocks();
-//        HibiscusWorldGen.registerWorldGen();
+        HibiscusWorldGen.registerWorldGen();
         registerCatVariant(
                 "trans",
                 new CatVariant(new ResourceLocation("textures/entity/cat/trans" + ".png" + Constants.MOD_ID))

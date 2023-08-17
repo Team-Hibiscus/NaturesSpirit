@@ -14,6 +14,7 @@ import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import static net.hibiscus.naturespirit.mixin.TrunkPlacerTypeMixin.callRegister;
 
 public class HibiscusWorldGen {
+   public static final RegistrationProvider <Feature<?>> FEATURES = RegistrationProvider.get(Registries.FEATURE, "minecraft");
    public static final TrunkPlacerType <WisteriaTrunkPlacer> WISTERIA_TRUNK_PLACER = callRegister("wisteria_trunk_placer",
            WisteriaTrunkPlacer.CODEC
    );
@@ -70,7 +72,6 @@ public class HibiscusWorldGen {
            new JoshuaTreeFeature(NoneFeatureConfiguration.CODEC)
    );
 
-   public static final RegistrationProvider <Feature<?>> FEATURES = RegistrationProvider.get(BuiltInRegistries.FEATURE, Constants.MOD_ID);
    public static Feature<?> registerFeature(String name, Feature<?> feature) {
       assert FEATURES != null;
       RegistryObject <Feature<?>> feature2 = FEATURES.register(name, () -> feature);
