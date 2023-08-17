@@ -31,7 +31,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
+import java.util.HashMap;
+
 public class HibiscusBlocks {
+   public static HashMap<String, Block[]> WoodHashMap = new HashMap<>();
+   public static HashMap<String, Block[]> SaplingHashmap = new HashMap<>();
+   public static HashMap<String, Block> LeavesHashMap = new HashMap<>();
    public static final Block TALL_SCORCHED_GRASS = registerPlantBlock("tall_scorched_grass", new TallLargeDesertFernBlock(
            FabricBlockSettings.create()
                    .mapColor(MapColor.LICHEN_GREEN)
@@ -217,34 +222,34 @@ public class HibiscusBlocks {
    ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, ANEMONE, 0.3f);
    public static final Block POTTED_HIBISCUS = registerPottedPlant("hibiscus", HIBISCUS);
    public static final Block POTTED_ANEMONE = registerPottedPlant("anemone", ANEMONE);
-   public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood_leaves", MapColor.LIME, Blocks.CHERRY_LEAVES);
-   public static final Block SUGI_LEAVES = registerLeafBlock("sugi_leaves", MapColor.PINK, REDWOOD_LEAVES);
-   public static final Block WHITE_WISTERIA_LEAVES = registerLeafBlock("white_wisteria_leaves",
+   public static final Block REDWOOD_LEAVES = registerLeafBlock("redwood", MapColor.LIME, Blocks.CHERRY_LEAVES);
+   public static final Block SUGI_LEAVES = registerLeafBlock("sugi", MapColor.PINK, REDWOOD_LEAVES);
+   public static final Block WHITE_WISTERIA_LEAVES = registerLeafBlock("white_wisteria",
            MapColor.TERRACOTTA_WHITE,
            SUGI_LEAVES,
            true
    );
-   public static final Block BLUE_WISTERIA_LEAVES = registerLeafBlock("blue_wisteria_leaves",
+   public static final Block BLUE_WISTERIA_LEAVES = registerLeafBlock("blue_wisteria",
            MapColor.CYAN,
            WHITE_WISTERIA_LEAVES,
            true
    );
-   public static final Block PINK_WISTERIA_LEAVES = registerLeafBlock("pink_wisteria_leaves",
+   public static final Block PINK_WISTERIA_LEAVES = registerLeafBlock("pink_wisteria",
            MapColor.PINK,
            BLUE_WISTERIA_LEAVES,
            true
    );
-   public static final Block PURPLE_WISTERIA_LEAVES = registerLeafBlock("purple_wisteria_leaves",
+   public static final Block PURPLE_WISTERIA_LEAVES = registerLeafBlock("purple_wisteria",
            MapColor.PURPLE,
            PINK_WISTERIA_LEAVES,
            true
    );
-   public static final Block FIR_LEAVES = registerLeafBlock("fir_leaves", MapColor.LIME, PURPLE_WISTERIA_LEAVES);
-   public static final Block WILLOW_LEAVES = registerLeafBlock("willow_leaves", MapColor.GREEN, FIR_LEAVES, false);
-   public static final Block ASPEN_LEAVES = registerLeafBlock("aspen_leaves", MapColor.LIME, WILLOW_LEAVES);
-   public static final Block CYPRESS_LEAVES = registerLeafBlock("cypress_leaves", MapColor.DARK_GREEN, ASPEN_LEAVES);
-   public static final Block OLIVE_LEAVES = registerLeafBlock("olive_leaves", MapColor.DARK_GREEN, CYPRESS_LEAVES);
-   public static final Block JOSHUA_LEAVES = registerLeafBlock("joshua_leaves", MapColor.PALE_YELLOW, OLIVE_LEAVES);
+   public static final Block FIR_LEAVES = registerLeafBlock("fir", MapColor.LIME, PURPLE_WISTERIA_LEAVES);
+   public static final Block WILLOW_LEAVES = registerLeafBlock("willow", MapColor.GREEN, FIR_LEAVES, false);
+   public static final Block ASPEN_LEAVES = registerLeafBlock("aspen", MapColor.LIME, WILLOW_LEAVES);
+   public static final Block CYPRESS_LEAVES = registerLeafBlock("cypress", MapColor.DARK_GREEN, ASPEN_LEAVES);
+   public static final Block OLIVE_LEAVES = registerLeafBlock("olive", MapColor.DARK_GREEN, CYPRESS_LEAVES);
+   public static final Block JOSHUA_LEAVES = registerLeafBlock("joshua", MapColor.PALE_YELLOW, OLIVE_LEAVES);
 
    public static final Block[] REDWOOD_SAPLING = registerSapling("redwood",
            new RedwoodSaplingGenerator(),
@@ -410,6 +415,8 @@ public class HibiscusBlocks {
    public static final WoodType WILLOW_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("willow", WILLOW_BLOCK_SET_TYPE));
    public static final BlockSetType ASPEN_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("aspen"));
    public static final WoodType ASPEN_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("aspen", ASPEN_BLOCK_SET_TYPE));
+   public static final BlockSetType MAPLE_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("maple"));
+   public static final WoodType MAPLE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("maple", ASPEN_BLOCK_SET_TYPE));
    public static final BlockSetType CYPRESS_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("cypress"));
    public static final WoodType CYPRESS_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("cypress", CYPRESS_BLOCK_SET_TYPE));
    public static final BlockSetType OLIVE_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("olive"));
@@ -562,12 +569,21 @@ public class HibiscusBlocks {
            ASPEN_BLOCK_SET_TYPE,
            ASPEN_WOOD_TYPE
    );
-   public static final Block[] CYPRESS = registerWoodBlocks("cypress",
-           MapColor.OAK_TAN,
+   public static final Block[] MAPLE = registerWoodBlocks("maple",
+           MapColor.ORANGE,
            MapColor.SPRUCE_BROWN,
            ASPEN[12],
            ASPEN[2],
            ASPEN,
+           MAPLE_BLOCK_SET_TYPE,
+           MAPLE_WOOD_TYPE
+   );
+   public static final Block[] CYPRESS = registerWoodBlocks("cypress",
+           MapColor.OAK_TAN,
+           MapColor.SPRUCE_BROWN,
+           MAPLE[12],
+           MAPLE[2],
+           MAPLE,
            CYPRESS_BLOCK_SET_TYPE,
            CYPRESS_WOOD_TYPE
    );
@@ -1325,20 +1341,7 @@ public class HibiscusBlocks {
 
       FuelRegistry.INSTANCE.add(Array[9], 300);
       FuelRegistry.INSTANCE.add(Array[10], 300);
-
-      //        List <Block[]> woodArray = new ArrayList <>(Arrays.stream(NatureSpiritDataGen.woodArrays.clone()).toList());
-      //        woodArray.add(Array);
-      //        NatureSpiritDataGen.woodArrays = (Block[][]) woodArray.toArray();
-
-      //        List <TagKey<Block>> blockLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.blockLogTags
-      //        .clone()).toList());
-      //        blockLogsArray.add(TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
-      //        NatureSpiritDataGen.blockLogTags = (TagKey<Block>[]) blockLogsArray.toArray();
-      //
-      //        List <TagKey<Item>> itemLogsArray = new ArrayList <> (Arrays.stream(NatureSpiritDataGen.itemLogTags.clone()
-      //        ).toList());
-      //        itemLogsArray.add(TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name + "_logs")));
-      //        NatureSpiritDataGen.itemLogTags = (TagKey<Item>[]) itemLogsArray.toArray();
+      WoodHashMap.put(name, Array);
 
 
       return Array;
@@ -1531,7 +1534,7 @@ public class HibiscusBlocks {
    }
 
    public static Block registerLeafBlock(String name, MapColor color, Block blockBefore) {
-      Block Leaves = registerBlock(name, new LeavesBlock(FabricBlockSettings.create()
+      Block Leaves = registerBlock(name + "_leaves", new LeavesBlock(FabricBlockSettings.create()
               .strength(0.2F)
               .ticksRandomly()
               .nonOpaque()
@@ -1549,13 +1552,14 @@ public class HibiscusBlocks {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
               Leaves.asItem()
       ));
+      LeavesHashMap.put(name, Leaves);
       return Leaves;
    }
 
    public static Block registerLeafBlock(String name, MapColor color, Block blockBefore, boolean bl) {
       Block Leaves;
       if(bl) {
-         Leaves = registerBlock(name,
+         Leaves = registerBlock(name + "_leaves",
                  new WisteriaLeaves(FabricBlockSettings.create()
                          .mapColor(color)
                          .strength(0.2F)
@@ -1572,7 +1576,7 @@ public class HibiscusBlocks {
          );
       }
       else {
-         Leaves = registerBlock(name,
+         Leaves = registerBlock(name + "_leaves",
                  new WillowLeaves(FabricBlockSettings.create()
                          .mapColor(color)
                          .strength(0.2F)
@@ -1594,6 +1598,7 @@ public class HibiscusBlocks {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
               Leaves.asItem()
       ));
+      LeavesHashMap.put(name, Leaves);
       return Leaves;
    }
 
@@ -1609,6 +1614,7 @@ public class HibiscusBlocks {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
               Plant[0].asItem()
       ));
+      SaplingHashmap.put(name, Plant);
       return Plant;
    }
 
@@ -1624,6 +1630,7 @@ public class HibiscusBlocks {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
               Plant[0].asItem()
       ));
+      SaplingHashmap.put(name, Plant);
       return Plant;
    }
 
