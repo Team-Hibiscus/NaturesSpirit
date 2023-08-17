@@ -5,6 +5,8 @@ import net.hibiscus.naturespirit.blocks.vanilla.*;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.mixin.BlockSetTypeAccessor;
 import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
+import net.hibiscus.naturespirit.registration.RegistrationProvider;
+import net.hibiscus.naturespirit.registration.RegistryObject;
 import net.hibiscus.naturespirit.world.feature.tree.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,6 +29,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 public class HibiscusBlocks {
+
+   public static final RegistrationProvider <Block> BLOCKS = RegistrationProvider.get(BuiltInRegistries.BLOCK, Constants.MOD_ID);
+   public static final RegistrationProvider <Item> ITEMS = RegistrationProvider.get(BuiltInRegistries.ITEM, Constants.MOD_ID);
    public static final Block TALL_SCORCHED_GRASS = registerBlock("tall_scorched_grass", new TallLargeDesertFernBlock(
            BlockBehaviour.Properties.of()
                    .mapColor(MapColor.GLOW_LICHEN)
@@ -1182,8 +1187,11 @@ public class HibiscusBlocks {
       return pottedPlant;
    }
 
+
    public static Block registerBlock1(String name, Block block) {
-      return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(Constants.MOD_ID, name), block);
+      assert BLOCKS != null;
+      RegistryObject <Block> block2 = BLOCKS.register(name, () -> block);
+      return block2.get();
    }
 
    public static Block registerBlock(String name, Block block) {
@@ -1195,8 +1203,11 @@ public class HibiscusBlocks {
       registerItem(name, new BlockItem(block, new Item.Properties()));
    }
 
+
    public static Item registerItem(String name, Item item) {
-      return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, name), item);
+      assert ITEMS != null;
+      RegistryObject <Item> item2 = ITEMS.register(name, () -> item);
+      return item2.get();
    }
 
    public static void registerHibiscusBlocks() {

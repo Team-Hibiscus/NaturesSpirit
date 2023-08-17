@@ -1,8 +1,11 @@
 package net.hibiscus.naturespirit.util;
 
+import net.hibiscus.naturespirit.Constants;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.mixin.FoliagePlacerMixin;
 import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
+import net.hibiscus.naturespirit.registration.RegistrationProvider;
+import net.hibiscus.naturespirit.registration.RegistryObject;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
@@ -11,6 +14,7 @@ import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -52,19 +56,26 @@ public class HibiscusWorldGen {
    public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider",
            HibiscusSimpleBlockStateProvider.CODEC
    );
-   public static final Feature <DeltaFeatureConfiguration> HIBISCUS_DELTA_FEATURE = Registry.register(
-           BuiltInRegistries.FEATURE,
+
+   public static final Feature <DeltaFeatureConfiguration> HIBISCUS_DELTA_FEATURE = (Feature <DeltaFeatureConfiguration>) registerFeature(
            "water_delta_feature",
            new HibiscusDeltaFeature(DeltaFeatureConfiguration.CODEC)
    );
-   public static final Feature <TurnipRootFeatureConfig> HIBISCUS_TURNIP_ROOT_FEATURE = Registry.register(BuiltInRegistries.FEATURE,
+   public static final Feature <TurnipRootFeatureConfig> HIBISCUS_TURNIP_ROOT_FEATURE = (Feature <TurnipRootFeatureConfig>) registerFeature(
            "turnip_root_feature",
            new TurnipRootFeature(TurnipRootFeatureConfig.CODEC)
    );
-   public static final Feature <NoneFeatureConfiguration> JOSHUA_TREE_FEATURE = Registry.register(BuiltInRegistries.FEATURE,
+   public static final Feature <NoneFeatureConfiguration> JOSHUA_TREE_FEATURE = (Feature <NoneFeatureConfiguration>) registerFeature(
            "joshua_tree_feature",
            new JoshuaTreeFeature(NoneFeatureConfiguration.CODEC)
    );
+
+   public static final RegistrationProvider <Feature<?>> FEATURES = RegistrationProvider.get(BuiltInRegistries.FEATURE, Constants.MOD_ID);
+   public static Feature<?> registerFeature(String name, Feature<?> feature) {
+      assert FEATURES != null;
+      RegistryObject <Feature<?>> feature2 = FEATURES.register(name, () -> feature);
+      return feature2.get();
+   }
    public static void registerWorldGen() {
    };
 }
