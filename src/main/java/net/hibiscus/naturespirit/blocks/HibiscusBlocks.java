@@ -22,6 +22,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -32,6 +33,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
 import java.util.HashMap;
+
+import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 public class HibiscusBlocks {
    public static HashMap<String, Block[]> WoodHashMap = new HashMap<>();
@@ -247,6 +250,9 @@ public class HibiscusBlocks {
    public static final Block FIR_LEAVES = registerLeafBlock("fir", MapColor.LIME, PURPLE_WISTERIA_LEAVES);
    public static final Block WILLOW_LEAVES = registerLeafBlock("willow", MapColor.GREEN, FIR_LEAVES, false);
    public static final Block ASPEN_LEAVES = registerLeafBlock("aspen", MapColor.LIME, WILLOW_LEAVES);
+   public static final Block RED_MAPLE_LEAVES = registerMapleLeafBlock("red_maple", MapColor.DARK_RED, RED_MAPLE_LEAVES_PARTICLE, ASPEN_LEAVES);
+   public static final Block ORANGE_MAPLE_LEAVES = registerMapleLeafBlock("orange_maple", MapColor.ORANGE, ORANGE_MAPLE_LEAVES_PARTICLE, RED_MAPLE_LEAVES);
+   public static final Block YELLOW_MAPLE_LEAVES = registerMapleLeafBlock("yellow_maple", MapColor.PALE_YELLOW, YELLOW_MAPLE_LEAVES_PARTICLE, ORANGE_MAPLE_LEAVES);
    public static final Block CYPRESS_LEAVES = registerLeafBlock("cypress", MapColor.DARK_GREEN, ASPEN_LEAVES);
    public static final Block OLIVE_LEAVES = registerLeafBlock("olive", MapColor.DARK_GREEN, CYPRESS_LEAVES);
    public static final Block JOSHUA_LEAVES = registerLeafBlock("joshua", MapColor.PALE_YELLOW, OLIVE_LEAVES);
@@ -278,9 +284,12 @@ public class HibiscusBlocks {
    );
    public static final Block[] WILLOW_SAPLING = registerSapling("willow", new WillowSaplingGenerator(), FIR_SAPLING[0]);
    public static final Block[] ASPEN_SAPLING = registerSapling("aspen", new AspenSaplingGenerator(), WILLOW_SAPLING[0]);
+   public static final Block[] RED_MAPLE_SAPLING = registerSapling("red_maple", new RedMapleSaplingGenerator(), ASPEN_SAPLING[0]);
+   public static final Block[] ORANGE_MAPLE_SAPLING = registerSapling("orange_maple", new OrangeMapleSaplingGenerator(), RED_MAPLE_SAPLING[0]);
+   public static final Block[] YELLOW_MAPLE_SAPLING = registerSapling("yellow_maple", new YellowMapleSaplingGenerator(), ORANGE_MAPLE_SAPLING[0]);
    public static final Block[] CYPRESS_SAPLING = registerSapling("cypress",
            new CypressSaplingGenerator(),
-           ASPEN_SAPLING[0]
+           YELLOW_MAPLE_SAPLING[0]
    );
    public static final Block[] OLIVE_SAPLING = registerSapling("olive",
            new OliveSaplingGenerator(),
@@ -1546,6 +1555,28 @@ public class HibiscusBlocks {
               .blockVision(HibiscusBlocks::never)
               .pistonBehavior(PistonBehavior.DESTROY)
               .solidBlock(HibiscusBlocks::never)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
+      FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
+      CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
+              Leaves.asItem()
+      ));
+      LeavesHashMap.put(name, Leaves);
+      return Leaves;
+   }
+   public static Block registerMapleLeafBlock(String name, MapColor color, ParticleEffect particle, Block blockBefore) {
+      Block Leaves = registerBlock(name + "_leaves", new MapleLeavesBlock(FabricBlockSettings.create()
+              .strength(0.2F)
+              .ticksRandomly()
+              .nonOpaque()
+              .sounds(BlockSoundGroup.AZALEA_LEAVES)
+              .mapColor(color)
+              .burnable()
+              .allowsSpawning(HibiscusBlocks::canSpawnUponLeaves)
+              .suffocates(HibiscusBlocks::never)
+              .blockVision(HibiscusBlocks::never)
+              .pistonBehavior(PistonBehavior.DESTROY)
+              .solidBlock(HibiscusBlocks::never), particle), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);

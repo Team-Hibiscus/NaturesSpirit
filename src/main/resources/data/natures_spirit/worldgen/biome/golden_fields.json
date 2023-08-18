@@ -28,7 +28,9 @@
     "water_fog_color": 329011
   },
   "features": [
-    [],
+    [
+      "natures_spirit:granite_cliff"
+    ],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -79,11 +81,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "natures_spirit:granite_rock",
+      "natures_spirit:maple_placed",
       "minecraft:patch_tall_grass_2",
-      "natures_spirit:few_aspen_placed",
-      "natures_spirit:custom_fancy_oak_tree2_placed",
-      "natures_spirit:oak_bush_placed",
       "minecraft:patch_grass_plain",
       "natures_spirit:flower_golden2_placed",
       "minecraft:forest_flowers",

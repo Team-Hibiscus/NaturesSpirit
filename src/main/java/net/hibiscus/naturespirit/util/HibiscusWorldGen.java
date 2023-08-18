@@ -10,6 +10,7 @@ import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.feature.trunk.MapleTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.OliveTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
@@ -38,6 +39,9 @@ public class HibiscusWorldGen {
    public static final TrunkPlacerType <OliveTrunkPlacer> OLIVE_TRUNK_PLACER = callRegister("olive_trunk_placer",
            OliveTrunkPlacer.CODEC
    );
+   public static final TrunkPlacerType <MapleTrunkPlacer> MAPLE_TRUNK_PLACER = callRegister("maple_trunk_placer",
+           MapleTrunkPlacer.CODEC
+   );
    public static final TreeDecoratorType <WisteriaVinesTreeDecorator> WISTERIA_VINES_TREE_DECORATOR = TreeDecoratorMixin.callRegister("wisteria_vines_tree_decorator",
            WisteriaVinesTreeDecorator.CODEC
    );
@@ -55,6 +59,9 @@ public class HibiscusWorldGen {
    );
    public static final FoliagePlacerType <CypressFoliagePlacer> CYPRESS_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("cypress_foliage_placer",
            CypressFoliagePlacer.CODEC
+   );
+   public static final FoliagePlacerType <MapleFoliagePlacer> MAPLE_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("maple_foliage_placer",
+           MapleFoliagePlacer.CODEC
    );
    public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider",
            HibiscusSimpleBlockStateProvider.CODEC

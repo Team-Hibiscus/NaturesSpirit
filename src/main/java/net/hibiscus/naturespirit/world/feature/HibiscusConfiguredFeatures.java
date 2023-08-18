@@ -8,6 +8,7 @@ import net.hibiscus.naturespirit.blocks.WisteriaVine;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.feature.trunk.MapleTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.OliveTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
@@ -17,24 +18,25 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.intprovider.WeightedListIntProvider;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
-import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
-import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
+import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
+import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -64,6 +66,10 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> ASPEN_TREE = registerKey("aspen_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> ASPEN_TREE_BEES = registerKey("aspen_tree_bees");
    public static final RegistryKey <ConfiguredFeature <?, ?>> ASPEN_TREE_SPAWN = registerKey("aspen_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> RED_MAPLE_TREE = registerKey("red_maple_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> ORANGE_MAPLE_TREE = registerKey("orange_maple_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> YELLOW_MAPLE_TREE = registerKey("yellow_maple_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> MAPLE_SPAWN = registerKey("maple_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FIR_TREE = registerKey("fir_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FIR_TREE_SPAWN = registerKey("fir_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_SPAWN = registerKey("wisteria_spawn");
@@ -163,6 +169,65 @@ public class HibiscusConfiguredFeatures {
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.ASPEN_CHECKED)
               )
       );
+
+      register(context,
+              RED_MAPLE_TREE,
+              Feature.TREE,
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.MAPLE[2]),
+                      new MapleTrunkPlacer(9, 2, 0,
+                              new WeightedListIntProvider(DataPool.<IntProvider>builder()
+                                      .add(ConstantIntProvider.create(5), 1)
+                                      .add(ConstantIntProvider.create(2), 1)
+                                      .add(ConstantIntProvider.create(3), 1)
+                                      .add(ConstantIntProvider.create(4), 1).build()),
+                              UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
+                      BlockStateProvider.of(HibiscusBlocks.RED_MAPLE_LEAVES),
+                      new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
+                      new TwoLayersFeatureSize(1, 0, 2)
+              ).ignoreVines().build()
+      );
+      register(context,
+              ORANGE_MAPLE_TREE,
+              Feature.TREE,
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.MAPLE[2]),
+                      new MapleTrunkPlacer(9, 2, 0,
+                              new WeightedListIntProvider(DataPool.<IntProvider>builder()
+                                      .add(ConstantIntProvider.create(5), 1)
+                                      .add(ConstantIntProvider.create(2), 1)
+                                      .add(ConstantIntProvider.create(3), 1)
+                                      .add(ConstantIntProvider.create(4), 1).build()),
+                              UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
+                      BlockStateProvider.of(HibiscusBlocks.ORANGE_MAPLE_LEAVES),
+                      new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
+                      new TwoLayersFeatureSize(1, 0, 2)
+              ).ignoreVines().build()
+      );
+      register(context,
+              YELLOW_MAPLE_TREE,
+              Feature.TREE,
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.MAPLE[2]),
+                      new MapleTrunkPlacer(9, 2, 0,
+                              new WeightedListIntProvider(DataPool.<IntProvider>builder()
+                                      .add(ConstantIntProvider.create(5), 1)
+                                      .add(ConstantIntProvider.create(2), 1)
+                                      .add(ConstantIntProvider.create(3), 1)
+                                      .add(ConstantIntProvider.create(4), 1).build()),
+                              UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
+                      BlockStateProvider.of(HibiscusBlocks.YELLOW_MAPLE_LEAVES),
+                      new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
+                      new TwoLayersFeatureSize(1, 0, 2)
+              ).ignoreVines().build()
+      );
+
+      register(context, MAPLE_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
+              new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.ORANGE_MAPLE_CHECKED),
+                      0.325f
+              ),
+              new RandomFeatureEntry(
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.YELLOW_MAPLE_CHECKED),
+                      0.325f
+              )
+      ), placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.RED_MAPLE_CHECKED)));
 
       register(context,
               CYPRESS_TREE,

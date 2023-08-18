@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+       "natures_spirit:red_maple_checked",
+       "natures_spirit:orange_maple_checked",
+       "natures_spirit:yellow_maple_checked",
+       "minecraft:fancy_oak_checked"
+    ]
+  }
+}
