@@ -7,11 +7,14 @@ import net.fabricmc.fabric.api.datagen.v1.provider.*;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
+import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
 import net.minecraft.block.Block;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
@@ -228,7 +231,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       @Override public void generate() {
          addWoodTable(WoodHashMap);
          addJoshuaWoodTable();
-         addTreeTable(SaplingHashmap, LeavesHashMap);
+         addTreeTable(SaplingHashMap, LeavesHashMap);
 
          addVinesTable(HibiscusBlocks.WHITE_WISTERIA_VINES, HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT);
          addVinesTable(HibiscusBlocks.BLUE_WISTERIA_VINES, HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT);
@@ -677,7 +680,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       @Override public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
          generateWoodBlockStateModels(WoodHashMap, blockStateModelGenerator);
          generateJoshuaWoodBlockStateModels(blockStateModelGenerator);
-         generateTreeBlockStateModels(SaplingHashmap, LeavesHashMap, blockStateModelGenerator);
+         generateTreeBlockStateModels(SaplingHashMap, LeavesHashMap, blockStateModelGenerator);
          generateFlowerBlockStateModels(HibiscusBlocks.HIBISCUS,
                  HibiscusBlocks.POTTED_HIBISCUS,
                  blockStateModelGenerator
@@ -791,6 +794,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          itemModelGenerator.register(HibiscusBlocks.GREEN_OLIVES, Models.GENERATED);
          itemModelGenerator.register(HibiscusBlocks.BLACK_OLIVES, Models.GENERATED);
          itemModelGenerator.register(HibiscusBlocks.DESERT_TURNIP, Models.GENERATED);
+         for(HibiscusBoatEntity.HibiscusBoat boat: HibiscusBoatEntity.HibiscusBoat.values())
+         {
+            itemModelGenerator.register(boat.boat().asItem(), Models.GENERATED);
+            itemModelGenerator.register(boat.chestBoat().asItem(), Models.GENERATED);
+         }
       }
    }
 
@@ -857,10 +865,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(block, temp);
       }
 
+      private void generateBoatTranslations(TranslationBuilder translationBuilder) {
+         for (HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
+            translationBuilder.add(boat.boat().asItem(), capitalizeString(boat.asString()) + " Boat");
+            translationBuilder.add(boat.chestBoat().asItem(), capitalizeString(boat.asString()) + " Boat With Chest");
+         }
+      }
+
       @Override public void generateTranslations(TranslationBuilder translationBuilder) {
          generateWoodTranslations(WoodHashMap, translationBuilder);
+         generateBoatTranslations(translationBuilder);
          generateJoshuaTranslations(translationBuilder);
-         generateTreeTranslations(SaplingHashmap, LeavesHashMap, translationBuilder);
+         generateTreeTranslations(SaplingHashMap, LeavesHashMap, translationBuilder);
          translationBuilder.add(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, "Nature's Spirit Blocks & Items");
          translationBuilder.add(HibiscusBlocks.GREEN_OLIVES, "Green Olives");
          translationBuilder.add(HibiscusBlocks.BLACK_OLIVES, "Black Olives");
@@ -976,6 +992,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             offerBarkBlockRecipe(consumer, woodType[0], woodType[2]);
             offerBarkBlockRecipe(consumer, woodType[1], woodType[3]);
             offerHangingSignRecipe(consumer, woodType[15], woodType[3]);
+            offerBoatRecipe(consumer, HibiscusBoatEntity.HibiscusBoat.getType(i).boat().asItem(), woodType[4]);
+            offerChestBoatRecipe(consumer, HibiscusBoatEntity.HibiscusBoat.getType(i).chestBoat().asItem(), HibiscusBoatEntity.HibiscusBoat.getType(i).boat().asItem());
             BlockFamily family = register(woodType[4]).button(woodType[12])
                     .fence(woodType[9])
                     .fenceGate(woodType[10])
@@ -994,6 +1012,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private void generateJoshuaWoodRecipes(TagKey <Item> tag, Consumer <RecipeJsonProvider> consumer) {
             offerPlanksRecipe(consumer, HibiscusBlocks.JOSHUA[2], tag, 2);
             offerHangingSignRecipe(consumer, HibiscusBlocks.JOSHUA[13], HibiscusBlocks.JOSHUA[1]);
+         offerBoatRecipe(consumer, JOSHUA_BOAT, JOSHUA[4]);
+         offerChestBoatRecipe(consumer, JOSHUA_CHEST_BOAT, JOSHUA_BOAT);
             BlockFamily family = register(HibiscusBlocks.JOSHUA[2]).button(HibiscusBlocks.JOSHUA[10])
                     .fence(HibiscusBlocks.JOSHUA[7])
                     .fenceGate(HibiscusBlocks.JOSHUA[8])
@@ -1040,10 +1060,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          super(output, completableFuture, blockTagProvider);
       }
 
+
       @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
 
          for(String i: WoodHashMap.keySet()) {
             this.copy(blockLogTags.get(i), itemLogTags.get(i));
+            getOrCreateTagBuilder(ItemTags.BOATS).add(HibiscusBoatEntity.HibiscusBoat.getType(i).boat().asItem());
+            getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(HibiscusBoatEntity.HibiscusBoat.getType(i).chestBoat().asItem());
          }
          this.copy(joshuaBlockLogtag, joshuaItemLogtag);
 
@@ -1151,7 +1174,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
          addWoodTags(WoodHashMap, blockLogTags);
          addJoshuaWoodTags(joshuaBlockLogtag);
-         addTreeTags(SaplingHashmap, LeavesHashMap);
+         addTreeTags(SaplingHashMap, LeavesHashMap);
          addFlowerTags(HibiscusBlocks.HIBISCUS, HibiscusBlocks.POTTED_HIBISCUS, false);
          addFlowerTags(HibiscusBlocks.ANEMONE, HibiscusBlocks.POTTED_ANEMONE, false);
          addFlowerTags(HibiscusBlocks.BLUEBELL, false);

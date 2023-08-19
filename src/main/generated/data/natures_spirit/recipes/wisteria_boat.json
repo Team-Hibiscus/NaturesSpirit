@@ -1,16 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "boat",
-  "pattern": [
-    "# #",
-    "###"
-  ],
   "key": {
     "#": {
       "item": "natures_spirit:wisteria_planks"
     }
   },
+  "pattern": [
+    "# #",
+    "###"
+  ],
   "result": {
     "item": "natures_spirit:wisteria_boat"
-  }
+  },
+  "show_notification": true
 }

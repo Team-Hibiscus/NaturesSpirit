@@ -9,6 +9,8 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
+import net.hibiscus.naturespirit.items.HibiscusBoatItem;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.mixin.BlockSetTypeAccessor;
@@ -38,7 +40,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 public class HibiscusBlocks {
    public static HashMap<String, Block[]> WoodHashMap = new HashMap<>();
-   public static HashMap<String, Block[]> SaplingHashmap = new HashMap<>();
+   public static HashMap<String, Block[]> SaplingHashMap = new HashMap<>();
    public static HashMap<String, Block> LeavesHashMap = new HashMap<>();
    public static final Block TALL_SCORCHED_GRASS = registerPlantBlock("tall_scorched_grass", new TallLargeDesertFernBlock(
            FabricBlockSettings.create()
@@ -520,6 +522,8 @@ public class HibiscusBlocks {
            REDWOOD_BLOCK_SET_TYPE,
            REDWOOD_WOOD_TYPE
    );
+   public static final Item REDWOOD_BOAT = registerItem("redwood_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.REDWOOD, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Items.CHERRY_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item REDWOOD_CHEST_BOAT = registerItem("redwood_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.REDWOOD, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, REDWOOD_BOAT, ItemGroups.TOOLS);
    public static final Block[] SUGI = registerWoodBlocks("sugi",
            MapColor.DIRT_BROWN,
            MapColor.DEEPSLATE_GRAY,
@@ -542,6 +546,8 @@ public class HibiscusBlocks {
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            FRAMED_SUGI_DOOR
    );
+   public static final Item SUGI_BOAT = registerItem("sugi_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.SUGI, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, REDWOOD_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item SUGI_CHEST_BOAT = registerItem("sugi_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.SUGI, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, SUGI_BOAT, ItemGroups.TOOLS);
    public static final Block[] WISTERIA = registerWoodBlocks("wisteria",
            MapColor.TERRACOTTA_WHITE,
            MapColor.GRAY,
@@ -551,6 +557,8 @@ public class HibiscusBlocks {
            WISTERIA_BLOCK_SET_TYPE,
            WISTERIA_WOOD_TYPE
    );
+   public static final Item WISTERIA_BOAT = registerItem("wisteria_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.WISTERIA, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, SUGI_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item WISTERIA_CHEST_BOAT = registerItem("wisteria_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.WISTERIA, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, WISTERIA_BOAT, ItemGroups.TOOLS);
    public static final Block[] FIR = registerWoodBlocks("fir",
            MapColor.DIRT_BROWN,
            MapColor.GRAY,
@@ -560,6 +568,8 @@ public class HibiscusBlocks {
            FIR_BLOCK_SET_TYPE,
            FIR_WOOD_TYPE
    );
+   public static final Item FIR_BOAT = registerItem("fir_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.FIR, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, WISTERIA_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item FIR_CHEST_BOAT = registerItem("fir_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.FIR, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, FIR_BOAT, ItemGroups.TOOLS);
    public static final Block[] WILLOW = registerWoodBlocks("willow",
            MapColor.TERRACOTTA_BROWN,
            MapColor.TERRACOTTA_BLACK,
@@ -569,6 +579,8 @@ public class HibiscusBlocks {
            WILLOW_BLOCK_SET_TYPE,
            WILLOW_WOOD_TYPE
    );
+   public static final Item WILLOW_BOAT = registerItem("willow_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.WILLOW, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, FIR_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item WILLOW_CHEST_BOAT = registerItem("willow_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.WILLOW, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, WILLOW_BOAT, ItemGroups.TOOLS);
    public static final Block[] ASPEN = registerWoodBlocks("aspen",
            MapColor.PALE_YELLOW,
            MapColor.WHITE_GRAY,
@@ -578,6 +590,8 @@ public class HibiscusBlocks {
            ASPEN_BLOCK_SET_TYPE,
            ASPEN_WOOD_TYPE
    );
+   public static final Item ASPEN_BOAT = registerItem("aspen_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.ASPEN, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, WILLOW_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item ASPEN_CHEST_BOAT = registerItem("aspen_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.ASPEN, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, ASPEN_BOAT, ItemGroups.TOOLS);
    public static final Block[] MAPLE = registerWoodBlocks("maple",
            MapColor.ORANGE,
            MapColor.SPRUCE_BROWN,
@@ -587,6 +601,8 @@ public class HibiscusBlocks {
            MAPLE_BLOCK_SET_TYPE,
            MAPLE_WOOD_TYPE
    );
+   public static final Item MAPLE_BOAT = registerItem("maple_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.MAPLE, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, ASPEN_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item MAPLE_CHEST_BOAT = registerItem("maple_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.MAPLE, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, MAPLE_BOAT, ItemGroups.TOOLS);
    public static final Block[] CYPRESS = registerWoodBlocks("cypress",
            MapColor.OAK_TAN,
            MapColor.SPRUCE_BROWN,
@@ -596,6 +612,8 @@ public class HibiscusBlocks {
            CYPRESS_BLOCK_SET_TYPE,
            CYPRESS_WOOD_TYPE
    );
+   public static final Item CYPRESS_BOAT = registerItem("cypress_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.CYPRESS, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, MAPLE_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item CYPRESS_CHEST_BOAT = registerItem("cypress_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.CYPRESS, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, MAPLE_BOAT, ItemGroups.TOOLS);
    public static final Block[] OLIVE = registerWoodBlocks("olive",
            MapColor.PALE_GREEN,
            MapColor.PALE_YELLOW,
@@ -605,15 +623,17 @@ public class HibiscusBlocks {
            OLIVE_BLOCK_SET_TYPE,
            OLIVE_WOOD_TYPE
    );
+   public static final Item OLIVE_BOAT = registerItem("olive_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.OLIVE, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, CYPRESS_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item OLIVE_CHEST_BOAT = registerItem("olive_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.OLIVE, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, OLIVE_BOAT, ItemGroups.TOOLS);
    public static final Block[] JOSHUA = registerJoshuaWoodBlocks("joshua",
-           MapColor.PALE_GREEN,
-           MapColor.PALE_YELLOW,
-           OLIVE[12],
+           MapColor.PALE_GREEN, OLIVE[12],
            OLIVE[2],
            OLIVE,
            JOSHUA_BLOCK_SET_TYPE,
            JOSHUA_WOOD_TYPE
    );
+   public static final Item JOSHUA_BOAT = registerItem("joshua_boat", new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.JOSHUA, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, OLIVE_CHEST_BOAT, ItemGroups.TOOLS);
+   public static final Item JOSHUA_CHEST_BOAT = registerItem("joshua_chest_boat", new HibiscusBoatItem(true, HibiscusBoatEntity.HibiscusBoat.JOSHUA, new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, JOSHUA_BOAT, ItemGroups.TOOLS);
 
    public static final Block SANDY_SOIL = registerBlock("sandy_soil",
            new Block(FabricBlockSettings.create()
@@ -1355,7 +1375,7 @@ public class HibiscusBlocks {
 
       return Array;
    }
-   public static Block[] registerJoshuaWoodBlocks(String name, MapColor topMaterialColor, MapColor sideMaterialColor, Block buttonPlacement, Block logPlacement, Block[] signPlacement, BlockSetType blockSetType, WoodType woodType) {
+   public static Block[] registerJoshuaWoodBlocks(String name, MapColor topMaterialColor, Block buttonPlacement, Block logPlacement, Block[] signPlacement, BlockSetType blockSetType, WoodType woodType) {
       Block[] Array = new Block[15];
 
       Array[0] = registerBlock(name + "_log",
@@ -1645,7 +1665,7 @@ public class HibiscusBlocks {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
               Plant[0].asItem()
       ));
-      SaplingHashmap.put(name, Plant);
+      SaplingHashMap.put(name, Plant);
       return Plant;
    }
 
@@ -1661,7 +1681,7 @@ public class HibiscusBlocks {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
               Plant[0].asItem()
       ));
-      SaplingHashmap.put(name, Plant);
+      SaplingHashMap.put(name, Plant);
       return Plant;
    }
 
@@ -1763,7 +1783,7 @@ public class HibiscusBlocks {
    }
 
    public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab, Item itemBefore, RegistryKey <ItemGroup> secondaryTab) {
-      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
+      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item));
       return registerItem(name, item, tab);
    }
 

@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-17T21:37:42.3194774	Nature's Spirit/Block Loot Tables
+// 1.20.1	2023-08-18T18:47:03.7124354	Nature's Spirit/Block Loot Tables
 e42296ae5ba4bec951f16ab483c75c6aeccb06a4 data\natures_spirit\loot_tables\blocks\stripped_aspen_wood.json
 6e848ec36be348802c003b4de40a7ab18fc22c7f data\natures_spirit\loot_tables\blocks\olive_button.json
 b6c519b83aba2e2439ef44dc65712da0c1639b70 data\natures_spirit\loot_tables\blocks\joshua_door.json
@@ -86,8 +86,8 @@ c350609005749ad7026e70368f037ac56683eb80 data\natures_spirit\loot_tables\blocks\
 df649a4b0d694545f7835154aa1ffb6c7442af5e data\natures_spirit\loot_tables\blocks\stripped_aspen_log.json
 d9f665ff231e023afb033e3a869f632f247a027c data\natures_spirit\loot_tables\blocks\potted_yellow_maple_sapling.json
 8c5138642d1b26dc28637a19d156256bdb96eb26 data\natures_spirit\loot_tables\blocks\gardenia.json
-ed48724859caa3b2abb93e5fb85c3cb026959487 data\natures_spirit\loot_tables\blocks\cypress_sapling.json
 4290d163f1ffddada4bd1e4f6cc328e37187a5cd data\natures_spirit\loot_tables\blocks\lime_kaolin_stairs.json
+ed48724859caa3b2abb93e5fb85c3cb026959487 data\natures_spirit\loot_tables\blocks\cypress_sapling.json
 3c11eda363d9edbb8a4f53ed9f4ac31d11e9abfc data\natures_spirit\loot_tables\blocks\stripped_fir_log.json
 00e8a4eb76e76d8e69364dd4b2469f9dee0a4a45 data\natures_spirit\loot_tables\blocks\fir_leaves.json
 b4709ca80a89b0698b2af70c7bf0828961327c79 data\natures_spirit\loot_tables\blocks\kaolin_stairs.json

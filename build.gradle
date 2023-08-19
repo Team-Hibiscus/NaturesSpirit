@@ -53,6 +53,7 @@ loom {
             runDir "build/datagen"
         }
     }
+    accessWidenerPath = file("src/main/resources/natures_spirit.accesswidener")
 }
 
 //

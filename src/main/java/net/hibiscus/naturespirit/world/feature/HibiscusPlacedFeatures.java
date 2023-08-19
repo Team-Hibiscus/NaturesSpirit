@@ -413,10 +413,19 @@ public class HibiscusPlacedFeatures {
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
               BiomePlacementModifier.of()
       );
+//      registerKey(context,
+//              MAPLE_PLACED,
+//              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAPLE_SPAWN),
+//              CountPlacementModifier.of(7),
+//              SquarePlacementModifier.of(),
+//              TREE_THRESHOLD,
+//              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+//              BiomePlacementModifier.of()
+//      );
       registerKey(context,
               MAPLE_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAPLE_SPAWN),
-              CountPlacementModifier.of(7),
+              NoiseBasedCountPlacementModifier.of(3, 100, 0),
               SquarePlacementModifier.of(),
               TREE_THRESHOLD,
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,

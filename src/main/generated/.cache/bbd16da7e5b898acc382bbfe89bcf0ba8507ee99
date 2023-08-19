@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-17T21:37:42.3304773	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2023-08-18T18:47:03.7234354	Nature's Spirit/Tags for minecraft:item
 b019b07534a26cb98cac8bff17efeff5e861775c data\minecraft\tags\items\wooden_doors.json
 3641fffbf5a05358593a57a9747d14cfbc3d1acf data\minecraft\tags\items\wooden_slabs.json
 9af70c2f18f67baac388f27e3deea266126324e0 data\minecraft\tags\items\wooden_trapdoors.json
@@ -23,5 +23,7 @@ d7f7fa510c56ce76883f0d92ee606cab88f7c398 data\minecraft\tags\items\wooden_fences
 e7a9658ac735868be8d64d8c0b71174097093dd0 data\minecraft\tags\items\wooden_pressure_plates.json
 33de032e117f2beb405896e409c7169994b67f00 data\minecraft\tags\items\tall_flowers.json
 8987690c42728643062767d359b8f65f118d68f0 data\minecraft\tags\items\leaves.json
+cb469b5f8de36157f7226926f9eea33616c5fc07 data\minecraft\tags\items\boats.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\items\wisteria_logs.json
 7371a593517d9873af05fca5c6dfcab1067f1893 data\minecraft\tags\items\saplings.json
+7c3b4ddf5c1d3b9f231f5175de088112b1743032 data\minecraft\tags\items\chest_boats.json

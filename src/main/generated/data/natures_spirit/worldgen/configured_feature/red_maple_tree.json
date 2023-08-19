@@ -10,7 +10,7 @@
     },
     "foliage_placer": {
       "type": "minecraft:maple_foliage_placer",
-      "hanging_leaves_chance": 0.26666667,
+      "hanging_leaves_chance": 0.26666668,
       "hanging_leaves_extension_chance": 0.53333336,
       "height": 5,
       "offset": 0,

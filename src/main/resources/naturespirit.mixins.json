@@ -8,6 +8,8 @@
     "BlockEntityTypeMixin",
     "BlockSetTypeAccessor",
     "BlockStateProviderMixin",
+    "BoatDispenserBehaviorMixin",
+    "BoatEntityMixin",
     "FoliagePlacerMixin",
     "StatsTypeAccessor",
     "TreeDecoratorMixin",

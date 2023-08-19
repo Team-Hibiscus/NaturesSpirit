@@ -25,6 +25,7 @@
     "net.hibiscus.naturespirit.datagen.NatureSpiritDataGen"
     ]
   },
+  "accessWidener": "natures_spirit.accesswidener",
   "mixins": [
     "naturespirit.mixins.json"
   ],
