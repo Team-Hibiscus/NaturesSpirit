@@ -80,14 +80,15 @@
       "minecraft:spring_lava"
     ],
     [
+      "natures_spirit:pumpkin_patch_feature_placed",
+      "natures_spirit:pumpkin_feature_placed",
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
       "natures_spirit:aspen_placed",
       "minecraft:patch_grass_plain",
       "natures_spirit:flower_golden_placed",
       "minecraft:forest_flowers",
-      "minecraft:patch_sugar_cane",
-      "natures_spirit:patch_pumpkin_golden_wilds"
+      "minecraft:patch_sugar_cane"
     ],
     [
       "minecraft:freeze_top_layer"

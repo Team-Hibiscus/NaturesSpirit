@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:water_delta_feature",
+  "type": "natures_spirit:water_delta_feature",
   "config": {
     "contents": {
       "Name": "minecraft:water",

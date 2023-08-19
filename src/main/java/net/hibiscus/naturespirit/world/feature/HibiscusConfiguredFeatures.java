@@ -14,11 +14,13 @@ import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
@@ -89,6 +91,10 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH_SPAWN = registerKey("oak_bush_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH_SPAWN = registerKey("spruce_bush_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FANCY_OAK_TREE_SPAWN = registerKey("custom_fancy_oak_tree_spawn");
+
+
+   public static final RegistryKey <ConfiguredFeature <?, ?>> PUMPKIN_PATCH_FEATURE = registerKey("pumpkin_patch_feature");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> PUMPKIN_FEATURE = registerKey("pumpkin_feature");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
@@ -893,6 +899,18 @@ public class HibiscusConfiguredFeatures {
                               )
                       )
               )
+      );
+
+      register(context,
+              PUMPKIN_PATCH_FEATURE,
+              HIBISCUS_PUMPKIN_PATCH_FEATURE,
+              new OreFeatureConfig( new BlockMatchRuleTest(Blocks.AIR), Blocks.OAK_LEAVES.getDefaultState().with(
+                      LeavesBlock.PERSISTENT, true), 43, 0)
+      );
+      register(context,
+              PUMPKIN_FEATURE,
+              HIBISCUS_LARGE_PUMPKIN_FEATURE,
+              new DefaultFeatureConfig()
       );
 
    }

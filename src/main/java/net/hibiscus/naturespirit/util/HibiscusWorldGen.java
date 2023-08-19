@@ -10,23 +10,23 @@ import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
-import net.hibiscus.naturespirit.world.feature.trunk.MapleTrunkPlacer;
-import net.hibiscus.naturespirit.world.feature.trunk.OliveTrunkPlacer;
-import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
-import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
+import net.hibiscus.naturespirit.world.feature.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.DeltaFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.mixin.TrunkPlacerTypeMixin.callRegister;
 
 public class HibiscusWorldGen {
@@ -68,15 +68,25 @@ public class HibiscusWorldGen {
    );
    public static final Feature <DeltaFeatureConfig> HIBISCUS_DELTA_FEATURE = Registry.register(
            Registries.FEATURE,
-           "water_delta_feature",
+           new Identifier(MOD_ID, "water_delta_feature"),
            new HibiscusDeltaFeature(DeltaFeatureConfig.CODEC)
    );
+   public static final Feature <OreFeatureConfig> HIBISCUS_PUMPKIN_PATCH_FEATURE = Registry.register(
+           Registries.FEATURE,
+           new Identifier(MOD_ID, "pumpkin_patch_feature"),
+           new PumpkinPatchFeature(OreFeatureConfig.CODEC)
+   );
+   public static final Feature <DefaultFeatureConfig> HIBISCUS_LARGE_PUMPKIN_FEATURE = Registry.register(
+           Registries.FEATURE,
+           new Identifier(MOD_ID, "large_pumpkin_feature"),
+           new LargePumpkinFeature(DefaultFeatureConfig.CODEC)
+   );
    public static final Feature <TurnipRootFeatureConfig> HIBISCUS_TURNIP_ROOT_FEATURE = Registry.register(Registries.FEATURE,
-           "turnip_root_feature",
+           new Identifier(MOD_ID, "turnip_root_feature"),
            new TurnipRootFeature(TurnipRootFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> JOSHUA_TREE_FEATURE = Registry.register(Registries.FEATURE,
-           "joshua_tree_feature",
+           new Identifier(MOD_ID, "joshua_tree_feature"),
            new JoshuaTreeFeature(DefaultFeatureConfig.CODEC)
    );
    public static void registerWorldGen() {

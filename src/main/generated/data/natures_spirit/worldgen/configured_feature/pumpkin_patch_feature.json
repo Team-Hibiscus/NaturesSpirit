@@ -1,0 +1,23 @@
+{
+  "type": "natures_spirit:pumpkin_patch_feature",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 43,
+    "targets": [
+      {
+        "state": {
+          "Name": "minecraft:oak_leaves",
+          "Properties": {
+            "distance": "7",
+            "persistent": "true",
+            "waterlogged": "false"
+          }
+        },
+        "target": {
+          "block": "minecraft:air",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  }
+}
