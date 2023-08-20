@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-19T00:47:13.9735793	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2023-08-19T16:43:40.4597272	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 acd47469732b10cdb3e5695e113b634ddd658fdb data\minecraft\tags\blocks\standing_signs.json
@@ -28,8 +28,8 @@ a1bd493afdc5473b8e7d67a52d4f788aeadb2cf8 data\minecraft\tags\blocks\maintains_fa
 f0bb67d2954f95ceccfe729ef8d3c0cdb89e5507 data\minecraft\tags\blocks\flower_pots.json
 f3654d51940bbd1ffda7048cfe0ab79050f3f83e data\minecraft\tags\blocks\climbable.json
 fcb788fee101ac8b3968f22ebe22f03f5db60d56 data\minecraft\tags\blocks\wall_hanging_signs.json
-8233c3886abf537502f1e7ad8ce62b78693b69d3 data\minecraft\tags\blocks\fence_gates.json
 9af70c2f18f67baac388f27e3deea266126324e0 data\minecraft\tags\blocks\wooden_trapdoors.json
+8233c3886abf537502f1e7ad8ce62b78693b69d3 data\minecraft\tags\blocks\fence_gates.json
 0fc9477a5def03b04f9fccb441c789ebee2056e1 data\minecraft\tags\blocks\sword_efficient.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\blocks\redwood_logs.json
 7a9922bf7995dd94dcd11f47eedabdda234f1040 data\natures_spirit\tags\blocks\joshua_logs.json

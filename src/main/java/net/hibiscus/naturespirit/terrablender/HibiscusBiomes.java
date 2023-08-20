@@ -19,8 +19,10 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
    public static final RegistryKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
    public static final RegistryKey <Biome> REDWOOD_FOREST = register("redwood_forest");
+   public static final RegistryKey <Biome> ASPEN_FOREST = register("aspen_forest");
+   public static final RegistryKey <Biome> MAPLE_WOODLANDS = register("maple_woodlands");
    public static final RegistryKey <Biome> GOLDEN_WILDS = register("golden_wilds");
-   public static final RegistryKey <Biome> GOLDEN_FIELDS = register("golden_fields");
+   public static final RegistryKey <Biome> MARIGOLD_MEADOWS = register("marigold_meadows");
    public static final RegistryKey <Biome> FIR_FOREST = register("fir_forest");
    public static final RegistryKey <Biome> CYPRESS_FIELDS = register("cypress_fields");
    public static final RegistryKey <Biome> CARNATION_FIELDS = register("carnation_fields");

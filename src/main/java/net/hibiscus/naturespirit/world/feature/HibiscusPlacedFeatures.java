@@ -70,6 +70,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> REDWOOD_PLACED = registerKey("redwood_placed");
    public static final RegistryKey <PlacedFeature> ASPEN_PLACED = registerKey("aspen_placed");
    public static final RegistryKey <PlacedFeature> MAPLE_PLACED = registerKey("maple_placed");
+   public static final RegistryKey <PlacedFeature> MAPLE2_PLACED = registerKey("maple2_placed");
    public static final RegistryKey <PlacedFeature> FEW_ASPEN_PLACED = registerKey("few_aspen_placed");
    public static final RegistryKey <PlacedFeature> DENSE_CYPRESS_PLACED = registerKey("dense_cypress_placed");
    public static final RegistryKey <PlacedFeature> CYPRESS_PLACED = registerKey("cypress_placed");
@@ -413,15 +414,15 @@ public class HibiscusPlacedFeatures {
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
               BiomePlacementModifier.of()
       );
-//      registerKey(context,
-//              MAPLE_PLACED,
-//              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAPLE_SPAWN),
-//              CountPlacementModifier.of(7),
-//              SquarePlacementModifier.of(),
-//              TREE_THRESHOLD,
-//              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
-//              BiomePlacementModifier.of()
-//      );
+      registerKey(context,
+              MAPLE2_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAPLE_SPAWN),
+              CountPlacementModifier.of(7),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
       registerKey(context,
               MAPLE_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAPLE_SPAWN),

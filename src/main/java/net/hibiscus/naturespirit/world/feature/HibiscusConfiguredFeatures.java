@@ -7,6 +7,7 @@ import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
+import net.hibiscus.naturespirit.world.feature.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.MapleTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.OliveTrunkPlacer;
@@ -38,13 +39,17 @@ import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
+import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
+import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -192,7 +197,7 @@ public class HibiscusConfiguredFeatures {
                       BlockStateProvider.of(HibiscusBlocks.RED_MAPLE_LEAVES),
                       new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
                       new TwoLayersFeatureSize(1, 0, 2)
-              ).ignoreVines().build()
+              ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build()
       );
       register(context,
               ORANGE_MAPLE_TREE,
@@ -208,7 +213,7 @@ public class HibiscusConfiguredFeatures {
                       BlockStateProvider.of(HibiscusBlocks.ORANGE_MAPLE_LEAVES),
                       new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
                       new TwoLayersFeatureSize(1, 0, 2)
-              ).ignoreVines().build()
+              ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build()
       );
       register(context,
               YELLOW_MAPLE_TREE,
@@ -224,7 +229,7 @@ public class HibiscusConfiguredFeatures {
                       BlockStateProvider.of(HibiscusBlocks.YELLOW_MAPLE_LEAVES),
                       new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
                       new TwoLayersFeatureSize(1, 0, 2)
-              ).ignoreVines().build()
+              ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build()
       );
 
       register(context, MAPLE_SPAWN, Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfig(RegistryEntryList.of(

@@ -9,6 +9,7 @@ import net.hibiscus.naturespirit.mixin.FoliagePlacerMixin;
 import net.hibiscus.naturespirit.mixin.TreeDecoratorMixin;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
+import net.hibiscus.naturespirit.world.feature.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.trunk.*;
 import net.minecraft.registry.Registries;
@@ -42,9 +43,16 @@ public class HibiscusWorldGen {
    public static final TrunkPlacerType <MapleTrunkPlacer> MAPLE_TRUNK_PLACER = callRegister("maple_trunk_placer",
            MapleTrunkPlacer.CODEC
    );
+
+
    public static final TreeDecoratorType <WisteriaVinesTreeDecorator> WISTERIA_VINES_TREE_DECORATOR = TreeDecoratorMixin.callRegister("wisteria_vines_tree_decorator",
            WisteriaVinesTreeDecorator.CODEC
    );
+   public static final TreeDecoratorType <MapleGroundTreeDecorator> MAPLE_GROUND_TREE_DECORATOR = TreeDecoratorMixin.callRegister("maple_ground_tree_decorator",
+           MapleGroundTreeDecorator.CODEC
+   );
+
+
    public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = FoliagePlacerMixin.callRegister("wisteria_foliage_placer",
            WisteriaFoliagePlacer.CODEC
    );
