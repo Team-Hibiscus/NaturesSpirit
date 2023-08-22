@@ -44,6 +44,8 @@ public class Region5Parameters {
    };
    private final MultiNoiseUtil.ParameterRange frozenTemperature;
    private final MultiNoiseUtil.ParameterRange nonFrozenTemperatureParameters;
+   private final MultiNoiseUtil.ParameterRange erodedRiverTemperatureParameters;
+   private final MultiNoiseUtil.ParameterRange riverTemperatureParameters;
    private final MultiNoiseUtil.ParameterRange mushroomFieldsContinentalness;
    private final MultiNoiseUtil.ParameterRange deepOceanContinentalness;
    private final MultiNoiseUtil.ParameterRange oceanContinentalness;
@@ -62,6 +64,12 @@ public class Region5Parameters {
    public Region5Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1],
+              this.temperatureParameters[4]
+      );
+      this.erodedRiverTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1],
+              this.temperatureParameters[2]
+      );
+      this.riverTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[3],
               this.temperatureParameters[4]
       );
       this.mushroomFieldsContinentalness = MultiNoiseUtil.ParameterRange.of(-1.2F, -1.05F);
@@ -99,12 +107,12 @@ public class Region5Parameters {
               {
                       BiomeKeys.PLAINS,
                       BiomeKeys.PLAINS,
-                      BiomeKeys.FOREST,
-                      BiomeKeys.TAIGA,
-                      BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA
+                      HibiscusBiomes.WISTERIA_FOREST,
+                      HibiscusBiomes.WISTERIA_FOREST,
+                      BiomeKeys.TAIGA
               },
               {
-                      BiomeKeys.FLOWER_FOREST,
+                      HibiscusBiomes.LAVENDER_FIELDS,
                       BiomeKeys.PLAINS,
                       BiomeKeys.FOREST,
                       BiomeKeys.BIRCH_FOREST,
@@ -129,10 +137,10 @@ public class Region5Parameters {
               {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null},
               {null, null, null, null, BiomeKeys.OLD_GROWTH_PINE_TAIGA},
               {
-                      BiomeKeys.SUNFLOWER_PLAINS,
+                      HibiscusBiomes.FOXGLOVE_FIELDS,
                       null,
                       null,
-                      BiomeKeys.OLD_GROWTH_BIRCH_FOREST,
+                      null,
                       null
               },
               {
@@ -155,9 +163,9 @@ public class Region5Parameters {
               {
                       BiomeKeys.MEADOW,
                       BiomeKeys.MEADOW,
-                      BiomeKeys.FOREST,
-                      BiomeKeys.TAIGA,
-                      BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA
+                      HibiscusBiomes.WISTERIA_FOREST,
+                      HibiscusBiomes.WISTERIA_FOREST,
+                      BiomeKeys.TAIGA
               },
               {
                       BiomeKeys.MEADOW,
@@ -187,8 +195,8 @@ public class Region5Parameters {
                       BiomeKeys.CHERRY_GROVE,
                       null,
                       BiomeKeys.MEADOW,
-                      BiomeKeys.MEADOW,
-                      BiomeKeys.OLD_GROWTH_PINE_TAIGA
+                      null,
+                      BiomeKeys.TAIGA
               },
               {
                       BiomeKeys.CHERRY_GROVE,
@@ -1093,7 +1101,7 @@ public class Region5Parameters {
               weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.FROZEN_RIVER
       );
       this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
+              this.riverTemperatureParameters,
               this.defaultParameter,
               this.coastContinentalness,
               MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
@@ -1102,6 +1110,15 @@ public class Region5Parameters {
               weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters,
+              this.erodedRiverTemperatureParameters,
+              this.defaultParameter,
+              this.coastContinentalness,
+              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+              weirdness,
+              0.0F,
+              weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : HibiscusBiomes.ERODED_RIVER
+      );
+      this.writeBiomeParameters(parameters,
               this.frozenTemperature,
               this.defaultParameter,
               this.nearInlandContinentalness,
@@ -1111,13 +1128,22 @@ public class Region5Parameters {
               BiomeKeys.FROZEN_RIVER
       );
       this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
+              this.riverTemperatureParameters,
               this.defaultParameter,
               this.nearInlandContinentalness,
               MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
               weirdness,
               0.0F,
               BiomeKeys.RIVER
+      );
+      this.writeBiomeParameters(parameters,
+              this.erodedRiverTemperatureParameters,
+              this.defaultParameter,
+              this.nearInlandContinentalness,
+              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+              weirdness,
+              0.0F,
+              HibiscusBiomes.ERODED_RIVER
       );
       this.writeBiomeParameters(parameters,
               this.frozenTemperature,
@@ -1129,13 +1155,22 @@ public class Region5Parameters {
               BiomeKeys.FROZEN_RIVER
       );
       this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
+              this.riverTemperatureParameters,
               this.defaultParameter,
               MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
               MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[5]),
               weirdness,
               0.0F,
               BiomeKeys.RIVER
+      );
+      this.writeBiomeParameters(parameters,
+              this.erodedRiverTemperatureParameters,
+              this.defaultParameter,
+              MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
+              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[5]),
+              weirdness,
+              0.0F,
+              HibiscusBiomes.ERODED_RIVER
       );
       this.writeBiomeParameters(parameters,
               this.frozenTemperature,
@@ -1147,13 +1182,22 @@ public class Region5Parameters {
               BiomeKeys.FROZEN_RIVER
       );
       this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
+              this.riverTemperatureParameters,
               this.defaultParameter,
               this.coastContinentalness,
               this.erosionParameters[6],
               weirdness,
               0.0F,
               BiomeKeys.RIVER
+      );
+      this.writeBiomeParameters(parameters,
+              this.erodedRiverTemperatureParameters,
+              this.defaultParameter,
+              this.coastContinentalness,
+              this.erosionParameters[6],
+              weirdness,
+              0.0F,
+              HibiscusBiomes.ERODED_RIVER
       );
       this.writeBiomeParameters(parameters,
               MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[2]),

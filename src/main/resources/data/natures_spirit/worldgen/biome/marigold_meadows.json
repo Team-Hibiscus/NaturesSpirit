@@ -9,8 +9,11 @@
   "has_precipitation": true,
   "downfall": 0.3,
   "effects": {
-    "fog_color": 12638463,
-    "grass_color": 14733927,
+    "sky_color": 9814505,
+    "fog_color": 13950967,
+    "water_color": 5929949,
+    "water_fog_color": 1644857,
+    "grass_color": 14406505,
     "foliage_color": 10399058,
     "mood_sound": {
       "block_search_extent": 8,
@@ -23,10 +26,7 @@
       "min_delay": 12000,
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.forest"
-    },
-    "sky_color": 8103167,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    }
   },
   "features": [
     [

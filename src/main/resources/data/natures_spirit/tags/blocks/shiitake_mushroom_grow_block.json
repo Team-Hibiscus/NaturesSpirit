@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:mushroom_grow_block",
+    "minecraft:grass_block"
+  ]
+}

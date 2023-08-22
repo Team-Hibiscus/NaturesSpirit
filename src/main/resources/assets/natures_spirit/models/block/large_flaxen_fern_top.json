@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "natures_spirit:block/large_flaxen_fern_top"
+  }
+}

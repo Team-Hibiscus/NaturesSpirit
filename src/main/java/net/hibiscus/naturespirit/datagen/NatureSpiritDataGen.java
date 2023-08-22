@@ -1,5 +1,7 @@
 package net.hibiscus.naturespirit.datagen;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -8,13 +10,11 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.items.HibiscusItemGroups;
 import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.feature.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
 import net.minecraft.block.Block;
-import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
@@ -38,6 +38,8 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
@@ -200,7 +202,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          return null;
       }
 
-      public void tallScorchedGrassDrops(Block tallGrass, Block grass) {
+      public void tallPlantDrop(Block tallGrass, Block grass) {
          net.minecraft.loot.entry.LootPoolEntry.Builder<?> builder = ItemEntry.builder(grass).apply(
                  SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)));
          LootTable.builder().pool(LootPool.builder()
@@ -238,6 +240,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addVinesTable(HibiscusBlocks.PURPLE_WISTERIA_VINES, HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT);
          addVinesTable(HibiscusBlocks.PINK_WISTERIA_VINES, HibiscusBlocks.PINK_WISTERIA_VINES_PLANT);
          addVinesTable(HibiscusBlocks.WILLOW_VINES, HibiscusBlocks.WILLOW_VINES_PLANT);
+         this.addDrop(SHIITAKE_MUSHROOM);
+         this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM);
 
          this.addDrop(HibiscusBlocks.CARNATION, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
          this.addDrop(HibiscusBlocks.CATTAIL, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
@@ -317,7 +321,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusBlocks.DESERT_TURNIP_ROOT_BLOCK);
 
          dropsWithShears(HibiscusBlocks.SCORCHED_GRASS);
-         tallScorchedGrassDrops(HibiscusBlocks.TALL_SCORCHED_GRASS, HibiscusBlocks.SCORCHED_GRASS);
+         tallPlantDrop(HibiscusBlocks.TALL_SCORCHED_GRASS, HibiscusBlocks.SCORCHED_GRASS);
+
+         dropsWithShears(FLAXEN_FERN);
+         addPottedPlantDrops(POTTED_FLAXEN_FERN);
+         tallPlantDrop(LARGE_FLAXEN_FERN, FLAXEN_FERN);
 
       }
    }
@@ -677,6 +685,29 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          registerTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
       }
 
+      public final void registerCropWithoutItem(Block crop, Property <Integer> ageProperty, BlockStateModelGenerator blockStateModelGenerator, int... ageTextureIndices) {
+         if (ageProperty.getValues().size() != ageTextureIndices.length) {
+            throw new IllegalArgumentException();
+         } else {
+            Int2ObjectMap <Identifier> int2ObjectMap = new Int2ObjectOpenHashMap();
+            BlockStateVariantMap blockStateVariantMap = BlockStateVariantMap.create(ageProperty).register((integer) -> {
+               int i = ageTextureIndices[integer];
+               Identifier identifier = (Identifier)int2ObjectMap.computeIfAbsent(i, (j) -> {
+                  return blockStateModelGenerator.createSubModel(crop, "_stage" + i, Models.CROP, TextureMap::crop);
+               });
+               return BlockStateVariant.create().put(VariantSettings.MODEL, identifier);
+            });
+            blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(crop).coordinate(blockStateVariantMap));
+         }
+      }
+      public final void registerMushroomBlock(Block mushroomBlock, BlockStateModelGenerator blockStateModelGenerator) {
+         Identifier identifier = Models.TEMPLATE_SINGLE_FACE.upload(mushroomBlock, TextureMap.texture(mushroomBlock), blockStateModelGenerator.modelCollector);
+         Identifier identifier2 = ModelIds.getMinecraftNamespacedBlock("mushroom_block_inside");
+         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(mushroomBlock).with(When.create().set(
+                 Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.UP, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.DOWN, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.EAST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.SOUTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.UP, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.DOWN, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)));
+         blockStateModelGenerator.registerParentedItemModel(mushroomBlock, TexturedModel.CUBE_ALL.upload(mushroomBlock, "_inventory", blockStateModelGenerator.modelCollector));
+      }
+
       @Override public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
          generateWoodBlockStateModels(WoodHashMap, blockStateModelGenerator);
          generateJoshuaWoodBlockStateModels(blockStateModelGenerator);
@@ -685,7 +716,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  HibiscusBlocks.POTTED_HIBISCUS,
                  blockStateModelGenerator
          );
-         blockStateModelGenerator.registerCrop(HibiscusBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
+         generateFlowerBlockStateModels(
+                 FLAXEN_FERN,
+                 POTTED_FLAXEN_FERN,
+                 blockStateModelGenerator
+         );
+         generateFlowerBlockStateModels(
+                 SHIITAKE_MUSHROOM,
+                 POTTED_SHIITAKE_MUSHROOM,
+                 blockStateModelGenerator
+         );
+         registerMushroomBlock(SHIITAKE_MUSHROOM_BLOCK, blockStateModelGenerator);
+         registerCropWithoutItem(HibiscusBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, blockStateModelGenerator, 0, 1, 2, 3, 4, 5, 6, 7);
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.CARNATION, TintType.NOT_TINTED);
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.GARDENIA, TintType.NOT_TINTED);
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.SNAPDRAGON, TintType.NOT_TINTED);
@@ -744,10 +786,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
          createStairs(HibiscusBlocks.KAOLIN, HibiscusBlocks.KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.WHITE_KAOLIN, HibiscusBlocks.WHITE_KAOLIN_STAIRS, blockStateModelGenerator);
-         createStairs(HibiscusBlocks.LIGHT_GRAY_KAOLIN,
-                 HibiscusBlocks.LIGHT_GRAY_KAOLIN_STAIRS,
-                 blockStateModelGenerator
-         );
+         createStairs(HibiscusBlocks.LIGHT_GRAY_KAOLIN, HibiscusBlocks.LIGHT_GRAY_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.GRAY_KAOLIN, HibiscusBlocks.GRAY_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.BLACK_KAOLIN, HibiscusBlocks.BLACK_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.BROWN_KAOLIN, HibiscusBlocks.BROWN_KAOLIN_STAIRS, blockStateModelGenerator);
@@ -757,10 +796,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          createStairs(HibiscusBlocks.LIME_KAOLIN, HibiscusBlocks.LIME_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.GREEN_KAOLIN, HibiscusBlocks.GREEN_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.CYAN_KAOLIN, HibiscusBlocks.CYAN_KAOLIN_STAIRS, blockStateModelGenerator);
-         createStairs(HibiscusBlocks.LIGHT_BLUE_KAOLIN,
-                 HibiscusBlocks.LIGHT_BLUE_KAOLIN_STAIRS,
-                 blockStateModelGenerator
-         );
+         createStairs(HibiscusBlocks.LIGHT_BLUE_KAOLIN, HibiscusBlocks.LIGHT_BLUE_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.BLUE_KAOLIN, HibiscusBlocks.BLUE_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.PURPLE_KAOLIN, HibiscusBlocks.PURPLE_KAOLIN_STAIRS, blockStateModelGenerator);
          createStairs(HibiscusBlocks.MAGENTA_KAOLIN, HibiscusBlocks.MAGENTA_KAOLIN_STAIRS, blockStateModelGenerator);
@@ -892,6 +928,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusBlocks.YELLOW_WILDFLOWER, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.TALL_SCORCHED_GRASS, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.SCORCHED_GRASS, translationBuilder);
+         generateBlockTranslations(LARGE_FLAXEN_FERN, translationBuilder);
+         generateBlockTranslations(FLAXEN_FERN, translationBuilder);
+         generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
+         generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.CARNATION, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.HIBISCUS, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.POTTED_HIBISCUS, translationBuilder);
@@ -1215,9 +1255,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          );
          getOrCreateTagBuilder(BlockTags.CROPS).add(HibiscusBlocks.DESERT_TURNIP_STEM);
          getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(HibiscusBlocks.DESERT_TURNIP_STEM);
-         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
-         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
-         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS, LARGE_FLAXEN_FERN, FLAXEN_FERN);
+         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS, LARGE_FLAXEN_FERN, FLAXEN_FERN, SHIITAKE_MUSHROOM);
+         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(HibiscusBlocks.SCORCHED_GRASS, HibiscusBlocks.TALL_SCORCHED_GRASS, LARGE_FLAXEN_FERN, FLAXEN_FERN);
+         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_SHIITAKE_MUSHROOM);
+         getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
       }
    }
 }

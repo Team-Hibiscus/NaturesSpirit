@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-19T16:43:40.4567291	Nature's Spirit/Block Loot Tables
+// 1.20.1	2023-08-21T01:04:44.0652958	Nature's Spirit/Block Loot Tables
 e42296ae5ba4bec951f16ab483c75c6aeccb06a4 data\natures_spirit\loot_tables\blocks\stripped_aspen_wood.json
 6e848ec36be348802c003b4de40a7ab18fc22c7f data\natures_spirit\loot_tables\blocks\olive_button.json
 b6c519b83aba2e2439ef44dc65712da0c1639b70 data\natures_spirit\loot_tables\blocks\joshua_door.json
@@ -68,10 +68,12 @@ b0e2af86e308f0581aa4af29c67e3edb18c68ce3 data\natures_spirit\loot_tables\blocks\
 d4008cb1d25bfe71c4b3a1a8888ada9225f4a37a data\natures_spirit\loot_tables\blocks\purple_wisteria_sapling.json
 4904bb3cefb17278c3828d645ee010ef2e6c193f data\natures_spirit\loot_tables\blocks\aspen_fence.json
 2ba22b32c88d74a1a778afbe6163399d0adb1e4e data\natures_spirit\loot_tables\blocks\joshua_trapdoor.json
+cfa7a257ced77fc93ec2b610e95b52ae3c47f259 data\natures_spirit\loot_tables\blocks\potted_flaxen_fern.json
 50e8546b40a793a2a7993cede2a4667d64219847 data\natures_spirit\loot_tables\blocks\lavender.json
 987c23a7646dcf175a434dde1c48fd44943a8fd7 data\natures_spirit\loot_tables\blocks\cypress_pressure_plate.json
 d7c11914a6602e0ae9925d1c9d7a4be5d52e0608 data\natures_spirit\loot_tables\blocks\yellow_wildflower.json
 7905e0f708efb731dc7a692e7e83b530b6c7d6ad data\natures_spirit\loot_tables\blocks\magenta_kaolin.json
+2a39dd9779279366f3b637074cee3f5bb4b0f648 data\natures_spirit\loot_tables\blocks\shiitake_mushroom.json
 6e20af04ec19cd9984258e73208d95e15f9449f4 data\natures_spirit\loot_tables\blocks\sandy_soil.json
 3b1e18038479f328891a8c1060e9a2cdfde70f07 data\natures_spirit\loot_tables\blocks\cattail.json
 1f3348a55319b804933a481e5b968ebeaf4e9d39 data\natures_spirit\loot_tables\blocks\willow_planks.json

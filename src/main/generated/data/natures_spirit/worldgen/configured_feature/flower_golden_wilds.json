@@ -23,6 +23,9 @@
                 "Name": "minecraft:orange_tulip"
               },
               {
+                "Name": "natures_spirit:flaxen_fern"
+              },
+              {
                 "Name": "minecraft:dandelion"
               },
               {
@@ -32,7 +35,7 @@
                 }
               },
               {
-                "Name": "minecraft:tall_grass",
+                "Name": "natures_spirit:large_flaxen_fern",
                 "Properties": {
                   "half": "lower"
                 }

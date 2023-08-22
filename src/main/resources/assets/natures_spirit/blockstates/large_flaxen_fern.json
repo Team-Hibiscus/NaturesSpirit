@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "natures_spirit:block/large_flaxen_fern_bottom"
+    },
+    "half=upper": [
+      {
+        "model": "natures_spirit:block/large_flaxen_fern_top"
+      },
+      {
+        "model": "natures_spirit:block/large_flaxen_fern_top2"
+      }
+    ]
+  }
+}

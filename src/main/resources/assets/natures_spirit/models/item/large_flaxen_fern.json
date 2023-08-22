@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:item/air"
+    "layer0": "natures_spirit:block/large_flaxen_fern_top"
   }
 }

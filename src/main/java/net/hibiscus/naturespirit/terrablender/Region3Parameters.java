@@ -143,8 +143,8 @@ public class Region3Parameters {
                       BiomeKeys.SAVANNA,
                       BiomeKeys.SAVANNA,
                       BiomeKeys.FOREST,
-                      BiomeKeys.JUNGLE,
-                      BiomeKeys.JUNGLE
+                      HibiscusBiomes.SUGI_FOREST,
+                      HibiscusBiomes.SUGI_FOREST
               },
               {
                       BiomeKeys.DESERT,
@@ -168,8 +168,8 @@ public class Region3Parameters {
                       null,
                       null,
                       BiomeKeys.PLAINS,
-                      BiomeKeys.SPARSE_JUNGLE,
-                      BiomeKeys.BAMBOO_JUNGLE
+                      null,
+                      null
               },
               {null, null, null, null, null}
       };
@@ -199,8 +199,8 @@ public class Region3Parameters {
                       BiomeKeys.SAVANNA_PLATEAU,
                       BiomeKeys.SAVANNA_PLATEAU,
                       BiomeKeys.FOREST,
-                      BiomeKeys.FOREST,
-                      BiomeKeys.JUNGLE
+                      HibiscusBiomes.SUGI_FOREST,
+                      HibiscusBiomes.SUGI_FOREST
               },
               {
                       BiomeKeys.BADLANDS,

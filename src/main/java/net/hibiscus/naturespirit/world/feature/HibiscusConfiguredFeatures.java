@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
 import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
@@ -13,9 +14,7 @@ import net.hibiscus.naturespirit.world.feature.trunk.MapleTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.OliveTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.SugiTrunkPlacer;
 import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -54,6 +53,7 @@ import java.util.List;
 import java.util.OptionalInt;
 
 import static net.hibiscus.naturespirit.util.HibiscusWorldGen.*;
+import static net.minecraft.world.gen.feature.TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM;
 
 public class HibiscusConfiguredFeatures {
 
@@ -108,6 +108,7 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FOXGLOVE_FIELD = registerKey("flower_foxglove_field");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_GOLDEN_WILDS = registerKey("flower_golden_wilds");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_SHIITAKE_MUSHROOM = registerKey("huge_shiitake_mushroom");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FIR_FOREST = registerKey("flower_fir_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_CYPRESS_FIELDS = registerKey("flower_cypress_fields");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_SCORCHED_GRASS = registerKey("patch_scorched_grass");
@@ -719,9 +720,10 @@ public class HibiscusConfiguredFeatures {
                                       0.030833334F,
                                       List.of(HibiscusBlocks.TIGER_LILY.getDefaultState(),
                                               Blocks.ORANGE_TULIP.getDefaultState(),
+                                              HibiscusBlocks.FLAXEN_FERN.getDefaultState(),
                                               Blocks.DANDELION.getDefaultState(),
                                               HibiscusBlocks.MARIGOLD.getDefaultState(),
-                                              Blocks.TALL_GRASS.getDefaultState(),
+                                              HibiscusBlocks.LARGE_FLAXEN_FERN.getDefaultState(),
                                               HibiscusBlocks.CARNATION.getDefaultState()
                                       )
                               ))
@@ -729,6 +731,11 @@ public class HibiscusConfiguredFeatures {
               )
       );
 
+      register(context, HUGE_SHIITAKE_MUSHROOM, HUGE_SHIITAKE_MUSHROOM_FEATURE, new HugeMushroomFeatureConfig(BlockStateProvider.of(
+              HibiscusBlocks.SHIITAKE_MUSHROOM_BLOCK.getDefaultState().with(
+                      MushroomBlock.UP, true)
+                      .with(MushroomBlock.DOWN, false)), BlockStateProvider.of(Blocks.MUSHROOM_STEM.getDefaultState().with(MushroomBlock.UP, false)
+              .with(MushroomBlock.DOWN, false)), 2));
       register(context,
               FLOWER_FIR_FOREST,
               Feature.FLOWER,

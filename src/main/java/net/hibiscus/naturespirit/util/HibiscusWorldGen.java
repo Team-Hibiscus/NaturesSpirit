@@ -18,10 +18,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.minecraft.world.gen.feature.DeltaFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
@@ -96,6 +93,10 @@ public class HibiscusWorldGen {
    public static final Feature <DefaultFeatureConfig> JOSHUA_TREE_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "joshua_tree_feature"),
            new JoshuaTreeFeature(DefaultFeatureConfig.CODEC)
+   );
+   public static final Feature <HugeMushroomFeatureConfig> HUGE_SHIITAKE_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "huge_shiitake_mushroom_feature"),
+           new HugeShiitakeMushroomFeature(HugeMushroomFeatureConfig.CODEC)
    );
    public static void registerWorldGen() {
 //      BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.WILLOW_PLACED);

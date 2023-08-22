@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "natures_spirit:scorched_grass",
-    "natures_spirit:tall_scorched_grass"
+    "natures_spirit:tall_scorched_grass",
+    "natures_spirit:large_flaxen_fern",
+    "natures_spirit:flaxen_fern"
   ]
 }

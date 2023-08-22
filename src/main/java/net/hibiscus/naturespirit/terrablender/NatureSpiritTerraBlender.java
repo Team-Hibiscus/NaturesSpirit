@@ -11,10 +11,8 @@ public class NatureSpiritTerraBlender implements TerraBlenderApi {
    @Override public void onTerraBlenderInitialized() {
       {
          Regions.register(new HibiscusRegion(new Identifier(MOD_ID, "overworld"), 1));
-         Regions.register(new HibiscusRegion2(new Identifier(MOD_ID, "overworld_2"), 3));
-         Regions.register(new HibiscusRegion3(new Identifier(MOD_ID, "overworld_3"), 1));
-//         Regions.register(new HibiscusRegion4(new Identifier(MOD_ID, "overworld_4"), 1));
-         Regions.register(new HibiscusRegion5(new Identifier(MOD_ID, "overworld_5"), 3));
+         Regions.register(new HibiscusRegion3(new Identifier(MOD_ID, "autumn_and_sugi"), 1));
+         Regions.register(new HibiscusRegion5(new Identifier(MOD_ID, "desert_and_wisteria"), 3));
          SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD,
                  MOD_ID,
                  NatureSpiritSurfaceRules.makeRules()

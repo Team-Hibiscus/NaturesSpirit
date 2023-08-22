@@ -68,103 +68,55 @@ public class SugiTrunkPlacer extends TrunkPlacer {
       for(int i = 0; i < height; ++i) {
          int j = startPos.getY() + i;
          Direction direction = Type.HORIZONTAL.random(random);
-         Direction direction2 = Type.HORIZONTAL.random(random);
-         Direction direction3 = Type.HORIZONTAL.random(random);
+         Direction direction2 = direction.rotateYClockwise();
+         Direction direction3 = direction2.rotateYClockwise();
          if(this.getAndSetState(world,
                  replacer,
                  random,
                  mutable.set(startPos.getX(), j, startPos.getZ()),
                  config
-         ) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
+         ) && i < height - 1) {
             int k = this.extraBranchLength.get(random);
             int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
-            int m = height - i - 1;
-            if(i > 1) {
-               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m, i);
-            }
-            if(i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.65) {
-               this.generateExtraBranch(world,
-                       replacer,
-                       random,
-                       height,
-                       config,
-                       list,
-                       mutable,
-                       j,
-                       direction2,
-                       l,
-                       Math.round(m / 2),
-                       i
-               );
-            }
-            if(i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.85) {
-               this.generateExtraBranch(world,
-                       replacer,
-                       random,
-                       height,
-                       config,
-                       list,
-                       mutable,
-                       j,
-                       direction3,
-                       l,
-                       Math.round(m / 2),
-                       i
-               );
+            int l2 = Math.max(random.nextBetween(1, 2), k - this.extraBranchLength.get(random) - 1);
+            int m = height - i - 2;
+            if(i > 2) {
+               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, i >= height - 2 ? l2 : l,
+                       Math.min(m, 5), i);
+               if(random.nextFloat() < this.placeBranchPerLogProbability - 0.35) {
+                  this.generateExtraBranch(world,
+                          replacer,
+                          random,
+                          height,
+                          config,
+                          list,
+                          mutable,
+                          j,
+                          direction2,
+                          l,
+                          Math.round(m / 1.5F),
+                          i
+                  );
+               }
+               if(random.nextFloat() < this.placeBranchPerLogProbability - 0.45) {
+                  this.generateExtraBranch(world,
+                          replacer,
+                          random,
+                          height,
+                          config,
+                          list,
+                          mutable,
+                          j,
+                          direction3,
+                          l,
+                          Math.round(m / 1.5F),
+                          i
+                  );
+               }
             }
          }
          if(i == height - 1) {
-            list.add(new TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 1, false));
-         }
-      }
-
-      for(int i = 0; i < height; ++i) {
-         int j = startPos.getY() + i;
-         Direction direction = Type.HORIZONTAL.random(random);
-         Direction direction2 = Type.HORIZONTAL.random(random);
-         Direction direction3 = Type.HORIZONTAL.random(random);
-         if(this.getAndSetState(world,
-                 replacer,
-                 random,
-                 mutable.set(startPos.getX(), j, startPos.getZ()),
-                 config
-         ) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
-            int k = this.extraBranchLength.get(random);
-            int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
-            int m = height - i - 1;
-            if(i > 1) {
-               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, l, m, i);
-            }
-            if(i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.65) {
-               this.generateExtraBranch(world,
-                       replacer,
-                       random,
-                       height,
-                       config,
-                       list,
-                       mutable,
-                       j,
-                       direction2,
-                       l,
-                       Math.round(m / 2),
-                       i
-               );
-            }
-            if(i > 1 && random.nextFloat() < this.placeBranchPerLogProbability - 0.85) {
-               this.generateExtraBranch(world,
-                       replacer,
-                       random,
-                       height,
-                       config,
-                       list,
-                       mutable,
-                       j,
-                       direction3,
-                       l,
-                       Math.round(m / 2),
-                       i
-               );
-            }
+            list.add(new TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 0, false));
          }
       }
 
@@ -176,11 +128,10 @@ public class SugiTrunkPlacer extends TrunkPlacer {
       int j = pos.getX();
       int k = pos.getZ();
       boolean bl = random.nextFloat() < .5F;
-      Direction direction2 = random.nextFloat() < .5F ? direction.rotateYClockwise() : direction.rotateYCounterclockwise();
+      Direction direction2 = bl ? direction.rotateYClockwise() : direction.rotateYCounterclockwise();
 
       for(int l = length; l < height && steps > 0 && (steps < (bl ? 7 : 10)); --steps) {
          if(l >= 1) {
-            int m = Math.round(yOffset + l / 5);
             j += direction.getOffsetX();
             if(bl) {
                k += Math.max(0, direction2.getOffsetZ() - random.nextInt(2));
@@ -188,11 +139,11 @@ public class SugiTrunkPlacer extends TrunkPlacer {
             else {
                k += direction.getOffsetZ();
             }
-            i = m;
-            if(this.getAndSetState(world, replacer, random, pos.set(j, m, k), config, blockState -> {
+            i = yOffset;
+            if(this.getAndSetState(world, replacer, random, pos.set(j, yOffset, k), config, blockState -> {
                return blockState.withIfExists(PillarBlock.AXIS, direction.getAxis());
             })) {
-               i = m + 1;
+               i = yOffset + 1;
             }
          }
          ++l;
@@ -200,7 +151,7 @@ public class SugiTrunkPlacer extends TrunkPlacer {
 
       if(i - yOffset >= 1) {
          BlockPos blockPos = new BlockPos(j, i, k);
-         nodes.add(new TreeNode(blockPos, Math.max(0, Math.min(Math.round((height - b) / 7.5F), 2)), false));
+         nodes.add(new TreeNode(blockPos, b > 4 ? 0 : 1, false));
       }
 
    }
