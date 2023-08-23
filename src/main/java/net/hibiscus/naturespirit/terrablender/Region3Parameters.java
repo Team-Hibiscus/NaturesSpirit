@@ -142,7 +142,7 @@ public class Region3Parameters {
               {
                       BiomeKeys.SAVANNA,
                       BiomeKeys.SAVANNA,
-                      BiomeKeys.FOREST,
+                      HibiscusBiomes.SUGI_FOREST,
                       HibiscusBiomes.SUGI_FOREST,
                       HibiscusBiomes.SUGI_FOREST
               },

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "magenta_chalk",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:magenta_chalk"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:magenta_chalk_stairs",
+    "count": 4
+  }
+}

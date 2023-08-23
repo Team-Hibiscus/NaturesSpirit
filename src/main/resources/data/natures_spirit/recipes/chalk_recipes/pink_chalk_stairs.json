@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pink_chalk",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:pink_chalk"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:pink_chalk_stairs",
+    "count": 4
+  }
+}

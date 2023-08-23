@@ -29,6 +29,7 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> STRATIFIED_DESERT = register("stratified_desert");
    public static final RegistryKey <Biome> BLOOMING_DUNES = register("blooming_dunes");
    public static final RegistryKey <Biome> LIVELY_DUNES = register("lively_dunes");
+   public static final RegistryKey <Biome> WHITE_CLIFFS = register("white_cliffs");
 
    private static RegistryKey <Biome> register(String name) {
       System.out.println("Registered Resource Key for biome: " + name);

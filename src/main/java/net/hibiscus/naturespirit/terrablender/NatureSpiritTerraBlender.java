@@ -15,7 +15,7 @@ public class NatureSpiritTerraBlender implements TerraBlenderApi {
          Regions.register(new HibiscusRegion5(new Identifier(MOD_ID, "desert_and_wisteria"), 3));
          SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD,
                  MOD_ID,
-                 NatureSpiritSurfaceRules.makeRules()
+                 NatureSpiritSurfaceRules.makeRules(true)
          );
       }
    }

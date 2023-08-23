@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "chalk",
+  "ingredients": [
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "natures_spirit:white_chalk"
+    },
+    {
+      "item": "minecraft:purple_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:purple_chalk",
+    "count": 8
+  }
+}

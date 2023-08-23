@@ -265,7 +265,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
          this.addDrop(HibiscusBlocks.FRAMED_SUGI_DOOR, this::doorDrops);
          this.addDrop(HibiscusBlocks.FRAMED_SUGI_TRAPDOOR);
+
          this.addDrop(HibiscusBlocks.SANDY_SOIL);
+
          this.addDrop(HibiscusBlocks.KAOLIN);
          this.addDrop(HibiscusBlocks.WHITE_KAOLIN);
          this.addDrop(HibiscusBlocks.LIGHT_GRAY_KAOLIN);
@@ -317,6 +319,55 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusBlocks.PURPLE_KAOLIN_STAIRS);
          this.addDrop(HibiscusBlocks.MAGENTA_KAOLIN_STAIRS);
          this.addDrop(HibiscusBlocks.PINK_KAOLIN_STAIRS);
+
+         this.addDrop(HibiscusBlocks.WHITE_CHALK);
+         this.addDrop(HibiscusBlocks.LIGHT_GRAY_CHALK);
+         this.addDrop(HibiscusBlocks.GRAY_CHALK);
+         this.addDrop(HibiscusBlocks.BLACK_CHALK);
+         this.addDrop(HibiscusBlocks.BROWN_CHALK);
+         this.addDrop(HibiscusBlocks.RED_CHALK);
+         this.addDrop(HibiscusBlocks.ORANGE_CHALK);
+         this.addDrop(HibiscusBlocks.YELLOW_CHALK);
+         this.addDrop(HibiscusBlocks.LIME_CHALK);
+         this.addDrop(HibiscusBlocks.GREEN_CHALK);
+         this.addDrop(HibiscusBlocks.CYAN_CHALK);
+         this.addDrop(HibiscusBlocks.LIGHT_BLUE_CHALK);
+         this.addDrop(HibiscusBlocks.BLUE_CHALK);
+         this.addDrop(HibiscusBlocks.PURPLE_CHALK);
+         this.addDrop(HibiscusBlocks.MAGENTA_CHALK);
+         this.addDrop(HibiscusBlocks.PINK_CHALK);
+         this.slabDrops(HibiscusBlocks.WHITE_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.LIGHT_GRAY_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.GRAY_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.BLACK_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.BROWN_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.RED_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.ORANGE_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.YELLOW_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.LIME_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.GREEN_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.CYAN_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.LIGHT_BLUE_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.BLUE_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.PURPLE_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.MAGENTA_CHALK_SLAB);
+         this.slabDrops(HibiscusBlocks.PINK_CHALK_SLAB);
+         this.addDrop(HibiscusBlocks.WHITE_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.LIGHT_GRAY_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.GRAY_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.BLACK_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.BROWN_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.RED_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.ORANGE_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.YELLOW_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.LIME_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.GREEN_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.CYAN_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.LIGHT_BLUE_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.BLUE_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.PURPLE_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.MAGENTA_CHALK_STAIRS);
+         this.addDrop(HibiscusBlocks.PINK_CHALK_STAIRS);
 
          this.addDrop(HibiscusBlocks.DESERT_TURNIP_ROOT_BLOCK);
 
@@ -820,6 +871,57 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerSingleton(HibiscusBlocks.MAGENTA_KAOLIN, TexturedModel.CUBE_ALL);
          blockStateModelGenerator.registerSingleton(HibiscusBlocks.PINK_KAOLIN, TexturedModel.CUBE_ALL);
 
+         createSlab(HibiscusBlocks.WHITE_CHALK, HibiscusBlocks.WHITE_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.LIGHT_GRAY_CHALK, HibiscusBlocks.LIGHT_GRAY_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.GRAY_CHALK, HibiscusBlocks.GRAY_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.BLACK_CHALK, HibiscusBlocks.BLACK_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.BROWN_CHALK, HibiscusBlocks.BROWN_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.RED_CHALK, HibiscusBlocks.RED_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.ORANGE_CHALK, HibiscusBlocks.ORANGE_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.YELLOW_CHALK, HibiscusBlocks.YELLOW_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.LIME_CHALK, HibiscusBlocks.LIME_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.GREEN_CHALK, HibiscusBlocks.GREEN_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.CYAN_CHALK, HibiscusBlocks.CYAN_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.LIGHT_BLUE_CHALK, HibiscusBlocks.LIGHT_BLUE_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.BLUE_CHALK, HibiscusBlocks.BLUE_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.PURPLE_CHALK, HibiscusBlocks.PURPLE_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.MAGENTA_CHALK, HibiscusBlocks.MAGENTA_CHALK_SLAB, blockStateModelGenerator);
+         createSlab(HibiscusBlocks.PINK_CHALK, HibiscusBlocks.PINK_CHALK_SLAB, blockStateModelGenerator);
+
+         createStairs(HibiscusBlocks.WHITE_CHALK, HibiscusBlocks.WHITE_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.LIGHT_GRAY_CHALK, HibiscusBlocks.LIGHT_GRAY_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.GRAY_CHALK, HibiscusBlocks.GRAY_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.BLACK_CHALK, HibiscusBlocks.BLACK_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.BROWN_CHALK, HibiscusBlocks.BROWN_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.RED_CHALK, HibiscusBlocks.RED_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.ORANGE_CHALK, HibiscusBlocks.ORANGE_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.YELLOW_CHALK, HibiscusBlocks.YELLOW_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.LIME_CHALK, HibiscusBlocks.LIME_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.GREEN_CHALK, HibiscusBlocks.GREEN_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.CYAN_CHALK, HibiscusBlocks.CYAN_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.LIGHT_BLUE_CHALK, HibiscusBlocks.LIGHT_BLUE_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.BLUE_CHALK, HibiscusBlocks.BLUE_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.PURPLE_CHALK, HibiscusBlocks.PURPLE_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.MAGENTA_CHALK, HibiscusBlocks.MAGENTA_CHALK_STAIRS, blockStateModelGenerator);
+         createStairs(HibiscusBlocks.PINK_CHALK, HibiscusBlocks.PINK_CHALK_STAIRS, blockStateModelGenerator);
+
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.WHITE_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.LIGHT_GRAY_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.GRAY_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.BLACK_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.BROWN_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.RED_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.ORANGE_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.YELLOW_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.LIME_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.GREEN_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.CYAN_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.LIGHT_BLUE_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.BLUE_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.PURPLE_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(HibiscusBlocks.MAGENTA_CHALK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(PINK_CHALK, TexturedModel.CUBE_ALL);
+
          blockStateModelGenerator.registerAxisRotated(HibiscusBlocks.DESERT_TURNIP_ROOT_BLOCK,
                  TexturedModel.END_FOR_TOP_CUBE_COLUMN,
                  TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL
@@ -1003,6 +1105,55 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusBlocks.PURPLE_KAOLIN_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.MAGENTA_KAOLIN_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.PINK_KAOLIN_SLAB, translationBuilder);
+
+         generateBlockTranslations(HibiscusBlocks.WHITE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIGHT_GRAY_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.GRAY_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BLACK_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BROWN_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.RED_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.ORANGE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.YELLOW_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIME_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.GREEN_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.CYAN_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIGHT_BLUE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BLUE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.PURPLE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.MAGENTA_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.PINK_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.WHITE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIGHT_GRAY_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.GRAY_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BLACK_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BROWN_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.RED_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.ORANGE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.YELLOW_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIME_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.GREEN_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.CYAN_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIGHT_BLUE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BLUE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.PURPLE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.MAGENTA_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.PINK_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.WHITE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIGHT_GRAY_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.GRAY_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BLACK_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BROWN_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.RED_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.ORANGE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.YELLOW_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIME_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.GREEN_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.CYAN_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.LIGHT_BLUE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.BLUE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.PURPLE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.MAGENTA_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusBlocks.PINK_CHALK_SLAB, translationBuilder);
 
          translationBuilder.add("block.natures_spirit.pizza.chicken_topping", "With Cooked Chicken");
          translationBuilder.add("block.natures_spirit.pizza.green_olives_topping", "With Green Olives");
