@@ -320,6 +320,7 @@ public class Region5Parameters {
             RegistryKey <Biome> registryKey8 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey9 = this.getStratifiedDesertOrNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey10 = this.getShoreCliffBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey11 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey5);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -429,7 +430,7 @@ public class Region5Parameters {
                     this.erosionParameters[5],
                     weirdness,
                     0.0F,
-                    registryKey6
+                    registryKey11
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -465,7 +466,7 @@ public class Region5Parameters {
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getWindsweptOrRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey6 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey6 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey7 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getPeakBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey9 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
@@ -642,7 +643,7 @@ public class Region5Parameters {
             RegistryKey <Biome> registryKey4 = this.getWindsweptOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey6 = this.getShoreBiome(i, j);
-            RegistryKey <Biome> registryKey7 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey7 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey8 = this.getErodedShoreBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey9 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey10 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
@@ -893,7 +894,7 @@ public class Region5Parameters {
             RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getShoreBiome(i, j);
-            RegistryKey <Biome> registryKey5 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey5 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey6 = this.getErodedShoreBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey7 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getShoreCliffBiome(i, j, weirdness);
@@ -901,7 +902,7 @@ public class Region5Parameters {
                     parameterRange,
                     parameterRange2,
                     this.coastContinentalness,
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[2]),
+                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
                     registryKey8
@@ -946,7 +947,7 @@ public class Region5Parameters {
                     parameterRange,
                     parameterRange2,
                     this.coastContinentalness,
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[3], this.erosionParameters[4]),
+                    this.erosionParameters[4],
                     weirdness,
                     0.0F,
                     registryKey4
@@ -1244,13 +1245,16 @@ public class Region5Parameters {
    private RegistryKey <Biome> getBiomeOrWindsweptSavanna(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
       return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? BiomeKeys.WINDSWEPT_SAVANNA : biomeKey;
    }
+   private RegistryKey <Biome> getBiomeOrChalkCliffs(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
+      return temperature > 1 && temperature < 4 && humidity < 4 && humidity > 0 && weirdness.max() >= 0L ? HibiscusBiomes.WHITE_CLIFFS : getBiomeOrWindsweptSavanna(temperature, humidity, weirdness, biomeKey);
+   }
 
    private RegistryKey <Biome> getErodedShoreBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       RegistryKey <Biome> registryKey = weirdness.max() >= 0L ? this.getRegularBiome(temperature,
               humidity,
               weirdness
       ) : this.getShoreBiome(temperature, humidity);
-      return this.getBiomeOrWindsweptSavanna(temperature, humidity, weirdness, registryKey);
+      return this.getBiomeOrChalkCliffs(temperature, humidity, weirdness, registryKey);
    }
 
    private RegistryKey <Biome> getShoreBiome(int temperature, int humidity) {
@@ -1275,7 +1279,7 @@ public class Region5Parameters {
       return HibiscusBiomes.STRATIFIED_DESERT;
    }
    private RegistryKey <Biome> getShoreCliffBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness ) {
-      return temperature < 4 ? HibiscusBiomes.WHITE_CLIFFS : getBadlandsBiome(humidity, weirdness);
+      return temperature < 4 && temperature > 0 ? HibiscusBiomes.WHITE_CLIFFS : temperature == 0 ? BiomeKeys.STONY_PEAKS : getBadlandsBiome(humidity, weirdness);
    }
 
 

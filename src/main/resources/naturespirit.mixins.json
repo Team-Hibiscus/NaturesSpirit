@@ -10,6 +10,7 @@
     "BlockStateProviderMixin",
     "BoatDispenserBehaviorMixin",
     "BoatEntityMixin",
+    "CoralBlockBlockMixin",
     "FoliagePlacerMixin",
     "StatsTypeAccessor",
     "TreeDecoratorMixin",

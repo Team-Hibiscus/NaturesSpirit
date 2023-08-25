@@ -19,6 +19,7 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule STONE = makeStateRule(Blocks.STONE);
    private static final MaterialRules.MaterialRule GRASS = makeStateRule(Blocks.GRASS_BLOCK);
    private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
+   private static final MaterialRules.MaterialRule CALCITE = makeStateRule(Blocks.CALCITE);
    private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(HibiscusBlocks.SANDY_SOIL);
    private static final MaterialRules.MaterialRule COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
    private static final MaterialRules.MaterialRule WHITE_KAOLIN = makeStateRule(HibiscusBlocks.WHITE_KAOLIN);
@@ -26,7 +27,7 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule LIGHT_GRAY_KAOLIN = makeStateRule(HibiscusBlocks.LIGHT_GRAY_KAOLIN);
    private static final MaterialRules.MaterialRule YELLOW_KAOLIN = makeStateRule(HibiscusBlocks.YELLOW_KAOLIN);
 
-   protected static MaterialRules.MaterialRule makeRules(boolean surface) {
+   protected static MaterialRules.MaterialRule makeRules() {
       MaterialRules.MaterialCondition materialCondition = MaterialRules.aboveY(YOffset.fixed(256), 0);
       MaterialRules.MaterialCondition materialCondition2 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1);
       MaterialRules.MaterialCondition materialCondition3 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(70), 1);
@@ -123,7 +124,13 @@ public class NatureSpiritSurfaceRules {
                       MaterialRules.sequence(
                               MaterialRules.condition(materialCondition4, MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS)), WHITE_CHALK
                       ),
-                      MaterialRules.condition(MaterialRules.stoneDepth(0, true, 40, VerticalSurfaceType.FLOOR),
+                      MaterialRules.sequence(
+                              MaterialRules.condition(materialCondition4, MaterialRules.condition(MaterialRules.stoneDepth(1, false, VerticalSurfaceType.FLOOR), DIRT)), WHITE_CHALK
+                      ),
+                      MaterialRules.condition(MaterialRules.stoneDepth(1, false, 12, VerticalSurfaceType.FLOOR),
+                              CALCITE
+                      ),
+                      MaterialRules.condition(MaterialRules.stoneDepth(2, true, 6, VerticalSurfaceType.FLOOR),
                               WHITE_CHALK
                       )
               )

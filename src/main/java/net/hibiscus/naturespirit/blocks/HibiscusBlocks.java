@@ -261,6 +261,28 @@ public class HibiscusBlocks {
    ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, ANEMONE, 0.3f);
    public static final Block POTTED_HIBISCUS = registerPottedPlant("hibiscus", HIBISCUS);
    public static final Block POTTED_ANEMONE = registerPottedPlant("anemone", ANEMONE);
+
+
+   public static final Block LOTUS_FLOWER = registerPlantBlockWithoutItem("lotus_flower",
+           new LotusFlowerBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.PINK)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .ticksRandomly()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.LILY_PAD)),
+           0.5f
+   );
+   public static final Item LOTUS_FLOWER_ITEM = registerItem("lotus_flower", (BlockItem)(new PlaceableOnWaterItem(LOTUS_FLOWER, new Item.Settings())), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Items.LILY_PAD, ItemGroups.NATURAL);
+   public static final Block LOTUS_STEM = registerPlantBlock("lotus_stem",
+           new LotusStem(FabricBlockSettings.create()
+                   .mapColor(MapColor.GREEN)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .noCollision()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.LILY_PAD), LOTUS_FLOWER), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, LOTUS_FLOWER, 0.2F
+   );
    public static final Block POTTED_SHIITAKE_MUSHROOM = registerPottedPlant("shiitake_mushroom", SHIITAKE_MUSHROOM);
    public static final Block WHITE_WISTERIA_VINES = registerPlantBlock("white_wisteria_vines",
            new WisteriaVine(FabricBlockSettings.create()
@@ -1917,6 +1939,12 @@ public class HibiscusBlocks {
    public static final Block CYPRESS_LEAVES = registerLeafBlock("cypress", MapColor.DARK_GREEN, ASPEN_LEAVES);
    public static final Block OLIVE_LEAVES = registerLeafBlock("olive", MapColor.DARK_GREEN, CYPRESS_LEAVES);
    public static final Block JOSHUA_LEAVES = registerLeafBlock("joshua", MapColor.PALE_YELLOW, OLIVE_LEAVES);
+
+
+   public static final Item CALCITE_SHARD = registerItem("calcite_shard", new Item(new Item.Settings()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Items.AMETHYST_SHARD, ItemGroups.INGREDIENTS);
+   public static final Block CALCITE_CLUSTER = registerBlock("calcite_cluster", new AmethystClusterBlock(7, 3, FabricBlockSettings.create().mapColor(MapColor.WHITE).solid().nonOpaque().ticksRandomly().sounds(BlockSoundGroup.CALCITE).strength(1.5F).pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Blocks.AMETHYST_CLUSTER, ItemGroups.NATURAL);
+   public static final Block LARGE_CALCITE_BUD = registerBlock("large_calcite_bud", new AmethystClusterBlock(4, 3, FabricBlockSettings.copy(CALCITE_CLUSTER).sounds(BlockSoundGroup.CALCITE).solid().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, CALCITE_CLUSTER, ItemGroups.NATURAL);
+   public static final Block SMALL_CALCITE_BUD = registerBlock("small_calcite_bud", new AmethystClusterBlock(3, 4, FabricBlockSettings.copy(CALCITE_CLUSTER).sounds(BlockSoundGroup.CALCITE).solid().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, LARGE_CALCITE_BUD, ItemGroups.NATURAL);
 
    public HibiscusBlocks() {
    }

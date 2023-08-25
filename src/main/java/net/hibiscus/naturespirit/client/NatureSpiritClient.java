@@ -37,6 +37,12 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusBlocks.SUGI_LEAVES);
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
+              blockPos
+      ) : -1, HibiscusBlocks.LOTUS_STEM);
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
+              new BlockPos(blockPos.getX(), -64, blockPos.getZ())
+      ) : -1, HibiscusBlocks.LOTUS_FLOWER);
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusBlocks.SUGI_LEAVES);
 
@@ -55,7 +61,10 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
          registerBoatModel(true, boat);
          registerBoatModel(false, boat);
       }
-      
+
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.LARGE_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.SMALL_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.CALCITE_CLUSTER, RenderLayer.getCutout());
    }
 
    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {

@@ -1,10 +1,10 @@
-// 1.20.1	2023-08-22T20:59:33.0337943	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2023-08-24T23:09:13.1737267	Nature's Spirit/Tags for minecraft:item
 b019b07534a26cb98cac8bff17efeff5e861775c data\minecraft\tags\items\wooden_doors.json
 3641fffbf5a05358593a57a9747d14cfbc3d1acf data\minecraft\tags\items\wooden_slabs.json
 9af70c2f18f67baac388f27e3deea266126324e0 data\minecraft\tags\items\wooden_trapdoors.json
 5b6dc8212d014afbb8bb1051f8820efd6f4253f9 data\natures_spirit\tags\items\maple_logs.json
-c7ff02627f4aa60329eb85f6528d4bb23129bb9e data\minecraft\tags\items\wooden_stairs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\items\sugi_logs.json
+c7ff02627f4aa60329eb85f6528d4bb23129bb9e data\minecraft\tags\items\wooden_stairs.json
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\items\willow_logs.json
 0aac5b7598032d5f11c082f6cf2cf545817537ef data\minecraft\tags\items\logs_that_burn.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\items\signs.json
