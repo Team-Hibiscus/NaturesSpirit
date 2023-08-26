@@ -1,0 +1,28 @@
+{
+  "type": "natures_spirit:water_delta_feature",
+  "config": {
+    "contents": {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "rim": {
+      "Name": "minecraft:mud"
+    },
+    "rim_size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 3,
+        "min_inclusive": 0
+      }
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 14,
+        "min_inclusive": 3
+      }
+    }
+  }
+}

@@ -34,7 +34,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 import java.util.HashMap;
 
@@ -65,6 +64,32 @@ public class HibiscusBlocks {
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            Blocks.FERN,
+           0.3f
+   );
+   public static final Block TALL_SEDGE_GRASS = registerPlantBlock(
+           "tall_sedge_grass",
+           new TallSedgeGrassBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
+           TALL_SCORCHED_GRASS,
+           0.3f
+   );
+   public static final Block SEDGE_GRASS = registerPlantBlock(
+           "sedge_grass",
+           new SedgeGrassBlock(FabricBlockSettings.create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
+           SCORCHED_GRASS,
            0.3f
    );
    public static final Block LARGE_FLAXEN_FERN = registerPlantBlock(

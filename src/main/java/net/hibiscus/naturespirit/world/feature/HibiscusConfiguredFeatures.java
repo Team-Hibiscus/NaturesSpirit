@@ -59,6 +59,7 @@ public class HibiscusConfiguredFeatures {
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_DELTA = registerKey("water_delta");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SWAMP_DELTA = registerKey("swamp_delta");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> MARSH_DELTA = registerKey("marsh_delta");
    public static final RegistryKey <ConfiguredFeature <?, ?>> RIVER_DELTA = registerKey("river_delta");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE = registerKey("large_redwood_tree");
@@ -116,7 +117,7 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_BLOOMING_DUNES = registerKey("flower_blooming_dunes");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_STRATIFIED_DESERT = registerKey("flower_stratified_desert");
    public static final RegistryKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> DESERT_TURNIP_STEM = registerKey("desert_turnip_stem");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LOTUS_PLANT = registerKey("lotus_plant");
    public static final RegistryKey <ConfiguredFeature <?, ?>> ROOTED_DESERT_TURNIP = registerKey("rooted_desert_turnip");
 
 
@@ -286,6 +287,11 @@ public class HibiscusConfiguredFeatures {
               Blocks.MUD.getDefaultState(),
               UniformIntProvider.create(2, 12),
               UniformIntProvider.create(1, 3)
+      ));
+      register(context, MARSH_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(),
+              Blocks.MUD.getDefaultState(),
+              UniformIntProvider.create(3, 14),
+              UniformIntProvider.create(0, 3)
       ));
       register(context, RIVER_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(),
               Blocks.COARSE_DIRT.getDefaultState(),
@@ -876,6 +882,15 @@ public class HibiscusConfiguredFeatures {
                       )
               ))
       );
+
+
+      register(context,
+              LOTUS_PLANT,
+              Feature.RANDOM_PATCH,
+              new RandomPatchFeatureConfig(20, 6, 2, PlacedFeatures.createEntry(
+                      LOTUS_PLANT_FEATURE,
+                      FeatureConfig.DEFAULT)
+              ));
 
       register(context,
               ROOTED_DESERT_TURNIP,

@@ -9,9 +9,6 @@
   "has_precipitation": true,
   "downfall": 0.9,
   "effects": {
-    "fog_color": 12638463,
-    "foliage_color": 6975545,
-    "grass_color_modifier": "swamp",
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -24,9 +21,12 @@
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.swamp"
     },
-    "sky_color": 7907327,
-    "water_color": 6388580,
-    "water_fog_color": 2302743
+    "sky_color": 8174539,
+    "fog_color": 10865292,
+    "water_color": 4560575,
+    "water_fog_color": 3823752,
+    "grass_color": 7249204,
+    "foliage_color": 6989855
   },
   "features": [
     [],
@@ -75,14 +75,16 @@
     ],
     [],
     [
-      "natures_spirit:swamp_water_placed",
+      "natures_spirit:marsh_water_placed",
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
+      "natures_spirit:redwood_rock_placed",
+      "natures_spirit:bamboo",
       "minecraft:patch_tall_grass_2",
-      "natures_spirit:willow_placed",
+      "natures_spirit:trees_bamboo_wetlands",
       "minecraft:flower_swamp",
       "minecraft:patch_grass_normal",
       "minecraft:patch_dead_bush",

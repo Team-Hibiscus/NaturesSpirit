@@ -98,6 +98,10 @@ public class HibiscusWorldGen {
            new Identifier(MOD_ID, "huge_shiitake_mushroom_feature"),
            new HugeShiitakeMushroomFeature(HugeMushroomFeatureConfig.CODEC)
    );
+   public static final Feature <DefaultFeatureConfig> LOTUS_PLANT_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "lotus_plant_feature"),
+           new LotusPlantFeature(DefaultFeatureConfig.CODEC)
+   );
    public static void registerWorldGen() {
 //      BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.WILLOW_PLACED);
    };

@@ -64,6 +64,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> WISTERIA_WATER = registerKey("wisteria_water_placed");
    public static final RegistryKey <PlacedFeature> LAVENDER_WATER = registerKey("lavender_water_placed");
    public static final RegistryKey <PlacedFeature> SWAMP_WATER = registerKey("swamp_water_placed");
+   public static final RegistryKey <PlacedFeature> MARSH_WATER = registerKey("marsh_water_placed");
    public static final RegistryKey <PlacedFeature> RIVER_WATER = registerKey("river_water_placed");
 
    public static final RegistryKey <PlacedFeature> LARGE_REDWOOD_PLACED = registerKey("large_redwood_placed");
@@ -89,6 +90,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE2_PLACED = registerKey(
            "custom_fancy_oak_tree2_placed");
    public static final RegistryKey <PlacedFeature> CATTAILS = registerKey("cattails_placed");
+   public static final RegistryKey <PlacedFeature> LOTUS_PLANT_PLACED = registerKey("lotus_plant_placed");
    public static final RegistryKey <PlacedFeature> ROOTED_DESERT_TURNIP = registerKey("rooted_desert_turnip_placed");
 
    private static final PlacementModifier TREE_THRESHOLD = SurfaceWaterDepthFilterPlacementModifier.of(0);
@@ -351,6 +353,12 @@ public class HibiscusPlacedFeatures {
               BiomePlacementModifier.of()
       );
       registerKey(context,
+              MARSH_WATER,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MARSH_DELTA),
+              CountMultilayerPlacementModifier.of(14),
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
               RIVER_WATER,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.RIVER_DELTA),
               CountMultilayerPlacementModifier.of(20),
@@ -554,6 +562,15 @@ public class HibiscusPlacedFeatures {
               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
               BiomePlacementModifier.of()
       );
+      registerKey(context,
+              LOTUS_PLANT_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LOTUS_PLANT),
+              RarityFilterPlacementModifier.of(15),
+              SquarePlacementModifier.of(),
+              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+
 
       registerKey(context,
               ROOTED_DESERT_TURNIP,

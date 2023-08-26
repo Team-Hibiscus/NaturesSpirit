@@ -5,23 +5,19 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class Cattails extends TallPlantBlock implements Waterloggable, Fertilizable {
+public class TallSedgeGrassBlock extends TallPlantBlock implements Waterloggable {
    public static final EnumProperty <DoubleBlockHalf> HALF;
    public static final BooleanProperty WATERLOGGED;
    protected static final float AABB_OFFSET = 6.0F;
@@ -33,7 +29,7 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
       SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
    }
 
-   public Cattails(Settings properties) {
+   public TallSedgeGrassBlock(Settings properties) {
       super(properties);
       this.setDefaultState(this.stateManager.getDefaultState()
               .with(WATERLOGGED, false)
@@ -41,19 +37,7 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
    }
 
    public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
-      return false;
-   }
-
-   public boolean isFertilizable(WorldView levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
       return true;
-   }
-
-   public boolean canGrow(World level, Random randomSource, BlockPos blockPos, BlockState blockState) {
-      return true;
-   }
-
-   public void grow(ServerWorld serverLevel, Random randomSource, BlockPos blockPos, BlockState blockState) {
-      dropStack(serverLevel, blockPos, new ItemStack(this));
    }
 
    protected boolean canPlantOnTop(BlockState state, BlockView level, BlockPos pos) {
@@ -61,14 +45,13 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
          return state.isSideSolidFullSquare(level, pos, Direction.UP) && !state.isOf(Blocks.MAGMA_BLOCK);
       }
       else {
-         return state.isIn(BlockTags.DIRT) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.SAND) || state.isOf(
-                 Blocks.RED_SAND);
+         return state.isIn(BlockTags.DIRT) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.CLAY);
       }
    }
 
    public BlockState getPlacementState(ItemPlacementContext context) {
       FluidState fluidState = context.getWorld().getFluidState(context.getBlockPos());
-      return super.getPlacementState(context) != null ?  this.getDefaultState().with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8) : null;
+      return super.getPlacementState(context) != null ? this.getDefaultState().with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8) : null;
    }
 
    public boolean canPlaceAt(BlockState state, WorldView level, BlockPos pos) {

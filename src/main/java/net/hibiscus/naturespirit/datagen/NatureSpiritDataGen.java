@@ -266,7 +266,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addVinesTable(HibiscusBlocks.WILLOW_VINES, HibiscusBlocks.WILLOW_VINES_PLANT);
 
          addVinesTable(LOTUS_STEM, LOTUS_STEM);
-         this.addDrop(LOTUS_FLOWER);
+         this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
 
          this.addDrop(SHIITAKE_MUSHROOM);
          this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM);
@@ -428,6 +428,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
          dropsWithShears(HibiscusBlocks.SCORCHED_GRASS);
          tallPlantDrop(HibiscusBlocks.TALL_SCORCHED_GRASS, HibiscusBlocks.SCORCHED_GRASS);
+
+         dropsWithShears(SEDGE_GRASS);
+         tallPlantDrop(TALL_SEDGE_GRASS, SEDGE_GRASS);
 
          dropsWithShears(FLAXEN_FERN);
          addPottedPlantDrops(POTTED_FLAXEN_FERN);
@@ -911,6 +914,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.MARIGOLD, TintType.NOT_TINTED);
          blockStateModelGenerator.registerDoubleBlock(HibiscusBlocks.FOXGLOVE, TintType.NOT_TINTED);
          generateTallLargeFlower(HibiscusBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
+         generateTallLargeFlower(TALL_SEDGE_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(HibiscusBlocks.LAVENDER, blockStateModelGenerator);
          generateTallLargeFlower(HibiscusBlocks.BLEEDING_HEART, blockStateModelGenerator);
          generateLargeFlower(HibiscusBlocks.BLUEBELL, blockStateModelGenerator);
@@ -918,6 +922,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateLargeFlower(HibiscusBlocks.PURPLE_WILDFLOWER, blockStateModelGenerator);
          generateLargeFlower(HibiscusBlocks.YELLOW_WILDFLOWER, blockStateModelGenerator);
          generateLargeFlower(HibiscusBlocks.SCORCHED_GRASS, blockStateModelGenerator);
+         generateLargeFlower(SEDGE_GRASS, blockStateModelGenerator);
          generatePottedAnemone(HibiscusBlocks.ANEMONE, HibiscusBlocks.POTTED_ANEMONE, blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusBlocks.BLUE_WISTERIA_VINES,
                  HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT,
@@ -1174,6 +1179,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusBlocks.YELLOW_WILDFLOWER, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.TALL_SCORCHED_GRASS, translationBuilder);
          generateBlockTranslations(HibiscusBlocks.SCORCHED_GRASS, translationBuilder);
+         generateBlockTranslations(TALL_SEDGE_GRASS, translationBuilder);
+         generateBlockTranslations(SEDGE_GRASS, translationBuilder);
          generateBlockTranslations(LARGE_FLAXEN_FERN, translationBuilder);
          generateBlockTranslations(FLAXEN_FERN, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
@@ -1392,7 +1399,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateFlowerRecipes(HibiscusBlocks.FOXGLOVE, Items.PURPLE_DYE, "purple_dye", 2, exporter);
          generateFlowerRecipes(HibiscusBlocks.HIBISCUS, Items.RED_DYE, "red_dye", 1, exporter);
          generateFlowerRecipes(HibiscusBlocks.GARDENIA, Items.WHITE_DYE, "white_dye", 2, exporter);
-         generateFlowerRecipes(LOTUS_FLOWER, Items.PINK_DYE, "pink_dye", 1, exporter);
+         offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
          offerCompactingRecipe(
                  exporter,
                  RecipeCategory.FOOD,
@@ -1568,12 +1575,16 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(
                  HibiscusBlocks.SCORCHED_GRASS,
                  HibiscusBlocks.TALL_SCORCHED_GRASS,
+                 SEDGE_GRASS,
+                 TALL_SEDGE_GRASS,
                  LARGE_FLAXEN_FERN,
                  FLAXEN_FERN
          );
          getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(
                  HibiscusBlocks.SCORCHED_GRASS,
                  HibiscusBlocks.TALL_SCORCHED_GRASS,
+                 SEDGE_GRASS,
+                 TALL_SEDGE_GRASS,
                  LARGE_FLAXEN_FERN,
                  FLAXEN_FERN,
                  SHIITAKE_MUSHROOM
@@ -1581,6 +1592,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(
                  HibiscusBlocks.SCORCHED_GRASS,
                  HibiscusBlocks.TALL_SCORCHED_GRASS,
+                 SEDGE_GRASS,
+                 TALL_SEDGE_GRASS,
                  LARGE_FLAXEN_FERN,
                  FLAXEN_FERN
          );

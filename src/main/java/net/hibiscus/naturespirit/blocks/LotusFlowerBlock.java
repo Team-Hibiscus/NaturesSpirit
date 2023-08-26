@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
@@ -34,6 +35,9 @@ public class LotusFlowerBlock extends PlantBlock {
 
    }
 
+   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+      return new ItemStack(HibiscusBlocks.LOTUS_FLOWER_ITEM);
+   }
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
       return SHAPE;
    }

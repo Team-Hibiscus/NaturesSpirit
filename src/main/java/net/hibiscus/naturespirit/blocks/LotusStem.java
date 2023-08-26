@@ -59,12 +59,12 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    @Override public boolean canPlaceAt(BlockState state, WorldView levelReader, BlockPos pos) {
       BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
       BlockState blockState = levelReader.getBlockState(blockPos);
-      if(levelReader.getFluidState(blockPos).isIn(FluidTags.WATER)) {
-         return (state.isSideSolidFullSquare(
+      if(levelReader.getFluidState(pos).isIn(FluidTags.WATER)) {
+         return (blockState.isSideSolidFullSquare(
                  levelReader,
                  pos,
                  Direction.UP
-         ) || blockState.isOf(this.asBlock())) && !state.isOf(Blocks.MAGMA_BLOCK);
+         ) || blockState.isOf(this.asBlock())) && !blockState.isOf(Blocks.MAGMA_BLOCK);
       }
       return blockState.isOf(this.asBlock()) || blockState.isIn(BlockTags.DIRT) || blockState.isOf(Blocks.CLAY) || blockState.isOf(Blocks.FARMLAND);
    }
@@ -206,8 +206,8 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    private Optional <BlockPos> getStemHeadPos(BlockView world, BlockPos pos, Block block) {
       return BlockLocating.findColumnEnd(world, pos, block, this.growthDirection, Blocks.AIR);
    }
-   private Optional <BlockPos> getStemHeadWaterPos(BlockView world, BlockPos pos, Block block) {
-      return BlockLocating.findColumnEnd(world, pos, block, this.growthDirection, Blocks.WATER);
+   public static Optional <BlockPos> getStemHeadWaterPos(BlockView world, BlockPos pos, Block block) {
+      return BlockLocating.findColumnEnd(world, pos, Blocks.WATER, Direction.UP, block);
    }
 
    protected int getGrowthLength(Random randomSource) {

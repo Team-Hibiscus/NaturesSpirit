@@ -10,8 +10,8 @@
   "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": 6975545,
-    "grass_color_modifier": "swamp",
+    "foliage_color": 7246889,
+    "grass_color": 7376685,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -75,16 +75,18 @@
     ],
     [],
     [
-      "natures_spirit:swamp_water_placed",
+      "natures_spirit:marsh_water_placed",
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
-      "natures_spirit:willow_placed",
+      "natures_spirit:patch_tall_sedge_grass",
       "minecraft:flower_swamp",
       "minecraft:patch_grass_normal",
+      "natures_spirit:patch_sedge_grass",
+      "natures_spirit:patch_sedge_grass_water",
       "minecraft:patch_dead_bush",
       "minecraft:patch_waterlily",
       "minecraft:brown_mushroom_swamp",

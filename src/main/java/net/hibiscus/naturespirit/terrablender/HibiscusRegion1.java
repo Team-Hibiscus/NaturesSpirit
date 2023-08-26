@@ -12,16 +12,13 @@ import terrablender.api.RegionType;
 
 import java.util.function.Consumer;
 
-public class HibiscusRegion extends Region {
-   public HibiscusRegion(Identifier name, int weight) {
+public class HibiscusRegion1 extends Region {
+   public HibiscusRegion1(Identifier name, int weight) {
       super(name, RegionType.OVERWORLD, weight);
    }
 
    @Override
    public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
-      this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-         builder.replaceBiome(BiomeKeys.OLD_GROWTH_PINE_TAIGA, HibiscusBiomes.REDWOOD_FOREST);
-         builder.replaceBiome(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, HibiscusBiomes.REDWOOD_FOREST);
-      });
+      (new Region1Parameters()).writeOverworldBiomeParameters(mapper);
    }
 }

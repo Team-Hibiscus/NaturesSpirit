@@ -1,0 +1,12 @@
+{
+  "feature": "natures_spirit:marsh_delta",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 14
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
