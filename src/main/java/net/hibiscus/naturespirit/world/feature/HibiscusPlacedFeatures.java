@@ -355,7 +355,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               MARSH_WATER,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MARSH_DELTA),
-              CountMultilayerPlacementModifier.of(14),
+              CountMultilayerPlacementModifier.of(20),
               BiomePlacementModifier.of()
       );
       registerKey(context,

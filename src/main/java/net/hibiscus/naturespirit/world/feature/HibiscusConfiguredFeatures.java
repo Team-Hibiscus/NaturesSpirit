@@ -291,7 +291,7 @@ public class HibiscusConfiguredFeatures {
       register(context, MARSH_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(),
               Blocks.MUD.getDefaultState(),
               UniformIntProvider.create(3, 14),
-              UniformIntProvider.create(0, 3)
+              UniformIntProvider.create(1, 3)
       ));
       register(context, RIVER_DELTA, HIBISCUS_DELTA_FEATURE, new DeltaFeatureConfig(Blocks.WATER.getDefaultState(),
               Blocks.COARSE_DIRT.getDefaultState(),
