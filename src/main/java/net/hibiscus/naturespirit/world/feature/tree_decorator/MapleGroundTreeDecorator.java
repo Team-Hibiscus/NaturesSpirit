@@ -5,9 +5,8 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
@@ -76,7 +75,7 @@ public class MapleGroundTreeDecorator extends TreeDecorator {
             generator.replace(blockPos, this.provider2.get(generator.getRandom(), origin));
 
             if (generator.isAir(blockPos.up(1)) && generator.getRandom().nextInt(50) == 0) {
-               generator.replace(blockPos.up(1), HibiscusBlocks.SHIITAKE_MUSHROOM.getDefaultState());
+               generator.replace(blockPos.up(1), HibiscusBlocksAndItems.SHIITAKE_MUSHROOM.getDefaultState());
             }
             break;
          }

@@ -1,11 +1,10 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.blocks.LotusStem;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.KelpBlock;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -30,8 +29,8 @@ public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
       int j = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER) || structureWorldAccess.isAir(blockPos2)) {
-         BlockState blockState = HibiscusBlocks.LOTUS_FLOWER.getDefaultState();
-         BlockState blockState2 = HibiscusBlocks.LOTUS_STEM.getDefaultState().with(LotusStem.WATERLOGGED, structureWorldAccess.getFluidState(blockPos2).isIn(
+         BlockState blockState = HibiscusBlocksAndItems.LOTUS_FLOWER.getDefaultState();
+         BlockState blockState2 = HibiscusBlocksAndItems.LOTUS_STEM.getDefaultState().with(LotusStem.WATERLOGGED, structureWorldAccess.getFluidState(blockPos2).isIn(
                  FluidTags.WATER));
          Optional<BlockPos> optional = LotusStem.getStemHeadWaterPos(structureWorldAccess, blockPos2, Blocks.AIR);
          int k = optional.map(pos -> pos.getY() - j - random.nextInt(3)).orElseGet(() -> 1 + random.nextInt(10));
@@ -58,7 +57,8 @@ public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
                }
                break;
             } else if (structureWorldAccess.isAir(blockPos2)) {
-               if (blockState.canPlaceAt(structureWorldAccess, blockPos2) && structureWorldAccess.getBlockState(blockPos2.down()).isOf(HibiscusBlocks.LOTUS_STEM)) {
+               if (blockState.canPlaceAt(structureWorldAccess, blockPos2) && structureWorldAccess.getBlockState(blockPos2.down()).isOf(
+                       HibiscusBlocksAndItems.LOTUS_STEM)) {
                   structureWorldAccess.setBlockState(blockPos2, (BlockState)blockState, 2);
                   ++i;
                }

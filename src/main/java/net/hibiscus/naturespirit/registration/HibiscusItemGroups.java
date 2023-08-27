@@ -1,7 +1,7 @@
-package net.hibiscus.naturespirit.items;
+package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -21,7 +21,7 @@ public class HibiscusItemGroups {
       build(NATURES_SPIRIT_ITEM_GROUP,
               FabricItemGroup.builder()
                       .displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".natures_spirit_item_group"))
-                      .icon(() -> new ItemStack(HibiscusBlocks.REDWOOD[4]))
+                      .icon(() -> new ItemStack(HibiscusWoods.REDWOOD[4]))
                       .build()
       );
    }

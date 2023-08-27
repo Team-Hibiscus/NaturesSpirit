@@ -1,20 +1,12 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.SharedConstants;
+import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
 import net.minecraft.registry.*;
-import net.minecraft.util.annotation.Debug;
-import net.minecraft.util.function.ToFloatFunction;
-import net.minecraft.util.math.Spline;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
-import net.minecraft.world.biome.source.util.VanillaTerrainParametersCreator;
-import net.minecraft.world.gen.densityfunction.DensityFunction;
-import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
-import net.minecraft.world.gen.densityfunction.DensityFunctions;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class Region5Parameters {

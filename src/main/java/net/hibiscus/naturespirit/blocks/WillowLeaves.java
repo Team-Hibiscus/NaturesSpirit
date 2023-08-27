@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -22,8 +23,8 @@ public class WillowLeaves extends LeavesBlock implements Fertilizable {
 
    @Override
    public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
-      Block vineBlock = HibiscusBlocks.WILLOW_VINES;
-      Block vineBlock2 = HibiscusBlocks.WILLOW_VINES_PLANT;
+      Block vineBlock = HibiscusWoods.WILLOW_VINES;
+      Block vineBlock2 = HibiscusWoods.WILLOW_VINES_PLANT;
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader,
               blockPos,
               vineBlock2,
@@ -40,8 +41,8 @@ public class WillowLeaves extends LeavesBlock implements Fertilizable {
    }
 
    @Override public void grow(ServerWorld serverLevel, Random randomSource, BlockPos blockPos, BlockState blockState) {
-      Block vineBlock = HibiscusBlocks.WILLOW_VINES;
-      Block vineBlock2 = HibiscusBlocks.WILLOW_VINES_PLANT;
+      Block vineBlock = HibiscusWoods.WILLOW_VINES;
+      Block vineBlock2 = HibiscusWoods.WILLOW_VINES_PLANT;
 
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel,
               blockPos,

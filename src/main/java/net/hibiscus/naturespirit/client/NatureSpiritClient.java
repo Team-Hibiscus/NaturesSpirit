@@ -8,8 +8,9 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -33,22 +34,22 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
    @Override public void onInitializeClient() {
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockState.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? blockPos.down() : blockPos
-      ) : -1, HibiscusBlocks.CATTAIL);
+      ) : -1, HibiscusBlocksAndItems.CATTAIL);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
-      ) : -1, HibiscusBlocks.SUGI_LEAVES);
+      ) : -1, HibiscusWoods.SUGI_LEAVES);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
-      ) : -1, HibiscusBlocks.LOTUS_STEM);
+      ) : -1, HibiscusBlocksAndItems.LOTUS_STEM);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               new BlockPos(blockPos.getX(), -64, blockPos.getZ())
-      ) : -1, HibiscusBlocks.LOTUS_FLOWER);
+      ) : -1, HibiscusBlocksAndItems.LOTUS_FLOWER);
 
-      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusBlocks.SUGI_LEAVES);
+      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI_LEAVES);
 
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_HIBISCUS, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.POTTED_ANEMONE, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.PIZZA_BLOCK, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.POTTED_HIBISCUS, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.POTTED_ANEMONE, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.PIZZA_BLOCK, RenderLayer.getCutout());
       /* Registers our particle client-side.
        * First argument is our particle's instance, created previously on ExampleMod.
        * Second argument is the particle's factory. The factory controls how the particle behaves.
@@ -62,9 +63,9 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
          registerBoatModel(false, boat);
       }
 
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.LARGE_CALCITE_BUD, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.SMALL_CALCITE_BUD, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocks.CALCITE_CLUSTER, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.SMALL_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.CALCITE_CLUSTER, RenderLayer.getCutout());
    }
 
    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {

@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -153,7 +154,7 @@ public class PizzaBlock extends Block {
 
    @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
       int BITE_STATE = state.get(BITES);
-      Item item = BITE_STATE == 0 ? HibiscusBlocks.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusBlocks.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusBlocks.HALF_PIZZA : HibiscusBlocks.QUARTER_PIZZA;
+      Item item = BITE_STATE == 0 ? HibiscusBlocksAndItems.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusBlocksAndItems.HALF_PIZZA : HibiscusBlocksAndItems.QUARTER_PIZZA;
       ItemStack itemStack = new ItemStack(item);
 
       int TOPPINGS_STATE = state.get(TOPPINGS);

@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.entity;
 
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
@@ -50,72 +51,72 @@ public class HibiscusBoatEntity extends BoatEntity {
    public enum HibiscusBoat implements StringIdentifiable {
       REDWOOD(
               "redwood",
-              () -> HibiscusBlocks.REDWOOD[4],
-              () -> HibiscusBlocks.REDWOOD_BOAT,
-              () -> HibiscusBlocks.REDWOOD_CHEST_BOAT,
+              () -> HibiscusWoods.REDWOOD[4],
+              () -> HibiscusWoods.REDWOOD_BOAT,
+              () -> HibiscusWoods.REDWOOD_CHEST_BOAT,
               () -> HibiscusEntityTypes.REDWOOD_BOAT,
               () -> HibiscusEntityTypes.REDWOOD_CHEST_BOAT
       ),
       SUGI("sugi",
-              () -> HibiscusBlocks.SUGI[4],
-              () -> HibiscusBlocks.SUGI_BOAT,
-              () -> HibiscusBlocks.SUGI_CHEST_BOAT,
+              () -> HibiscusWoods.SUGI[4],
+              () -> HibiscusWoods.SUGI_BOAT,
+              () -> HibiscusWoods.SUGI_CHEST_BOAT,
               () -> HibiscusEntityTypes.SUGI_BOAT,
               () -> HibiscusEntityTypes.SUGI_CHEST_BOAT
       ),
       WISTERIA("wisteria",
-              () -> HibiscusBlocks.WISTERIA[4],
-              () -> HibiscusBlocks.WISTERIA_BOAT,
-              () -> HibiscusBlocks.WISTERIA_CHEST_BOAT,
+              () -> HibiscusWoods.WISTERIA[4],
+              () -> HibiscusWoods.WISTERIA_BOAT,
+              () -> HibiscusWoods.WISTERIA_CHEST_BOAT,
               () -> HibiscusEntityTypes.WISTERIA_BOAT,
               () -> HibiscusEntityTypes.WISTERIA_CHEST_BOAT
       ),
       FIR("fir",
-              () -> HibiscusBlocks.FIR[4],
-              () -> HibiscusBlocks.FIR_BOAT,
-              () -> HibiscusBlocks.FIR_CHEST_BOAT,
+              () -> HibiscusWoods.FIR[4],
+              () -> HibiscusWoods.FIR_BOAT,
+              () -> HibiscusWoods.FIR_CHEST_BOAT,
               () -> HibiscusEntityTypes.FIR_BOAT,
               () -> HibiscusEntityTypes.FIR_CHEST_BOAT
       ),
       WILLOW("willow",
-              () -> HibiscusBlocks.WILLOW[4],
-              () -> HibiscusBlocks.WILLOW_BOAT,
-              () -> HibiscusBlocks.WILLOW_CHEST_BOAT,
+              () -> HibiscusWoods.WILLOW[4],
+              () -> HibiscusWoods.WILLOW_BOAT,
+              () -> HibiscusWoods.WILLOW_CHEST_BOAT,
               () -> HibiscusEntityTypes.WILLOW_BOAT,
               () -> HibiscusEntityTypes.WILLOW_CHEST_BOAT
       ),
       ASPEN("aspen",
-              () -> HibiscusBlocks.ASPEN[4],
-              () -> HibiscusBlocks.ASPEN_BOAT,
-              () -> HibiscusBlocks.ASPEN_CHEST_BOAT,
+              () -> HibiscusWoods.ASPEN[4],
+              () -> HibiscusWoods.ASPEN_BOAT,
+              () -> HibiscusWoods.ASPEN_CHEST_BOAT,
               () -> HibiscusEntityTypes.ASPEN_BOAT,
               () -> HibiscusEntityTypes.ASPEN_CHEST_BOAT
       ),
       MAPLE("maple",
-              () -> HibiscusBlocks.MAPLE[4],
-              () -> HibiscusBlocks.MAPLE_BOAT,
-              () -> HibiscusBlocks.MAPLE_CHEST_BOAT,
+              () -> HibiscusWoods.MAPLE[4],
+              () -> HibiscusWoods.MAPLE_BOAT,
+              () -> HibiscusWoods.MAPLE_CHEST_BOAT,
               () -> HibiscusEntityTypes.MAPLE_BOAT,
               () -> HibiscusEntityTypes.MAPLE_CHEST_BOAT
       ),
       CYPRESS("cypress",
-              () -> HibiscusBlocks.CYPRESS[4],
-              () -> HibiscusBlocks.CYPRESS_BOAT,
-              () -> HibiscusBlocks.CYPRESS_CHEST_BOAT,
+              () -> HibiscusWoods.CYPRESS[4],
+              () -> HibiscusWoods.CYPRESS_BOAT,
+              () -> HibiscusWoods.CYPRESS_CHEST_BOAT,
               () -> HibiscusEntityTypes.CYPRESS_BOAT,
               () -> HibiscusEntityTypes.CYPRESS_CHEST_BOAT
       ),
       OLIVE("olive",
-              () -> HibiscusBlocks.OLIVE[4],
-              () -> HibiscusBlocks.OLIVE_BOAT,
-              () -> HibiscusBlocks.OLIVE_CHEST_BOAT,
+              () -> HibiscusWoods.OLIVE[4],
+              () -> HibiscusWoods.OLIVE_BOAT,
+              () -> HibiscusWoods.OLIVE_CHEST_BOAT,
               () -> HibiscusEntityTypes.OLIVE_BOAT,
               () -> HibiscusEntityTypes.OLIVE_CHEST_BOAT
       ),
       JOSHUA("joshua",
-              () -> HibiscusBlocks.JOSHUA[4],
-              () -> HibiscusBlocks.JOSHUA_BOAT,
-              () -> HibiscusBlocks.JOSHUA_CHEST_BOAT,
+              () -> HibiscusWoods.JOSHUA[4],
+              () -> HibiscusWoods.JOSHUA_BOAT,
+              () -> HibiscusWoods.JOSHUA_CHEST_BOAT,
               () -> HibiscusEntityTypes.JOSHUA_BOAT,
               () -> HibiscusEntityTypes.JOSHUA_CHEST_BOAT
       );

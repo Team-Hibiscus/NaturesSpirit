@@ -1,7 +1,8 @@
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.datagen;
 
 
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.world.NatureSpiritOverworldBiomes;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;

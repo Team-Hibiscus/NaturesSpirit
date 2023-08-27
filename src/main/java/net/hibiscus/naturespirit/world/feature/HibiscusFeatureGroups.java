@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.world.feature;
 
-import net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures;
+import net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.MiscPlacedFeatures;

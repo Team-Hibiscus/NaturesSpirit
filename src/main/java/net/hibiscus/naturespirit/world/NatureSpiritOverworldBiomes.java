@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.world;
 
 import net.hibiscus.naturespirit.world.feature.HibiscusFeatureGroups;
 import net.minecraft.client.sound.MusicType;
@@ -22,7 +22,7 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 import javax.annotation.Nullable;
 
-import static net.hibiscus.naturespirit.world.feature.HibiscusPlacedFeatures.*;
+import static net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures.*;
 
 public class NatureSpiritOverworldBiomes {
    @Nullable private static final MusicSound NORMAL_MUSIC = null;

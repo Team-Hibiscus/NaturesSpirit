@@ -1,6 +1,7 @@
-package net.hibiscus.naturespirit.entity;
+package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;

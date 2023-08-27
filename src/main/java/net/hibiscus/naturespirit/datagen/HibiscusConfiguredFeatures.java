@@ -1,12 +1,14 @@
-package net.hibiscus.naturespirit.world.feature;
+package net.hibiscus.naturespirit.datagen;
 
 import com.google.common.collect.ImmutableList;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.blocks.WisteriaVine;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.hibiscus.naturespirit.util.HibiscusWorldGen;
+import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
+import net.hibiscus.naturespirit.world.feature.TurnipRootFeatureConfig;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
@@ -17,7 +19,6 @@ import net.hibiscus.naturespirit.world.feature.trunk.WisteriaTrunkPlacer;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
@@ -41,19 +42,14 @@ import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
-import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
-import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
 import static net.hibiscus.naturespirit.util.HibiscusWorldGen.*;
-import static net.minecraft.world.gen.feature.TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM;
 
 public class HibiscusConfiguredFeatures {
 
@@ -128,9 +124,9 @@ public class HibiscusConfiguredFeatures {
       register(context,
               REDWOOD_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.REDWOOD[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD[2]),
                       new StraightTrunkPlacer(12, 1, 4),
-                      BlockStateProvider.of(HibiscusBlocks.REDWOOD_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.REDWOOD_LEAVES),
                       new SpruceFoliagePlacer(UniformIntProvider.create(1, 3),
                               UniformIntProvider.create(1, 2),
                               UniformIntProvider.create(14, 15)
@@ -153,9 +149,9 @@ public class HibiscusConfiguredFeatures {
       register(context,
               ASPEN_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.ASPEN[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.ASPEN[2]),
                       new StraightTrunkPlacer(14, 2, 5),
-                      BlockStateProvider.of(HibiscusBlocks.ASPEN_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.ASPEN_LEAVES),
                       new AspenFoliagePlacer(UniformIntProvider.create(2, 2),
                               UniformIntProvider.create(2, 3),
                               UniformIntProvider.create(4, 18)
@@ -164,9 +160,9 @@ public class HibiscusConfiguredFeatures {
               ).ignoreVines().build()
       );
       register(context, ASPEN_TREE_BEES, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(
-              HibiscusBlocks.ASPEN[2]),
+              HibiscusWoods.ASPEN[2]),
               new StraightTrunkPlacer(14, 2, 5),
-              BlockStateProvider.of(HibiscusBlocks.ASPEN_LEAVES),
+              BlockStateProvider.of(HibiscusWoods.ASPEN_LEAVES),
               new AspenFoliagePlacer(UniformIntProvider.create(2, 2),
                       UniformIntProvider.create(2, 3),
                       UniformIntProvider.create(4, 18)
@@ -188,7 +184,7 @@ public class HibiscusConfiguredFeatures {
       register(context,
               RED_MAPLE_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.MAPLE[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.MAPLE[2]),
                       new MapleTrunkPlacer(9, 2, 0,
                               new WeightedListIntProvider(DataPool.<IntProvider>builder()
                                       .add(ConstantIntProvider.create(5), 1)
@@ -196,7 +192,7 @@ public class HibiscusConfiguredFeatures {
                                       .add(ConstantIntProvider.create(3), 1)
                                       .add(ConstantIntProvider.create(4), 1).build()),
                               UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
-                      BlockStateProvider.of(HibiscusBlocks.RED_MAPLE_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.RED_MAPLE_LEAVES),
                       new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
                       new TwoLayersFeatureSize(1, 0, 2)
               ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build()
@@ -204,7 +200,7 @@ public class HibiscusConfiguredFeatures {
       register(context,
               ORANGE_MAPLE_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.MAPLE[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.MAPLE[2]),
                       new MapleTrunkPlacer(9, 2, 0,
                               new WeightedListIntProvider(DataPool.<IntProvider>builder()
                                       .add(ConstantIntProvider.create(5), 1)
@@ -212,7 +208,7 @@ public class HibiscusConfiguredFeatures {
                                       .add(ConstantIntProvider.create(3), 1)
                                       .add(ConstantIntProvider.create(4), 1).build()),
                               UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
-                      BlockStateProvider.of(HibiscusBlocks.ORANGE_MAPLE_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.ORANGE_MAPLE_LEAVES),
                       new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
                       new TwoLayersFeatureSize(1, 0, 2)
               ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build()
@@ -220,7 +216,7 @@ public class HibiscusConfiguredFeatures {
       register(context,
               YELLOW_MAPLE_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.MAPLE[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.MAPLE[2]),
                       new MapleTrunkPlacer(9, 2, 0,
                               new WeightedListIntProvider(DataPool.<IntProvider>builder()
                                       .add(ConstantIntProvider.create(5), 1)
@@ -228,7 +224,7 @@ public class HibiscusConfiguredFeatures {
                                       .add(ConstantIntProvider.create(3), 1)
                                       .add(ConstantIntProvider.create(4), 1).build()),
                               UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
-                      BlockStateProvider.of(HibiscusBlocks.YELLOW_MAPLE_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.YELLOW_MAPLE_LEAVES),
                       new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5),  0.26666667F, 0.53333334F),
                       new TwoLayersFeatureSize(1, 0, 2)
               ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build()
@@ -244,9 +240,9 @@ public class HibiscusConfiguredFeatures {
       register(context,
               CYPRESS_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.CYPRESS[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.CYPRESS[2]),
                       new StraightTrunkPlacer(11, 1, 2),
-                      BlockStateProvider.of(HibiscusBlocks.CYPRESS_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.CYPRESS_LEAVES),
                       new CypressFoliagePlacer(UniformIntProvider.create(2, 2),
                               UniformIntProvider.create(3, 3),
                               UniformIntProvider.create(11, 13)
@@ -259,9 +255,9 @@ public class HibiscusConfiguredFeatures {
       register(context,
               FIR_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.FIR[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.FIR[2]),
                       new StraightTrunkPlacer(10, 1, 2),
-                      BlockStateProvider.of(HibiscusBlocks.FIR_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.FIR_LEAVES),
                       new FirFoliagePlacer(UniformIntProvider.create(2, 2),
                               UniformIntProvider.create(2, 3),
                               UniformIntProvider.create(3, 12)
@@ -300,9 +296,9 @@ public class HibiscusConfiguredFeatures {
       ));
 
       register(context, LARGE_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(
-              HibiscusBlocks.REDWOOD[2]),
+              HibiscusWoods.REDWOOD[2]),
               new GiantTrunkPlacer(18, 2, 17),
-              BlockStateProvider.of(HibiscusBlocks.REDWOOD_LEAVES),
+              BlockStateProvider.of(HibiscusWoods.REDWOOD_LEAVES),
               new MegaPineFoliagePlacer(ConstantIntProvider.create(0),
                       ConstantIntProvider.create(0),
                       UniformIntProvider.create(6, 12)
@@ -325,14 +321,14 @@ public class HibiscusConfiguredFeatures {
       register(context,
               WILLOW_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.WILLOW[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.WILLOW[2]),
                       new LargeOakTrunkPlacer(10, 3, 5),
-                      BlockStateProvider.of(HibiscusBlocks.WILLOW_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.WILLOW_LEAVES),
                       new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                       new TwoLayersFeatureSize(3, 0, 2, OptionalInt.of(5))
               ).decorators(List.of(new WisteriaVinesTreeDecorator(0.65F,
-                      new HibiscusSimpleBlockStateProvider(HibiscusBlocks.WILLOW_VINES_PLANT.getDefaultState()),
-                      new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.WILLOW_VINES.getDefaultState()),
+                      new HibiscusSimpleBlockStateProvider(HibiscusWoods.WILLOW_VINES_PLANT.getDefaultState()),
+                      new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WILLOW_VINES.getDefaultState()),
                               WisteriaVine.AGE,
                               UniformIntProvider.create(23, 25)
                       ),
@@ -352,7 +348,7 @@ public class HibiscusConfiguredFeatures {
 
 
       register(context, WHITE_WISTERIA_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(
-              HibiscusBlocks.WISTERIA[2]),
+              HibiscusWoods.WISTERIA[2]),
               new WisteriaTrunkPlacer(7,
                       3,
                       4,
@@ -361,12 +357,12 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       holderGetter.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusBlocks.WHITE_WISTERIA_LEAVES),
+              BlockStateProvider.of(HibiscusWoods.WHITE_WISTERIA_LEAVES),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new HibiscusSimpleBlockStateProvider(HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT.getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.WHITE_WISTERIA_VINES.getDefaultState()),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WHITE_WISTERIA_VINES_PLANT.getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WHITE_WISTERIA_VINES.getDefaultState()),
                       WisteriaVine.AGE,
                       UniformIntProvider.create(22, 25)
               ),
@@ -374,7 +370,7 @@ public class HibiscusConfiguredFeatures {
       ))).ignoreVines().build());
 
       register(context, PINK_WISTERIA_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(
-              HibiscusBlocks.WISTERIA[2]),
+              HibiscusWoods.WISTERIA[2]),
               new WisteriaTrunkPlacer(7,
                       3,
                       4,
@@ -383,12 +379,12 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusBlocks.PINK_WISTERIA_LEAVES),
+              BlockStateProvider.of(HibiscusWoods.PINK_WISTERIA_LEAVES),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new HibiscusSimpleBlockStateProvider(HibiscusBlocks.PINK_WISTERIA_VINES_PLANT.getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.PINK_WISTERIA_VINES.getDefaultState()),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.PINK_WISTERIA_VINES_PLANT.getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.PINK_WISTERIA_VINES.getDefaultState()),
                       WisteriaVine.AGE,
                       UniformIntProvider.create(22, 25)
               ),
@@ -396,7 +392,7 @@ public class HibiscusConfiguredFeatures {
       ))).ignoreVines().build());
 
       register(context, BLUE_WISTERIA_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(
-              HibiscusBlocks.WISTERIA[2]),
+              HibiscusWoods.WISTERIA[2]),
               new WisteriaTrunkPlacer(7,
                       3,
                       4,
@@ -405,12 +401,12 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusBlocks.BLUE_WISTERIA_LEAVES),
+              BlockStateProvider.of(HibiscusWoods.BLUE_WISTERIA_LEAVES),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new HibiscusSimpleBlockStateProvider(HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT.getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.BLUE_WISTERIA_VINES.getDefaultState()),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.BLUE_WISTERIA_VINES_PLANT.getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.BLUE_WISTERIA_VINES.getDefaultState()),
                       WisteriaVine.AGE,
                       UniformIntProvider.create(22, 25)
               ),
@@ -418,7 +414,7 @@ public class HibiscusConfiguredFeatures {
       ))).ignoreVines().build());
 
       register(context, PURPLE_WISTERIA_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(
-              HibiscusBlocks.WISTERIA[2]),
+              HibiscusWoods.WISTERIA[2]),
               new WisteriaTrunkPlacer(7,
                       3,
                       4,
@@ -427,12 +423,12 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusBlocks.PURPLE_WISTERIA_LEAVES),
+              BlockStateProvider.of(HibiscusWoods.PURPLE_WISTERIA_LEAVES),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new HibiscusSimpleBlockStateProvider(HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT.getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusBlocks.PURPLE_WISTERIA_VINES.getDefaultState()),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT.getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.PURPLE_WISTERIA_VINES.getDefaultState()),
                       WisteriaVine.AGE,
                       UniformIntProvider.create(22, 25)
               ),
@@ -458,7 +454,7 @@ public class HibiscusConfiguredFeatures {
       register(context,
               SUGI_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.SUGI[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.SUGI[2]),
                       new SugiTrunkPlacer(10,
                               1,
                               1,
@@ -467,7 +463,7 @@ public class HibiscusConfiguredFeatures {
                               UniformIntProvider.create(4, 5),
                               Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
                       ),
-                      BlockStateProvider.of(HibiscusBlocks.SUGI_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.SUGI_LEAVES),
                       new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                       new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))
               ).ignoreVines().build()
@@ -483,7 +479,7 @@ public class HibiscusConfiguredFeatures {
       register(context,
               OLIVE_TREE,
               Feature.TREE,
-              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusBlocks.OLIVE[2]),
+              new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.OLIVE[2]),
                       new OliveTrunkPlacer(4,
                               1,
                               2,
@@ -492,7 +488,7 @@ public class HibiscusConfiguredFeatures {
                               UniformIntProvider.create(4, 5),
                               Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
                       ),
-                      BlockStateProvider.of(HibiscusBlocks.OLIVE_LEAVES),
+                      BlockStateProvider.of(HibiscusWoods.OLIVE_LEAVES),
                       new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3),
                               ConstantIntProvider.create(0),
                               ConstantIntProvider.create(2),
@@ -597,14 +593,14 @@ public class HibiscusConfiguredFeatures {
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
                                       List.of(Blocks.ALLIUM.getDefaultState(),
-                                              HibiscusBlocks.BLUEBELL.getDefaultState(),
-                                              HibiscusBlocks.ANEMONE.getDefaultState(),
+                                              HibiscusBlocksAndItems.BLUEBELL.getDefaultState(),
+                                              HibiscusBlocksAndItems.ANEMONE.getDefaultState(),
                                               Blocks.OXEYE_DAISY.getDefaultState(),
                                               Blocks.PINK_TULIP.getDefaultState(),
-                                              HibiscusBlocks.SNAPDRAGON.getDefaultState(),
-                                              HibiscusBlocks.GARDENIA.getDefaultState(),
-                                              HibiscusBlocks.LAVENDER.getDefaultState(),
-                                              HibiscusBlocks.HIBISCUS.getDefaultState(),
+                                              HibiscusBlocksAndItems.SNAPDRAGON.getDefaultState(),
+                                              HibiscusBlocksAndItems.GARDENIA.getDefaultState(),
+                                              HibiscusBlocksAndItems.LAVENDER.getDefaultState(),
+                                              HibiscusBlocksAndItems.HIBISCUS.getDefaultState(),
                                               Blocks.CORNFLOWER.getDefaultState()
                                       )
                               ))
@@ -624,7 +620,7 @@ public class HibiscusConfiguredFeatures {
                                       0.030833334F,
                                       List.of(Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
                                               Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
-                                              HibiscusBlocks.GARDENIA.getDefaultState(),
+                                              HibiscusBlocksAndItems.GARDENIA.getDefaultState(),
                                               Blocks.AZURE_BLUET.getDefaultState()
                                       )
                               ))
@@ -643,9 +639,9 @@ public class HibiscusConfiguredFeatures {
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
                                       List.of(Blocks.LILAC.getDefaultState(),
-                                              HibiscusBlocks.ANEMONE.getDefaultState(),
-                                              HibiscusBlocks.GARDENIA.getDefaultState(),
-                                              HibiscusBlocks.LAVENDER.getDefaultState(),
+                                              HibiscusBlocksAndItems.ANEMONE.getDefaultState(),
+                                              HibiscusBlocksAndItems.GARDENIA.getDefaultState(),
+                                              HibiscusBlocksAndItems.LAVENDER.getDefaultState(),
                                               Blocks.PEONY.getDefaultState()
                                       )
                               ))
@@ -664,7 +660,7 @@ public class HibiscusConfiguredFeatures {
                                       0.030833334F,
                                       List.of(Blocks.LILAC.getDefaultState(),
                                               Blocks.GRASS.getDefaultState(),
-                                              HibiscusBlocks.FOXGLOVE.getDefaultState(),
+                                              HibiscusBlocksAndItems.FOXGLOVE.getDefaultState(),
                                               Blocks.TALL_GRASS.getDefaultState(),
                                               Blocks.PEONY.getDefaultState()
                                       )
@@ -684,9 +680,9 @@ public class HibiscusConfiguredFeatures {
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
                                       List.of(Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
-                                              HibiscusBlocks.BLEEDING_HEART.getDefaultState(),
-                                              HibiscusBlocks.ANEMONE.getDefaultState(),
-                                              HibiscusBlocks.HIBISCUS.getDefaultState()
+                                              HibiscusBlocksAndItems.BLEEDING_HEART.getDefaultState(),
+                                              HibiscusBlocksAndItems.ANEMONE.getDefaultState(),
+                                              HibiscusBlocksAndItems.HIBISCUS.getDefaultState()
                                       )
                               ))
                       )
@@ -703,11 +699,12 @@ public class HibiscusConfiguredFeatures {
                               new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
-                                      List.of(HibiscusBlocks.BLUEBELL.getDefaultState(),
+                                      List.of(
+                                              HibiscusBlocksAndItems.BLUEBELL.getDefaultState(),
                                               Blocks.ORANGE_TULIP.getDefaultState(),
                                               Blocks.GRASS.getDefaultState(),
-                                              HibiscusBlocks.CARNATION.getDefaultState(),
-                                              HibiscusBlocks.GARDENIA.getDefaultState()
+                                              HibiscusBlocksAndItems.CARNATION.getDefaultState(),
+                                              HibiscusBlocksAndItems.GARDENIA.getDefaultState()
                                       )
                               ))
                       )
@@ -724,13 +721,14 @@ public class HibiscusConfiguredFeatures {
                               new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
-                                      List.of(HibiscusBlocks.TIGER_LILY.getDefaultState(),
+                                      List.of(
+                                              HibiscusBlocksAndItems.TIGER_LILY.getDefaultState(),
                                               Blocks.ORANGE_TULIP.getDefaultState(),
-                                              HibiscusBlocks.FLAXEN_FERN.getDefaultState(),
+                                              HibiscusBlocksAndItems.FLAXEN_FERN.getDefaultState(),
                                               Blocks.DANDELION.getDefaultState(),
-                                              HibiscusBlocks.MARIGOLD.getDefaultState(),
-                                              HibiscusBlocks.LARGE_FLAXEN_FERN.getDefaultState(),
-                                              HibiscusBlocks.CARNATION.getDefaultState()
+                                              HibiscusBlocksAndItems.MARIGOLD.getDefaultState(),
+                                              HibiscusBlocksAndItems.LARGE_FLAXEN_FERN.getDefaultState(),
+                                              HibiscusBlocksAndItems.CARNATION.getDefaultState()
                                       )
                               ))
                       )
@@ -738,7 +736,7 @@ public class HibiscusConfiguredFeatures {
       );
 
       register(context, HUGE_SHIITAKE_MUSHROOM, HUGE_SHIITAKE_MUSHROOM_FEATURE, new HugeMushroomFeatureConfig(BlockStateProvider.of(
-              HibiscusBlocks.SHIITAKE_MUSHROOM_BLOCK.getDefaultState().with(
+              HibiscusBlocksAndItems.SHIITAKE_MUSHROOM_BLOCK.getDefaultState().with(
                       MushroomBlock.UP, true)
                       .with(MushroomBlock.DOWN, false)), BlockStateProvider.of(Blocks.MUSHROOM_STEM.getDefaultState().with(MushroomBlock.UP, false)
               .with(MushroomBlock.DOWN, false)), 2));
@@ -754,7 +752,7 @@ public class HibiscusConfiguredFeatures {
                                       0.030833334F,
                                       List.of(Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
                                               Blocks.OXEYE_DAISY.getDefaultState(),
-                                              HibiscusBlocks.CARNATION.getDefaultState(),
+                                              HibiscusBlocksAndItems.CARNATION.getDefaultState(),
                                               Blocks.ALLIUM.getDefaultState()
                                       )
                               ))
@@ -775,11 +773,11 @@ public class HibiscusConfiguredFeatures {
                                       List.of(Blocks.GRASS.getDefaultState(),
                                               Blocks.TALL_GRASS.getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
-                                              HibiscusBlocks.CARNATION.getDefaultState(),
+                                              HibiscusBlocksAndItems.CARNATION.getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
                                               Blocks.GRASS.getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
-                                              HibiscusBlocks.CARNATION.getDefaultState(),
+                                              HibiscusBlocksAndItems.CARNATION.getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
                                               Blocks.TALL_GRASS.getDefaultState(),
                                               Blocks.GRASS.getDefaultState()
@@ -792,11 +790,13 @@ public class HibiscusConfiguredFeatures {
       register(context,
               PATCH_SCORCHED_GRASS,
               Feature.RANDOM_PATCH,
-              new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.SCORCHED_GRASS)))));
+              new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(
+                      HibiscusBlocksAndItems.SCORCHED_GRASS)))));
       register(context,
               PATCH_TALL_SCORCHED_GRASS,
               Feature.RANDOM_PATCH,
-              new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.SCORCHED_GRASS)))));
+              new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(
+                      HibiscusBlocksAndItems.SCORCHED_GRASS)))));
 
 
       register(context,
@@ -809,17 +809,18 @@ public class HibiscusConfiguredFeatures {
                               new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
-                                      List.of(HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.TALL_SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.TALL_SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState()
+                                      List.of(
+                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocksAndItems.TALL_SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.PURPLE_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.PURPLE_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.TALL_SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState()
                                       )
                               ))
                       )
@@ -837,11 +838,11 @@ public class HibiscusConfiguredFeatures {
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
                                       List.of(
-                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.TALL_SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocks.PURPLE_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocks.SCORCHED_GRASS.getDefaultState()
+                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.TALL_SCORCHED_GRASS.getDefaultState(),
+                                              HibiscusBlocksAndItems.PURPLE_WILDFLOWER.getDefaultState(),
+                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState()
                                       )
                               ))
                       )
@@ -852,8 +853,9 @@ public class HibiscusConfiguredFeatures {
               CATTAILS,
               Feature.RANDOM_PATCH,
               new RandomPatchFeatureConfig(90, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                      new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.CATTAIL)),
-                      BlockPredicate.allOf(BlockPredicate.wouldSurvive(HibiscusBlocks.CATTAIL.getDefaultState(),
+                      new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocksAndItems.CATTAIL)),
+                      BlockPredicate.allOf(BlockPredicate.wouldSurvive(
+                                      HibiscusBlocksAndItems.CATTAIL.getDefaultState(),
                                       BlockPos.ORIGIN
                               ),
                               BlockPredicate.IS_AIR_OR_WATER,
@@ -897,7 +899,7 @@ public class HibiscusConfiguredFeatures {
               HIBISCUS_TURNIP_ROOT_FEATURE,
               new TurnipRootFeatureConfig(PlacedFeatures.createEntry(Feature.NO_BONEMEAL_FLOWER,
                       new RandomPatchFeatureConfig(30, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                              new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocks.DESERT_TURNIP_STEM.getDefaultState().with(
+                              new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocksAndItems.DESERT_TURNIP_STEM.getDefaultState().with(
                                       DesertPlantBlock.AGE, 7))),
                               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP)),
                       new PlacementModifier[0]
@@ -905,8 +907,8 @@ public class HibiscusConfiguredFeatures {
                       3,
                       3,
                       HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE,
-                      BlockStateProvider.of(HibiscusBlocks.DESERT_TURNIP_ROOT_BLOCK),
-                      BlockStateProvider.of(HibiscusBlocks.DESERT_TURNIP_BLOCK),
+                      BlockStateProvider.of(HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK),
+                      BlockStateProvider.of(HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK),
                       20,
                       20,
                       3,

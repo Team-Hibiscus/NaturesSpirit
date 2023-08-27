@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -25,21 +26,21 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock;
       Block vineBlock2;
 
-      if(this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusBlocks.BLUE_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.BLUE_WISTERIA_LEAVES) {
+         vineBlock = HibiscusWoods.BLUE_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.BLUE_WISTERIA_VINES_PLANT;
       }
-      else if(this.asBlock() == HibiscusBlocks.PINK_WISTERIA_LEAVES) {
-         vineBlock = HibiscusBlocks.PINK_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.PINK_WISTERIA_LEAVES) {
+         vineBlock = HibiscusWoods.PINK_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.PINK_WISTERIA_VINES_PLANT;
       }
-      else if(this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusBlocks.PURPLE_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.PURPLE_WISTERIA_LEAVES) {
+         vineBlock = HibiscusWoods.PURPLE_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT;
       }
       else {
-         vineBlock = HibiscusBlocks.WHITE_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
+         vineBlock = HibiscusWoods.WHITE_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
       }
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader,
               blockPos,
@@ -60,21 +61,21 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock;
       Block vineBlock2;
 
-      if(this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusBlocks.BLUE_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.BLUE_WISTERIA_LEAVES) {
+         vineBlock = HibiscusWoods.BLUE_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.BLUE_WISTERIA_VINES_PLANT;
       }
-      else if(this.asBlock() == HibiscusBlocks.PINK_WISTERIA_LEAVES) {
-         vineBlock = HibiscusBlocks.PINK_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.PINK_WISTERIA_LEAVES) {
+         vineBlock = HibiscusWoods.PINK_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.PINK_WISTERIA_VINES_PLANT;
       }
-      else if(this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusBlocks.PURPLE_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.PURPLE_WISTERIA_LEAVES) {
+         vineBlock = HibiscusWoods.PURPLE_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT;
       }
       else {
-         vineBlock = HibiscusBlocks.WHITE_WISTERIA_VINES;
-         vineBlock2 = HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
+         vineBlock = HibiscusWoods.WHITE_WISTERIA_VINES;
+         vineBlock2 = HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
       }
 
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel,

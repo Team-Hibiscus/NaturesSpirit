@@ -1,11 +1,6 @@
 package net.hibiscus.naturespirit.mixin;
 
-import com.google.common.collect.ImmutableMap;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
-import net.hibiscus.naturespirit.blocks.JoshuaTrunkBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
@@ -15,8 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Optional;
 
 @Debug(export = true) @Mixin(AxeItem.class) public class AxeItemMixin {
 

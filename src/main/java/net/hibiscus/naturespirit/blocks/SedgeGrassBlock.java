@@ -1,12 +1,11 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -54,7 +53,7 @@ public class SedgeGrassBlock extends FernBlock implements Waterloggable {
    }
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      TallPlantBlock tallPlantBlock = (TallPlantBlock)HibiscusBlocks.TALL_SEDGE_GRASS;
+      TallPlantBlock tallPlantBlock = (TallPlantBlock) HibiscusBlocksAndItems.TALL_SEDGE_GRASS;
       if (tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
          TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
       }

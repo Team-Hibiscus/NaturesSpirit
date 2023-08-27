@@ -8,7 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.WorldView;
 
-import static net.hibiscus.naturespirit.blocks.HibiscusBlocks.WILLOW_VINES;
+import static net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods.WILLOW_VINES;
 
 public class WillowVinePlant extends WisteriaVinePlant {
    public static final VoxelShape SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);

@@ -1,10 +1,11 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.google.common.collect.ImmutableList;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.YOffset;
@@ -20,12 +21,12 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule GRASS = makeStateRule(Blocks.GRASS_BLOCK);
    private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
    private static final MaterialRules.MaterialRule CALCITE = makeStateRule(Blocks.CALCITE);
-   private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(HibiscusBlocks.SANDY_SOIL);
+   private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(HibiscusBlocksAndItems.SANDY_SOIL);
    private static final MaterialRules.MaterialRule COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
-   private static final MaterialRules.MaterialRule WHITE_KAOLIN = makeStateRule(HibiscusBlocks.WHITE_KAOLIN);
-   private static final MaterialRules.MaterialRule WHITE_CHALK = makeStateRule(HibiscusBlocks.WHITE_CHALK);
-   private static final MaterialRules.MaterialRule LIGHT_GRAY_KAOLIN = makeStateRule(HibiscusBlocks.LIGHT_GRAY_KAOLIN);
-   private static final MaterialRules.MaterialRule YELLOW_KAOLIN = makeStateRule(HibiscusBlocks.YELLOW_KAOLIN);
+   private static final MaterialRules.MaterialRule WHITE_KAOLIN = makeStateRule(HibiscusColoredBlocks.WHITE_KAOLIN);
+   private static final MaterialRules.MaterialRule WHITE_CHALK = makeStateRule(HibiscusColoredBlocks.WHITE_CHALK);
+   private static final MaterialRules.MaterialRule LIGHT_GRAY_KAOLIN = makeStateRule(HibiscusColoredBlocks.LIGHT_GRAY_KAOLIN);
+   private static final MaterialRules.MaterialRule YELLOW_KAOLIN = makeStateRule(HibiscusColoredBlocks.YELLOW_KAOLIN);
 
    protected static MaterialRules.MaterialRule makeRules() {
       MaterialRules.MaterialCondition materialCondition = MaterialRules.aboveY(YOffset.fixed(256), 0);

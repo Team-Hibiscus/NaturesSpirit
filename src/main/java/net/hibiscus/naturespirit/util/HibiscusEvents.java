@@ -1,8 +1,8 @@
 package net.hibiscus.naturespirit.util;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
 import net.hibiscus.naturespirit.blocks.JoshuaTrunkBlock;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.tag.ItemTags;
@@ -18,15 +18,15 @@ public class HibiscusEvents {
       UseBlockCallback.EVENT.register(((player, world, hand, hitResult) -> {
          BlockPos blockPos = hitResult.getBlockPos();
          BlockState blockState = world.getBlockState(blockPos);
-         if(blockState.isOf(HibiscusBlocks.JOSHUA[0]) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
-            BlockState blockState2 = HibiscusBlocks.JOSHUA[1].getDefaultState()
-                    .with(JoshuaTrunkBlock.DOWN, blockState.get(JoshuaTrunkBlock.DOWN))
-                    .with(JoshuaTrunkBlock.UP, blockState.get(JoshuaTrunkBlock.UP))
-                    .with(JoshuaTrunkBlock.NORTH, blockState.get(JoshuaTrunkBlock.NORTH))
-                    .with(JoshuaTrunkBlock.SOUTH, blockState.get(JoshuaTrunkBlock.SOUTH))
-                    .with(JoshuaTrunkBlock.EAST, blockState.get(JoshuaTrunkBlock.EAST))
-                    .with(JoshuaTrunkBlock.WEST, blockState.get(JoshuaTrunkBlock.WEST))
-                    .with(JoshuaTrunkBlock.WATERLOGGED, blockState.get(JoshuaTrunkBlock.WATERLOGGED));
+         if(blockState.isOf(HibiscusWoods.JOSHUA[0]) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
+            BlockState blockState2 = HibiscusWoods.JOSHUA[1].getDefaultState()
+                                                            .with(JoshuaTrunkBlock.DOWN, blockState.get(JoshuaTrunkBlock.DOWN))
+                                                            .with(JoshuaTrunkBlock.UP, blockState.get(JoshuaTrunkBlock.UP))
+                                                            .with(JoshuaTrunkBlock.NORTH, blockState.get(JoshuaTrunkBlock.NORTH))
+                                                            .with(JoshuaTrunkBlock.SOUTH, blockState.get(JoshuaTrunkBlock.SOUTH))
+                                                            .with(JoshuaTrunkBlock.EAST, blockState.get(JoshuaTrunkBlock.EAST))
+                                                            .with(JoshuaTrunkBlock.WEST, blockState.get(JoshuaTrunkBlock.WEST))
+                                                            .with(JoshuaTrunkBlock.WATERLOGGED, blockState.get(JoshuaTrunkBlock.WATERLOGGED));
             world.playSound(player, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if (player instanceof ServerPlayerEntity) {
                Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)player, blockPos, player.getStackInHand(hand));

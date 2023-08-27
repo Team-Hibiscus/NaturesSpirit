@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.VineLogic;
 import net.minecraft.util.math.random.Random;
@@ -19,6 +20,6 @@ public class WillowVine extends WisteriaVine {
    }
 
    public Block getPlant() {
-      return HibiscusBlocks.WILLOW_VINES_PLANT;
+      return HibiscusWoods.WILLOW_VINES_PLANT;
    }
 }

@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -24,17 +25,17 @@ public class WisteriaVine extends AbstractPlantStemBlock {
    }
 
    public Block getPlant() {
-      if(this.asBlock() == HibiscusBlocks.BLUE_WISTERIA_VINES) {
-         return HibiscusBlocks.BLUE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.BLUE_WISTERIA_VINES) {
+         return HibiscusWoods.BLUE_WISTERIA_VINES_PLANT;
       }
-      if(this.asBlock() == HibiscusBlocks.PINK_WISTERIA_VINES) {
-         return HibiscusBlocks.PINK_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.PINK_WISTERIA_VINES) {
+         return HibiscusWoods.PINK_WISTERIA_VINES_PLANT;
       }
-      if(this.asBlock() == HibiscusBlocks.PURPLE_WISTERIA_VINES) {
-         return HibiscusBlocks.PURPLE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.PURPLE_WISTERIA_VINES) {
+         return HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT;
       }
       else {
-         return HibiscusBlocks.WHITE_WISTERIA_VINES_PLANT;
+         return HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
       }
    }
 

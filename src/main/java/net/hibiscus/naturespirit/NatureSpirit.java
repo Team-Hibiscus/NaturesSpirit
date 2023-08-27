@@ -3,16 +3,13 @@ package net.hibiscus.naturespirit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
-import net.hibiscus.naturespirit.blocks.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.entity.HibiscusEntityTypes;
+import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
-import net.hibiscus.naturespirit.items.HibiscusItemGroups;
+import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.mixin.*;
-import net.hibiscus.naturespirit.terrablender.HibiscusBiomes;
+import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
@@ -22,7 +19,6 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.stat.StatFormatter;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,14 +45,14 @@ public class NatureSpirit implements ModInitializer {
       );
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
-      HibiscusBlocks.registerHibiscusBlocks();
+      HibiscusBlocksAndItems.registerHibiscusBlocks();
       HibiscusEvents.registerEvents();
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
 
-      CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.DESERT_TURNIP_BLOCK, 0.5F);
-      CompostingChanceRegistry.INSTANCE.add(HibiscusBlocks.DESERT_TURNIP_ROOT_BLOCK, 0.4F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK, 0.5F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK, 0.4F);
 
       for (HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          DispenserBlock.registerBehavior(boat.boat(), new HibiscusBoatDispensorBehavior(boat, false));

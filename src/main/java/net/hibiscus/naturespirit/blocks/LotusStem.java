@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.*;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -13,7 +13,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -45,7 +44,7 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    }
 
    protected AbstractPlantStemBlock getStem() {
-      return (AbstractPlantStemBlock) HibiscusBlocks.BLUE_WISTERIA_VINES;
+      return (AbstractPlantStemBlock) HibiscusWoods.BLUE_WISTERIA_VINES;
    }
 
    @Nullable public BlockState getPlacementState(ItemPlacementContext ctx) {

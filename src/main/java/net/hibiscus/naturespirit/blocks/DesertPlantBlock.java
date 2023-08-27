@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
@@ -17,7 +18,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 import java.util.function.Supplier;
@@ -72,7 +72,7 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
       super(settings);
       this.rootBlock = rootBlock;
       this.vegetableBlock = vegetableBlock;
-      this.pickBlockItem = () -> HibiscusBlocks.DESERT_TURNIP;
+      this.pickBlockItem = () -> HibiscusBlocksAndItems.DESERT_TURNIP;
       this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(AGE, 0));
    }
 
