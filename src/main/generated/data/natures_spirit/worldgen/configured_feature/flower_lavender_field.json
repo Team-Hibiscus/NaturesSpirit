@@ -16,17 +16,12 @@
             "scale": 0.030833334,
             "seed": 2445,
             "states": [
-              {
-                "Name": "minecraft:lilac",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
+
               {
                 "Name": "natures_spirit:anemone"
               },
               {
-                "Name": "natures_spirit:gardenia",
+                "Name": "natures_spirit:foxglove",
                 "Properties": {
                   "half": "lower"
                 }
@@ -38,10 +33,19 @@
                 }
               },
               {
-                "Name": "minecraft:peony",
+                "Name": "natures_spirit:lavender",
                 "Properties": {
                   "half": "lower"
                 }
+              },
+              {
+                "Name": "natures_spirit:foxglove",
+                "Properties": {
+                  "half": "lower"
+                }
+              },
+              {
+                "Name": "natures_spirit:anemone"
               }
             ]
           }

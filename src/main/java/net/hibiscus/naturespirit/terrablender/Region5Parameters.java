@@ -104,7 +104,7 @@ public class Region5Parameters {
                       BiomeKeys.TAIGA
               },
               {
-                      HibiscusBiomes.LAVENDER_FIELDS,
+                      BiomeKeys.FLOWER_FOREST,
                       BiomeKeys.PLAINS,
                       BiomeKeys.FOREST,
                       BiomeKeys.BIRCH_FOREST,
@@ -129,16 +129,16 @@ public class Region5Parameters {
               {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null},
               {null, null, null, null, BiomeKeys.OLD_GROWTH_PINE_TAIGA},
               {
-                      HibiscusBiomes.FOXGLOVE_FIELDS,
+                      null,
                       null,
                       null,
                       null,
                       null
               },
               {
-                      null,
+                     null,
+                      HibiscusBiomes.LAVENDER_FIELDS,
                       HibiscusBiomes.CARNATION_FIELDS,
-                      null,
                       BiomeKeys.FOREST,
                       BiomeKeys.BAMBOO_JUNGLE
               },

@@ -225,7 +225,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               FLOWER_LAVENDER_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_LAVENDER_FIELD),
-              CountPlacementModifier.of(5),
+              CountPlacementModifier.of(8),
               RarityFilterPlacementModifier.of(2),
               SquarePlacementModifier.of(),
               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,

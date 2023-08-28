@@ -424,13 +424,13 @@ public class HibiscusWoods {
    );
    public static final Block WHITE_WISTERIA_VINES_PLANT = registerPlantBlock("white_wisteria_vines_plant",
            new WisteriaVinePlant(FabricBlockSettings.create()
-                                                    .mapColor(MapColor.TERRACOTTA_WHITE)
-                                                    .pistonBehavior(PistonBehavior.DESTROY)
-                                                    .noCollision()
-                                                    .nonOpaque()
-                                                    .breakInstantly()
-                                                    .sounds(BlockSoundGroup.WEEPING_VINES)
-                                                    .dropsLike(WHITE_WISTERIA_VINES), WHITE_WISTERIA_VINES)
+                   .mapColor(MapColor.TERRACOTTA_WHITE)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .noCollision()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.WEEPING_VINES)
+                   .dropsLike(WHITE_WISTERIA_VINES), WHITE_WISTERIA_VINES)
    );
 
    private static Block[] getPreviousVanillaWood() {
