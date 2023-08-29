@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+//import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -570,7 +571,6 @@ public class HibiscusRegistryHelper {
    public static Block registerPlantBlockWithoutItem(String name, Block block, float compost) {
       Block Plant = registerBlock(name, block);
       BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
-      CompostingChanceRegistry.INSTANCE.add(block.asItem(), compost);
       return Plant;
    }
 
