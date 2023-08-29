@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "natures_spirit",
-  "version": "${version}",
+  "version": "1.0",
   "name": "Nature's Spirit",
   "description": "A mod which enhances the environment of Minecraft.",
   "authors": [
@@ -9,7 +9,7 @@
   ],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/naturespirit/icon.png",
+  "icon": "assets/natures_spirit/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [

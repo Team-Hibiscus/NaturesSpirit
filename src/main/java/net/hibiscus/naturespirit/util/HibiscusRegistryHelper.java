@@ -132,7 +132,7 @@ public class HibiscusRegistryHelper {
       Array[12] = registerBlock(name + "_button",
               new ButtonBlock(FabricBlockSettings.create()
                       .mapColor(topMaterialColor)
-                      .strength(0.5F)
+                      .strength(0.5F).noCollision()
                       .sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
@@ -301,7 +301,7 @@ public class HibiscusRegistryHelper {
       );
       Array[10] = registerBlock(name + "_button",
               new ButtonBlock(FabricBlockSettings.create()
-                      .mapColor(topMaterialColor)
+                      .mapColor(topMaterialColor).noCollision()
                       .strength(0.5F)
                       .sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
