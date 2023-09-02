@@ -3,6 +3,9 @@
   "values": [
     "#natures_spirit:kaolin",
     "#natures_spirit:kaolin_stairs",
-    "#natures_spirit:kaolin_slabs"
+    "#natures_spirit:kaolin_slabs",
+    "#natures_spirit:chalk",
+    "#natures_spirit:chalk_stairs",
+    "#natures_spirit:chalk_slabs"
   ]
 }

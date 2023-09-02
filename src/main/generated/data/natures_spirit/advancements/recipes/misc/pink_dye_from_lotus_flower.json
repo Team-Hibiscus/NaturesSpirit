@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_air": {
+    "has_lotus_flower": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "natures_spirit:lotus_flower"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye_from_air"
+        "recipe": "minecraft:pink_dye_from_lotus_flower"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_air",
+      "has_lotus_flower",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye_from_air"
+      "minecraft:pink_dye_from_lotus_flower"
     ]
   },
   "sends_telemetry_event": false

@@ -104,7 +104,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private static final LootCondition.Builder WITH_SILK_TOUCH_OR_SHEARS = WITH_SHEARS.or(WITH_SILK_TOUCH);
       private static final LootCondition.Builder WITHOUT_SILK_TOUCH_NOR_SHEARS = WITH_SILK_TOUCH_OR_SHEARS.invert();
       private final HashMap <Identifier, LootTable.Builder> map = new HashMap();
-      private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.08333333336F, 0.1F, 0.133333F, 0.1625F};
+      private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.4F, 0.4333333333F, 0.5025F, 0.5888F};
 
       protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
          super(dataOutput);
