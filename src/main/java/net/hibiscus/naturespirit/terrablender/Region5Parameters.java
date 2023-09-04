@@ -77,7 +77,7 @@ public class Region5Parameters {
               }, {
                       BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
-                      BiomeKeys.SAVANNA, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.JUNGLE
+              HibiscusBiomes.LAVENDER_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.JUNGLE
               }, {
                       BiomeKeys.DESERT, BiomeKeys.DESERT, HibiscusBiomes.LIVELY_DUNES, HibiscusBiomes.LIVELY_DUNES, HibiscusBiomes.LIVELY_DUNES
               }
@@ -86,7 +86,7 @@ public class Region5Parameters {
               {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, null, null, BiomeKeys.OLD_GROWTH_PINE_TAIGA}, {
               null, null, null, null, null
       }, {
-                      null, HibiscusBiomes.LAVENDER_FIELDS, HibiscusBiomes.CARNATION_FIELDS, BiomeKeys.FOREST, BiomeKeys.BAMBOO_JUNGLE
+              HibiscusBiomes.CARNATION_FIELDS, null, null, null, BiomeKeys.BAMBOO_JUNGLE
               }, {null, null, null, HibiscusBiomes.BLOOMING_DUNES, HibiscusBiomes.BLOOMING_DUNES}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
@@ -97,7 +97,7 @@ public class Region5Parameters {
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
-                      BiomeKeys.SAVANNA_PLATEAU, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.FOREST, BiomeKeys.JUNGLE
+                      null, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.FOREST, BiomeKeys.JUNGLE
               }, {
                       BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.WOODED_BADLANDS, BiomeKeys.WOODED_BADLANDS
               }
