@@ -97,7 +97,7 @@ public class Region5Parameters {
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
-                      null, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.FOREST, BiomeKeys.JUNGLE
+                      HibiscusBiomes.LAVENDER_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.FOREST, BiomeKeys.JUNGLE
               }, {
                       BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.WOODED_BADLANDS, BiomeKeys.WOODED_BADLANDS
               }
@@ -108,7 +108,7 @@ public class Region5Parameters {
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {
-                      null, null, null, null, BiomeKeys.FOREST
+                      HibiscusBiomes.CARNATION_FIELDS, null, null, null, BiomeKeys.FOREST
               }, {
                       BiomeKeys.ERODED_BADLANDS, BiomeKeys.ERODED_BADLANDS, null, null, null
               }

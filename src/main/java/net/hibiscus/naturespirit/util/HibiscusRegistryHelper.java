@@ -35,6 +35,7 @@ public class HibiscusRegistryHelper {
    public static HashMap <String, Block[]> WoodHashMap = new HashMap <>();
    public static HashMap <String, Block[]> SaplingHashMap = new HashMap <>();
    public static HashMap <String, Block> LeavesHashMap = new HashMap <>();
+   public static HashMap <String, Block> RenderLayerHashMap = new HashMap <>();
 
    private static Boolean canSpawnUponLeaves(BlockState state, BlockView world, BlockPos pos, EntityType <?> type) {
       return type == EntityType.OCELOT || type == EntityType.PARROT;
@@ -150,8 +151,8 @@ public class HibiscusRegistryHelper {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, Array[2]));
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15], Array[13].asItem(), Array[15].asItem()));
 
-      BlockRenderLayerMap.INSTANCE.putBlock(Array[7], RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(Array[8], RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_door", Array[7]);
+      RenderLayerHashMap.put(name + "_trapdoor", Array[8]);
 
       StrippableBlockRegistry.register(Array[0], Array[1]);
       StrippableBlockRegistry.register(Array[2], Array[3]);
@@ -260,8 +261,8 @@ public class HibiscusRegistryHelper {
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, Array[2]));
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15], Array[11].asItem(), Array[13].asItem()));
 
-      BlockRenderLayerMap.INSTANCE.putBlock(Array[5], RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(Array[6], RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_door", Array[5]);
+      RenderLayerHashMap.put(name + "_trapdoor", Array[6]);
 
       FlammableBlockRegistry.getDefaultInstance().add(Array[0], 5, 5);
       FlammableBlockRegistry.getDefaultInstance().add(Array[1], 5, 5);
@@ -296,7 +297,7 @@ public class HibiscusRegistryHelper {
                       .solidBlock(HibiscusRegistryHelper::never)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_leaves", Leaves);
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Leaves.asItem()));
@@ -321,7 +322,7 @@ public class HibiscusRegistryHelper {
                       .solidBlock(HibiscusRegistryHelper::never), particle),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_leaves", Leaves);
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Leaves.asItem()));
@@ -365,7 +366,7 @@ public class HibiscusRegistryHelper {
                  .pistonBehavior(PistonBehavior.DESTROY)
                  .solidBlock(HibiscusRegistryHelper::never)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       }
-      BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_leaves", Leaves);
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Leaves.asItem()));
@@ -376,7 +377,7 @@ public class HibiscusRegistryHelper {
    public static Block[] registerSapling(String name, SaplingGenerator saplingGenerator, Block blockBefore) {
       Block[] Plant = new Block[2];
       Plant[0] = registerBlock(name + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
-      BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_sapling", Plant[0]);
       Plant[1] = registerPottedPlant(name + "_sapling", Plant[0]);
       CompostingChanceRegistry.INSTANCE.add(Plant[0], 0.3F);
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Plant[0].asItem()));
@@ -387,7 +388,7 @@ public class HibiscusRegistryHelper {
    public static Block[] registerJoshuaSapling(String name, SaplingGenerator saplingGenerator, Block blockBefore) {
       Block[] Plant = new Block[2];
       Plant[0] = registerBlock(name + "_sapling", new JoshuaSapling(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
-      BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderLayer.getCutout());
+      RenderLayerHashMap.put(name + "_sapling", Plant[0]);
       Plant[1] = registerPottedPlant(name + "_sapling", Plant[0]);
       CompostingChanceRegistry.INSTANCE.add(Plant[0], 0.3F);
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Plant[0].asItem()));
@@ -397,7 +398,7 @@ public class HibiscusRegistryHelper {
 
    public static Block registerPottedPlant(String name, Block plant) {
       Block pottedPlant = registerBlock("potted_" + name, new FlowerPotBlock(plant, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
-      BlockRenderLayerMap.INSTANCE.putBlock(pottedPlant, RenderLayer.getCutout());
+      RenderLayerHashMap.put("potted_" + name, pottedPlant);
       return pottedPlant;
    }
 
@@ -418,27 +419,27 @@ public class HibiscusRegistryHelper {
 
    public static Block registerSecondaryDoorBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore) {
       Block block1 = Registry.register(Registries.BLOCK, new Identifier(NatureSpirit.MOD_ID, name), block);
-      BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name, block1);
       registerBlockItem(name, block, tab, blockBefore, ItemGroups.BUILDING_BLOCKS);
       return block1;
    }
 
    public static Block registerPlantBlock(String name, Block block) {
       Block Plant = registerBlock(name, block);
-      BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name, block);
       return Plant;
    }
 
    public static Block registerPlantBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, float compost) {
       Block Plant = registerBlock(name, block, tab, blockBefore, ItemGroups.NATURAL);
-      BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name, block);
       CompostingChanceRegistry.INSTANCE.add(block, compost);
       return Plant;
    }
 
    public static Block registerPlantBlockWithoutItem(String name, Block block, float compost) {
       Block Plant = registerBlock(name, block);
-      BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+      RenderLayerHashMap.put(name, block);
       return Plant;
    }
 

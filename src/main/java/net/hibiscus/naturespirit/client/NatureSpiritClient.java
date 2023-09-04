@@ -11,6 +11,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -67,6 +69,9 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          registerBoatModel(true, boat);
          registerBoatModel(false, boat);
+      }
+      for(Block block : HibiscusRegistryHelper.RenderLayerHashMap.values()) {
+         BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
       }
 
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderLayer.getCutout());
