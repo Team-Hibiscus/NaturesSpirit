@@ -51,7 +51,7 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
       return world.getBlockState(pos).isOf(Blocks.PODZOL) || world.getBlockState(pos).isIn(BlockTags.DIRT) && !world.getBlockState(pos).isOf(Blocks.GRASS_BLOCK);
    }
    public static boolean isDirt(BlockPos pos, ServerWorld world) {
-      return world.getBlockState(pos).isOf(Blocks.COARSE_DIRT);
+      return world.getBlockState(pos).isOf(Blocks.COARSE_DIRT) || world.getBlockState(pos).isOf(Blocks.GRAVEL);
    }
 
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
