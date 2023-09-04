@@ -37,10 +37,10 @@ public class HugeShiitakeMushroomFeature extends HugeMushroomFeature {
                   mutable.set(start, l, i, m); //-radius, y. positive radius (corner)
                   if(!world.getBlockState(mutable).isOpaqueFullCube(world, mutable)) {
                      BlockState blockState = config.capProvider.get(random, start);
-                     if(blockState.contains(MushroomBlock.WEST) && blockState.contains(MushroomBlock.EAST) && blockState.contains(
-                             MushroomBlock.NORTH) && blockState.contains(MushroomBlock.SOUTH) && blockState.contains(
+                     if(blockState.contains(MushroomBlock.WEST) && blockState.contains(MushroomBlock.EAST) && blockState.contains(MushroomBlock.NORTH) && blockState.contains(MushroomBlock.SOUTH) && blockState.contains(
                              MushroomBlock.UP)) {
-                        blockState = blockState.with(MushroomBlock.UP, i >= y - 1)
+                        blockState = blockState
+                                .with(MushroomBlock.UP, i >= y - 1)
                                 .with(MushroomBlock.WEST, l < -k)
                                 .with(MushroomBlock.EAST, l > k)
                                 .with(MushroomBlock.NORTH, m < -k)
@@ -55,20 +55,23 @@ public class HugeShiitakeMushroomFeature extends HugeMushroomFeature {
       }
 
    }
+
    protected boolean canGenerate(WorldAccess world, BlockPos pos, int height, Mutable mutablePos, HugeMushroomFeatureConfig config) {
       int i = pos.getY();
-      if (i >= world.getBottomY() + 1 && i + height + 1 < world.getTopY()) {
+      if(i >= world.getBottomY() + 1 && i + height + 1 < world.getTopY()) {
          BlockState blockState = world.getBlockState(pos.down());
-         if (!isSoil(blockState) && !blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK)) {
+         if(!isSoil(blockState) && !blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK)) {
             return false;
-         } else {
+         }
+         else {
             for(int j = 0; j <= height; ++j) {
                int k = this.getCapSize(-1, -1, config.foliageRadius, j);
             }
 
             return true;
          }
-      } else {
+      }
+      else {
          return false;
       }
    }

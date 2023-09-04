@@ -25,7 +25,8 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
    private static final double RIM_SPAWN_CHANCE = 0.9D;
 
    static {
-      CANNOT_REPLACE = ImmutableList.of(Blocks.BEDROCK,
+      CANNOT_REPLACE = ImmutableList.of(
+              Blocks.BEDROCK,
               Blocks.NETHER_BRICKS,
               Blocks.NETHER_BRICK_FENCE,
               Blocks.NETHER_BRICK_STAIRS,

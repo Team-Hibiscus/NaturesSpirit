@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "natures_spirit:block/tall_frigid_grass_top"
+  }
+}

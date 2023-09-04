@@ -12,6 +12,7 @@ public class JoshuaSapling extends SaplingBlock {
    public JoshuaSapling(SaplingGenerator generator, Settings settings) {
       super(generator, settings);
    }
+
    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
       return floor.isOf(Blocks.FARMLAND) || floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
    }

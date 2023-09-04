@@ -21,8 +21,7 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       super(properties);
    }
 
-   @Override
-   public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
+   @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
       Block vineBlock;
       Block vineBlock2;
 
@@ -42,14 +41,8 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
          vineBlock = HibiscusWoods.WHITE_WISTERIA_VINES;
          vineBlock2 = HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
       }
-      Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader,
-              blockPos,
-              vineBlock2,
-              Direction.DOWN,
-              vineBlock
-      );
-      return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN))
-              .isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
+      Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader, blockPos, vineBlock2, Direction.DOWN, vineBlock);
+      return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN)).isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
    }
 
 
@@ -78,12 +71,7 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
          vineBlock2 = HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
       }
 
-      Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel,
-              blockPos,
-              vineBlock2,
-              Direction.DOWN,
-              vineBlock
-      );
+      Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel, blockPos, vineBlock2, Direction.DOWN, vineBlock);
       if(optional.isPresent()) {
          BlockState blockState2 = serverLevel.getBlockState(optional.get());
          ((WisteriaVine) blockState2.getBlock()).grow(serverLevel, randomSource, optional.get(), blockState2);

@@ -74,9 +74,7 @@ public class DoubleTallPorcelainPotBlock extends Block {
    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
       ItemStack itemStack = player.getStackInHand(hand);
       Item item = itemStack.getItem();
-      BlockState blockState = (item instanceof BlockItem ? CONTENT_TO_POTTED.getOrDefault(((BlockItem) item).getBlock(),
-              Blocks.AIR
-      ) : Blocks.AIR).getDefaultState();
+      BlockState blockState = (item instanceof BlockItem ? CONTENT_TO_POTTED.getOrDefault(((BlockItem) item).getBlock(), Blocks.AIR) : Blocks.AIR).getDefaultState();
       boolean bl = blockState.isOf(Blocks.AIR);
       boolean bl2 = this.isEmpty();
       if(bl != bl2 && bl2 && pos.getY() < world.getTopY() - 1 && world.getBlockState(pos.up()) == Blocks.AIR.getDefaultState()) {
@@ -161,14 +159,11 @@ public class DoubleTallPorcelainPotBlock extends Block {
 
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
       DoubleBlockHalf doubleBlockHalf = state.get(HALF);
-      if(direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.LOWER == (direction == Direction.UP) && ((!neighborState.isOf(
-              this) || neighborState.get(HALF) == doubleBlockHalf) && this.getContent() != Blocks.AIR)) {
+      if(direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.LOWER == (direction == Direction.UP) && ((!neighborState.isOf(this) || neighborState.get(HALF) == doubleBlockHalf) && this.getContent() != Blocks.AIR)) {
          return Blocks.AIR.getDefaultState();
       }
       else {
-         return doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world,
-                 pos
-         ) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state,
+         return doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state,
                  direction,
                  neighborState,
                  world,

@@ -8,7 +8,6 @@ package net.hibiscus.naturespirit.world.feature.trunk;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -33,10 +32,9 @@ import java.util.function.BiConsumer;
 
 public class OliveTrunkPlacer extends TrunkPlacer {
    public static final Codec <OliveTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-      return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps")
-              .forGetter((trunkPlacer) -> {
-                 return trunkPlacer.extraBranchSteps;
-              }), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> {
+      return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> {
+         return trunkPlacer.extraBranchSteps;
+      }), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> {
          return trunkPlacer.placeBranchPerLogProbability;
       }), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> {
          return trunkPlacer.extraBranchLength;
@@ -87,12 +85,7 @@ public class OliveTrunkPlacer extends TrunkPlacer {
          if(bl && i == 2 && !bl3) {
             this.getAndSetState(world, replacer, random, mutablePos1, config);
          }
-         if(this.getAndSetState(world,
-                 replacer,
-                 random,
-                 blockPos,
-                 config
-         ) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
+         if(this.getAndSetState(world, replacer, random, blockPos, config) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
             int k = this.extraBranchLength.get(random);
             int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
             int m = height + i - 7;
@@ -100,34 +93,10 @@ public class OliveTrunkPlacer extends TrunkPlacer {
                this.generateExtraBranch(world, replacer, random, height, config, list, blockPos, j, direction, l, m, i);
 
                if(random.nextFloat() < this.placeBranchPerLogProbability - 0.65) {
-                  this.generateExtraBranch(world,
-                          replacer,
-                          random,
-                          height,
-                          config,
-                          list,
-                          blockPos,
-                          j,
-                          direction2,
-                          l,
-                          Math.round(m / 2),
-                          i
-                  );
+                  this.generateExtraBranch(world, replacer, random, height, config, list, blockPos, j, direction2, l, Math.round(m / 2), i);
                }
                if(random.nextFloat() < this.placeBranchPerLogProbability - 0.85) {
-                  this.generateExtraBranch(world,
-                          replacer,
-                          random,
-                          height,
-                          config,
-                          list,
-                          blockPos,
-                          j,
-                          direction3,
-                          l,
-                          Math.round(m / 2),
-                          i
-                  );
+                  this.generateExtraBranch(world, replacer, random, height, config, list, blockPos, j, direction3, l, Math.round(m / 2), i);
                }
             }
          }
@@ -143,74 +112,25 @@ public class OliveTrunkPlacer extends TrunkPlacer {
             Direction direction3 = Type.HORIZONTAL.random(random);
 
             Mutable mutablePos1 = mutable2.set(startPos.getX(), j, startPos.getZ());
-            BlockPos pos2 = mutablePos1.offset(trunkOffset.getOpposite())
-                    .offset(randomInt2 < 0 ? Direction.UP : Direction.DOWN, randomInt2);
+            BlockPos pos2 = mutablePos1.offset(trunkOffset.getOpposite()).offset(randomInt2 < 0 ? Direction.UP : Direction.DOWN, randomInt2);
             BlockPos pos3 = pos2.offset(trunkOffset2.getOpposite());
-            BlockPos blockPos = i >= 2 ? bl2 && trunkOffset.getOpposite() != trunkOffset2.getOpposite() ? pos3 : pos2 : mutablePos1.offset(randomInt2 < 0 ? Direction.UP : Direction.DOWN,
-                    randomInt2
-            );
+            BlockPos blockPos = i >= 2 ? bl2 && trunkOffset.getOpposite() != trunkOffset2.getOpposite() ? pos3 : pos2 : mutablePos1.offset(randomInt2 < 0 ? Direction.UP : Direction.DOWN, randomInt2);
 
             if(i == 2) {
-               this.getAndSetState(world,
-                       replacer,
-                       random,
-                       mutablePos1.offset(randomInt2 < 0 ? Direction.UP : Direction.DOWN, randomInt2),
-                       config
-               );
+               this.getAndSetState(world, replacer, random, mutablePos1.offset(randomInt2 < 0 ? Direction.UP : Direction.DOWN, randomInt2), config);
             }
-            if(this.getAndSetState(world,
-                    replacer,
-                    random,
-                    blockPos,
-                    config
-            ) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
+            if(this.getAndSetState(world, replacer, random, blockPos, config) && i < height - 1 && random.nextFloat() < this.placeBranchPerLogProbability) {
                int k = this.extraBranchLength.get(random);
                int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
                int m = height + i - 7;
                if(i > 2) {
-                  this.generateExtraBranch(world,
-                          replacer,
-                          random,
-                          height,
-                          config,
-                          list,
-                          blockPos,
-                          j,
-                          direction,
-                          l,
-                          m,
-                          i
-                  );
+                  this.generateExtraBranch(world, replacer, random, height, config, list, blockPos, j, direction, l, m, i);
 
                   if(random.nextFloat() < this.placeBranchPerLogProbability - 0.65) {
-                     this.generateExtraBranch(world,
-                             replacer,
-                             random,
-                             height,
-                             config,
-                             list,
-                             blockPos,
-                             j,
-                             direction2,
-                             l,
-                             Math.round(m / 2),
-                             i
-                     );
+                     this.generateExtraBranch(world, replacer, random, height, config, list, blockPos, j, direction2, l, Math.round(m / 2), i);
                   }
                   if(random.nextFloat() < this.placeBranchPerLogProbability - 0.85) {
-                     this.generateExtraBranch(world,
-                             replacer,
-                             random,
-                             height,
-                             config,
-                             list,
-                             blockPos,
-                             j,
-                             direction3,
-                             l,
-                             Math.round(m / 2),
-                             i
-                     );
+                     this.generateExtraBranch(world, replacer, random, height, config, list, blockPos, j, direction3, l, Math.round(m / 2), i);
                   }
                }
             }

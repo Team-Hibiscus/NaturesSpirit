@@ -84,10 +84,8 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> JOSHUA_PLACED = registerKey("joshua_placed");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_PLACED = registerKey("oak_bush_placed");
-   public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = registerKey(
-           "custom_fancy_oak_tree_placed");
-   public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE2_PLACED = registerKey(
-           "custom_fancy_oak_tree2_placed");
+   public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = registerKey("custom_fancy_oak_tree_placed");
+   public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE2_PLACED = registerKey("custom_fancy_oak_tree2_placed");
    public static final RegistryKey <PlacedFeature> CATTAILS = registerKey("cattails_placed");
    public static final RegistryKey <PlacedFeature> LOTUS_PLANT_PLACED = registerKey("lotus_plant_placed");
    public static final RegistryKey <PlacedFeature> ROOTED_DESERT_TURNIP = registerKey("rooted_desert_turnip_placed");
@@ -103,16 +101,8 @@ public class HibiscusPlacedFeatures {
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE),
               List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD_SAPLING[0]))
       );
-      registerKey(context,
-              REDWOOD_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD_SAPLING[0])
-      );
-      registerKey(context,
-              ASPEN_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ASPEN_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.ASPEN_SAPLING[0])
-      );
+      registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD_SAPLING[0]));
+      registerKey(context, ASPEN_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ASPEN_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.ASPEN_SAPLING[0]));
       registerKey(context,
               ASPEN_BEES_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ASPEN_TREE_BEES),
@@ -133,26 +123,10 @@ public class HibiscusPlacedFeatures {
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.YELLOW_MAPLE_TREE),
               PlacedFeatures.wouldSurvive(HibiscusWoods.YELLOW_MAPLE_SAPLING[0])
       );
-      registerKey(context,
-              CYPRESS_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CYPRESS_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.CYPRESS_SAPLING[0])
-      );
-      registerKey(context,
-              JOSHUA_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA_SAPLING[0])
-      );
-      registerKey(context,
-              FIR_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FIR_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.FIR_SAPLING[0])
-      );
-      registerKey(context,
-              WILLOW_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW_SAPLING[0])
-      );
+      registerKey(context, CYPRESS_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CYPRESS_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.CYPRESS_SAPLING[0]));
+      registerKey(context, JOSHUA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA_SAPLING[0]));
+      registerKey(context, FIR_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FIR_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.FIR_SAPLING[0]));
+      registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW_SAPLING[0]));
       registerKey(context,
               WHITE_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE),
@@ -173,27 +147,11 @@ public class HibiscusPlacedFeatures {
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PURPLE_WISTERIA_TREE),
               PlacedFeatures.wouldSurvive(HibiscusWoods.PURPLE_WISTERIA_SAPLING[0])
       );
-      registerKey(context,
-              SUGI_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SUGI_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.SUGI_SAPLING[0])
-      );
-      registerKey(context,
-              OLIVE_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.OLIVE_SAPLING[0])
-      );
+      registerKey(context, SUGI_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SUGI_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.SUGI_SAPLING[0]));
+      registerKey(context, OLIVE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.OLIVE_SAPLING[0]));
 
-      registerKey(context,
-              OAK_BUSH_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH),
-              PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING)
-      );
-      registerKey(context,
-              SPRUCE_BUSH_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH),
-              PlacedFeatures.wouldSurvive(Blocks.SPRUCE_SAPLING)
-      );
+      registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH), PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING));
+      registerKey(context, SPRUCE_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH), PlacedFeatures.wouldSurvive(Blocks.SPRUCE_SAPLING));
 
       registerKey(context,
               FLOWER_WISTERIA_PLACED,
@@ -345,24 +303,9 @@ public class HibiscusPlacedFeatures {
               CountMultilayerPlacementModifier.of(12),
               BiomePlacementModifier.of()
       );
-      registerKey(context,
-              SWAMP_WATER,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SWAMP_DELTA),
-              CountMultilayerPlacementModifier.of(10),
-              BiomePlacementModifier.of()
-      );
-      registerKey(context,
-              MARSH_WATER,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MARSH_DELTA),
-              CountMultilayerPlacementModifier.of(20),
-              BiomePlacementModifier.of()
-      );
-      registerKey(context,
-              RIVER_WATER,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.RIVER_DELTA),
-              CountMultilayerPlacementModifier.of(20),
-              BiomePlacementModifier.of()
-      );
+      registerKey(context, SWAMP_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SWAMP_DELTA), CountMultilayerPlacementModifier.of(10), BiomePlacementModifier.of());
+      registerKey(context, MARSH_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MARSH_DELTA), CountMultilayerPlacementModifier.of(20), BiomePlacementModifier.of());
+      registerKey(context, RIVER_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.RIVER_DELTA), CountMultilayerPlacementModifier.of(20), BiomePlacementModifier.of());
 
       registerKey(context,
               LARGE_REDWOOD_PLACED,

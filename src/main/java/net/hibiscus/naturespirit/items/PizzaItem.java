@@ -80,8 +80,7 @@ public class PizzaItem extends AliasedBlockItem {
       toppingStrings[8] = "rabbit_topping";
       for(int i = 0; i < toppingBooleans.length; ++i) {
          if(toppingBooleans[i].equals("true")) {
-            tooltip.add(Text.translatable("block.natures_spirit.pizza." + toppingStrings[i])
-                    .formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("block.natures_spirit.pizza." + toppingStrings[i]).formatted(Formatting.GRAY));
          }
       }
    }

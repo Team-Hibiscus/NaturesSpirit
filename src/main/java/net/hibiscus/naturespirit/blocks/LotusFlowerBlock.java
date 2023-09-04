@@ -24,7 +24,7 @@ public class LotusFlowerBlock extends PlantBlock {
 
    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
       super.onEntityCollision(state, world, pos, entity);
-      if (world instanceof ServerWorld && entity instanceof BoatEntity) {
+      if(world instanceof ServerWorld && entity instanceof BoatEntity) {
          world.breakBlock(new BlockPos(pos), true, entity);
       }
 
@@ -33,6 +33,7 @@ public class LotusFlowerBlock extends PlantBlock {
    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
       return new ItemStack(HibiscusBlocksAndItems.LOTUS_FLOWER_ITEM);
    }
+
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
       return SHAPE;
    }

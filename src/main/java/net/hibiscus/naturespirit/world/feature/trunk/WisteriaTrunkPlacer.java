@@ -3,7 +3,6 @@ package net.hibiscus.naturespirit.world.feature.trunk;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,24 +24,15 @@ import java.util.function.BiConsumer;
 
 public class WisteriaTrunkPlacer extends TrunkPlacer {
    public static final Codec <WisteriaTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-      return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps")
-                      .forGetter((WisteriaTrunkPlacer) -> {
-                         return WisteriaTrunkPlacer.extraBranchSteps;
-                      }),
-              Codec.floatRange(0.0F, 1.0F)
-                      .fieldOf("place_branch_per_log_probability")
-                      .forGetter((WisteriaTrunkPlacer) -> {
-                         return WisteriaTrunkPlacer.placeBranchPerLogProbability;
-                      }),
-              IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((WisteriaTrunkPlacer) -> {
-                 return WisteriaTrunkPlacer.extraBranchLength;
-              }),
-              RegistryCodecs.entryList(RegistryKeys.BLOCK)
-                      .fieldOf("can_grow_through")
-                      .forGetter((WisteriaTrunkPlacer) -> {
-                         return WisteriaTrunkPlacer.canGrowThrough;
-                      })
-      )).apply(instance, WisteriaTrunkPlacer::new);
+      return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((WisteriaTrunkPlacer) -> {
+         return WisteriaTrunkPlacer.extraBranchSteps;
+      }), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((WisteriaTrunkPlacer) -> {
+         return WisteriaTrunkPlacer.placeBranchPerLogProbability;
+      }), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((WisteriaTrunkPlacer) -> {
+         return WisteriaTrunkPlacer.extraBranchLength;
+      }), RegistryCodecs.entryList(RegistryKeys.BLOCK).fieldOf("can_grow_through").forGetter((WisteriaTrunkPlacer) -> {
+         return WisteriaTrunkPlacer.canGrowThrough;
+      }))).apply(instance, WisteriaTrunkPlacer::new);
    });
    private final IntProvider extraBranchSteps;
    private final float placeBranchPerLogProbability;
@@ -115,10 +105,8 @@ public class WisteriaTrunkPlacer extends TrunkPlacer {
    }
 
    protected boolean canReplace(TestableWorld levelSimulatedReader, BlockPos blockPos) {
-      return super.canReplace(levelSimulatedReader, blockPos) || levelSimulatedReader.testBlockState(blockPos,
-              (blockState) -> {
-                 return blockState.isIn(this.canGrowThrough);
-              }
-      );
+      return super.canReplace(levelSimulatedReader, blockPos) || levelSimulatedReader.testBlockState(blockPos, (blockState) -> {
+         return blockState.isIn(this.canGrowThrough);
+      });
    }
 }

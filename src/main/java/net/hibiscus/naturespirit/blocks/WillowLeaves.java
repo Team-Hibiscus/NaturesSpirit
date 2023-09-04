@@ -21,18 +21,11 @@ public class WillowLeaves extends LeavesBlock implements Fertilizable {
       super(properties);
    }
 
-   @Override
-   public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
+   @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
       Block vineBlock = HibiscusWoods.WILLOW_VINES;
       Block vineBlock2 = HibiscusWoods.WILLOW_VINES_PLANT;
-      Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader,
-              blockPos,
-              vineBlock2,
-              Direction.DOWN,
-              vineBlock
-      );
-      return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN))
-              .isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
+      Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader, blockPos, vineBlock2, Direction.DOWN, vineBlock);
+      return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN)).isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
    }
 
 
@@ -44,12 +37,7 @@ public class WillowLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock = HibiscusWoods.WILLOW_VINES;
       Block vineBlock2 = HibiscusWoods.WILLOW_VINES_PLANT;
 
-      Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel,
-              blockPos,
-              vineBlock2,
-              Direction.DOWN,
-              vineBlock
-      );
+      Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel, blockPos, vineBlock2, Direction.DOWN, vineBlock);
       if(optional.isPresent()) {
          BlockState blockState2 = serverLevel.getBlockState(optional.get());
          ((WisteriaVine) blockState2.getBlock()).grow(serverLevel, randomSource, optional.get(), blockState2);

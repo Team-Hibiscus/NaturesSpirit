@@ -9,7 +9,7 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
-public class LargePumpkinFeature extends Feature<DefaultFeatureConfig> {
+public class LargePumpkinFeature extends Feature <DefaultFeatureConfig> {
    public LargePumpkinFeature(Codec <DefaultFeatureConfig> configCodec) {
       super(configCodec);
    }
@@ -19,7 +19,12 @@ public class LargePumpkinFeature extends Feature<DefaultFeatureConfig> {
       BlockPos origin = context.getOrigin();
       Direction direction = Direction.Type.HORIZONTAL.random(worldAccess.getRandom());
       Direction direction2 = direction.rotateYClockwise();
-      if (worldAccess.isAir(origin.up()) && worldAccess.isAir(origin.offset(direction).up()) && worldAccess.isAir(origin.offset(direction2).up()) && worldAccess.isAir(origin.offset(direction2).offset(direction).up()) && worldAccess.isAir(origin) && worldAccess.isAir(origin.offset(direction)) && worldAccess.isAir(origin.offset(direction2)) && worldAccess.isAir(origin.offset(direction2).offset(direction))) {
+      if(worldAccess.isAir(origin.up()) && worldAccess.isAir(origin.offset(direction).up()) && worldAccess.isAir(origin.offset(direction2).up()) && worldAccess.isAir(origin
+              .offset(direction2)
+              .offset(direction)
+              .up()) && worldAccess.isAir(origin) && worldAccess.isAir(origin.offset(direction)) && worldAccess.isAir(origin.offset(direction2)) && worldAccess.isAir(origin
+              .offset(direction2)
+              .offset(direction))) {
          worldAccess.setBlockState(origin, Blocks.PUMPKIN.getDefaultState(), 1);
          worldAccess.setBlockState(origin.offset(direction), Blocks.PUMPKIN.getDefaultState(), 1);
          worldAccess.setBlockState(origin.offset(direction2), Blocks.PUMPKIN.getDefaultState(), 1);

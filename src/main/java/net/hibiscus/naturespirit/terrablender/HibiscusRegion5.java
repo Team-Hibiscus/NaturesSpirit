@@ -16,8 +16,7 @@ public class HibiscusRegion5 extends Region {
       super(name, RegionType.OVERWORLD, weight);
    }
 
-   @Override
-   public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
+   @Override public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
 
       (new Region5Parameters()).writeOverworldBiomeParameters(mapper);
       //      VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();

@@ -1,7 +1,6 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -13,11 +12,9 @@ public class HibiscusSimpleBlockStateProvider extends BlockStateProvider {
    public static final Codec <HibiscusSimpleBlockStateProvider> CODEC;
 
    static {
-      CODEC = BlockState.CODEC.fieldOf("state").xmap(HibiscusSimpleBlockStateProvider::new,
-              (hibiscusSimpleBlockStateProvider) -> {
-                 return hibiscusSimpleBlockStateProvider.state;
-              }
-      ).codec();
+      CODEC = BlockState.CODEC.fieldOf("state").xmap(HibiscusSimpleBlockStateProvider::new, (hibiscusSimpleBlockStateProvider) -> {
+         return hibiscusSimpleBlockStateProvider.state;
+      }).codec();
    }
 
    private final BlockState state;

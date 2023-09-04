@@ -52,39 +52,20 @@ public class PizzaBlock extends Block {
 
    static {
       DEFAULT_COMPARATOR_OUTPUT = getComparatorOutput(0);
-      BITES_TO_SHAPE = new VoxelShape[]{Block.createCuboidShape(1.0D,
-              0.0D,
-              1.0D,
-              15.0D,
-              3.0D,
-              15.0D
-      ), VoxelShapes.union(Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 3.0D, 8.0D),
+      BITES_TO_SHAPE = new VoxelShape[]{
+              Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 3.0D, 15.0D), VoxelShapes.union(
+              Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 3.0D, 8.0D),
               Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 3.0D, 15.0D)
-      ), Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 3.0D, 15.0D), Block.createCuboidShape(1.0D,
-              0.0D,
-              8.0D,
-              8.0D,
-              3.0D,
-              15.0D
-      )};
+      ), Block.createCuboidShape(1.0D, 0.0D, 1.0D, 8.0D, 3.0D, 15.0D), Block.createCuboidShape(1.0D, 0.0D, 8.0D, 8.0D, 3.0D, 15.0D)
+      };
    }
 
    public PizzaBlock(Settings settings) {
       super(settings);
-      this.setDefaultState(this.stateManager.getDefaultState()
-              .with(BITES, 0)
-              .with(GREEN_OLIVES_TOPPING, false)
-              .with(BLACK_OLIVES_TOPPING,
-                      false
-              )
-              .with(BEETROOT_TOPPING, false)
-              .with(CARROT_TOPPING, false)
-              .with(CHICKEN_TOPPING, false)
-              .with(COD_TOPPING, false)
-              .with(PORK_TOPPING, false)
-              .with(RABBIT_TOPPING, false)
-              .with(MUSHROOM_TOPPING, false)
-              .with(TOPPINGS, 0));
+      this.setDefaultState(this.stateManager.getDefaultState().with(BITES, 0).with(GREEN_OLIVES_TOPPING, false).with(BLACK_OLIVES_TOPPING, false).with(BEETROOT_TOPPING, false).with(
+              CARROT_TOPPING,
+              false
+      ).with(CHICKEN_TOPPING, false).with(COD_TOPPING, false).with(PORK_TOPPING, false).with(RABBIT_TOPPING, false).with(MUSHROOM_TOPPING, false).with(TOPPINGS, 0));
    }
 
    protected static ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
@@ -204,8 +185,8 @@ public class PizzaBlock extends Block {
          case "item.minecraft.cooked_rabbit" -> pizzaTopping = RABBIT_TOPPING;
          default -> pizzaTopping = MUSHROOM_TOPPING;
       }
-      if(itemStack.isIn(HibiscusTags.Items.PIZZA_TOPPINGS) && state.get(BITES) == 0 && state.get(TOPPINGS) < 4 && !(itemStack.isIn(
-              HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && !state.get(pizzaTopping)) {
+      if(itemStack.isIn(HibiscusTags.Items.PIZZA_TOPPINGS) && state.get(BITES) == 0 && state.get(TOPPINGS) < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && !state.get(
+              pizzaTopping)) {
          Block block = Block.getBlockFromItem(item);
          if(!player.isCreative()) {
             itemStack.decrement(1);
@@ -233,15 +214,7 @@ public class PizzaBlock extends Block {
    }
 
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-      return direction == Direction.DOWN && !state.canPlaceAt(world,
-              pos
-      ) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state,
-              direction,
-              neighborState,
-              world,
-              pos,
-              neighborPos
-      );
+      return direction == Direction.DOWN && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
    }
 
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
@@ -250,18 +223,7 @@ public class PizzaBlock extends Block {
    }
 
    protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
-      builder.add(BITES,
-              TOPPINGS,
-              COD_TOPPING,
-              BEETROOT_TOPPING,
-              PORK_TOPPING,
-              RABBIT_TOPPING,
-              MUSHROOM_TOPPING,
-              BLACK_OLIVES_TOPPING,
-              GREEN_OLIVES_TOPPING,
-              CARROT_TOPPING,
-              CHICKEN_TOPPING
-      );
+      builder.add(BITES, TOPPINGS, COD_TOPPING, BEETROOT_TOPPING, PORK_TOPPING, RABBIT_TOPPING, MUSHROOM_TOPPING, BLACK_OLIVES_TOPPING, GREEN_OLIVES_TOPPING, CARROT_TOPPING, CHICKEN_TOPPING);
    }
 
    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {

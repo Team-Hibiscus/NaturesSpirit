@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-02T09:35:49.7947848	Nature's Spirit/Recipes
+// 1.20.1	2023-09-03T21:07:02.6788249	Nature's Spirit/Recipes
 6efb83339d8485c3e6279a5e7e03b784a03f464a data\natures_spirit\recipes\desert_turnip_block.json
 6ed8a0b589db4b8e575c3489a873f174b0f212e6 data\natures_spirit\advancements\recipes\building_blocks\cypress_stairs.json
 96deee9d1791848811d8ddc7b0872d5655e559a0 data\natures_spirit\advancements\recipes\decorations\aspen_fence.json
@@ -125,8 +125,8 @@ f2c56eecb07fcc957aa59bf01f92a4775ddf7083 data\natures_spirit\advancements\recipe
 8689a46dae96ebfe02ce6b69eb01b98b2ca85bc1 data\natures_spirit\recipes\aspen_stairs.json
 b815fa7059f9578579f4344bdbcc80359641dace data\natures_spirit\recipes\fir_fence.json
 cbf16c49e02aae630b6bd00e77ba7800f24eeebe data\natures_spirit\advancements\recipes\building_blocks\redwood_slab.json
-2d3d29da501c0689f66e0ff2c4545aa8b2d51459 data\natures_spirit\recipes\cypress_sign.json
 ad9dfd10c20d929b7e439564f76ed6364e630842 data\natures_spirit\advancements\recipes\decorations\cypress_sign.json
+2d3d29da501c0689f66e0ff2c4545aa8b2d51459 data\natures_spirit\recipes\cypress_sign.json
 2a8aa1eb522d86747710902796464e87ab530343 data\natures_spirit\recipes\wisteria_stairs.json
 61fc970bf34cd60e8e46192d5ef8866450149c32 data\natures_spirit\recipes\maple_pressure_plate.json
 d723ec1205f6bc589bb39a68da44798ff55d010a data\natures_spirit\recipes\wisteria_fence.json
@@ -325,5 +325,5 @@ f6271013cc0abe949ff6f11b022bdc03e0e7bb8b data\natures_spirit\recipes\aspen_sign.
 4b31ca76241a6c993fac42c2908ba2a53be3fee7 data\natures_spirit\advancements\recipes\building_blocks\joshua_slab.json
 5089292a3f1889736dad0fed0d996e754002bab3 data\natures_spirit\recipes\cypress_fence.json
 2378361ca236ddf68f3f696482b8f8d87eec9977 data\natures_spirit\advancements\recipes\building_blocks\sugi_wood.json
-065a447eda8d2ca74d1b94faa1442f7736bcf9a1 data\natures_spirit\advancements\recipes\transportation\sugi_chest_boat.json
 dd3390ffbbd3efbe16f15a89f0bc07e3c5d115c6 data\natures_spirit\recipes\aspen_boat.json
+065a447eda8d2ca74d1b94faa1442f7736bcf9a1 data\natures_spirit\advancements\recipes\transportation\sugi_chest_boat.json

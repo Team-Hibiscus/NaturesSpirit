@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.world.feature.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;

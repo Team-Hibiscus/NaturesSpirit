@@ -56,9 +56,7 @@ public class HibiscusWoods {
    public static final Block[] OLIVE_SAPLING = registerSapling("olive", new OliveSaplingGenerator(), CYPRESS_SAPLING[0]);
    public static final Block[] JOSHUA_SAPLING = registerJoshuaSapling("joshua", new JoshuaSaplingGenerator(), OLIVE_SAPLING[0]);
    public static final BlockSetType REDWOOD_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("redwood"));
-   public static final WoodType REDWOOD_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("redwood",
-           REDWOOD_BLOCK_SET_TYPE
-   ));
+   public static final WoodType REDWOOD_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("redwood", REDWOOD_BLOCK_SET_TYPE));
    public static final Block[] REDWOOD = registerWoodBlocks("redwood",
            MapColor.RED,
            MapColor.TERRACOTTA_BROWN,
@@ -69,134 +67,41 @@ public class HibiscusWoods {
            REDWOOD_WOOD_TYPE
    );
    public static final BlockSetType SUGI_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("sugi"));
-   public static final WoodType SUGI_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("sugi",
-           SUGI_BLOCK_SET_TYPE
-   ));
-   public static final Block[] SUGI = registerWoodBlocks("sugi",
-           MapColor.DIRT_BROWN,
-           MapColor.DEEPSLATE_GRAY,
-           REDWOOD[12],
-           REDWOOD[2],
-           REDWOOD,
-           SUGI_BLOCK_SET_TYPE,
-           SUGI_WOOD_TYPE
-   );
-   public static final BlockSetType WISTERIA_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType(
-           "wisteria"));
-   public static final WoodType WISTERIA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("wisteria",
-           WISTERIA_BLOCK_SET_TYPE
-   ));
-   public static final Block[] WISTERIA = registerWoodBlocks("wisteria",
-           MapColor.TERRACOTTA_WHITE,
-           MapColor.GRAY,
-           SUGI[12],
-           SUGI[2],
-           SUGI,
-           WISTERIA_BLOCK_SET_TYPE,
-           WISTERIA_WOOD_TYPE
-   );
+   public static final WoodType SUGI_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("sugi", SUGI_BLOCK_SET_TYPE));
+   public static final Block[] SUGI = registerWoodBlocks("sugi", MapColor.DIRT_BROWN, MapColor.DEEPSLATE_GRAY, REDWOOD[12], REDWOOD[2], REDWOOD, SUGI_BLOCK_SET_TYPE, SUGI_WOOD_TYPE);
+   public static final BlockSetType WISTERIA_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("wisteria"));
+   public static final WoodType WISTERIA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("wisteria", WISTERIA_BLOCK_SET_TYPE));
+   public static final Block[] WISTERIA = registerWoodBlocks("wisteria", MapColor.TERRACOTTA_WHITE, MapColor.GRAY, SUGI[12], SUGI[2], SUGI, WISTERIA_BLOCK_SET_TYPE, WISTERIA_WOOD_TYPE);
    public static final BlockSetType FIR_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("fir"));
    public static final WoodType FIR_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("fir", FIR_BLOCK_SET_TYPE));
-   public static final Block[] FIR = registerWoodBlocks("fir",
-           MapColor.DIRT_BROWN,
-           MapColor.GRAY,
-           WISTERIA[12],
-           WISTERIA[2],
-           WISTERIA,
-           FIR_BLOCK_SET_TYPE,
-           FIR_WOOD_TYPE
-   );
+   public static final Block[] FIR = registerWoodBlocks("fir", MapColor.DIRT_BROWN, MapColor.GRAY, WISTERIA[12], WISTERIA[2], WISTERIA, FIR_BLOCK_SET_TYPE, FIR_WOOD_TYPE);
    public static final BlockSetType WILLOW_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("willow"));
-   public static final WoodType WILLOW_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("willow",
-           WILLOW_BLOCK_SET_TYPE
-   ));
-   public static final Block[] WILLOW = registerWoodBlocks("willow",
-           MapColor.TERRACOTTA_BROWN,
-           MapColor.TERRACOTTA_BLACK,
-           FIR[12],
-           FIR[2],
-           FIR,
-           WILLOW_BLOCK_SET_TYPE,
-           WILLOW_WOOD_TYPE
-   );
+   public static final WoodType WILLOW_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("willow", WILLOW_BLOCK_SET_TYPE));
+   public static final Block[] WILLOW = registerWoodBlocks("willow", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_BLACK, FIR[12], FIR[2], FIR, WILLOW_BLOCK_SET_TYPE, WILLOW_WOOD_TYPE);
    public static final BlockSetType ASPEN_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("aspen"));
-   public static final WoodType MAPLE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("maple",
-           ASPEN_BLOCK_SET_TYPE
-   ));
-   public static final WoodType ASPEN_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("aspen",
-           ASPEN_BLOCK_SET_TYPE
-   ));
-   public static final Block[] ASPEN = registerWoodBlocks("aspen",
-           MapColor.PALE_YELLOW,
-           MapColor.WHITE_GRAY,
-           WILLOW[12],
-           WILLOW[2],
-           WILLOW,
-           ASPEN_BLOCK_SET_TYPE,
-           ASPEN_WOOD_TYPE
-   );
+   public static final WoodType MAPLE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("maple", ASPEN_BLOCK_SET_TYPE));
+   public static final WoodType ASPEN_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("aspen", ASPEN_BLOCK_SET_TYPE));
+   public static final Block[] ASPEN = registerWoodBlocks("aspen", MapColor.PALE_YELLOW, MapColor.WHITE_GRAY, WILLOW[12], WILLOW[2], WILLOW, ASPEN_BLOCK_SET_TYPE, ASPEN_WOOD_TYPE);
    public static final BlockSetType MAPLE_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("maple"));
-   public static final Block[] MAPLE = registerWoodBlocks("maple",
-           MapColor.ORANGE,
-           MapColor.SPRUCE_BROWN,
-           ASPEN[12],
-           ASPEN[2],
-           ASPEN,
-           MAPLE_BLOCK_SET_TYPE,
-           MAPLE_WOOD_TYPE
-   );
+   public static final Block[] MAPLE = registerWoodBlocks("maple", MapColor.ORANGE, MapColor.SPRUCE_BROWN, ASPEN[12], ASPEN[2], ASPEN, MAPLE_BLOCK_SET_TYPE, MAPLE_WOOD_TYPE);
    public static final BlockSetType CYPRESS_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("cypress"));
-   public static final WoodType CYPRESS_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("cypress",
-           CYPRESS_BLOCK_SET_TYPE
-   ));
-   public static final Block[] CYPRESS = registerWoodBlocks("cypress",
-           MapColor.OAK_TAN,
-           MapColor.SPRUCE_BROWN,
-           MAPLE[12],
-           MAPLE[2],
-           MAPLE,
-           CYPRESS_BLOCK_SET_TYPE,
-           CYPRESS_WOOD_TYPE
-   );
+   public static final WoodType CYPRESS_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("cypress", CYPRESS_BLOCK_SET_TYPE));
+   public static final Block[] CYPRESS = registerWoodBlocks("cypress", MapColor.OAK_TAN, MapColor.SPRUCE_BROWN, MAPLE[12], MAPLE[2], MAPLE, CYPRESS_BLOCK_SET_TYPE, CYPRESS_WOOD_TYPE);
    public static final BlockSetType OLIVE_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("olive"));
-   public static final WoodType OLIVE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("olive",
-           OLIVE_BLOCK_SET_TYPE
-   ));
-   public static final Block[] OLIVE = registerWoodBlocks("olive",
-           MapColor.PALE_GREEN,
-           MapColor.PALE_YELLOW,
-           CYPRESS[12],
-           CYPRESS[2],
-           CYPRESS,
-           OLIVE_BLOCK_SET_TYPE,
-           OLIVE_WOOD_TYPE
-   );
+   public static final WoodType OLIVE_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("olive", OLIVE_BLOCK_SET_TYPE));
+   public static final Block[] OLIVE = registerWoodBlocks("olive", MapColor.PALE_GREEN, MapColor.PALE_YELLOW, CYPRESS[12], CYPRESS[2], CYPRESS, OLIVE_BLOCK_SET_TYPE, OLIVE_WOOD_TYPE);
    public static final BlockSetType JOSHUA_BLOCK_SET_TYPE = BlockSetTypeAccessor.registerNew(new BlockSetType("joshua"));
-   public static final WoodType JOSHUA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("joshua",
-           JOSHUA_BLOCK_SET_TYPE
-   ));
-   public static final Block[] JOSHUA = registerJoshuaWoodBlocks("joshua",
-           MapColor.PALE_GREEN,
-           OLIVE[12],
-           OLIVE[2],
-           OLIVE,
-           JOSHUA_BLOCK_SET_TYPE,
-           JOSHUA_WOOD_TYPE
-   );
+   public static final WoodType JOSHUA_WOOD_TYPE = WoodTypeAccessor.registerNew(new WoodType("joshua", JOSHUA_BLOCK_SET_TYPE));
+   public static final Block[] JOSHUA = registerJoshuaWoodBlocks("joshua", MapColor.PALE_GREEN, OLIVE[12], OLIVE[2], OLIVE, JOSHUA_BLOCK_SET_TYPE, JOSHUA_WOOD_TYPE);
    public static final Block FRAMED_SUGI_DOOR = registerSecondaryDoorBlock("framed_sugi_door",
            new DoorBlock(FabricBlockSettings.copy(SUGI[4]).nonOpaque(), SUGI_BLOCK_SET_TYPE),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            SUGI[8]
    );
-   public static final Block FRAMED_SUGI_TRAPDOOR = registerSecondaryDoorBlock("framed_sugi_trapdoor",
-           new TrapdoorBlock(
-                   FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(
-                           BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
-                   SUGI_BLOCK_SET_TYPE
-           ),
-           HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
-           FRAMED_SUGI_DOOR
-   );
+   public static final Block FRAMED_SUGI_TRAPDOOR = registerSecondaryDoorBlock("framed_sugi_trapdoor", new TrapdoorBlock(
+           FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
+           SUGI_BLOCK_SET_TYPE
+   ), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, FRAMED_SUGI_DOOR);
    public static final Item REDWOOD_BOAT = registerItem("redwood_boat",
            new HibiscusBoatItem(false, HibiscusBoatEntity.HibiscusBoat.REDWOOD, new Item.Settings()),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
@@ -318,20 +223,22 @@ public class HibiscusWoods {
            ItemGroups.TOOLS
    );
    public static final Block WHITE_WISTERIA_VINES = registerPlantBlock("white_wisteria_vines",
-           new WisteriaVine(FabricBlockSettings.create()
-                                               .mapColor(MapColor.TERRACOTTA_WHITE)
-                                               .pistonBehavior(PistonBehavior.DESTROY)
-                                               .ticksRandomly()
-                                               .noCollision()
-                                               .nonOpaque()
-                                               .breakInstantly()
-                                               .sounds(BlockSoundGroup.WEEPING_VINES)),
+           new WisteriaVine(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.TERRACOTTA_WHITE)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .ticksRandomly()
+                   .noCollision()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.WEEPING_VINES)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            Blocks.VINE,
            0.5f
    );
    public static final Block BLUE_WISTERIA_VINES = registerPlantBlock("blue_wisteria_vines",
-           new WisteriaVine(FabricBlockSettings.create()
+           new WisteriaVine(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.CYAN)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .ticksRandomly()
@@ -344,7 +251,8 @@ public class HibiscusWoods {
            0.5f
    );
    public static final Block PINK_WISTERIA_VINES = registerPlantBlock("pink_wisteria_vines",
-           new WisteriaVine(FabricBlockSettings.create()
+           new WisteriaVine(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.PINK)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .ticksRandomly()
@@ -357,7 +265,8 @@ public class HibiscusWoods {
            0.5f
    );
    public static final Block PURPLE_WISTERIA_VINES = registerPlantBlock("purple_wisteria_vines",
-           new WisteriaVine(FabricBlockSettings.create()
+           new WisteriaVine(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.PURPLE)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .ticksRandomly()
@@ -370,30 +279,33 @@ public class HibiscusWoods {
            0.5f
    );
    public static final Block WILLOW_VINES = registerPlantBlock("willow_vines",
-           new WillowVine(FabricBlockSettings.create()
-                                             .mapColor(MapColor.DARK_GREEN)
-                                             .pistonBehavior(PistonBehavior.DESTROY)
-                                             .ticksRandomly()
-                                             .noCollision()
-                                             .nonOpaque()
-                                             .breakInstantly()
-                                             .sounds(BlockSoundGroup.WEEPING_VINES)),
+           new WillowVine(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .ticksRandomly()
+                   .noCollision()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.WEEPING_VINES)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PURPLE_WISTERIA_VINES,
            0.5f
    );
    public static final Block WILLOW_VINES_PLANT = registerPlantBlock("willow_vines_plant",
-           new WillowVinePlant(FabricBlockSettings.create()
-                                                  .mapColor(MapColor.DARK_GREEN)
-                                                  .pistonBehavior(PistonBehavior.DESTROY)
-                                                  .noCollision()
-                                                  .nonOpaque()
-                                                  .breakInstantly()
-                                                  .sounds(BlockSoundGroup.WEEPING_VINES)
-                                                  .dropsLike(WILLOW_VINES))
+           new WillowVinePlant(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .noCollision()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.WEEPING_VINES)
+                   .dropsLike(WILLOW_VINES))
    );
    public static final Block PURPLE_WISTERIA_VINES_PLANT = registerPlantBlock("purple_wisteria_vines_plant",
-           new WisteriaVinePlant(FabricBlockSettings.create()
+           new WisteriaVinePlant(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.PURPLE)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .noCollision()
@@ -403,7 +315,8 @@ public class HibiscusWoods {
                    .dropsLike(PURPLE_WISTERIA_VINES), PURPLE_WISTERIA_VINES)
    );
    public static final Block PINK_WISTERIA_VINES_PLANT = registerPlantBlock("pink_wisteria_vines_plant",
-           new WisteriaVinePlant(FabricBlockSettings.create()
+           new WisteriaVinePlant(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.PINK)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .noCollision()
@@ -413,7 +326,8 @@ public class HibiscusWoods {
                    .dropsLike(PINK_WISTERIA_VINES), PINK_WISTERIA_VINES)
    );
    public static final Block BLUE_WISTERIA_VINES_PLANT = registerPlantBlock("blue_wisteria_vines_plant",
-           new WisteriaVinePlant(FabricBlockSettings.create()
+           new WisteriaVinePlant(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.CYAN)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .noCollision()
@@ -423,7 +337,8 @@ public class HibiscusWoods {
                    .dropsLike(BLUE_WISTERIA_VINES), BLUE_WISTERIA_VINES)
    );
    public static final Block WHITE_WISTERIA_VINES_PLANT = registerPlantBlock("white_wisteria_vines_plant",
-           new WisteriaVinePlant(FabricBlockSettings.create()
+           new WisteriaVinePlant(FabricBlockSettings
+                   .create()
                    .mapColor(MapColor.TERRACOTTA_WHITE)
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .noCollision()
@@ -439,5 +354,6 @@ public class HibiscusWoods {
       Array[15] = Blocks.CHERRY_HANGING_SIGN;
       return Array;
    }
+
    public static void registerWoods() {}
 }

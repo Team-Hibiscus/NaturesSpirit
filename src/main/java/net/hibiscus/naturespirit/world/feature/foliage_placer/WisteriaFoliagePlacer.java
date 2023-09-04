@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.world.feature.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -33,40 +32,24 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
       this.generateSquare(world, placer, random, config, blockPos, radius + 1, 0, true);
       this.generateSquare(world, placer, random, config, blockPos, radius, 1, true);
       for(int i = 0; i < 60; ++i) {
-         mutable.set(blockPos,
-                 random.nextInt(radius) - random.nextInt(radius),
-                 -2,
-                 random.nextInt(radius) - random.nextInt(radius)
-         );
+         mutable.set(blockPos, random.nextInt(radius) - random.nextInt(radius), -2, random.nextInt(radius) - random.nextInt(radius));
          placeFoliageBlock(world, placer, random, config, mutable);
          placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 1));
          placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 2));
       }
       for(int i = 0; i < 10; ++i) {
-         mutable.set(blockPos,
-                 random.nextInt(radius + 2) - random.nextInt(radius + 2),
-                 0,
-                 random.nextInt(radius + 2) - random.nextInt(radius + 2)
-         );
+         mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
          placeFoliageBlock(world, placer, random, config, mutable);
          placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 1));
          placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 2));
       }
       for(int i = 0; i < 10; ++i) {
-         mutable.set(blockPos,
-                 random.nextInt(radius + 2) - random.nextInt(radius + 2),
-                 0,
-                 random.nextInt(radius + 2) - random.nextInt(radius + 2)
-         );
+         mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
          placeFoliageBlock(world, placer, random, config, mutable);
          placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.DOWN, 1));
       }
       for(int i = 0; i < 80; ++i) {
-         mutable.set(blockPos,
-                 random.nextInt(radius + 2) - random.nextInt(radius + 2),
-                 0,
-                 random.nextInt(radius + 2) - random.nextInt(radius + 2)
-         );
+         mutable.set(blockPos, random.nextInt(radius + 2) - random.nextInt(radius + 2), 0, random.nextInt(radius + 2) - random.nextInt(radius + 2));
          placeFoliageBlock(world, placer, random, config, mutable);
       }
 
@@ -77,13 +60,7 @@ public class WisteriaFoliagePlacer extends FoliagePlacer {
    }
 
    protected boolean isPositionInvalid(Random random, int dx, int y, int dz, int radius, boolean giantTrunk) {
-      return y == 0 && (dx == -radius || dx >= radius) && (dz == -radius || dz >= radius) || super.isPositionInvalid(random,
-              dx,
-              y,
-              dz,
-              radius,
-              true
-      );
+      return y == 0 && (dx == -radius || dx >= radius) && (dz == -radius || dz >= radius) || super.isPositionInvalid(random, dx, y, dz, radius, true);
    }
 
    protected boolean isInvalidForLeaves(Random randomSource, int dx, int y, int dz, int radius, boolean giantTrunk) {

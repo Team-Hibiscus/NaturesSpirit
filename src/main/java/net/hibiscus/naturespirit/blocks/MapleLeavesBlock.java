@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 
 public class MapleLeavesBlock extends LeavesBlock {
    ParticleEffect particle;
+
    public MapleLeavesBlock(Settings settings, ParticleEffect particle) {
       super(settings);
       this.particle = particle;
@@ -18,10 +19,10 @@ public class MapleLeavesBlock extends LeavesBlock {
 
    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
       super.randomDisplayTick(state, world, pos, random);
-      if (random.nextInt(150) == 0) {
+      if(random.nextInt(150) == 0) {
          BlockPos blockPos = pos.down();
          BlockState blockState = world.getBlockState(blockPos);
-         if (!isFaceFullSquare(blockState.getCollisionShape(world, blockPos), Direction.UP)) {
+         if(!isFaceFullSquare(blockState.getCollisionShape(world, blockPos), Direction.UP)) {
             ParticleUtil.spawnParticle(world, pos, random, particle);
          }
       }

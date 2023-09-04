@@ -4,14 +4,12 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-//import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
@@ -54,17 +52,16 @@ public class HibiscusRegistryHelper {
    public static Block[] registerWoodBlocks(String name, MapColor topMaterialColor, MapColor sideMaterialColor, Block buttonPlacement, Block logPlacement, Block[] signPlacement, BlockSetType blockSetType, WoodType woodType) {
       Block[] Array = new Block[17];
       Array[0] = registerBlock(name + "_wood",
-              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(
-                      sideMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
+              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(sideMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       Array[1] = registerBlock("stripped_" + name + "_wood",
-              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(
-                      topMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
+              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(topMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       Array[2] = registerBlock(name + "_log",
-              new PillarBlock(FabricBlockSettings.create()
+              new PillarBlock(FabricBlockSettings
+                      .create()
                       .burnable()
                       .instrument(Instrument.BASS)
                       .mapColor((state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMaterialColor : sideMaterialColor)
@@ -73,93 +70,55 @@ public class HibiscusRegistryHelper {
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       Array[3] = registerBlock("stripped_" + name + "_log",
-              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(
-                      topMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
+              new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(topMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       Array[4] = registerBlock(name + "_planks",
-              new Block(FabricBlockSettings.create()
-                      .burnable()
-                      .instrument(Instrument.BASS)
-                      .mapColor(topMaterialColor)
-                      .strength(2.0F, 3.0F)
-                      .sounds(BlockSoundGroup.WOOD)),
+              new Block(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(topMaterialColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[5] = registerBlock(name + "_stairs",
-              new StairsBlock(Array[4].getDefaultState(), FabricBlockSettings.copy(Array[4])),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
+      Array[5] = registerBlock(name + "_stairs", new StairsBlock(Array[4].getDefaultState(), FabricBlockSettings.copy(Array[4])), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       Array[6] = registerBlock(name + "_slab",
-              new SlabBlock(FabricBlockSettings.create()
-                      .instrument(Instrument.BASS)
-                      .mapColor(topMaterialColor)
-                      .strength(2.0f, 3.0f)
-                      .sounds(BlockSoundGroup.WOOD)),
+              new SlabBlock(FabricBlockSettings.create().instrument(Instrument.BASS).mapColor(topMaterialColor).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[7] = registerBlock(name + "_door",
-              new DoorBlock(FabricBlockSettings.copy(Array[4]).nonOpaque(), blockSetType),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      Array[8] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.create()
-              .mapColor(topMaterialColor)
-              .burnable()
-              .instrument(Instrument.BASS)
-              .strength(3.0f)
-              .sounds(BlockSoundGroup.WOOD)
-              .allowsSpawning(HibiscusRegistryHelper::never)
-              .nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
-      Array[9] = registerBlock(name + "_fence",
-              new FenceBlock(FabricBlockSettings.copy(Array[4]).nonOpaque().solid()),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      Array[10] = registerBlock(name + "_fence_gate",
-              new FenceGateBlock(FabricBlockSettings.copy(Array[4]).nonOpaque().solid(), woodType),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      Array[11] = registerBlock(name + "_pressure_plate",
+      Array[7] = registerBlock(name + "_door", new DoorBlock(FabricBlockSettings.copy(Array[4]).nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[8] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.create().mapColor(topMaterialColor).burnable().instrument(Instrument.BASS).strength(3.0f).sounds(
+              BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[9] = registerBlock(name + "_fence", new FenceBlock(FabricBlockSettings.copy(Array[4]).nonOpaque().solid()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[10] = registerBlock(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(Array[4]).nonOpaque().solid(), woodType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[11] = registerBlock(
+              name + "_pressure_plate",
               new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-                      FabricBlockSettings.create()
-                              .solid()
-                              .mapColor(topMaterialColor)
-                              .noCollision()
-                              .strength(0.5f)
-                              .sounds(BlockSoundGroup.WOOD),
+                      FabricBlockSettings.create().solid().mapColor(topMaterialColor).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD),
                       blockSetType
               ),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       Array[12] = registerBlock(name + "_button",
-              new ButtonBlock(FabricBlockSettings.create()
-                      .mapColor(topMaterialColor)
-                      .strength(0.5F).noCollision()
-                      .sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
+              new ButtonBlock(FabricBlockSettings.create().mapColor(topMaterialColor).strength(0.5F).noCollision().sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[13] = registerBlock(
-              name + "_sign",
-              new SignBlock(FabricBlockSettings.create()
+      Array[13] = registerBlock(name + "_sign",
+              new SignBlock(FabricBlockSettings.create().mapColor(topMaterialColor).solid().instrument(Instrument.BASS).noCollision().strength(1.0F).burnable(), woodType)
+      );
+      Array[14] = registerBlock(name + "_wall_sign",
+              new WallSignBlock(FabricBlockSettings.create().solid().instrument(Instrument.BASS).noCollision().strength(1.0F).burnable().dropsLike(Array[13]), woodType)
+      );
+      Array[15] = registerBlock(name + "_hanging_sign",
+              new HangingSignBlock(FabricBlockSettings
+                      .create()
                       .mapColor(topMaterialColor)
                       .solid()
                       .instrument(Instrument.BASS)
                       .noCollision()
                       .strength(1.0F)
-                      .burnable(), woodType)
+                      .burnable()
+                      .sounds(BlockSoundGroup.HANGING_SIGN), woodType)
       );
-      Array[14] = registerBlock(name + "_wall_sign", new WallSignBlock(FabricBlockSettings.create().solid().instrument(
-              Instrument.BASS).noCollision().strength(1.0F).burnable().dropsLike(Array[13]), woodType));
-      Array[15] = registerBlock(name + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.create()
-              .mapColor(topMaterialColor)
-              .solid()
-              .instrument(Instrument.BASS)
-              .noCollision()
-              .strength(1.0F)
-              .burnable()
-              .sounds(BlockSoundGroup.HANGING_SIGN), woodType));
-      Array[16] = registerBlock(
-              name + "_wall_hanging_sign",
-              new WallHangingSignBlock(FabricBlockSettings.create()
+      Array[16] = registerBlock(name + "_wall_hanging_sign",
+              new WallHangingSignBlock(FabricBlockSettings
+                      .create()
                       .mapColor(topMaterialColor)
                       .solid()
                       .instrument(Instrument.BASS)
@@ -170,17 +129,10 @@ public class HibiscusRegistryHelper {
                       .dropsLike(Array[15]), woodType)
       );
 
-      registerItem(name + "_sign",
-              new SignItem(new FabricItemSettings().maxCount(16), Array[13], Array[14]),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      registerItem(name + "_hanging_sign",
-              new HangingSignItem(Array[15], Array[16], new FabricItemSettings().maxCount(16)),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
+      registerItem(name + "_sign", new SignItem(new FabricItemSettings().maxCount(16), Array[13], Array[14]), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      registerItem(name + "_hanging_sign", new HangingSignItem(Array[15], Array[16], new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
 
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(
-              buttonPlacement,
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(buttonPlacement,
               Array[2],
               Array[0],
               Array[3],
@@ -195,13 +147,8 @@ public class HibiscusRegistryHelper {
               Array[11],
               Array[12]
       ));
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement,
-              Array[2]
-      ));
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15],
-              Array[13].asItem(),
-              Array[15].asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, Array[2]));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15], Array[13].asItem(), Array[15].asItem()));
 
       BlockRenderLayerMap.INSTANCE.putBlock(Array[7], RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(Array[8], RenderLayer.getCutout());
@@ -231,105 +178,59 @@ public class HibiscusRegistryHelper {
       Block[] Array = new Block[15];
 
       Array[0] = registerBlock(name + "_log",
-              new JoshuaTrunkBlock(FabricBlockSettings.create()
-                      .burnable()
-                      .mapColor(MapColor.GRAY)
-                      .instrument(Instrument.BASS)
-                      .requiresTool()
-                      .strength(2.0F)
-                      .sounds(BlockSoundGroup.WOOD)),
+              new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).requiresTool().strength(2.0F).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[1] = registerBlock("stripped_" + name + "_log", new JoshuaTrunkBlock(FabricBlockSettings.create()
-              .burnable()
-              .mapColor(MapColor.GRAY)
-              .instrument(Instrument.BASS)
-              .requiresTool()
-              .strength(2.0F)
-              .sounds(BlockSoundGroup.WOOD)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[1] = registerBlock("stripped_" + name + "_log",
+              new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).requiresTool().strength(2.0F).sounds(BlockSoundGroup.WOOD)),
+              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
+      );
       Array[2] = registerBlock(name + "_planks",
-              new Block(FabricBlockSettings.create()
-                      .burnable()
-                      .instrument(Instrument.BASS)
-                      .mapColor(topMaterialColor)
-                      .strength(2.0F, 3.0F)
-                      .sounds(BlockSoundGroup.WOOD)),
+              new Block(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(topMaterialColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[3] = registerBlock(name + "_stairs",
-              new StairsBlock(Array[2].getDefaultState(), FabricBlockSettings.copy(Array[2])),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
+      Array[3] = registerBlock(name + "_stairs", new StairsBlock(Array[2].getDefaultState(), FabricBlockSettings.copy(Array[2])), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       Array[4] = registerBlock(name + "_slab",
-              new SlabBlock(FabricBlockSettings.create()
-                      .instrument(Instrument.BASS)
-                      .mapColor(topMaterialColor)
-                      .strength(2.0f, 3.0f)
-                      .sounds(BlockSoundGroup.WOOD)),
+              new SlabBlock(FabricBlockSettings.create().instrument(Instrument.BASS).mapColor(topMaterialColor).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[5] = registerBlock(name + "_door",
-              new DoorBlock(FabricBlockSettings.copy(Array[2]).nonOpaque(), blockSetType),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      Array[6] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.create()
-              .mapColor(topMaterialColor)
-              .burnable()
-              .instrument(Instrument.BASS)
-              .strength(3.0f)
-              .sounds(BlockSoundGroup.WOOD)
-              .allowsSpawning(HibiscusRegistryHelper::never)
-              .nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
-      Array[7] = registerBlock(name + "_fence",
-              new FenceBlock(FabricBlockSettings.copy(Array[2]).nonOpaque().solid()),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      Array[8] = registerBlock(name + "_fence_gate",
-              new FenceGateBlock(FabricBlockSettings.copy(Array[2]).nonOpaque().solid(), woodType),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      Array[9] = registerBlock(name + "_pressure_plate",
+      Array[5] = registerBlock(name + "_door", new DoorBlock(FabricBlockSettings.copy(Array[2]).nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[6] = registerBlock(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.create().mapColor(topMaterialColor).burnable().instrument(Instrument.BASS).strength(3.0f).sounds(
+              BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(), blockSetType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[7] = registerBlock(name + "_fence", new FenceBlock(FabricBlockSettings.copy(Array[2]).nonOpaque().solid()), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[8] = registerBlock(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(Array[2]).nonOpaque().solid(), woodType), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      Array[9] = registerBlock(
+              name + "_pressure_plate",
               new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-                      FabricBlockSettings.create()
-                              .solid()
-                              .mapColor(topMaterialColor)
-                              .noCollision()
-                              .strength(0.5f)
-                              .sounds(BlockSoundGroup.WOOD),
+                      FabricBlockSettings.create().solid().mapColor(topMaterialColor).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD),
                       blockSetType
               ),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
       Array[10] = registerBlock(name + "_button",
-              new ButtonBlock(FabricBlockSettings.create()
-                      .mapColor(topMaterialColor).noCollision()
-                      .strength(0.5F)
-                      .sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
+              new ButtonBlock(FabricBlockSettings.create().mapColor(topMaterialColor).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD), blockSetType, 30, true),
               HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
       );
-      Array[11] = registerBlock(
-              name + "_sign",
-              new SignBlock(FabricBlockSettings.create()
+      Array[11] = registerBlock(name + "_sign",
+              new SignBlock(FabricBlockSettings.create().mapColor(topMaterialColor).solid().instrument(Instrument.BASS).noCollision().strength(1.0F).burnable(), woodType)
+      );
+      Array[12] = registerBlock(name + "_wall_sign",
+              new WallSignBlock(FabricBlockSettings.create().solid().instrument(Instrument.BASS).noCollision().strength(1.0F).burnable().dropsLike(Array[11]), woodType)
+      );
+      Array[13] = registerBlock(name + "_hanging_sign",
+              new HangingSignBlock(FabricBlockSettings
+                      .create()
                       .mapColor(topMaterialColor)
                       .solid()
                       .instrument(Instrument.BASS)
                       .noCollision()
                       .strength(1.0F)
-                      .burnable(), woodType)
+                      .burnable()
+                      .sounds(BlockSoundGroup.HANGING_SIGN), woodType)
       );
-      Array[12] = registerBlock(name + "_wall_sign", new WallSignBlock(FabricBlockSettings.create().solid().instrument(
-              Instrument.BASS).noCollision().strength(1.0F).burnable().dropsLike(Array[11]), woodType));
-      Array[13] = registerBlock(name + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.create()
-              .mapColor(topMaterialColor)
-              .solid()
-              .instrument(Instrument.BASS)
-              .noCollision()
-              .strength(1.0F)
-              .burnable()
-              .sounds(BlockSoundGroup.HANGING_SIGN), woodType));
-      Array[14] = registerBlock(
-              name + "_wall_hanging_sign",
-              new WallHangingSignBlock(FabricBlockSettings.create()
+      Array[14] = registerBlock(name + "_wall_hanging_sign",
+              new WallHangingSignBlock(FabricBlockSettings
+                      .create()
                       .mapColor(topMaterialColor)
                       .solid()
                       .instrument(Instrument.BASS)
@@ -340,17 +241,10 @@ public class HibiscusRegistryHelper {
                       .dropsLike(Array[13]), woodType)
       );
 
-      registerItem(name + "_sign",
-              new SignItem(new FabricItemSettings().maxCount(16), Array[11], Array[12]),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
-      registerItem(name + "_hanging_sign",
-              new HangingSignItem(Array[13], Array[14], new FabricItemSettings().maxCount(16)),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
+      registerItem(name + "_sign", new SignItem(new FabricItemSettings().maxCount(16), Array[11], Array[12]), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+      registerItem(name + "_hanging_sign", new HangingSignItem(Array[13], Array[14], new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
 
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(
-              buttonPlacement,
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(buttonPlacement,
               Array[0],
               Array[1],
               Array[2],
@@ -363,13 +257,8 @@ public class HibiscusRegistryHelper {
               Array[9],
               Array[10]
       ));
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement,
-              Array[2]
-      ));
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15],
-              Array[11].asItem(),
-              Array[13].asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, Array[2]));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15], Array[11].asItem(), Array[13].asItem()));
 
       BlockRenderLayerMap.INSTANCE.putBlock(Array[5], RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(Array[6], RenderLayer.getCutout());
@@ -392,7 +281,8 @@ public class HibiscusRegistryHelper {
    public static Block registerLeafBlock(String name, MapColor color, Block blockBefore) {
       Block Leaves = registerBlock(
               name + "_leaves",
-              new LeavesBlock(FabricBlockSettings.create()
+              new LeavesBlock(FabricBlockSettings
+                      .create()
                       .strength(0.2F)
                       .ticksRandomly()
                       .nonOpaque()
@@ -409,17 +299,15 @@ public class HibiscusRegistryHelper {
       BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
-              Leaves.asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Leaves.asItem()));
       LeavesHashMap.put(name, Leaves);
       return Leaves;
    }
 
    public static Block registerMapleLeafBlock(String name, MapColor color, ParticleEffect particle, Block blockBefore) {
-      Block Leaves = registerBlock(
-              name + "_leaves",
-              new MapleLeavesBlock(FabricBlockSettings.create()
+      Block Leaves = registerBlock(name + "_leaves",
+              new MapleLeavesBlock(FabricBlockSettings
+                      .create()
                       .strength(0.2F)
                       .ticksRandomly()
                       .nonOpaque()
@@ -436,9 +324,7 @@ public class HibiscusRegistryHelper {
       BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
-              Leaves.asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Leaves.asItem()));
       LeavesHashMap.put(name, Leaves);
       return Leaves;
    }
@@ -446,8 +332,10 @@ public class HibiscusRegistryHelper {
    public static Block registerLeafBlock(String name, MapColor color, Block blockBefore, boolean bl) {
       Block Leaves;
       if(bl) {
-         Leaves = registerBlock(name + "_leaves",
-                 new WisteriaLeaves(FabricBlockSettings.create()
+         Leaves = registerBlock(
+                 name + "_leaves",
+                 new WisteriaLeaves(FabricBlockSettings
+                         .create()
                          .mapColor(color)
                          .strength(0.2F)
                          .ticksRandomly()
@@ -463,70 +351,52 @@ public class HibiscusRegistryHelper {
          );
       }
       else {
-         Leaves = registerBlock(name + "_leaves",
-                 new WillowLeaves(FabricBlockSettings.create()
-                         .mapColor(color)
-                         .strength(0.2F)
-                         .ticksRandomly()
-                         .sounds(BlockSoundGroup.GRASS)
-                         .nonOpaque()
-                         .allowsSpawning(HibiscusRegistryHelper::canSpawnUponLeaves)
-                         .suffocates(HibiscusRegistryHelper::never)
-                         .blockVision(HibiscusRegistryHelper::never)
-                         .burnable()
-                         .pistonBehavior(PistonBehavior.DESTROY)
-                         .solidBlock(HibiscusRegistryHelper::never)),
-                 HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-         );
+         Leaves = registerBlock(name + "_leaves", new WillowLeaves(FabricBlockSettings
+                 .create()
+                 .mapColor(color)
+                 .strength(0.2F)
+                 .ticksRandomly()
+                 .sounds(BlockSoundGroup.GRASS)
+                 .nonOpaque()
+                 .allowsSpawning(HibiscusRegistryHelper::canSpawnUponLeaves)
+                 .suffocates(HibiscusRegistryHelper::never)
+                 .blockVision(HibiscusRegistryHelper::never)
+                 .burnable()
+                 .pistonBehavior(PistonBehavior.DESTROY)
+                 .solidBlock(HibiscusRegistryHelper::never)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       }
       BlockRenderLayerMap.INSTANCE.putBlock(Leaves, RenderLayer.getCutout());
       FlammableBlockRegistry.getDefaultInstance().add(Leaves, 5, 20);
       CompostingChanceRegistry.INSTANCE.add(Leaves, 0.3F);
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
-              Leaves.asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Leaves.asItem()));
       LeavesHashMap.put(name, Leaves);
       return Leaves;
    }
 
    public static Block[] registerSapling(String name, SaplingGenerator saplingGenerator, Block blockBefore) {
       Block[] Plant = new Block[2];
-      Plant[0] = registerBlock(name + "_sapling",
-              new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
+      Plant[0] = registerBlock(name + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderLayer.getCutout());
       Plant[1] = registerPottedPlant(name + "_sapling", Plant[0]);
       CompostingChanceRegistry.INSTANCE.add(Plant[0], 0.3F);
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
-              Plant[0].asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Plant[0].asItem()));
       SaplingHashMap.put(name, Plant);
       return Plant;
    }
 
    public static Block[] registerJoshuaSapling(String name, SaplingGenerator saplingGenerator, Block blockBefore) {
       Block[] Plant = new Block[2];
-      Plant[0] = registerBlock(name + "_sapling",
-              new JoshuaSapling(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)),
-              HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP
-      );
+      Plant[0] = registerBlock(name + "_sapling", new JoshuaSapling(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
       BlockRenderLayerMap.INSTANCE.putBlock(Plant[0], RenderLayer.getCutout());
       Plant[1] = registerPottedPlant(name + "_sapling", Plant[0]);
       CompostingChanceRegistry.INSTANCE.add(Plant[0], 0.3F);
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore,
-              Plant[0].asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blockBefore, Plant[0].asItem()));
       SaplingHashMap.put(name, Plant);
       return Plant;
    }
 
    public static Block registerPottedPlant(String name, Block plant) {
-      Block pottedPlant = registerBlock("potted_" + name,
-              new FlowerPotBlock(plant,
-                      FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
-              )
-      );
+      Block pottedPlant = registerBlock("potted_" + name, new FlowerPotBlock(plant, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
       BlockRenderLayerMap.INSTANCE.putBlock(pottedPlant, RenderLayer.getCutout());
       return pottedPlant;
    }
@@ -542,9 +412,7 @@ public class HibiscusRegistryHelper {
 
    public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, RegistryKey <ItemGroup> secondaryTab) {
       Block block1 = registerBlock(name, block, tab);
-      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore,
-              block1.asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
       return block1;
    }
 
@@ -580,9 +448,7 @@ public class HibiscusRegistryHelper {
 
    public static Item registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, RegistryKey <ItemGroup> secondaryTab) {
       Item item = registerItem(name, new BlockItem(block, new FabricItemSettings()));
-      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore,
-              item.asItem()
-      ));
+      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, item.asItem()));
       ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(blockBefore, item.asItem()));
       return item;
    }

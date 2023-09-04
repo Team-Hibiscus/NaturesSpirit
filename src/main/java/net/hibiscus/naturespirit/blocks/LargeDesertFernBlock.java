@@ -23,14 +23,13 @@ public class LargeDesertFernBlock extends FernBlock {
       return SHAPE.offset(vec3.x, vec3.y, vec3.z);
    }
 
-   @Override
-   protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+   @Override protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
       return floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.isOf(Blocks.FARMLAND);
    }
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
       TallPlantBlock tallPlantBlock = (TallPlantBlock) HibiscusBlocksAndItems.TALL_SCORCHED_GRASS;
-      if (tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
+      if(tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
          TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
       }
 

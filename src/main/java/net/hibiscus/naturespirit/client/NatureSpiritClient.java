@@ -8,8 +8,8 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
+import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallPlantBlock;
@@ -54,11 +54,17 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
        * First argument is our particle's instance, created previously on ExampleMod.
        * Second argument is the particle's factory. The factory controls how the particle behaves.
        * In this example, we'll use FlameParticle's Factory.*/
-      ParticleFactoryRegistry.getInstance().register(RED_MAPLE_LEAVES_PARTICLE,  ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider)));
-      ParticleFactoryRegistry.getInstance().register(ORANGE_MAPLE_LEAVES_PARTICLE,  ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider)));
-      ParticleFactoryRegistry.getInstance().register(YELLOW_MAPLE_LEAVES_PARTICLE,  ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider)));
+      ParticleFactoryRegistry.getInstance().register(RED_MAPLE_LEAVES_PARTICLE,
+              ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
+      );
+      ParticleFactoryRegistry.getInstance().register(ORANGE_MAPLE_LEAVES_PARTICLE,
+              ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
+      );
+      ParticleFactoryRegistry.getInstance().register(YELLOW_MAPLE_LEAVES_PARTICLE,
+              ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
+      );
 
-      for (HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
+      for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          registerBoatModel(true, boat);
          registerBoatModel(false, boat);
       }
@@ -72,11 +78,13 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockColorProvider blockColorProvider = this.providers.get(Registries.BLOCK.getRawId(state.getBlock()));
       return blockColorProvider == null ? -1 : blockColorProvider.getColor(state, world, pos, tintIndex);
    }
+
    private static void registerBoatModel(boolean chest, HibiscusBoatEntity.HibiscusBoat boat) {
       var type = boat.entityType(chest);
       EntityRendererRegistry.register(type, context -> new HibiscusBoatEntityRenderer(context, chest, boat));
       EntityModelLayerRegistry.registerModelLayer(HibiscusBoatEntityRenderer.getModelLayer(boat, chest),
-              () -> chest ? ChestBoatEntityModel.getTexturedModelData() : BoatEntityModel.getTexturedModelData());
+              () -> chest ? ChestBoatEntityModel.getTexturedModelData() : BoatEntityModel.getTexturedModelData()
+      );
    }
 }
 

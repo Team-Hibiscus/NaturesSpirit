@@ -8,16 +8,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(BoatDispenserBehavior.class)
-abstract class BoatDispenserBehaviorMixin {
-   @ModifyVariable(
-           method = "dispenseSilently",
-           at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;setVariant(Lnet/minecraft/entity/vehicle/BoatEntity$Type;)V"),
-           allow = 1
-   )
+@Mixin(BoatDispenserBehavior.class) abstract class BoatDispenserBehaviorMixin {
+   @ModifyVariable(method = "dispenseSilently", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;setVariant(Lnet/minecraft/entity/vehicle/BoatEntity$Type;)V"), allow = 1)
    private BoatEntity modifyBoat(BoatEntity original) {
       // noinspection ConstantConditions
-      if ((Object) this instanceof HibiscusBoatDispensorBehavior boat) {
+      if((Object) this instanceof HibiscusBoatDispensorBehavior boat) {
          return HibiscusBoatEntity.copy(original, boat.getBoatData());
       }
 

@@ -8,7 +8,6 @@ package net.hibiscus.naturespirit.world.feature.trunk;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -33,10 +32,9 @@ import java.util.function.BiConsumer;
 
 public class SugiTrunkPlacer extends TrunkPlacer {
    public static final Codec <SugiTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-      return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps")
-              .forGetter((trunkPlacer) -> {
-                 return trunkPlacer.extraBranchSteps;
-              }), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> {
+      return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> {
+         return trunkPlacer.extraBranchSteps;
+      }), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> {
          return trunkPlacer.placeBranchPerLogProbability;
       }), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> {
          return trunkPlacer.extraBranchLength;
@@ -70,48 +68,18 @@ public class SugiTrunkPlacer extends TrunkPlacer {
          Direction direction = Type.HORIZONTAL.random(random);
          Direction direction2 = direction.rotateYClockwise();
          Direction direction3 = direction2.rotateYClockwise();
-         if(this.getAndSetState(world,
-                 replacer,
-                 random,
-                 mutable.set(startPos.getX(), j, startPos.getZ()),
-                 config
-         ) && i < height - 1) {
+         if(this.getAndSetState(world, replacer, random, mutable.set(startPos.getX(), j, startPos.getZ()), config) && i < height - 1) {
             int k = this.extraBranchLength.get(random);
             int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
             int l2 = Math.max(random.nextBetween(1, 2), k - this.extraBranchLength.get(random) - 1);
             int m = height - i - 2;
             if(i > 2) {
-               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, i >= height - 2 ? l2 : l,
-                       Math.min(m, 5), i);
+               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, i >= height - 2 ? l2 : l, Math.min(m, 5), i);
                if(random.nextFloat() < this.placeBranchPerLogProbability - 0.35) {
-                  this.generateExtraBranch(world,
-                          replacer,
-                          random,
-                          height,
-                          config,
-                          list,
-                          mutable,
-                          j,
-                          direction2,
-                          l,
-                          Math.round(m / 1.5F),
-                          i
-                  );
+                  this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, l, Math.round(m / 1.5F), i);
                }
                if(random.nextFloat() < this.placeBranchPerLogProbability - 0.45) {
-                  this.generateExtraBranch(world,
-                          replacer,
-                          random,
-                          height,
-                          config,
-                          list,
-                          mutable,
-                          j,
-                          direction3,
-                          l,
-                          Math.round(m / 1.5F),
-                          i
-                  );
+                  this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, l, Math.round(m / 1.5F), i);
                }
             }
          }

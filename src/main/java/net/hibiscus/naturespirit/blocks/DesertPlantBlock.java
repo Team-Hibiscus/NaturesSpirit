@@ -4,13 +4,11 @@ import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -32,35 +30,14 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
    static {
       AGE = Properties.AGE_7;
       AGE_TO_SHAPE = new VoxelShape[]{
-              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.createCuboidShape(
-              0.0D,
-              0.0D,
-              0.0D,
-              16.0D,
-              4.0D,
-              16.0D
-      ), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.createCuboidShape(
-              0.0D,
-              0.0D,
-              0.0D,
-              16.0D,
-              8.0D,
-              16.0D
-      ), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.createCuboidShape(
-              0.0D,
-              0.0D,
-              0.0D,
-              16.0D,
-              12.0D,
-              16.0D
-      ), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.createCuboidShape(
-              0.0D,
-              0.0D,
-              0.0D,
-              16.0D,
-              16.0D,
-              16.0D
-      )
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
       };
    }
 
@@ -73,7 +50,7 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
       this.rootBlock = rootBlock;
       this.vegetableBlock = vegetableBlock;
       this.pickBlockItem = () -> HibiscusBlocksAndItems.DESERT_TURNIP;
-      this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(AGE, 0));
+      this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
    }
 
    protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {
@@ -86,7 +63,7 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
             BlockState blockState = world.getBlockState(blockPos.add(i, 0, j));
             if(blockState.isOf(Blocks.FARMLAND)) {
                g = 1.0F;
-               if((Integer) blockState.get(FarmlandBlock.MOISTURE) > 0) {
+               if(blockState.get(FarmlandBlock.MOISTURE) > 0) {
                   g = 3.0F;
                }
             }
@@ -109,9 +86,9 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
          f /= 2.0F;
       }
       else {
-         boolean bl3 = world.getBlockState(blockPos4.north()).isOf(block) || world.getBlockState(blockPos5.north())
-                 .isOf(block) || world.getBlockState(blockPos5.south())
-                 .isOf(block) || world.getBlockState(blockPos4.south()).isOf(block);
+         boolean bl3 = world.getBlockState(blockPos4.north()).isOf(block) || world.getBlockState(blockPos5.north()).isOf(block) || world.getBlockState(blockPos5.south()).isOf(block) || world
+                 .getBlockState(blockPos4.south())
+                 .isOf(block);
          if(bl3) {
             f /= 2.0F;
          }
@@ -125,16 +102,16 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
    }
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-      return AGE_TO_SHAPE[(Integer) state.get(AGE)];
+      return AGE_TO_SHAPE[state.get(AGE)];
    }
 
    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
       if(world.getBaseLightLevel(pos, 0) >= 9) {
          float f = getAvailableMoisture(this, world, pos);
          if(random.nextInt((int) (25.0F / f) + 1) == 0) {
-            int i = (Integer) state.get(AGE);
+            int i = state.get(AGE);
             if(i < 7) {
-               state = (BlockState) state.with(AGE, i + 1);
+               state = state.with(AGE, i + 1);
                world.setBlockState(pos, state, 2);
             }
             else {
@@ -153,13 +130,13 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
                      world.setBlockState(blockPos, this.vegetableBlock.getDefaultState());
                   }
                }
-               if (!blockState.isOf(this.rootBlock)) {
-                  if (!blockState.isOf(this.vegetableBlock) && blockState2.isOf(this.vegetableBlock)) {
-                     state = (BlockState) state.with(AGE, 7);
+               if(!blockState.isOf(this.rootBlock)) {
+                  if(!blockState.isOf(this.vegetableBlock) && blockState2.isOf(this.vegetableBlock)) {
+                     state = state.with(AGE, 7);
                      world.setBlockState(pos, state, 2);
                   }
                }
-               if (blockState.isOf(this.rootBlock) && !blockState2.isOf(this.vegetableBlock) && bl2) {
+               if(blockState.isOf(this.rootBlock) && !blockState2.isOf(this.vegetableBlock) && bl2) {
                   world.setBlockState(blockPos2, this.vegetableBlock.getDefaultState());
                }
             }
@@ -169,11 +146,11 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
    }
 
    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-      return new ItemStack((ItemConvertible) this.pickBlockItem.get());
+      return new ItemStack(this.pickBlockItem.get());
    }
 
    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
-      return (Integer) state.get(AGE) < 7;
+      return state.get(AGE) < 7;
    }
 
    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
@@ -182,8 +159,8 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
 
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      int i = Math.min(7, (Integer) state.get(AGE) + MathHelper.nextInt(world.random, 2, 5));
-      BlockState blockState = (BlockState) state.with(AGE, i);
+      int i = Math.min(7, state.get(AGE) + MathHelper.nextInt(world.random, 2, 5));
+      BlockState blockState = state.with(AGE, i);
       world.setBlockState(pos, blockState, 2);
       if(i == 7) {
          blockState.randomTick(world, pos, world.random);
@@ -192,6 +169,6 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
    }
 
    protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
-      builder.add(new Property[]{AGE});
+      builder.add(AGE);
    }
 }

@@ -12,6 +12,7 @@ public class HibiscusVillagers {
    public static final VillagerType WISTERIA = VillagerTypeHelper.register(new Identifier(MOD_ID, "wisteria"));
    public static final VillagerType CYPRESS = VillagerTypeHelper.register(new Identifier(MOD_ID, "cypress"));
    public static final VillagerType ADOBE = VillagerTypeHelper.register(new Identifier(MOD_ID, "adobe"));
+
    public static void registerVillagers() {
       BIOME_TO_TYPE.put(HibiscusBiomes.WISTERIA_FOREST, WISTERIA);
       BIOME_TO_TYPE.put(HibiscusBiomes.CYPRESS_FIELDS, CYPRESS);
@@ -19,5 +20,6 @@ public class HibiscusVillagers {
       BIOME_TO_TYPE.put(HibiscusBiomes.STRATIFIED_DESERT, ADOBE);
       BIOME_TO_TYPE.put(HibiscusBiomes.LIVELY_DUNES, ADOBE);
       BIOME_TO_TYPE.put(HibiscusBiomes.BLOOMING_DUNES, ADOBE);
-   };
+   }
+
 }

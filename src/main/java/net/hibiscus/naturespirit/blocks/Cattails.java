@@ -35,9 +35,7 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
 
    public Cattails(Settings properties) {
       super(properties);
-      this.setDefaultState(this.stateManager.getDefaultState()
-              .with(WATERLOGGED, false)
-              .with(HALF, DoubleBlockHalf.LOWER));
+      this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(HALF, DoubleBlockHalf.LOWER));
    }
 
    public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
@@ -61,14 +59,13 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
          return state.isSideSolidFullSquare(level, pos, Direction.UP) && !state.isOf(Blocks.MAGMA_BLOCK);
       }
       else {
-         return state.isIn(BlockTags.DIRT) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.SAND) || state.isOf(
-                 Blocks.RED_SAND);
+         return state.isIn(BlockTags.DIRT) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.SAND) || state.isOf(Blocks.RED_SAND);
       }
    }
 
    public BlockState getPlacementState(ItemPlacementContext context) {
       FluidState fluidState = context.getWorld().getFluidState(context.getBlockPos());
-      return super.getPlacementState(context) != null ?  this.getDefaultState().with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8) : null;
+      return super.getPlacementState(context) != null ? this.getDefaultState().with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8) : null;
    }
 
    public boolean canPlaceAt(BlockState state, WorldView level, BlockPos pos) {
@@ -80,16 +77,10 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
          BlockPos blockPos = pos.down();
          BlockPos blockPos2 = pos.up();
          if(state.get(WATERLOGGED)) {
-            return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level,
-                    blockPos,
-                    Direction.UP
-            ) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
+            return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
          }
          else {
-            return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos),
-                    level,
-                    blockPos
-            );
+            return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos), level, blockPos);
          }
       }
    }

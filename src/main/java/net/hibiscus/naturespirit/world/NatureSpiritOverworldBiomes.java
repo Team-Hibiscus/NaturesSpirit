@@ -22,7 +22,8 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 import javax.annotation.Nullable;
 
-import static net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures.*;
+import static net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures.RIVER_WATER;
+import static net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures.WISTERIA_WATER;
 
 public class NatureSpiritOverworldBiomes {
    @Nullable private static final MusicSound NORMAL_MUSIC = null;
@@ -38,49 +39,30 @@ public class NatureSpiritOverworldBiomes {
    }
 
    private static Biome biome(boolean precipitation, float temperature, float downfall, int waterColor, int waterFogColor, SpawnSettings.Builder spawnBuilder, GenerationSettings.LookupBackedBuilder biomeBuilder, @Nullable MusicSound music) {
-      return (new Biome.Builder()).precipitation(precipitation)
-              .temperature(temperature)
-              .downfall(downfall)
-              .effects((new BiomeEffects.Builder()).waterColor(waterColor)
-                      .waterFogColor(waterFogColor)
-                      .fogColor(12638463)
-                      .skyColor(calculateSkyColor(temperature))
-                      .moodSound(BiomeMoodSound.CAVE)
-                      .music(music)
-                      .build())
-              .spawnSettings(spawnBuilder.build())
-              .generationSettings(biomeBuilder.build())
-              .build();
+      return (new Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new BiomeEffects.Builder())
+              .waterColor(waterColor)
+              .waterFogColor(waterFogColor)
+              .fogColor(12638463)
+              .skyColor(calculateSkyColor(temperature))
+              .moodSound(BiomeMoodSound.CAVE)
+              .music(music)
+              .build()).spawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
    }
 
    private static Biome biomeWithGrassColor(boolean precipitation, float temperature, float downfall, int grassColor, SpawnSettings.Builder spawnBuilder, GenerationSettings.LookupBackedBuilder biomeBuilder, @Nullable MusicSound music) {
-      return biomeWithGrassColor(precipitation,
-              temperature,
-              downfall,
-              4159204,
-              329011,
-              grassColor,
-              spawnBuilder,
-              biomeBuilder,
-              music
-      );
+      return biomeWithGrassColor(precipitation, temperature, downfall, 4159204, 329011, grassColor, spawnBuilder, biomeBuilder, music);
    }
 
    private static Biome biomeWithGrassColor(boolean precipitation, float temperature, float downfall, int waterColor, int waterFogColor, int grassColor, SpawnSettings.Builder spawnBuilder, GenerationSettings.LookupBackedBuilder biomeBuilder, @Nullable MusicSound music) {
-      return (new Biome.Builder()).precipitation(precipitation)
-              .temperature(temperature)
-              .downfall(downfall)
-              .effects((new BiomeEffects.Builder()).waterColor(waterColor)
-                      .waterFogColor(waterFogColor)
-                      .grassColor(grassColor)
-                      .fogColor(12638463)
-                      .skyColor(calculateSkyColor(temperature))
-                      .moodSound(BiomeMoodSound.CAVE)
-                      .music(music)
-                      .build())
-              .spawnSettings(spawnBuilder.build())
-              .generationSettings(biomeBuilder.build())
-              .build();
+      return (new Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new BiomeEffects.Builder())
+              .waterColor(waterColor)
+              .waterFogColor(waterFogColor)
+              .grassColor(grassColor)
+              .fogColor(12638463)
+              .skyColor(calculateSkyColor(temperature))
+              .moodSound(BiomeMoodSound.CAVE)
+              .music(music)
+              .build()).spawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
    }
 
    private static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
@@ -93,15 +75,12 @@ public class NatureSpiritOverworldBiomes {
    }
 
    public static Biome erodedRiver(RegistryEntryLookup <PlacedFeature> featureLookup, RegistryEntryLookup <ConfiguredCarver <?>> carverLookup) {
-      SpawnSettings.Builder builder = (new SpawnSettings.Builder()).spawn(SpawnGroup.WATER_CREATURE,
-                      new SpawnSettings.SpawnEntry(EntityType.SQUID, 2, 1, 4)
-              )
-              .spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(EntityType.SALMON, 5, 1, 5));
+      SpawnSettings.Builder builder = (new SpawnSettings.Builder()).spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(EntityType.SQUID, 2, 1, 4)).spawn(SpawnGroup.WATER_AMBIENT,
+              new SpawnSettings.SpawnEntry(EntityType.SALMON, 5, 1, 5)
+      );
       DefaultBiomeFeatures.addBatsAndMonsters(builder);
       builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.DROWNED, 100, 1, 1));
-      GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup,
-              carverLookup
-      ).feature(GenerationStep.Feature.FLUID_SPRINGS, RIVER_WATER);
+      GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup).feature(GenerationStep.Feature.FLUID_SPRINGS, RIVER_WATER);
       globalOverworldGeneration(lookupBackedBuilder);
       DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
@@ -122,9 +101,7 @@ public class NatureSpiritOverworldBiomes {
       //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 5, 2, 5));
       //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 5));
 
-      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter,
-              holderGetter2
-      ).feature(GenerationStep.Feature.FLUID_SPRINGS, WISTERIA_WATER);
+      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2).feature(GenerationStep.Feature.FLUID_SPRINGS, WISTERIA_WATER);
       globalOverworldGeneration(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
@@ -143,9 +120,7 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
       DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
-      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter,
-              holderGetter2
-      );
+      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
       globalOverworldGeneration(biomeBuilder);
       DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
       DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
@@ -153,14 +128,7 @@ public class NatureSpiritOverworldBiomes {
       HibiscusFeatureGroups.addDenseFirTrees(biomeBuilder);
       HibiscusFeatureGroups.addFirVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-      return biomeWithGrassColor(true,
-              0.45F,
-              0.3F,
-              11977352,
-              spawnBuilder,
-              biomeBuilder,
-              MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_FOREST)
-      );
+      return biomeWithGrassColor(true, 0.45F, 0.3F, 11977352, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_FOREST));
    }
 
 
@@ -169,9 +137,7 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
       DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
-      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter,
-              holderGetter2
-      );
+      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
       globalOverworldGeneration(biomeBuilder);
       HibiscusFeatureGroups.addRedwoodRock(biomeBuilder);
       DefaultBiomeFeatures.addFrozenLavaSpring(biomeBuilder);
@@ -183,14 +149,7 @@ public class NatureSpiritOverworldBiomes {
       HibiscusFeatureGroups.addSpruceBush(biomeBuilder);
       HibiscusFeatureGroups.addRedwoodSecondaryVegetation(biomeBuilder);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-      return biomeWithGrassColor(true,
-              0.4F,
-              0.6F,
-              11451757,
-              spawnBuilder,
-              biomeBuilder,
-              MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_FOREST)
-      );
+      return biomeWithGrassColor(true, 0.4F, 0.6F, 11451757, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_FOREST));
    }
 
 }

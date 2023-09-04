@@ -13,10 +13,7 @@ public class NatureSpiritTerraBlender implements TerraBlenderApi {
          Regions.register(new HibiscusRegion1(new Identifier(MOD_ID, "redwood_and_marsh"), 3));
          Regions.register(new HibiscusRegion3(new Identifier(MOD_ID, "autumn_and_sugi"), 1));
          Regions.register(new HibiscusRegion5(new Identifier(MOD_ID, "desert_and_wisteria"), 2));
-         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD,
-                 MOD_ID,
-                 NatureSpiritSurfaceRules.makeRules()
-         );
+         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, NatureSpiritSurfaceRules.makeRules());
       }
    }
 }

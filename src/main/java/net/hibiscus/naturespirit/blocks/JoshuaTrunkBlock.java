@@ -19,15 +19,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
-import java.util.Iterator;
-
-public class JoshuaTrunkBlock extends ConnectingBlock implements Waterloggable{
+public class JoshuaTrunkBlock extends ConnectingBlock implements Waterloggable {
    public JoshuaTrunkBlock(Settings settings) {
       super(0.3125F, settings);
-      this.setDefaultState(this.stateManager.getDefaultState()
-              .with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false)
-              .with(WATERLOGGED, false));
+      this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false).with(WATERLOGGED, false));
    }
+
    public static final BooleanProperty WATERLOGGED;
 
    public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -42,18 +39,23 @@ public class JoshuaTrunkBlock extends ConnectingBlock implements Waterloggable{
       BlockState blockState4 = world.getBlockState(pos.east());
       BlockState blockState5 = world.getBlockState(pos.south());
       BlockState blockState6 = world.getBlockState(pos.west());
-      return this.getDefaultState()
-              .with(DOWN, blockState.isIn(BlockTags.LEAVES) || blockState.getBlock() instanceof JoshuaTrunkBlock || blockState.isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER) )
-              .with(UP, blockState2.isIn(BlockTags.LEAVES) || blockState2.getBlock() instanceof JoshuaTrunkBlock || blockState2.isSideSolid(world, pos, Direction.DOWN, SideShapeType.CENTER))
-              .with(NORTH, blockState3.isIn(BlockTags.LEAVES) || blockState3.getBlock() instanceof JoshuaTrunkBlock || blockState3.isSideSolid(world, pos, Direction.SOUTH, SideShapeType.CENTER))
-              .with(EAST, blockState4.isIn(BlockTags.LEAVES) || blockState4.getBlock() instanceof JoshuaTrunkBlock || blockState4.isSideSolid(world, pos, Direction.WEST, SideShapeType.CENTER))
-              .with(SOUTH, blockState5.isIn(BlockTags.LEAVES) || blockState5.getBlock() instanceof JoshuaTrunkBlock || blockState5.isSideSolid(world, pos, Direction.NORTH, SideShapeType.CENTER))
-              .with(WEST, blockState6.isIn(BlockTags.LEAVES) || blockState6.getBlock() instanceof JoshuaTrunkBlock || blockState6.isSideSolid(world, pos, Direction.EAST, SideShapeType.CENTER));
+      return this.getDefaultState().with(DOWN,
+              blockState.isIn(BlockTags.LEAVES) || blockState.getBlock() instanceof JoshuaTrunkBlock || blockState.isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER)
+      ).with(
+              UP,
+              blockState2.isIn(BlockTags.LEAVES) || blockState2.getBlock() instanceof JoshuaTrunkBlock || blockState2.isSideSolid(world, pos, Direction.DOWN, SideShapeType.CENTER)
+      ).with(NORTH, blockState3.isIn(BlockTags.LEAVES) || blockState3.getBlock() instanceof JoshuaTrunkBlock || blockState3.isSideSolid(world, pos, Direction.SOUTH, SideShapeType.CENTER)).with(
+              EAST,
+              blockState4.isIn(BlockTags.LEAVES) || blockState4.getBlock() instanceof JoshuaTrunkBlock || blockState4.isSideSolid(world, pos, Direction.WEST, SideShapeType.CENTER)
+      ).with(SOUTH, blockState5.isIn(BlockTags.LEAVES) || blockState5.getBlock() instanceof JoshuaTrunkBlock || blockState5.isSideSolid(world, pos, Direction.NORTH, SideShapeType.CENTER)).with(
+              WEST,
+              blockState6.isIn(BlockTags.LEAVES) || blockState6.getBlock() instanceof JoshuaTrunkBlock || blockState6.isSideSolid(world, pos, Direction.EAST, SideShapeType.CENTER)
+      );
    }
 
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-         boolean bl = neighborState.isSideSolid(world, pos, direction.getOpposite(), SideShapeType.CENTER) || neighborState.getBlock() instanceof JoshuaTrunkBlock || neighborState.isIn(BlockTags.LEAVES);
-         return state.with(FACING_PROPERTIES.get(direction), bl);
+      boolean bl = neighborState.isSideSolid(world, pos, direction.getOpposite(), SideShapeType.CENTER) || neighborState.getBlock() instanceof JoshuaTrunkBlock || neighborState.isIn(BlockTags.LEAVES);
+      return state.with(FACING_PROPERTIES.get(direction), bl);
    }
 
    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -74,6 +76,7 @@ public class JoshuaTrunkBlock extends ConnectingBlock implements Waterloggable{
    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
       return false;
    }
+
    public FluidState getFluidState(BlockState state) {
       return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
    }

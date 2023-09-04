@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.world.feature.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -15,11 +14,9 @@ import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class CypressFoliagePlacer extends FoliagePlacer {
    public static final Codec <CypressFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-      return fillFoliagePlacerFields(instance).and(IntProvider.createValidatingCodec(0, 24)
-              .fieldOf("trunk_height")
-              .forGetter((placer) -> {
-                 return placer.trunkHeight;
-              })).apply(instance, CypressFoliagePlacer::new);
+      return fillFoliagePlacerFields(instance).and(IntProvider.createValidatingCodec(0, 24).fieldOf("trunk_height").forGetter((placer) -> {
+         return placer.trunkHeight;
+      })).apply(instance, CypressFoliagePlacer::new);
    });
    private final IntProvider trunkHeight;
 
@@ -65,44 +62,22 @@ public class CypressFoliagePlacer extends FoliagePlacer {
          else if(l == offset - 5) {
             mutable.set(blockPos, 0, l, 0);
             if(random.nextBoolean()) {
-               placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.random(random), 1)
-                       .offset(Direction.random(random), 1)
-                       .up(1));
+               placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.random(random), 1).offset(Direction.random(random), 1).up(1));
             }
          }
          else if(l >= offset - 10) {
             mutable.set(blockPos, 0, l, 0);
             if(random.nextBoolean()) {
-               placeFoliageBlock(world,
-                       placer,
-                       random,
-                       config,
-                       mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1)
-               );
+               placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.EAST, 1));
             }
             if(random.nextBoolean()) {
-               placeFoliageBlock(world,
-                       placer,
-                       random,
-                       config,
-                       mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1)
-               );
+               placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.NORTH, 1).offset(Direction.WEST, 1));
             }
             if(random.nextBoolean()) {
-               placeFoliageBlock(world,
-                       placer,
-                       random,
-                       config,
-                       mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1)
-               );
+               placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.EAST, 1));
             }
             if(random.nextBoolean()) {
-               placeFoliageBlock(world,
-                       placer,
-                       random,
-                       config,
-                       mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1)
-               );
+               placeFoliageBlock(world, placer, random, config, mutable.offset(Direction.SOUTH, 1).offset(Direction.WEST, 1));
             }
          }
          else if(l >= offset - 13) {

@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.world.feature.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -14,11 +13,9 @@ import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class AspenFoliagePlacer extends FoliagePlacer {
    public static final Codec <AspenFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-      return fillFoliagePlacerFields(instance).and(IntProvider.createValidatingCodec(0, 24)
-              .fieldOf("trunk_height")
-              .forGetter((placer) -> {
-                 return placer.trunkHeight;
-              })).apply(instance, AspenFoliagePlacer::new);
+      return fillFoliagePlacerFields(instance).and(IntProvider.createValidatingCodec(0, 24).fieldOf("trunk_height").forGetter((placer) -> {
+         return placer.trunkHeight;
+      })).apply(instance, AspenFoliagePlacer::new);
    });
    private final IntProvider trunkHeight;
 
@@ -39,21 +36,9 @@ public class AspenFoliagePlacer extends FoliagePlacer {
       int k = 0;
 
       for(int l = offset; l >= -foliageHeight - 2; --l) {
-         this.generateSquare(world,
-                 placer,
-                 random,
-                 config,
-                 blockPos,
-                 (l >= offset ? 0 : i),
-                 l,
-                 treeNode.isGiantTrunk()
-         );
+         this.generateSquare(world, placer, random, config, blockPos, (l >= offset ? 0 : i), l, treeNode.isGiantTrunk());
          j = Math.min(j + 1, radius + treeNode.getFoliageRadius());
-         i = l <= -foliageHeight - 1 ? Math.max(i - 2,
-                 1
-         ) : (l >= offset - 1 ? 0 : (l >= offset - 3 ? 1 : (i * 1.25 >= j ? Math.max(i - 1,
-                 1
-         ) : (l >= offset - 4 ? 2 : i + 1))));
+         i = l <= -foliageHeight - 1 ? Math.max(i - 2, 1) : (l >= offset - 1 ? 0 : (l >= offset - 3 ? 1 : (i * 1.25 >= j ? Math.max(i - 1, 1) : (l >= offset - 4 ? 2 : i + 1))));
       }
 
    }

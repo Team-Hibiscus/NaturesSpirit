@@ -14,12 +14,10 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
-import net.minecraft.world.gen.foliage.FoliagePlacer.BlockPlacer;
-import net.minecraft.world.gen.foliage.FoliagePlacer.TreeNode;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class MapleFoliagePlacer extends FoliagePlacer {
-   public static final Codec<MapleFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+   public static final Codec <MapleFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
       return fillFoliagePlacerFields(instance).and(instance.group(IntProvider.createValidatingCodec(4, 16).fieldOf("height").forGetter((foliagePlacer) -> {
          return foliagePlacer.height;
       }), Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter((foliagePlacer) -> {
@@ -63,15 +61,16 @@ public class MapleFoliagePlacer extends FoliagePlacer {
    }
 
    protected boolean isInvalidForLeaves(Random random, int dx, int y, int dz, int radius, boolean giantTrunk) {
-      if (y >= -1 && y <= 0 && (dx == radius || dz == radius || (dx == radius - y || dz == radius - y))) {
+      if(y >= -1 && y <= 0 && (dx == radius || dz == radius || (dx == radius - y || dz == radius - y))) {
          return true;
       }
-         boolean bl = dx == radius && dz == radius;
-         boolean bl2 = radius > 2;
-         if (bl2) {
-            return bl || dx + dz > radius * 2 - 2;
-         } else {
-            return bl;
-         }
+      boolean bl = dx == radius && dz == radius;
+      boolean bl2 = radius > 2;
+      if(bl2) {
+         return bl || dx + dz > radius * 2 - 2;
+      }
+      else {
+         return bl;
+      }
    }
 }

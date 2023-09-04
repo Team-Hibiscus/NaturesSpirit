@@ -31,9 +31,7 @@ public class TallSedgeGrassBlock extends TallPlantBlock implements Waterloggable
 
    public TallSedgeGrassBlock(Settings properties) {
       super(properties);
-      this.setDefaultState(this.stateManager.getDefaultState()
-              .with(WATERLOGGED, false)
-              .with(HALF, DoubleBlockHalf.LOWER));
+      this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(HALF, DoubleBlockHalf.LOWER));
    }
 
    public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
@@ -63,16 +61,10 @@ public class TallSedgeGrassBlock extends TallPlantBlock implements Waterloggable
          BlockPos blockPos = pos.down();
          BlockPos blockPos2 = pos.up();
          if(state.get(WATERLOGGED)) {
-            return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level,
-                    blockPos,
-                    Direction.UP
-            ) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
+            return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
          }
          else {
-            return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos),
-                    level,
-                    blockPos
-            );
+            return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos), level, blockPos);
          }
       }
    }
