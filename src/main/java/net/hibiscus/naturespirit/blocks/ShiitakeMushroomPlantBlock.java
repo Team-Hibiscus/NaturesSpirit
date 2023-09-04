@@ -29,7 +29,7 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
    }
 
    public static boolean getCompletedPodzol(ServerWorld world, BlockPos pos) {
-
+      pos = pos.down();
       return isPodzol(pos.north(), world) && isPodzol(pos.west().north(), world) && isPodzol(pos.west(2).north(), world) && isPodzol(pos.north(2), world) && isPodzol(pos.west().north(2),
               world
       ) && isPodzol(pos.west(2).north(2), world) && isPodzol(pos.north(3), world) && isPodzol(pos.west().north(3), world) && isPodzol(pos.west(2).north(3), world);
