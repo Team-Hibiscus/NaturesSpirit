@@ -32,7 +32,7 @@ public class HibiscusBlocksAndItems {
                    .noCollision()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            Blocks.LARGE_FERN,
@@ -59,7 +59,7 @@ public class HibiscusBlocksAndItems {
                    .noCollision()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            Blocks.LARGE_FERN,
@@ -86,7 +86,7 @@ public class HibiscusBlocksAndItems {
                    .noCollision()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            TALL_SCORCHED_GRASS,
@@ -113,7 +113,7 @@ public class HibiscusBlocksAndItems {
                    .noCollision()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            TALL_SCORCHED_GRASS,
