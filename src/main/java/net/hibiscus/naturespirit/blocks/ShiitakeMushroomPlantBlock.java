@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -35,12 +36,22 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
       ) && isPodzol(pos.west(2).north(2), world) && isPodzol(pos.north(3), world) && isPodzol(pos.west().north(3), world) && isPodzol(pos.west(2).north(3), world);
    }
 
+   public static boolean getCompletedCoarseDirt(ServerWorld world, BlockPos pos) {
+      pos = pos.down();
+      return isDirt(pos.north(), world) && isDirt(pos.west().north(), world) && isDirt(pos.west(2).north(), world) && isDirt(pos.north(2), world) && isDirt(pos.west().north(2),
+              world
+      ) && isDirt(pos.west(2).north(2), world) && isDirt(pos.north(3), world) && isDirt(pos.west().north(3), world) && isDirt(pos.west(2).north(3), world);
+   }
+
    public static boolean isMushroom(BlockPos pos, ServerWorld world) {
       return world.getBlockState(pos).isOf(HibiscusBlocksAndItems.SHIITAKE_MUSHROOM);
    }
 
    public static boolean isPodzol(BlockPos pos, ServerWorld world) {
-      return world.getBlockState(pos).isOf(Blocks.PODZOL);
+      return world.getBlockState(pos).isOf(Blocks.PODZOL) || world.getBlockState(pos).isIn(BlockTags.DIRT) && !world.getBlockState(pos).isOf(Blocks.GRASS_BLOCK);
+   }
+   public static boolean isDirt(BlockPos pos, ServerWorld world) {
+      return world.getBlockState(pos).isOf(Blocks.COARSE_DIRT);
    }
 
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
@@ -96,6 +107,11 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
                if(getCompletedPodzol(world, pos)) {
                   if(random.nextInt(25) == 0) {
                      world.setBlockState(blockPos2, Blocks.COARSE_DIRT.getDefaultState(), 2);
+                  }
+               }
+               if(getCompletedCoarseDirt(world, pos)) {
+                  if(random.nextInt(25) == 0) {
+                     world.setBlockState(blockPos2, Blocks.GRAVEL.getDefaultState(), 2);
                   }
                }
             }
