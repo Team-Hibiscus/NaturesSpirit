@@ -32,10 +32,7 @@ import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
@@ -43,6 +40,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -50,6 +48,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
+import static net.hibiscus.naturespirit.datagen.HibiscusBiomes.BiomesHashMap;
 import static net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems.*;
 import static net.minecraft.data.client.BlockStateModelGenerator.*;
 import static net.minecraft.data.family.BlockFamilies.register;
@@ -921,11 +920,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             translationBuilder.add(boat.chestBoat().asItem(), capitalizeString(boat.asString()) + " Boat With Chest");
          }
       }
+      private void generateBiomeTranslations(TranslationBuilder translationBuilder) {
+         for(String name : BiomesHashMap.keySet()) {
+            RegistryKey <Biome> biome = BiomesHashMap.get(name);
+            translationBuilder.add(biome.toString().replace("ResourceKey[minecraft:worldgen/biome / natures_spirit:", "biome.natures_spirit.").replace("]", ""), capitalizeString(name.replace("_", " ")));
+         }
+      }
 
       @Override public void generateTranslations(TranslationBuilder translationBuilder) {
          generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap, translationBuilder);
          generateBoatTranslations(translationBuilder);
          generateJoshuaTranslations(translationBuilder);
+         generateBiomeTranslations(translationBuilder);
          generateTreeTranslations(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap, translationBuilder);
          translationBuilder.add(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, "Nature's Spirit Blocks & Items");
          translationBuilder.add(HibiscusBlocksAndItems.GREEN_OLIVES, "Green Olives");

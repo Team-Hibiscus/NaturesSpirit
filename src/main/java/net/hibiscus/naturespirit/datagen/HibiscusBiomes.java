@@ -12,8 +12,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
+import java.util.HashMap;
+
 public class HibiscusBiomes {
 
+   public static HashMap<String, RegistryKey<Biome>> BiomesHashMap = new HashMap<>();
    public static final RegistryKey <Biome> SUGI_FOREST = register("sugi_forest");
    public static final RegistryKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
    public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
@@ -35,7 +38,9 @@ public class HibiscusBiomes {
 
    private static RegistryKey <Biome> register(String name) {
       System.out.println("Registered Resource Key for biome: " + name);
-      return RegistryKey.of(RegistryKeys.BIOME, new Identifier(NatureSpirit.MOD_ID, name));
+      RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, new Identifier(NatureSpirit.MOD_ID, name));
+      BiomesHashMap.put(name, registryKey);
+      return registryKey;
    }
 
 
