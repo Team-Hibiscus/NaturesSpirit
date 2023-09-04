@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+<<<<<<< Updated upstream:remappedSrc/net/hibiscus/naturespirit/client/NatureSpiritClient.java
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -25,6 +26,23 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+=======
+import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.client.color.block.BlockColorProvider;
+import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.BoatEntityModel;
+import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.collection.IdList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockRenderView;
+>>>>>>> Stashed changes:src/main/java/net/hibiscus/naturespirit/client/NatureSpiritClient.java
 import org.jetbrains.annotations.Nullable;
 
 import static net.hibiscus.naturespirit.NatureSpirit.*;
@@ -62,6 +80,9 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       for (HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          registerBoatModel(true, boat);
          registerBoatModel(false, boat);
+      }
+      for(Block block : HibiscusRegistryHelper.RenderLayerHashMap.values()) {
+         BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
       }
 
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderType.cutout());
