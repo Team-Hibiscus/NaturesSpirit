@@ -12,6 +12,7 @@ public class HibiscusTags {
 
       public static final TagKey <Item> PIZZA_TOPPINGS = createTag("pizza_toppings");
       public static final TagKey <Item> DISABLED_PIZZA_TOPPINGS = createTag("disabled_pizza_toppings");
+      public static final TagKey <Item> CHEESE_MAKER = createTag("cheese_maker");
 
       private static TagKey <Item> createTag(String name) {
          return TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name));

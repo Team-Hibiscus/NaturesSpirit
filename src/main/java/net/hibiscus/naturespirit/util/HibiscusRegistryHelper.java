@@ -36,6 +36,7 @@ public class HibiscusRegistryHelper {
    public static HashMap <String, Block[]> SaplingHashMap = new HashMap <>();
    public static HashMap <String, Block> LeavesHashMap = new HashMap <>();
    public static HashMap <String, Block> RenderLayerHashMap = new HashMap <>();
+   public static HashMap <String, Item> NatureSpiritItemHashMap = new HashMap <>();
 
    private static Boolean canSpawnUponLeaves(BlockState state, BlockView world, BlockPos pos, EntityType <?> type) {
       return type == EntityType.OCELOT || type == EntityType.PARROT;
@@ -258,7 +259,7 @@ public class HibiscusRegistryHelper {
               Array[9],
               Array[10]
       ));
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, Array[2]));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, Array[0]));
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement[15], Array[11].asItem(), Array[13].asItem()));
 
       RenderLayerHashMap.put(name + "_door", Array[5]);
@@ -455,7 +456,9 @@ public class HibiscusRegistryHelper {
    }
 
    public static Item registerItem(String name, Item item) {
-      return Registry.register(Registries.ITEM, new Identifier(NatureSpirit.MOD_ID, name), item);
+      Item item1 = Registry.register(Registries.ITEM, new Identifier(NatureSpirit.MOD_ID, name), item);
+      NatureSpiritItemHashMap.put(name, item1);
+      return item1;
    }
 
    public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab) {

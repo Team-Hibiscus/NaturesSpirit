@@ -95,11 +95,6 @@ public class NatureSpiritOverworldBiomes {
       SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
       DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
       DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
-      //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.COW, 5, 2, 5));
-      //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 5, 2, 5));
-      //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 5, 2, 5));
-      //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 5, 2, 5));
-      //        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 5));
 
       GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2).feature(GenerationStep.Feature.FLUID_SPRINGS, WISTERIA_WATER);
       globalOverworldGeneration(biomeBuilder);
@@ -112,23 +107,6 @@ public class NatureSpiritOverworldBiomes {
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
       biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM);
       return biome(true, 0.4F, 0.7F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
-   }
-
-
-   public static Biome firForest(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
-      SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-      DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
-      DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
-
-      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2);
-      globalOverworldGeneration(biomeBuilder);
-      DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
-      DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
-      DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      HibiscusFeatureGroups.addDenseFirTrees(biomeBuilder);
-      HibiscusFeatureGroups.addFirVegetation(biomeBuilder);
-      DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-      return biomeWithGrassColor(true, 0.45F, 0.3F, 11977352, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_FOREST));
    }
 
 

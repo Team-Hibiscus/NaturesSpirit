@@ -15,9 +15,6 @@ public class HibiscusFeatureGroups {
    public static void addWisteriaTrees(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.WISTERIA_PLACED);
    }
-   public static void addDenseFirTrees(GenerationSettings.LookupBackedBuilder builder) {
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.DENSE_FIR_PLACED);
-   }
    public static void addRedwoodTrees(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.REDWOOD_PLACED);
    }
@@ -42,11 +39,6 @@ public class HibiscusFeatureGroups {
    public static void addRedwoodSecondaryVegetation(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FLOWER_REDWOOD_PLACED);
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
-   }
-   public static void addFirVegetation(GenerationSettings.LookupBackedBuilder builder) {
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FLOWER_FIR_PLACED);
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
    }
 }

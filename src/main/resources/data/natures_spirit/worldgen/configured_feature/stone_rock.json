@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [],
+    "default": {
+      "feature": {
+        "type": "minecraft:ore",
+        "config": {
+          "discard_chance_on_air_exposure": 0.0,
+          "size": 10,
+          "targets": [
+            {
+              "state": {
+                "Name": "minecraft:stone"
+              },
+              "target": {
+                "predicate_type": "minecraft:always_true"
+              }
+            }
+          ]
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:random_offset",
+          "xz_spread": {
+            "type": "minecraft:uniform",
+            "value": {
+              "min_inclusive": 0,
+              "max_inclusive": 15
+            }
+          },
+          "y_spread": {
+            "type": "minecraft:uniform",
+            "value": {
+              "min_inclusive": 2,
+              "max_inclusive": 3
+            }
+          }
+        },
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:any_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "blocks": [
+                  "minecraft:stone",
+                  "minecraft:grass_block",
+                  "minecraft:dirt"
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ],
+                "blocks": [
+                  "minecraft:stone",
+                  "minecraft:grass_block",
+                  "minecraft:dirt"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

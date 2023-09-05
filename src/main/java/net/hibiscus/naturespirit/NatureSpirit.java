@@ -10,11 +10,14 @@ import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
+import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
 import net.hibiscus.naturespirit.util.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.entity.passive.CatVariant;
+import net.minecraft.item.Items;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -44,6 +47,7 @@ public class NatureSpirit implements ModInitializer {
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
+      HibiscusCauldronBehavior.registerBehavior();
 
       CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);

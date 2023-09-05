@@ -9,11 +9,13 @@ import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.*;
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
 
 import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.*;
 
@@ -29,7 +31,7 @@ public class HibiscusBlocksAndItems {
            new TallPlantBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
@@ -42,7 +44,7 @@ public class HibiscusBlocksAndItems {
            new HibiscusFernBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
@@ -56,7 +58,7 @@ public class HibiscusBlocksAndItems {
            new TallLargeDesertFernBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
@@ -69,7 +71,7 @@ public class HibiscusBlocksAndItems {
            new LargeDesertFernBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
@@ -83,7 +85,7 @@ public class HibiscusBlocksAndItems {
            new TallSedgeGrassBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
@@ -96,7 +98,7 @@ public class HibiscusBlocksAndItems {
            new SedgeGrassBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
@@ -110,7 +112,7 @@ public class HibiscusBlocksAndItems {
            new TallPlantBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.GOLD)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
@@ -123,7 +125,7 @@ public class HibiscusBlocksAndItems {
            new HibiscusFernBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.GOLD)
-                   .noCollision()
+                   .noCollision().replaceable()
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
@@ -400,6 +402,11 @@ public class HibiscusBlocksAndItems {
            Items.BEETROOT,
            ItemGroups.FOOD_AND_DRINK
    );
+   public static final Block CHEESE_BLOCK = registerBlock("cheese_block", new CheeseBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).strength(2.0F, 1.0F).sounds(BlockSoundGroup.AZALEA_LEAVES)));
+
+   public static final Item CHEESE_BUCKET = registerItem("cheese_bucket", new PowderSnowBucketItem(CHEESE_BLOCK, SoundEvents.ITEM_BUCKET_EMPTY, (new Item.Settings()).maxCount(1)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+   public static final Block MILK_CAULDRON = registerBlock("milk_cauldron", new MilkCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
+   public static final Block CHEESE_CAULDRON = registerBlock("cheese_cauldron", new CheeseCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
 
    public static final FoodComponent STANDARD_PIZZA_COMPONENT = (new FoodComponent.Builder()).hunger(2).saturationModifier(0.2F).build();
    public static final Block PIZZA_BLOCK = registerBlock("pizza_block", new PizzaBlock(FabricBlockSettings.copy(Blocks.CAKE)));

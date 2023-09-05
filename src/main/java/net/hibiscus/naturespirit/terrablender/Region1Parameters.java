@@ -70,7 +70,7 @@ public class Region1Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
               }, {
-                      HibiscusBiomes.PRAIRIE, HibiscusBiomes.PRAIRIE, BiomeKeys.TAIGA, BiomeKeys.TAIGA, HibiscusBiomes.REDWOOD_FOREST
+                      HibiscusBiomes.PRAIRIE, HibiscusBiomes.PRAIRIE, HibiscusBiomes.FIR_FOREST, HibiscusBiomes.FIR_FOREST, HibiscusBiomes.REDWOOD_FOREST
               }, {
                       BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
@@ -90,7 +90,7 @@ public class Region1Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_TAIGA
               }, {
-                      HibiscusBiomes.PRAIRIE, HibiscusBiomes.PRAIRIE, BiomeKeys.MEADOW, BiomeKeys.TAIGA, HibiscusBiomes.REDWOOD_FOREST
+                      BiomeKeys.MEADOW, HibiscusBiomes.PRAIRIE, HibiscusBiomes.PRAIRIE, HibiscusBiomes.FIR_FOREST, HibiscusBiomes.REDWOOD_FOREST
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
@@ -101,7 +101,7 @@ public class Region1Parameters {
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
-              null, null, null, BiomeKeys.MEADOW, null
+              null, null, null, HibiscusBiomes.PRAIRIE, null
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {null, null, null, null, null}, {

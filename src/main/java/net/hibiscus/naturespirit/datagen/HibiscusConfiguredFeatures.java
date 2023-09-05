@@ -636,7 +636,8 @@ public class HibiscusConfiguredFeatures {
                                       0.030833334F,
                                       List.of(Blocks.LILY_OF_THE_VALLEY.getDefaultState(),
                                               Blocks.OXEYE_DAISY.getDefaultState(),
-                                              HibiscusBlocksAndItems.CARNATION.getDefaultState(),
+                                              Blocks.OXEYE_DAISY.getDefaultState(),
+                                              HibiscusBlocksAndItems.GARDENIA.getDefaultState(),
                                               Blocks.ALLIUM.getDefaultState()
                                       )
                               ))

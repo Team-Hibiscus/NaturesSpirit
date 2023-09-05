@@ -70,7 +70,7 @@ public class Region3Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
               }, {
-                      HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.MAPLE_WOODLANDS, HibiscusBiomes.ASPEN_FOREST, HibiscusBiomes.FIR_FOREST
+                      HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.MAPLE_WOODLANDS, HibiscusBiomes.ASPEN_FOREST, HibiscusBiomes.ASPEN_FOREST
               }, {
                       BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
@@ -90,7 +90,7 @@ public class Region3Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_TAIGA
               }, {
-                      HibiscusBiomes.MARIGOLD_MEADOWS, HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.ASPEN_FOREST, HibiscusBiomes.FIR_FOREST
+                      HibiscusBiomes.MARIGOLD_MEADOWS, HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.GOLDEN_WILDS, HibiscusBiomes.ASPEN_FOREST, HibiscusBiomes.ASPEN_FOREST
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
