@@ -48,69 +48,69 @@ public class HibiscusBoatEntity extends BoatEntity {
    public enum HibiscusBoat implements StringIdentifiable {
       REDWOOD(
               "redwood",
-              () -> HibiscusWoods.REDWOOD[4],
-              () -> HibiscusWoods.REDWOOD_BOAT,
-              () -> HibiscusWoods.REDWOOD_CHEST_BOAT,
-              () -> HibiscusEntityTypes.REDWOOD_BOAT,
-              () -> HibiscusEntityTypes.REDWOOD_CHEST_BOAT
+              () -> HibiscusWoods.REDWOOD.getPlanks(),
+              () -> HibiscusWoods.REDWOOD.getBoatItem(),
+              () -> HibiscusWoods.REDWOOD.getChestBoatItem(),
+              () -> HibiscusWoods.REDWOOD.getBoatEntityType(),
+              () -> HibiscusWoods.REDWOOD.getChestBoatEntityType()
       ),
-      SUGI("sugi", () -> HibiscusWoods.SUGI[4], () -> HibiscusWoods.SUGI_BOAT, () -> HibiscusWoods.SUGI_CHEST_BOAT, () -> HibiscusEntityTypes.SUGI_BOAT, () -> HibiscusEntityTypes.SUGI_CHEST_BOAT),
+      SUGI("sugi", () -> HibiscusWoods.SUGI.getPlanks(), () -> HibiscusWoods.SUGI.getBoatItem(), () -> HibiscusWoods.SUGI.getChestBoatItem(), () -> HibiscusWoods.SUGI.getBoatEntityType(), () -> HibiscusWoods.SUGI.getChestBoatEntityType()),
       WISTERIA(
               "wisteria",
-              () -> HibiscusWoods.WISTERIA[4],
-              () -> HibiscusWoods.WISTERIA_BOAT,
-              () -> HibiscusWoods.WISTERIA_CHEST_BOAT,
-              () -> HibiscusEntityTypes.WISTERIA_BOAT,
-              () -> HibiscusEntityTypes.WISTERIA_CHEST_BOAT
+              () -> HibiscusWoods.WISTERIA.getPlanks(),
+              () -> HibiscusWoods.WISTERIA.getBoatItem(),
+              () -> HibiscusWoods.WISTERIA.getChestBoatItem(),
+              () -> HibiscusWoods.WISTERIA.getBoatEntityType(),
+              () -> HibiscusWoods.WISTERIA.getChestBoatEntityType()
       ),
-      FIR("fir", () -> HibiscusWoods.FIR[4], () -> HibiscusWoods.FIR_BOAT, () -> HibiscusWoods.FIR_CHEST_BOAT, () -> HibiscusEntityTypes.FIR_BOAT, () -> HibiscusEntityTypes.FIR_CHEST_BOAT),
+      FIR("fir", () -> HibiscusWoods.FIR.getPlanks(), () -> HibiscusWoods.FIR.getBoatItem(), () -> HibiscusWoods.FIR.getChestBoatItem(), () -> HibiscusWoods.FIR.getBoatEntityType(), () -> HibiscusWoods.FIR.getChestBoatEntityType()),
       WILLOW(
               "willow",
-              () -> HibiscusWoods.WILLOW[4],
-              () -> HibiscusWoods.WILLOW_BOAT,
-              () -> HibiscusWoods.WILLOW_CHEST_BOAT,
-              () -> HibiscusEntityTypes.WILLOW_BOAT,
-              () -> HibiscusEntityTypes.WILLOW_CHEST_BOAT
+              () -> HibiscusWoods.WILLOW.getPlanks(),
+              () -> HibiscusWoods.WILLOW.getBoatItem(),
+              () -> HibiscusWoods.WILLOW.getChestBoatItem(),
+              () -> HibiscusWoods.WILLOW.getBoatEntityType(),
+              () -> HibiscusWoods.WILLOW.getChestBoatEntityType()
       ),
       ASPEN(
               "aspen",
-              () -> HibiscusWoods.ASPEN[4],
-              () -> HibiscusWoods.ASPEN_BOAT,
-              () -> HibiscusWoods.ASPEN_CHEST_BOAT,
-              () -> HibiscusEntityTypes.ASPEN_BOAT,
-              () -> HibiscusEntityTypes.ASPEN_CHEST_BOAT
+              () -> HibiscusWoods.ASPEN.getPlanks(),
+              () -> HibiscusWoods.ASPEN.getBoatItem(),
+              () -> HibiscusWoods.ASPEN.getChestBoatItem(),
+              () -> HibiscusWoods.ASPEN.getBoatEntityType(),
+              () -> HibiscusWoods.ASPEN.getChestBoatEntityType()
       ),
       MAPLE(
               "maple",
-              () -> HibiscusWoods.MAPLE[4],
-              () -> HibiscusWoods.MAPLE_BOAT,
-              () -> HibiscusWoods.MAPLE_CHEST_BOAT,
-              () -> HibiscusEntityTypes.MAPLE_BOAT,
-              () -> HibiscusEntityTypes.MAPLE_CHEST_BOAT
+              () -> HibiscusWoods.MAPLE.getPlanks(),
+              () -> HibiscusWoods.MAPLE.getBoatItem(),
+              () -> HibiscusWoods.MAPLE.getChestBoatItem(),
+              () -> HibiscusWoods.MAPLE.getBoatEntityType(),
+              () -> HibiscusWoods.MAPLE.getChestBoatEntityType()
       ),
       CYPRESS(
               "cypress",
-              () -> HibiscusWoods.CYPRESS[4],
-              () -> HibiscusWoods.CYPRESS_BOAT,
-              () -> HibiscusWoods.CYPRESS_CHEST_BOAT,
-              () -> HibiscusEntityTypes.CYPRESS_BOAT,
-              () -> HibiscusEntityTypes.CYPRESS_CHEST_BOAT
+              () -> HibiscusWoods.CYPRESS.getPlanks(),
+              () -> HibiscusWoods.CYPRESS.getBoatItem(),
+              () -> HibiscusWoods.CYPRESS.getChestBoatItem(),
+              () -> HibiscusWoods.CYPRESS.getBoatEntityType(),
+              () -> HibiscusWoods.CYPRESS.getChestBoatEntityType()
       ),
       OLIVE(
               "olive",
-              () -> HibiscusWoods.OLIVE[4],
-              () -> HibiscusWoods.OLIVE_BOAT,
-              () -> HibiscusWoods.OLIVE_CHEST_BOAT,
-              () -> HibiscusEntityTypes.OLIVE_BOAT,
-              () -> HibiscusEntityTypes.OLIVE_CHEST_BOAT
+              () -> HibiscusWoods.OLIVE.getPlanks(),
+              () -> HibiscusWoods.OLIVE.getBoatItem(),
+              () -> HibiscusWoods.OLIVE.getChestBoatItem(),
+              () -> HibiscusWoods.OLIVE.getBoatEntityType(),
+              () -> HibiscusWoods.OLIVE.getChestBoatEntityType()
       ),
       JOSHUA(
               "joshua",
-              () -> HibiscusWoods.JOSHUA[4],
-              () -> HibiscusWoods.JOSHUA_BOAT,
-              () -> HibiscusWoods.JOSHUA_CHEST_BOAT,
-              () -> HibiscusEntityTypes.JOSHUA_BOAT,
-              () -> HibiscusEntityTypes.JOSHUA_CHEST_BOAT
+              () -> HibiscusWoods.JOSHUA.getPlanks(),
+              () -> HibiscusWoods.JOSHUA.getBoatItem(),
+              () -> HibiscusWoods.JOSHUA.getChestBoatItem(),
+              () -> HibiscusWoods.JOSHUA.getBoatEntityType(),
+              () -> HibiscusWoods.JOSHUA.getChestBoatEntityType()
       );
 
       private final String name;

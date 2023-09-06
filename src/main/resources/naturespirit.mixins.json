@@ -12,10 +12,7 @@
     "BoatDispenserBehaviorMixin",
     "BoatEntityMixin",
     "CoralBlockBlockMixin",
-    "FoliagePlacerMixin",
     "StatsTypeAccessor",
-    "TreeDecoratorMixin",
-    "TrunkPlacerTypeMixin",
     "WoodTypeAccessor"
   ],
   "client": [

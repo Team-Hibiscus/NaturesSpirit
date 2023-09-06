@@ -44,7 +44,7 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    }
 
    protected AbstractPlantStemBlock getStem() {
-      return (AbstractPlantStemBlock) HibiscusWoods.BLUE_WISTERIA_VINES;
+      return (AbstractPlantStemBlock) HibiscusWoods.WISTERIA.getBlueWisteriaVines();
    }
 
    @Nullable public BlockState getPlacementState(ItemPlacementContext ctx) {

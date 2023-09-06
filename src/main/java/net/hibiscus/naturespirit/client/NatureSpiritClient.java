@@ -19,6 +19,7 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
@@ -39,7 +40,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ) : -1, HibiscusBlocksAndItems.CATTAIL);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
-      ) : -1, HibiscusWoods.SUGI_LEAVES);
+      ) : -1, HibiscusWoods.SUGI.getLeaves());
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusBlocksAndItems.LOTUS_STEM);
@@ -47,7 +48,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
               new BlockPos(blockPos.getX(), -64, blockPos.getZ())
       ) : -1, HibiscusBlocksAndItems.LOTUS_FLOWER);
 
-      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI_LEAVES);
+      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
 
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.POTTED_HIBISCUS, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.POTTED_ANEMONE, RenderLayer.getCutout());
@@ -65,6 +66,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ParticleFactoryRegistry.getInstance().register(YELLOW_MAPLE_LEAVES_PARTICLE,
               ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
+      ParticleFactoryRegistry.getInstance().register(MILK_PARTICLE, SuspendParticle.Factory::new);
 
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          registerBoatModel(true, boat);

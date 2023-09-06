@@ -9,7 +9,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:sugi_foliage_placer",
+      "type": "natures_spirit:sugi_foliage_placer",
       "offset": 0,
       "radius": 1
     },
@@ -34,7 +34,7 @@
       "upper_size": 1
     },
     "trunk_placer": {
-      "type": "minecraft:sugi_trunk_placer",
+      "type": "natures_spirit:sugi_trunk_placer",
       "base_height": 10,
       "can_grow_through": "#minecraft:mangrove_logs_can_grow_through",
       "extra_branch_length": {

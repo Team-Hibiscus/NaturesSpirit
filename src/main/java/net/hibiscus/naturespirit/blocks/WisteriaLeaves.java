@@ -25,21 +25,22 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock;
       Block vineBlock2;
 
-      if(this.asBlock() == HibiscusWoods.BLUE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusWoods.BLUE_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.BLUE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueWisteriaLeaves()) {
+         vineBlock = HibiscusWoods.WISTERIA.getBlueWisteriaVines();
+        vineBlock2 = HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.PINK_WISTERIA_LEAVES) {
-         vineBlock = HibiscusWoods.PINK_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.PINK_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkWisteriaLeaves()) {
+
+         vineBlock = HibiscusWoods.WISTERIA.getPinkWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.PURPLE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusWoods.PURPLE_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleWisteriaLeaves()) {
+         vineBlock = HibiscusWoods.WISTERIA.getPurpleWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant();
       }
       else {
-         vineBlock = HibiscusWoods.WHITE_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
+         vineBlock = HibiscusWoods.WISTERIA.getWhiteWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant();
       }
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader, blockPos, vineBlock2, Direction.DOWN, vineBlock);
       return (optional.isPresent() && levelReader.getBlockState(optional.get().offset(Direction.DOWN)).isAir()) || levelReader.getBlockState(blockPos.offset(Direction.DOWN)).isAir();
@@ -54,21 +55,22 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock;
       Block vineBlock2;
 
-      if(this.asBlock() == HibiscusWoods.BLUE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusWoods.BLUE_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.BLUE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueWisteriaLeaves()) {
+         vineBlock = HibiscusWoods.WISTERIA.getBlueWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.PINK_WISTERIA_LEAVES) {
-         vineBlock = HibiscusWoods.PINK_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.PINK_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkWisteriaLeaves()) {
+
+         vineBlock = HibiscusWoods.WISTERIA.getPinkWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.PURPLE_WISTERIA_LEAVES) {
-         vineBlock = HibiscusWoods.PURPLE_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT;
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleWisteriaLeaves()) {
+         vineBlock = HibiscusWoods.WISTERIA.getPurpleWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant();
       }
       else {
-         vineBlock = HibiscusWoods.WHITE_WISTERIA_VINES;
-         vineBlock2 = HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
+         vineBlock = HibiscusWoods.WISTERIA.getWhiteWisteriaVines();
+         vineBlock2 = HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant();
       }
 
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(serverLevel, blockPos, vineBlock2, Direction.DOWN, vineBlock);

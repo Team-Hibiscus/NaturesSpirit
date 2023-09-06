@@ -7,9 +7,8 @@ import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.minecraft.block.*;
-import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
@@ -341,7 +340,7 @@ public class HibiscusBlocksAndItems {
    public static final Block POTTED_ANEMONE = registerPottedPlant("anemone", ANEMONE);
 
 
-   public static final Block LOTUS_FLOWER = registerPlantBlockWithoutItem("lotus_flower",
+   public static final Block LOTUS_FLOWER = HibiscusRegistryHelper.registerPlantBlock("lotus_flower",
            new LotusFlowerBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.PINK)
@@ -349,8 +348,7 @@ public class HibiscusBlocksAndItems {
                    .ticksRandomly()
                    .nonOpaque()
                    .breakInstantly()
-                   .sounds(BlockSoundGroup.LILY_PAD)),
-           0.5f
+                   .sounds(BlockSoundGroup.LILY_PAD))
    );
    public static final Item LOTUS_FLOWER_ITEM = registerItem("lotus_flower",
            new PlaceableOnWaterItem(LOTUS_FLOWER, new Item.Settings()),
@@ -391,10 +389,10 @@ public class HibiscusBlocksAndItems {
            HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK,
            ItemGroups.NATURAL
    );
-   public static final Block DESERT_TURNIP_STEM = registerPlantBlockWithoutItem("desert_turnip_stem", new DesertPlantBlock((DesertTurnipBlock) DESERT_TURNIP_BLOCK,
+   public static final Block DESERT_TURNIP_STEM = HibiscusRegistryHelper.registerPlantBlock("desert_turnip_stem", new DesertPlantBlock((DesertTurnipBlock) DESERT_TURNIP_BLOCK,
            DESERT_TURNIP_ROOT_BLOCK,
            FabricBlockSettings.create().noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY)
-   ), 0.3f);
+   ));
    public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(4).saturationModifier(0.6F).build();
    public static final Item DESERT_TURNIP = registerItem("desert_turnip",
            new AliasedBlockItem(DESERT_TURNIP_STEM, (new Item.Settings()).food(DESERT_TURNIP_FOOD_COMPONENT)),
@@ -404,7 +402,7 @@ public class HibiscusBlocksAndItems {
    );
    public static final Block CHEESE_BLOCK = registerBlock("cheese_block", new CheeseBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).strength(2.0F, 1.0F).sounds(BlockSoundGroup.AZALEA_LEAVES)));
 
-   public static final Item CHEESE_BUCKET = registerItem("cheese_bucket", new PowderSnowBucketItem(CHEESE_BLOCK, SoundEvents.ITEM_BUCKET_EMPTY, (new Item.Settings()).maxCount(1)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+   public static final Item CHEESE_BUCKET = registerItem("cheese_bucket", new PowderSnowBucketItem(CHEESE_BLOCK, SoundEvents.ITEM_BUCKET_EMPTY, (new Item.Settings()).maxCount(1).recipeRemainder(Items.BUCKET)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
    public static final Block MILK_CAULDRON = registerBlock("milk_cauldron", new MilkCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
    public static final Block CHEESE_CAULDRON = registerBlock("cheese_cauldron", new CheeseCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
 
@@ -446,7 +444,6 @@ public class HibiscusBlocksAndItems {
 
    public static void registerHibiscusBlocks() {
       HibiscusColoredBlocks.registerColoredBlocks();
-      HibiscusWoods.registerWoods();
       NatureSpirit.LOGGER.debug("Registering ModBlocks for " + NatureSpirit.MOD_ID);
    }
 }

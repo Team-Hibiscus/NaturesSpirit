@@ -14,6 +14,7 @@ import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.util.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TallPlantBlock;
@@ -56,10 +57,6 @@ import static net.minecraft.data.client.BlockStateModelGenerator.*;
 import static net.minecraft.data.family.BlockFamilies.register;
 
 public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
-   public static TagKey <Item> joshuaItemLogtag = TagKey.of(RegistryKeys.ITEM, new Identifier(MOD_ID, "joshua_logs"));
-   public static TagKey <Block> joshuaBlockLogtag = TagKey.of(RegistryKeys.BLOCK, new Identifier(MOD_ID, "joshua_logs"));
-   static HashMap <String, TagKey <Block>> blockLogTags = new HashMap <>();
-   static HashMap <String, TagKey <Item>> itemLogTags = new HashMap <>();
 
    @Override public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
       FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
@@ -72,7 +69,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       NatureSpiritBlockTagGenerator blockTagProvider = pack.addProvider(NatureSpiritBlockTagGenerator::new);
       pack.addProvider((output, registries) -> new NatureSpiritItemTagGenerator(output, registries, blockTagProvider));
       System.out.println("Initialized Data Generator");
-      registerWoodTypes();
    }
 
    @Override public void buildRegistry(RegistryBuilder registryBuilder) {
@@ -80,13 +76,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, HibiscusPlacedFeatures::bootstrap);
       registryBuilder.addRegistry(RegistryKeys.BIOME, HibiscusBiomes::bootstrap);
       System.out.println("Built Registry");
-   }
-
-   private void registerWoodTypes() {
-      for(String i : HibiscusRegistryHelper.WoodHashMap.keySet()) {
-         blockLogTags.put(i, TagKey.of(RegistryKeys.BLOCK, new Identifier(MOD_ID, i + "_logs")));
-         itemLogTags.put(i, TagKey.of(RegistryKeys.ITEM, new Identifier(MOD_ID, i + "_logs")));
-      }
    }
 
 
@@ -110,42 +99,28 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          return null;
       }
 
-      private void addWoodTable(HashMap <String, Block[]> woods) {
-         for(String i : woods.keySet()) {
-            Block[] woodType = woods.get(i);
-            addDrop(woodType[0]);
-            addDrop(woodType[1]);
-            addDrop(woodType[2]);
-            addDrop(woodType[3]);
-            addDrop(woodType[4]);
-            addDrop(woodType[12]);
-            this.addDrop(woodType[7], this::doorDrops);
-            addDrop(woodType[5]);
-            this.slabDrops(woodType[6]);
-            addDrop(woodType[9]);
-            addDrop(woodType[2]);
-            addDrop(woodType[8]);
-            addDrop(woodType[13]);
-            addDrop(woodType[15]);
-            addDrop(woodType[11]);
-            addDrop(woodType[10]);
+      private void addWoodTable(HashMap <String, WoodSet> woods) {
+         for(WoodSet woodSet : woods.values()) {
+            
+            if (woodSet.hasBark())
+            {
+               addDrop(woodSet.getWood());
+               addDrop(woodSet.getStrippedWood());
+            }
+            addDrop(woodSet.getLog());
+            addDrop(woodSet.getStrippedLog());
+            addDrop(woodSet.getPlanks());
+            addDrop(woodSet.getButton());
+            this.addDrop(woodSet.getDoor(), this::doorDrops);
+            addDrop(woodSet.getStairs());
+            this.slabDrops(woodSet.getSlab());
+            addDrop(woodSet.getFence());
+            addDrop(woodSet.getTrapDoor());
+            addDrop(woodSet.getSign());
+            addDrop(woodSet.getHangingSign());
+            addDrop(woodSet.getPressurePlate());
+            addDrop(woodSet.getFenceGate());
          }
-      }
-
-      private void addJoshuaWoodTable() {
-         addDrop(HibiscusWoods.JOSHUA[0]);
-         addDrop(HibiscusWoods.JOSHUA[1]);
-         addDrop(HibiscusWoods.JOSHUA[2]);
-         addDrop(HibiscusWoods.JOSHUA[10]);
-         this.addDrop(HibiscusWoods.JOSHUA[5], this::doorDrops);
-         addDrop(HibiscusWoods.JOSHUA[3]);
-         this.slabDrops(HibiscusWoods.JOSHUA[4]);
-         addDrop(HibiscusWoods.JOSHUA[7]);
-         addDrop(HibiscusWoods.JOSHUA[6]);
-         addDrop(HibiscusWoods.JOSHUA[11]);
-         addDrop(HibiscusWoods.JOSHUA[13]);
-         addDrop(HibiscusWoods.JOSHUA[9]);
-         addDrop(HibiscusWoods.JOSHUA[8]);
       }
 
       public net.minecraft.loot.LootTable.Builder blackOlivesDrop(Block leaves, Block drop, float... chance) {
@@ -235,7 +210,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       @Override public void generate() {
          addWoodTable(HibiscusRegistryHelper.WoodHashMap);
-         addJoshuaWoodTable();
          addTreeTable(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
 
          this.addDrop(CALCITE_CLUSTER, (block) -> dropsWithSilkTouch(block,
@@ -249,11 +223,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDropWithSilkTouch(SMALL_CALCITE_BUD);
          this.addDropWithSilkTouch(LARGE_CALCITE_BUD);
 
-         addVinesTable(HibiscusWoods.WHITE_WISTERIA_VINES, HibiscusWoods.WHITE_WISTERIA_VINES_PLANT);
-         addVinesTable(HibiscusWoods.BLUE_WISTERIA_VINES, HibiscusWoods.BLUE_WISTERIA_VINES_PLANT);
-         addVinesTable(HibiscusWoods.PURPLE_WISTERIA_VINES, HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT);
-         addVinesTable(HibiscusWoods.PINK_WISTERIA_VINES, HibiscusWoods.PINK_WISTERIA_VINES_PLANT);
-         addVinesTable(HibiscusWoods.WILLOW_VINES, HibiscusWoods.WILLOW_VINES_PLANT);
+         addVinesTable(HibiscusWoods.WISTERIA.getWhiteWisteriaLeaves(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant());
+         addVinesTable(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant());
+         addVinesTable(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant());
+         addVinesTable(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant());
+         addVinesTable(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant());
 
          addVinesTable(LOTUS_STEM, LOTUS_STEM);
          this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
@@ -534,37 +508,29 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.excludeFromSimpleItemModelGeneration(wallHangingSign);
       }
 
-      private void generateWoodBlockStateModels(HashMap <String, Block[]> woods, BlockStateModelGenerator blockStateModelGenerator) {
-         for(String i : woods.keySet()) {
-            Block[] woodType = woods.get(i);
-            blockStateModelGenerator.registerLog(woodType[2]).log(woodType[2]).wood(woodType[0]);
-            blockStateModelGenerator.registerLog(woodType[3]).log(woodType[3]).wood(woodType[1]);
-            blockStateModelGenerator.registerSingleton(woodType[4], TexturedModel.CUBE_ALL);
-            createSlab(woodType[4], woodType[6], blockStateModelGenerator);
-            createStairs(woodType[4], woodType[5], blockStateModelGenerator);
-            createWoodDoor(woodType[7], blockStateModelGenerator);
-            createWoodTrapdoor(woodType[8], blockStateModelGenerator);
-            createWoodFenceGate(woodType[4], woodType[10], blockStateModelGenerator);
-            createWoodFence(woodType[4], woodType[9], blockStateModelGenerator);
-            createWoodButton(woodType[4], woodType[12], blockStateModelGenerator);
-            createWoodPressurePlate(woodType[4], woodType[11], blockStateModelGenerator);
-            createWoodSign(woodType[13], woodType[14], blockStateModelGenerator);
-            createHangingSign(woodType[3], woodType[15], woodType[16], blockStateModelGenerator);
+      private void generateWoodBlockStateModels(HashMap <String, WoodSet> woods, BlockStateModelGenerator blockStateModelGenerator) {
+         for(WoodSet woodSet : woods.values()) {
+            if (woodSet.getWoodPreset() == WoodSet.WoodPreset.BAMBOO) {
+               blockStateModelGenerator.registerLog(woodSet.getLog()).log(woodSet.getLog());
+               blockStateModelGenerator.registerLog(woodSet.getStrippedLog()).log(woodSet.getStrippedLog());
+            }
+            else if (woodSet.hasBark())
+            {
+               blockStateModelGenerator.registerLog(woodSet.getLog()).log(woodSet.getLog()).wood(woodSet.getWood());
+               blockStateModelGenerator.registerLog(woodSet.getStrippedLog()).log(woodSet.getStrippedLog()).wood(woodSet.getStrippedWood());
+            }
+            blockStateModelGenerator.registerSingleton(woodSet.getPlanks(), TexturedModel.CUBE_ALL);
+            createSlab(woodSet.getPlanks(), woodSet.getSlab(), blockStateModelGenerator);
+            createStairs(woodSet.getPlanks(), woodSet.getStairs(), blockStateModelGenerator);
+            createWoodDoor(woodSet.getDoor(), blockStateModelGenerator);
+            createWoodTrapdoor(woodSet.getTrapDoor(), blockStateModelGenerator);
+            createWoodFenceGate(woodSet.getPlanks(), woodSet.getFenceGate(), blockStateModelGenerator);
+            createWoodFence(woodSet.getPlanks(), woodSet.getFence(), blockStateModelGenerator);
+            createWoodButton(woodSet.getPlanks(), woodSet.getButton(), blockStateModelGenerator);
+            createWoodPressurePlate(woodSet.getPlanks(), woodSet.getPressurePlate(), blockStateModelGenerator);
+            createWoodSign(woodSet.getSign(), woodSet.getWallSign(), blockStateModelGenerator);
+            createHangingSign(woodSet.getStrippedLog(), woodSet.getHangingSign(), woodSet.getHangingWallSign(), blockStateModelGenerator);
          }
-      }
-
-      private void generateJoshuaWoodBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-         blockStateModelGenerator.registerSingleton(HibiscusWoods.JOSHUA[2], TexturedModel.CUBE_ALL);
-         createSlab(HibiscusWoods.JOSHUA[2], HibiscusWoods.JOSHUA[4], blockStateModelGenerator);
-         createStairs(HibiscusWoods.JOSHUA[2], HibiscusWoods.JOSHUA[3], blockStateModelGenerator);
-         createWoodDoor(HibiscusWoods.JOSHUA[5], blockStateModelGenerator);
-         createWoodTrapdoor(HibiscusWoods.JOSHUA[6], blockStateModelGenerator);
-         createWoodFenceGate(HibiscusWoods.JOSHUA[2], HibiscusWoods.JOSHUA[8], blockStateModelGenerator);
-         createWoodFence(HibiscusWoods.JOSHUA[2], HibiscusWoods.JOSHUA[7], blockStateModelGenerator);
-         createWoodButton(HibiscusWoods.JOSHUA[2], HibiscusWoods.JOSHUA[10], blockStateModelGenerator);
-         createWoodPressurePlate(HibiscusWoods.JOSHUA[2], HibiscusWoods.JOSHUA[9], blockStateModelGenerator);
-         createWoodSign(HibiscusWoods.JOSHUA[11], HibiscusWoods.JOSHUA[12], blockStateModelGenerator);
-         createHangingSign(HibiscusWoods.JOSHUA[1], HibiscusWoods.JOSHUA[13], HibiscusWoods.JOSHUA[14], blockStateModelGenerator);
       }
 
       private void generateTreeBlockStateModels(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves, BlockStateModelGenerator blockStateModelGenerator) {
@@ -706,15 +672,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       @Override public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
          generateWoodBlockStateModels(HibiscusRegistryHelper.WoodHashMap, blockStateModelGenerator);
-         generateJoshuaWoodBlockStateModels(blockStateModelGenerator);
          generateTreeBlockStateModels(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap, blockStateModelGenerator);
 
          blockStateModelGenerator.registerAmethyst(CALCITE_CLUSTER);
          blockStateModelGenerator.registerAmethyst(SMALL_CALCITE_BUD);
          blockStateModelGenerator.registerAmethyst(LARGE_CALCITE_BUD);
 
-         blockStateModelGenerator.registerSimpleState(CHEESE_BLOCK);
-         blockStateModelGenerator.blockStateCollector.accept(createSingletonBlockState(MILK_CAULDRON, Models.TEMPLATE_CAULDRON_FULL.upload(MILK_CAULDRON, TextureMap.cauldron(new Identifier(MOD_ID, "block/milk")), blockStateModelGenerator.modelCollector)));
+         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(CHEESE_BLOCK);
+         blockStateModelGenerator.registerSimpleCubeAll(CHEESE_BLOCK);
          blockStateModelGenerator.blockStateCollector.accept(createSingletonBlockState(CHEESE_CAULDRON, Models.TEMPLATE_CAULDRON_FULL.upload(CHEESE_CAULDRON, TextureMap.cauldron(TextureMap.getId(CHEESE_BLOCK)), blockStateModelGenerator.modelCollector)));
 
 
@@ -741,11 +706,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateLargeFlower(HibiscusBlocksAndItems.SCORCHED_GRASS, blockStateModelGenerator);
          generateLargeFlower(SEDGE_GRASS, blockStateModelGenerator);
          generatePottedAnemone(HibiscusBlocksAndItems.ANEMONE, HibiscusBlocksAndItems.POTTED_ANEMONE, blockStateModelGenerator);
-         generateVineBlockStateModels(HibiscusWoods.BLUE_WISTERIA_VINES, HibiscusWoods.BLUE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
-         generateVineBlockStateModels(HibiscusWoods.WHITE_WISTERIA_VINES, HibiscusWoods.WHITE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
-         generateVineBlockStateModels(HibiscusWoods.PURPLE_WISTERIA_VINES, HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT, blockStateModelGenerator);
-         generateVineBlockStateModels(HibiscusWoods.PINK_WISTERIA_VINES, HibiscusWoods.PINK_WISTERIA_VINES_PLANT, blockStateModelGenerator);
-         generateVineBlockStateModels(HibiscusWoods.WILLOW_VINES, HibiscusWoods.WILLOW_VINES_PLANT, blockStateModelGenerator);
+         generateVineBlockStateModels(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);
+         generateVineBlockStateModels(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(), blockStateModelGenerator);
+         generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
+         generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(), blockStateModelGenerator);
+         generateVineBlockStateModels(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant(), blockStateModelGenerator);
 
          createSlab(HibiscusColoredBlocks.KAOLIN, HibiscusColoredBlocks.KAOLIN_SLAB, blockStateModelGenerator);
          createSlab(HibiscusColoredBlocks.WHITE_KAOLIN, HibiscusColoredBlocks.WHITE_KAOLIN_SLAB, blockStateModelGenerator);
@@ -888,44 +853,20 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
          return String.valueOf(chars);
       }
-
-      private void generateWoodTranslations(HashMap <String, Block[]> woods, TranslationBuilder translationBuilder) {
-         for(Block[] blocks : woods.values()) {
-            for(int g = 0; g < blocks.length; g++) {
-               if(!(g == 14 || g == 16)) {
-                  generateBlockTranslations(blocks[g], translationBuilder);
-               }
-            }
-         }
-      }
-
-      private void generateJoshuaTranslations(TranslationBuilder translationBuilder) {
-         for(int g = 0; g < HibiscusWoods.JOSHUA.length; g++) {
-            if(!(g == 12 || g == 14)) {
-               generateBlockTranslations(HibiscusWoods.JOSHUA[g], translationBuilder);
-            }
-         }
-      }
-
-      private void generateTreeTranslations(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves, TranslationBuilder translationBuilder) {
-         for(String i : saplings.keySet()) {
-            String temp = capitalizeString(saplings.get(i)[0].toString().replace("Block{natures_spirit:", "").replace("_", " ").replace("}", ""));
-
-            translationBuilder.add(saplings.get(i)[0], temp);
-            String temp2 = capitalizeString(leaves.get(i).toString().replace("Block{natures_spirit:", "").replace("_", " ").replace("}", ""));
-            translationBuilder.add(leaves.get(i), temp2);
-         }
-      }
-
       private void generateBlockTranslations(Block block, TranslationBuilder translationBuilder) {
          String temp = capitalizeString(block.toString().replace("Block{natures_spirit:", "").replace("_", " ").replace("}", ""));
          translationBuilder.add(block, temp);
       }
 
-      private void generateBoatTranslations(TranslationBuilder translationBuilder) {
-         for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
-            translationBuilder.add(boat.boat().asItem(), capitalizeString(boat.asString()) + " Boat");
-            translationBuilder.add(boat.chestBoat().asItem(), capitalizeString(boat.asString()) + " Boat With Chest");
+      private void generateWoodTranslations(HashMap <String, WoodSet> woods, TranslationBuilder translationBuilder) {
+         for(WoodSet woodSet : woods.values()) {
+            for(Block block : woodSet.getRegisteredBlocksList()) {
+                  generateBlockTranslations(block, translationBuilder);
+            }
+            generateBlockTranslations(woodSet.getSign(), translationBuilder);
+            generateBlockTranslations(woodSet.getHangingSign(), translationBuilder);
+               translationBuilder.add(woodSet.getBoatItem(), capitalizeString(woodSet.getName()) + " Boat");
+               translationBuilder.add(woodSet.getChestBoatItem(), capitalizeString(woodSet.getName()) + " Boat With Chest");
          }
       }
       private void generateBiomeTranslations(TranslationBuilder translationBuilder) {
@@ -937,10 +878,153 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       @Override public void generateTranslations(TranslationBuilder translationBuilder) {
          generateBiomeTranslations(translationBuilder);
+         generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap ,translationBuilder);
          translationBuilder.add(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, "Nature's Spirit Blocks & Items");
          translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
+         translationBuilder.add(HibiscusBlocksAndItems.GREEN_OLIVES, "Green Olives");
+         translationBuilder.add(HibiscusBlocksAndItems.BLACK_OLIVES, "Black Olives");
+         translationBuilder.add(HibiscusBlocksAndItems.DESERT_TURNIP, "Desert Turnip");
+         translationBuilder.add(CALCITE_SHARD, "Calcite Shard");
+         translationBuilder.add(SMALL_CALCITE_BUD, "Small Calcite Bud");
+         translationBuilder.add(LARGE_CALCITE_BUD, "Large Calcite Bud");
+         translationBuilder.add(CALCITE_CLUSTER, "Calcite Cluster");
+         generateBlockTranslations(HibiscusBlocksAndItems.ANEMONE, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.LAVENDER, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.BLEEDING_HEART, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.BLUEBELL, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.TIGER_LILY, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.PURPLE_WILDFLOWER, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.YELLOW_WILDFLOWER, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.TALL_SCORCHED_GRASS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.SCORCHED_GRASS, translationBuilder);
+         generateBlockTranslations(TALL_SEDGE_GRASS, translationBuilder);
+         generateBlockTranslations(SEDGE_GRASS, translationBuilder);
+         generateBlockTranslations(TALL_FRIGID_GRASS, translationBuilder);
+         generateBlockTranslations(FRIGID_GRASS, translationBuilder);
+         generateBlockTranslations(LARGE_FLAXEN_FERN, translationBuilder);
+         generateBlockTranslations(FLAXEN_FERN, translationBuilder);
+         generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
+         generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.CARNATION, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.HIBISCUS, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.GARDENIA, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.SNAPDRAGON, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.FRAMED_SUGI_DOOR, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.FRAMED_SUGI_TRAPDOOR, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.CATTAIL, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.MARIGOLD, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.FOXGLOVE, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK, translationBuilder);
+         generateBlockTranslations(HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK, translationBuilder);
+         generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
+         generateBlockTranslations(LOTUS_STEM, translationBuilder);
 
+         generateBlockTranslations(HibiscusBlocksAndItems.SANDY_SOIL, translationBuilder);
+         generateBlockTranslations(CHEESE_BLOCK, translationBuilder);
+         generateBlockTranslations(CHEESE_CAULDRON, translationBuilder);
+         generateBlockTranslations(MILK_CAULDRON, translationBuilder);
+         translationBuilder.add(CHEESE_BUCKET, "Cheese Bucket");
 
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.WHITE_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_GRAY_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GRAY_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLACK_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BROWN_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.RED_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.ORANGE_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.YELLOW_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIME_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GREEN_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.CYAN_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_BLUE_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLUE_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PURPLE_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PINK_KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.WHITE_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_GRAY_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GRAY_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLACK_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BROWN_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.RED_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.ORANGE_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.YELLOW_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIME_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GREEN_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.CYAN_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_BLUE_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLUE_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PURPLE_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PINK_KAOLIN_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.WHITE_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_GRAY_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GRAY_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLACK_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BROWN_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.RED_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.ORANGE_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.YELLOW_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIME_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GREEN_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.CYAN_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_BLUE_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLUE_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PURPLE_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PINK_KAOLIN_SLAB, translationBuilder);
+
+         generateBlockTranslations(HibiscusColoredBlocks.WHITE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_GRAY_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GRAY_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLACK_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BROWN_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.RED_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.ORANGE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.YELLOW_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIME_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GREEN_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.CYAN_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_BLUE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLUE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PURPLE_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PINK_CHALK, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.WHITE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_GRAY_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GRAY_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLACK_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BROWN_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.RED_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.ORANGE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.YELLOW_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIME_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GREEN_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.CYAN_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_BLUE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLUE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PURPLE_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PINK_CHALK_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.WHITE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_GRAY_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GRAY_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLACK_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BROWN_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.RED_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.ORANGE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.YELLOW_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIME_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.GREEN_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.CYAN_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.LIGHT_BLUE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.BLUE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PURPLE_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_CHALK_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.PINK_CHALK_SLAB, translationBuilder);
 
          translationBuilder.add("block.natures_spirit.pizza.chicken_topping", "With Cooked Chicken");
          translationBuilder.add("block.natures_spirit.pizza.green_olives_topping", "With Green Olives");
@@ -963,25 +1047,26 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          super(output);
       }
 
-      private void generateWoodRecipes(HashMap <String, Block[]> woods, HashMap <String, TagKey <Item>> tag, Consumer <RecipeJsonProvider> consumer) {
-         for(String i : woods.keySet()) {
-            Block[] woodType = woods.get(i);
-            offerPlanksRecipe(consumer, woodType[4], tag.get(i), 4);
-            offerBarkBlockRecipe(consumer, woodType[0], woodType[2]);
-            offerBarkBlockRecipe(consumer, woodType[1], woodType[3]);
-            offerHangingSignRecipe(consumer, woodType[15], woodType[3]);
-            offerBoatRecipe(consumer, HibiscusBoatEntity.HibiscusBoat.getType(i).boat().asItem(), woodType[4]);
-            offerChestBoatRecipe(consumer, HibiscusBoatEntity.HibiscusBoat.getType(i).chestBoat().asItem(), HibiscusBoatEntity.HibiscusBoat.getType(i).boat().asItem());
-            BlockFamily family = register(woodType[4])
-                    .button(woodType[12])
-                    .fence(woodType[9])
-                    .fenceGate(woodType[10])
-                    .pressurePlate(woodType[11])
-                    .sign(woodType[13], woodType[14])
-                    .slab(woodType[6])
-                    .stairs(woodType[5])
-                    .door(woodType[7])
-                    .trapdoor(woodType[8])
+      private void generateWoodRecipes(HashMap <String, WoodSet> woods, Consumer <RecipeJsonProvider> consumer) {
+         for(WoodSet woodSet : woods.values()) {
+            offerPlanksRecipe(consumer, woodSet.getPlanks(), woodSet.getItemLogsTag(), 4);
+            if (woodSet.hasBark()) {
+               offerBarkBlockRecipe(consumer, woodSet.getWood(), woodSet.getLog());
+               offerBarkBlockRecipe(consumer, woodSet.getStrippedWood(), woodSet.getStrippedLog());
+            }
+            offerHangingSignRecipe(consumer, woodSet.getHangingSign(), woodSet.getStrippedLog());
+            offerBoatRecipe(consumer, woodSet.getBoatItem(), woodSet.getPlanks());
+            offerChestBoatRecipe(consumer, woodSet.getChestBoatItem(), woodSet.getBoatItem());
+            BlockFamily family = register(woodSet.getPlanks())
+                    .button(woodSet.getButton())
+                    .fence(woodSet.getFence())
+                    .fenceGate(woodSet.getFenceGate())
+                    .pressurePlate(woodSet.getPressurePlate())
+                    .sign(woodSet.getSign(), woodSet.getWallSign())
+                    .slab(woodSet.getSlab())
+                    .stairs(woodSet.getStairs())
+                    .door(woodSet.getDoor())
+                    .trapdoor(woodSet.getTrapDoor())
                     .group("wooden")
                     .unlockCriterionName("has_planks")
                     .build();
@@ -989,34 +1074,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
-      private void generateJoshuaWoodRecipes(TagKey <Item> tag, Consumer <RecipeJsonProvider> consumer) {
-         offerPlanksRecipe(consumer, HibiscusWoods.JOSHUA[2], tag, 2);
-         offerHangingSignRecipe(consumer, HibiscusWoods.JOSHUA[13], HibiscusWoods.JOSHUA[1]);
-         offerBoatRecipe(consumer, HibiscusWoods.JOSHUA_BOAT, HibiscusWoods.JOSHUA[4]);
-         offerChestBoatRecipe(consumer, HibiscusWoods.JOSHUA_CHEST_BOAT, HibiscusWoods.JOSHUA_BOAT);
-         BlockFamily family = register(HibiscusWoods.JOSHUA[2])
-                 .button(HibiscusWoods.JOSHUA[10])
-                 .fence(HibiscusWoods.JOSHUA[7])
-                 .fenceGate(HibiscusWoods.JOSHUA[8])
-                 .pressurePlate(HibiscusWoods.JOSHUA[9])
-                 .sign(HibiscusWoods.JOSHUA[11], HibiscusWoods.JOSHUA[12])
-                 .slab(HibiscusWoods.JOSHUA[4])
-                 .stairs(HibiscusWoods.JOSHUA[3])
-                 .door(HibiscusWoods.JOSHUA[5])
-                 .trapdoor(HibiscusWoods.JOSHUA[6])
-                 .group("wooden")
-                 .unlockCriterionName("has_planks")
-                 .build();
-         generateFamily(consumer, family);
-      }
 
       private void generateFlowerRecipes(Block block, Item dye, String group, int amount, Consumer <RecipeJsonProvider> consumer) {
          offerShapelessRecipe(consumer, dye, block, group, amount);
       }
 
       @Override public void generate(Consumer <RecipeJsonProvider> exporter) {
-         generateWoodRecipes(HibiscusRegistryHelper.WoodHashMap, itemLogTags, exporter);
-         generateJoshuaWoodRecipes(joshuaItemLogtag, exporter);
+         generateWoodRecipes(HibiscusRegistryHelper.WoodHashMap, exporter);
          generateFlowerRecipes(HibiscusBlocksAndItems.ANEMONE, Items.MAGENTA_DYE, "magenta_dye", 1, exporter);
          generateFlowerRecipes(HibiscusBlocksAndItems.BLEEDING_HEART, Items.PINK_DYE, "pink_dye", 4, exporter);
          generateFlowerRecipes(HibiscusBlocksAndItems.LAVENDER, Items.PURPLE_DYE, "purple_dye", 4, exporter);
@@ -1045,13 +1109,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-         for(String i : HibiscusRegistryHelper.WoodHashMap.keySet()) {
-            this.copy(blockLogTags.get(i), itemLogTags.get(i));
-            getOrCreateTagBuilder(ItemTags.BOATS).add(HibiscusBoatEntity.HibiscusBoat.getType(i).boat().asItem());
-            getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(HibiscusBoatEntity.HibiscusBoat.getType(i).chestBoat().asItem());
+         for(WoodSet woodSet : HibiscusRegistryHelper.WoodHashMap.values()) {
+            this.copy(woodSet.getBlockLogsTag(), woodSet.getItemLogsTag());
+            getOrCreateTagBuilder(ItemTags.BOATS).add(woodSet.getBoatItem());
+            getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(woodSet.getChestBoatItem());
          }
-         this.copy(joshuaBlockLogtag, joshuaItemLogtag);
-
          this.copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
          this.copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
          this.copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
@@ -1077,46 +1139,29 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          super(output, registriesFuture);
       }
 
-      private void addWoodTags(HashMap <String, Block[]> woods, HashMap <String, TagKey <Block>> tag) {
-         for(String i : woods.keySet()) {
-            Block[] woodType = woods.get(i);
-            getOrCreateTagBuilder(BlockTags.PLANKS).add(new Block[]{woodType[4]});
-            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(new Block[]{woodType[12]});
-            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{woodType[7]});
-            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(new Block[]{woodType[5]});
-            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{woodType[6]});
-            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{woodType[9]});
-            getOrCreateTagBuilder(tag.get(i)).add(woodType[3], woodType[2], woodType[1], woodType[0]);
-            getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{woodType[2]});
-            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(tag.get(i));
-            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{woodType[8]});
-            getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{woodType[13]});
-            getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{woodType[14]});
-            getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{woodType[11]});
-            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(new Block[]{woodType[10]});
-            getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(woodType[15]);
-            getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(woodType[16]);
+      private void addWoodTags(HashMap <String, WoodSet> woods) {
+         for(WoodSet woodSet : woods.values()) {
+            
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(new Block[]{woodSet.getPlanks()});
+            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(new Block[]{woodSet.getButton()});
+            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{woodSet.getDoor()});
+            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(new Block[]{woodSet.getStairs()});
+            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{woodSet.getSlab()});
+            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{woodSet.getFence()});
+            getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedLog(), woodSet.getLog());
+            if (woodSet.hasBark())
+               getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedWood(), woodSet.getWood());
+            getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{woodSet.getLog()});
+            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(woodSet.getBlockLogsTag());
+            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{woodSet.getTrapDoor()});
+            getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{woodSet.getSign()});
+            getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{woodSet.getWallSign()});
+            getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{woodSet.getPressurePlate()});
+            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(new Block[]{woodSet.getFenceGate()});
+            getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(woodSet.getHangingSign());
+            getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(woodSet.getHangingWallSign());
 
          }
-      }
-
-      private void addJoshuaWoodTags(TagKey <Block> tag) {
-         getOrCreateTagBuilder(BlockTags.PLANKS).add(new Block[]{HibiscusWoods.JOSHUA[2]});
-         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(new Block[]{HibiscusWoods.JOSHUA[10]});
-         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusWoods.JOSHUA[5]});
-         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(new Block[]{HibiscusWoods.JOSHUA[3]});
-         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{HibiscusWoods.JOSHUA[4]});
-         getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{HibiscusWoods.JOSHUA[7]});
-         getOrCreateTagBuilder(tag).add(HibiscusWoods.JOSHUA[1], HibiscusWoods.JOSHUA[0]);
-         getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{HibiscusWoods.JOSHUA[0]});
-         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(tag);
-         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusWoods.JOSHUA[6]});
-         getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{HibiscusWoods.JOSHUA[11]});
-         getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{HibiscusWoods.JOSHUA[12]});
-         getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(new Block[]{HibiscusWoods.JOSHUA[9]});
-         getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(new Block[]{HibiscusWoods.JOSHUA[8]});
-         getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(HibiscusWoods.JOSHUA[13]);
-         getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(HibiscusWoods.JOSHUA[14]);
       }
 
       private void addTreeTags(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves) {
@@ -1154,8 +1199,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
-         addWoodTags(HibiscusRegistryHelper.WoodHashMap, blockLogTags);
-         addJoshuaWoodTags(joshuaBlockLogtag);
+         addWoodTags(HibiscusRegistryHelper.WoodHashMap);
          addTreeTags(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
          addFlowerTags(HibiscusBlocksAndItems.HIBISCUS, HibiscusBlocksAndItems.POTTED_HIBISCUS, false);
          addFlowerTags(HibiscusBlocksAndItems.ANEMONE, HibiscusBlocksAndItems.POTTED_ANEMONE, false);
@@ -1173,25 +1217,27 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addFlowerTags(HibiscusBlocksAndItems.FOXGLOVE, true);
          getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusWoods.FRAMED_SUGI_DOOR});
          getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusWoods.FRAMED_SUGI_TRAPDOOR});
-         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(HibiscusWoods.BLUE_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.BLUE_WISTERIA_VINES,
-                 HibiscusWoods.WHITE_WISTERIA_VINES,
-                 HibiscusWoods.WHITE_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.PINK_WISTERIA_VINES,
-                 HibiscusWoods.PINK_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.PURPLE_WISTERIA_VINES,
-                 HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.WILLOW_VINES_PLANT,
-                 HibiscusWoods.WILLOW_VINES
+         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
+                 HibiscusWoods.WISTERIA.getBlueWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(),
+                 HibiscusWoods.WISTERIA.getWhiteWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(),
+                 HibiscusWoods.WISTERIA.getPinkWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(),
+                 HibiscusWoods.WISTERIA.getPurpleWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(),
+                 HibiscusWoods.WILLOW.getWillowVinesPlant(),
+                 HibiscusWoods.WILLOW.getWillowVines()
          );
-         getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(HibiscusWoods.BLUE_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.BLUE_WISTERIA_VINES,
-                 HibiscusWoods.WHITE_WISTERIA_VINES,
-                 HibiscusWoods.WHITE_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.PINK_WISTERIA_VINES,
-                 HibiscusWoods.PINK_WISTERIA_VINES_PLANT,
-                 HibiscusWoods.PURPLE_WISTERIA_VINES,
-                 HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT,
+         getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(
+                 HibiscusWoods.WISTERIA.getBlueWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(),
+                 HibiscusWoods.WISTERIA.getWhiteWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(),
+                 HibiscusWoods.WISTERIA.getPinkWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(),
+                 HibiscusWoods.WISTERIA.getPurpleWisteriaVines(),
+                 HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(),
                  LOTUS_FLOWER
          );
          getOrCreateTagBuilder(BlockTags.CROPS).add(HibiscusBlocksAndItems.DESERT_TURNIP_STEM);
@@ -1224,6 +1270,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS
          );
+         getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
          getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
       }

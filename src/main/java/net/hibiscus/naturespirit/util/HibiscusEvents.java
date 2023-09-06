@@ -22,8 +22,8 @@ public class HibiscusEvents {
       UseBlockCallback.EVENT.register(((player, world, hand, hitResult) -> {
          BlockPos blockPos = hitResult.getBlockPos();
          BlockState blockState = world.getBlockState(blockPos);
-         if(blockState.isOf(HibiscusWoods.JOSHUA[0]) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
-            BlockState blockState2 = HibiscusWoods.JOSHUA[1].getDefaultState().with(JoshuaTrunkBlock.DOWN, blockState.get(JoshuaTrunkBlock.DOWN)).with(JoshuaTrunkBlock.UP,
+         if(blockState.isOf(HibiscusWoods.JOSHUA.getLog()) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
+            BlockState blockState2 = HibiscusWoods.JOSHUA.getStrippedLog().getDefaultState().with(JoshuaTrunkBlock.DOWN, blockState.get(JoshuaTrunkBlock.DOWN)).with(JoshuaTrunkBlock.UP,
                     blockState.get(JoshuaTrunkBlock.UP)
             ).with(JoshuaTrunkBlock.NORTH, blockState.get(JoshuaTrunkBlock.NORTH)).with(
                     JoshuaTrunkBlock.SOUTH,

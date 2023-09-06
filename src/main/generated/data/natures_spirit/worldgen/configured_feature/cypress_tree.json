@@ -9,7 +9,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:cypress_foliage_placer",
+      "type": "natures_spirit:cypress_foliage_placer",
       "offset": {
         "type": "minecraft:uniform",
         "value": {

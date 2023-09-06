@@ -10,6 +10,7 @@ import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
@@ -34,14 +35,17 @@ public class NatureSpirit implements ModInitializer {
    public static final DefaultParticleType RED_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
    public static final DefaultParticleType ORANGE_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
    public static final DefaultParticleType YELLOW_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
+   public static final DefaultParticleType MILK_PARTICLE = FabricParticleTypes.simple(false);
 
    @Override public void onInitialize() {
 
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
+      Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "milk"), MILK_PARTICLE);
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
+      HibiscusWoods.registerWoods();
       HibiscusBlocksAndItems.registerHibiscusBlocks();
       HibiscusEvents.registerEvents();
       HibiscusWorldGen.registerWorldGen();
@@ -57,6 +61,6 @@ public class NatureSpirit implements ModInitializer {
          DispenserBlock.registerBehavior(boat.chestBoat(), new HibiscusBoatDispensorBehavior(boat, true));
       }
 
-      Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(new Identifier("textures/entity/cat/trans" + ".png")));
+      Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(new Identifier(MOD_ID, "textures/entity/cat/trans" + ".png")));
    }
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-04T00:25:24.2931084	Nature's Spirit/Block Loot Tables
+// 1.20.1	2023-09-06T02:37:14.65048	Nature's Spirit/Block Loot Tables
 e42296ae5ba4bec951f16ab483c75c6aeccb06a4 data\natures_spirit\loot_tables\blocks\stripped_aspen_wood.json
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 5801f587307f60a4cfe69fd70bdcb5844c9f61f5 data\natures_spirit\loot_tables\blocks\lime_chalk_stairs.json
@@ -21,7 +21,7 @@ dfc4c67c267300254df391f142991b1109e2e774 data\natures_spirit\loot_tables\blocks\
 b3f43228f5e8ddb77067df790edf2f3932ac30b9 data\natures_spirit\loot_tables\blocks\fir_fence_gate.json
 f47311ed7cd6fa74e65a488db59c59ff2ee7bc20 data\natures_spirit\loot_tables\blocks\pink_wisteria_vines.json
 b1713cbb5d92b9edf7ff57b667268c5c71c08aab data\natures_spirit\loot_tables\blocks\cypress_button.json
-2633ec42e15fb712764fe879765d6902e79ead5b data\natures_spirit\loot_tables\blocks\white_wisteria_vines.json
+1ca248b71299152a562b4ea2491fac6a4a92faef data\natures_spirit\loot_tables\blocks\white_wisteria_vines.json
 6e30ed17647e034205554fa76fd32610cbf3b59e data\natures_spirit\loot_tables\blocks\anemone.json
 62bf772893da62149640068433e9dd7d8569fa5d data\natures_spirit\loot_tables\blocks\cyan_chalk.json
 b9f4f604ab23443731d3ed23d4e65f3aa25dbaba data\natures_spirit\loot_tables\blocks\stripped_maple_log.json
@@ -210,7 +210,7 @@ faa2bb16e597f9e1d528f1d4f6dfb75586863229 data\natures_spirit\loot_tables\blocks\
 bcbe9a4782851ea2336326fa226c7789284bbdbb data\natures_spirit\loot_tables\blocks\redwood_planks.json
 4261b496b8bc2247bcef72df27ecfd607f764f17 data\natures_spirit\loot_tables\blocks\red_maple_leaves.json
 a98666e9a5429da9d04f6afd38037402fb2e1675 data\natures_spirit\loot_tables\blocks\stripped_redwood_log.json
-8a5281b13272a71e0b7b3e4812595bc9f39e08cb data\natures_spirit\loot_tables\blocks\white_wisteria_leaves.json
+1ca248b71299152a562b4ea2491fac6a4a92faef data\natures_spirit\loot_tables\blocks\white_wisteria_leaves.json
 287a866007e619b568dc0f4dff1ef595e676a4dc data\natures_spirit\loot_tables\blocks\wisteria_log.json
 cde3cc10ccb9a2b948666aed763e67f490c97a07 data\natures_spirit\loot_tables\blocks\cyan_chalk_stairs.json
 ea74d3a4eb9cf726d8ba8b5b2b8bbaa57b3e4b48 data\natures_spirit\loot_tables\blocks\fir_stairs.json

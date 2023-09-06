@@ -9,7 +9,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:fir_foliage_placer",
+      "type": "natures_spirit:fir_foliage_placer",
       "offset": {
         "type": "minecraft:uniform",
         "value": {

@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "Z": {
-      "item": "minecraft:milk_bucket"
+      "item": "natures_spirit:cheese_bucket"
     },
     "X": {
       "item": "minecraft:wheat"
@@ -13,7 +13,7 @@
     }
   },
   "pattern": [
-    "ZYZ",
+    "YZY",
     "XXX"
   ],
   "result": {

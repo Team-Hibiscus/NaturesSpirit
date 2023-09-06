@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -8,11 +9,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.WorldView;
 
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods.WILLOW_VINES;
-
 public class WillowVinePlant extends WisteriaVinePlant {
    public static final VoxelShape SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
-   private static final Block block = WILLOW_VINES;
+   private static final Block block = HibiscusWoods.WILLOW.getWillowVines();
 
 
    public WillowVinePlant(Settings properties) {

@@ -36,7 +36,7 @@
       "upper_size": 1
     },
     "trunk_placer": {
-      "type": "minecraft:olive_trunk_placer",
+      "type": "natures_spirit:olive_trunk_placer",
       "base_height": 4,
       "can_grow_through": "#minecraft:mangrove_logs_can_grow_through",
       "extra_branch_length": {

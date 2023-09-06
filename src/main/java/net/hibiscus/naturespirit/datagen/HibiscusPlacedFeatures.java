@@ -99,56 +99,56 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               LARGE_REDWOOD_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE),
-              List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD_SAPLING[0]))
+              List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()))
       );
-      registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD_SAPLING[0]));
-      registerKey(context, ASPEN_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ASPEN_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.ASPEN_SAPLING[0]));
+      registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()));
+      registerKey(context, ASPEN_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ASPEN_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.ASPEN.getSapling()));
       registerKey(context,
               ASPEN_BEES_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ASPEN_TREE_BEES),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.ASPEN_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.ASPEN.getSapling())
       );
       registerKey(context,
               RED_MAPLE_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.RED_MAPLE_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.RED_MAPLE_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.MAPLE.getRedMapleSapling())
       );
       registerKey(context,
               ORANGE_MAPLE_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.ORANGE_MAPLE_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.ORANGE_MAPLE_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.MAPLE.getOrangeMapleSapling())
       );
       registerKey(context,
               YELLOW_MAPLE_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.YELLOW_MAPLE_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.YELLOW_MAPLE_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.MAPLE.getYellowMapleSapling())
       );
-      registerKey(context, CYPRESS_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CYPRESS_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.CYPRESS_SAPLING[0]));
-      registerKey(context, JOSHUA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA_SAPLING[0]));
-      registerKey(context, FIR_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FIR_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.FIR_SAPLING[0]));
-      registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW_SAPLING[0]));
+      registerKey(context, CYPRESS_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CYPRESS_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.CYPRESS.getSapling()));
+      registerKey(context, JOSHUA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA.getSapling()));
+      registerKey(context, FIR_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FIR_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.FIR.getSapling()));
+      registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW.getSapling()));
       registerKey(context,
               WHITE_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.WHITE_WISTERIA_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.WISTERIA.getWhiteWisteriaSapling())
       );
       registerKey(context,
               BLUE_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.BLUE_WISTERIA_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.BLUE_WISTERIA_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.WISTERIA.getBlueWisteriaSapling())
       );
       registerKey(context,
               PINK_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PINK_WISTERIA_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.PINK_WISTERIA_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.WISTERIA.getPinkWisteriaSapling())
       );
       registerKey(context,
               PURPLE_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PURPLE_WISTERIA_TREE),
-              PlacedFeatures.wouldSurvive(HibiscusWoods.PURPLE_WISTERIA_SAPLING[0])
+              PlacedFeatures.wouldSurvive(HibiscusWoods.WISTERIA.getPurpleWisteriaSapling())
       );
-      registerKey(context, SUGI_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SUGI_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.SUGI_SAPLING[0]));
-      registerKey(context, OLIVE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.OLIVE_SAPLING[0]));
+      registerKey(context, SUGI_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SUGI_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.SUGI.getSapling()));
+      registerKey(context, OLIVE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.OLIVE.getSapling()));
 
       registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH), PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING));
       registerKey(context, SPRUCE_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH), PlacedFeatures.wouldSurvive(Blocks.SPRUCE_SAPLING));

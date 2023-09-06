@@ -3,7 +3,7 @@
   "config": {
     "decorators": [
       {
-        "type": "minecraft:wisteria_vines_tree_decorator",
+        "type": "natures_spirit:wisteria_vines_tree_decorator",
         "block_provider": {
           "type": "minecraft:hibiscus_simple_block_state_provider",
           "state": {
@@ -41,7 +41,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:wisteria_foliage_placer",
+      "type": "natures_spirit:wisteria_foliage_placer",
       "offset": 0,
       "radius": 1
     },
@@ -65,7 +65,7 @@
       "upper_size": 2
     },
     "trunk_placer": {
-      "type": "minecraft:wisteria_trunk_placer",
+      "type": "natures_spirit:wisteria_trunk_placer",
       "base_height": 7,
       "can_grow_through": "#minecraft:mangrove_logs_can_grow_through",
       "extra_branch_length": {

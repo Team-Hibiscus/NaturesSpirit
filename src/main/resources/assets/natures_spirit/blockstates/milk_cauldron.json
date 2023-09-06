@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age_into_cheese=false": {
+      "model": "natures_spirit:block/milk_cauldron"
+    },
+    "age_into_cheese=true": {
+      "model": "natures_spirit:block/aging_milk_cauldron"
+    }
+  }
+}

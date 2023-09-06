@@ -1,10 +1,8 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.AbstractCauldronBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -23,7 +21,11 @@ public class CheeseCauldronBlock extends AbstractCauldronBlock {
       return VoxelShapes.fullCube();
    }
 
+
+   @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+      return new ItemStack(Blocks.CAULDRON);
+   }
    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-      return 3;
+      return 4;
    }
 }

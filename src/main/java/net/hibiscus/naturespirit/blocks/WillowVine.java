@@ -20,6 +20,6 @@ public class WillowVine extends WisteriaVine {
    }
 
    public Block getPlant() {
-      return HibiscusWoods.WILLOW_VINES_PLANT;
+      return HibiscusWoods.WILLOW.getWillowVinesPlant();
    }
 }

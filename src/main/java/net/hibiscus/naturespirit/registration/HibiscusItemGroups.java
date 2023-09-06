@@ -20,7 +20,7 @@ public class HibiscusItemGroups {
    public static void registerItemGroup() {
       build(
               NATURES_SPIRIT_ITEM_GROUP,
-              FabricItemGroup.builder().displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".natures_spirit_item_group")).icon(() -> new ItemStack(HibiscusWoods.REDWOOD[4])).build()
+              FabricItemGroup.builder().displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".natures_spirit_item_group")).icon(() -> new ItemStack(HibiscusWoods.REDWOOD.getPlanks())).build()
       );
    }
 

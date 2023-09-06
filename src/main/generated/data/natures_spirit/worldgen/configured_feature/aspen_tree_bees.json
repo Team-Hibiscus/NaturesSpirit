@@ -14,7 +14,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:aspen_foliage_placer",
+      "type": "natures_spirit:aspen_foliage_placer",
       "offset": {
         "type": "minecraft:uniform",
         "value": {

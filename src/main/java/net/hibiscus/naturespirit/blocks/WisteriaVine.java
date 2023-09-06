@@ -25,17 +25,17 @@ public class WisteriaVine extends AbstractPlantStemBlock {
    }
 
    public Block getPlant() {
-      if(this.asBlock() == HibiscusWoods.BLUE_WISTERIA_VINES) {
-         return HibiscusWoods.BLUE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueWisteriaVines()) {
+         return HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant();
       }
-      if(this.asBlock() == HibiscusWoods.PINK_WISTERIA_VINES) {
-         return HibiscusWoods.PINK_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkWisteriaVines()) {
+         return HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant();
       }
-      if(this.asBlock() == HibiscusWoods.PURPLE_WISTERIA_VINES) {
-         return HibiscusWoods.PURPLE_WISTERIA_VINES_PLANT;
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleWisteriaVines()) {
+         return HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant();
       }
       else {
-         return HibiscusWoods.WHITE_WISTERIA_VINES_PLANT;
+         return HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant();
       }
    }
 
