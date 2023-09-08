@@ -1,0 +1,22 @@
+{
+    "textures": {
+        "particle": "natures_spirit:block/cheese_block_side",
+        "bottom": "natures_spirit:block/cheese_block_bottom",
+        "top": "natures_spirit:block/cheese_block_top",
+        "side": "natures_spirit:block/cheese_block_side",
+        "inside": "natures_spirit:block/cheese_block_inner"
+    },
+    "elements": [
+        {   "from": [ 13, 0, 1 ],
+            "to": [ 15, 8, 15 ],
+            "faces": {
+                "down":  { "texture": "#bottom", "cullface": "down" },
+                "up":    { "texture": "#top" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#inside" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ]
+}

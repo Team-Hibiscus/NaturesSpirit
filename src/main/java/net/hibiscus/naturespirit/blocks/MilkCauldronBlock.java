@@ -50,10 +50,8 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
       if (player.getStackInHand(hand).isIn(HibiscusTags.Items.CHEESE_MAKER) && !state.get(ageIntoCheese)) {
          world.setBlockState(pos, state.with(ageIntoCheese, true), 2);
          BlockState blockState = world.getBlockState(pos);
-         world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+         world.playSound(null, pos, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
          double d = blockState.getOutlineShape(world, pos).getEndingCoord(Direction.Axis.Y, 0.5D, 0.5D) + 0.03125D;
-         double e = 0.13124999403953552D;
-         double f = 0.737500011920929D;
          Random random = world.getRandom();
 
          for(int i = 0; i < 10; ++i) {
@@ -64,7 +62,15 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
          }
          if (!player.isCreative() && !player.isSpectator())
          {
-            player.setStackInHand(hand, new ItemStack(Items.GLASS_BOTTLE));
+            ItemStack itemStack = player.getStackInHand(hand).getRecipeRemainder();
+            player.getStackInHand(hand).decrement(1);
+            if (player.getStackInHand(hand).isEmpty()) {
+               player.setStackInHand(hand, itemStack);
+            } else {
+                  if(player.getInventory().insertStack(itemStack)) {
+                     player.dropItem(itemStack, false);
+                  }
+            }
          }
          return ActionResult.SUCCESS;
       }

@@ -373,119 +373,119 @@ public class HibiscusColoredBlocks {
    );
    public static final Block WHITE_CHALK = registerBlock(
            "white_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_WHITE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_WHITE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PINK_KAOLIN_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIGHT_GRAY_CHALK = registerBlock(
            "light_gray_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            WHITE_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block GRAY_CHALK = registerBlock(
            "gray_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIGHT_GRAY_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BLACK_CHALK = registerBlock(
            "black_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLACK).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLACK).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            GRAY_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BROWN_CHALK = registerBlock(
            "brown_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BLACK_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block RED_CHALK = registerBlock(
            "red_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_RED).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_RED).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BROWN_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block ORANGE_CHALK = registerBlock(
            "orange_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            RED_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block YELLOW_CHALK = registerBlock(
            "yellow_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            ORANGE_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIME_CHALK = registerBlock(
            "lime_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIME).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIME).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            YELLOW_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block GREEN_CHALK = registerBlock(
            "green_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GREEN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GREEN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIME_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block CYAN_CHALK = registerBlock(
            "cyan_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_CYAN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_CYAN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            GREEN_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIGHT_BLUE_CHALK = registerBlock(
            "light_blue_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            CYAN_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BLUE_CHALK = registerBlock(
            "blue_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIGHT_BLUE_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block PURPLE_CHALK = registerBlock(
            "purple_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BLUE_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block MAGENTA_CHALK = registerBlock(
            "magenta_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_MAGENTA).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_MAGENTA).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PURPLE_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block PINK_CHALK = registerBlock(
            "pink_chalk",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new Block(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            MAGENTA_CHALK,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block WHITE_CHALK_STAIRS = registerBlock(
            "white_chalk_stairs",
-           new StairsBlock(WHITE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_WHITE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(WHITE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_WHITE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PINK_CHALK,
            ItemGroups.COLORED_BLOCKS
@@ -493,7 +493,7 @@ public class HibiscusColoredBlocks {
    public static final Block LIGHT_GRAY_CHALK_STAIRS = registerBlock(
            "light_gray_chalk_stairs",
            new StairsBlock(LIGHT_GRAY_CHALK.getDefaultState(),
-                   FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)
+                   FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)
            ),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            WHITE_CHALK_STAIRS,
@@ -501,63 +501,63 @@ public class HibiscusColoredBlocks {
    );
    public static final Block GRAY_CHALK_STAIRS = registerBlock(
            "gray_chalk_stairs",
-           new StairsBlock(GRAY_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(GRAY_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIGHT_GRAY_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BLACK_CHALK_STAIRS = registerBlock(
            "black_chalk_stairs",
-           new StairsBlock(BLACK_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLACK).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(BLACK_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLACK).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            GRAY_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BROWN_CHALK_STAIRS = registerBlock(
            "brown_chalk_stairs",
-           new StairsBlock(BROWN_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(BROWN_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BLACK_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block RED_CHALK_STAIRS = registerBlock(
            "red_chalk_stairs",
-           new StairsBlock(RED_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_RED).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(RED_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_RED).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BROWN_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block ORANGE_CHALK_STAIRS = registerBlock(
            "orange_chalk_stairs",
-           new StairsBlock(ORANGE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(ORANGE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            RED_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block YELLOW_CHALK_STAIRS = registerBlock(
            "yellow_chalk_stairs",
-           new StairsBlock(YELLOW_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(YELLOW_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            ORANGE_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIME_CHALK_STAIRS = registerBlock(
            "lime_chalk_stairs",
-           new StairsBlock(LIME_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIME).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(LIME_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIME).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            YELLOW_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block GREEN_CHALK_STAIRS = registerBlock(
            "green_chalk_stairs",
-           new StairsBlock(GREEN_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GREEN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(GREEN_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GREEN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIME_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block CYAN_CHALK_STAIRS = registerBlock(
            "cyan_chalk_stairs",
-           new StairsBlock(CYAN_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_CYAN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(CYAN_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_CYAN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            GREEN_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
@@ -565,148 +565,147 @@ public class HibiscusColoredBlocks {
    public static final Block LIGHT_BLUE_CHALK_STAIRS = registerBlock(
            "light_blue_chalk_stairs",
            new StairsBlock(LIGHT_BLUE_CHALK.getDefaultState(),
-                   FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)
-           ),
+                   FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            CYAN_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BLUE_CHALK_STAIRS = registerBlock(
            "blue_chalk_stairs",
-           new StairsBlock(BLUE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(BLUE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIGHT_BLUE_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block PURPLE_CHALK_STAIRS = registerBlock(
            "purple_chalk_stairs",
-           new StairsBlock(PURPLE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(PURPLE_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BLUE_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block MAGENTA_CHALK_STAIRS = registerBlock(
            "magenta_chalk_stairs",
-           new StairsBlock(MAGENTA_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_MAGENTA).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(MAGENTA_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_MAGENTA).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PURPLE_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block PINK_CHALK_STAIRS = registerBlock(
            "pink_chalk_stairs",
-           new StairsBlock(PINK_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new StairsBlock(PINK_CHALK.getDefaultState(), FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            MAGENTA_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block WHITE_CHALK_SLAB = registerBlock(
            "white_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_WHITE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_WHITE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PINK_CHALK_STAIRS,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIGHT_GRAY_CHALK_SLAB = registerBlock(
            "light_gray_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            WHITE_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block GRAY_CHALK_SLAB = registerBlock(
            "gray_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIGHT_GRAY_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BLACK_CHALK_SLAB = registerBlock(
            "black_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLACK).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLACK).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            GRAY_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BROWN_CHALK_SLAB = registerBlock(
            "brown_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BLACK_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block RED_CHALK_SLAB = registerBlock(
            "red_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_RED).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_RED).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BROWN_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block ORANGE_CHALK_SLAB = registerBlock(
            "orange_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            RED_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block YELLOW_CHALK_SLAB = registerBlock(
            "yellow_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            ORANGE_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIME_CHALK_SLAB = registerBlock(
            "lime_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIME).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIME).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            YELLOW_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block GREEN_CHALK_SLAB = registerBlock(
            "green_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GREEN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_GREEN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIME_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block CYAN_CHALK_SLAB = registerBlock(
            "cyan_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_CYAN).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_CYAN).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            GREEN_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block LIGHT_BLUE_CHALK_SLAB = registerBlock(
            "light_blue_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            CYAN_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block BLUE_CHALK_SLAB = registerBlock(
            "blue_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_BLUE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            LIGHT_BLUE_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block PURPLE_CHALK_SLAB = registerBlock(
            "purple_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            BLUE_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block MAGENTA_CHALK_SLAB = registerBlock(
            "magenta_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_MAGENTA).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_MAGENTA).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            PURPLE_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS
    );
    public static final Block PINK_CHALK_SLAB = registerBlock(
            "pink_chalk_slab",
-           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)),
+           new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASEDRUM).requiresTool().strength(0.5F)),
            HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP,
            MAGENTA_CHALK_SLAB,
            ItemGroups.COLORED_BLOCKS

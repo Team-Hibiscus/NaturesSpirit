@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.PizzaItem;
+import net.hibiscus.naturespirit.items.VinegarItem;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.minecraft.block.*;
@@ -400,9 +401,12 @@ public class HibiscusBlocksAndItems {
            Items.BEETROOT,
            ItemGroups.FOOD_AND_DRINK
    );
-   public static final Block CHEESE_BLOCK = registerBlock("cheese_block", new CheeseBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).strength(2.0F, 1.0F).sounds(BlockSoundGroup.AZALEA_LEAVES)));
 
-   public static final Item CHEESE_BUCKET = registerItem("cheese_bucket", new PowderSnowBucketItem(CHEESE_BLOCK, SoundEvents.ITEM_BUCKET_EMPTY, (new Item.Settings()).maxCount(1).recipeRemainder(Items.BUCKET)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP);
+   public static final Item CHALK_POWDER = registerItem("chalk_powder", new Item((new Item.Settings())), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Items.HONEYCOMB, ItemGroups.INGREDIENTS);
+   public static final Item VINEGAR_BOTTLE = registerItem("vinegar_bottle", new VinegarItem((new Item.Settings()).recipeRemainder(Items.GLASS_BOTTLE).maxCount(16)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, CHALK_POWDER, ItemGroups.INGREDIENTS);
+
+   public static final Block CHEESE_BLOCK = registerBlock("cheese_block", new CheeseBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).strength(2.0F, 1.0F).sounds(BlockSoundGroup.AZALEA_LEAVES)));
+   public static final Item CHEESE_BUCKET = registerItem("cheese_bucket", new PowderSnowBucketItem(CHEESE_BLOCK, SoundEvents.ITEM_BUCKET_EMPTY, (new Item.Settings()).maxCount(1).recipeRemainder(Items.BUCKET)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Items.MILK_BUCKET, ItemGroups.FOOD_AND_DRINK);
    public static final Block MILK_CAULDRON = registerBlock("milk_cauldron", new MilkCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
    public static final Block CHEESE_CAULDRON = registerBlock("cheese_cauldron", new CheeseCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
 

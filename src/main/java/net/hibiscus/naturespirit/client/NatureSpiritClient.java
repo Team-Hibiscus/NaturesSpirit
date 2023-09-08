@@ -50,13 +50,15 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
 
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.POTTED_HIBISCUS, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.POTTED_ANEMONE, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.PIZZA_BLOCK, RenderLayer.getCutout());
-      /* Registers our particle client-side.
-       * First argument is our particle's instance, created previously on ExampleMod.
-       * Second argument is the particle's factory. The factory controls how the particle behaves.
-       * In this example, we'll use FlameParticle's Factory.*/
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.SMALL_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.CALCITE_CLUSTER, RenderLayer.getCutout());
+      for(Block block : HibiscusRegistryHelper.RenderLayerHashMap.values()) {
+         BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+      }
+
+
       ParticleFactoryRegistry.getInstance().register(RED_MAPLE_LEAVES_PARTICLE,
               ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
@@ -67,18 +69,13 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
               ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
       ParticleFactoryRegistry.getInstance().register(MILK_PARTICLE, SuspendParticle.Factory::new);
+      ParticleFactoryRegistry.getInstance().register(CALCITE_BUBBLE_PARTICLE, CalciteBubbleParticle.BubbleFactory::new);
+
 
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          registerBoatModel(true, boat);
          registerBoatModel(false, boat);
       }
-      for(Block block : HibiscusRegistryHelper.RenderLayerHashMap.values()) {
-         BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
-      }
-
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.SMALL_CALCITE_BUD, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.CALCITE_CLUSTER, RenderLayer.getCutout());
    }
 
    public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {

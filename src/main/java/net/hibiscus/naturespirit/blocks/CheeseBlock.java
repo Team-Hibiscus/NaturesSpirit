@@ -1,31 +1,76 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidDrainable;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.event.GameEvent;
 
 import java.util.Optional;
 
-public class CheeseBlock extends Block implements FluidDrainable {
+public class CheeseBlock extends CakeBlock implements FluidDrainable {
    public CheeseBlock(Settings settings) {
       super(settings);
    }
 
    @Override public ItemStack tryDrainFluid(WorldAccess world, BlockPos pos, BlockState state) {
-      world.setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
-      if (!world.isClient()) {
-         world.syncWorldEvent(2001, pos, Block.getRawIdFromState(state));
+      if (world.getBlockState(pos).get(BITES) == 0) {
+         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
+         if (!world.isClient()) {
+            world.syncWorldEvent(2001, pos, Block.getRawIdFromState(state));
+         }
+
+         return new ItemStack(HibiscusBlocksAndItems.CHEESE_BUCKET);
+      }
+      return null;
+   }
+
+   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+      ItemStack itemStack = player.getStackInHand(hand);
+
+      if (world.isClient) {
+         if (tryEat(world, pos, state, player).isAccepted()) {
+            return ActionResult.SUCCESS;
+         }
+
+         if (itemStack.isEmpty()) {
+            return ActionResult.CONSUME;
+         }
       }
 
-      return new ItemStack(HibiscusBlocksAndItems.CHEESE_BUCKET);
+      return tryEat(world, pos, state, player);
+   }
+   protected static ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
+      if (!player.canConsume(false)) {
+         return ActionResult.PASS;
+      } else {
+         player.incrementStat(NatureSpirit.EAT_CHEESE);
+         player.getHungerManager().add(2, 0.1F);
+         int i = (Integer)state.get(BITES);
+         world.emitGameEvent(player, GameEvent.EAT, pos);
+         if (i < 6) {
+            world.setBlockState(pos, (BlockState)state.with(BITES, i + 1), 3);
+         } else {
+            world.removeBlock(pos, false);
+            world.emitGameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+         }
+
+         return ActionResult.SUCCESS;
+      }
    }
 
    @Override public Optional <SoundEvent> getBucketFillSound() {

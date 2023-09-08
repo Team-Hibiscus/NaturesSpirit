@@ -669,6 +669,12 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                          .put(VariantSettings.UVLOCK, false)));
          blockStateModelGenerator.registerParentedItemModel(mushroomBlock, TexturedModel.CUBE_ALL.upload(mushroomBlock, "_inventory", blockStateModelGenerator.modelCollector));
       }
+      private void registerCheese(BlockStateModelGenerator blockStateModelGenerator) {
+         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(CHEESE_BLOCK).coordinate(BlockStateVariantMap.create(Properties.BITES).register(0, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(CHEESE_BLOCK))).register(1, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(CHEESE_BLOCK, "_slice1"))).register(2, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(CHEESE_BLOCK, "_slice2"))).register(3, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(CHEESE_BLOCK, "_slice3"))).register(4, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(CHEESE_BLOCK, "_slice4"))).register(5, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(CHEESE_BLOCK, "_slice5"))).register(6, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(CHEESE_BLOCK, "_slice6")))));
+         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(CHEESE_BLOCK);
+         blockStateModelGenerator.blockStateCollector.accept(createSingletonBlockState(CHEESE_CAULDRON, Models.TEMPLATE_CAULDRON_FULL.upload(CHEESE_CAULDRON, TextureMap.cauldron(TextureMap.getId(CHEESE_BLOCK)), blockStateModelGenerator.modelCollector)));
+         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(CHEESE_CAULDRON);
+      }
 
       @Override public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
          generateWoodBlockStateModels(HibiscusRegistryHelper.WoodHashMap, blockStateModelGenerator);
@@ -678,11 +684,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerAmethyst(SMALL_CALCITE_BUD);
          blockStateModelGenerator.registerAmethyst(LARGE_CALCITE_BUD);
 
-         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(CHEESE_BLOCK);
-         blockStateModelGenerator.registerSimpleCubeAll(CHEESE_BLOCK);
-         blockStateModelGenerator.blockStateCollector.accept(createSingletonBlockState(CHEESE_CAULDRON, Models.TEMPLATE_CAULDRON_FULL.upload(CHEESE_CAULDRON, TextureMap.cauldron(TextureMap.getId(CHEESE_BLOCK)), blockStateModelGenerator.modelCollector)));
-
-
+         registerCheese(blockStateModelGenerator);
          generateFlowerBlockStateModels(HibiscusBlocksAndItems.HIBISCUS, HibiscusBlocksAndItems.POTTED_HIBISCUS, blockStateModelGenerator);
          generateFlowerBlockStateModels(FLAXEN_FERN, POTTED_FLAXEN_FERN, blockStateModelGenerator);
          generateFlowerBlockStateModels(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
@@ -825,6 +827,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          itemModelGenerator.register(HibiscusBlocksAndItems.BLACK_OLIVES, Models.GENERATED);
          itemModelGenerator.register(HibiscusBlocksAndItems.DESERT_TURNIP, Models.GENERATED);
          itemModelGenerator.register(CALCITE_SHARD, Models.GENERATED);
+         itemModelGenerator.register(CHALK_POWDER, Models.GENERATED);
+         itemModelGenerator.register(VINEGAR_BOTTLE, Models.GENERATED);
          itemModelGenerator.register(CHEESE_BUCKET, Models.GENERATED);
          for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
             itemModelGenerator.register(boat.boat().asItem(), Models.GENERATED);
@@ -881,6 +885,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap ,translationBuilder);
          translationBuilder.add(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, "Nature's Spirit Blocks & Items");
          translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
+         translationBuilder.add(VINEGAR_BOTTLE, "Vinegar Bottle");
+         translationBuilder.add(CHALK_POWDER, "Chalk Powder");
          translationBuilder.add(HibiscusBlocksAndItems.GREEN_OLIVES, "Green Olives");
          translationBuilder.add(HibiscusBlocksAndItems.BLACK_OLIVES, "Black Olives");
          translationBuilder.add(HibiscusBlocksAndItems.DESERT_TURNIP, "Desert Turnip");
@@ -1097,6 +1103,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateFlowerRecipes(HibiscusBlocksAndItems.GARDENIA, Items.WHITE_DYE, "white_dye", 2, exporter);
          offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
          offerCompactingRecipe(exporter, RecipeCategory.FOOD, HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK, HibiscusBlocksAndItems.DESERT_TURNIP, "desert_turnip");
+         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.WHITE_CHALK, HibiscusBlocksAndItems.CHALK_POWDER);
       }
    }
 
