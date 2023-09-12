@@ -7,10 +7,12 @@ import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistry;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
+import net.hibiscus.naturespirit.items.HibiscusVinegarDispenserBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
+import net.hibiscus.naturespirit.registration.HibiscusSounds;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
@@ -58,12 +60,14 @@ public class NatureSpirit implements ModInitializer {
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
+      HibiscusSounds.registerSounds();
       HibiscusCauldronBehavior.registerBehavior();
-      BrewingRecipeRegistry.registerItemRecipe(Items.POTION, HibiscusBlocksAndItems.BLACK_OLIVES, HibiscusBlocksAndItems.VINEGAR_BOTTLE);
-      BrewingRecipeRegistry.registerItemRecipe(Items.POTION, HibiscusBlocksAndItems.GREEN_OLIVES, HibiscusBlocksAndItems.VINEGAR_BOTTLE);
+      BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusBlocksAndItems.VINEGAR_BOTTLE);
 
       CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
+
+      DispenserBlock.registerBehavior(HibiscusBlocksAndItems.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
 
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          DispenserBlock.registerBehavior(boat.boat(), new HibiscusBoatDispensorBehavior(boat, false));

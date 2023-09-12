@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.client;
 
+import com.google.common.collect.ImmutableMap;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,31 +11,38 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.collection.IdList;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockRenderView;
-import org.jetbrains.annotations.Nullable;
 
 import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 @Environment(EnvType.CLIENT) public class NatureSpiritClient implements ClientModInitializer {
-   private final IdList <BlockColorProvider> providers = new IdList(32);
 
+//   public static final EntityModelLayer BISON_MODEL_LAYER = new EntityModelLayer(new Identifier(MOD_ID, "bison"), "main");
    @Override public void onInitializeClient() {
+
+
+//      EntityRendererRegistry.register(HibiscusEntityTypes.BISON, BisonEntityRenderer::new);
+//
+//      new ImmutableMap.Builder<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>()
+//              .put(BISON_MODEL_LAYER, new BisonTexturedModelDataProvider())
+//              .build().forEach(EntityModelLayerRegistry::registerModelLayer);
+
+
+
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockState.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? blockPos.down() : blockPos
       ) : -1, HibiscusBlocksAndItems.CATTAIL);
@@ -50,13 +58,16 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
 
+
+
+
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.PIZZA_BLOCK, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.SMALL_CALCITE_BUD, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.CALCITE_CLUSTER, RenderLayer.getCutout());
-      for(Block block : HibiscusRegistryHelper.RenderLayerHashMap.values()) {
-         BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
-      }
+         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), HibiscusRegistryHelper.RenderLayerHashMap.values().toArray(new Block[0]));
+
+
 
 
       ParticleFactoryRegistry.getInstance().register(RED_MAPLE_LEAVES_PARTICLE,
@@ -76,11 +87,6 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
          registerBoatModel(true, boat);
          registerBoatModel(false, boat);
       }
-   }
-
-   public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-      BlockColorProvider blockColorProvider = this.providers.get(Registries.BLOCK.getRawId(state.getBlock()));
-      return blockColorProvider == null ? -1 : blockColorProvider.getColor(state, world, pos, tintIndex);
    }
 
    private static void registerBoatModel(boolean chest, HibiscusBoatEntity.HibiscusBoat boat) {

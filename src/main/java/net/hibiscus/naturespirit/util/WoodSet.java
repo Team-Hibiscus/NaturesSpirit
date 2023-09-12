@@ -154,7 +154,7 @@ public class WoodSet {
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
          RenderLayerHashMap.put(this.getName() + "_sapling", this.getSapling());
-         RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getSapling());
+         RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getPottedSapling());
          CompostingChanceRegistry.INSTANCE.add(this.getSapling(), 0.3F);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
          SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
@@ -175,7 +175,7 @@ public class WoodSet {
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
          RenderLayerHashMap.put(this.getName() + "_sapling", this.getSapling());
-         RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getSapling());
+         RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getPottedSapling());
          CompostingChanceRegistry.INSTANCE.add(this.getSapling(), 0.3F);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
          SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
@@ -705,10 +705,10 @@ public class WoodSet {
       return createBlockWithItem(this.getName() + "_button", new ButtonBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
    }
    private Block createDoor(){
-      return createBlockWithItem(this.getName() + "_door", new DoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
+      return createBlockWithItem(this.getName() + "_door", new DoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
    }
    private Block createTrapDoor(){
-      return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
+      return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
    }
    private Block createSign(){
       return registerBlock(this.getName() + "_sign", new SignBlock(AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()), woodType));

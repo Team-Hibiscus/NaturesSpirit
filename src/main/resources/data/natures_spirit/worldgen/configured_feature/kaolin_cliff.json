@@ -17,7 +17,7 @@
       "placement": [
         {
           "type": "count",
-          "count": 256
+          "count": 80
         },
         {
           "type": "minecraft:random_offset",
@@ -31,7 +31,7 @@
           "y_spread": {
             "type": "minecraft:uniform",
             "value": {
-              "min_inclusive": -16,
+              "min_inclusive": -5,
               "max_inclusive": 0
             }
           }
@@ -39,7 +39,7 @@
         {
           "type": "minecraft:block_predicate_filter",
           "predicate": {
-            "type": "minecraft:all_of",
+            "type": "minecraft:any_of",
             "predicates": [
               {
                 "type": "minecraft:matching_blocks",
@@ -49,444 +49,403 @@
                   0
                 ],
                 "blocks": [
-                  "minecraft:grass_block",
-                  "minecraft:dirt",
                   "minecraft:stone"
                 ]
               },
               {
-                "type": "minecraft:any_of",
+                "type": "minecraft:all_of",
                 "predicates": [
                   {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          2,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          3,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
+                    "type": "minecraft:matching_blocks",
+                    "offset": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "blocks": [
+                      "minecraft:grass_block",
+                      "minecraft:dirt",
+                      "minecraft:stone",
+                      "natures_spirit:kaolin",
+                      "minecraft:terracotta"
                     ]
                   },
                   {
                     "type": "minecraft:all_of",
                     "predicates": [
                       {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          2,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
+                        "type": "minecraft:any_of",
+                        "predicates": [
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              1,
+                              0
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              1,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              1,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              0,
+                              1,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              0,
+                              1,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              1,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              1,
+                              0
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              1,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          }
                         ]
                       },
                       {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          3,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          2,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          3,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          2,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          3,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          2,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          3,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          2,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          3,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          2,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
+                        "type": "minecraft:any_of",
+                        "predicates": [
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              2,
+                              0
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              2,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              2,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              0,
+                              2,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              0,
+                              2,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              2,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              2,
+                              0
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              2,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          }
                         ]
                       },
                       {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          3,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          2,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          1,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          2,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          1,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          2,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          1,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          2,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          -1,
-                          1,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          2,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          1,
-                          1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          2,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          0,
-                          1,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          2,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
-                        ]
-                      },
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          1,
-                          -1
-                        ],
-                        "blocks": [
-                          "minecraft:terracotta",
-                          "minecraft:grass_block",
-                          "minecraft:dirt"
+                        "type": "minecraft:any_of",
+                        "predicates": [
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              0,
+                              0
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              0,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              -1,
+                              0,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              0,
+                              0,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              0,
+                              0,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              0,
+                              -1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              0,
+                              0
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          },
+                          {
+                            "type": "minecraft:matching_blocks",
+                            "offset": [
+                              1,
+                              0,
+                              1
+                            ],
+                            "blocks": [
+                              "minecraft:grass_block",
+                              "minecraft:stone",
+                              "minecraft:dirt",
+                              "natures_spirit:kaolin",
+                              "minecraft:terracotta"
+                            ]
+                          }
                         ]
                       }
                     ]

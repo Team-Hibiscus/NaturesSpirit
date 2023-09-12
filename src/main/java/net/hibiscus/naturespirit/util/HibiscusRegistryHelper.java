@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.util;
 
+import com.mojang.serialization.Lifecycle;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -11,9 +12,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -97,6 +96,7 @@ public class HibiscusRegistryHelper {
       ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.add(item.asItem()));
       return registerItem(name, item);
    }
+
 
    public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab, Item itemBefore, RegistryKey <ItemGroup> secondaryTab) {
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item));

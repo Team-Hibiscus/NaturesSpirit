@@ -51,33 +51,15 @@
                 "blocks": [
                   "minecraft:grass_block",
                   "minecraft:dirt",
-                  "natures_spirit:white_chalk",
-                  "minecraft:stone"
+                  "minecraft:stone",
+                  "natures_spirit:white_chalk"
                 ]
               },
               {
-                "type": "minecraft:any_of",
+                "type": "minecraft:all_of",
                 "predicates": [
                   {
-                    "type": "minecraft:all_of",
-                    "predicates": [
-                      {
-                        "type": "minecraft:matching_blocks",
-                        "offset": [
-                          1,
-                          1,
-                          0
-                        ],
-                        "blocks": [
-                          "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
+                    "type": "minecraft:any_of",
                     "predicates": [
                       {
                         "type": "minecraft:matching_blocks",
@@ -87,16 +69,12 @@
                           0
                         ],
                         "blocks": [
+                          "minecraft:grass_block",
                           "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
+                      },
                       {
                         "type": "minecraft:matching_blocks",
                         "offset": [
@@ -105,16 +83,12 @@
                           1
                         ],
                         "blocks": [
+                          "minecraft:grass_block",
                           "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
+                      },
                       {
                         "type": "minecraft:matching_blocks",
                         "offset": [
@@ -123,16 +97,12 @@
                           -1
                         ],
                         "blocks": [
+                          "minecraft:grass_block",
                           "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
+                      },
                       {
                         "type": "minecraft:matching_blocks",
                         "offset": [
@@ -141,16 +111,12 @@
                           1
                         ],
                         "blocks": [
+                          "minecraft:grass_block",
                           "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
+                      },
                       {
                         "type": "minecraft:matching_blocks",
                         "offset": [
@@ -159,16 +125,12 @@
                           -1
                         ],
                         "blocks": [
+                          "minecraft:grass_block",
                           "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "minecraft:all_of",
-                    "predicates": [
+                      },
                       {
                         "type": "minecraft:matching_blocks",
                         "offset": [
@@ -177,9 +139,272 @@
                           -1
                         ],
                         "blocks": [
+                          "minecraft:grass_block",
                           "minecraft:stone",
-                          "natures_spirit:white_chalk",
-                          "minecraft:dirt"
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          1,
+                          0
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          1,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "minecraft:any_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          -1,
+                          2,
+                          0
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          -1,
+                          2,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          -1,
+                          2,
+                          -1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          0,
+                          2,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          0,
+                          2,
+                          -1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          2,
+                          -1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          2,
+                          0
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          2,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "minecraft:any_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          -1,
+                          0,
+                          0
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          -1,
+                          0,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          -1,
+                          0,
+                          -1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          0,
+                          0,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          0,
+                          0,
+                          -1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          0,
+                          -1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          0,
+                          0
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "offset": [
+                          1,
+                          0,
+                          1
+                        ],
+                        "blocks": [
+                          "minecraft:grass_block",
+                          "minecraft:stone",
+                          "minecraft:dirt",
+                          "natures_spirit:white_chalk"
                         ]
                       }
                     ]
