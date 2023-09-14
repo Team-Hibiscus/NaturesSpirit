@@ -7,9 +7,10 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-
+@SuppressWarnings("unused")
 public class HibiscusSounds {
    public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_AUTUMN = registerReference("music.overworld.autumn");
+   public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_WISTERIA = registerReference("music.overworld.wisteria");
 
    private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
       return registerReference(new Identifier(MOD_ID, id));

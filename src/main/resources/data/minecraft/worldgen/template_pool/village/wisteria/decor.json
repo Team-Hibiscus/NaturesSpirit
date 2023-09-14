@@ -12,14 +12,6 @@
     {
       "element": {
         "element_type": "minecraft:feature_pool_element",
-        "feature": "minecraft:forest_flowers",
-        "projection": "rigid"
-      },
-      "weight": 1
-    },
-    {
-      "element": {
-        "element_type": "minecraft:feature_pool_element",
         "feature": "minecraft:pile_hay",
         "projection": "rigid"
       },

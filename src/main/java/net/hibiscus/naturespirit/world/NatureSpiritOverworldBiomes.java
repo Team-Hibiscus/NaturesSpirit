@@ -1,5 +1,7 @@
 package net.hibiscus.naturespirit.world;
 
+import net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures;
+import net.hibiscus.naturespirit.registration.HibiscusSounds;
 import net.hibiscus.naturespirit.world.feature.HibiscusFeatureGroups;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
@@ -105,8 +107,9 @@ public class NatureSpiritOverworldBiomes {
       HibiscusFeatureGroups.addWisteriaFlowers(biomeBuilder);
       biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_WATERLILY);
       DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-      biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM);
-      return biome(true, 0.4F, 0.7F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+      biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.LOTUS_PLANT_PLACED);
+      biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_SWAMP);
+      return biome(true, 0.4F, 0.7F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(HibiscusSounds.MUSIC_OVERWORLD_WISTERIA));
    }
 
 

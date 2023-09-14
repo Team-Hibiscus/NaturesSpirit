@@ -1,0 +1,18 @@
+{
+  "music.overworld.autumn": {
+    "sounds": [
+      {
+        "name": "natures_spirit:music.overworld.autumn",
+        "stream": true
+      }
+    ]
+  },
+  "music.overworld.wisteria": {
+    "sounds": [
+      {
+        "name": "natures_spirit:music.overworld.wisteria",
+        "stream": true
+      }
+    ]
+  }
+}
