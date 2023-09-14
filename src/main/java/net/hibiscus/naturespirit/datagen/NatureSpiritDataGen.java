@@ -864,7 +864,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          return String.valueOf(chars);
       }
       private void generateBlockTranslations(Block block, TranslationBuilder translationBuilder) {
-         String temp = capitalizeString(block.toString().replace("Block{natures_spirit:", "").replace("_", " ").replace("}", ""));
+         String temp = capitalizeString(Registries.BLOCK.getId(block).getPath().replace("_", " "));
          translationBuilder.add(block, temp);
       }
 
@@ -877,6 +877,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateBlockTranslations(woodSet.getHangingSign(), translationBuilder);
                translationBuilder.add(woodSet.getBoatItem(), capitalizeString(woodSet.getName()) + " Boat");
                translationBuilder.add(woodSet.getChestBoatItem(), capitalizeString(woodSet.getName()) + " Boat With Chest");
+            generateArchExTranslations(woodSet.getName(), translationBuilder);
          }
       }
       private void generateBiomeTranslations(TranslationBuilder translationBuilder) {
@@ -1055,17 +1056,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.QUARTER_PIZZA, "Quarter of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.WHOLE_PIZZA, "Pizza");
-
-         generateArchExTranslations("aspen", translationBuilder);
-         generateArchExTranslations("cypress", translationBuilder);
-         generateArchExTranslations("fir", translationBuilder);
-         generateArchExTranslations("joshua", translationBuilder);
-         generateArchExTranslations("maple", translationBuilder);
-         generateArchExTranslations("olive", translationBuilder);
-         generateArchExTranslations("redwood", translationBuilder);
-         generateArchExTranslations("sugi", translationBuilder);
-         generateArchExTranslations("willow", translationBuilder);
-         generateArchExTranslations("wisteria", translationBuilder);
 
          for (var color : List.of(DYE_COLORS)) {
             generateArchExTranslations(color + "_kaolin", translationBuilder);
