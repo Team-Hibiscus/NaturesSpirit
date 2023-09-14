@@ -46,6 +46,7 @@ import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -57,6 +58,11 @@ import static net.minecraft.data.client.BlockStateModelGenerator.*;
 import static net.minecraft.data.family.BlockFamilies.register;
 
 public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
+
+   public static final String[] DYE_COLORS = {
+           "white", "light_gray", "gray", "black", "brown", "red", "orange", "yellow", "lime",
+           "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"
+   };
 
    @Override public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
       FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
@@ -880,6 +886,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
+      private void generateArchExTranslations(String group, TranslationBuilder translationBuilder) {
+         translationBuilder.add("architecture_extensions.grouped_block." + MOD_ID + "." + group, capitalizeString(group.replace("_", " ")));
+      }
+
       @Override public void generateTranslations(TranslationBuilder translationBuilder) {
          generateBiomeTranslations(translationBuilder);
          generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap ,translationBuilder);
@@ -1045,6 +1055,22 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.QUARTER_PIZZA, "Quarter of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.WHOLE_PIZZA, "Pizza");
+
+         generateArchExTranslations("aspen", translationBuilder);
+         generateArchExTranslations("cypress", translationBuilder);
+         generateArchExTranslations("fir", translationBuilder);
+         generateArchExTranslations("joshua", translationBuilder);
+         generateArchExTranslations("maple", translationBuilder);
+         generateArchExTranslations("olive", translationBuilder);
+         generateArchExTranslations("redwood", translationBuilder);
+         generateArchExTranslations("sugi", translationBuilder);
+         generateArchExTranslations("willow", translationBuilder);
+         generateArchExTranslations("wisteria", translationBuilder);
+
+         for (var color : List.of(DYE_COLORS)) {
+            generateArchExTranslations(color + "_kaolin", translationBuilder);
+            generateArchExTranslations(color + "_chalk", translationBuilder);
+         }
       }
    }
 

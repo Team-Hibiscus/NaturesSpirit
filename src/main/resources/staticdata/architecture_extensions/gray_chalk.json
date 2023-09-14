@@ -1,0 +1,16 @@
+{
+  "only_if_present": null,
+  "name": "gray_chalk",
+  "base_block": "natures_spirit:gray_chalk",
+  "textures": "all",
+  "recipes": "stonecutting",
+  "map_color": "gray_terracotta",
+  "types_to_generate": [
+    "arch",
+    "octagonal_column",
+    "round_arch",
+    "roof",
+    "wall_column",
+    "wall_post"
+  ]
+}

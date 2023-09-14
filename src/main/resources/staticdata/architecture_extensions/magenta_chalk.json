@@ -1,0 +1,16 @@
+{
+  "only_if_present": null,
+  "name": "magenta_chalk",
+  "base_block": "natures_spirit:magenta_chalk",
+  "textures": "all",
+  "recipes": "stonecutting",
+  "map_color": "magenta_terracotta",
+  "types_to_generate": [
+    "arch",
+    "octagonal_column",
+    "round_arch",
+    "roof",
+    "wall_column",
+    "wall_post"
+  ]
+}

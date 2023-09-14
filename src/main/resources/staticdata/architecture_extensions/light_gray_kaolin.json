@@ -1,0 +1,16 @@
+{
+  "only_if_present": null,
+  "name": "light_gray_kaolin",
+  "base_block": "natures_spirit:light_gray_kaolin",
+  "textures": "all",
+  "recipes": "stonecutting",
+  "map_color": "light_gray_terracotta",
+  "types_to_generate": [
+    "arch",
+    "octagonal_column",
+    "round_arch",
+    "roof",
+    "wall_column",
+    "wall_post"
+  ]
+}
