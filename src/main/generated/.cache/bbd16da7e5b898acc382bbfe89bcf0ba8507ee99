@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-13T22:07:57.5786116	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2023-09-15T00:36:14.9256709	Nature's Spirit/Tags for minecraft:item
 a997fd897b9914ff8d9f756128d2c4d7a7750eda data\minecraft\tags\items\wooden_doors.json
 b0de2d8ee5694dfd181b310efc466c1e3ba2a6f1 data\minecraft\tags\items\wooden_slabs.json
 a86a1f13fceecba3462549cf13452b8f015c98ac data\minecraft\tags\items\wooden_trapdoors.json
@@ -7,17 +7,22 @@ ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\items\sugi_log
 f118c8a36f95900b53982c937b485d9ec802901d data\minecraft\tags\items\wooden_stairs.json
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\items\willow_logs.json
 350240f1dcc1bb376ab85817ec5bf6ff1b709344 data\minecraft\tags\items\logs_that_burn.json
+5c69d26aa24fd9a52bc356b51f4ba5cad58f24a1 data\minecraft\tags\items\slabs.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\items\signs.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_logs.json
 82668ff78438c4cbcfcdba36a2f301be43e6f685 data\minecraft\tags\items\fence_gates.json
+61af56f99583c3bd40cb9021e80c77c53b449a6c data\minecraft\tags\items\smelts_to_glass.json
 788d78f407b5ff9a87cfded17f7bb03c29eeb9f1 data\minecraft\tags\items\wooden_buttons.json
 7a9922bf7995dd94dcd11f47eedabdda234f1040 data\natures_spirit\tags\items\joshua_logs.json
+1940ea732d4f3789914cdc958c94984b1980c3a5 data\minecraft\tags\items\stairs.json
 e3c1f165e1b82affb4cc652d7679aba3de648bd0 data\natures_spirit\tags\items\cypress_logs.json
+b35f8c2d96080add3107a9e55f1e47b9c04c7d25 data\minecraft\tags\items\walls.json
 3e71dadde0b8959c6adfeab395be32152e670a66 data\minecraft\tags\items\small_flowers.json
 80d1b1053ccfa5394166156cceceba92f79aebb7 data\natures_spirit\tags\items\fir_logs.json
 fc291607b06ce0700548458687a09883d0f2e865 data\natures_spirit\tags\items\aspen_logs.json
 6a070f0526420cf23fa9ddc3dd6b360a0a1506d4 data\minecraft\tags\items\hanging_signs.json
 320cdcf8d02f2996001749a15b796aaba9cf6bd1 data\minecraft\tags\items\planks.json
+4dc5b3ab401e06fe4d92041ba45fb29edb5aa78d data\minecraft\tags\items\sand.json
 0ef4d06f827a0e5fa1f5202fe4ab69762c8d9420 data\minecraft\tags\items\wooden_fences.json
 150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
 d9bbb877338c0e9b9624ed706d88fd7270d080b5 data\minecraft\tags\items\wooden_pressure_plates.json

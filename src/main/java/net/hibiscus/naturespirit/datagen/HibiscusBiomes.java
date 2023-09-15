@@ -50,7 +50,6 @@ public class HibiscusBiomes {
       RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2 = bootstapContext.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
 
 
-      register(bootstapContext, WISTERIA_FOREST, NatureSpiritOverworldBiomes.wisteriaForest(holderGetter, holderGetter2));
       register(bootstapContext, ERODED_RIVER, NatureSpiritOverworldBiomes.erodedRiver(holderGetter, holderGetter2));
       register(bootstapContext, REDWOOD_FOREST, NatureSpiritOverworldBiomes.redwoodForest(holderGetter, holderGetter2));
    }

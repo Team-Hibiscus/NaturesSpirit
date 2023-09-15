@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "natures_spirit:block/pink_sandstone_bottom",
+    "side": "natures_spirit:block/pink_sandstone",
+    "top": "natures_spirit:block/pink_sandstone_top"
+  }
+}

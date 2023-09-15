@@ -93,25 +93,6 @@ public class NatureSpiritOverworldBiomes {
       return biome(true, 0.67F, 0.7F, 4159204, 329011, builder, lookupBackedBuilder, NORMAL_MUSIC);
    }
 
-   public static Biome wisteriaForest(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
-      SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-      DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
-      DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
-
-      GenerationSettings.LookupBackedBuilder biomeBuilder = new GenerationSettings.LookupBackedBuilder(holderGetter, holderGetter2).feature(GenerationStep.Feature.FLUID_SPRINGS, WISTERIA_WATER);
-      globalOverworldGeneration(biomeBuilder);
-      DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
-      DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
-      DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
-      HibiscusFeatureGroups.addWisteriaTrees(biomeBuilder);
-      HibiscusFeatureGroups.addWisteriaFlowers(biomeBuilder);
-      biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_WATERLILY);
-      DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
-      biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.LOTUS_PLANT_PLACED);
-      biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_SWAMP);
-      return biome(true, 0.4F, 0.7F, spawnBuilder, biomeBuilder, MusicType.createIngameMusic(HibiscusSounds.MUSIC_OVERWORLD_WISTERIA));
-   }
-
 
    public static Biome redwoodForest(RegistryEntryLookup <PlacedFeature> holderGetter, RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2) {
       SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();

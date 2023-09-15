@@ -512,46 +512,6 @@ public class HibiscusConfiguredFeatures {
               )
       );
 
-      register(context,
-              FLOWER_LAVENDER_FIELD,
-              Feature.FLOWER,
-              new RandomPatchFeatureConfig(120,
-                      6,
-                      2,
-                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                              new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
-                                      new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
-                                      0.030833334F,
-                                      List.of(Blocks.LILAC.getDefaultState(),
-                                              HibiscusBlocksAndItems.ANEMONE.getDefaultState(),
-                                              HibiscusBlocksAndItems.LAVENDER.getDefaultState(),
-                                              Blocks.GRASS.getDefaultState(),
-                                              Blocks.PEONY.getDefaultState()
-                                      )
-                              ))
-                      )
-              )
-      );
-      register(context,
-              FLOWER_FOXGLOVE_FIELD,
-              Feature.FLOWER,
-              new RandomPatchFeatureConfig(120,
-                      6,
-                      2,
-                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                              new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
-                                      new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
-                                      0.030833334F,
-                                      List.of(Blocks.LILAC.getDefaultState(),
-                                              Blocks.GRASS.getDefaultState(),
-                                              HibiscusBlocksAndItems.FOXGLOVE.getDefaultState(),
-                                              Blocks.TALL_GRASS.getDefaultState(),
-                                              Blocks.PEONY.getDefaultState()
-                                      )
-                              ))
-                      )
-              )
-      );
 
       register(context,
               FLOWER_ERODED_RIVER,

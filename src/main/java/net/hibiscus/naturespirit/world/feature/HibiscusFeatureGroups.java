@@ -12,9 +12,6 @@ public class HibiscusFeatureGroups {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.REDWOOD_ROCK_PLACED);
    }
 
-   public static void addWisteriaTrees(GenerationSettings.LookupBackedBuilder builder) {
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.WISTERIA_PLACED);
-   }
    public static void addRedwoodTrees(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.REDWOOD_PLACED);
    }
@@ -24,12 +21,6 @@ public class HibiscusFeatureGroups {
 
    public static void addSpruceBush(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.SPRUCE_BUSH_PLACED);
-   }
-
-   public static void addWisteriaFlowers(GenerationSettings.LookupBackedBuilder builder) {
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FOREST_FLOWERS);
-      builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.FLOWER_WISTERIA_PLACED);
    }
    public static void addErodedRiverFlowers(GenerationSettings.LookupBackedBuilder builder) {
       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.OAK_BUSH_PLACED);

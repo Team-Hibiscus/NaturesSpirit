@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "natures_spirit:block/pink_sand"
+      },
+      {
+        "model": "natures_spirit:block/pink_sand",
+        "y": 90
+      },
+      {
+        "model": "natures_spirit:block/pink_sand",
+        "y": 180
+      },
+      {
+        "model": "natures_spirit:block/pink_sand",
+        "y": 270
+      }
+    ]
+  }
+}

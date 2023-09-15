@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/smooth_pink_sandstone_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/smooth_pink_sandstone"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/smooth_pink_sandstone_slab_top"
+    }
+  }
+}

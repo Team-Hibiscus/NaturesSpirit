@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.datagen;
 
+import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -21,7 +22,9 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -33,6 +36,7 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
@@ -107,7 +111,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private void addWoodTable(HashMap <String, WoodSet> woods) {
          for(WoodSet woodSet : woods.values()) {
-            
+
             if (woodSet.hasBark())
             {
                addDrop(woodSet.getWood());
@@ -265,6 +269,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusWoods.FRAMED_SUGI_TRAPDOOR);
 
          this.addDrop(HibiscusBlocksAndItems.SANDY_SOIL);
+
+         this.addDrop(PINK_SAND);
+         this.addDrop(PINK_SANDSTONE);
+         this.slabDrops(PINK_SANDSTONE_SLAB);
+         this.addDrop(PINK_SANDSTONE_STAIRS);
+         this.addDrop(PINK_SANDSTONE_WALL);
+         this.addDrop(SMOOTH_PINK_SANDSTONE);
+         this.slabDrops(SMOOTH_PINK_SANDSTONE_SLAB);
+         this.addDrop(SMOOTH_PINK_SANDSTONE_STAIRS);
+         this.addDrop(CUT_PINK_SANDSTONE);
+         this.slabDrops(CUT_PINK_SANDSTONE_SLAB);
+         this.addDrop(CHISELED_PINK_SANDSTONE);
 
          this.addDrop(HibiscusColoredBlocks.KAOLIN);
          this.addDrop(HibiscusColoredBlocks.WHITE_KAOLIN);
@@ -720,6 +736,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant(), blockStateModelGenerator);
 
+
          createSlab(HibiscusColoredBlocks.KAOLIN, HibiscusColoredBlocks.KAOLIN_SLAB, blockStateModelGenerator);
          createSlab(HibiscusColoredBlocks.WHITE_KAOLIN, HibiscusColoredBlocks.WHITE_KAOLIN_SLAB, blockStateModelGenerator);
          createSlab(HibiscusColoredBlocks.LIGHT_GRAY_KAOLIN, HibiscusColoredBlocks.LIGHT_GRAY_KAOLIN_SLAB, blockStateModelGenerator);
@@ -936,6 +953,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
          generateBlockTranslations(LOTUS_STEM, translationBuilder);
 
+         generateBlockTranslations(PINK_SAND, translationBuilder);
+         generateBlockTranslations(PINK_SANDSTONE, translationBuilder);
+         generateBlockTranslations(PINK_SANDSTONE_SLAB, translationBuilder);
+         generateBlockTranslations(PINK_SANDSTONE_STAIRS, translationBuilder);
+         generateBlockTranslations(PINK_SANDSTONE_WALL, translationBuilder);
+         generateBlockTranslations(SMOOTH_PINK_SANDSTONE, translationBuilder);
+         generateBlockTranslations(SMOOTH_PINK_SANDSTONE_STAIRS, translationBuilder);
+         generateBlockTranslations(SMOOTH_PINK_SANDSTONE_SLAB, translationBuilder);
+         generateBlockTranslations(CHISELED_PINK_SANDSTONE, translationBuilder);
+         generateBlockTranslations(CUT_PINK_SANDSTONE, translationBuilder);
+         generateBlockTranslations(CUT_PINK_SANDSTONE_SLAB, translationBuilder);
+
          generateBlockTranslations(HibiscusBlocksAndItems.SANDY_SOIL, translationBuilder);
          generateBlockTranslations(CHEESE_BLOCK, translationBuilder);
          generateBlockTranslations(CHEESE_CAULDRON, translationBuilder);
@@ -1069,6 +1098,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          super(output);
       }
 
+      public static final BlockFamily PINK_SANDSTONE_FAMILY = register(HibiscusBlocksAndItems.PINK_SANDSTONE).wall(PINK_SANDSTONE_WALL).stairs(PINK_SANDSTONE_STAIRS).slab(PINK_SANDSTONE_SLAB).chiseled(CHISELED_PINK_SANDSTONE).cut(CUT_PINK_SANDSTONE).noGenerateModels().noGenerateRecipes().build();
+      public static final BlockFamily CUT_PINK_SANDSTONE_FAMILY = register(HibiscusBlocksAndItems.CUT_PINK_SANDSTONE).slab(CUT_PINK_SANDSTONE_SLAB).noGenerateModels().build();
+      public static final BlockFamily SMOOTH_PINK_SANDSTONE_FAMILY = register(HibiscusBlocksAndItems.SMOOTH_PINK_SANDSTONE).slab(SMOOTH_PINK_SANDSTONE_SLAB).stairs(SMOOTH_PINK_SANDSTONE_STAIRS).noGenerateModels().build();
+
+
       private void generateWoodRecipes(HashMap <String, WoodSet> woods, Consumer <RecipeJsonProvider> consumer) {
          for(WoodSet woodSet : woods.values()) {
             offerPlanksRecipe(consumer, woodSet.getPlanks(), woodSet.getItemLogsTag(), 4);
@@ -1096,30 +1130,63 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
-
-      private void generateFlowerRecipes(Block block, Item dye, String group, int amount, Consumer <RecipeJsonProvider> consumer) {
-         offerShapelessRecipe(consumer, dye, block, group, amount);
-      }
-
       @Override public void generate(Consumer <RecipeJsonProvider> exporter) {
+
+         createChiseledBlockRecipe(RecipeCategory.BUILDING_BLOCKS, CHISELED_PINK_SANDSTONE, Ingredient.ofItems(new ItemConvertible[]{PINK_SANDSTONE_SLAB}))
+                 .criterion("has_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.PINK_SANDSTONE))
+                 .criterion("has_chiseled_pink_sandstone", conditionsFromItem(CHISELED_PINK_SANDSTONE))
+                 .criterion("has_cut_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.CUT_PINK_SANDSTONE))
+                 .offerTo(exporter);
+         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.PINK_SANDSTONE)
+                                .input('#', PINK_SAND).pattern("##")
+                                .pattern("##").criterion("has_sand", conditionsFromItem(HibiscusBlocksAndItems.PINK_SAND))
+                                .offerTo(exporter);
+         createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.PINK_SANDSTONE_SLAB, Ingredient.ofItems(new ItemConvertible[]{HibiscusBlocksAndItems.PINK_SANDSTONE, HibiscusBlocksAndItems.CHISELED_PINK_SANDSTONE}))
+                 .criterion("has_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.PINK_SANDSTONE)).criterion("has_chiseled_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.CHISELED_PINK_SANDSTONE))
+                 .offerTo(exporter);
+         createStairsRecipe(HibiscusBlocksAndItems.PINK_SANDSTONE_STAIRS, Ingredient.ofItems(new ItemConvertible[]{HibiscusBlocksAndItems.PINK_SANDSTONE, HibiscusBlocksAndItems.CHISELED_PINK_SANDSTONE, HibiscusBlocksAndItems.CUT_PINK_SANDSTONE}))
+                 .criterion("has_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.PINK_SANDSTONE))
+                 .criterion("has_chiseled_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.CHISELED_PINK_SANDSTONE))
+                 .criterion("has_cut_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.CUT_PINK_SANDSTONE))
+                 .offerTo(exporter);
+         offerCutCopperRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.CUT_PINK_SANDSTONE, HibiscusBlocksAndItems.PINK_SANDSTONE);
+         offerWallRecipe(exporter, RecipeCategory.DECORATIONS, HibiscusBlocksAndItems.PINK_SANDSTONE_WALL, HibiscusBlocksAndItems.PINK_SANDSTONE);
+         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(new ItemConvertible[]{HibiscusBlocksAndItems.PINK_SANDSTONE}), RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.SMOOTH_PINK_SANDSTONE.asItem(), 0.1F, 200)
+                                 .criterion("has_pink_sandstone", conditionsFromItem(HibiscusBlocksAndItems.PINK_SANDSTONE))
+                                 .offerTo(exporter);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.CUT_PINK_SANDSTONE, HibiscusBlocksAndItems.PINK_SANDSTONE);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.PINK_SANDSTONE_SLAB, HibiscusBlocksAndItems.PINK_SANDSTONE, 2);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.CUT_PINK_SANDSTONE_SLAB, HibiscusBlocksAndItems.PINK_SANDSTONE, 2);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.CUT_PINK_SANDSTONE_SLAB, HibiscusBlocksAndItems.CUT_PINK_SANDSTONE, 2);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.PINK_SANDSTONE_STAIRS, HibiscusBlocksAndItems.PINK_SANDSTONE);
+         offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, HibiscusBlocksAndItems.PINK_SANDSTONE_WALL, HibiscusBlocksAndItems.PINK_SANDSTONE);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.CHISELED_PINK_SANDSTONE, HibiscusBlocksAndItems.PINK_SANDSTONE);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.SMOOTH_PINK_SANDSTONE_SLAB, HibiscusBlocksAndItems.SMOOTH_PINK_SANDSTONE, 2);
+         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusBlocksAndItems.SMOOTH_PINK_SANDSTONE_STAIRS, HibiscusBlocksAndItems.SMOOTH_PINK_SANDSTONE);
+
+
          generateWoodRecipes(HibiscusRegistryHelper.WoodHashMap, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.ANEMONE, Items.MAGENTA_DYE, "magenta_dye", 1, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.BLEEDING_HEART, Items.PINK_DYE, "pink_dye", 4, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.LAVENDER, Items.PURPLE_DYE, "purple_dye", 4, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.BLUEBELL, Items.BLUE_DYE, "blue_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.TIGER_LILY, Items.ORANGE_DYE, "orange_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.PURPLE_WILDFLOWER, Items.PURPLE_DYE, "purple_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.YELLOW_WILDFLOWER, Items.YELLOW_DYE, "yellow_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.CARNATION, Items.RED_DYE, "red_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.SNAPDRAGON, Items.PINK_DYE, "pink_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.CATTAIL, Items.BROWN_DYE, "brown_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.MARIGOLD, Items.ORANGE_DYE, "orange_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.FOXGLOVE, Items.PURPLE_DYE, "purple_dye", 2, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.HIBISCUS, Items.RED_DYE, "red_dye", 1, exporter);
-         generateFlowerRecipes(HibiscusBlocksAndItems.GARDENIA, Items.WHITE_DYE, "white_dye", 2, exporter);
+         offerShapelessRecipe(exporter, Items.MAGENTA_DYE, HibiscusBlocksAndItems.ANEMONE, "magenta_dye", 1);
+         offerShapelessRecipe(exporter, Items.PINK_DYE, HibiscusBlocksAndItems.BLEEDING_HEART, "pink_dye", 4);
+         offerShapelessRecipe(exporter, Items.PURPLE_DYE, HibiscusBlocksAndItems.LAVENDER, "purple_dye", 4);
+         offerShapelessRecipe(exporter, Items.BLUE_DYE, HibiscusBlocksAndItems.BLUEBELL, "blue_dye", 2);
+         offerShapelessRecipe(exporter, Items.ORANGE_DYE, HibiscusBlocksAndItems.TIGER_LILY, "orange_dye", 2);
+         offerShapelessRecipe(exporter, Items.PURPLE_DYE, HibiscusBlocksAndItems.PURPLE_WILDFLOWER, "purple_dye", 2);
+         offerShapelessRecipe(exporter, Items.YELLOW_DYE, HibiscusBlocksAndItems.YELLOW_WILDFLOWER, "yellow_dye", 2);
+         offerShapelessRecipe(exporter, Items.RED_DYE, HibiscusBlocksAndItems.CARNATION, "red_dye", 2);
+         offerShapelessRecipe(exporter, Items.PINK_DYE, HibiscusBlocksAndItems.SNAPDRAGON, "pink_dye", 2);
+         offerShapelessRecipe(exporter, Items.BROWN_DYE, HibiscusBlocksAndItems.CATTAIL, "brown_dye", 2);
+         offerShapelessRecipe(exporter, Items.ORANGE_DYE, HibiscusBlocksAndItems.MARIGOLD, "orange_dye", 2);
+         offerShapelessRecipe(exporter, Items.PURPLE_DYE, HibiscusBlocksAndItems.FOXGLOVE, "purple_dye", 2);
+         offerShapelessRecipe(exporter, Items.RED_DYE, HibiscusBlocksAndItems.HIBISCUS, "red_dye", 1);
+         offerShapelessRecipe(exporter, Items.WHITE_DYE, HibiscusBlocksAndItems.GARDENIA, "white_dye", 2);
          offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
          offerCompactingRecipe(exporter, RecipeCategory.FOOD, HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK, HibiscusBlocksAndItems.DESERT_TURNIP, "desert_turnip");
          offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.WHITE_CHALK, HibiscusBlocksAndItems.CHALK_POWDER);
+
+         generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY);
+         generateFamily(exporter, SMOOTH_PINK_SANDSTONE_FAMILY);
+         
       }
    }
 
@@ -1153,6 +1220,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
          this.copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
          this.copy(BlockTags.TALL_FLOWERS, ItemTags.TALL_FLOWERS);
+         this.copy(BlockTags.SAND, ItemTags.SAND);
+         this.copy(BlockTags.SLABS, ItemTags.SLABS);
+         this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
+         this.copy(BlockTags.WALLS, ItemTags.WALLS);
+         this.getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS).add(PINK_SAND.asItem());
       }
    }
 
@@ -1293,6 +1365,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS
          );
+         getOrCreateTagBuilder(BlockTags.SAND).add(PINK_SAND, SANDY_SOIL);
+         getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);
+         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(PINK_SAND);
+         getOrCreateTagBuilder(BlockTags.STAIRS).add(PINK_SANDSTONE_STAIRS);
+         getOrCreateTagBuilder(BlockTags.STAIRS).add(SMOOTH_PINK_SANDSTONE_STAIRS);
+         getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB);
+         getOrCreateTagBuilder(BlockTags.SLABS).add(SMOOTH_PINK_SANDSTONE_SLAB);
+         getOrCreateTagBuilder(BlockTags.SLABS).add(CUT_PINK_SANDSTONE_SLAB);
+         getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
          getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
