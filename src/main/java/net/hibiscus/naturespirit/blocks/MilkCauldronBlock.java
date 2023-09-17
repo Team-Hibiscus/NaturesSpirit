@@ -78,7 +78,7 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
    }
 
    @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-      if (random.nextInt(50) == 0) {
+      if (random.nextInt(25) == 0) {
          world.setBlockState(pos, HibiscusBlocksAndItems.CHEESE_CAULDRON.getDefaultState(), 2);
       }
       super.randomTick(state, world, pos, random);

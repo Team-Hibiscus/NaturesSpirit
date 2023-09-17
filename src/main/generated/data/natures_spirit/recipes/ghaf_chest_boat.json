@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    {
+      "item": "minecraft:chest"
+    },
+    {
+      "item": "natures_spirit:ghaf_boat"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:ghaf_chest_boat"
+  }
+}

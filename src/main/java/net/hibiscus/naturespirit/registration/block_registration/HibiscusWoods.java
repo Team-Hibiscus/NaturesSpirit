@@ -165,7 +165,7 @@ public class HibiscusWoods {
    public static WoodSet JOSHUA = new WoodSet(
            new Identifier(MOD_ID, "joshua"),
            MapColor.PALE_GREEN,
-           MapColor.PALE_GREEN,
+           MapColor.DEEPSLATE_GRAY,
            OLIVE.getLeaves(),
            OLIVE.getLog(),
            OLIVE.getHangingSign(),
@@ -175,6 +175,20 @@ public class HibiscusWoods {
            HibiscusBoatEntity.HibiscusBoat.JOSHUA,
            new JoshuaSaplingGenerator(),
            WoodSet.WoodPreset.JOSHUA
+   );
+   public static WoodSet GHAF = new WoodSet(
+           new Identifier(MOD_ID, "ghaf"),
+           MapColor.LIGHT_GRAY,
+           MapColor.BROWN,
+           JOSHUA.getLeaves(),
+           JOSHUA.getLog(),
+           JOSHUA.getHangingSign(),
+           JOSHUA.getChestBoatItem(),
+           JOSHUA.getButton(),
+           JOSHUA.getSapling(),
+           HibiscusBoatEntity.HibiscusBoat.GHAF,
+           new GhafSaplingGenerator(),
+           WoodSet.WoodPreset.DESERT
    );
    public static void registerWoods() {}
 }

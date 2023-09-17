@@ -111,7 +111,15 @@ public class HibiscusBoatEntity extends BoatEntity {
               () -> HibiscusWoods.JOSHUA.getChestBoatItem(),
               () -> HibiscusWoods.JOSHUA.getBoatEntityType(),
               () -> HibiscusWoods.JOSHUA.getChestBoatEntityType()
-      );
+      ),
+      GHAF(
+              "ghaf",
+                      () -> HibiscusWoods.GHAF.getPlanks(),
+              () -> HibiscusWoods.GHAF.getBoatItem(),
+              () -> HibiscusWoods.GHAF.getChestBoatItem(),
+              () -> HibiscusWoods.GHAF.getBoatEntityType(),
+              () -> HibiscusWoods.GHAF.getChestBoatEntityType()
+              );
 
       private final String name;
       private final Supplier <ItemConvertible> planks;
