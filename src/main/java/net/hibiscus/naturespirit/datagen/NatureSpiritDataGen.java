@@ -1072,15 +1072,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusColoredBlocks.MAGENTA_CHALK_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusColoredBlocks.PINK_CHALK_SLAB, translationBuilder);
 
-         translationBuilder.add("block.natures_spirit.pizza.chicken_topping", "With Cooked Chicken");
-         translationBuilder.add("block.natures_spirit.pizza.green_olives_topping", "With Green Olives");
-         translationBuilder.add("block.natures_spirit.pizza.black_olives_topping", "With Black Olives");
-         translationBuilder.add("block.natures_spirit.pizza.mushroom_topping", "With Mushrooms");
-         translationBuilder.add("block.natures_spirit.pizza.beetroot_topping", "With Beetroots");
-         translationBuilder.add("block.natures_spirit.pizza.carrot_topping", "With Carrots");
-         translationBuilder.add("block.natures_spirit.pizza.cod_topping", "With Cooked Cod");
-         translationBuilder.add("block.natures_spirit.pizza.pork_topping", "With Cooked Pork");
-         translationBuilder.add("block.natures_spirit.pizza.rabbit_topping", "With Cooked Rabbit");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_chicken", "With Cooked Chicken");
+         translationBuilder.add("block.natures_spirit.pizza.natures_spirit.green_olives", "With Green Olives");
+         translationBuilder.add("block.natures_spirit.pizza.natures_spirit.black_olives", "With Black Olives");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.brown_mushroom", "With Mushrooms");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.beetroot", "With Beetroots");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.carrot", "With Carrots");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_cod", "With Cooked Cod");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_pork", "With Cooked Pork");
+         translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_rabbit", "With Cooked Rabbit");
          translationBuilder.add(HibiscusBlocksAndItems.HALF_PIZZA, "Half of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.QUARTER_PIZZA, "Quarter of a Pizza");

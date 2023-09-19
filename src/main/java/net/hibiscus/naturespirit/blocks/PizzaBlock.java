@@ -3,7 +3,6 @@ package net.hibiscus.naturespirit.blocks;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -11,14 +10,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.BuiltinRegistries;
-import net.minecraft.registry.Registries;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -32,7 +27,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
-import org.apache.logging.log4j.core.jmx.Server;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -65,40 +59,8 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
             player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
             int foodAmount = 2;
             float saturationModifier = 0.2F;
-            if(pizzaBlockEntity.CARROT_BOOLEAN) {
-               foodAmount = foodAmount + 1;
-               saturationModifier = saturationModifier + 0.1F;
-            }
-            if(pizzaBlockEntity.PORK_BOOLEAN) {
-               foodAmount = foodAmount + 2;
-               saturationModifier = saturationModifier + 0.2F;
-            }
-            if(pizzaBlockEntity.BLACK_OLIVES_BOOLEAN) {
-               foodAmount = foodAmount + 1;
-               saturationModifier = saturationModifier + 0.1F;
-            }
-            if(pizzaBlockEntity.GREEN_OLIVES_BOOLEAN) {
-               foodAmount = foodAmount + 2;
-               saturationModifier = saturationModifier + 0.1F;
-            }
-            if(pizzaBlockEntity.BEETROOT_BOOLEAN) {
-               foodAmount = foodAmount + 2;
-               saturationModifier = saturationModifier + 0.1F;
-            }
-            if(pizzaBlockEntity.CHICKEN_BOOLEAN) {
-               foodAmount = foodAmount + 2;
-               saturationModifier = saturationModifier + 0.2F;
-            }
-            if(pizzaBlockEntity.RABBIT_BOOLEAN) {
-               foodAmount = foodAmount + 2;
-               saturationModifier = saturationModifier + 0.2F;
-            }
-            if(pizzaBlockEntity.COD_BOOLEAN) {
-               foodAmount = foodAmount + 2;
-               saturationModifier = saturationModifier + 0.2F;
-            }
-            if(pizzaBlockEntity.MUSHROOM_BOOLEAN) {
-               foodAmount = foodAmount + 2;
+            for(String string: pizzaBlockEntity.TOPPINGS) {
+               foodAmount++;
                saturationModifier = saturationModifier + 0.1F;
             }
 
@@ -136,30 +98,9 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
          Item item = BITE_STATE == 0 ? HibiscusBlocksAndItems.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusBlocksAndItems.HALF_PIZZA : HibiscusBlocksAndItems.QUARTER_PIZZA;
          ItemStack itemStack = new ItemStack(item);
 
-         int TOPPINGS_STATE = pizzaBlockEntity.TOPPINGS;
          NbtCompound nbtCompound = itemStack.getOrCreateSubNbt("BlockEntityTag");
          assert nbtCompound != null;
-
-         boolean mushroomBoolean = pizzaBlockEntity.MUSHROOM_BOOLEAN;
-         boolean greenOlivesBoolean = pizzaBlockEntity.GREEN_OLIVES_BOOLEAN;
-         boolean blackOlivesBoolean = pizzaBlockEntity.BLACK_OLIVES_BOOLEAN;
-         boolean beetrootBoolean = pizzaBlockEntity.BEETROOT_BOOLEAN;
-         boolean carrotBoolean = pizzaBlockEntity.CARROT_BOOLEAN;
-         boolean codBoolean = pizzaBlockEntity.COD_BOOLEAN;
-         boolean chickenBoolean = pizzaBlockEntity.CHICKEN_BOOLEAN;
-         boolean porkBoolean = pizzaBlockEntity.PORK_BOOLEAN;
-         boolean rabbitBoolean = pizzaBlockEntity.RABBIT_BOOLEAN;
-
-         nbtCompound.putBoolean("mushroom_topping", mushroomBoolean);
-         nbtCompound.putBoolean("green_olives_topping", greenOlivesBoolean);
-         nbtCompound.putBoolean("black_olives_topping", blackOlivesBoolean);
-         nbtCompound.putBoolean("beetroot_topping", beetrootBoolean);
-         nbtCompound.putBoolean("carrot_topping", carrotBoolean);
-         nbtCompound.putBoolean("cod_topping", codBoolean);
-         nbtCompound.putBoolean("chicken_topping", chickenBoolean);
-         nbtCompound.putBoolean("pork_topping", porkBoolean);
-         nbtCompound.putBoolean("rabbit_topping", rabbitBoolean);
-         nbtCompound.putInt("toppings", TOPPINGS_STATE);
+         pizzaBlockEntity.writeNbt(nbtCompound);
          return itemStack;
       }
       return super.getPickStack(world, pos, state);
@@ -190,7 +131,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
             }
 
             world.playSound(null, pos, SoundEvents.BLOCK_MOSS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            pizzaBlockEntity.TOPPINGS++;
+            pizzaBlockEntity.TOPPING_NUMBER++;
             world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
 

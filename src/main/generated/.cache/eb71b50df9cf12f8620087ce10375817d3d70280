@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-16T22:49:57.4614895	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2023-09-19T01:20:14.7472302	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 9ebb85ca0090ffedf2fbacd0ae7cbd9c1d7f3991 data\minecraft\tags\blocks\standing_signs.json
@@ -26,8 +26,8 @@ fc291607b06ce0700548458687a09883d0f2e865 data\natures_spirit\tags\blocks\aspen_l
 c3d511e2089cea832b56f9bcab3dcb802611d781 data\minecraft\tags\blocks\wooden_pressure_plates.json
 e38f583e9d50cd746f05b455ca3f731525c0aa2d data\minecraft\tags\blocks\mineable\hoe.json
 b35f8c2d96080add3107a9e55f1e47b9c04c7d25 data\minecraft\tags\blocks\walls.json
-61af56f99583c3bd40cb9021e80c77c53b449a6c data\minecraft\tags\blocks\smelts_to_glass.json
 1940ea732d4f3789914cdc958c94984b1980c3a5 data\minecraft\tags\blocks\stairs.json
+61af56f99583c3bd40cb9021e80c77c53b449a6c data\minecraft\tags\blocks\smelts_to_glass.json
 a42c70a815aace196912a91f131323ce80d2dba3 data\minecraft\tags\blocks\leaves.json
 85fa946d708020818679f8ee276f41d099f46e94 data\minecraft\tags\blocks\wooden_fences.json
 a1bd493afdc5473b8e7d67a52d4f788aeadb2cf8 data\minecraft\tags\blocks\maintains_farmland.json
@@ -39,8 +39,8 @@ b187cf351cfc95100b740c72ece2d1b6f956fea2 data\minecraft\tags\blocks\wooden_trapd
 189b54063673349938cd1914aeda23d3b42a1fc1 data\natures_spirit\tags\blocks\ghaf_logs.json
 a9424282abf70eb1b1c63499cbc326fe56e8c53d data\minecraft\tags\blocks\sword_efficient.json
 234190ac9ef4e31999946c362cd296cd77db8947 data\minecraft\tags\blocks\wall_signs.json
-7a9922bf7995dd94dcd11f47eedabdda234f1040 data\natures_spirit\tags\blocks\joshua_logs.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\blocks\redwood_logs.json
+7a9922bf7995dd94dcd11f47eedabdda234f1040 data\natures_spirit\tags\blocks\joshua_logs.json
 e3c1f165e1b82affb4cc652d7679aba3de648bd0 data\natures_spirit\tags\blocks\cypress_logs.json
 625ceba09fac4a3d93dad1a0181331e9565f9fe5 data\minecraft\tags\blocks\bee_growables.json
 4dc5b3ab401e06fe4d92041ba45fb29edb5aa78d data\minecraft\tags\blocks\sand.json

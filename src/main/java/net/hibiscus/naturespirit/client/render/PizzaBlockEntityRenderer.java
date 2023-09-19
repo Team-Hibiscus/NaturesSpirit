@@ -23,16 +23,6 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 @Environment(EnvType.CLIENT)
 public class PizzaBlockEntityRenderer implements BlockEntityRenderer<PizzaBlockEntity> {
-
-   public static final SpriteIdentifier GREEN_OLIVES_TOPPING_TEXTURE;
-   public static final SpriteIdentifier BLACK_OLIVES_TOPPING_TEXTURE;
-   public static final SpriteIdentifier MUSHROOM_TOPPING_TEXTURE;
-   public static final SpriteIdentifier CARROT_TOPPING_TEXTURE;
-   public static final SpriteIdentifier BEETROOT_TOPPING_TEXTURE;
-   public static final SpriteIdentifier CHICKEN_TOPPING_TEXTURE;
-   public static final SpriteIdentifier COD_TOPPING_TEXTURE;
-   public static final SpriteIdentifier PORK_TOPPING_TEXTURE;
-   public static final SpriteIdentifier RABBIT_TOPPING_TEXTURE;
    private final Topping0 topping_0;
    private final Topping1 topping_1;
    private final Topping2 topping_2;
@@ -48,56 +38,16 @@ public class PizzaBlockEntityRenderer implements BlockEntityRenderer<PizzaBlockE
       if (entity.getCachedState().getBlock() instanceof PizzaBlock) {
          int shape = entity.getCachedState().get(PizzaBlock.BITES);
          Model model;
-         VertexConsumer[] vertexConsumer = {null, null, null, null, null, null, null, null, null};
          switch (shape) {
             case 0 -> model = this.topping_0;
             case 1 -> model = this.topping_1;
             case 2 -> model = this.topping_2;
             default -> model = this.topping_3;
          }
-         if (entity.MUSHROOM_BOOLEAN) {
-             vertexConsumer[0] = MUSHROOM_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.GREEN_OLIVES_BOOLEAN) {
-            vertexConsumer[1] = GREEN_OLIVES_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.BLACK_OLIVES_BOOLEAN) {
-            vertexConsumer[2] = BLACK_OLIVES_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.CARROT_BOOLEAN) {
-            vertexConsumer[3] = CARROT_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.BEETROOT_BOOLEAN) {
-            vertexConsumer[4] = BEETROOT_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.CHICKEN_BOOLEAN) {
-            vertexConsumer[5] = CHICKEN_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.COD_BOOLEAN) {
-            vertexConsumer[6] = COD_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.PORK_BOOLEAN) {
-            vertexConsumer[7] = PORK_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         if (entity.RABBIT_BOOLEAN) {
-            vertexConsumer[8] = RABBIT_TOPPING_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-         }
-         for(VertexConsumer vertexConsumer2: vertexConsumer) {
-            if (vertexConsumer2 != null) {
-               model.render(matrices, vertexConsumer2, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-            }
+         for(String string : entity.TOPPINGS) {
+            VertexConsumer vertexConsumer = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/" + string.replace(":", "_") + "_topping")).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+            model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
          }
       }
-   }
-   static {
-      GREEN_OLIVES_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/green_olives_topping"));
-      BLACK_OLIVES_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/black_olives_topping"));
-      MUSHROOM_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/mushroom_topping"));
-      CARROT_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/carrot_topping"));
-      BEETROOT_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/beetroot_topping"));
-      CHICKEN_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/chicken_topping"));
-      COD_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/cod_topping"));
-      PORK_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/pork_topping"));
-      RABBIT_TOPPING_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/rabbit_topping"));
    }
 }

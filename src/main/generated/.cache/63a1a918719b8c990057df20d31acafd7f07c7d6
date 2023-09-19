@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-16T22:49:57.457421	Nature's Spirit/Block Loot Tables
+// 1.20.1	2023-09-19T01:20:14.7452313	Nature's Spirit/Block Loot Tables
 e42296ae5ba4bec951f16ab483c75c6aeccb06a4 data\natures_spirit\loot_tables\blocks\stripped_aspen_wood.json
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 5801f587307f60a4cfe69fd70bdcb5844c9f61f5 data\natures_spirit\loot_tables\blocks\lime_chalk_stairs.json
@@ -94,8 +94,8 @@ cfa7a257ced77fc93ec2b610e95b52ae3c47f259 data\natures_spirit\loot_tables\blocks\
 987c23a7646dcf175a434dde1c48fd44943a8fd7 data\natures_spirit\loot_tables\blocks\cypress_pressure_plate.json
 d7c11914a6602e0ae9925d1c9d7a4be5d52e0608 data\natures_spirit\loot_tables\blocks\yellow_wildflower.json
 7905e0f708efb731dc7a692e7e83b530b6c7d6ad data\natures_spirit\loot_tables\blocks\magenta_kaolin.json
-6e20af04ec19cd9984258e73208d95e15f9449f4 data\natures_spirit\loot_tables\blocks\sandy_soil.json
 2a39dd9779279366f3b637074cee3f5bb4b0f648 data\natures_spirit\loot_tables\blocks\shiitake_mushroom.json
+6e20af04ec19cd9984258e73208d95e15f9449f4 data\natures_spirit\loot_tables\blocks\sandy_soil.json
 3b1e18038479f328891a8c1060e9a2cdfde70f07 data\natures_spirit\loot_tables\blocks\cattail.json
 1f3348a55319b804933a481e5b968ebeaf4e9d39 data\natures_spirit\loot_tables\blocks\willow_planks.json
 cf1cad9ea881b4d8d4ffa5832171cfd642d7f680 data\natures_spirit\loot_tables\blocks\olive_hanging_sign.json
@@ -231,8 +231,8 @@ a98666e9a5429da9d04f6afd38037402fb2e1675 data\natures_spirit\loot_tables\blocks\
 1ca248b71299152a562b4ea2491fac6a4a92faef data\natures_spirit\loot_tables\blocks\white_wisteria_leaves.json
 287a866007e619b568dc0f4dff1ef595e676a4dc data\natures_spirit\loot_tables\blocks\wisteria_log.json
 cde3cc10ccb9a2b948666aed763e67f490c97a07 data\natures_spirit\loot_tables\blocks\cyan_chalk_stairs.json
-ea74d3a4eb9cf726d8ba8b5b2b8bbaa57b3e4b48 data\natures_spirit\loot_tables\blocks\fir_stairs.json
 f6ab94d75de7164c148eff50292e9555b3fdd660 data\natures_spirit\loot_tables\blocks\stripped_willow_wood.json
+ea74d3a4eb9cf726d8ba8b5b2b8bbaa57b3e4b48 data\natures_spirit\loot_tables\blocks\fir_stairs.json
 7a0b3cdb81f9687a0b948d60c68b02f60f0c8c6f data\natures_spirit\loot_tables\blocks\blue_chalk.json
 5e19f527fae7de391fdb77ae9a50c90ede844fe4 data\natures_spirit\loot_tables\blocks\wisteria_sign.json
 c8b728468fb424fc8dd2c92bbd811a1c2dae107c data\natures_spirit\loot_tables\blocks\sugi_pressure_plate.json
