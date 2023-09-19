@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "pizza_block_0",
 	"textures": {
 		"1": "natures_spirit:block/pizza/pizza_side",
 		"2": "natures_spirit:block/pizza/pizza_bottom",

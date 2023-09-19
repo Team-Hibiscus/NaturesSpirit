@@ -6,9 +6,17 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import net.hibiscus.naturespirit.client.render.EntityModelLayers;
+import net.hibiscus.naturespirit.client.render.PizzaBlockEntityRenderer;
+import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
+import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
+import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
+import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
@@ -21,6 +29,7 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -42,6 +51,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 //              .build().forEach(EntityModelLayerRegistry::registerModelLayer);
 
 
+      BlockEntityRendererFactories.register(HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE, PizzaBlockEntityRenderer::new);
 
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockState.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? blockPos.down() : blockPos
@@ -58,6 +68,11 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
 
+      EntityModelLayers.registerEntityModelLayers();
+      EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_0, Topping0::getTexturedModelData);
+      EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_1, Topping1::getTexturedModelData);
+      EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_2, Topping2::getTexturedModelData);
+      EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_3, Topping3::getTexturedModelData);
 
 
 

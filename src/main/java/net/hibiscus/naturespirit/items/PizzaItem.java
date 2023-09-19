@@ -24,36 +24,38 @@ public class PizzaItem extends AliasedBlockItem {
       super(block, settings);
    }
 
-   private static String[] forEachTopping(ItemStack pizza) {
-      NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockStateTag");
+   private static Boolean[] forEachTopping(ItemStack pizza) {
+      NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockEntityTag");
       assert nbtCompound != null;
-      String[] toppings = new String[9];
-      toppings[0] = nbtCompound.getString("mushroom_topping");
-      toppings[1] = nbtCompound.getString("green_olives_topping");
-      toppings[2] = nbtCompound.getString("black_olives_topping");
-      toppings[3] = nbtCompound.getString("beetroot_topping");
-      toppings[4] = nbtCompound.getString("carrot_topping");
-      toppings[5] = nbtCompound.getString("cod_topping");
-      toppings[6] = nbtCompound.getString("chicken_topping");
-      toppings[7] = nbtCompound.getString("pork_topping");
-      toppings[8] = nbtCompound.getString("rabbit_topping");
+      Boolean[] toppings = new Boolean[9];
+      toppings[0] = nbtCompound.getBoolean("mushroom_topping");
+      toppings[1] = nbtCompound.getBoolean("green_olives_topping");
+      toppings[2] = nbtCompound.getBoolean("black_olives_topping");
+      toppings[3] = nbtCompound.getBoolean("beetroot_topping");
+      toppings[4] = nbtCompound.getBoolean("carrot_topping");
+      toppings[5] = nbtCompound.getBoolean("cod_topping");
+      toppings[6] = nbtCompound.getBoolean("chicken_topping");
+      toppings[7] = nbtCompound.getBoolean("pork_topping");
+      toppings[8] = nbtCompound.getBoolean("rabbit_topping");
       return toppings;
    }
 
    public void addBitesToPizza(ItemStack pizza) {
-      NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockStateTag");
+      NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockEntityTag");
+      NbtCompound nbtCompound2 = pizza.getOrCreateSubNbt("BlockStateTag");
       assert nbtCompound != null;
       int pizzaSlice = this.asItem() == HibiscusBlocksAndItems.WHOLE_PIZZA ? 0 : this.asItem() == HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == HibiscusBlocksAndItems.HALF_PIZZA ? 2 : 3;
       nbtCompound.putInt("pizza_bites", pizzaSlice);
+      nbtCompound2.putInt("pizza_bites", pizzaSlice);
    }
 
    public void getAllToppings(ItemStack pizza) {
-      NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockStateTag");
+      NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockEntityTag");
       assert nbtCompound != null;
-      String[] toppings = forEachTopping(pizza);
+      Boolean[] toppings = forEachTopping(pizza);
       int j = 0;
-      for(String topping : toppings) {
-         if(topping.equals("true")) {
+      for(boolean topping : toppings) {
+         if(topping) {
             j++;
          }
       }
@@ -67,7 +69,7 @@ public class PizzaItem extends AliasedBlockItem {
 
    public void appendTooltip(ItemStack stack, @Nullable World world, List <Text> tooltip, TooltipContext context) {
       super.appendTooltip(stack, world, tooltip, context);
-      String[] toppingBooleans = forEachTopping(stack);
+      Boolean[] toppingBooleans = forEachTopping(stack);
       String[] toppingStrings = new String[9];
       toppingStrings[0] = "mushroom_topping";
       toppingStrings[1] = "green_olives_topping";
@@ -79,7 +81,7 @@ public class PizzaItem extends AliasedBlockItem {
       toppingStrings[7] = "pork_topping";
       toppingStrings[8] = "rabbit_topping";
       for(int i = 0; i < toppingBooleans.length; ++i) {
-         if(toppingBooleans[i].equals("true")) {
+         if(toppingBooleans[i]) {
             tooltip.add(Text.translatable("block.natures_spirit.pizza." + toppingStrings[i]).formatted(Formatting.GRAY));
          }
       }
@@ -93,40 +95,40 @@ public class PizzaItem extends AliasedBlockItem {
       holder.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
       int foodAmount = 0;
       float saturationModifier = 0F;
-      String[] toppings = forEachTopping(stack);
-      if(toppings[4].equals("true")) {
+      Boolean[] toppings = forEachTopping(stack);
+      if(toppings[4]) {
          foodAmount = foodAmount + 1;
          saturationModifier = saturationModifier + 0.1F;
       }
-      if(toppings[7].equals("true")) {
+      if(toppings[7]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.2F;
       }
-      if(toppings[2].equals("true")) {
+      if(toppings[2]) {
          foodAmount = foodAmount + 1;
          saturationModifier = saturationModifier + 0.1F;
       }
-      if(toppings[1].equals("true")) {
+      if(toppings[1]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.1F;
       }
-      if(toppings[3].equals("true")) {
+      if(toppings[3]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.1F;
       }
-      if(toppings[6].equals("true")) {
+      if(toppings[6]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.2F;
       }
-      if(toppings[8].equals("true")) {
+      if(toppings[8]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.2F;
       }
-      if(toppings[5].equals("true")) {
+      if(toppings[5]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.2F;
       }
-      if(toppings[0].equals("true")) {
+      if(toppings[0]) {
          foodAmount = foodAmount + 2;
          saturationModifier = saturationModifier + 0.1F;
       }

@@ -17,20 +17,65 @@
           ],
           "functions": [
             {
-              "block": "natures_spirit:pizza_block",
-              "function": "minecraft:copy_state",
-              "properties": [
-                "pizza_bites",
-                "toppings",
-                "mushroom_topping",
-                "green_olives_topping",
-                "black_olives_topping",
-                "carrot_topping",
-                "beetroot_topping",
-                "chicken_topping",
-                "cod_topping",
-                "pork_topping",
-                "rabbit_topping"
+
+              "source": "block_entity",
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"mushroom_topping",
+                  "target": "BlockEntityTag.mushroom_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"green_olives_topping",
+                  "target": "BlockEntityTag.green_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"black_olives_topping",
+                  "target": "BlockEntityTag.black_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"carrot_topping",
+                  "target": "BlockEntityTag.carrot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"beetroot_topping",
+                  "target": "BlockEntityTag.beetroot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"chicken_topping",
+                  "target": "BlockEntityTag.chicken_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"cod_topping",
+                  "target": "BlockEntityTag.cod_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"pork_topping",
+                  "target": "BlockEntityTag.pork_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"rabbit_topping",
+                  "target": "BlockEntityTag.rabbit_topping",
+                  "op": "replace"
+                }
               ]
             }
           ],
@@ -49,20 +94,65 @@
           ],
           "functions": [
             {
-              "block": "natures_spirit:pizza_block",
-              "function": "minecraft:copy_state",
-              "properties": [
-                "pizza_bites",
-                "toppings",
-                "mushroom_topping",
-                "green_olives_topping",
-                "black_olives_topping",
-                "carrot_topping",
-                "beetroot_topping",
-                "chicken_topping",
-                "cod_topping",
-                "pork_topping",
-                "rabbit_topping"
+
+              "source": "block_entity",
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"mushroom_topping",
+                  "target": "BlockEntityTag.mushroom_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"green_olives_topping",
+                  "target": "BlockEntityTag.green_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"black_olives_topping",
+                  "target": "BlockEntityTag.black_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"carrot_topping",
+                  "target": "BlockEntityTag.carrot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"beetroot_topping",
+                  "target": "BlockEntityTag.beetroot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"chicken_topping",
+                  "target": "BlockEntityTag.chicken_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"cod_topping",
+                  "target": "BlockEntityTag.cod_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"pork_topping",
+                  "target": "BlockEntityTag.pork_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"rabbit_topping",
+                  "target": "BlockEntityTag.rabbit_topping",
+                  "op": "replace"
+                }
               ]
             }
           ],
@@ -81,20 +171,65 @@
           ],
           "functions": [
             {
-              "block": "natures_spirit:pizza_block",
-              "function": "minecraft:copy_state",
-              "properties": [
-                "pizza_bites",
-                "toppings",
-                "mushroom_topping",
-                "green_olives_topping",
-                "black_olives_topping",
-                "carrot_topping",
-                "beetroot_topping",
-                "chicken_topping",
-                "cod_topping",
-                "pork_topping",
-                "rabbit_topping"
+
+              "source": "block_entity",
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"mushroom_topping",
+                  "target": "BlockEntityTag.mushroom_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"green_olives_topping",
+                  "target": "BlockEntityTag.green_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"black_olives_topping",
+                  "target": "BlockEntityTag.black_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"carrot_topping",
+                  "target": "BlockEntityTag.carrot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"beetroot_topping",
+                  "target": "BlockEntityTag.beetroot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"chicken_topping",
+                  "target": "BlockEntityTag.chicken_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"cod_topping",
+                  "target": "BlockEntityTag.cod_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"pork_topping",
+                  "target": "BlockEntityTag.pork_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"rabbit_topping",
+                  "target": "BlockEntityTag.rabbit_topping",
+                  "op": "replace"
+                }
               ]
             }
           ],
@@ -113,20 +248,64 @@
           ],
           "functions": [
             {
-              "block": "natures_spirit:pizza_block",
-              "function": "minecraft:copy_state",
-              "properties": [
-                "pizza_bites",
-                "toppings",
-                "mushroom_topping",
-                "green_olives_topping",
-                "black_olives_topping",
-                "carrot_topping",
-                "beetroot_topping",
-                "chicken_topping",
-                "cod_topping",
-                "pork_topping",
-                "rabbit_topping"
+              "source": "block_entity",
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"pizza_bites",
+                  "target": "BlockEntityTag.pizza_bites",
+                  "op": "replace"
+                },
+                {
+                  "source":"mushroom_topping",
+                  "target": "BlockEntityTag.mushroom_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"green_olives_topping",
+                  "target": "BlockEntityTag.green_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"black_olives_topping",
+                  "target": "BlockEntityTag.black_olives_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"carrot_topping",
+                  "target": "BlockEntityTag.carrot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"beetroot_topping",
+                  "target": "BlockEntityTag.beetroot_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"chicken_topping",
+                  "target": "BlockEntityTag.chicken_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"cod_topping",
+                  "target": "BlockEntityTag.cod_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"pork_topping",
+                  "target": "BlockEntityTag.pork_topping",
+                  "op": "replace"
+                },
+                {
+                  "source":"rabbit_topping",
+                  "target": "BlockEntityTag.rabbit_topping",
+                  "op": "replace"
+                }
               ]
             }
           ],

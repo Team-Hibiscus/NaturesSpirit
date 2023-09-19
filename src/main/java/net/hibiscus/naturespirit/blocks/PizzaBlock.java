@@ -1,17 +1,19 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.BuiltinRegistries;
+import net.minecraft.registry.Registries;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -30,25 +32,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
+import org.apache.logging.log4j.core.jmx.Server;
+import org.jetbrains.annotations.Nullable;
 
-public class PizzaBlock extends Block {
-   public static final int MAX_BITES = 3;
-   public static final int MAX_TOPPINGS = 4;
-   public static final IntProperty BITES = IntProperty.of("pizza_bites", 0, 3);
-   public static final IntProperty TOPPINGS = IntProperty.of("toppings", 0, 4);
-   public static final BooleanProperty MUSHROOM_TOPPING = BooleanProperty.of("mushroom_topping");
-   public static final BooleanProperty GREEN_OLIVES_TOPPING = BooleanProperty.of("green_olives_topping");
-   public static final BooleanProperty BLACK_OLIVES_TOPPING = BooleanProperty.of("black_olives_topping");
-   public static final BooleanProperty CARROT_TOPPING = BooleanProperty.of("carrot_topping");
-   public static final BooleanProperty BEETROOT_TOPPING = BooleanProperty.of("beetroot_topping");
-   public static final BooleanProperty CHICKEN_TOPPING = BooleanProperty.of("chicken_topping");
-   public static final BooleanProperty COD_TOPPING = BooleanProperty.of("cod_topping");
-   public static final BooleanProperty PORK_TOPPING = BooleanProperty.of("pork_topping");
-   public static final BooleanProperty RABBIT_TOPPING = BooleanProperty.of("rabbit_topping");
+import java.util.Optional;
+
+public class PizzaBlock extends Block implements BlockEntityProvider {
    public static final int DEFAULT_COMPARATOR_OUTPUT;
-   protected static final float field_31047 = 1.0F;
-   protected static final float field_31048 = 2.0F;
    protected static final VoxelShape[] BITES_TO_SHAPE;
+   public static final IntProperty BITES = IntProperty.of("pizza_bites", 0, 3);
 
    static {
       DEFAULT_COMPARATOR_OUTPUT = getComparatorOutput(0);
@@ -62,71 +54,74 @@ public class PizzaBlock extends Block {
 
    public PizzaBlock(Settings settings) {
       super(settings);
-      this.setDefaultState(this.stateManager.getDefaultState().with(BITES, 0).with(GREEN_OLIVES_TOPPING, false).with(BLACK_OLIVES_TOPPING, false).with(BEETROOT_TOPPING, false).with(
-              CARROT_TOPPING,
-              false
-      ).with(CHICKEN_TOPPING, false).with(COD_TOPPING, false).with(PORK_TOPPING, false).with(RABBIT_TOPPING, false).with(MUSHROOM_TOPPING, false).with(TOPPINGS, 0));
+      this.setDefaultState(this.stateManager.getDefaultState().with(BITES, 0));
    }
 
    protected static ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
-      if(!player.canConsume(false)) {
-         return ActionResult.PASS;
-      }
-      else {
-         player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
-         int foodAmount = 2;
-         float saturationModifier = 0.2F;
-         if(state.get(CARROT_TOPPING)) {
-            foodAmount = foodAmount + 1;
-            saturationModifier = saturationModifier + 0.1F;
-         }
-         if(state.get(PORK_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.2F;
-         }
-         if(state.get(BLACK_OLIVES_TOPPING)) {
-            foodAmount = foodAmount + 1;
-            saturationModifier = saturationModifier + 0.1F;
-         }
-         if(state.get(GREEN_OLIVES_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.1F;
-         }
-         if(state.get(BEETROOT_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.1F;
-         }
-         if(state.get(CHICKEN_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.2F;
-         }
-         if(state.get(RABBIT_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.2F;
-         }
-         if(state.get(COD_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.2F;
-         }
-         if(state.get(MUSHROOM_TOPPING)) {
-            foodAmount = foodAmount + 2;
-            saturationModifier = saturationModifier + 0.1F;
+      if(player.canConsume(false)) {
+         Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+         if(optionalPizzaBlockEntity.isPresent()) {
+            PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
+            player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
+            int foodAmount = 2;
+            float saturationModifier = 0.2F;
+            if(pizzaBlockEntity.CARROT_BOOLEAN) {
+               foodAmount = foodAmount + 1;
+               saturationModifier = saturationModifier + 0.1F;
+            }
+            if(pizzaBlockEntity.PORK_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.2F;
+            }
+            if(pizzaBlockEntity.BLACK_OLIVES_BOOLEAN) {
+               foodAmount = foodAmount + 1;
+               saturationModifier = saturationModifier + 0.1F;
+            }
+            if(pizzaBlockEntity.GREEN_OLIVES_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.1F;
+            }
+            if(pizzaBlockEntity.BEETROOT_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.1F;
+            }
+            if(pizzaBlockEntity.CHICKEN_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.2F;
+            }
+            if(pizzaBlockEntity.RABBIT_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.2F;
+            }
+            if(pizzaBlockEntity.COD_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.2F;
+            }
+            if(pizzaBlockEntity.MUSHROOM_BOOLEAN) {
+               foodAmount = foodAmount + 2;
+               saturationModifier = saturationModifier + 0.1F;
+            }
+
+            player.getHungerManager().add(foodAmount, saturationModifier);
+
+            int i = pizzaBlockEntity.BITES;
+            world.emitGameEvent(player, GameEvent.EAT, pos);
+            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            if(i < 3) {
+               pizzaBlockEntity.BITES ++;
+               if (!world.isClient()) {
+                  world.getServer().getOverworld().updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
+               }
+               world.setBlockState(pos, state.with(BITES, state.get(BITES) + 1), 2);
+            }
+            else {
+               world.removeBlock(pos, false);
+               world.emitGameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+            }
+            return ActionResult.SUCCESS;
          }
 
-         player.getHungerManager().add(foodAmount, saturationModifier);
-
-         int i = state.get(BITES);
-         world.emitGameEvent(player, GameEvent.EAT, pos);
-         if(i < 3) {
-            world.setBlockState(pos, state.with(BITES, i + 1), 3);
-         }
-         else {
-            world.removeBlock(pos, false);
-            world.emitGameEvent(player, GameEvent.BLOCK_DESTROY, pos);
-         }
-
-         return ActionResult.SUCCESS;
-      }
+      } return ActionResult.PASS;
    }
 
    public static int getComparatorOutput(int bites) {
@@ -134,100 +129,107 @@ public class PizzaBlock extends Block {
    }
 
    @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-      int BITE_STATE = state.get(BITES);
-      Item item = BITE_STATE == 0 ? HibiscusBlocksAndItems.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusBlocksAndItems.HALF_PIZZA : HibiscusBlocksAndItems.QUARTER_PIZZA;
-      ItemStack itemStack = new ItemStack(item);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      if (optionalPizzaBlockEntity.isPresent()) {
+         PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
+         int BITE_STATE = pizzaBlockEntity.BITES;
+         Item item = BITE_STATE == 0 ? HibiscusBlocksAndItems.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusBlocksAndItems.HALF_PIZZA : HibiscusBlocksAndItems.QUARTER_PIZZA;
+         ItemStack itemStack = new ItemStack(item);
 
-      int TOPPINGS_STATE = state.get(TOPPINGS);
-      NbtCompound nbtCompound = itemStack.getOrCreateSubNbt("BlockStateTag");
-      assert nbtCompound != null;
+         int TOPPINGS_STATE = pizzaBlockEntity.TOPPINGS;
+         NbtCompound nbtCompound = itemStack.getOrCreateSubNbt("BlockEntityTag");
+         assert nbtCompound != null;
 
-      String tomatoBoolean = state.get(MUSHROOM_TOPPING).toString();
-      String greenOlivesBoolean = state.get(GREEN_OLIVES_TOPPING).toString();
-      String blackOlivesBoolean = state.get(BLACK_OLIVES_TOPPING).toString();
-      String beetrootBoolean = state.get(BEETROOT_TOPPING).toString();
-      String carrotBoolean = state.get(CARROT_TOPPING).toString();
-      String codBoolean = state.get(COD_TOPPING).toString();
-      String chickenBoolean = state.get(CHICKEN_TOPPING).toString();
-      String porkBoolean = state.get(PORK_TOPPING).toString();
-      String rabbitBoolean = state.get(RABBIT_TOPPING).toString();
+         boolean mushroomBoolean = pizzaBlockEntity.MUSHROOM_BOOLEAN;
+         boolean greenOlivesBoolean = pizzaBlockEntity.GREEN_OLIVES_BOOLEAN;
+         boolean blackOlivesBoolean = pizzaBlockEntity.BLACK_OLIVES_BOOLEAN;
+         boolean beetrootBoolean = pizzaBlockEntity.BEETROOT_BOOLEAN;
+         boolean carrotBoolean = pizzaBlockEntity.CARROT_BOOLEAN;
+         boolean codBoolean = pizzaBlockEntity.COD_BOOLEAN;
+         boolean chickenBoolean = pizzaBlockEntity.CHICKEN_BOOLEAN;
+         boolean porkBoolean = pizzaBlockEntity.PORK_BOOLEAN;
+         boolean rabbitBoolean = pizzaBlockEntity.RABBIT_BOOLEAN;
 
-      nbtCompound.putString("mushroom_topping", tomatoBoolean);
-      nbtCompound.putString("green_olives_topping", greenOlivesBoolean);
-      nbtCompound.putString("black_olives_topping", blackOlivesBoolean);
-      nbtCompound.putString("beetroot_topping", beetrootBoolean);
-      nbtCompound.putString("carrot_topping", carrotBoolean);
-      nbtCompound.putString("cod_topping", codBoolean);
-      nbtCompound.putString("chicken_topping", chickenBoolean);
-      nbtCompound.putString("pork_topping", porkBoolean);
-      nbtCompound.putString("rabbit_topping", rabbitBoolean);
-      nbtCompound.putInt("toppings", TOPPINGS_STATE);
-
-      return itemStack;
+         nbtCompound.putBoolean("mushroom_topping", mushroomBoolean);
+         nbtCompound.putBoolean("green_olives_topping", greenOlivesBoolean);
+         nbtCompound.putBoolean("black_olives_topping", blackOlivesBoolean);
+         nbtCompound.putBoolean("beetroot_topping", beetrootBoolean);
+         nbtCompound.putBoolean("carrot_topping", carrotBoolean);
+         nbtCompound.putBoolean("cod_topping", codBoolean);
+         nbtCompound.putBoolean("chicken_topping", chickenBoolean);
+         nbtCompound.putBoolean("pork_topping", porkBoolean);
+         nbtCompound.putBoolean("rabbit_topping", rabbitBoolean);
+         nbtCompound.putInt("toppings", TOPPINGS_STATE);
+         return itemStack;
+      }
+      return super.getPickStack(world, pos, state);
    }
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-      return BITES_TO_SHAPE[state.get(BITES)];
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      if (optionalPizzaBlockEntity.isPresent()) {
+         PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
+         int BITE_STATE = pizzaBlockEntity.BITES;
+         return BITES_TO_SHAPE[BITE_STATE];
+      }
+      return BITES_TO_SHAPE[0];
    }
 
    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-      ItemStack itemStack = player.getStackInHand(hand);
-      Item item = itemStack.getItem();
-      BooleanProperty pizzaTopping;
-      switch(itemStack.getItem().getTranslationKey()) {
-         case "item.minecraft.carrot" -> pizzaTopping = CARROT_TOPPING;
-         case "item.minecraft.cooked_porkchop" -> pizzaTopping = PORK_TOPPING;
-         case "item.natures_spirit.black_olives" -> pizzaTopping = BLACK_OLIVES_TOPPING;
-         case "item.natures_spirit.green_olives" -> pizzaTopping = GREEN_OLIVES_TOPPING;
-         case "item.minecraft.beetroot" -> pizzaTopping = BEETROOT_TOPPING;
-         case "item.minecraft.cooked_chicken" -> pizzaTopping = CHICKEN_TOPPING;
-         case "item.minecraft.cooked_cod" -> pizzaTopping = COD_TOPPING;
-         case "item.minecraft.cooked_rabbit" -> pizzaTopping = RABBIT_TOPPING;
-         default -> pizzaTopping = MUSHROOM_TOPPING;
-      }
-      if(itemStack.isIn(HibiscusTags.Items.PIZZA_TOPPINGS) && state.get(BITES) == 0 && state.get(TOPPINGS) < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && !state.get(
-              pizzaTopping)) {
-         Block block = Block.getBlockFromItem(item);
-         if(!player.isCreative()) {
-            itemStack.decrement(1);
-         }
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      if (optionalPizzaBlockEntity.isPresent()) {
+         PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
+         ItemStack itemStack = player.getStackInHand(hand);
+         Item item = itemStack.getItem();
+         if(pizzaBlockEntity.canPlaceTopping(itemStack, pizzaBlockEntity)) {
+            if(!player.isCreative()) {
+               itemStack.decrement(1);
+            }
+            if (!world.isClient()) {
+               world.updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
+            }
 
+            world.playSound(null, pos, SoundEvents.BLOCK_MOSS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            pizzaBlockEntity.TOPPINGS++;
+            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            player.incrementStat(Stats.USED.getOrCreateStat(item));
 
-         world.playSound(null, pos, SoundEvents.BLOCK_MOSS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-         world.setBlockState(pos, state.with(TOPPINGS, state.get(TOPPINGS) + 1).with(pizzaTopping, true), 3);
-         world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-         player.incrementStat(Stats.USED.getOrCreateStat(item));
-
-         return ActionResult.SUCCESS;
-      }
-      if(world.isClient) {
-         if(tryEat(world, pos, state, player).isAccepted()) {
             return ActionResult.SUCCESS;
          }
+         if(world.isClient) {
+            if(tryEat(world, pos, state, player).isAccepted()) {
+               return ActionResult.SUCCESS;
+            }
 
-         if(itemStack.isEmpty()) {
-            return ActionResult.CONSUME;
+            if(itemStack.isEmpty()) {
+               return ActionResult.CONSUME;
+            }
          }
-      }
 
-      return tryEat(world, pos, state, player);
+         return tryEat(world, pos, state, player);
+      }
+      return super.onUse(state, world, pos, player, hand, hit);
    }
 
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
       return direction == Direction.DOWN && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
    }
-
+   protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
+      builder.add(BITES);
+   }
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
       BlockPos pos1 = pos.down();
       return world.getBlockState(pos1).isSolidBlock(world, pos1);
    }
 
-   protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
-      builder.add(BITES, TOPPINGS, COD_TOPPING, BEETROOT_TOPPING, PORK_TOPPING, RABBIT_TOPPING, MUSHROOM_TOPPING, BLACK_OLIVES_TOPPING, GREEN_OLIVES_TOPPING, CARROT_TOPPING, CHICKEN_TOPPING);
-   }
-
    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-      return getComparatorOutput(state.get(BITES));
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      if (optionalPizzaBlockEntity.isPresent()) {
+         PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
+         int BITE_STATE = pizzaBlockEntity.BITES;
+         return getComparatorOutput(BITE_STATE);
+      }
+      return getComparatorOutput(0);
    }
 
    public boolean hasComparatorOutput(BlockState state) {
@@ -236,5 +238,9 @@ public class PizzaBlock extends Block {
 
    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
       return false;
+   }
+
+   @Nullable @Override public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+      return new PizzaBlockEntity(pos, state);
    }
 }

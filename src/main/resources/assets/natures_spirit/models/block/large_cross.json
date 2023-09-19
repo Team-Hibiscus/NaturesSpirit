@@ -1,5 +1,4 @@
 {
-	"parent": "large_cross",
 	"ambientocclusion": false,
 	"textures":{
 		"particle": "#cross"
