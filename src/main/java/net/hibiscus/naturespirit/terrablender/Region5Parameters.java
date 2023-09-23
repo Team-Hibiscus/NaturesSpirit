@@ -48,6 +48,20 @@ public class Region5Parameters {
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
 
+   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
+   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> specialBiomeErodedBadlandsHot = HibiscusBiomes.has_drylands ? null : BiomeKeys.ERODED_BADLANDS;
+   RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.SAVANNA;
+   RegistryKey<Biome> uncommonBiomeSavannaWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CARNATION_FIELDS : null;
+   RegistryKey<Biome> commonBiomeSavannaWarm2 = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.LAVENDER_FIELDS : BiomeKeys.SAVANNA;
+   RegistryKey<Biome> commonBiomeForestWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusBiomes.has_cypress_fields ? null : BiomeKeys.PLAINS;
+   RegistryKey<Biome> nearBiomeSavannaPlateauWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.SAVANNA_PLATEAU;
+   RegistryKey<Biome> nearBiomeSavannaPlateauWarm2 = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.LAVENDER_FIELDS : BiomeKeys.SAVANNA_PLATEAU;
+   RegistryKey<Biome> nearBiomeForestWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
+
    public Region5Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.erodedRiverTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[2]);
@@ -75,16 +89,16 @@ public class Region5Parameters {
               }, {
                       BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
-              HibiscusBiomes.LAVENDER_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.FOREST, BiomeKeys.SPARSE_JUNGLE
+              commonBiomeSavannaWarm2, commonBiomeSavannaWarm, commonBiomeForestWarm, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
               }, {
-              HibiscusBiomes.DRYLANDS, HibiscusBiomes.DRYLANDS, HibiscusBiomes.DRYLANDS, HibiscusBiomes.DRYLANDS, HibiscusBiomes.DRYLANDS
+              commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, null, null, BiomeKeys.OLD_GROWTH_PINE_TAIGA}, {
               null, null, null, null, null
       }, {
-              HibiscusBiomes.CARNATION_FIELDS, null, null, null, BiomeKeys.BAMBOO_JUNGLE
+              uncommonBiomeSavannaWarm, null, uncommonBiomePlainsWarm, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE
               }, {null, null, null, null, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
@@ -95,9 +109,9 @@ public class Region5Parameters {
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
-                      HibiscusBiomes.LAVENDER_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, HibiscusBiomes.CYPRESS_FIELDS, BiomeKeys.FOREST, BiomeKeys.SPARSE_JUNGLE
+              nearBiomeSavannaPlateauWarm2, nearBiomeSavannaPlateauWarm, nearBiomeForestWarm, BiomeKeys.FOREST, BiomeKeys.JUNGLE
               }, {
-              HibiscusBiomes.DRYLANDS, HibiscusBiomes.DRYLANDS, HibiscusBiomes.WOODED_DRYLANDS, HibiscusBiomes.WOODED_DRYLANDS, HibiscusBiomes.WOODED_DRYLANDS
+              nearBiomeBadlandsHot, nearBiomeBadlandsHot, nearBiomeBadlandsHot2, nearBiomeWoodedBadlandsHot, nearBiomeWoodedBadlandsHot
               }
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
@@ -106,9 +120,9 @@ public class Region5Parameters {
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {
-                      HibiscusBiomes.CARNATION_FIELDS, null, null, null, BiomeKeys.FOREST
+              uncommonBiomeSavannaWarm, null, null, null, null
               }, {
-              null, null, null, null, null
+              specialBiomeErodedBadlandsHot, specialBiomeErodedBadlandsHot, null, null, null
               }
       };
       this.windsweptBiomes = new RegistryKey[][]{
@@ -170,6 +184,7 @@ public class Region5Parameters {
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
             RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey2 = this.getWoodedDrylandsOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getWindsweptOrRegularBiome(i, j, weirdness);
@@ -181,10 +196,28 @@ public class Region5Parameters {
                     parameterRange,
                     parameterRange2,
                     this.coastContinentalness,
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[2]),
+                    this.erosionParameters[0],
                     weirdness,
                     0.0F,
-                    registryKey10
+                    HibiscusBiomes.has_white_cliffs ? registryKey10 : registryKey7
+            );
+            this.writeBiomeParameters(parameters,
+                    parameterRange,
+                    parameterRange2,
+                    this.coastContinentalness,
+                    this.erosionParameters[1],
+                    weirdness,
+                    0.0F,
+                    HibiscusBiomes.has_white_cliffs ? registryKey10 : registryKey3
+            );
+            this.writeBiomeParameters(parameters,
+                    parameterRange,
+                    parameterRange2,
+                    this.coastContinentalness,
+                    this.erosionParameters[2],
+                    weirdness,
+                    0.0F,
+                    HibiscusBiomes.has_white_cliffs ? registryKey10 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -241,7 +274,7 @@ public class Region5Parameters {
                     0.0F,
                     registryKey4
             );
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey2);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -250,7 +283,7 @@ public class Region5Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    registryKey
+                    HibiscusBiomes.has_drylands ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -259,7 +292,7 @@ public class Region5Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    registryKey
+                    HibiscusBiomes.has_drylands ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -268,7 +301,7 @@ public class Region5Parameters {
                     this.erosionParameters[5],
                     weirdness,
                     0.0F,
-                    registryKey11
+                    HibiscusBiomes.has_white_cliffs ? registryKey11 : registryKey6
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -300,10 +333,11 @@ public class Region5Parameters {
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
             RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey2 = this.getWoodedDrylandsOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getWindsweptOrRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey6 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey6 = HibiscusBiomes.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey) : this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey7 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getPeakBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey11 = this.getShoreCliffBiome(i, j, weirdness);
@@ -314,7 +348,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[2]),
                     weirdness,
                     0.0F,
-                    registryKey11
+                    HibiscusBiomes.has_white_cliffs ? registryKey11 : registryKey
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[0], weirdness, 0.0F, registryKey7);
             this.writeBiomeParameters(parameters,
@@ -363,7 +397,7 @@ public class Region5Parameters {
                     0.0F,
                     registryKey4
             );
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey2);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -441,11 +475,12 @@ public class Region5Parameters {
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
             RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getWindsweptOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey6 = this.getShoreBiome(i, j);
-            RegistryKey <Biome> registryKey7 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey7 = HibiscusBiomes.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey) : this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey8 = this.getErodedShoreBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey9 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey12 = this.getShoreCliffBiome(i, j, weirdness);
@@ -456,7 +491,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[2]),
                     weirdness,
                     0.0F,
-                    registryKey12
+                    HibiscusBiomes.has_white_cliffs ? registryKey12 : BiomeKeys.STONY_SHORE
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -478,7 +513,7 @@ public class Region5Parameters {
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[1], weirdness, 0.0F, i == 0 ? registryKey9 : registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusBiomes.has_drylands ? registryKey : registryKey2);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
@@ -489,7 +524,7 @@ public class Region5Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    registryKey
+                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
             );
             if(weirdness.max() < 0L) {
                this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey6);
@@ -585,6 +620,7 @@ public class Region5Parameters {
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
             RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getShoreBiome(i, j);
             RegistryKey <Biome> registryKey5 = this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey);
@@ -606,7 +642,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
                     weirdness,
                     0.0F,
-                    registryKey
+                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -633,7 +669,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    registryKey
+                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey);
@@ -700,7 +736,7 @@ public class Region5Parameters {
               MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
               weirdness,
               0.0F,
-              weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : HibiscusBiomes.ERODED_RIVER
+              weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters,
               this.frozenTemperature,
@@ -727,7 +763,7 @@ public class Region5Parameters {
               MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
               weirdness,
               0.0F,
-              HibiscusBiomes.ERODED_RIVER
+              BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters,
               this.frozenTemperature,
@@ -754,7 +790,7 @@ public class Region5Parameters {
               MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[5]),
               weirdness,
               0.0F,
-              HibiscusBiomes.ERODED_RIVER
+              BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters, this.frozenTemperature, this.defaultParameter, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, BiomeKeys.FROZEN_RIVER);
       this.writeBiomeParameters(parameters, this.riverTemperatureParameters, this.defaultParameter, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, BiomeKeys.RIVER);
@@ -765,7 +801,7 @@ public class Region5Parameters {
               this.erosionParameters[6],
               weirdness,
               0.0F,
-              HibiscusBiomes.ERODED_RIVER
+              BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters,
               MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[2]),
@@ -800,7 +836,7 @@ public class Region5Parameters {
 
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
-            RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey = HibiscusBiomes.has_drylands ? this.getRegularBiome(i, j, weirdness) : this.getBadlandsOrRegularBiome(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -854,7 +890,21 @@ public class Region5Parameters {
          return registryKey == null ? this.commonBiomes[temperature][humidity] : registryKey;
       }
    }
+   private RegistryKey <Biome> getBadlandsBiome(int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      if(humidity < 2) {
+         return weirdness.max() < 0L ? BiomeKeys.BADLANDS : BiomeKeys.ERODED_BADLANDS;
+      }
+      else {
+         return humidity < 3 ? BiomeKeys.BADLANDS : BiomeKeys.WOODED_BADLANDS;
+      }
+   }
+   private RegistryKey <Biome> getBadlandsOrRegularBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      return temperature == 4 ? this.getBadlandsBiome(humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
+   }
 
+   private RegistryKey <Biome> getWoodedDrylandsOrRegularBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      return temperature == 4 ? (HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : this.getBadlandsBiome(humidity, weirdness)) : this.getRegularBiome(temperature, humidity, weirdness);
+   }
    private RegistryKey <Biome> getMountainStartBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       return temperature == 0 ? this.getMountainSlopeBiome(temperature, humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
    }
@@ -864,11 +914,9 @@ public class Region5Parameters {
    }
 
    private RegistryKey <Biome> getBiomeOrChalkCliffs(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
-      return temperature > 1 && temperature < 4 && humidity < 4 && humidity > 0 && weirdness.max() >= 0L ? HibiscusBiomes.WHITE_CLIFFS : getBiomeOrWindsweptSavanna(temperature,
-              humidity,
-              weirdness,
-              biomeKey
-      );
+      return temperature > 1 && temperature < 4 && humidity < 4 && humidity > 0 && weirdness.max() >= 0L ?
+              HibiscusBiomes.WHITE_CLIFFS :
+              getBiomeOrWindsweptSavanna(temperature, humidity, weirdness, biomeKey);
    }
 
    private RegistryKey <Biome> getErodedShoreBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {

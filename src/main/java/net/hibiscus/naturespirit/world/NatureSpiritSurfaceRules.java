@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.world;
 
 import com.google.common.collect.ImmutableList;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
@@ -43,7 +43,7 @@ public class NatureSpiritSurfaceRules {
 
    private static final MaterialRules.MaterialRule YELLOW_KAOLIN = makeStateRule(HibiscusColoredBlocks.YELLOW_KAOLIN);
 
-   protected static MaterialRules.MaterialRule makeRules() {
+   public static MaterialRules.MaterialRule makeRules() {
       MaterialRules.MaterialCondition materialCondition = MaterialRules.aboveY(YOffset.fixed(256), 0);
       MaterialRules.MaterialCondition materialCondition2 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1);
       MaterialRules.MaterialCondition materialCondition3 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(70), 1);
@@ -103,14 +103,12 @@ public class NatureSpiritSurfaceRules {
 
       MaterialRules.MaterialRule materialRule10 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.BLOOMING_DUNES),
               MaterialRules.condition(materialCondition13, MaterialRules.sequence(
-                      MaterialRules.condition(MaterialRules.biome(BiomeKeys.DESERT), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_30, SANDY_SOIL)),
-                      materialRule2
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, materialRule2), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
               ))
       );
       MaterialRules.MaterialRule materialRule11 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.LIVELY_DUNES),
               MaterialRules.condition(materialCondition13, MaterialRules.sequence(
-                      MaterialRules.condition(MaterialRules.biome(BiomeKeys.DESERT), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_30, SANDY_SOIL)),
-                      materialRule2
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, materialRule2), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
               ))
       );
       MaterialRules.MaterialRule materialRule12 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS), MaterialRules.sequence(MaterialRules.sequence(

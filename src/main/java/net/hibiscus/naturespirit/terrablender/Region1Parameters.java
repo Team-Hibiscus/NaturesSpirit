@@ -48,6 +48,20 @@ public class Region1Parameters {
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
 
+   RegistryKey<Biome> commonBiomePlainsCold = HibiscusBiomes.has_fir ? HibiscusBiomes.PRAIRIE : BiomeKeys.PLAINS;
+   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_fir ? HibiscusBiomes.PRAIRIE : BiomeKeys.FOREST;
+   RegistryKey<Biome> mountainBiomeMeadowCold = HibiscusBiomes.has_fir ? HibiscusBiomes.PRAIRIE : BiomeKeys.MEADOW;
+   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_fir ? HibiscusBiomes.FIR_FOREST : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_redwood_forest ? HibiscusBiomes.REDWOOD_FOREST : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_redwood_forest ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
+   RegistryKey<Biome> specialBiomeCherryGrove = HibiscusBiomes.has_fir ? null : BiomeKeys.CHERRY_GROVE;
+   RegistryKey<Biome> commonBiomeDesert = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.LIVELY_DUNES : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeDesert2 = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.BLOOMING_DUNES : BiomeKeys.DESERT;
+   RegistryKey<Biome> uncommonBiomeDesert = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.BLOOMING_DUNES : null;
+   RegistryKey<Biome> nearBiomeBadlands = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.STRATIFIED_DESERT : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> nearBiomeWoodedBadlands = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.STRATIFIED_DESERT : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> specialBiomeErodedBadlands = HibiscusBiomes.has_lively_dunes ? null : BiomeKeys.ERODED_BADLANDS;
+
    public Region1Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -70,42 +84,42 @@ public class Region1Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
               }, {
-                      HibiscusBiomes.PRAIRIE, HibiscusBiomes.PRAIRIE, HibiscusBiomes.FIR_FOREST, HibiscusBiomes.FIR_FOREST, HibiscusBiomes.REDWOOD_FOREST
+              commonBiomePlainsCold, commonBiomePlainsCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
                       BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
                       BiomeKeys.SAVANNA, BiomeKeys.SAVANNA, BiomeKeys.FOREST, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
               }, {
-                      BiomeKeys.DESERT, HibiscusBiomes.LIVELY_DUNES, HibiscusBiomes.LIVELY_DUNES, HibiscusBiomes.LIVELY_DUNES, HibiscusBiomes.LIVELY_DUNES
+              commonBiomeDesert, commonBiomeDesert, commonBiomeDesert, commonBiomeDesert2, commonBiomeDesert2
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
-              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, null, null, null}, {
+              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, null, null, uncommonBiomeOldPineCold}, {
               BiomeKeys.SUNFLOWER_PLAINS, null, null, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, null
       }, {
                       null, null, BiomeKeys.PLAINS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE
-              }, {null, null, null, HibiscusBiomes.BLOOMING_DUNES, HibiscusBiomes.BLOOMING_DUNES}
+              }, {null, null, uncommonBiomeDesert, null, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_TAIGA
               }, {
-                      BiomeKeys.MEADOW, HibiscusBiomes.PRAIRIE, HibiscusBiomes.PRAIRIE, HibiscusBiomes.FIR_FOREST, HibiscusBiomes.REDWOOD_FOREST
+                      BiomeKeys.MEADOW, mountainBiomeMeadowCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
                       BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.FOREST, BiomeKeys.FOREST, BiomeKeys.JUNGLE
               }, {
-                      HibiscusBiomes.STRATIFIED_DESERT, HibiscusBiomes.STRATIFIED_DESERT, HibiscusBiomes.STRATIFIED_DESERT, HibiscusBiomes.STRATIFIED_DESERT, HibiscusBiomes.STRATIFIED_DESERT
+              nearBiomeBadlands, nearBiomeBadlands, nearBiomeBadlands, nearBiomeWoodedBadlands, nearBiomeWoodedBadlands
               }
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
-              null, null, null, HibiscusBiomes.PRAIRIE, null
+              specialBiomeCherryGrove, null, mountainBiomeMeadowCold, mountainBiomeMeadowCold, uncommonBiomeOldPineCold
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {null, null, null, null, null}, {
-                      null, null, null, null, null
+              specialBiomeErodedBadlands, specialBiomeErodedBadlands, null, null, null
               }
       };
       this.windsweptBiomes = new RegistryKey[][]{
@@ -175,7 +189,6 @@ public class Region1Parameters {
             RegistryKey <Biome> registryKey6 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey5);
             RegistryKey <Biome> registryKey7 = this.getPeakBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey9 = this.getStratifiedDesertOrNearMountainBiome(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -229,10 +242,10 @@ public class Region1Parameters {
                     this.erosionParameters[2],
                     weirdness,
                     0.0F,
-                    registryKey9
+                    registryKey4
             );
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey8);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey9);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey2);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -267,7 +280,7 @@ public class Region1Parameters {
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
-                    registryKey
+                    HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey
             );
          }
       }
@@ -288,8 +301,6 @@ public class Region1Parameters {
             RegistryKey <Biome> registryKey6 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey7 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getPeakBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey9 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey10 = this.getStratifiedDesertOrNearMountainBiome(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -326,7 +337,7 @@ public class Region1Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    registryKey9
+                    HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -335,7 +346,7 @@ public class Region1Parameters {
                     this.erosionParameters[2],
                     weirdness,
                     0.0F,
-                    registryKey9
+                    HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -344,10 +355,10 @@ public class Region1Parameters {
                     this.erosionParameters[2],
                     weirdness,
                     0.0F,
-                    registryKey10
+                    registryKey4
             );
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey9);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey10);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey2);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -364,7 +375,7 @@ public class Region1Parameters {
                     this.erosionParameters[5],
                     weirdness,
                     0.0F,
-                    registryKey9
+                    HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey6
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -414,23 +425,11 @@ public class Region1Parameters {
             RegistryKey <Biome> registryKey7 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey8 = this.getErodedShoreBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey9 = this.getMountainSlopeBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey10 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey11 = this.getStratifiedDesertOrNearMountainBiome(i, j, weirdness);
-
 
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.nearInlandContinentalness),
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[5], this.erosionParameters[6]),
-                    weirdness,
-                    0.0F,
-                    this.getWetlandType(i, j, weirdness)
-            );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
+                    MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
@@ -455,9 +454,9 @@ public class Region1Parameters {
                     registryKey3
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[1], weirdness, 0.0F, i == 0 ? registryKey9 : registryKey5);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey10);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey10);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey11);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey2);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey5);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -465,7 +464,7 @@ public class Region1Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    registryKey10
+                    HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -474,7 +473,7 @@ public class Region1Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    registryKey10
+                    registryKey2
             );
             if(weirdness.max() < 0L) {
                this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey6);
@@ -485,7 +484,7 @@ public class Region1Parameters {
                        this.erosionParameters[4],
                        weirdness,
                        0.0F,
-                       registryKey10
+                       HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey
                );
             }
             else {
@@ -499,6 +498,8 @@ public class Region1Parameters {
                        registryKey
                );
             }
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey8);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey7);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -509,25 +510,12 @@ public class Region1Parameters {
                     registryKey4
             );
 
-            if(i == 0) {
-               this.writeBiomeParameters(parameters,
-                       parameterRange,
-                       parameterRange2,
-                       MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
-                       this.erosionParameters[6],
-                       weirdness,
-                       0.0F,
-                       registryKey
-               );
                if(weirdness.max() < 0L) {
                   this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey6);
                }
                else {
                   this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey);
                }
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey8);
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey7);
-            }
          }
       }
 
@@ -555,20 +543,10 @@ public class Region1Parameters {
             RegistryKey <Biome> registryKey4 = this.getShoreBiome(i, j);
             RegistryKey <Biome> registryKey5 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey6 = this.getErodedShoreBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey7 = this.getStratifiedDesertOrRegularBiome(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.nearInlandContinentalness),
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[5], this.erosionParameters[6]),
-                    weirdness,
-                    0.0F,
-                    this.getWetlandType(i, j, weirdness)
-            );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
+                    MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
@@ -599,7 +577,7 @@ public class Region1Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    registryKey7
+                    HibiscusBiomes.has_lively_dunes ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -608,7 +586,7 @@ public class Region1Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    registryKey7
+                    registryKey2
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -628,29 +606,9 @@ public class Region1Parameters {
                     0.0F,
                     registryKey
             );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
-                    this.erosionParameters[5],
-                    weirdness,
-                    0.0F,
-                    registryKey
-            );
-            if(i == 0) {
-               this.writeBiomeParameters(parameters,
-                       parameterRange,
-                       parameterRange2,
-                       MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
-                       this.erosionParameters[6],
-                       weirdness,
-                       0.0F,
-                       registryKey
-               );
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey4);
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey6);
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey5);
-            }
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey6);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey5);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey4);
          }
       }
 
@@ -706,7 +664,7 @@ public class Region1Parameters {
               this.nonFrozenTemperatureParameters,
               this.defaultParameter,
               MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
-              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[4]),
+              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[5]),
               weirdness,
               0.0F,
               BiomeKeys.RIVER
@@ -740,16 +698,7 @@ public class Region1Parameters {
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.nearInlandContinentalness),
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[5], this.erosionParameters[6]),
-                    weirdness,
-                    0.0F,
-                    this.getWetlandType(i, j, weirdness)
-            );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
+                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
@@ -801,10 +750,7 @@ public class Region1Parameters {
    }
 
    private RegistryKey <Biome> getStratifiedDesertOrRegularBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      return temperature == 4 ? this.getStratifiedDesertBiome(humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
-   }
-   private RegistryKey <Biome> getStratifiedDesertOrNearMountainBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      return temperature == 4 ? this.getStratifiedDesertBiome(humidity, weirdness) : this.getNearMountainBiome(temperature, humidity, weirdness);
+      return temperature == 4 ? (HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.STRATIFIED_DESERT : this.getBadlandsBiome(humidity, weirdness)) : this.getRegularBiome(temperature, humidity, weirdness);
    }
 
    private RegistryKey <Biome> getMountainStartBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
@@ -825,12 +771,8 @@ public class Region1Parameters {
          return BiomeKeys.SNOWY_BEACH;
       }
       else {
-         return temperature == 4 ? HibiscusBiomes.LIVELY_DUNES : BiomeKeys.BEACH;
+         return temperature == 4 ? (HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.LIVELY_DUNES : BiomeKeys.DESERT) : BiomeKeys.BEACH;
       }
-   }
-
-   private RegistryKey <Biome> getStratifiedDesertBiome(int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      return HibiscusBiomes.STRATIFIED_DESERT;
    }
 
    private RegistryKey <Biome> getNearMountainBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
@@ -849,7 +791,15 @@ public class Region1Parameters {
          return weirdness.max() < 0L ? BiomeKeys.JAGGED_PEAKS : BiomeKeys.FROZEN_PEAKS;
       }
       else {
-         return temperature == 3 ? BiomeKeys.STONY_PEAKS : this.getStratifiedDesertBiome(humidity, weirdness);
+         return temperature == 3 ? BiomeKeys.STONY_PEAKS : (HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.STRATIFIED_DESERT : this.getBadlandsBiome(humidity, weirdness));
+      }
+   }
+   private RegistryKey <Biome> getBadlandsBiome(int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      if(humidity < 2) {
+         return weirdness.max() < 0L ? BiomeKeys.BADLANDS : BiomeKeys.ERODED_BADLANDS;
+      }
+      else {
+         return humidity < 3 ? BiomeKeys.BADLANDS : BiomeKeys.WOODED_BADLANDS;
       }
    }
 
@@ -863,17 +813,17 @@ public class Region1Parameters {
    }
 
    private RegistryKey <Biome> getWetlandType(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      if(temperature == 0) {
+      if(temperature == 0 || (HibiscusBiomes.has_lively_dunes && temperature == 4)) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       }
-      else if(temperature == 3 && humidity > 2) {
+      else if(temperature == 3 && humidity > 2 && HibiscusBiomes.has_bamboo_wetlands) {
          return HibiscusBiomes.BAMBOO_WETLANDS;
       }
-      else if(humidity <= 3 || temperature == 4) {
+      else if((humidity <= 3 || temperature == 4) && HibiscusBiomes.has_marsh) {
          return HibiscusBiomes.MARSH;
       }
       else {
-         return BiomeKeys.SWAMP;
+         return temperature >= 3 ? BiomeKeys.MANGROVE_SWAMP : BiomeKeys.SWAMP;
       }
    }
 

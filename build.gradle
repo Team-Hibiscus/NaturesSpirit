@@ -27,6 +27,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}"
+    implementation("org.spongepowered:configurate-hocon:4.1.2")
 }
 
 processResources {

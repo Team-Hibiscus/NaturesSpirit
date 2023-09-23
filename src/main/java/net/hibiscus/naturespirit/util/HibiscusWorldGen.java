@@ -1,6 +1,9 @@
 package net.hibiscus.naturespirit.util;
 
 import com.mojang.serialization.Codec;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
@@ -10,6 +13,8 @@ import net.hibiscus.naturespirit.world.feature.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
@@ -85,7 +90,7 @@ public class HibiscusWorldGen {
    }
 
    public static void registerWorldGen() {
-      //      BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.WILLOW_PLACED);
+//            BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DESERT), GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.ROOTED_DESERT_TURNIP);
    }
 
 }

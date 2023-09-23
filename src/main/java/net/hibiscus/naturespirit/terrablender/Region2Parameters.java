@@ -47,7 +47,15 @@ public class Region2Parameters {
    private final RegistryKey <Biome>[][] nearMountainBiomes;
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
+   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.WISTERIA_FOREST : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.WISTERIA_FOREST : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.WISTERIA_FOREST : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_wisteria_forest ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
 
+   RegistryKey<Biome> commonPlains = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.PLAINS;
+   RegistryKey<Biome> commonForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBirchForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.BIRCH_FOREST;
+   RegistryKey<Biome> uncommonBirchForest = HibiscusBiomes.has_sugi_forest ? BiomeKeys.BIRCH_FOREST : BiomeKeys.OLD_GROWTH_BIRCH_FOREST;
    public Region2Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -70,9 +78,9 @@ public class Region2Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
               }, {
-              BiomeKeys.PLAINS, BiomeKeys.PLAINS, HibiscusBiomes.WISTERIA_FOREST, HibiscusBiomes.WISTERIA_FOREST, HibiscusBiomes.WISTERIA_FOREST
+              BiomeKeys.PLAINS, BiomeKeys.PLAINS, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
-                      BiomeKeys.FLOWER_FOREST, HibiscusBiomes.SUGI_FOREST, HibiscusBiomes.SUGI_FOREST, HibiscusBiomes.SUGI_FOREST, BiomeKeys.DARK_FOREST
+                      BiomeKeys.FLOWER_FOREST, commonPlains, commonForest, commonBirchForest, BiomeKeys.DARK_FOREST
               }, {
                       BiomeKeys.SAVANNA, BiomeKeys.SAVANNA, BiomeKeys.FOREST, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
               }, {
@@ -80,17 +88,17 @@ public class Region2Parameters {
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
-              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, BiomeKeys.FOREST, null, null}, {
-              BiomeKeys.SUNFLOWER_PLAINS, null, null, BiomeKeys.BIRCH_FOREST, null
+              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, null, null, uncommonBiomeOldPineCold}, {
+              BiomeKeys.SUNFLOWER_PLAINS, null, null, uncommonBirchForest, null
       }, {
-                      null, null, BiomeKeys.PLAINS, BiomeKeys.SPARSE_JUNGLE, null
+                      null, null, BiomeKeys.PLAINS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE
               }, {null, null, null, null, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_TAIGA
               }, {
-              BiomeKeys.MEADOW, BiomeKeys.MEADOW, HibiscusBiomes.WISTERIA_FOREST, HibiscusBiomes.WISTERIA_FOREST, HibiscusBiomes.WISTERIA_FOREST
+              BiomeKeys.MEADOW, BiomeKeys.MEADOW, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
@@ -101,9 +109,9 @@ public class Region2Parameters {
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
-              BiomeKeys.CHERRY_GROVE, null, BiomeKeys.MEADOW, BiomeKeys.MEADOW, null
+              BiomeKeys.CHERRY_GROVE, null, BiomeKeys.MEADOW, BiomeKeys.MEADOW, uncommonBiomeOldPineCold
       }, {
-                      BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, HibiscusBiomes.SUGI_FOREST, HibiscusBiomes.SUGI_FOREST, null
+                      BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, commonForest, commonBirchForest, null
               }, {null, null, null, null, null}, {
                       BiomeKeys.ERODED_BADLANDS, BiomeKeys.ERODED_BADLANDS, null, null, null
               }
@@ -396,16 +404,7 @@ public class Region2Parameters {
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.nearInlandContinentalness),
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[5], this.erosionParameters[6]),
-                    weirdness,
-                    0.0F,
-                    this.getWetlandType(i, j, weirdness)
-            );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
+                    MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
@@ -483,26 +482,15 @@ public class Region2Parameters {
                     0.0F,
                     registryKey4
             );
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey8);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey7);
 
-            if(i == 0) {
-               this.writeBiomeParameters(parameters,
-                       parameterRange,
-                       parameterRange2,
-                       MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
-                       this.erosionParameters[6],
-                       weirdness,
-                       0.0F,
-                       registryKey
-               );
                if(weirdness.max() < 0L) {
                   this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey6);
                }
                else {
                   this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey);
                }
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey8);
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey7);
-            }
          }
       }
 
@@ -533,16 +521,7 @@ public class Region2Parameters {
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.nearInlandContinentalness),
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[5], this.erosionParameters[6]),
-                    weirdness,
-                    0.0F,
-                    this.getWetlandType(i, j, weirdness)
-            );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
+                    MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
@@ -611,20 +590,9 @@ public class Region2Parameters {
                     0.0F,
                     registryKey
             );
-            if(i == 0) {
-               this.writeBiomeParameters(parameters,
-                       parameterRange,
-                       parameterRange2,
-                       MultiNoiseUtil.ParameterRange.combine(this.nearInlandContinentalness, this.farInlandContinentalness),
-                       this.erosionParameters[6],
-                       weirdness,
-                       0.0F,
-                       registryKey
-               );
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey4);
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey6);
-               this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey5);
-            }
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey6);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey5);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey4);
          }
       }
 
@@ -714,16 +682,7 @@ public class Region2Parameters {
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.nearInlandContinentalness),
-                    MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[5], this.erosionParameters[6]),
-                    weirdness,
-                    0.0F,
-                    this.getWetlandType(i, j, weirdness)
-            );
-            this.writeBiomeParameters(parameters,
-                    parameterRange,
-                    parameterRange2,
-                    MultiNoiseUtil.ParameterRange.combine(this.midInlandContinentalness, this.farInlandContinentalness),
+                    MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
@@ -777,8 +736,11 @@ public class Region2Parameters {
       if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       }
-      else if(temperature == 3 && humidity > 2) {
+      else if(temperature == 3 && humidity > 2 && HibiscusBiomes.has_bamboo_wetlands) {
          return HibiscusBiomes.BAMBOO_WETLANDS;
+      }
+      else if((humidity <= 3 || temperature == 4) && HibiscusBiomes.has_marsh) {
+         return HibiscusBiomes.MARSH;
       }
       else {
          return BiomeKeys.SWAMP;

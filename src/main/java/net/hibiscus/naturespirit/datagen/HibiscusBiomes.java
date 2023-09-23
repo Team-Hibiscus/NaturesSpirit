@@ -39,6 +39,61 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> WHITE_CLIFFS = register("white_cliffs");
    public static final RegistryKey <Biome> PRAIRIE = register("prairie");
 
+
+   public static boolean has_sugi_forest;
+   public static boolean has_eroded_river;
+   public static boolean has_marsh;
+   public static boolean has_bamboo_wetlands;
+   public static boolean has_wisteria_forest;
+   public static boolean has_redwood_forest;
+   public static boolean has_aspen_forest;
+   public static boolean has_maple;
+   public static boolean has_fir;
+   public static boolean has_cypress_fields;
+   public static boolean has_lively_dunes;
+   public static boolean has_drylands;
+   public static boolean has_white_cliffs;
+
+   public static void set_has_sugi_forest(Boolean bl) {
+      has_sugi_forest = bl;
+   };
+   public static void set_has_eroded_river(Boolean bl) {
+      has_eroded_river = bl;
+   };
+   public static void set_has_marsh(Boolean bl) {
+      has_marsh = bl;
+   };
+   public static void set_has_bamboo_wetlands(Boolean bl) {
+      has_bamboo_wetlands = bl;
+   };
+   public static void set_has_wisteria_forest(Boolean bl) {
+      has_wisteria_forest = bl;
+   };
+   public static void set_has_redwood_forest(Boolean bl) {
+      has_redwood_forest = bl;
+   };
+   public static void set_has_aspen_forest(Boolean bl) {
+      has_aspen_forest = bl;
+   };
+   public static void set_has_maple(Boolean bl) {
+      has_maple = bl;
+   };
+   public static void set_has_fir(Boolean bl) {
+      has_fir = bl;
+   };
+   public static void set_has_cypress_fields(Boolean bl) {
+      has_cypress_fields = bl;
+   };
+   public static void set_has_lively_dunes(Boolean bl) {
+      has_lively_dunes = bl;
+   };
+   public static void set_has_drylands(Boolean bl) {
+      has_drylands = bl;
+   };
+   public static void set_has_white_cliffs(Boolean bl) {
+      has_white_cliffs = bl;
+   };
+
    private static RegistryKey <Biome> register(String name) {
       System.out.println("Registered Resource Key for biome: " + name);
       RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, new Identifier(NatureSpirit.MOD_ID, name));
