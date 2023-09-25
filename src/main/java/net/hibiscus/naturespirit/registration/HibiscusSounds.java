@@ -11,6 +11,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 public class HibiscusSounds {
    public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_AUTUMN = registerReference("music.overworld.autumn");
    public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_WISTERIA = registerReference("music.overworld.wisteria");
+   public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_REDWOOD = registerReference("music.overworld.redwood");
 
    private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
       return registerReference(new Identifier(MOD_ID, id));

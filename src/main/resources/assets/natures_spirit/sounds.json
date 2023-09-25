@@ -14,5 +14,13 @@
         "stream": true
       }
     ]
+  },
+  "music.overworld.redwood": {
+    "sounds": [
+      {
+        "name": "natures_spirit:music.overworld.redwood",
+        "stream": true
+      }
+    ]
   }
 }
