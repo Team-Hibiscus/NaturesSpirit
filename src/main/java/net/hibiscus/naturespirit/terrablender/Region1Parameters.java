@@ -90,7 +90,7 @@ public class Region1Parameters {
               }, {
                       BiomeKeys.SAVANNA, BiomeKeys.SAVANNA, BiomeKeys.FOREST, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
               }, {
-              commonBiomeDesert, commonBiomeDesert, commonBiomeDesert, commonBiomeDesert2, commonBiomeDesert2
+              commonBiomeDesert, commonBiomeDesert, commonBiomeDesert, commonBiomeDesert, commonBiomeDesert2
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
@@ -98,7 +98,7 @@ public class Region1Parameters {
               BiomeKeys.SUNFLOWER_PLAINS, null, null, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, null
       }, {
                       null, null, BiomeKeys.PLAINS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE
-              }, {null, null, uncommonBiomeDesert, null, null}
+              }, {null, null, null, uncommonBiomeDesert, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {

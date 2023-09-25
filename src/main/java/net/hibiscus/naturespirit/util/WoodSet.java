@@ -3,8 +3,8 @@ package net.hibiscus.naturespirit.util;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -13,11 +13,9 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.mixin.BlockSetTypeAccessor;
-import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.world.feature.tree.*;
+import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -29,7 +27,6 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
@@ -124,7 +121,7 @@ public class WoodSet {
 
    private void registerWood(){
       blockSetType = createBlockSetType();
-      woodType = WoodTypeAccessor.registerNew(new WoodType(this.getNameID().toString(), getBlockSetType()));
+      woodType = new WoodTypeBuilder().register(this.getNameID(), this.getBlockSetType());
 
       log = this.getWoodPreset() == WoodPreset.JOSHUA ? createJoshuaLog() : createLog();
       strippedLog = this.getWoodPreset() == WoodPreset.JOSHUA ? createStrippedJoshuaLog() : createStrippedLog();
@@ -403,7 +400,7 @@ public class WoodSet {
       return name.getNamespace();
    }
    public BlockSetType getBlockSetType() {
-      return blockSetType;
+      return this.blockSetType;
    }
    public WoodPreset getWoodPreset() {
       return woodPreset;
@@ -829,16 +826,16 @@ public class WoodSet {
 
    private BlockSetType createBlockSetType(){
       if (this.woodPreset == WoodPreset.BAMBOO){
-         return BlockSetTypeAccessor.registerNew(new BlockSetType(this.getNameID().toString(), true, BlockSoundGroup.BAMBOO_WOOD, SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_OPEN, SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_OPEN, SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_ON));
+         return BlockSetTypeBuilder.copyOf(BlockSetType.BAMBOO).register(this.getNameID());
       }
       else if (this.getWoodPreset() == WoodPreset.FANCY){
-         return BlockSetTypeAccessor.registerNew(new BlockSetType(this.getNameID().toString(), true, BlockSoundGroup.CHERRY_WOOD, SoundEvents.BLOCK_CHERRY_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_CHERRY_WOOD_DOOR_OPEN, SoundEvents.BLOCK_CHERRY_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_CHERRY_WOOD_TRAPDOOR_OPEN, SoundEvents.BLOCK_CHERRY_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_CHERRY_WOOD_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_ON));
+         return BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(this.getNameID());
       }
       else if (this.woodPreset == WoodPreset.NETHER){
-         return BlockSetTypeAccessor.registerNew(new BlockSetType(this.getNameID().toString(), true, BlockSoundGroup.NETHER_WOOD, SoundEvents.BLOCK_NETHER_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_DOOR_OPEN, SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_OPEN, SoundEvents.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_ON));
+         return BlockSetTypeBuilder.copyOf(BlockSetType.CRIMSON).register(this.getNameID());
       }
       else{
-         return BlockSetTypeAccessor.registerNew(new BlockSetType(this.getNameID().toString()));
+         return BlockSetTypeBuilder.copyOf(BlockSetType.OAK).register(this.getNameID());
       }
    }
 

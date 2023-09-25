@@ -1,20 +1,15 @@
 package net.hibiscus.naturespirit.util;
 
 import com.mojang.serialization.Codec;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.world.feature.*;
-import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
-import net.hibiscus.naturespirit.world.feature.tree_decorator.MapleGroundTreeDecorator;
-import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
-import net.hibiscus.naturespirit.world.feature.trunk.*;
+import net.hibiscus.naturespirit.world.foliage_placer.*;
+import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
+import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
@@ -30,6 +25,7 @@ public class HibiscusWorldGen {
    public static final TrunkPlacerType <WisteriaTrunkPlacer> WISTERIA_TRUNK_PLACER = registerTrunkPlacer("wisteria_trunk_placer", WisteriaTrunkPlacer.CODEC);
    public static final TrunkPlacerType <SugiTrunkPlacer> SUGI_TRUNK_PLACER = registerTrunkPlacer("sugi_trunk_placer", SugiTrunkPlacer.CODEC);
    public static final TrunkPlacerType <OliveTrunkPlacer> OLIVE_TRUNK_PLACER = registerTrunkPlacer("olive_trunk_placer", OliveTrunkPlacer.CODEC);
+   public static final TrunkPlacerType <PaloVerdeTrunkPlacer> PALO_VERDE_TRUNK_PLACER = registerTrunkPlacer("palo_verde_trunk_placer", PaloVerdeTrunkPlacer.CODEC);
    public static final TrunkPlacerType <GhafTrunkPlacer> GHAF_TRUNK_PLACER = registerTrunkPlacer("ghaf_trunk_placer", GhafTrunkPlacer.CODEC);
    public static final TrunkPlacerType <MapleTrunkPlacer> MAPLE_TRUNK_PLACER = registerTrunkPlacer("maple_trunk_placer", MapleTrunkPlacer.CODEC);
 

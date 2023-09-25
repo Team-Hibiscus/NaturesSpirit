@@ -1,23 +1,13 @@
 package net.hibiscus.naturespirit.registration.block_registration;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.hibiscus.naturespirit.blocks.WillowVine;
-import net.hibiscus.naturespirit.blocks.WillowVinePlant;
-import net.hibiscus.naturespirit.blocks.WisteriaVine;
-import net.hibiscus.naturespirit.blocks.WisteriaVinePlant;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.mixin.BlockSetTypeAccessor;
-import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.util.WoodSet;
-import net.hibiscus.naturespirit.world.feature.tree.*;
+import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -188,6 +178,20 @@ public class HibiscusWoods {
            JOSHUA.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.GHAF,
            new GhafSaplingGenerator(),
+           WoodSet.WoodPreset.DESERT
+   );
+   public static WoodSet PALO_VERDE = new WoodSet(
+           new Identifier(MOD_ID, "palo_verde"),
+           MapColor.YELLOW,
+           MapColor.LICHEN_GREEN,
+           GHAF.getLeaves(),
+           GHAF.getLog(),
+           GHAF.getHangingSign(),
+           GHAF.getChestBoatItem(),
+           GHAF.getButton(),
+           GHAF.getSapling(),
+           HibiscusBoatEntity.HibiscusBoat.PALO_VERDE,
+           new PaloVerdeSaplingGenerator(),
            WoodSet.WoodPreset.DESERT
    );
    public static void registerWoods() {}

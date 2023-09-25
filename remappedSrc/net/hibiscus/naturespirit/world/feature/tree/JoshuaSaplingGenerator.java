@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.world.feature.tree;
+package net.hibiscus.naturespirit.world.tree;
 
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.minecraft.resources.ResourceKey;

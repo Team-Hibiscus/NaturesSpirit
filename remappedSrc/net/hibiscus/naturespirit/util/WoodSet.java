@@ -17,7 +17,7 @@ import net.hibiscus.naturespirit.mixin.BlockSetTypeAccessor;
 import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.world.feature.tree.*;
+import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;

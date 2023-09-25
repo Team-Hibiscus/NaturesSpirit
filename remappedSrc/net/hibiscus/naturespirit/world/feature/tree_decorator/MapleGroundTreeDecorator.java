@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.world.feature.tree_decorator;
+package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;

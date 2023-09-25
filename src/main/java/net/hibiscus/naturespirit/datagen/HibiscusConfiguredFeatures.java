@@ -9,10 +9,10 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.hibiscus.naturespirit.world.feature.TurnipRootFeatureConfig;
-import net.hibiscus.naturespirit.world.feature.foliage_placer.*;
-import net.hibiscus.naturespirit.world.feature.tree_decorator.MapleGroundTreeDecorator;
-import net.hibiscus.naturespirit.world.feature.tree_decorator.WisteriaVinesTreeDecorator;
-import net.hibiscus.naturespirit.world.feature.trunk.*;
+import net.hibiscus.naturespirit.world.foliage_placer.*;
+import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
+import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -45,7 +45,6 @@ import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -90,6 +89,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> OLIVE_TREE_SPAWN = registerKey("olive_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> GHAF_TREE = registerKey("ghaf_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> GHAF_TREE_SPAWN = registerKey("ghaf_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE = registerKey("palo_verde_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE_SPAWN = registerKey("palo_verde_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
 
@@ -403,6 +404,21 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OLIVE_CHECKED), 0.325f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.OLIVE_CHECKED)
+              )
+      );
+
+      register(context, PALO_VERDE_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.PALO_VERDE.getLog()),
+              new PaloVerdeTrunkPlacer(6, 1, 3, UniformIntProvider.create(4, 6), .95F, UniformIntProvider.create(3, 6), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              BlockStateProvider.of(HibiscusWoods.PALO_VERDE.getLeaves()),
+              new RandomSpreadFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 70),
+              new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(6))
+      ).ignoreVines().build());
+
+      register(context,
+              PALO_VERDE_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED), 0.325f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED)
               )
       );
 

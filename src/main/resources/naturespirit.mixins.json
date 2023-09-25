@@ -7,13 +7,11 @@
     "AnvilBlockMixin",
     "AxeItemMixin",
     "BlockEntityTypeMixin",
-    "BlockSetTypeAccessor",
     "BlockStateProviderMixin",
     "BoatDispenserBehaviorMixin",
     "BoatEntityMixin",
     "CoralBlockBlockMixin",
-    "StatsTypeAccessor",
-    "WoodTypeAccessor"
+    "StatsTypeAccessor"
   ],
   "client": [
   ],

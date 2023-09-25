@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package net.hibiscus.naturespirit.world.feature.foliage_placer;
+package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

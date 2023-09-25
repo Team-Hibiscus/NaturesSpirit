@@ -49,6 +49,7 @@ public class Region5Parameters {
    private final RegistryKey <Biome>[][] windsweptBiomes;
 
    RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.DESERT;
    RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
    RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.WOODED_BADLANDS;
    RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.BADLANDS;
@@ -91,7 +92,7 @@ public class Region5Parameters {
               }, {
               commonBiomeSavannaWarm2, commonBiomeSavannaWarm, commonBiomeForestWarm, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
               }, {
-              commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot
+              commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot2
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{

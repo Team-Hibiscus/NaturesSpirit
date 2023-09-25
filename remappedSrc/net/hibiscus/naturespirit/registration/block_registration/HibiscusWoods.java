@@ -12,7 +12,7 @@ import net.hibiscus.naturespirit.mixin.WoodTypeAccessor;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.util.WoodSet;
-import net.hibiscus.naturespirit.world.feature.tree.*;
+import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;

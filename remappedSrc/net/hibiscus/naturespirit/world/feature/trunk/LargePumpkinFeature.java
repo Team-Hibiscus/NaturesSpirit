@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.world.feature.trunk;
+package net.hibiscus.naturespirit.world.trunk;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

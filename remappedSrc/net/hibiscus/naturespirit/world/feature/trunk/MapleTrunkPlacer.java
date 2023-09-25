@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package net.hibiscus.naturespirit.world.feature.trunk;
+package net.hibiscus.naturespirit.world.trunk;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
