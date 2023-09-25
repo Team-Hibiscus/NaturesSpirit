@@ -892,8 +892,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             }
             generateBlockTranslations(woodSet.getSign(), translationBuilder);
             generateBlockTranslations(woodSet.getHangingSign(), translationBuilder);
-               translationBuilder.add(woodSet.getBoatItem(), capitalizeString(woodSet.getName()) + " Boat");
-               translationBuilder.add(woodSet.getChestBoatItem(), capitalizeString(woodSet.getName()) + " Boat With Chest");
+               translationBuilder.add(woodSet.getBoatItem(), capitalizeString(woodSet.getName().replace("_", " ")) + " Boat");
+               translationBuilder.add(woodSet.getChestBoatItem(), capitalizeString(woodSet.getName().replace("_", " ")) + " Boat With Chest");
             generateArchExTranslations(woodSet.getName(), translationBuilder);
          }
       }
