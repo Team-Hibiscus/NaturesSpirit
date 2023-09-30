@@ -1,7 +1,6 @@
 package net.hibiscus.naturespirit.util;
 
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.minecraft.block.LeveledCauldronBlock;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

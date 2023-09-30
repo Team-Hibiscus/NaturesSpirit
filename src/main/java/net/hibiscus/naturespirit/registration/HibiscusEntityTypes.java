@@ -1,24 +1,16 @@
 package net.hibiscus.naturespirit.registration;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.GoatEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.registerItem;
 
 public class HibiscusEntityTypes {
 //   public static EntityType<BisonEntity> BISON = registerMobEntityType("bison", FabricEntityTypeBuilder.createMob().spawnGroup(SpawnGroup.CREATURE).defaultAttributes(BisonEntity::createBisonAttributes).entityFactory(BisonEntity::new).dimensions(EntityDimensions.fixed(2.0F, 1.75F)).trackRangeChunks(10));

@@ -17,8 +17,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import static net.hibiscus.naturespirit.datagen.HibiscusPlacedFeatures.RIVER_WATER;
 

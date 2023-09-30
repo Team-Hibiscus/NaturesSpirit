@@ -1,8 +1,16 @@
 {
-  "music.overworld.autumn": {
+  "music.overworld.aspen": {
     "sounds": [
       {
-        "name": "natures_spirit:music.overworld.autumn",
+        "name": "natures_spirit:music.overworld.aspen",
+        "stream": true
+      }
+    ]
+  },
+  "music.overworld.maple": {
+    "sounds": [
+      {
+        "name": "natures_spirit:music.overworld.maple",
         "stream": true
       }
     ]

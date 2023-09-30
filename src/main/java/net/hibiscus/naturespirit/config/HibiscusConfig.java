@@ -1,16 +1,15 @@
 package net.hibiscus.naturespirit.config;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.annotations.JsonAdapter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
-import org.spongepowered.configurate.CommentedConfigurationNode;
-import org.spongepowered.configurate.ConfigurateException;
-import org.spongepowered.configurate.ConfigurationNode;
-import org.spongepowered.configurate.hocon.HoconConfigurationLoader;
-import org.spongepowered.configurate.serialize.SerializationException;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 
 public class HibiscusConfig {
@@ -21,92 +20,72 @@ public class HibiscusConfig {
    public static int terra_laeta_weight;
    public HibiscusConfig() {}
 
-   public static void main() throws SerializationException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit.conf");
-      final HoconConfigurationLoader loader = HoconConfigurationLoader.builder().path(configPath).build();
-      final CommentedConfigurationNode root;
+   public static void main() throws IOException {
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit.json");
 
          try {
             if (configPath.toFile().createNewFile()) {
-               FileWriter myWriter = new FileWriter(configPath.toFile());
-               myWriter.write(
-                       "biomes{has_sugi_forest=true\n"
-                               + "has_eroded_river=true\n"
-                               + "has_marsh=true\n"
-                               + "has_bamboo_wetlands=true\n"
-                               + "has_wisteria_forest=true\n"
-                               + "has_redwood_forest=true\n"
-                               + "has_aspen_forest=true\n"
-                               + "has_maple=true\n"
-                               + "has_fir=true\n"
-                               + "has_cypress_fields=true\n"
-                               + "has_lively_dunes=true\n"
-                               + "has_drylands=true\n"
-                               + "has_white_cliffs=true}\n"
-                               + "regions{terra_ferax_frequency=3\n"
-                                    + "terra_solaris_frequency=3\n"
-                                    + "terra_flava_frequency=1\n"
-                                    + "terra_laeta_frequency=2}");
-               myWriter.close();
+               JsonObject jsonObjects = new JsonObject();
+
+               JsonObject biomesObject = new JsonObject();
+                       biomesObject.addProperty("has_sugi_forest", true);
+                       biomesObject.addProperty("has_eroded_river", true);
+                       biomesObject.addProperty("has_marsh", true);
+                       biomesObject.addProperty("has_bamboo_wetlands", true);
+                       biomesObject.addProperty("has_wisteria_forest", true);
+                       biomesObject.addProperty("has_redwood_forest", true);
+                       biomesObject.addProperty("has_aspen_forest", true);
+                       biomesObject.addProperty("has_maple", true);
+                       biomesObject.addProperty("has_fir", true);
+                       biomesObject.addProperty("has_cypress_fields", true);
+                       biomesObject.addProperty("has_lively_dunes", true);
+                       biomesObject.addProperty("has_drylands", true);
+                       biomesObject.addProperty("has_white_cliffs", true);
+               jsonObjects.add("biomes", biomesObject);
+               JsonObject regionsObject = new JsonObject();
+                       regionsObject.addProperty("terra_ferax_frequency", 3);
+                       regionsObject.addProperty("terra_solaris_frequency", 3);
+                       regionsObject.addProperty("terra_flava_frequency", 1);
+                       regionsObject.addProperty("terra_laeta_frequency", 2);
+               jsonObjects.add("region_weights", regionsObject);
+
+               PrintWriter pw = new PrintWriter(configPath.toString());
+               Gson gson = new GsonBuilder().setPrettyPrinting().create();
+               pw.print(gson.toJson(jsonObjects));
+               pw.flush();
+               pw.close();
             }
+            JsonObject obj = (JsonObject) JsonParser.parseReader(new FileReader(configPath.toString()));
+            JsonObject biomes = (JsonObject) obj.get("biomes");
+            JsonObject region_weights = (JsonObject) obj.get("region_weights");
+
+            HibiscusBiomes.set_has_sugi_forest(biomes.get("has_sugi_forest").getAsBoolean());
+            HibiscusBiomes.set_has_eroded_river(biomes.get("has_eroded_river").getAsBoolean());
+            HibiscusBiomes.set_has_marsh(biomes.get("has_marsh").getAsBoolean());
+            HibiscusBiomes.set_has_bamboo_wetlands(biomes.get("has_bamboo_wetlands").getAsBoolean());
+            HibiscusBiomes.set_has_wisteria_forest(biomes.get("has_wisteria_forest").getAsBoolean());
+            HibiscusBiomes.set_has_redwood_forest(biomes.get("has_redwood_forest").getAsBoolean());
+            HibiscusBiomes.set_has_aspen_forest(biomes.get("has_aspen_forest").getAsBoolean());
+            HibiscusBiomes.set_has_maple(biomes.get("has_maple").getAsBoolean());
+            HibiscusBiomes.set_has_fir(biomes.get("has_fir").getAsBoolean());
+            HibiscusBiomes.set_has_cypress_fields(biomes.get("has_cypress_fields").getAsBoolean());
+            HibiscusBiomes.set_has_lively_dunes(biomes.get("has_lively_dunes").getAsBoolean());
+            HibiscusBiomes.set_has_drylands(biomes.get("has_drylands").getAsBoolean());
+            HibiscusBiomes.set_has_white_cliffs(biomes.get("has_white_cliffs").getAsBoolean());
+
+            terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
+            terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
+            terra_flava_weight = region_weights.get("terra_flava_frequency").getAsInt();
+            terra_laeta_weight = region_weights.get("terra_laeta_frequency").getAsInt();
+
+
          } catch(final IOException e) {
             System.err.println("An error occurred");
          }
-
-      try {
-         root = loader.load();
-      }
-      catch(final ConfigurateException e) {
-         System.err.println("An error occurred while loading this configuration: " + e.getMessage());
-         if(e.getCause() != null) {
-            e.getCause().printStackTrace();
-         }
-         System.exit(1);
-         return;
-      }
-      final ConfigurationNode terra_ferax_frequency_node = root.node("regions", "terra_ferax_frequency");
-      final ConfigurationNode terra_solaris_frequency_node = root.node("regions", "terra_solaris_frequency");
-      final ConfigurationNode terra_flava_frequency_node = root.node("regions", "terra_flava_frequency");
-      final ConfigurationNode terra_laeta_frequency_node = root.node("regions", "terra_laeta_frequency");
-
-      terra_ferax_weight = terra_ferax_frequency_node.getInt(3);
-      terra_solaris_weight = terra_solaris_frequency_node.getInt(3);
-      terra_flava_weight = terra_flava_frequency_node.getInt(1);
-      terra_laeta_weight = terra_laeta_frequency_node.getInt(2);
-
       NatureSpirit.LOGGER.info("terra_ferax_frequency = " + terra_ferax_weight);
       NatureSpirit.LOGGER.info("terra_solaris_frequency = " + terra_solaris_weight);
       NatureSpirit.LOGGER.info("terra_flava_frequency = " + terra_flava_weight);
       NatureSpirit.LOGGER.info("terra_laeta_frequency = " + terra_laeta_weight);
-
-      final ConfigurationNode has_sugi_forest_node = root.node("biomes", "has_sugi_forest");
-      final ConfigurationNode has_eroded_river_node = root.node("biomes", "has_eroded_river");
-      final ConfigurationNode has_marsh_node = root.node("biomes", "has_marsh");
-      final ConfigurationNode has_bamboo_wetlands_node = root.node("biomes", "has_bamboo_wetlands");
-      final ConfigurationNode has_wisteria_forest_node = root.node("biomes", "has_wisteria_forest");
-      final ConfigurationNode has_redwood_forest_node = root.node("biomes", "has_redwood_forest");
-      final ConfigurationNode has_aspen_forest_node = root.node("biomes", "has_aspen_forest");
-      final ConfigurationNode has_maple_node = root.node("biomes", "has_maple");
-      final ConfigurationNode has_fir_node = root.node("biomes", "has_fir");
-      final ConfigurationNode has_cypress_fields_node = root.node("biomes", "has_cypress_fields");
-      final ConfigurationNode has_lively_dunes_node = root.node("biomes", "has_lively_dunes");
-      final ConfigurationNode has_drylands_node = root.node("biomes", "has_drylands");
-      final ConfigurationNode has_white_cliffs_node = root.node("biomes", "has_white_cliffs");
-
-      HibiscusBiomes.set_has_sugi_forest(has_sugi_forest_node.getBoolean(true));
-      HibiscusBiomes.set_has_eroded_river(has_eroded_river_node.getBoolean(true));
-      HibiscusBiomes.set_has_marsh(has_marsh_node.getBoolean(true));
-      HibiscusBiomes.set_has_bamboo_wetlands(has_bamboo_wetlands_node.getBoolean(true));
-      HibiscusBiomes.set_has_wisteria_forest(has_wisteria_forest_node.getBoolean(true));
-      HibiscusBiomes.set_has_redwood_forest(has_redwood_forest_node.getBoolean(true));
-      HibiscusBiomes.set_has_aspen_forest(has_aspen_forest_node.getBoolean(true));
-      HibiscusBiomes.set_has_maple(has_maple_node.getBoolean(true));
-      HibiscusBiomes.set_has_fir(has_fir_node.getBoolean(true));
-      HibiscusBiomes.set_has_cypress_fields(has_cypress_fields_node.getBoolean(true));
-      HibiscusBiomes.set_has_lively_dunes(has_lively_dunes_node.getBoolean(true));
-      HibiscusBiomes.set_has_drylands(has_drylands_node.getBoolean(true));
-      HibiscusBiomes.set_has_white_cliffs(has_white_cliffs_node.getBoolean(true));
-
       NatureSpirit.LOGGER.info("has_sugi_forest = " + HibiscusBiomes.has_sugi_forest);
       NatureSpirit.LOGGER.info("has_eroded_river = " + HibiscusBiomes.has_eroded_river);
       NatureSpirit.LOGGER.info("has_marsh = " + HibiscusBiomes.has_marsh);

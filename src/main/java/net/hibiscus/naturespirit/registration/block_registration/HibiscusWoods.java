@@ -12,8 +12,8 @@ import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
-import static net.hibiscus.naturespirit.NatureSpirit.*;
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.*;
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
+import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.registerSecondaryDoorBlock;
 
 public class HibiscusWoods {
    public static WoodSet REDWOOD = new WoodSet(

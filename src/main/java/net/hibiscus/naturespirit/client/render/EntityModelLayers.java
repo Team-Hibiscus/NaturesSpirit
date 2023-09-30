@@ -1,11 +1,6 @@
 package net.hibiscus.naturespirit.client.render;
 
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
-import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
-import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
-import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 

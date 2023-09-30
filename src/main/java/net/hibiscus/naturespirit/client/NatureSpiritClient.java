@@ -1,16 +1,13 @@
 package net.hibiscus.naturespirit.client;
 
-import com.google.common.collect.ImmutableMap;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.client.render.EntityModelLayers;
 import net.hibiscus.naturespirit.client.render.PizzaBlockEntityRenderer;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
@@ -19,7 +16,6 @@ import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.minecraft.block.Block;
@@ -32,8 +28,6 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
 import static net.hibiscus.naturespirit.NatureSpirit.*;
