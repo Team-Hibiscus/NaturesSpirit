@@ -7,6 +7,7 @@
   "map_color": "light_gray_terracotta",
   "types_to_generate": [
     "arch",
+    "curve",
     "octagonal_column",
     "round_arch",
     "roof",
