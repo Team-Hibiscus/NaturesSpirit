@@ -6,6 +6,7 @@
   "recipes": "stonecutting",
   "map_color": "purple_terracotta",
   "types_to_generate": [
+    "facade",
     "arch",
     "curve",
     "octagonal_column",
