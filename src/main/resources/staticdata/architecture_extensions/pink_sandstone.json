@@ -2,7 +2,7 @@
   "only_if_present": null,
   "name": "pink_sandstone",
   "base_block": "natures_spirit:pink_sandstone",
-  "textures": "all",
+  "textures": "top",
   "recipes": "stonecutting",
   "map_color": "sand",
   "types_to_generate": [
