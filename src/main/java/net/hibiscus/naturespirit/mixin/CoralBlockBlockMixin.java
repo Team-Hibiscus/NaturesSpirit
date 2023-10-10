@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.mixin;
 
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
@@ -35,30 +36,32 @@ import java.util.Optional;
    }
 
    @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-      if(findColumnEnd(world, pos, BlockTags.CORAL_BLOCKS, Direction.DOWN, Blocks.BUBBLE_COLUMN, 10).isPresent()) {
-         for(Direction direction : Direction.Type.HORIZONTAL) {
-            if(random.nextInt(25) == 0) {
-               if(world.getBlockState(pos.offset(direction, 1)).isOf(Blocks.WATER)) {
-                  world.setBlockState(pos.offset(direction, 1),
-                          HibiscusBlocksAndItems.SMALL_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, true),
-                          2
-                  );
-               }
-               else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusBlocksAndItems.SMALL_CALCITE_BUD)) {
-                  world.setBlockState(pos.offset(direction, 1),
-                          HibiscusBlocksAndItems.LARGE_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
-                                  1
-                          )).getFluidState().isOf(Fluids.WATER)),
-                          2
-                  );
-               }
-               else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusBlocksAndItems.LARGE_CALCITE_BUD)) {
-                  world.setBlockState(pos.offset(direction, 1),
-                          HibiscusBlocksAndItems.CALCITE_CLUSTER.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
-                                  1
-                          )).getFluidState().isOf(Fluids.WATER)),
-                          2
-                  );
+      if (HibiscusConfig.calcite_generator) {
+         if(findColumnEnd(world, pos, BlockTags.CORAL_BLOCKS, Direction.DOWN, Blocks.BUBBLE_COLUMN, 10).isPresent()) {
+            for(Direction direction : Direction.Type.HORIZONTAL) {
+               if(random.nextInt(25) == 0) {
+                  if(world.getBlockState(pos.offset(direction, 1)).isOf(Blocks.WATER)) {
+                     world.setBlockState(pos.offset(direction, 1),
+                             HibiscusBlocksAndItems.SMALL_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, true),
+                             2
+                     );
+                  }
+                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusBlocksAndItems.SMALL_CALCITE_BUD)) {
+                     world.setBlockState(pos.offset(direction, 1),
+                             HibiscusBlocksAndItems.LARGE_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
+                                     1
+                             )).getFluidState().isOf(Fluids.WATER)),
+                             2
+                     );
+                  }
+                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusBlocksAndItems.LARGE_CALCITE_BUD)) {
+                     world.setBlockState(pos.offset(direction, 1),
+                             HibiscusBlocksAndItems.CALCITE_CLUSTER.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
+                                     1
+                             )).getFluidState().isOf(Fluids.WATER)),
+                             2
+                     );
+                  }
                }
             }
          }

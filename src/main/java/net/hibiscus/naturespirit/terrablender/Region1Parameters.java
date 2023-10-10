@@ -98,7 +98,7 @@ public class Region1Parameters {
               BiomeKeys.SUNFLOWER_PLAINS, null, null, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, null
       }, {
                       null, null, BiomeKeys.PLAINS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE
-              }, {null, null, null, uncommonBiomeDesert, null}
+              }, {null, null, uncommonBiomeDesert, uncommonBiomeDesert, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
@@ -119,7 +119,7 @@ public class Region1Parameters {
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {null, null, null, null, null}, {
-              specialBiomeErodedBadlands, specialBiomeErodedBadlands, null, null, null
+              specialBiomeErodedBadlands, specialBiomeErodedBadlands, null, null, uncommonBiomeDesert
               }
       };
       this.windsweptBiomes = new RegistryKey[][]{

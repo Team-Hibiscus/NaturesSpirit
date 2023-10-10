@@ -101,6 +101,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
          NbtCompound nbtCompound = itemStack.getOrCreateSubNbt("BlockEntityTag");
          assert nbtCompound != null;
          pizzaBlockEntity.writeNbt(nbtCompound);
+         pizzaBlockEntity.markDirty();
          return itemStack;
       }
       return super.getPickStack(world, pos, state);

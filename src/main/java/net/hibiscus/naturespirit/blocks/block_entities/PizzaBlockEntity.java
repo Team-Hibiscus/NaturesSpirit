@@ -33,6 +33,7 @@ public class PizzaBlockEntity extends BlockEntity {
       nbt.put("topping_types", nbtElement);
       nbt.putInt("toppings_number", this.TOPPING_NUMBER);
       nbt.putInt("pizza_bites", this.BITES);
+      this.markDirty();
 
       super.writeNbt(nbt);
    }
@@ -40,8 +41,9 @@ public class PizzaBlockEntity extends BlockEntity {
    public void readNbt(NbtCompound nbt) {
       NbtList nbt2 = ((NbtList)nbt.get("topping_types"));
       if (nbt2 != null) {
+         TOPPINGS.clear();
          for(int i = 0; i < nbt2.size(); i++) {
-            TOPPINGS.set(i, nbt2.getString(i));
+            TOPPINGS.add(i, nbt2.getString(i));
          }
       }
       this.TOPPING_NUMBER = nbt.getInt("toppings_number");
@@ -59,6 +61,7 @@ public class PizzaBlockEntity extends BlockEntity {
       if (bl) {
          TOPPINGS.add(itemId);
       }
+      this.markDirty();
      return bl;
    }
    @Nullable

@@ -18,6 +18,9 @@ public class HibiscusConfig {
    public static int terra_solaris_weight;
    public static int terra_flava_weight;
    public static int terra_laeta_weight;
+
+   public static boolean calcite_generator;
+   public static boolean deepslate_generator;
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
@@ -26,7 +29,6 @@ public class HibiscusConfig {
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = new JsonObject();
-
                JsonObject biomesObject = new JsonObject();
                        biomesObject.addProperty("has_sugi_forest", true);
                        biomesObject.addProperty("has_eroded_river", true);
@@ -48,6 +50,10 @@ public class HibiscusConfig {
                        regionsObject.addProperty("terra_flava_frequency", 1);
                        regionsObject.addProperty("terra_laeta_frequency", 2);
                jsonObjects.add("region_weights", regionsObject);
+               JsonObject miscObject = new JsonObject();
+                        miscObject.addProperty("deepslate_generator", true);
+                        miscObject.addProperty("calcite_generator", true);
+               jsonObjects.add("misc_features", miscObject);
 
                PrintWriter pw = new PrintWriter(configPath.toString());
                Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -58,6 +64,7 @@ public class HibiscusConfig {
             JsonObject obj = (JsonObject) JsonParser.parseReader(new FileReader(configPath.toString()));
             JsonObject biomes = (JsonObject) obj.get("biomes");
             JsonObject region_weights = (JsonObject) obj.get("region_weights");
+            JsonObject misc_features = (JsonObject) obj.get("misc_features");
 
             HibiscusBiomes.set_has_sugi_forest(biomes.get("has_sugi_forest").getAsBoolean());
             HibiscusBiomes.set_has_eroded_river(biomes.get("has_eroded_river").getAsBoolean());
@@ -77,6 +84,9 @@ public class HibiscusConfig {
             terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
             terra_flava_weight = region_weights.get("terra_flava_frequency").getAsInt();
             terra_laeta_weight = region_weights.get("terra_laeta_frequency").getAsInt();
+
+            calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
+            deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
 
 
          } catch(final IOException e) {
