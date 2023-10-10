@@ -1,0 +1,18 @@
+{
+  "only_if_present": null,
+  "name": "pink_sandstone",
+  "base_block": "natures_spirit:pink_sandstone",
+  "textures": "top",
+  "recipes": "stonecutting",
+  "map_color": "sand",
+  "types_to_generate": [
+    "facade",
+    "arch",
+    "curve",
+    "octagonal_column",
+    "round_arch",
+    "roof",
+    "wall_column",
+    "wall_post"
+  ]
+}

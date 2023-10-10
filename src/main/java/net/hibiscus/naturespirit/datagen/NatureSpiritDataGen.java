@@ -1086,6 +1086,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateArchExTranslations(color + "_kaolin", translationBuilder);
             generateArchExTranslations(color + "_chalk", translationBuilder);
          }
+
+         generateArchExTranslations("pink_sandstone", translationBuilder);
+         generateArchExTranslations("smooth_pink_sandstone", translationBuilder);
       }
    }
 

@@ -6,7 +6,9 @@
   "recipes": "stonecutting",
   "map_color": "green_terracotta",
   "types_to_generate": [
+    "facade",
     "arch",
+    "curve",
     "octagonal_column",
     "round_arch",
     "roof",

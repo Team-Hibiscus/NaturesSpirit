@@ -6,6 +6,7 @@
   "recipes": "stonecutting",
   "map_color": "orange",
   "types_to_generate": [
+    "facade",
     "arch",
     "octagonal_column",
     "round_arch",
