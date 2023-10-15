@@ -672,34 +672,6 @@ public class HibiscusConfiguredFeatures {
               new RandomPatchFeatureConfig(32, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(HibiscusBlocksAndItems.SCORCHED_GRASS))))
       );
 
-
-      register(context,
-              FLOWER_BLOOMING_DUNES,
-              Feature.FLOWER,
-              new RandomPatchFeatureConfig(120,
-                      6,
-                      2,
-                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                              new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
-                                      new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
-                                      0.030833334F,
-                                      List.of(HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocksAndItems.TALL_SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocksAndItems.PURPLE_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocksAndItems.PURPLE_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocksAndItems.YELLOW_WILDFLOWER.getDefaultState(),
-                                              HibiscusBlocksAndItems.TALL_SCORCHED_GRASS.getDefaultState(),
-                                              HibiscusBlocksAndItems.SCORCHED_GRASS.getDefaultState()
-                                      )
-                              ))
-                      )
-              )
-      );
-
       register(context,
               FLOWER_STRATIFIED_DESERT,
               Feature.FLOWER,

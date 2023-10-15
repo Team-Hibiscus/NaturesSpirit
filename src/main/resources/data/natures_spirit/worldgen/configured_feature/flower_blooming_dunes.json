@@ -26,13 +26,10 @@
                 }
               },
               {
-                "Name": "natures_spirit:yellow_wildflower"
+                "Name": "natures_spirit:scorched_grass"
               },
               {
                 "Name": "natures_spirit:purple_wildflower"
-              },
-              {
-                "Name": "natures_spirit:yellow_wildflower"
               },
               {
                 "Name": "natures_spirit:scorched_grass"
@@ -41,10 +38,19 @@
                 "Name": "natures_spirit:yellow_wildflower"
               },
               {
+                "Name": "natures_spirit:scorched_grass"
+              },
+              {
                 "Name": "natures_spirit:purple_wildflower"
               },
               {
+                "Name": "natures_spirit:scorched_grass"
+              },
+              {
                 "Name": "natures_spirit:yellow_wildflower"
+              },
+              {
+                "Name": "natures_spirit:scorched_grass"
               },
               {
                 "Name": "natures_spirit:tall_scorched_grass",
@@ -69,7 +75,7 @@
         }
       ]
     },
-    "tries": 120,
+    "tries": 180,
     "xz_spread": 6,
     "y_spread": 2
   }
