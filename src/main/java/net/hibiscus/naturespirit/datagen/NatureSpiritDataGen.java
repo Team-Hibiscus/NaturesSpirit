@@ -1082,13 +1082,19 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(HibiscusBlocksAndItems.QUARTER_PIZZA, "Quarter of a Pizza");
          translationBuilder.add(HibiscusBlocksAndItems.WHOLE_PIZZA, "Pizza");
 
+         translationBuilder.add("pack.natures_spirit.bushy_leaves_compatibility", "Bushy Leaves Compat");
+         translationBuilder.add("pack.natures_spirit.newworld_compatibility", "Newworld Compat");
+         translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
+         translationBuilder.add("pack.natures_spirit.modified_badlands", "Modified Badlands");
+         translationBuilder.add("pack.natures_spirit.modified_vanilla_trees", "Modified Vanilla Trees");
+
          for (var color : List.of(DYE_COLORS)) {
             generateArchExTranslations(color + "_kaolin", translationBuilder);
             generateArchExTranslations(color + "_chalk", translationBuilder);
          }
-
          generateArchExTranslations("pink_sandstone", translationBuilder);
          generateArchExTranslations("smooth_pink_sandstone", translationBuilder);
+
       }
    }
 

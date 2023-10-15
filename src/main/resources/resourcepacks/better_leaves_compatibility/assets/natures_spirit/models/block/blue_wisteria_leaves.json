@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_leaves_cross_untinted",
+  "textures": {
+    "all": "natures_spirit:block/blue_wisteria_leaves",
+    "bushy_top": "natures_spirit:block/blue_wisteria_leaves_bushy_top",
+    "bushy_bottom": "natures_spirit:block/blue_wisteria_leaves_bushy_bottom"
+  }
+}

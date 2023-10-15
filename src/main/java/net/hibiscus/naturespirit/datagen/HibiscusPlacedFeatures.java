@@ -258,16 +258,6 @@ public class HibiscusPlacedFeatures {
       );
 
       registerKey(context,
-              FLOWER_BLOOMING_DUNES_PLACED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_BLOOMING_DUNES),
-              CountPlacementModifier.of(5),
-              RarityFilterPlacementModifier.of(2),
-              SquarePlacementModifier.of(),
-              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
-              BiomePlacementModifier.of()
-      );
-
-      registerKey(context,
               FLOWER_STRATIFIED_DESERT_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_STRATIFIED_DESERT),
               CountPlacementModifier.of(3),
