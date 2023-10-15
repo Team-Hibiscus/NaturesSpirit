@@ -475,5 +475,10 @@
   "item.natures_spirit.wisteria_boat": "紫藤木船",
   "item.natures_spirit.wisteria_chest_boat": "紫藤木运输船",
   "itemGroup.natures_spirit.natures_spirit_item_group": "自然之灵方块和物品",
+  "pack.natures_spirit.bushy_leaves_compatibility": "Bushy Leaves Compat",
+  "pack.natures_spirit.modified_badlands": "Modified Badlands",
+  "pack.natures_spirit.modified_swamp": "Modified Swamp",
+  "pack.natures_spirit.modified_vanilla_trees": "Modified Vanilla Trees",
+  "pack.natures_spirit.newworld_compatibility": "Newworld Compat",
   "stat.minecraft.eat_pizza_slice": "吃过的披萨"
 }
