@@ -475,10 +475,10 @@
   "item.natures_spirit.wisteria_boat": "Barca Di Glicine",
   "item.natures_spirit.wisteria_chest_boat": "Barca Di Glicine Con Baule",
   "itemGroup.natures_spirit.natures_spirit_item_group": "Nature's Spirit: Blocchi E Oggetti",
-  "pack.natures_spirit.bushy_leaves_compatibility": "Bushy Leaves Compat",
-  "pack.natures_spirit.modified_badlands": "Modified Badlands",
-  "pack.natures_spirit.modified_swamp": "Modified Swamp",
-  "pack.natures_spirit.modified_vanilla_trees": "Modified Vanilla Trees",
-  "pack.natures_spirit.newworld_compatibility": "Newworld Compat",
+  "pack.natures_spirit.bushy_leaves_compatibility": "Compatibilità Con Bushy Leaves",
+  "pack.natures_spirit.modified_badlands": "Mesa Modificata",
+  "pack.natures_spirit.modified_swamp": "Palude Modificata",
+  "pack.natures_spirit.modified_vanilla_trees": "Alberi Normali Modificati",
+  "pack.natures_spirit.newworld_compatibility": "Compatibilità Con Newworld",
   "stat.minecraft.eat_pizza_slice": "Fette Di Pizza Mangiate"
 }
