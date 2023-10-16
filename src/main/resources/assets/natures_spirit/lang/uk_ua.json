@@ -475,10 +475,10 @@
   "item.natures_spirit.wisteria_boat": "Човен із ґліцинії",
   "item.natures_spirit.wisteria_chest_boat": "Човен із ґліцинії зі скринею",
   "itemGroup.natures_spirit.natures_spirit_item_group": "Предмети Nature's Spirit",
-  "pack.natures_spirit.bushy_leaves_compatibility": "Bushy Leaves Compat",
-  "pack.natures_spirit.modified_badlands": "Modified Badlands",
-  "pack.natures_spirit.modified_swamp": "Modified Swamp",
-  "pack.natures_spirit.modified_vanilla_trees": "Modified Vanilla Trees",
-  "pack.natures_spirit.newworld_compatibility": "Newworld Compat",
+  "pack.natures_spirit.bushy_leaves_compatibility": "Сумісність із Bushy Leaves",
+  "pack.natures_spirit.modified_badlands": "Модифіковані безплідні землі",
+  "pack.natures_spirit.modified_swamp": "Модифіковане болото",
+  "pack.natures_spirit.modified_vanilla_trees": "Модифіковані стандартні дерева",
+  "pack.natures_spirit.newworld_compatibility": "Сумісність із Newworld",
   "stat.minecraft.eat_pizza_slice": "Шматків піци з’їдено"
 }
