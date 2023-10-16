@@ -475,10 +475,10 @@
   "item.natures_spirit.wisteria_boat": "Člun z vistárie",
   "item.natures_spirit.wisteria_chest_boat": "Člun z vistárie s truhlou",
   "itemGroup.natures_spirit.natures_spirit_item_group": "Předměty Nature's Spirit",
-  "pack.natures_spirit.bushy_leaves_compatibility": "Bushy Leaves Compat",
-  "pack.natures_spirit.modified_badlands": "Modified Badlands",
-  "pack.natures_spirit.modified_swamp": "Modified Swamp",
-  "pack.natures_spirit.modified_vanilla_trees": "Modified Vanilla Trees",
-  "pack.natures_spirit.newworld_compatibility": "Newworld Compat",
+  "pack.natures_spirit.bushy_leaves_compatibility": "Kompatibilita s Bushy Leaves",
+  "pack.natures_spirit.modified_badlands": "Modifikováná pustina",
+  "pack.natures_spirit.modified_swamp": "Modifikováná bažina",
+  "pack.natures_spirit.modified_vanilla_trees": "Modifikováné běžné stromy",
+  "pack.natures_spirit.newworld_compatibility": "Kompatibilita s Newworld",
   "stat.minecraft.eat_pizza_slice": "Snědeno kousků pizzy"
 }
