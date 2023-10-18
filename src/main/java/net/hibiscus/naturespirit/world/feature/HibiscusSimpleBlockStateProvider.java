@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.util.HibiscusWorldGen;
+import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;

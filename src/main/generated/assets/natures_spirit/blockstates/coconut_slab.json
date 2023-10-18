@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/coconut_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/coconut_planks"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/coconut_slab_top"
+    }
+  }
+}

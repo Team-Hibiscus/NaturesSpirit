@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "natures_spirit:coconut_mosaic_slab",
+    "natures_spirit:sugi_mosaic_slab",
+    "natures_spirit:joshua_mosaic_slab",
     "natures_spirit:pink_sandstone_slab",
     "natures_spirit:smooth_pink_sandstone_slab",
     "natures_spirit:cut_pink_sandstone_slab"

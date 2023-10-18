@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.util;
+package net.hibiscus.naturespirit.blocks;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -10,11 +10,11 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
+import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
@@ -22,10 +22,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.HangingSignItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -119,6 +116,7 @@ public class WoodSet {
    private EntityType<BoatEntity> boatEntityType;
    private EntityType<BoatEntity> chestBoatEntityType;
    private SaplingGenerator saplingGenerator;
+   private boolean hasMosaic;
 
 
 
@@ -137,11 +135,6 @@ public class WoodSet {
          strippedWood = createStrippedWood();
          StrippableBlockRegistry.register(wood, strippedWood);
       }
-      else if (this.getWoodPreset() == WoodPreset.BAMBOO ){
-         mosaic = createMosaic();
-         mosaicStairs = createMosaicStairs();
-         mosaicSlab = createMosaicSlab();
-      }
       if (this.hasDefaultLeaves()){
          leaves = createLeaves();
          RenderLayerHashMap.put(this.getName() + "_leaves", this.getLeaves());
@@ -151,7 +144,7 @@ public class WoodSet {
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves()));
          LeavesHashMap.put(this.getName(), this.getLeaves());
 
-         sapling = this.isDesert() ? createDesertSapling(saplingGenerator) : createSapling(saplingGenerator);
+         sapling = this.isSandy() ? createSandySapling(saplingGenerator) : createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
          RenderLayerHashMap.put(this.getName() + "_sapling", this.getSapling());
          RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getPottedSapling());
@@ -299,6 +292,17 @@ public class WoodSet {
          SaplingHashMap.put("orange_" + this.getName(), new Block[]{this.getOrangeMapleSapling(), this.getPottedOrangeMapleSapling()});
          SaplingHashMap.put("yellow_" + this.getName(), new Block[]{this.getYellowMapleSapling(), this.getPottedYellowMapleSapling()});
       }
+      if (this.hasMosaic()){
+         mosaic = createMosaic();
+         mosaicStairs = createMosaicStairs();
+         mosaicSlab = createMosaicSlab();
+         FlammableBlockRegistry.getDefaultInstance().add(this.getMosaic(), 5, 20);
+         FlammableBlockRegistry.getDefaultInstance().add(this.getMosaicSlab(), 5, 20);
+         FlammableBlockRegistry.getDefaultInstance().add(this.getMosaicStairs(), 5, 20);
+         FuelRegistry.INSTANCE.add(this.getMosaic(), 300);
+         FuelRegistry.INSTANCE.add(this.getMosaicStairs(), 300);
+         FuelRegistry.INSTANCE.add(this.getMosaicSlab(), 150);
+      }
       planks = createPlanks();
       stairs = createStairs();
       slab = createSlab();
@@ -348,7 +352,7 @@ public class WoodSet {
 
 
 
-   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, Block leavesBefore, Block logBefore, Block signBefore, Item boatBefore, Block buttonBefore, Block saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset){
+   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, Block leavesBefore, Block logBefore, Block signBefore, Item boatBefore, Block buttonBefore, Block saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset, boolean hasMosaic){
       this.woodPreset = woodPreset;
       this.name = name;
       this.sideColor = sideColor;
@@ -361,6 +365,7 @@ public class WoodSet {
       this.saplingBefore = saplingBefore;
       this.boatType = boatType;
       this.saplingGenerator = saplingGenerator;
+      this.hasMosaic = hasMosaic;
       registerWood();
       WoodHashMap.put(this.getName(), this);
    }
@@ -726,8 +731,8 @@ public class WoodSet {
    public Block createSapling(SaplingGenerator saplingGenerator) {
       return createBlockWithItem(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
    }
-   public Block createDesertSapling(SaplingGenerator saplingGenerator) {
-      return createBlockWithItem(this.getName() + "_sapling", new DesertSaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+   public Block createSandySapling(SaplingGenerator saplingGenerator) {
+      return createBlockWithItem(this.getName() + "_sapling", new SandySaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
    }
    public Block createPottedSapling(Block sapling) {
       return registerBlock("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
@@ -842,20 +847,23 @@ public class WoodSet {
       }
    }
 
-   public boolean isDesert(){
-      return this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.DESERT;
+   public boolean isSandy(){
+      return this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.SANDY;
    }
    public boolean hasDefaultLeaves(){
-      return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.DESERT;
+      return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.SANDY;
    }
    public boolean hasBark(){
       return this.getWoodPreset() != WoodPreset.JOSHUA && this.getWoodPreset() != WoodPreset.BAMBOO;
+   }
+   public boolean hasMosaic(){
+      return this.hasMosaic;
    }
    public enum WoodPreset {
       DEFAULT,
       MAPLE,
       JOSHUA,
-      DESERT,
+      SANDY,
       WISTERIA,
       WILLOW,
       FANCY,
@@ -866,20 +874,23 @@ public class WoodSet {
    public static void addToBuildingTab(Item proceedingItem, Item logPlacement, Item signPlacement, Item boatPlacement,WoodSet woodset){
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
          entries.addAfter(proceedingItem, woodset.getLog());
-         if (woodset.getWoodPreset() != WoodPreset.BAMBOO && woodset.getWoodPreset() != WoodPreset.JOSHUA){
+         if (!woodset.hasBark()) {
+            entries.addAfter(woodset.getLog(), woodset.getStrippedLog(), woodset.getPlanks());
+         }
+         else {
             entries.addAfter(woodset.getLog(), woodset.getWood());
             entries.addAfter(woodset.getWood(), woodset.getStrippedLog(),woodset.getStrippedWood(), woodset.getPlanks());
-         }
-         else if (woodset.getWoodPreset() == WoodPreset.BAMBOO) {
-            entries.addAfter(woodset.getLog(), woodset.getStrippedLog(),woodset.getMosaic(), woodset.getMosaicStairs(), woodset.getMosaicSlab(), woodset.getPlanks());
-         }
-         else if (woodset.getWoodPreset() == WoodPreset.JOSHUA) {
-            entries.addAfter(woodset.getLog(), woodset.getStrippedLog(), woodset.getPlanks());
          }
          entries.addAfter(woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(),
                  woodset.getFence(), woodset.getFenceGate(),
                  woodset.getDoor(), woodset.getTrapDoor(),
                  woodset.getPressurePlate(), woodset.getButton());
+
+         if (woodset.hasMosaic()){
+            entries.addAfter(woodset.getPlanks(), woodset.getMosaic());
+            entries.addAfter(woodset.getStairs(), woodset.getMosaicStairs());
+            entries.addAfter(woodset.getSlab(), woodset.getMosaicSlab());
+         }
       });
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(logPlacement, woodset.getLog().asItem()));
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.addAfter(signPlacement, woodset.getSignItem(), woodset.getHangingSignItem()));

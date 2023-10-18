@@ -52,7 +52,7 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.List;
 import java.util.OptionalInt;
 
-import static net.hibiscus.naturespirit.util.HibiscusWorldGen.*;
+import static net.hibiscus.naturespirit.world.HibiscusWorldGen.*;
 
 public class HibiscusConfiguredFeatures {
 
@@ -93,6 +93,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE_SPAWN = registerKey("palo_verde_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE = registerKey("coconut_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE_SPAWN = registerKey("coconut_tree_spawn");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH = registerKey("oak_bush");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH = registerKey("spruce_bush");
@@ -418,6 +420,21 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED), 0.325f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED)
+              )
+      );
+
+      register(context, COCONUT_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.COCONUT.getLog()),
+              new CoconutTrunkPlacer(6, 2, 3, UniformIntProvider.create(1, 3), .35F, Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              BlockStateProvider.of(HibiscusWoods.COCONUT.getLeaves()),
+              new CoconutFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+              new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(6))
+      ).ignoreVines().build());
+
+      register(context,
+              COCONUT_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.COCONUT_CHECKED), 0.325f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.COCONUT_CHECKED)
               )
       );
 

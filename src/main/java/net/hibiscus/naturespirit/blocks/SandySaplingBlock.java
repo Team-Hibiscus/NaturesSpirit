@@ -8,8 +8,8 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-public class DesertSaplingBlock extends SaplingBlock {
-   public DesertSaplingBlock(SaplingGenerator generator, Settings settings) {
+public class SandySaplingBlock extends SaplingBlock {
+   public SandySaplingBlock(SaplingGenerator generator, Settings settings) {
       super(generator, settings);
    }
 

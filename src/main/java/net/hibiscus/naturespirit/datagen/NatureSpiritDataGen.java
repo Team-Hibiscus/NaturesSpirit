@@ -13,7 +13,7 @@ import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.util.WoodSet;
+import net.hibiscus.naturespirit.blocks.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -47,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -112,6 +113,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             {
                addDrop(woodSet.getWood());
                addDrop(woodSet.getStrippedWood());
+            }
+            if (woodSet.hasMosaic()) {
+               addDrop(woodSet.getMosaic());
+               addDrop(woodSet.getMosaicStairs());
+               this.slabDrops(woodSet.getMosaicSlab());
             }
             addDrop(woodSet.getLog());
             addDrop(woodSet.getStrippedLog());
@@ -537,6 +543,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                blockStateModelGenerator.registerLog(woodSet.getLog()).log(woodSet.getLog()).wood(woodSet.getWood());
                blockStateModelGenerator.registerLog(woodSet.getStrippedLog()).log(woodSet.getStrippedLog()).wood(woodSet.getStrippedWood());
             }
+            if (woodSet.hasMosaic()) {
+               blockStateModelGenerator.registerSingleton(woodSet.getMosaic(), TexturedModel.CUBE_ALL);
+               createSlab(woodSet.getMosaic(), woodSet.getMosaicSlab(), blockStateModelGenerator);
+               createStairs(woodSet.getMosaic(), woodSet.getMosaicStairs(), blockStateModelGenerator);
+            }
             blockStateModelGenerator.registerSingleton(woodSet.getPlanks(), TexturedModel.CUBE_ALL);
             createSlab(woodSet.getPlanks(), woodSet.getSlab(), blockStateModelGenerator);
             createStairs(woodSet.getPlanks(), woodSet.getStairs(), blockStateModelGenerator);
@@ -555,7 +566,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          for(String i : leaves.keySet()) {
             Block[] saplingType = saplings.get(i);
             Block leavesType = leaves.get(i);
-            blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
+            if (!Objects.equals(i, "coconut")) {
+               blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
+            }
             blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
          }
       }
@@ -1115,6 +1128,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                offerBarkBlockRecipe(consumer, woodSet.getWood(), woodSet.getLog());
                offerBarkBlockRecipe(consumer, woodSet.getStrippedWood(), woodSet.getStrippedLog());
             }
+            if (woodSet.hasMosaic()) {
+               offerMosaicRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaic(), woodSet.getPlanks());
+               createStairsRecipe(woodSet.getMosaicStairs(), Ingredient.ofItems(woodSet.getMosaic()));
+               createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaicSlab(), Ingredient.ofItems(woodSet.getMosaic()));
+            }
             offerHangingSignRecipe(consumer, woodSet.getHangingSign(), woodSet.getStrippedLog());
             offerBoatRecipe(consumer, woodSet.getBoatItem(), woodSet.getPlanks());
             offerChestBoatRecipe(consumer, woodSet.getChestBoatItem(), woodSet.getBoatItem());
@@ -1251,6 +1269,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedLog(), woodSet.getLog());
             if (woodSet.hasBark())
                getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedWood(), woodSet.getWood());
+            if(woodSet.hasMosaic()) {
+               getOrCreateTagBuilder(BlockTags.SLABS).add(woodSet.getMosaicSlab());
+               getOrCreateTagBuilder(BlockTags.STAIRS).add(woodSet.getMosaicStairs());
+               getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(woodSet.getMosaic(), woodSet.getMosaicSlab(), woodSet.getMosaicStairs());
+            }
             getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(new Block[]{woodSet.getLog()});
             getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(woodSet.getBlockLogsTag());
             getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{woodSet.getTrapDoor()});
@@ -1382,6 +1405,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
          getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
+         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(SHIITAKE_MUSHROOM, SHIITAKE_MUSHROOM_BLOCK, DESERT_TURNIP_BLOCK, DESERT_TURNIP_ROOT_BLOCK, DESERT_TURNIP_STEM);
       }
    }
 }

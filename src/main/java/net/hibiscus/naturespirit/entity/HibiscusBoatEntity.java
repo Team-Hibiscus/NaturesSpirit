@@ -126,6 +126,14 @@ public class HibiscusBoatEntity extends BoatEntity {
               () -> HibiscusWoods.PALO_VERDE.getChestBoatItem(),
               () -> HibiscusWoods.PALO_VERDE.getBoatEntityType(),
               () -> HibiscusWoods.PALO_VERDE.getChestBoatEntityType()
+      ),
+      COCONUT(
+              "coconut",
+              () -> HibiscusWoods.COCONUT.getPlanks(),
+              () -> HibiscusWoods.COCONUT.getBoatItem(),
+              () -> HibiscusWoods.COCONUT.getChestBoatItem(),
+              () -> HibiscusWoods.COCONUT.getBoatEntityType(),
+              () -> HibiscusWoods.COCONUT.getChestBoatEntityType()
       );
 
       private final String name;

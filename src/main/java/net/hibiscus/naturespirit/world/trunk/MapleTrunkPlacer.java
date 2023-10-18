@@ -8,7 +8,7 @@ package net.hibiscus.naturespirit.world.trunk;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.util.HibiscusWorldGen;
+import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.dynamic.Codecs;

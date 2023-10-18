@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.util;
+package net.hibiscus.naturespirit.world;
 
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
@@ -28,6 +28,7 @@ public class HibiscusWorldGen {
    public static final TrunkPlacerType <PaloVerdeTrunkPlacer> PALO_VERDE_TRUNK_PLACER = registerTrunkPlacer("palo_verde_trunk_placer", PaloVerdeTrunkPlacer.CODEC);
    public static final TrunkPlacerType <GhafTrunkPlacer> GHAF_TRUNK_PLACER = registerTrunkPlacer("ghaf_trunk_placer", GhafTrunkPlacer.CODEC);
    public static final TrunkPlacerType <MapleTrunkPlacer> MAPLE_TRUNK_PLACER = registerTrunkPlacer("maple_trunk_placer", MapleTrunkPlacer.CODEC);
+   public static final TrunkPlacerType <CoconutTrunkPlacer> COCONUT_TRUNK_PLACER = registerTrunkPlacer("coconut_trunk_placer", CoconutTrunkPlacer.CODEC);
 
 
    public static final TreeDecoratorType <WisteriaVinesTreeDecorator> WISTERIA_VINES_TREE_DECORATOR = registerTreeDecorator("wisteria_vines_tree_decorator",
@@ -42,6 +43,7 @@ public class HibiscusWorldGen {
    public static final FoliagePlacerType <FirFoliagePlacer> FIR_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("fir_foliage_placer", FirFoliagePlacer.CODEC);
    public static final FoliagePlacerType <CypressFoliagePlacer> CYPRESS_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("cypress_foliage_placer", CypressFoliagePlacer.CODEC);
    public static final FoliagePlacerType <MapleFoliagePlacer> MAPLE_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("maple_foliage_placer", MapleFoliagePlacer.CODEC);
+   public static final FoliagePlacerType <CoconutFoliagePlacer> COCONUT_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("coconut_foliage_placer", CoconutFoliagePlacer.CODEC);
 
    public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider",
            HibiscusSimpleBlockStateProvider.CODEC
@@ -86,7 +88,7 @@ public class HibiscusWorldGen {
    }
 
    public static void registerWorldGen() {
-//            BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DESERT), GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.ROOTED_DESERT_TURNIP);
+//            BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SANDY), GenerationStep.Feature.VEGETAL_DECORATION, HibiscusPlacedFeatures.ROOTED_DESERT_TURNIP);
    }
 
 }

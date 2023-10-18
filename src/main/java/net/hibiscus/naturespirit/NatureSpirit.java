@@ -20,7 +20,7 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
-import net.hibiscus.naturespirit.util.HibiscusWorldGen;
+import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.item.Items;

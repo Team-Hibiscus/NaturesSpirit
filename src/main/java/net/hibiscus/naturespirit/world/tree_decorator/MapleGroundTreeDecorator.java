@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.hibiscus.naturespirit.util.HibiscusWorldGen;
+import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;

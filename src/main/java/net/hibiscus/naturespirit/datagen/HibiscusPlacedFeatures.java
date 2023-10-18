@@ -41,6 +41,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> OLIVE_CHECKED = registerKey("olive_checked");
    public static final RegistryKey <PlacedFeature> GHAF_CHECKED = registerKey("ghaf_checked");
    public static final RegistryKey <PlacedFeature> PALO_VERDE_CHECKED = registerKey("palo_verde_checked");
+   public static final RegistryKey <PlacedFeature> COCONUT_CHECKED = registerKey("coconut_checked");
    public static final RegistryKey <PlacedFeature> JOSHUA_CHECKED = registerKey("joshua_checked");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_CHECKED = registerKey("oak_bush_checked");
@@ -129,6 +130,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context, JOSHUA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA.getSapling()));
       registerKey(context, GHAF_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.GHAF_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.GHAF.getSapling()));
       registerKey(context, PALO_VERDE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PALO_VERDE_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.PALO_VERDE.getSapling()));
+      registerKey(context, COCONUT_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.COCONUT_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.COCONUT.getSapling()));
       registerKey(context, FIR_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FIR_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.FIR.getSapling()));
       registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW.getSapling()));
       registerKey(context,

@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.util.WoodSet;
+import net.hibiscus.naturespirit.blocks.WoodSet;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
@@ -28,7 +28,8 @@ public class HibiscusWoods {
            Blocks.CHERRY_SAPLING,
            HibiscusBoatEntity.HibiscusBoat.REDWOOD,
            new RedwoodSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT
+           WoodSet.WoodPreset.DEFAULT,
+           false
    );
    public static WoodSet SUGI = new WoodSet(
            new Identifier(MOD_ID, "sugi"),
@@ -42,7 +43,8 @@ public class HibiscusWoods {
            REDWOOD.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.SUGI,
            new SugiSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT
+           WoodSet.WoodPreset.FANCY,
+           true
    );
    public static Block FRAMED_SUGI_DOOR = registerSecondaryDoorBlock("framed_sugi_door",
            new DoorBlock(FabricBlockSettings.copy(SUGI.getDoor()), SUGI.getBlockSetType()),
@@ -66,7 +68,8 @@ public class HibiscusWoods {
            SUGI.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.WISTERIA,
            new WhiteWisteriaSaplingGenerator(),
-           WoodSet.WoodPreset.WISTERIA
+           WoodSet.WoodPreset.WISTERIA,
+           false
    );
    public static WoodSet FIR = new WoodSet(
            new Identifier(MOD_ID, "fir"),
@@ -80,7 +83,8 @@ public class HibiscusWoods {
            WISTERIA.getPurpleWisteriaSapling(),
            HibiscusBoatEntity.HibiscusBoat.FIR,
            new FirSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT
+           WoodSet.WoodPreset.DEFAULT,
+           false
    );
    public static WoodSet WILLOW = new WoodSet(
            new Identifier(MOD_ID, "willow"),
@@ -94,7 +98,8 @@ public class HibiscusWoods {
            FIR.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.WILLOW,
            new WillowSaplingGenerator(),
-           WoodSet.WoodPreset.WILLOW
+           WoodSet.WoodPreset.WILLOW,
+           false
    );
    public static WoodSet ASPEN = new WoodSet(
            new Identifier(MOD_ID, "aspen"),
@@ -108,7 +113,8 @@ public class HibiscusWoods {
            WILLOW.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.ASPEN,
            new AspenSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT
+           WoodSet.WoodPreset.DEFAULT,
+           false
    );
    public static WoodSet MAPLE = new WoodSet(
            new Identifier(MOD_ID,"maple"),
@@ -122,7 +128,8 @@ public class HibiscusWoods {
            ASPEN.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.MAPLE,
            new RedMapleSaplingGenerator(),
-           WoodSet.WoodPreset.MAPLE
+           WoodSet.WoodPreset.MAPLE,
+           false
    );
    public static WoodSet CYPRESS = new WoodSet(
            new Identifier(MOD_ID, "cypress"),
@@ -136,7 +143,8 @@ public class HibiscusWoods {
            MAPLE.getYellowMapleSapling(),
            HibiscusBoatEntity.HibiscusBoat.CYPRESS,
            new CypressSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT
+           WoodSet.WoodPreset.DEFAULT,
+           false
    );
    public static WoodSet OLIVE = new WoodSet(
            new Identifier(MOD_ID, "olive"),
@@ -150,7 +158,8 @@ public class HibiscusWoods {
            CYPRESS.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.OLIVE,
            new OliveSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT
+           WoodSet.WoodPreset.DEFAULT,
+           false
    );
    public static WoodSet JOSHUA = new WoodSet(
            new Identifier(MOD_ID, "joshua"),
@@ -164,7 +173,8 @@ public class HibiscusWoods {
            OLIVE.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.JOSHUA,
            new JoshuaSaplingGenerator(),
-           WoodSet.WoodPreset.JOSHUA
+           WoodSet.WoodPreset.JOSHUA,
+           true
    );
    public static WoodSet GHAF = new WoodSet(
            new Identifier(MOD_ID, "ghaf"),
@@ -178,7 +188,8 @@ public class HibiscusWoods {
            JOSHUA.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.GHAF,
            new GhafSaplingGenerator(),
-           WoodSet.WoodPreset.DESERT
+           WoodSet.WoodPreset.SANDY,
+           false
    );
    public static WoodSet PALO_VERDE = new WoodSet(
            new Identifier(MOD_ID, "palo_verde"),
@@ -192,7 +203,23 @@ public class HibiscusWoods {
            GHAF.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.PALO_VERDE,
            new PaloVerdeSaplingGenerator(),
-           WoodSet.WoodPreset.DESERT
+           WoodSet.WoodPreset.SANDY,
+           false
+   );
+   public static WoodSet COCONUT = new WoodSet(
+           new Identifier(MOD_ID, "coconut"),
+           MapColor.DULL_PINK,
+           MapColor.BROWN,
+           PALO_VERDE.getLeaves(),
+           PALO_VERDE.getLog(),
+           PALO_VERDE.getHangingSign(),
+           PALO_VERDE.getChestBoatItem(),
+           PALO_VERDE.getButton(),
+           PALO_VERDE.getSapling(),
+           HibiscusBoatEntity.HibiscusBoat.COCONUT,
+           new CoconutSaplingGenerator(),
+           WoodSet.WoodPreset.SANDY,
+           true
    );
    public static void registerWoods() {}
 }
