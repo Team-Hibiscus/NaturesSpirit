@@ -1,12 +1,12 @@
-// 1.20.1	2023-10-18T17:57:58.0025979	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2023-10-22T14:38:53.7657828	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\wisteria_logs.json
 80d1b1053ccfa5394166156cceceba92f79aebb7 data\natures_spirit\tags\blocks\fir_logs.json
 c2f089c2319ebda097e3b06c68a9ef194d283a22 data\minecraft\tags\blocks\logs_that_burn.json
 a66e12fa86b73a21fa50431594832f76f2b12f9d data\minecraft\tags\blocks\ceiling_hanging_signs.json
-d7a09944295298d27338a843c7681b0c67f24aa3 data\natures_spirit\tags\blocks\coconut_logs.json
 8d9df3dcd6ac5dea593264322ae0c680c13746ae data\minecraft\tags\blocks\slabs.json
+d7a09944295298d27338a843c7681b0c67f24aa3 data\natures_spirit\tags\blocks\coconut_logs.json
 44b202473efe15bc1f49784e0c40d91a16608713 data\minecraft\tags\blocks\wooden_buttons.json
 68096e70bf0bbb828f163ead613e49212cd7d4ee data\minecraft\tags\blocks\wooden_slabs.json
 0a70ac6a98e82f530ddeae2d20d5459b36768136 data\minecraft\tags\blocks\wooden_stairs.json

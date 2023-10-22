@@ -37,7 +37,7 @@
                   ]
                 }
               ],
-              "name": "natures_spirit:white_wisteria_leaves"
+              "name": "natures_spirit:white_wisteria_vines"
             },
             {
               "type": "minecraft:item",
@@ -53,7 +53,7 @@
                   "enchantment": "minecraft:fortune"
                 }
               ],
-              "name": "natures_spirit:white_wisteria_leaves"
+              "name": "natures_spirit:white_wisteria_vines"
             }
           ]
         }
