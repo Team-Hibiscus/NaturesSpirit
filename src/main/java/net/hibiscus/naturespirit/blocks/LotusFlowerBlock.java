@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.vehicle.BoatEntity;
@@ -31,7 +31,7 @@ public class LotusFlowerBlock extends PlantBlock {
    }
 
    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-      return new ItemStack(HibiscusBlocksAndItems.LOTUS_FLOWER_ITEM);
+      return new ItemStack(HibiscusMiscBlocks.LOTUS_FLOWER_ITEM);
    }
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -42,6 +42,6 @@ public class LotusFlowerBlock extends PlantBlock {
       FluidState fluidState = world.getFluidState(pos);
       FluidState fluidState2 = world.getFluidState(pos.up());
       return ((fluidState.getFluid() == Fluids.WATER || floor.isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER)) && fluidState2.getFluid() == Fluids.EMPTY) || floor.isOf(
-              HibiscusBlocksAndItems.LOTUS_STEM);
+              HibiscusMiscBlocks.LOTUS_STEM);
    }
 }

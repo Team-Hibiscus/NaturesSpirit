@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-22T14:38:53.7627821	Nature's Spirit/Block Loot Tables
+// 1.20.1	2023-10-22T21:55:15.0042124	Nature's Spirit/Block Loot Tables
 e42296ae5ba4bec951f16ab483c75c6aeccb06a4 data\natures_spirit\loot_tables\blocks\stripped_aspen_wood.json
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 5801f587307f60a4cfe69fd70bdcb5844c9f61f5 data\natures_spirit\loot_tables\blocks\lime_chalk_stairs.json
@@ -25,6 +25,7 @@ f47311ed7cd6fa74e65a488db59c59ff2ee7bc20 data\natures_spirit\loot_tables\blocks\
 b1713cbb5d92b9edf7ff57b667268c5c71c08aab data\natures_spirit\loot_tables\blocks\cypress_button.json
 1666486421ac536d3ad07528bb175636b0664539 data\natures_spirit\loot_tables\blocks\stripped_coconut_log.json
 2633ec42e15fb712764fe879765d6902e79ead5b data\natures_spirit\loot_tables\blocks\white_wisteria_vines.json
+b9593fdabda499064c18c2c042be66522de67d52 data\natures_spirit\loot_tables\blocks\coconut_thatch.json
 6e30ed17647e034205554fa76fd32610cbf3b59e data\natures_spirit\loot_tables\blocks\anemone.json
 62bf772893da62149640068433e9dd7d8569fa5d data\natures_spirit\loot_tables\blocks\cyan_chalk.json
 b9f4f604ab23443731d3ed23d4e65f3aa25dbaba data\natures_spirit\loot_tables\blocks\stripped_maple_log.json
@@ -47,6 +48,7 @@ a3383a44e7941508282f324fd9951ab01750d689 data\natures_spirit\loot_tables\blocks\
 f2400027f1141e985524742a57f64a865776513d data\natures_spirit\loot_tables\blocks\wisteria_trapdoor.json
 2f5d06ae193a33289f9dd691716d661292cf276d data\natures_spirit\loot_tables\blocks\redwood_door.json
 96673b2a38ada90e0397b7675f9dee6402076e01 data\natures_spirit\loot_tables\blocks\olive_planks.json
+5cb5424f11b56e5384a5e814f54fccf012e24220 data\natures_spirit\loot_tables\blocks\coconut_thatch_carpet.json
 bf4f48585d988925b741f8757b0694e44b822791 data\natures_spirit\loot_tables\blocks\orange_kaolin.json
 1fa715d363af49b8b937b795d6aa9e585859ce27 data\natures_spirit\loot_tables\blocks\willow_stairs.json
 3c95b3e5956bee6909db5f222ebe92050015322d data\natures_spirit\loot_tables\blocks\willow_pressure_plate.json
@@ -131,6 +133,7 @@ b4709ca80a89b0698b2af70c7bf0828961327c79 data\natures_spirit\loot_tables\blocks\
 61ea5d6c606f92cd05dda9daf97d1a623ae59632 data\natures_spirit\loot_tables\blocks\red_chalk_stairs.json
 301fb8e3772db2a373aa6bb5bbeb0dcb62503ba9 data\natures_spirit\loot_tables\blocks\redwood_stairs.json
 18d0a788778948f800093b6500c3b107fcc823d2 data\natures_spirit\loot_tables\blocks\coconut_trapdoor.json
+f2d71157d42278a5e573feaaa5afda80028bf7e9 data\natures_spirit\loot_tables\blocks\coconut_thatch_stairs.json
 daa9ca8c694e75789c0200bde5423fe84b5e8981 data\natures_spirit\loot_tables\blocks\cyan_kaolin_stairs.json
 dba99fe8da19c62434fbe24db0a7276225870114 data\natures_spirit\loot_tables\blocks\joshua_mosaic.json
 07af596907bb1667a03502fa17274ebe06c28e6c data\natures_spirit\loot_tables\blocks\aspen_leaves.json

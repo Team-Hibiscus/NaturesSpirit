@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -44,7 +44,7 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
    }
 
    public static boolean isMushroom(BlockPos pos, ServerWorld world) {
-      return world.getBlockState(pos).isOf(HibiscusBlocksAndItems.SHIITAKE_MUSHROOM);
+      return world.getBlockState(pos).isOf(HibiscusMiscBlocks.SHIITAKE_MUSHROOM);
    }
 
    public static boolean isPodzol(BlockPos pos, ServerWorld world) {

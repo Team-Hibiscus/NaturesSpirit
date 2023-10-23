@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world;
 
 import com.google.common.collect.ImmutableList;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -24,17 +24,17 @@ public class NatureSpiritSurfaceRules {
 
    private static final MaterialRules.MaterialRule CALCITE = makeStateRule(Blocks.CALCITE);
 
-   private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(HibiscusBlocksAndItems.SANDY_SOIL);
+   private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(HibiscusMiscBlocks.SANDY_SOIL);
 
    private static final MaterialRules.MaterialRule COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
 
    private static final MaterialRules.MaterialRule WHITE_KAOLIN = makeStateRule(HibiscusColoredBlocks.WHITE_KAOLIN);
 
-   private static final MaterialRules.MaterialRule PINK_SANDSTONE = makeStateRule(HibiscusBlocksAndItems.PINK_SANDSTONE);
+   private static final MaterialRules.MaterialRule PINK_SANDSTONE = makeStateRule(HibiscusMiscBlocks.PINK_SANDSTONE);
 
    private static final MaterialRules.MaterialRule WHITE_CHALK = makeStateRule(HibiscusColoredBlocks.WHITE_CHALK);
 
-   private static final MaterialRules.MaterialRule PINK_SAND = makeStateRule(HibiscusBlocksAndItems.PINK_SAND);
+   private static final MaterialRules.MaterialRule PINK_SAND = makeStateRule(HibiscusMiscBlocks.PINK_SAND);
 
    private static final MaterialRules.MaterialRule TERRACOTTA = makeStateRule(Blocks.TERRACOTTA);
 

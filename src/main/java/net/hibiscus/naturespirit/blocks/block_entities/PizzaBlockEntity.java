@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.blocks.block_entities;
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -22,7 +22,7 @@ public class PizzaBlockEntity extends BlockEntity {
    public int TOPPING_NUMBER = TOPPINGS != null ? TOPPINGS.size() : 0;
    public int BITES = 0;
    public PizzaBlockEntity(BlockPos pos, BlockState state) {
-      super(HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
+      super(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
    }
    @Override
    public void writeNbt(NbtCompound nbt) {

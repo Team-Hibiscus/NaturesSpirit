@@ -346,8 +346,8 @@ public class WoodSet {
       itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(this.getModID(), this.getName() + "_logs"));
       addToBuildingTab(getButtonBefore().asItem(), getLogBefore().asItem(), getSignBefore().asItem(), getBoatBefore(), this);
 
-      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP).register(entries -> entries.add(item));
-      for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
 

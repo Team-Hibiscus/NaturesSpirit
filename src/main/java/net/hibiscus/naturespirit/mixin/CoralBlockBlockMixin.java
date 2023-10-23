@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.mixin;
 
 import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.tag.BlockTags;
@@ -42,21 +42,21 @@ import java.util.Optional;
                if(random.nextInt(25) == 0) {
                   if(world.getBlockState(pos.offset(direction, 1)).isOf(Blocks.WATER)) {
                      world.setBlockState(pos.offset(direction, 1),
-                             HibiscusBlocksAndItems.SMALL_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, true),
+                             HibiscusMiscBlocks.SMALL_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, true),
                              2
                      );
                   }
-                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusBlocksAndItems.SMALL_CALCITE_BUD)) {
+                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusMiscBlocks.SMALL_CALCITE_BUD)) {
                      world.setBlockState(pos.offset(direction, 1),
-                             HibiscusBlocksAndItems.LARGE_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
+                             HibiscusMiscBlocks.LARGE_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
                                      1
                              )).getFluidState().isOf(Fluids.WATER)),
                              2
                      );
                   }
-                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusBlocksAndItems.LARGE_CALCITE_BUD)) {
+                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(HibiscusMiscBlocks.LARGE_CALCITE_BUD)) {
                      world.setBlockState(pos.offset(direction, 1),
-                             HibiscusBlocksAndItems.CALCITE_CLUSTER.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
+                             HibiscusMiscBlocks.CALCITE_CLUSTER.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
                                      1
                              )).getFluidState().isOf(Fluids.WATER)),
                              2

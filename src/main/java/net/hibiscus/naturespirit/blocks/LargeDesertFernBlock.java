@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
@@ -28,7 +28,7 @@ public class LargeDesertFernBlock extends FernBlock {
    }
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      TallPlantBlock tallPlantBlock = (TallPlantBlock) HibiscusBlocksAndItems.TALL_SCORCHED_GRASS;
+      TallPlantBlock tallPlantBlock = (TallPlantBlock) HibiscusMiscBlocks.TALL_SCORCHED_GRASS;
       if(tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
          TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
       }

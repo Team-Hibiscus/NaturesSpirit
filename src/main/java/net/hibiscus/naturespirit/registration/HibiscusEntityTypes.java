@@ -23,7 +23,7 @@ public class HibiscusEntityTypes {
    }
 //   public static <T extends Entity> EntityType<T> registerMobEntityType(String id, FabricEntityTypeBuilder<T> type) {
 //      EntityType<T> entityType = Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, id), type.build());
-//         registerItem(id + "spawn_egg", new SpawnEggItem((EntityType <? extends MobEntity>) entityType, 15771042, 14377823, new FabricItemSettings().maxCount(64)), HibiscusItemGroups.NATURES_SPIRIT_ITEM_GROUP, Items.COW_SPAWN_EGG,
+//         registerItem(id + "spawn_egg", new SpawnEggItem((EntityType <? extends MobEntity>) entityType, 15771042, 14377823, new FabricItemSettings().maxCount(64)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.COW_SPAWN_EGG,
 //                 ItemGroups.SPAWN_EGGS);
 //      return entityType;
 //   }

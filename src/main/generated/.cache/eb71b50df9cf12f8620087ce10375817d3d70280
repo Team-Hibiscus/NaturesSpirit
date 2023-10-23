@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-22T14:38:53.7657828	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2023-10-22T21:55:15.0072165	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\wisteria_logs.json
@@ -42,7 +42,7 @@ b428ef0fcd3107152d20d058e9e9db1476d1a25d data\minecraft\tags\blocks\planks.json
 a1bd493afdc5473b8e7d67a52d4f788aeadb2cf8 data\minecraft\tags\blocks\crops.json
 5641012cca91d38b23ecb4d594937ca90fc1ba50 data\minecraft\tags\blocks\overworld_natural_logs.json
 5093bc1b68074e18e698841ee263d04c65d6c029 data\minecraft\tags\blocks\wooden_doors.json
-bf2d815dabe235a955aeb53c06f4f35208c8d18b data\minecraft\tags\blocks\mineable\hoe.json
+63ca7fce08ba30118114e31046b35ecb9c06d893 data\minecraft\tags\blocks\mineable\hoe.json
 b35f8c2d96080add3107a9e55f1e47b9c04c7d25 data\minecraft\tags\blocks\walls.json
 501e68b41b42da277545ceafc17221b88c7a1379 data\minecraft\tags\blocks\wall_hanging_signs.json
 a9424282abf70eb1b1c63499cbc326fe56e8c53d data\minecraft\tags\blocks\sword_efficient.json

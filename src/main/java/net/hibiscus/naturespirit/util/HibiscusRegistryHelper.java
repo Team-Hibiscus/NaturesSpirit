@@ -14,10 +14,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -66,6 +63,13 @@ public class HibiscusRegistryHelper {
    public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, RegistryKey <ItemGroup> secondaryTab) {
       Block block1 = registerBlock(name, block, tab);
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
+      return block1;
+   }
+
+   public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore) {
+      Block block1 = registerBlock(name, block);
+      registerBlockItem(name, block);
+      ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
       return block1;
    }
 

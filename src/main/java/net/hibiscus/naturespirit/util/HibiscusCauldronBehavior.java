@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.util;
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,7 @@ public interface HibiscusCauldronBehavior {
            player,
            hand,
            stack,
-           HibiscusBlocksAndItems.MILK_CAULDRON.getDefaultState(),
+           HibiscusMiscBlocks.MILK_CAULDRON.getDefaultState(),
            SoundEvents.ITEM_BUCKET_EMPTY
    );
    Map <Item, CauldronBehavior> CHEESE_CAULDRON_BEHAVIOR = createMap();
@@ -30,7 +30,7 @@ public interface HibiscusCauldronBehavior {
            player,
            hand,
            stack,
-           HibiscusBlocksAndItems.CHEESE_CAULDRON.getDefaultState(),
+           HibiscusMiscBlocks.CHEESE_CAULDRON.getDefaultState(),
            SoundEvents.ITEM_BUCKET_EMPTY
    );
 
@@ -57,7 +57,7 @@ public interface HibiscusCauldronBehavior {
                       player,
                       hand,
                       stack,
-                      new ItemStack(HibiscusBlocksAndItems.CHEESE_BUCKET),
+                      new ItemStack(HibiscusMiscBlocks.CHEESE_BUCKET),
                       (statex) -> { return true;},
                       SoundEvents.ITEM_BUCKET_FILL
               )

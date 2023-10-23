@@ -7,12 +7,13 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.items.HibiscusVinegarDispenserBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.HibiscusSounds;
@@ -86,20 +87,21 @@ public class NatureSpirit implements ModInitializer {
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
-      HibiscusWoods.registerWoods();
-      HibiscusBlocksAndItems.registerHibiscusBlocks();
+      HibiscusBlocks.registerWoods();
+      HibiscusBlocks.registerColoredBlocks();
+      HibiscusBlocks.registerMisc();
       HibiscusEvents.registerEvents();
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
       HibiscusSounds.registerSounds();
       HibiscusCauldronBehavior.registerBehavior();
-      BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusBlocksAndItems.VINEGAR_BOTTLE);
+      BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusMiscBlocks.VINEGAR_BOTTLE);
 
-      CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
-      CompostingChanceRegistry.INSTANCE.add(HibiscusBlocksAndItems.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
 
-      DispenserBlock.registerBehavior(HibiscusBlocksAndItems.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
+      DispenserBlock.registerBehavior(HibiscusMiscBlocks.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
 
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          DispenserBlock.registerBehavior(boat.boat(), new HibiscusBoatDispensorBehavior(boat, false));

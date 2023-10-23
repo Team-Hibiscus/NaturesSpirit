@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -53,7 +53,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
 
    protected static ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
       if(player.canConsume(false)) {
-         Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+         Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
          if(optionalPizzaBlockEntity.isPresent()) {
             PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
             player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
@@ -91,11 +91,11 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          int BITE_STATE = pizzaBlockEntity.BITES;
-         Item item = BITE_STATE == 0 ? HibiscusBlocksAndItems.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusBlocksAndItems.HALF_PIZZA : HibiscusBlocksAndItems.QUARTER_PIZZA;
+         Item item = BITE_STATE == 0 ? HibiscusMiscBlocks.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusMiscBlocks.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusMiscBlocks.HALF_PIZZA : HibiscusMiscBlocks.QUARTER_PIZZA;
          ItemStack itemStack = new ItemStack(item);
 
          NbtCompound nbtCompound = itemStack.getOrCreateSubNbt("BlockEntityTag");
@@ -108,7 +108,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          int BITE_STATE = pizzaBlockEntity.BITES;
@@ -118,7 +118,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          ItemStack itemStack = player.getStackInHand(hand);
@@ -165,7 +165,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          int BITE_STATE = pizzaBlockEntity.BITES;

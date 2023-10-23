@@ -15,7 +15,7 @@ import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.minecraft.block.Block;
@@ -45,20 +45,20 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 //              .build().forEach(EntityModelLayerRegistry::registerModelLayer);
 
 
-      BlockEntityRendererFactories.register(HibiscusBlocksAndItems.PIZZA_BLOCK_ENTITY_TYPE, PizzaBlockEntityRenderer::new);
+      BlockEntityRendererFactories.register(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, PizzaBlockEntityRenderer::new);
 
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockState.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? blockPos.down() : blockPos
-      ) : -1, HibiscusBlocksAndItems.CATTAIL);
+      ) : -1, HibiscusMiscBlocks.CATTAIL);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusWoods.SUGI.getLeaves());
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
-      ) : -1, HibiscusBlocksAndItems.LOTUS_STEM);
+      ) : -1, HibiscusMiscBlocks.LOTUS_STEM);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               new BlockPos(blockPos.getX(), -64, blockPos.getZ())
-      ) : -1, HibiscusBlocksAndItems.LOTUS_FLOWER);
+      ) : -1, HibiscusMiscBlocks.LOTUS_FLOWER);
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
 
@@ -70,11 +70,15 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 
 
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.PIZZA_BLOCK, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.LARGE_CALCITE_BUD, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.SMALL_CALCITE_BUD, RenderLayer.getCutout());
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusBlocksAndItems.CALCITE_CLUSTER, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.PIZZA_BLOCK, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.LARGE_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.SMALL_CALCITE_BUD, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.CALCITE_CLUSTER, RenderLayer.getCutout());
          BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), HibiscusRegistryHelper.RenderLayerHashMap.values().toArray(new Block[0]));
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_CARPET, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_SLAB, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_STAIRS, RenderLayer.getCutout());
 
 
 

@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -29,7 +29,7 @@ public class CheeseBlock extends CakeBlock implements FluidDrainable {
             world.syncWorldEvent(2001, pos, Block.getRawIdFromState(state));
          }
 
-         return new ItemStack(HibiscusBlocksAndItems.CHEESE_BUCKET);
+         return new ItemStack(HibiscusMiscBlocks.CHEESE_BUCKET);
       }
       return null;
    }

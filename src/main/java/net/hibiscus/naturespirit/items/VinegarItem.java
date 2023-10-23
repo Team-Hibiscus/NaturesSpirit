@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.TooltipContext;
@@ -48,10 +48,10 @@ public class VinegarItem extends PotionItem {
       BlockState blockState = world.getBlockState(pos);
       PlayerEntity player = context.getPlayer();
       Hand hand = context.getHand();
-      if (player != null && blockState.isOf(Blocks.CALCITE) && player.getStackInHand(hand).isOf(HibiscusBlocksAndItems.VINEGAR_BOTTLE)) {
+      if (player != null && blockState.isOf(Blocks.CALCITE) && player.getStackInHand(hand).isOf(HibiscusMiscBlocks.VINEGAR_BOTTLE)) {
 
          Vec3d vec3d = Vec3d.add(pos, 0.5, 1.01, 0.5).addRandom(world.random, 0.2F);
-         ItemStack itemStack = new ItemStack(HibiscusBlocksAndItems.CHALK_POWDER);
+         ItemStack itemStack = new ItemStack(HibiscusMiscBlocks.CHALK_POWDER);
          itemStack.setCount(world.getRandom().nextBetween(1, 5));
          ItemEntity itemEntity = new ItemEntity(world, vec3d.getX(), vec3d.getY(), vec3d.getZ(), itemStack);
          itemEntity.setToDefaultPickupDelay();

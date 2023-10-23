@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/coconut_thatch_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/coconut_thatch"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/coconut_thatch_slab_top"
+    }
+  }
+}

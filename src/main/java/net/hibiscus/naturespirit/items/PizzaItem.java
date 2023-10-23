@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -30,7 +30,7 @@ public class PizzaItem extends AliasedBlockItem {
       NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockEntityTag");
       NbtCompound nbtCompound2 = pizza.getOrCreateSubNbt("BlockStateTag");
       assert nbtCompound != null;
-      int pizzaSlice = this.asItem() == HibiscusBlocksAndItems.WHOLE_PIZZA ? 0 : this.asItem() == HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == HibiscusBlocksAndItems.HALF_PIZZA ? 2 : 3;
+      int pizzaSlice = this.asItem() == HibiscusMiscBlocks.WHOLE_PIZZA ? 0 : this.asItem() == HibiscusMiscBlocks.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == HibiscusMiscBlocks.HALF_PIZZA ? 2 : 3;
       nbtCompound.putInt("pizza_bites", pizzaSlice);
       nbtCompound2.putInt("pizza_bites", pizzaSlice);
    }
@@ -68,7 +68,7 @@ public class PizzaItem extends AliasedBlockItem {
 
    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
       ItemStack itemStack = super.finishUsing(stack, world, user);
-      Item pizzaSlice = this.asItem() == HibiscusBlocksAndItems.WHOLE_PIZZA ? HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA : this.asItem() == HibiscusBlocksAndItems.THREE_QUARTERS_PIZZA ? HibiscusBlocksAndItems.HALF_PIZZA : this.asItem() == HibiscusBlocksAndItems.HALF_PIZZA ? HibiscusBlocksAndItems.QUARTER_PIZZA : Items.AIR;
+      Item pizzaSlice = this.asItem() == HibiscusMiscBlocks.WHOLE_PIZZA ? HibiscusMiscBlocks.THREE_QUARTERS_PIZZA : this.asItem() == HibiscusMiscBlocks.THREE_QUARTERS_PIZZA ? HibiscusMiscBlocks.HALF_PIZZA : this.asItem() == HibiscusMiscBlocks.HALF_PIZZA ? HibiscusMiscBlocks.QUARTER_PIZZA : Items.AIR;
 
       PlayerEntity holder = (PlayerEntity) user;
       holder.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
