@@ -54,6 +54,8 @@ public class WoodSet {
    private WoodType woodType;
    private Block log;
    private Block strippedLog;
+   private Block bundle;
+   private Block strippedBundle;
    private Block wood;
    private Block strippedWood;
    private Block leaves;
@@ -126,7 +128,11 @@ public class WoodSet {
 
       log = this.getWoodPreset() == WoodPreset.JOSHUA ? createJoshuaLog() : createLog();
       strippedLog = this.getWoodPreset() == WoodPreset.JOSHUA ? createStrippedJoshuaLog() : createStrippedLog();
-      if (this.getWoodPreset() != WoodPreset.JOSHUA) {
+      if (this.getWoodPreset() == WoodPreset.JOSHUA) {
+         bundle = createBundle();
+         strippedBundle = createStrippedBundle();
+         StrippableBlockRegistry.register(bundle, strippedBundle);
+      } else {
          StrippableBlockRegistry.register(log, strippedLog);
       }
 
@@ -333,6 +339,8 @@ public class WoodSet {
 
       FlammableBlockRegistry.getDefaultInstance().add(this.getStrippedLog(), 5, 5);
       FlammableBlockRegistry.getDefaultInstance().add(this.getLog(), 5, 5);
+      FlammableBlockRegistry.getDefaultInstance().add(this.getBundle(), 5, 5);
+      FlammableBlockRegistry.getDefaultInstance().add(this.getStrippedBundle(), 5, 5);
       FlammableBlockRegistry.getDefaultInstance().add(this.getStairs(), 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(this.getSlab(), 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(this.getPlanks(), 5, 20);
@@ -479,6 +487,12 @@ public class WoodSet {
    public Block getStrippedLog() {
       return strippedLog;
    }
+   public Block getBundle() {
+      return bundle;
+   }
+   public Block getStrippedBundle() {
+      return strippedBundle;
+   }
    public Block getWood() {
       return wood;
    }
@@ -612,6 +626,12 @@ public class WoodSet {
    }
    private Block createStrippedLog() {
       return createBlockWithItem("stripped_" + getLogName(), createLogBlock(this.getSideColor(), this.getTopColor()));
+   }
+   private Block createBundle() {
+      return createBlockWithItem( this.getName() + "_bundle", createLogBlock(this.getSideColor(), this.getTopColor()));
+   }
+   private Block createStrippedBundle() {
+      return createBlockWithItem("stripped_" + this.getName() + "_bundle", createLogBlock(this.getSideColor(), this.getTopColor()));
    }
    private Block createJoshuaLog() {
       return createBlockWithItem(getLogName(), new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
@@ -874,7 +894,9 @@ public class WoodSet {
    public static void addToBuildingTab(Item proceedingItem, Item logPlacement, Item signPlacement, Item boatPlacement,WoodSet woodset){
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
          entries.addAfter(proceedingItem, woodset.getLog());
-         if (!woodset.hasBark()) {
+         if(woodset.getWoodPreset() == WoodPreset.JOSHUA) {
+            entries.addAfter(woodset.getLog(), woodset.getBundle(), woodset.getStrippedLog(), woodset.getStrippedBundle(), woodset.getPlanks());
+         } else if (!woodset.hasBark()) {
             entries.addAfter(woodset.getLog(), woodset.getStrippedLog(), woodset.getPlanks());
          }
          else {

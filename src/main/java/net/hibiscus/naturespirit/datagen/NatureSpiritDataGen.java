@@ -119,6 +119,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                addDrop(woodSet.getMosaicStairs());
                this.slabDrops(woodSet.getMosaicSlab());
             }
+            if (woodSet.getWoodPreset() == WoodSet.WoodPreset.JOSHUA) {
+               addDrop(woodSet.getBundle());
+               addDrop(woodSet.getStrippedBundle());
+            }
             addDrop(woodSet.getLog());
             addDrop(woodSet.getStrippedLog());
             addDrop(woodSet.getPlanks());
@@ -542,6 +546,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             if (woodSet.getWoodPreset() == WoodSet.WoodPreset.BAMBOO) {
                blockStateModelGenerator.registerLog(woodSet.getLog()).log(woodSet.getLog());
                blockStateModelGenerator.registerLog(woodSet.getStrippedLog()).log(woodSet.getStrippedLog());
+            } else
+            if (woodSet.getWoodPreset() == WoodSet.WoodPreset.JOSHUA) {
+               blockStateModelGenerator.registerLog(woodSet.getBundle()).log(woodSet.getBundle());
+               blockStateModelGenerator.registerLog(woodSet.getStrippedBundle()).log(woodSet.getStrippedBundle());
             }
             else if (woodSet.hasBark())
             {
@@ -1137,6 +1145,12 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             if (woodSet.hasBark()) {
                offerBarkBlockRecipe(consumer, woodSet.getWood(), woodSet.getLog());
                offerBarkBlockRecipe(consumer, woodSet.getStrippedWood(), woodSet.getStrippedLog());
+            }
+            if (woodSet.getWoodPreset() == WoodSet.WoodPreset.JOSHUA) {
+               offer2x2CompactingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, woodSet.getBundle(), woodSet.getLog());
+               offer2x2CompactingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, woodSet.getStrippedBundle(), woodSet.getStrippedLog());
+               offerShapelessRecipe(consumer, woodSet.getPlanks(), woodSet.getBundle(), "planks", 4);
+               offerShapelessRecipe(consumer, woodSet.getPlanks(), woodSet.getStrippedBundle(), "planks", 4);
             }
             if (woodSet.hasMosaic()) {
                offerMosaicRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaic(), woodSet.getPlanks());

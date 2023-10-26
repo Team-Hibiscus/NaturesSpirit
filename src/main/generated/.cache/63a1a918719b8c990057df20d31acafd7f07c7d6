@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-22T21:55:15.0042124	Nature's Spirit/Block Loot Tables
+// 1.20.1	2023-10-25T22:31:00.3063392	Nature's Spirit/Block Loot Tables
 e42296ae5ba4bec951f16ab483c75c6aeccb06a4 data\natures_spirit\loot_tables\blocks\stripped_aspen_wood.json
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 5801f587307f60a4cfe69fd70bdcb5844c9f61f5 data\natures_spirit\loot_tables\blocks\lime_chalk_stairs.json
@@ -52,6 +52,7 @@ f2400027f1141e985524742a57f64a865776513d data\natures_spirit\loot_tables\blocks\
 bf4f48585d988925b741f8757b0694e44b822791 data\natures_spirit\loot_tables\blocks\orange_kaolin.json
 1fa715d363af49b8b937b795d6aa9e585859ce27 data\natures_spirit\loot_tables\blocks\willow_stairs.json
 3c95b3e5956bee6909db5f222ebe92050015322d data\natures_spirit\loot_tables\blocks\willow_pressure_plate.json
+247f78772ffd150d4642ab799a82eb2ddd608b19 data\natures_spirit\loot_tables\blocks\joshua_bundle.json
 513a174041ffa90c321d42c7e32cd2faf1ca90cb data\natures_spirit\loot_tables\blocks\pink_chalk_stairs.json
 0b85ceba4c1fd755c7282603c19d6ef8ec8cf77b data\natures_spirit\loot_tables\blocks\lime_chalk.json
 cac3dc95b0708fe88a63971d74e3c5e128edcadf data\natures_spirit\loot_tables\blocks\coconut_pressure_plate.json
@@ -171,6 +172,7 @@ d2982cfd4be856598e5962e026eb8af8b5c6ebf9 data\natures_spirit\loot_tables\blocks\
 56ac64cee723fc1dd051b169f199bfd67fa0d13b data\natures_spirit\loot_tables\blocks\coconut_mosaic.json
 29e29f75ecfef7e5c75f2911f2d9a244a31a55b0 data\natures_spirit\loot_tables\blocks\stripped_maple_wood.json
 2f43662fa4b40678caab22699da7c870fe67ca88 data\natures_spirit\loot_tables\blocks\potted_palo_verde_sapling.json
+f56e0aac9c582f06f8e65bbe643f542ac275fdf6 data\natures_spirit\loot_tables\blocks\stripped_joshua_bundle.json
 87150897fa52c6a19397cdd70963daadb5e59457 data\natures_spirit\loot_tables\blocks\gray_chalk_stairs.json
 7da4c710671b1cea8ccf3fbd662eeb7fb48b82e6 data\natures_spirit\loot_tables\blocks\blue_wisteria_vines.json
 7f18b30ab89080881ad256ec142a3e4a1d4fb948 data\natures_spirit\loot_tables\blocks\wisteria_button.json
