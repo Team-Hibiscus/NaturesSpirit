@@ -128,6 +128,35 @@ public class HibiscusMiscBlocks {
            Blocks.FERN,
            0.3f
    );
+   public static final Block TALL_BEACH_GRASS = registerPlantBlock("tall_beach_grass",
+           new TallLargeDesertFernBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.YELLOW)
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Blocks.LARGE_FERN,
+           0.3f
+   );
+
+   public static final Block BEACH_GRASS = registerPlantBlock("beach_grass",
+           new LargeDesertFernBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.YELLOW)
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Blocks.FERN,
+           0.3f
+   );
 
    public static final Block TALL_SEDGE_GRASS = registerPlantBlock("tall_sedge_grass",
            new TallSedgeGrassBlock(FabricBlockSettings

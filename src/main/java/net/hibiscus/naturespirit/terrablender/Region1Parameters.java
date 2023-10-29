@@ -770,8 +770,11 @@ public class Region1Parameters {
       if(temperature == 0) {
          return BiomeKeys.SNOWY_BEACH;
       }
+      else if (temperature == 3 && HibiscusBiomes.has_tropical_shores) {
+         return HibiscusBiomes.TROPICAL_SHORES;
+      }
       else {
-         return temperature == 4 ? (HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.LIVELY_DUNES : BiomeKeys.DESERT) : BiomeKeys.BEACH;
+         return temperature == 4 ? (HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.LIVELY_DUNES : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
       }
    }
 

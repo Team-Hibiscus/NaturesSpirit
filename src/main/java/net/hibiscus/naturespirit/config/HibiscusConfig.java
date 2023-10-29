@@ -8,6 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -28,33 +29,7 @@ public class HibiscusConfig {
 
          try {
             if (configPath.toFile().createNewFile()) {
-               JsonObject jsonObjects = new JsonObject();
-               JsonObject biomesObject = new JsonObject();
-                       biomesObject.addProperty("has_sugi_forest", true);
-                       biomesObject.addProperty("has_eroded_river", true);
-                       biomesObject.addProperty("has_marsh", true);
-                       biomesObject.addProperty("has_bamboo_wetlands", true);
-                       biomesObject.addProperty("has_wisteria_forest", true);
-                       biomesObject.addProperty("has_redwood_forest", true);
-                       biomesObject.addProperty("has_aspen_forest", true);
-                       biomesObject.addProperty("has_maple", true);
-                       biomesObject.addProperty("has_fir", true);
-                       biomesObject.addProperty("has_cypress_fields", true);
-                       biomesObject.addProperty("has_lively_dunes", true);
-                       biomesObject.addProperty("has_drylands", true);
-                       biomesObject.addProperty("has_white_cliffs", true);
-               jsonObjects.add("biomes", biomesObject);
-               JsonObject regionsObject = new JsonObject();
-                       regionsObject.addProperty("terra_ferax_frequency", 3);
-                       regionsObject.addProperty("terra_solaris_frequency", 3);
-                       regionsObject.addProperty("terra_flava_frequency", 1);
-                       regionsObject.addProperty("terra_laeta_frequency", 2);
-               jsonObjects.add("region_weights", regionsObject);
-               JsonObject miscObject = new JsonObject();
-                        miscObject.addProperty("deepslate_generator", true);
-                        miscObject.addProperty("calcite_generator", true);
-               jsonObjects.add("misc_features", miscObject);
-
+               JsonObject jsonObjects = getJsonObject();
                PrintWriter pw = new PrintWriter(configPath.toString());
                Gson gson = new GsonBuilder().setPrettyPrinting().create();
                pw.print(gson.toJson(jsonObjects));
@@ -79,6 +54,7 @@ public class HibiscusConfig {
             HibiscusBiomes.set_has_lively_dunes(biomes.get("has_lively_dunes").getAsBoolean());
             HibiscusBiomes.set_has_drylands(biomes.get("has_drylands").getAsBoolean());
             HibiscusBiomes.set_has_white_cliffs(biomes.get("has_white_cliffs").getAsBoolean());
+            HibiscusBiomes.set_has_tropical_shores(biomes.get("has_tropical_shores").getAsBoolean());
 
             terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
             terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
@@ -109,7 +85,49 @@ public class HibiscusConfig {
       NatureSpirit.LOGGER.info("has_lively_dunes = " + HibiscusBiomes.has_lively_dunes);
       NatureSpirit.LOGGER.info("has_drylands = " + HibiscusBiomes.has_drylands);
       NatureSpirit.LOGGER.info("has_white_cliffs = " + HibiscusBiomes.has_white_cliffs);
+      NatureSpirit.LOGGER.info("has_tropical_shores = " + HibiscusBiomes.has_tropical_shores);
 
       System.out.println("Thanks for viewing your messages");
+   }
+
+   @NotNull private static JsonObject getJsonObject() {
+
+      JsonObject jsonObjects = new JsonObject();
+
+      JsonObject biomesObject = getBiomesObject();
+      jsonObjects.add("biomes", biomesObject);
+
+      JsonObject regionsObject = new JsonObject();
+      regionsObject.addProperty("terra_ferax_frequency", 3);
+      regionsObject.addProperty("terra_solaris_frequency", 3);
+      regionsObject.addProperty("terra_flava_frequency", 1);
+      regionsObject.addProperty("terra_laeta_frequency", 2);
+      jsonObjects.add("region_weights", regionsObject);
+
+      JsonObject miscObject = new JsonObject();
+      miscObject.addProperty("deepslate_generator", true);
+      miscObject.addProperty("calcite_generator", true);
+      jsonObjects.add("misc_features", miscObject);
+
+      return jsonObjects;
+   }
+
+   @NotNull private static JsonObject getBiomesObject() {
+      JsonObject biomesObject = new JsonObject();
+      biomesObject.addProperty("has_sugi_forest", true);
+      biomesObject.addProperty("has_eroded_river", true);
+      biomesObject.addProperty("has_marsh", true);
+      biomesObject.addProperty("has_bamboo_wetlands", true);
+      biomesObject.addProperty("has_wisteria_forest", true);
+      biomesObject.addProperty("has_redwood_forest", true);
+      biomesObject.addProperty("has_aspen_forest", true);
+      biomesObject.addProperty("has_maple", true);
+      biomesObject.addProperty("has_fir", true);
+      biomesObject.addProperty("has_cypress_fields", true);
+      biomesObject.addProperty("has_lively_dunes", true);
+      biomesObject.addProperty("has_drylands", true);
+      biomesObject.addProperty("has_white_cliffs", true);
+      biomesObject.addProperty("has_tropical_shores", true);
+      return biomesObject;
    }
 }

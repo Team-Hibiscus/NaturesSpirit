@@ -929,8 +929,11 @@ public class Region5Parameters {
       if(temperature == 0) {
          return BiomeKeys.SNOWY_BEACH;
       }
+      else if (temperature == 3 && humidity > 2 && HibiscusBiomes.has_tropical_shores) {
+         return HibiscusBiomes.TROPICAL_SHORES;
+      }
       else {
-         return temperature == 4 ? HibiscusBiomes.DRYLANDS : BiomeKeys.BEACH;
+         return temperature == 4 ? (HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
       }
    }
 

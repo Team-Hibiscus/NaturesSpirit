@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
+	"ambientocclusion": false,
 	"textures": {
 		"0": "natures_spirit:block/coconut",
 		"1": "natures_spirit:block/coconut_bottom",
@@ -36,8 +37,10 @@
 			}
 		},
 		{
-			"from": [3, 8, 8],
-			"to": [13, 20, 8],
+			"from": [-5, 6, 11.3],
+			"to": [5, 18, 11.3],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [0, 0, 0]},
 			"faces": {
 				"north": {"uv": [3, 2, 13, 14], "texture": "#3"},
 				"east": {"uv": [0, 0, 0, 8], "texture": "#3"},
@@ -48,8 +51,10 @@
 			}
 		},
 		{
-			"from": [8, 8, 3],
-			"to": [8, 20, 13],
+			"from": [0, 6, 6.3],
+			"to": [0, 18, 16.3],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [0, 0, 0]},
 			"faces": {
 				"north": {"uv": [0, 0, 0, 8], "texture": "#3"},
 				"east": {"uv": [3, 2, 13, 14], "texture": "#3"},

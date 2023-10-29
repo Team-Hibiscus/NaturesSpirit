@@ -60,7 +60,7 @@ public class HibiscusRegistryHelper {
       return registerBlock(name, block);
    }
 
-   public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, RegistryKey <ItemGroup> secondaryTab) {
+   public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab) {
       Block block1 = registerBlock(name, block, tab);
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
       return block1;
@@ -80,8 +80,8 @@ public class HibiscusRegistryHelper {
       return block1;
    }
 
-   public static Block registerPlantBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, float compost) {
-      Block Plant = registerBlock(name, block, tab, blockBefore, ItemGroups.NATURAL);
+   public static Block registerPlantBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, float compost) {
+      Block Plant = registerBlock(name, block, tab, itemBefore, ItemGroups.NATURAL);
       RenderLayerHashMap.put(name, block);
       CompostingChanceRegistry.INSTANCE.add(block, compost);
       return Plant;
@@ -118,12 +118,12 @@ public class HibiscusRegistryHelper {
    }
 
 
-   public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab, Item itemBefore, RegistryKey <ItemGroup> secondaryTab) {
+   public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item));
       return registerItem(name, item, tab);
    }
 
-   public static Item registerPlantItem(String name, Item item, RegistryKey <ItemGroup> tab, Item itemBefore, RegistryKey <ItemGroup> secondaryTab, float compost) {
+   public static Item registerPlantItem(String name, Item item, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab, float compost) {
       CompostingChanceRegistry.INSTANCE.add(item, compost);
       return registerItem(name, item, tab, itemBefore, secondaryTab);
    }

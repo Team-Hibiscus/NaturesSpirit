@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "natures_spirit:block/wall_coconut"
+    },
+    "facing=up": {
+      "model": "natures_spirit:block/coconut"
+    },
+    "facing=down": {
+      "model": "natures_spirit:block/ceiling_coconut"
+    },
+    "facing=south": {
+      "model": "natures_spirit:block/wall_coconut",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "natures_spirit:block/wall_coconut",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "natures_spirit:block/wall_coconut",
+      "y": -90
+    }
+  }
+}

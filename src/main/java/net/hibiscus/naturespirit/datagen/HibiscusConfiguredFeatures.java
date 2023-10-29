@@ -10,6 +10,7 @@ import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.hibiscus.naturespirit.world.feature.TurnipRootFeatureConfig;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
+import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.trunk.*;
@@ -428,7 +429,7 @@ public class HibiscusConfiguredFeatures {
               BlockStateProvider.of(HibiscusWoods.COCONUT.getLeaves()),
               new CoconutFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(6))
-      ).ignoreVines().build());
+      ).ignoreVines().decorators(List.of(new CoconutTreeDecorator(1.0F))).build());
 
       register(context,
               COCONUT_TREE_SPAWN,

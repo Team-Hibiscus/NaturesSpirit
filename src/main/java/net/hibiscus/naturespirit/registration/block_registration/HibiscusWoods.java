@@ -1,7 +1,12 @@
 package net.hibiscus.naturespirit.registration.block_registration;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.hibiscus.naturespirit.blocks.CoconutBlock;
+import net.hibiscus.naturespirit.blocks.SproutingCoconutBlock;
+import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
+import net.hibiscus.naturespirit.items.CoconutHalfItem;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.blocks.WoodSet;
@@ -9,13 +14,15 @@ import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.registerBlock;
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.registerSecondaryDoorBlock;
+import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.*;
 
 public class HibiscusWoods {
    public static WoodSet REDWOOD = new WoodSet(
@@ -220,7 +227,7 @@ public class HibiscusWoods {
            PALO_VERDE.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.COCONUT,
            new CoconutSaplingGenerator(),
-           WoodSet.WoodPreset.SANDY,
+           WoodSet.WoodPreset.NO_SAPLING,
            true
    );
 
@@ -234,7 +241,48 @@ public class HibiscusWoods {
    public static final Block COCONUT_THATCH_CARPET = registerBlock("coconut_thatch_carpet",
            new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
+   public static Block YOUNG_COCONUT_BLOCK = registerPlantBlock("young_coconut", new YoungCoconutBlock(
+           FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, Items.SWEET_BERRIES, 0.2F);
+   public static Block COCONUT_BLOCK = registerPlantBlock("coconut", new CoconutBlock(
+           FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, Items.SWEET_BERRIES, 0.2F);
+   public static Block COCONUT_SPROUT = registerPlantBlock("coconut_sprout", new SproutingCoconutBlock(
+           new CoconutSaplingGenerator(),
+           FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
+   ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, PALO_VERDE.getSapling(), 0.2F);
+   public static final FoodComponent COCONUT_COMPONENT = (new FoodComponent.Builder()).hunger(6).saturationModifier(0.6F).build();
 
+   public static final FoodComponent YOUNG_COCONUT_COMPONENT = (new FoodComponent.Builder()).hunger(4).saturationModifier(0.5F).build();
+
+   public static final Item COCONUT_SHELL = registerPlantItem("coconut_shell",
+           new Item(new FabricItemSettings()),
+           HibiscusItemGroups.NS_WOOD_ITEM_GROUP,
+           Items.BOWL,
+           ItemGroups.INGREDIENTS,
+           0.1F
+   );
+   public static final Item YOUNG_COCONUT_SHELL = registerPlantItem("young_coconut_shell",
+           new Item(new FabricItemSettings()),
+           HibiscusItemGroups.NS_WOOD_ITEM_GROUP,
+           COCONUT_SHELL,
+           ItemGroups.INGREDIENTS,
+           0.1F
+   );
+   public static final Item COCONUT_HALF = registerPlantItem("coconut_half",
+           new CoconutHalfItem(new FabricItemSettings().food(COCONUT_COMPONENT), COCONUT_SHELL),
+           HibiscusItemGroups.NS_WOOD_ITEM_GROUP,
+           Items.BEETROOT,
+           ItemGroups.FOOD_AND_DRINK,
+           0.1F
+   );
+   public static final Item YOUNG_COCONUT_HALF = registerPlantItem("young_coconut_half",
+           new CoconutHalfItem(new FabricItemSettings().food(YOUNG_COCONUT_COMPONENT), YOUNG_COCONUT_SHELL),
+           HibiscusItemGroups.NS_WOOD_ITEM_GROUP,
+           COCONUT_HALF,
+           ItemGroups.FOOD_AND_DRINK,
+           0.1F
+   );
 
    public static void registerWoods() {
       HibiscusMiscBlocks.registerMiscBlocks();

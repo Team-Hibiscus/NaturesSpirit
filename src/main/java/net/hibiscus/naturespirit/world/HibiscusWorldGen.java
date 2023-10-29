@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
+import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.trunk.*;
@@ -35,6 +36,7 @@ public class HibiscusWorldGen {
            WisteriaVinesTreeDecorator.CODEC
    );
    public static final TreeDecoratorType <MapleGroundTreeDecorator> MAPLE_GROUND_TREE_DECORATOR = registerTreeDecorator("maple_ground_tree_decorator", MapleGroundTreeDecorator.CODEC);
+   public static final TreeDecoratorType <CoconutTreeDecorator> COCONUT_TREE_DECORATOR = registerTreeDecorator("coconut_tree_decorator", CoconutTreeDecorator.CODEC);
 
 
    public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("wisteria_foliage_placer", WisteriaFoliagePlacer.CODEC);
@@ -75,6 +77,10 @@ public class HibiscusWorldGen {
    public static final Feature <DefaultFeatureConfig> LOTUS_PLANT_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "lotus_plant_feature"),
            new LotusPlantFeature(DefaultFeatureConfig.CODEC)
+   );
+   public static final Feature <RandomPatchFeatureConfig> LEVELED_RANDOM_PATCH_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "leveled_random_patch_feature"),
+           new LeveledRandomPatch(RandomPatchFeatureConfig.CODEC)
    );
 
    private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, Codec <P> codec) {

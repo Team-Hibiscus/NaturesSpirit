@@ -21,6 +21,8 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule GRASS = makeStateRule(Blocks.GRASS_BLOCK);
 
    private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
+   private static final MaterialRules.MaterialRule SAND = makeStateRule(Blocks.SAND);
+   private static final MaterialRules.MaterialRule SANDSTONE = makeStateRule(Blocks.SANDSTONE);
 
    private static final MaterialRules.MaterialRule CALCITE = makeStateRule(Blocks.CALCITE);
 
@@ -35,8 +37,6 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule WHITE_CHALK = makeStateRule(HibiscusColoredBlocks.WHITE_CHALK);
 
    private static final MaterialRules.MaterialRule PINK_SAND = makeStateRule(HibiscusMiscBlocks.PINK_SAND);
-
-   private static final MaterialRules.MaterialRule TERRACOTTA = makeStateRule(Blocks.TERRACOTTA);
 
    private static final MaterialRules.MaterialRule YELLOW_KAOLIN = makeStateRule(HibiscusColoredBlocks.YELLOW_KAOLIN);
 
@@ -55,22 +55,15 @@ public class NatureSpiritSurfaceRules {
 
       MaterialRules.MaterialCondition materialCondition12 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(76), 1);
       MaterialRules.MaterialCondition materialCondition13 = MaterialRules.waterWithStoneDepth(-6, -1);
-      MaterialRules.MaterialCondition materialCondition14 = stoneDepth(0,
-              true,
-              40,
-              VerticalSurfaceType.FLOOR
-      );
 
-      MaterialRules.MaterialCondition materialCondition15 = MaterialRules.water(0, 0);
-
-      MaterialRules.MaterialRule materialRule = MaterialRules.sequence(MaterialRules.condition(materialCondition15, GRASS), DIRT);
       MaterialRules.MaterialRule materialRule2 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, SANDY_SOIL), SANDY_SOIL);
-      MaterialRules.MaterialRule materialRule5 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), SANDY_SOIL);
-      MaterialRules.MaterialRule materialRule4 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), PINK_SAND);
       MaterialRules.MaterialRule materialRule3 = MaterialRules.sequence(
               MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, STONE),
               GRAVEL
       );
+      MaterialRules.MaterialRule materialRule4 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), PINK_SAND);
+      MaterialRules.MaterialRule materialRule5 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), SANDY_SOIL);
+      MaterialRules.MaterialRule beachSandRule = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, SANDSTONE), SAND);
 
 
 
@@ -130,6 +123,12 @@ public class NatureSpiritSurfaceRules {
                       MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(materialCondition11, materialRule5))
               )
       );
+      MaterialRules.MaterialRule materialRule20 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.TROPICAL_SHORES),
+              MaterialRules.condition(materialCondition13,
+                      MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, beachSandRule), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDSTONE)
+                      )
+              )
+      );
 
 
       ImmutableList.Builder <MaterialRules.MaterialRule> builder = ImmutableList.builder();
@@ -138,13 +137,15 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialRule materialRule15 = MaterialRules.condition(MaterialRules.surface(), materialRule11);
       MaterialRules.MaterialRule materialRule16 = MaterialRules.condition(MaterialRules.surface(), materialRule12);
       MaterialRules.MaterialRule materialRule18 = MaterialRules.condition(MaterialRules.surface(), materialRule17);
-      MaterialRules.MaterialRule materialRule20 = MaterialRules.condition(MaterialRules.surface(), materialRule19);
+      MaterialRules.MaterialRule materialRule21 = MaterialRules.condition(MaterialRules.surface(), materialRule19);
+      MaterialRules.MaterialRule materialRule22 = MaterialRules.condition(MaterialRules.surface(), materialRule20);
       builder.add(materialRule13);
       builder.add(materialRule14);
       builder.add(materialRule15);
       builder.add(materialRule16);
       builder.add(materialRule18);
-      builder.add(materialRule20);
+      builder.add(materialRule21);
+      builder.add(materialRule22);
       return MaterialRules.sequence(builder
               .build()
               .toArray(MaterialRules.MaterialRule[]::new));

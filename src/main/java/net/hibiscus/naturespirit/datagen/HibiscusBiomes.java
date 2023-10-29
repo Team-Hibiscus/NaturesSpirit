@@ -38,6 +38,7 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> WOODED_DRYLANDS = register("wooded_drylands");
    public static final RegistryKey <Biome> WHITE_CLIFFS = register("white_cliffs");
    public static final RegistryKey <Biome> PRAIRIE = register("prairie");
+   public static final RegistryKey <Biome> TROPICAL_SHORES = register("tropical_shores");
 
 
    public static boolean has_sugi_forest;
@@ -53,6 +54,7 @@ public class HibiscusBiomes {
    public static boolean has_lively_dunes;
    public static boolean has_drylands;
    public static boolean has_white_cliffs;
+   public static boolean has_tropical_shores;
 
    public static void set_has_sugi_forest(Boolean bl) {
       has_sugi_forest = bl;
@@ -92,6 +94,9 @@ public class HibiscusBiomes {
    };
    public static void set_has_white_cliffs(Boolean bl) {
       has_white_cliffs = bl;
+   };
+   public static void set_has_tropical_shores(Boolean bl) {
+      has_tropical_shores = bl;
    };
 
    private static RegistryKey <Biome> register(String name) {

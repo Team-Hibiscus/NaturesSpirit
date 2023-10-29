@@ -22,7 +22,7 @@
 			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
 			"faces": {
 				"east": {"uv": [8, 4, 0, 16], "texture": "#cross"},
-				"west": {"uv": [0, 4, 8, 16], "texture": "#cross", "cullface": "west"}
+				"west": {"uv": [0, 4, 8, 16], "texture": "#cross"}
 			}
 		},
 		{

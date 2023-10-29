@@ -45,20 +45,20 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
          if(l == - 1) {
             mutable.set(blockPos, 0, l, 0);
 
-            placeFoliageBlock2(world, placer, random, config, mutable.add(2, 0, 0));
-            placeFoliageBlock2(world, placer, random, config, mutable.add(0, 0, 2));
-            placeFoliageBlock2(world, placer, random, config, mutable.add(0, 0, -2));
-            placeFoliageBlock2(world, placer, random, config, mutable.add(-2, 0, 0));
+            placeFoliageBlock(world, placer, random, config, mutable.add(2, 0, 0));
+            placeFoliageBlock(world, placer, random, config, mutable.add(0, 0, 2));
+            placeFoliageBlock(world, placer, random, config, mutable.add(0, 0, -2));
+            placeFoliageBlock(world, placer, random, config, mutable.add(-2, 0, 0));
 
             placeFoliageBlock(world, placer, random, config, mutable.add(1, 0, 0));
             placeFoliageBlock(world, placer, random, config, mutable.add(0, 0, 1));
             placeFoliageBlock(world, placer, random, config, mutable.add(0, 0, -1));
             placeFoliageBlock(world, placer, random, config, mutable.add(-1, 0, 0));
 
-            placeFoliageBlock(world, placer, random, config, mutable.add(2, 0, 2));
-            placeFoliageBlock(world, placer, random, config, mutable.add(-2, 0, 2));
-            placeFoliageBlock(world, placer, random, config, mutable.add(-2, 0, -2));
-            placeFoliageBlock(world, placer, random, config, mutable.add(2, 0, -2));
+            placeFoliageBlock2(world, placer, random, config, mutable.add(2, 0, 2));
+            placeFoliageBlock2(world, placer, random, config, mutable.add(-2, 0, 2));
+            placeFoliageBlock2(world, placer, random, config, mutable.add(-2, 0, -2));
+            placeFoliageBlock2(world, placer, random, config, mutable.add(2, 0, -2));
          } else
          if(l == 0) {
             mutable.set(blockPos, 0, l, 0);
@@ -116,12 +116,10 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
       } else {
          BlockState blockState = config.foliageProvider.get(random, pos);
          if (blockState.contains(Properties.WATERLOGGED)) {
-            blockState = (BlockState)blockState.with(Properties.WATERLOGGED, world.testFluidState(pos, (fluidState) -> {
-               return fluidState.isEqualAndStill(Fluids.WATER);
-            }));
+            blockState = blockState.with(Properties.WATERLOGGED, world.testFluidState(pos, (fluidState) -> fluidState.isEqualAndStill(Fluids.WATER)));
          }
          if (blockState.contains(LeavesBlock.DISTANCE)) {
-            blockState = (BlockState)blockState.with(LeavesBlock.DISTANCE, 5);
+            blockState = blockState.with(LeavesBlock.DISTANCE, 5);
          }
 
          placer.placeBlock(pos, blockState);

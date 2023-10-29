@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
+	"ambientocclusion": false,
 	"textures": {
 		"0": "natures_spirit:block/coconut",
 		"1": "natures_spirit:block/coconut_top",
