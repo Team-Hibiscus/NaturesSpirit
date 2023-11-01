@@ -6,7 +6,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.item.ItemGroups;
 
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.registerBlock;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerBlock;
 
 public class HibiscusColoredBlocks {
 

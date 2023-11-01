@@ -3,6 +3,8 @@ package net.hibiscus.naturespirit.registration.block_registration;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
@@ -12,7 +14,8 @@ import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.items.VinegarItem;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.WoodSet;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.Instrument;
@@ -21,8 +24,10 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.*;
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
 public class HibiscusMiscBlocks {
    public static final Block SANDY_SOIL = registerBlock("sandy_soil",
@@ -599,10 +604,64 @@ public class HibiscusMiscBlocks {
            LARGE_CALCITE_BUD,
            ItemGroups.NATURAL
    );
+   public static BlockSetType PAPER_BLOCK_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier(MOD_ID, "paper"));
+   public static WoodType PAPER_WOOD_TYPE = new WoodTypeBuilder().register(new Identifier(MOD_ID, "paper"), PAPER_BLOCK_SET);
+
+   public static Block PAPER_BLOCK = registerBlock("paper_block",
+           new Block(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.WARPED_BUTTON
+   );
+   public static Block PAPER_DOOR = registerDoorBlock("paper_door",
+           new DoorBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor()), PAPER_BLOCK_SET),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           PAPER_BLOCK
+   );
+   public static Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(
+           FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
+           PAPER_BLOCK_SET
+   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_DOOR);
+   public static Block FRAMED_PAPER_BLOCK = registerBlock("framed_paper_block",
+           new Block(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           PAPER_TRAPDOOR
+   );
+   public static Block FRAMED_PAPER_DOOR = registerDoorBlock("framed_paper_door",
+           new DoorBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor()), PAPER_BLOCK_SET),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           FRAMED_PAPER_BLOCK
+   );
+   public static Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(
+           FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
+           PAPER_BLOCK_SET
+   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, FRAMED_PAPER_DOOR);
+   public static Block BLOOMING_PAPER_BLOCK = registerBlock("blooming_paper_block",
+           new GlazedTerracottaBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           FRAMED_PAPER_TRAPDOOR
+   );
+   public static Block BLOOMING_PAPER_DOOR = registerDoorBlock("blooming_paper_door",
+           new DoorBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor()), PAPER_BLOCK_SET),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           BLOOMING_PAPER_BLOCK
+   );
+   public static Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(
+           FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
+           PAPER_BLOCK_SET
+   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLOOMING_PAPER_DOOR);
+
+
+   public static Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()), PAPER_WOOD_TYPE));
+   public static Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()).dropsLike(PAPER_SIGN), PAPER_WOOD_TYPE));
+   public static Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()), PAPER_WOOD_TYPE));
+   public static Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN), PAPER_WOOD_TYPE));
+   public static Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new FabricItemSettings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
+   public static Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
+
 
    public static void registerMiscBlocks() {
       HibiscusColoredBlocks.registerColoredBlocks();
-      NatureSpirit.LOGGER.debug("Registering ModBlocks for " + NatureSpirit.MOD_ID);
+      NatureSpirit.LOGGER.debug("Registering ModBlocks for " + MOD_ID);
       FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.COCONUT_THATCH, 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.COCONUT_THATCH_SLAB, 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.COCONUT_THATCH_STAIRS, 5, 20);

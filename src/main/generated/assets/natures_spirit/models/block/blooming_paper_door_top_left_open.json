@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "natures_spirit:block/blooming_paper_door_bottom",
+    "top": "natures_spirit:block/blooming_paper_door_top"
+  }
+}

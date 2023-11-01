@@ -26,7 +26,7 @@ public class HibiscusItemGroups {
       );
       build(
               NS_WOOD_ITEM_GROUP,
-              FabricItemGroup.builder().displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".wood_item_group")).icon(() -> new ItemStack(HibiscusWoods.FRAMED_SUGI_DOOR)).build()
+              FabricItemGroup.builder().displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".wood_item_group")).icon(() -> new ItemStack(HibiscusMiscBlocks.FRAMED_PAPER_DOOR)).build()
       );
    }
 

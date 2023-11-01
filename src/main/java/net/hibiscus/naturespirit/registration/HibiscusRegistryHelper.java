@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.util;
+package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -6,10 +6,10 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.blocks.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HibiscusRegistryHelper {
@@ -73,12 +74,13 @@ public class HibiscusRegistryHelper {
       return block1;
    }
 
-   public static Block registerSecondaryDoorBlock(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore) {
+   public static Block registerDoorBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore) {
       Block block1 = Registry.register(Registries.BLOCK, new Identifier(NatureSpirit.MOD_ID, name), block);
       RenderLayerHashMap.put(name, block1);
-      registerBlockItem(name, block, tab, blockBefore, ItemGroups.BUILDING_BLOCKS);
+      registerBlockItem(name, block, tab, itemBefore, ItemGroups.BUILDING_BLOCKS);
       return block1;
    }
+
 
    public static Block registerPlantBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, float compost) {
       Block Plant = registerBlock(name, block, tab, itemBefore, ItemGroups.NATURAL);
@@ -100,10 +102,10 @@ public class HibiscusRegistryHelper {
       registerItem(name, new BlockItem(block, new FabricItemSettings()));
    }
 
-   public static void registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab, Block blockBefore, RegistryKey <ItemGroup> secondaryTab) {
+   public static void registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
       Item item = registerItem(name, new BlockItem(block, new FabricItemSettings()));
-      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, item.asItem()));
-      ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(blockBefore, item.asItem()));
+      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
+      ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
    }
 
    public static Item registerItem(String name, Item item) {

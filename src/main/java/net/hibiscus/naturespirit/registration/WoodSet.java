@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.blocks;
+package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -10,16 +10,15 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
@@ -33,7 +32,7 @@ import net.minecraft.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.*;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
 public class WoodSet {
 

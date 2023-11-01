@@ -14,6 +14,8 @@
     "natures_spirit:joshua_door",
     "natures_spirit:ghaf_door",
     "natures_spirit:maple_door",
-    "natures_spirit:framed_sugi_door"
+    "natures_spirit:paper_door",
+    "natures_spirit:framed_paper_door",
+    "natures_spirit:blooming_paper_door"
   ]
 }

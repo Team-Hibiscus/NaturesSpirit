@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.hibiscus.naturespirit.client.render.EntityModelLayers;
 import net.hibiscus.naturespirit.client.render.PizzaBlockEntityRenderer;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
@@ -17,17 +18,20 @@ import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.WoodType;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
+import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.util.math.BlockPos;
 
 import static net.hibiscus.naturespirit.NatureSpirit.*;
@@ -79,6 +83,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_SLAB, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_STAIRS, RenderLayer.getCutout());
+
 
 
 

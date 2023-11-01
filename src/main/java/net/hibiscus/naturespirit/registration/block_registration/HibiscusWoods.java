@@ -8,8 +8,8 @@ import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.CoconutHalfItem;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.blocks.WoodSet;
+import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.WoodSet;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
@@ -22,7 +22,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.util.HibiscusRegistryHelper.*;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
 public class HibiscusWoods {
    public static WoodSet REDWOOD = new WoodSet(
@@ -55,15 +55,6 @@ public class HibiscusWoods {
            WoodSet.WoodPreset.FANCY,
            true
    );
-   public static Block FRAMED_SUGI_DOOR = registerSecondaryDoorBlock("framed_sugi_door",
-           new DoorBlock(FabricBlockSettings.copy(SUGI.getDoor()), SUGI.getBlockSetType()),
-           HibiscusItemGroups.NS_WOOD_ITEM_GROUP,
-           SUGI.getDoor()
-   );
-   public static Block FRAMED_SUGI_TRAPDOOR = registerSecondaryDoorBlock("framed_sugi_trapdoor", new TrapdoorBlock(
-           FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
-           SUGI.getBlockSetType()
-   ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, FRAMED_SUGI_DOOR);
 
    public static WoodSet WISTERIA = new WoodSet(
            new Identifier(MOD_ID, "wisteria"),

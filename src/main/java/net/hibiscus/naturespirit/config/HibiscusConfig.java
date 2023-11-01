@@ -66,7 +66,7 @@ public class HibiscusConfig {
 
 
          } catch(final IOException e) {
-            System.err.println("An error occurred");
+            System.err.println("An error occurred, delete the natures_spirit.config file in .minecraft/config and relaunch");
          }
       NatureSpirit.LOGGER.info("terra_ferax_frequency = " + terra_ferax_weight);
       NatureSpirit.LOGGER.info("terra_solaris_frequency = " + terra_solaris_weight);

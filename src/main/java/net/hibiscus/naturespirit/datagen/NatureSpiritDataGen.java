@@ -12,11 +12,10 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlo
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.util.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.blocks.WoodSet;
+import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.WoodSet;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
@@ -288,8 +287,17 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusWoods.COCONUT_THATCH_SLAB, this::slabDrops);
 
 
-         this.addDrop(HibiscusWoods.FRAMED_SUGI_DOOR, this::doorDrops);
-         this.addDrop(HibiscusWoods.FRAMED_SUGI_TRAPDOOR);
+         this.addDrop(PAPER_DOOR, this::doorDrops);
+         this.addDrop(PAPER_TRAPDOOR);
+         this.addDrop(FRAMED_PAPER_DOOR, this::doorDrops);
+         this.addDrop(FRAMED_PAPER_TRAPDOOR);
+         this.addDrop(BLOOMING_PAPER_DOOR, this::doorDrops);
+         this.addDrop(BLOOMING_PAPER_TRAPDOOR);
+         this.addDrop(PAPER_BLOCK);
+         this.addDrop(BLOOMING_PAPER_BLOCK);
+         this.addDrop(FRAMED_PAPER_BLOCK);
+         this.addDrop(PAPER_SIGN);
+         this.addDrop(PAPER_HANGING_SIGN);
 
          this.addDrop(HibiscusMiscBlocks.SANDY_SOIL);
 
@@ -739,6 +747,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.excludeFromSimpleItemModelGeneration(CHEESE_CAULDRON);
       }
 
+      public final void registerNorthDefaultHorizontalFacing(TexturedModel.Factory modelFactory, Block block, BlockStateModelGenerator blockStateModelGenerator) {
+            Identifier identifier = modelFactory.upload(block, blockStateModelGenerator.modelCollector);
+         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).coordinate(createNorthDefaultHorizontalRotationStates()));
+      }
+
       @Override public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
          generateWoodBlockStateModels(HibiscusRegistryHelper.WoodHashMap, blockStateModelGenerator);
          generateTreeBlockStateModels(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap, blockStateModelGenerator);
@@ -778,6 +791,20 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant(), blockStateModelGenerator);
+
+
+         createWoodDoor(PAPER_DOOR, blockStateModelGenerator);
+         createWoodTrapdoor(PAPER_TRAPDOOR, blockStateModelGenerator);
+         createWoodDoor(FRAMED_PAPER_DOOR, blockStateModelGenerator);
+         createWoodTrapdoor(FRAMED_PAPER_TRAPDOOR, blockStateModelGenerator);
+         createWoodDoor(BLOOMING_PAPER_DOOR, blockStateModelGenerator);
+         createWoodTrapdoor(BLOOMING_PAPER_TRAPDOOR, blockStateModelGenerator);
+         createWoodSign(PAPER_SIGN, PAPER_WALL_SIGN, blockStateModelGenerator);
+         createHangingSign(PAPER_BLOCK, PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, blockStateModelGenerator);
+         blockStateModelGenerator.registerSingleton(PAPER_BLOCK, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(FRAMED_PAPER_BLOCK, TexturedModel.CUBE_ALL);
+         registerNorthDefaultHorizontalFacing(TexturedModel.TEMPLATE_GLAZED_TERRACOTTA, BLOOMING_PAPER_BLOCK, blockStateModelGenerator);
+
 
          createSlab(HibiscusColoredBlocks.KAOLIN, HibiscusColoredBlocks.KAOLIN_SLAB, blockStateModelGenerator);
          createSlab(HibiscusColoredBlocks.WHITE_KAOLIN, HibiscusColoredBlocks.WHITE_KAOLIN_SLAB, blockStateModelGenerator);
@@ -999,8 +1026,17 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusMiscBlocks.HIBISCUS, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.GARDENIA, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.SNAPDRAGON, translationBuilder);
-         generateBlockTranslations(HibiscusWoods.FRAMED_SUGI_DOOR, translationBuilder);
-         generateBlockTranslations(HibiscusWoods.FRAMED_SUGI_TRAPDOOR, translationBuilder);
+         generateBlockTranslations(PAPER_BLOCK, translationBuilder);
+         generateBlockTranslations(FRAMED_PAPER_BLOCK, translationBuilder);
+         generateBlockTranslations(BLOOMING_PAPER_BLOCK, translationBuilder);
+         generateBlockTranslations(PAPER_DOOR, translationBuilder);
+         generateBlockTranslations(FRAMED_PAPER_DOOR, translationBuilder);
+         generateBlockTranslations(BLOOMING_PAPER_DOOR, translationBuilder);
+         generateBlockTranslations(PAPER_TRAPDOOR, translationBuilder);
+         generateBlockTranslations(BLOOMING_PAPER_TRAPDOOR, translationBuilder);
+         generateBlockTranslations(FRAMED_PAPER_TRAPDOOR, translationBuilder);
+         generateBlockTranslations(PAPER_SIGN, translationBuilder);
+         generateBlockTranslations(PAPER_HANGING_SIGN, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.CATTAIL, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.MARIGOLD, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.FOXGLOVE, translationBuilder);
@@ -1325,8 +1361,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addFlowerTags(HibiscusMiscBlocks.SNAPDRAGON, true);
          addFlowerTags(HibiscusMiscBlocks.MARIGOLD, true);
          addFlowerTags(HibiscusMiscBlocks.FOXGLOVE, true);
-         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(new Block[]{HibiscusWoods.FRAMED_SUGI_DOOR});
-         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(new Block[]{HibiscusWoods.FRAMED_SUGI_TRAPDOOR});
+         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);
+         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(PAPER_TRAPDOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_TRAPDOOR);
          getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
                  HibiscusWoods.WISTERIA.getBlueWisteriaVines(),
                  HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(),
@@ -1395,7 +1431,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          );
          getOrCreateTagBuilder(BlockTags.SAND).add(PINK_SAND, SANDY_SOIL);
          getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);
-         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(PINK_SAND);
+         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(PINK_SAND, SANDY_SOIL);
          getOrCreateTagBuilder(BlockTags.STAIRS).add(PINK_SANDSTONE_STAIRS);
          getOrCreateTagBuilder(BlockTags.STAIRS).add(SMOOTH_PINK_SANDSTONE_STAIRS);
          getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB);
@@ -1406,6 +1442,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(SHIITAKE_MUSHROOM, SHIITAKE_MUSHROOM_BLOCK, DESERT_TURNIP_BLOCK, DESERT_TURNIP_ROOT_BLOCK, DESERT_TURNIP_STEM);
+         getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(PAPER_HANGING_SIGN);
+         getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(PAPER_WALL_HANGING_SIGN);
+         getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{PAPER_SIGN});
+         getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{PAPER_WALL_SIGN});
       }
    }
 }
