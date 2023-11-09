@@ -28,6 +28,7 @@ import java.util.HashMap;
 public class HibiscusRegistryHelper {
 
    public static HashMap <String, WoodSet> WoodHashMap = new HashMap <>();
+   public static HashMap <String, StoneSet> StoneHashMap = new HashMap <>();
    public static HashMap <String, Block[]> SaplingHashMap = new HashMap <>();
    public static HashMap <String, Block> LeavesHashMap = new HashMap <>();
    public static HashMap <String, Block> RenderLayerHashMap = new HashMap <>();
@@ -64,6 +65,20 @@ public class HibiscusRegistryHelper {
    public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab) {
       Block block1 = registerBlock(name, block, tab);
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
+      return block1;
+   }
+
+   public static Block registerPaperLanternBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab, RegistryKey<ItemGroup> thirdTab) {
+      Block block1 = registerBlock(name, block, tab, blockBefore, secondaryTab);
+      ItemGroupEvents.modifyEntriesEvent(thirdTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
+      RenderLayerHashMap.put(name, block);
+      return block1;
+   }
+
+   public static Block registerPaperLanternBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab, RegistryKey<ItemGroup> thirdTab, ItemConvertible blockBefore2) {
+      Block block1 = registerBlock(name, block, tab, blockBefore, secondaryTab);
+      ItemGroupEvents.modifyEntriesEvent(thirdTab).register(entries -> entries.addAfter(blockBefore2, block1.asItem()));
+      RenderLayerHashMap.put(name, block);
       return block1;
    }
 

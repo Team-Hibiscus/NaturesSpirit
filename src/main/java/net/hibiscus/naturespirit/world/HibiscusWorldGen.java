@@ -58,9 +58,9 @@ public class HibiscusWorldGen {
            new Identifier(MOD_ID, "pumpkin_patch_feature"),
            new PumpkinPatchFeature(OreFeatureConfig.CODEC)
    );
-   public static final Feature <DefaultFeatureConfig> HIBISCUS_LARGE_PUMPKIN_FEATURE = Registry.register(Registries.FEATURE,
+   public static final Feature <BlockPileFeatureConfig> HIBISCUS_LARGE_PUMPKIN_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "large_pumpkin_feature"),
-           new LargePumpkinFeature(DefaultFeatureConfig.CODEC)
+           new LargePumpkinFeature(BlockPileFeatureConfig.CODEC)
    );
    public static final Feature <TurnipRootFeatureConfig> HIBISCUS_TURNIP_ROOT_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "turnip_root_feature"),

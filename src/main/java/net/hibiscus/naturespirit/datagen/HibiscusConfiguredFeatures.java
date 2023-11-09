@@ -96,6 +96,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE = registerKey("coconut_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE_SPAWN = registerKey("coconut_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> CEDAR_TREE = registerKey("cedar_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> CEDAR_TREE_SPAWN = registerKey("cedar_tree_spawn");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> OAK_BUSH = registerKey("oak_bush");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SPRUCE_BUSH = registerKey("spruce_bush");
@@ -106,6 +108,7 @@ public class HibiscusConfiguredFeatures {
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> PUMPKIN_PATCH_FEATURE = registerKey("pumpkin_patch_feature");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PUMPKIN_FEATURE = registerKey("pumpkin_feature");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> TRAVERTINE_BLOCK_FEATURE = registerKey("travertine_block_feature");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
@@ -421,6 +424,21 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED), 0.325f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED)
+              )
+      );
+
+      register(context, CEDAR_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.CEDAR.getLog()),
+              new PaloVerdeTrunkPlacer(6, 1, 3, UniformIntProvider.create(3, 5), .85F, UniformIntProvider.create(2, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              BlockStateProvider.of(HibiscusWoods.CEDAR.getLeaves()),
+              new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
+              new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(6))
+      ).ignoreVines().build());
+
+      register(context,
+              CEDAR_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.CEDAR_CHECKED), 0.325f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.CEDAR_CHECKED)
               )
       );
 
@@ -767,7 +785,8 @@ public class HibiscusConfiguredFeatures {
               HIBISCUS_PUMPKIN_PATCH_FEATURE,
               new OreFeatureConfig(new BlockMatchRuleTest(Blocks.AIR), Blocks.OAK_LEAVES.getDefaultState().with(LeavesBlock.PERSISTENT, true), 43, 0)
       );
-      register(context, PUMPKIN_FEATURE, HIBISCUS_LARGE_PUMPKIN_FEATURE, new DefaultFeatureConfig());
+      register(context, PUMPKIN_FEATURE, HIBISCUS_LARGE_PUMPKIN_FEATURE, new BlockPileFeatureConfig(new HibiscusSimpleBlockStateProvider(Blocks.PUMPKIN.getDefaultState())));
+      register(context, TRAVERTINE_BLOCK_FEATURE, HIBISCUS_LARGE_PUMPKIN_FEATURE, new BlockPileFeatureConfig(new HibiscusSimpleBlockStateProvider(HibiscusMiscBlocks.TRAVERTINE.getBase().getDefaultState())));
 
    }
 

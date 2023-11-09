@@ -42,6 +42,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> GHAF_CHECKED = registerKey("ghaf_checked");
    public static final RegistryKey <PlacedFeature> PALO_VERDE_CHECKED = registerKey("palo_verde_checked");
    public static final RegistryKey <PlacedFeature> COCONUT_CHECKED = registerKey("coconut_checked");
+   public static final RegistryKey <PlacedFeature> CEDAR_CHECKED = registerKey("cedar_checked");
    public static final RegistryKey <PlacedFeature> JOSHUA_CHECKED = registerKey("joshua_checked");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_CHECKED = registerKey("oak_bush_checked");
@@ -86,6 +87,8 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> PALO_VERDE_PLACED = registerKey("palo_verde_placed");
    public static final RegistryKey <PlacedFeature> JOSHUA_PLACED = registerKey("joshua_placed");
    public static final RegistryKey <PlacedFeature> COCONUT_PLACED = registerKey("coconut_placed");
+   public static final RegistryKey <PlacedFeature> CEDAR_PLACED = registerKey("cedar_placed");
+   public static final RegistryKey <PlacedFeature> SPARSE_OLIVE_PLACED = registerKey("sparse_olive_placed");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_PLACED = registerKey("oak_bush_placed");
    public static final RegistryKey <PlacedFeature> CUSTOM_FANCY_OAK_TREE_PLACED = registerKey("custom_fancy_oak_tree_placed");
@@ -131,6 +134,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context, JOSHUA_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.JOSHUA_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA.getSapling()));
       registerKey(context, GHAF_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.GHAF_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.GHAF.getSapling()));
       registerKey(context, PALO_VERDE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PALO_VERDE_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.PALO_VERDE.getSapling()));
+      registerKey(context, CEDAR_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CEDAR_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.CEDAR.getSapling()));
       registerKey(context, COCONUT_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.COCONUT_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.JOSHUA.getSapling()));
       registerKey(context, FIR_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FIR_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.FIR.getSapling()));
       registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW.getSapling()));
@@ -172,8 +176,8 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               FLOWER_SUGI_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_SUGI_FOREST),
-              CountPlacementModifier.of(3),
-              RarityFilterPlacementModifier.of(2),
+              CountPlacementModifier.of(4),
+              RarityFilterPlacementModifier.of(8),
               SquarePlacementModifier.of(),
               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
               BiomePlacementModifier.of()
@@ -318,6 +322,26 @@ public class HibiscusPlacedFeatures {
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CYPRESS_TREE_SPAWN),
               CountPlacementModifier.of(20),
               RarityFilterPlacementModifier.of(80),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              CEDAR_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.CEDAR_TREE_SPAWN),
+              CountPlacementModifier.of(3),
+              RarityFilterPlacementModifier.of(50),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              SPARSE_OLIVE_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE_SPAWN),
+              CountPlacementModifier.of(3),
+              RarityFilterPlacementModifier.of(50),
               SquarePlacementModifier.of(),
               TREE_THRESHOLD,
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,

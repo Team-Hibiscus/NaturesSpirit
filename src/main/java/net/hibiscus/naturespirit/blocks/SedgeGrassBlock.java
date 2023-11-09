@@ -17,6 +17,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public class SedgeGrassBlock extends FernBlock implements Waterloggable {
@@ -72,6 +73,15 @@ public class SedgeGrassBlock extends FernBlock implements Waterloggable {
       }
 
    }
+
+   public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+      if ((Boolean)state.get(WATERLOGGED)) {
+         world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+      }
+
+      return direction == Direction.DOWN && !this.canPlaceAt(state, world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+   }
+
 
    protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
       builder.add(WATERLOGGED);

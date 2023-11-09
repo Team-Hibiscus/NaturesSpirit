@@ -18,6 +18,7 @@ public class HibiscusBiomes {
 
    public static HashMap<String, RegistryKey<Biome>> BiomesHashMap = new HashMap<>();
    public static final RegistryKey <Biome> SUGI_FOREST = register("sugi_forest");
+   public static final RegistryKey <Biome> WINDSWEPT_SUGI_FOREST = register("windswept_sugi_forest");
    public static final RegistryKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
    public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
    public static final RegistryKey <Biome> MARSH = register("marsh");
@@ -36,6 +37,7 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> LIVELY_DUNES = register("lively_dunes");
    public static final RegistryKey <Biome> DRYLANDS = register("drylands");
    public static final RegistryKey <Biome> WOODED_DRYLANDS = register("wooded_drylands");
+   public static final RegistryKey <Biome> XERIC_PLAINS = register("xeric_plains");
    public static final RegistryKey <Biome> WHITE_CLIFFS = register("white_cliffs");
    public static final RegistryKey <Biome> PRAIRIE = register("prairie");
    public static final RegistryKey <Biome> TROPICAL_SHORES = register("tropical_shores");
@@ -53,6 +55,7 @@ public class HibiscusBiomes {
    public static boolean has_cypress_fields;
    public static boolean has_lively_dunes;
    public static boolean has_drylands;
+   public static boolean has_xeric_plains;
    public static boolean has_white_cliffs;
    public static boolean has_tropical_shores;
 
@@ -97,6 +100,9 @@ public class HibiscusBiomes {
    };
    public static void set_has_tropical_shores(Boolean bl) {
       has_tropical_shores = bl;
+   };
+   public static void set_has_xeric_plains(Boolean bl) {
+      has_xeric_plains = bl;
    };
 
    private static RegistryKey <Biome> register(String name) {

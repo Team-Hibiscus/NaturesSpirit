@@ -274,6 +274,21 @@ public class HibiscusWoods {
            ItemGroups.FOOD_AND_DRINK,
            0.1F
    );
+   public static WoodSet CEDAR = new WoodSet(
+           new Identifier(MOD_ID, "cedar"),
+           MapColor.TERRACOTTA_MAGENTA,
+           MapColor.GRAY,
+           COCONUT.getLeaves(),
+           COCONUT.getLog(),
+           COCONUT.getHangingSign(),
+           COCONUT.getChestBoatItem(),
+           COCONUT.getButton(),
+           COCONUT_SPROUT,
+           HibiscusBoatEntity.HibiscusBoat.CEDAR,
+           new CedarSaplingGenerator(),
+           WoodSet.WoodPreset.DEFAULT,
+           false
+   );
 
    public static void registerWoods() {
       HibiscusMiscBlocks.registerMiscBlocks();

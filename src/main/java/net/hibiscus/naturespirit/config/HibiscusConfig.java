@@ -8,10 +8,13 @@ import com.google.gson.annotations.JsonAdapter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.util.HashMap;
 
 public class HibiscusConfig {
 
@@ -26,7 +29,6 @@ public class HibiscusConfig {
 
    public static void main() throws IOException {
       Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit.json");
-
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -55,6 +57,7 @@ public class HibiscusConfig {
             HibiscusBiomes.set_has_drylands(biomes.get("has_drylands").getAsBoolean());
             HibiscusBiomes.set_has_white_cliffs(biomes.get("has_white_cliffs").getAsBoolean());
             HibiscusBiomes.set_has_tropical_shores(biomes.get("has_tropical_shores").getAsBoolean());
+            HibiscusBiomes.set_has_xeric_plains(biomes.get("has_xeric_plains").getAsBoolean());
 
             terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
             terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
@@ -86,6 +89,7 @@ public class HibiscusConfig {
       NatureSpirit.LOGGER.info("has_drylands = " + HibiscusBiomes.has_drylands);
       NatureSpirit.LOGGER.info("has_white_cliffs = " + HibiscusBiomes.has_white_cliffs);
       NatureSpirit.LOGGER.info("has_tropical_shores = " + HibiscusBiomes.has_tropical_shores);
+      NatureSpirit.LOGGER.info("has_xeric_plains = " + HibiscusBiomes.has_xeric_plains);
 
       System.out.println("Thanks for viewing your messages");
    }
@@ -128,6 +132,7 @@ public class HibiscusConfig {
       biomesObject.addProperty("has_drylands", true);
       biomesObject.addProperty("has_white_cliffs", true);
       biomesObject.addProperty("has_tropical_shores", true);
+      biomesObject.addProperty("has_xeric_plains", true);
       return biomesObject;
    }
 }

@@ -1,14 +1,56 @@
 package net.hibiscus.naturespirit.registration.block_registration;
 
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.hibiscus.naturespirit.blocks.PaperLanternBlock;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
+import net.minecraft.sound.BlockSoundGroup;
 
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerBlock;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerPaperLanternBlock;
 
 public class HibiscusColoredBlocks {
+
+   public static Block PAPER_LANTERN = registerPaperLanternBlock("paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+                   BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.PINK_CANDLE, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL,
+           Items.SOUL_LANTERN);
+   public static Block WHITE_PAPER_LANTERN = registerPaperLanternBlock("white_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block LIGHT_GRAY_PAPER_LANTERN = registerPaperLanternBlock("light_gray_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, WHITE_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block GRAY_PAPER_LANTERN = registerPaperLanternBlock("gray_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, LIGHT_GRAY_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block BLACK_PAPER_LANTERN = registerPaperLanternBlock("black_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, GRAY_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block BROWN_PAPER_LANTERN = registerPaperLanternBlock("brown_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLACK_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block RED_PAPER_LANTERN = registerPaperLanternBlock("red_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BROWN_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block ORANGE_PAPER_LANTERN = registerPaperLanternBlock("orange_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, RED_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block YELLOW_PAPER_LANTERN = registerPaperLanternBlock("yellow_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, ORANGE_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block LIME_PAPER_LANTERN = registerPaperLanternBlock("lime_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, YELLOW_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block GREEN_PAPER_LANTERN = registerPaperLanternBlock("green_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, LIME_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block BLUE_PAPER_LANTERN = registerPaperLanternBlock("blue_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, GREEN_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block LIGHT_BLUE_PAPER_LANTERN = registerPaperLanternBlock("light_blue_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLUE_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block CYAN_PAPER_LANTERN = registerPaperLanternBlock("cyan_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, LIGHT_BLUE_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block PURPLE_PAPER_LANTERN = registerPaperLanternBlock("purple_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, CYAN_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block MAGENTA_PAPER_LANTERN = registerPaperLanternBlock("magenta_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PURPLE_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
+   public static Block PINK_PAPER_LANTERN = registerPaperLanternBlock("pink_paper_lantern", new PaperLanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.OFF_WHITE).solid().strength(0.5F).sounds(
+           BlockSoundGroup.LANTERN).luminance((state) -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, MAGENTA_PAPER_LANTERN, ItemGroups.COLORED_BLOCKS, ItemGroups.FUNCTIONAL);
 
    public static final Block KAOLIN = registerBlock(
            "kaolin",
@@ -711,5 +753,6 @@ public class HibiscusColoredBlocks {
            ItemGroups.COLORED_BLOCKS
    );
 
-   public static void registerColoredBlocks() {}
+   public static void registerColoredBlocks() {
+   }
 }

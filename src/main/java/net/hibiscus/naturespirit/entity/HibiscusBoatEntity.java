@@ -127,14 +127,22 @@ public class HibiscusBoatEntity extends BoatEntity {
               () -> HibiscusWoods.PALO_VERDE.getBoatEntityType(),
               () -> HibiscusWoods.PALO_VERDE.getChestBoatEntityType()
       ),
+      CEDAR(
+              "cedar",
+              () -> HibiscusWoods.CEDAR.getPlanks(),
+              () -> HibiscusWoods.CEDAR.getBoatItem(),
+              () -> HibiscusWoods.CEDAR.getChestBoatItem(),
+              () -> HibiscusWoods.CEDAR.getBoatEntityType(),
+              () -> HibiscusWoods.CEDAR.getChestBoatEntityType()
+      ),
       COCONUT(
               "coconut",
-              () -> HibiscusWoods.COCONUT.getPlanks(),
+                      () -> HibiscusWoods.COCONUT.getPlanks(),
               () -> HibiscusWoods.COCONUT.getBoatItem(),
               () -> HibiscusWoods.COCONUT.getChestBoatItem(),
               () -> HibiscusWoods.COCONUT.getBoatEntityType(),
               () -> HibiscusWoods.COCONUT.getChestBoatEntityType()
-      );
+              );
 
       private final String name;
       private final Supplier <ItemConvertible> planks;

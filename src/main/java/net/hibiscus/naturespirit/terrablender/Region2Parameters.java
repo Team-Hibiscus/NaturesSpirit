@@ -55,7 +55,10 @@ public class Region2Parameters {
    RegistryKey<Biome> commonPlains = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.PLAINS;
    RegistryKey<Biome> commonForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.FOREST;
    RegistryKey<Biome> commonBirchForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.BIRCH_FOREST;
-   RegistryKey<Biome> uncommonBirchForest = HibiscusBiomes.has_sugi_forest ? BiomeKeys.BIRCH_FOREST : BiomeKeys.OLD_GROWTH_BIRCH_FOREST;
+   RegistryKey<Biome> uncommonBirchForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.OLD_GROWTH_BIRCH_FOREST;
+   RegistryKey<Biome> mountainMeadow = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.MEADOW;
+   RegistryKey<Biome> windsweptHills = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_HILLS;
+   RegistryKey<Biome> windsweptForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_FOREST;
    public Region2Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -100,7 +103,7 @@ public class Region2Parameters {
               }, {
               BiomeKeys.MEADOW, BiomeKeys.MEADOW, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
-                      BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
+                      BiomeKeys.MEADOW, BiomeKeys.MEADOW, mountainMeadow, mountainMeadow, BiomeKeys.DARK_FOREST
               }, {
                       BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.FOREST, BiomeKeys.FOREST, BiomeKeys.JUNGLE
               }, {
@@ -122,7 +125,7 @@ public class Region2Parameters {
               }, {
                       BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST
               }, {
-                      BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST
+              windsweptHills, windsweptHills, windsweptHills, windsweptForest, windsweptForest
               }, {null, null, null, null, null}, {null, null, null, null, null}
       };
    }
@@ -686,7 +689,7 @@ public class Region2Parameters {
                     this.erosionParameters[6],
                     weirdness,
                     0.0F,
-                    this.getWetlandType(i, j, weirdness)
+                    this.getWetlandType2(i, j, weirdness)
             );
          }
       }
@@ -733,8 +736,25 @@ public class Region2Parameters {
       }
    }
    private RegistryKey <Biome> getWetlandType(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      if(temperature == 0 || (temperature == 2 && HibiscusBiomes.has_sugi_forest)) {
+         return this.getRegularBiome(temperature, humidity, weirdness);
+      }
+      else if(temperature == 3 && humidity > 2 && HibiscusBiomes.has_bamboo_wetlands) {
+         return HibiscusBiomes.BAMBOO_WETLANDS;
+      }
+      else if((humidity <= 3 || temperature == 4) && HibiscusBiomes.has_marsh) {
+         return HibiscusBiomes.MARSH;
+      }
+      else {
+         return BiomeKeys.SWAMP;
+      }
+   }
+   private RegistryKey <Biome> getWetlandType2(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
+      }
+      if(temperature == 2 && HibiscusBiomes.has_sugi_forest) {
+         return BiomeKeys.RIVER;
       }
       else if(temperature == 3 && humidity > 2 && HibiscusBiomes.has_bamboo_wetlands) {
          return HibiscusBiomes.BAMBOO_WETLANDS;
@@ -755,6 +775,9 @@ public class Region2Parameters {
    }
 
    private RegistryKey <Biome> getBiomeOrWindsweptSavanna(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
+      if (temperature == 2 && HibiscusBiomes.has_sugi_forest) {
+         return humidity < 4 && weirdness.max() >= 0L ? HibiscusBiomes.WINDSWEPT_SUGI_FOREST : biomeKey;
+      }
       return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? BiomeKeys.WINDSWEPT_SAVANNA : biomeKey;
    }
 

@@ -19,6 +19,6 @@ public class PaperLanternBlock extends LanternBlock {
       return STANDING_SHAPE;
    }
    static {
-      STANDING_SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 16.0, 11.0), Block.createCuboidShape(2.0, 2.0, 2.0, 14.0, 12.0, 14.0));
+      STANDING_SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 14.0, 11.0), Block.createCuboidShape(2.0, 2.0, 2.0, 14.0, 12.0, 14.0));
    }
 }

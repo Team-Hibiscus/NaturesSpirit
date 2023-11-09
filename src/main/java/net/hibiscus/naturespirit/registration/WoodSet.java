@@ -37,12 +37,12 @@ import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 public class WoodSet {
 
 
-   private Block leavesBefore;
-   private Block saplingBefore;
-   private Block logBefore;
-   private Block signBefore;
-   private Item boatBefore;
-   private Block buttonBefore;
+   private ItemConvertible leavesBefore;
+   private ItemConvertible saplingBefore;
+   private ItemConvertible logBefore;
+   private ItemConvertible signBefore;
+   private ItemConvertible boatBefore;
+   private ItemConvertible buttonBefore;
    private List<Block> registeredBlocksList = new ArrayList<>();
    private List<Item> registeredItemsList = new ArrayList<>();
    private Identifier name;
@@ -353,7 +353,7 @@ public class WoodSet {
 
       blockLogsTag = TagKey.of(RegistryKeys.BLOCK, new Identifier(this.getModID(), this.getName() + "_logs"));
       itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(this.getModID(), this.getName() + "_logs"));
-      addToBuildingTab(getButtonBefore().asItem(), getLogBefore().asItem(), getSignBefore().asItem(), getBoatBefore(), this);
+      addToBuildingTab(getButtonBefore(), getLogBefore(), getSignBefore(), getBoatBefore(), this);
 
       for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
       for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
@@ -361,7 +361,7 @@ public class WoodSet {
 
 
 
-   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, Block leavesBefore, Block logBefore, Block signBefore, Item boatBefore, Block buttonBefore, Block saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset, boolean hasMosaic){
+   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset, boolean hasMosaic){
       this.woodPreset = woodPreset;
       this.name = name;
       this.sideColor = sideColor;
@@ -606,12 +606,12 @@ public class WoodSet {
       return blockLogsTag;
    }
 
-   public Block getButtonBefore() {return buttonBefore;}
-   public Block getLeavesBefore() {return leavesBefore;}
-   public Block getSaplingBefore() {return saplingBefore;}
-   public Block getLogBefore() {return logBefore;}
-   public Block getSignBefore() {return signBefore;}
-   public Item getBoatBefore() {return boatBefore;}
+   public ItemConvertible getButtonBefore() {return buttonBefore;}
+   public ItemConvertible getLeavesBefore() {return leavesBefore;}
+   public ItemConvertible getSaplingBefore() {return saplingBefore;}
+   public ItemConvertible getLogBefore() {return logBefore;}
+   public ItemConvertible getSignBefore() {return signBefore;}
+   public ItemConvertible getBoatBefore() {return boatBefore;}
 
 
    public List<Block> getRegisteredBlocksList() {
@@ -893,7 +893,7 @@ public class WoodSet {
       BAMBOO
    }
 
-   public static void addToBuildingTab(Item proceedingItem, Item logPlacement, Item signPlacement, Item boatPlacement,WoodSet woodset){
+   public static void addToBuildingTab(ItemConvertible proceedingItem, ItemConvertible logPlacement, ItemConvertible signPlacement, ItemConvertible boatPlacement, WoodSet woodset){
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
          entries.addAfter(proceedingItem, woodset.getLog());
          if(woodset.getWoodPreset() == WoodPreset.JOSHUA) {

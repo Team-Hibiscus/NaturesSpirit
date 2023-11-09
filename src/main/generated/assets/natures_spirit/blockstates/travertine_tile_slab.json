@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/travertine_tile_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/travertine_tiles"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/travertine_tile_slab_top"
+    }
+  }
+}

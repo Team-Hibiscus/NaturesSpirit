@@ -21,8 +21,8 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule GRASS = makeStateRule(Blocks.GRASS_BLOCK);
 
    private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
-   private static final MaterialRules.MaterialRule SAND = makeStateRule(Blocks.SAND);
-   private static final MaterialRules.MaterialRule SANDSTONE = makeStateRule(Blocks.SANDSTONE);
+//   private static final MaterialRules.MaterialRule SAND = makeStateRule(Blocks.SAND);
+//   private static final MaterialRules.MaterialRule SANDSTONE = makeStateRule(Blocks.SANDSTONE);
 
    private static final MaterialRules.MaterialRule CALCITE = makeStateRule(Blocks.CALCITE);
 
@@ -33,6 +33,7 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule WHITE_KAOLIN = makeStateRule(HibiscusColoredBlocks.WHITE_KAOLIN);
 
    private static final MaterialRules.MaterialRule PINK_SANDSTONE = makeStateRule(HibiscusMiscBlocks.PINK_SANDSTONE);
+   private static final MaterialRules.MaterialRule TRAVERTINE = makeStateRule(HibiscusMiscBlocks.TRAVERTINE.getBase());
 
    private static final MaterialRules.MaterialRule WHITE_CHALK = makeStateRule(HibiscusColoredBlocks.WHITE_CHALK);
 
@@ -44,64 +45,66 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialCondition materialCondition = MaterialRules.aboveY(YOffset.fixed(256), 0);
       MaterialRules.MaterialCondition materialCondition2 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1);
       MaterialRules.MaterialCondition materialCondition3 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(70), 1);
-      MaterialRules.MaterialCondition materialCondition4 = MaterialRules.aboveY(YOffset.fixed(63), 0); MaterialRules.MaterialCondition materialCondition5 = MaterialRules.water(
+      MaterialRules.MaterialCondition materialCondition4 = MaterialRules.aboveY(YOffset.fixed(63), 0);
+      MaterialRules.MaterialCondition materialCondition5 = MaterialRules.water(
               -1,
               0
-      ); MaterialRules.MaterialCondition materialCondition6 = MaterialRules.waterWithStoneDepth(-6, -1); MaterialRules.MaterialCondition materialCondition7 = MaterialRules.hole();
-      MaterialRules.MaterialCondition materialCondition8 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.909D, -0.5454D);
-      MaterialRules.MaterialCondition materialCondition9 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.5454D, -0.3818D);
-      MaterialRules.MaterialCondition materialCondition10 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 0.5454D, 0.909D);
-      MaterialRules.MaterialCondition materialCondition11 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.5454D, 0.0454D);
+      );
+      MaterialRules.MaterialCondition holeCondition = MaterialRules.hole();
+      MaterialRules.MaterialCondition noiseCondition1 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.909D, -0.5454D);
+      MaterialRules.MaterialCondition noiseCondition2 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.5454D, -0.3818D);
+      MaterialRules.MaterialCondition noiseCondition3 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 0.5454D, 0.909D);
+      MaterialRules.MaterialCondition noiseCondition4 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.5454D, 0.0454D);
 
-      MaterialRules.MaterialCondition materialCondition12 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(76), 1);
-      MaterialRules.MaterialCondition materialCondition13 = MaterialRules.waterWithStoneDepth(-6, -1);
+      MaterialRules.MaterialCondition above76 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(76), 1);
+      MaterialRules.MaterialCondition belowWater = MaterialRules.waterWithStoneDepth(-6, -1);
 
-      MaterialRules.MaterialRule materialRule2 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, SANDY_SOIL), SANDY_SOIL);
-      MaterialRules.MaterialRule materialRule3 = MaterialRules.sequence(
+      MaterialRules.MaterialRule sandySoilRule = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, SANDY_SOIL), SANDY_SOIL);
+      MaterialRules.MaterialRule stoneOrGravel = MaterialRules.sequence(
               MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, STONE),
               GRAVEL
       );
-      MaterialRules.MaterialRule materialRule4 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), PINK_SAND);
-      MaterialRules.MaterialRule materialRule5 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), SANDY_SOIL);
-      MaterialRules.MaterialRule beachSandRule = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, SANDSTONE), SAND);
+      MaterialRules.MaterialRule pinkSandstoneOrPinkSand = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), PINK_SAND);
+      MaterialRules.MaterialRule pinkSandstoneOrSoil = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), SANDY_SOIL);
+      MaterialRules.MaterialRule travertineOrSoil = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, TRAVERTINE), SANDY_SOIL);
 
 
 
 
-      MaterialRules.MaterialRule materialRule9 = MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.STRATIFIED_DESERT),
+      MaterialRules.MaterialRule stratifiedDesertRule = MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.STRATIFIED_DESERT),
               MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(MaterialRules.condition(materialCondition, YELLOW_KAOLIN),
-                              MaterialRules.condition(materialCondition3, MaterialRules.sequence(MaterialRules.condition(MaterialRules.not(materialCondition12),
-                                      MaterialRules.sequence(MaterialRules.condition(materialCondition8, GRASS), MaterialRules.condition(materialCondition9, COARSE_DIRT))
-                              ), MaterialRules.condition(materialCondition10, SANDY_SOIL), MaterialRules.terracottaBands())),
+                              MaterialRules.condition(materialCondition3, MaterialRules.sequence(MaterialRules.condition(MaterialRules.not(above76),
+                                      MaterialRules.sequence(MaterialRules.condition(noiseCondition1, GRASS), MaterialRules.condition(noiseCondition2, COARSE_DIRT))
+                              ), MaterialRules.condition(noiseCondition3, SANDY_SOIL), MaterialRules.terracottaBands())),
                               MaterialRules.condition(
                                       materialCondition5,
                                       MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, YELLOW_KAOLIN), SANDY_SOIL)
                               ),
-                              MaterialRules.condition(MaterialRules.not(materialCondition7), YELLOW_KAOLIN),
-                              MaterialRules.condition(materialCondition6, WHITE_KAOLIN),
-                              materialRule3
+                              MaterialRules.condition(MaterialRules.not(holeCondition), YELLOW_KAOLIN),
+                              MaterialRules.condition(belowWater, WHITE_KAOLIN),
+                              stoneOrGravel
                       )),
                       MaterialRules.condition(materialCondition2,
                               MaterialRules.sequence(MaterialRules.condition(materialCondition4, MaterialRules.condition(MaterialRules.not(materialCondition3), YELLOW_KAOLIN)),
                                       MaterialRules.terracottaBands()
                               )
                       ),
-                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(materialCondition6, WHITE_KAOLIN))
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(belowWater, WHITE_KAOLIN))
               )
       ));
 
 
-      MaterialRules.MaterialRule materialRule10 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.BLOOMING_DUNES),
-              MaterialRules.condition(materialCondition13, MaterialRules.sequence(
-                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, materialRule2), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
+      MaterialRules.MaterialRule bloomingDunesRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.BLOOMING_DUNES),
+              MaterialRules.condition(belowWater, MaterialRules.sequence(
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, sandySoilRule), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
               ))
       );
-      MaterialRules.MaterialRule materialRule11 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.LIVELY_DUNES),
-              MaterialRules.condition(materialCondition13, MaterialRules.sequence(
-                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, materialRule2), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
+      MaterialRules.MaterialRule livelyDunesRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.LIVELY_DUNES),
+              MaterialRules.condition(belowWater, MaterialRules.sequence(
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, sandySoilRule), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
               ))
       );
-      MaterialRules.MaterialRule materialRule12 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS), MaterialRules.sequence(MaterialRules.sequence(
+      MaterialRules.MaterialRule chalkCliffsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS), MaterialRules.sequence(MaterialRules.sequence(
                       MaterialRules.condition(materialCondition4, MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS)),
                       WHITE_CHALK
               ),
@@ -112,40 +115,47 @@ public class NatureSpiritSurfaceRules {
               MaterialRules.condition(MaterialRules.stoneDepth(1, false, 12, VerticalSurfaceType.FLOOR), CALCITE),
               MaterialRules.condition(MaterialRules.stoneDepth(2, true, 6, VerticalSurfaceType.FLOOR), WHITE_CHALK)
       ));
-      MaterialRules.MaterialRule materialRule17 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.DRYLANDS),
-              MaterialRules.condition(materialCondition13,
-                      MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, materialRule4), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_30, PINK_SANDSTONE)
+      MaterialRules.MaterialRule drylandsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.DRYLANDS),
+              MaterialRules.condition(belowWater,
+                      MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, pinkSandstoneOrPinkSand), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_30, PINK_SANDSTONE)
               )
               )
       );
-      MaterialRules.MaterialRule materialRule19 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WOODED_DRYLANDS),
-              MaterialRules.condition(materialCondition13,
-                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(materialCondition11, materialRule5))
+      MaterialRules.MaterialRule woodedDrylandsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WOODED_DRYLANDS),
+              MaterialRules.condition(belowWater,
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(noiseCondition4, pinkSandstoneOrSoil))
               )
       );
-      MaterialRules.MaterialRule materialRule20 = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.TROPICAL_SHORES),
-              MaterialRules.condition(materialCondition13,
-                      MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, beachSandRule), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDSTONE)
+      MaterialRules.MaterialRule shoresRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.TROPICAL_SHORES),
+              MaterialRules.condition(belowWater,
+                      MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, pinkSandstoneOrPinkSand), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, PINK_SANDSTONE)
                       )
+              )
+      );
+      MaterialRules.MaterialRule xericRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.XERIC_PLAINS),
+              MaterialRules.condition(belowWater,
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(noiseCondition4, travertineOrSoil))
               )
       );
 
 
       ImmutableList.Builder <MaterialRules.MaterialRule> builder = ImmutableList.builder();
-      MaterialRules.MaterialRule materialRule13 = MaterialRules.condition(MaterialRules.surface(), materialRule9);
-      MaterialRules.MaterialRule materialRule14 = MaterialRules.condition(MaterialRules.surface(), materialRule10);
-      MaterialRules.MaterialRule materialRule15 = MaterialRules.condition(MaterialRules.surface(), materialRule11);
-      MaterialRules.MaterialRule materialRule16 = MaterialRules.condition(MaterialRules.surface(), materialRule12);
-      MaterialRules.MaterialRule materialRule18 = MaterialRules.condition(MaterialRules.surface(), materialRule17);
-      MaterialRules.MaterialRule materialRule21 = MaterialRules.condition(MaterialRules.surface(), materialRule19);
-      MaterialRules.MaterialRule materialRule22 = MaterialRules.condition(MaterialRules.surface(), materialRule20);
-      builder.add(materialRule13);
-      builder.add(materialRule14);
-      builder.add(materialRule15);
-      builder.add(materialRule16);
-      builder.add(materialRule18);
-      builder.add(materialRule21);
-      builder.add(materialRule22);
+      MaterialRules.MaterialRule stratifiedDesertSurfaceRule = MaterialRules.condition(MaterialRules.surface(), stratifiedDesertRule);
+      MaterialRules.MaterialRule bloomingDunesSurfaceRule = MaterialRules.condition(MaterialRules.surface(), bloomingDunesRule);
+      MaterialRules.MaterialRule livelyDunesSurfaceRule = MaterialRules.condition(MaterialRules.surface(), livelyDunesRule);
+      MaterialRules.MaterialRule chalkCliffsSurfaceRule = MaterialRules.condition(MaterialRules.surface(), chalkCliffsRule);
+      MaterialRules.MaterialRule drylandsSurfaceRule = MaterialRules.condition(MaterialRules.surface(), drylandsRule);
+      MaterialRules.MaterialRule woodedDrylandsSurfaceRule = MaterialRules.condition(MaterialRules.surface(), woodedDrylandsRule);
+      MaterialRules.MaterialRule shoresSurfaceRule = MaterialRules.condition(MaterialRules.surface(), shoresRule);
+      MaterialRules.MaterialRule xericSurfaceRule = MaterialRules.condition(MaterialRules.surface(), xericRule);
+      builder.add(stratifiedDesertSurfaceRule);
+      builder.add(bloomingDunesSurfaceRule);
+      builder.add(livelyDunesSurfaceRule);
+      builder.add(chalkCliffsSurfaceRule);
+      builder.add(drylandsSurfaceRule);
+      builder.add(woodedDrylandsSurfaceRule);
+      builder.add(shoresSurfaceRule);
+      builder.add(xericSurfaceRule);
       return MaterialRules.sequence(builder
               .build()
               .toArray(MaterialRules.MaterialRule[]::new));

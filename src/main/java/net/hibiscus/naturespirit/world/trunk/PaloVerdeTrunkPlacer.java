@@ -78,9 +78,12 @@ public class PaloVerdeTrunkPlacer extends TrunkPlacer {
          float float1 = random.nextFloat();
          float float2 = random.nextFloat();
 
-         if(this.getAndSetState(world, replacer, random, blockPos, config) && i < height - 2) {
+         if(i == 2) {
+            this.getAndSetState(world, replacer, random, mutablePos1, config);
+         }
+         if(this.getAndSetState(world, replacer, random, blockPos, config) && i < height - 1) {
             int m = height + i - 5;
-            if(i > 2 && l > 1) {
+            if(i > 1 && l > 0) {
                this.generateExtraBranch(world, replacer, random, config, list, blockPos, height, j, direction, l, m);
 
                if(float1 < this.placeBranchPerLogProbability - 0.35) {
@@ -105,9 +108,9 @@ public class PaloVerdeTrunkPlacer extends TrunkPlacer {
             if(i == 2) {
                this.getAndSetState(world, replacer, random, forkedMutablePos1, config);
             }
-            if(this.getAndSetState(world, replacer, random, forkedBlockPos, config) && i < height - 2) {
+            if(this.getAndSetState(world, replacer, random, forkedBlockPos, config) && i < height - 1) {
                int m = height + i - 5;
-               if(i > 2 && l > 1) {
+               if(i > 1 && l > 0) {
                   this.generateExtraBranch(world, replacer, random, config, list, forkedBlockPos, height, j, forkedDirection, l, m);
 
                   if(float2 < this.placeBranchPerLogProbability - 0.35) {

@@ -25,6 +25,12 @@ public class HibiscusTags {
       public static final TagKey <Block> TURNIP_STEM_GROWS_ON = createTag("turnip_stem_grows_on");
       public static final TagKey <Block> TURNIP_ROOT_REPLACEABLE = createTag("turnip_root_replaceable");
       public static final TagKey <Block> SHIITAKE_MUSHROOM_GROW_BLOCK = createTag("shiitake_mushroom_grow_block");
+      public static final TagKey <Block> KAOLIN = createTag("kaolin");
+      public static final TagKey <Block> KAOLIN_STAIRS = createTag("kaolin_stairs");
+      public static final TagKey <Block> KAOLIN_SLABS = createTag("kaolin_slabs");
+      public static final TagKey <Block> CHALK = createTag("chalk");
+      public static final TagKey <Block> CHALK_STAIRS = createTag("chalk_stairs");
+      public static final TagKey <Block> CHALK_SLABS = createTag("chalk_slabs");
 
       private static TagKey <Block> createTag(String name) {
          return TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, name));
