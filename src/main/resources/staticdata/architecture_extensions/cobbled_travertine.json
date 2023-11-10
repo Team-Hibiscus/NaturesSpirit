@@ -1,0 +1,18 @@
+{
+  "only_if_present": null,
+  "name": "cobbled_travertine",
+  "base_block": "natures_spirit:cobbled_travertine",
+  "textures": "all",
+  "recipes": "stonecutting",
+  "map_color": "light_gray",
+  "types_to_generate": [
+    "facade",
+    "arch",
+    "curve",
+    "octagonal_column",
+    "round_arch",
+    "roof",
+    "wall_column",
+    "wall_post"
+  ]
+}
