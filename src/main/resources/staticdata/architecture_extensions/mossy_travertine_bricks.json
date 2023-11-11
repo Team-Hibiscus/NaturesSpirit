@@ -1,0 +1,18 @@
+{
+  "only_if_present": null,
+  "name": "mossy_travertine_bricks",
+  "base_block": "natures_spirit:mossy_travertine_bricks",
+  "textures": "all",
+  "recipes": "stonecutting",
+  "map_color": "light_gray",
+  "types_to_generate": [
+    "facade",
+    "arch",
+    "curve",
+    "octagonal_column",
+    "round_arch",
+    "roof",
+    "wall_column",
+    "wall_post"
+  ]
+}

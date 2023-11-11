@@ -1252,6 +1252,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
          generateBlockTranslations(LOTUS_STEM, translationBuilder);
 
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_STAIRS, translationBuilder);
+
          generateBlockTranslations(HibiscusWoods.COCONUT_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusWoods.YOUNG_COCONUT_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_SPROUT, translationBuilder);
@@ -1318,7 +1322,12 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
          generateArchExTranslations("pink_sandstone", translationBuilder);
          generateArchExTranslations("smooth_pink_sandstone", translationBuilder);
-
+         generateArchExTranslations("travertine", translationBuilder);
+         generateArchExTranslations("travertine_bricks", translationBuilder);
+         generateArchExTranslations("travertine_tiles", translationBuilder);
+         generateArchExTranslations("cobbled_travertine", translationBuilder);
+         generateArchExTranslations("mossy_cobbled_travertine", translationBuilder);
+         generateArchExTranslations("mossy_travertine_bricks", translationBuilder);
       }
    }
 
