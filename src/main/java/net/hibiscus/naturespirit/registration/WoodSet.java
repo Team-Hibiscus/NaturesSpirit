@@ -131,6 +131,8 @@ public class WoodSet {
          bundle = createBundle();
          strippedBundle = createStrippedBundle();
          StrippableBlockRegistry.register(bundle, strippedBundle);
+         FlammableBlockRegistry.getDefaultInstance().add(this.getBundle(), 5, 5);
+         FlammableBlockRegistry.getDefaultInstance().add(this.getStrippedBundle(), 5, 5);
       } else {
          StrippableBlockRegistry.register(log, strippedLog);
       }
@@ -340,8 +342,6 @@ public class WoodSet {
 
       FlammableBlockRegistry.getDefaultInstance().add(this.getStrippedLog(), 5, 5);
       FlammableBlockRegistry.getDefaultInstance().add(this.getLog(), 5, 5);
-      FlammableBlockRegistry.getDefaultInstance().add(this.getBundle(), 5, 5);
-      FlammableBlockRegistry.getDefaultInstance().add(this.getStrippedBundle(), 5, 5);
       FlammableBlockRegistry.getDefaultInstance().add(this.getStairs(), 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(this.getSlab(), 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(this.getPlanks(), 5, 20);

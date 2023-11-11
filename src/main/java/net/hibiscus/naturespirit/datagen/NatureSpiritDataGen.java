@@ -1252,6 +1252,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
          generateBlockTranslations(LOTUS_STEM, translationBuilder);
 
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_STAIRS, translationBuilder);
+
          generateBlockTranslations(HibiscusWoods.COCONUT_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusWoods.YOUNG_COCONUT_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_SPROUT, translationBuilder);
