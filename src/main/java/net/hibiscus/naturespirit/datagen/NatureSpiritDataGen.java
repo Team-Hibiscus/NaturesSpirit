@@ -8,13 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.registration.StoneSet;
+import net.hibiscus.naturespirit.registration.*;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.registration.WoodSet;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -194,6 +191,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
+      private void addFlowerTable(HashMap<String, FlowerSet> flowers) {
+         for (FlowerSet flowerSet : flowers.values()) {
+            if (flowerSet.isTall()) {
+               this.addDrop(flowerSet.getFlowerBlock(), (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
+            }
+            else {
+               this.addDrop(flowerSet.getFlowerBlock());
+               addPottedPlantDrops(flowerSet.getPottedFlowerBlock());
+            }
+         }
+      }
+
       public net.minecraft.loot.LootTable.Builder blackOlivesDrop(Block leaves, Block drop, float... chance) {
          return this.leavesDrops(leaves, drop, chance).pool(LootPool
                  .builder()
@@ -288,6 +297,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       @Override public void generate() {
+         addFlowerTable(HibiscusRegistryHelper.FlowerHashMap);
          addStoneTable(HibiscusRegistryHelper.StoneHashMap);
          addWoodTable(HibiscusRegistryHelper.WoodHashMap);
          addTreeTable(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
@@ -315,29 +325,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(SHIITAKE_MUSHROOM);
          this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM);
 
-         this.addDrop(HibiscusMiscBlocks.CARNATION, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.CATTAIL, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.GARDENIA, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.SNAPDRAGON, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.MARIGOLD, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.FOXGLOVE, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.LAVENDER, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.BLEEDING_HEART, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-         this.addDrop(HibiscusMiscBlocks.TIGER_LILY, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
-
-         this.addDrop(HibiscusMiscBlocks.BLUE_IRIS);
-         addPottedPlantDrops(POTTED_BLUE_IRIS);
-         this.addDrop(BLACK_IRIS);
-         addPottedPlantDrops(POTTED_BLACK_IRIS);
-         this.addDrop(HibiscusMiscBlocks.ANEMONE);
-         addPottedPlantDrops(HibiscusMiscBlocks.POTTED_ANEMONE);
-         this.addDrop(HibiscusMiscBlocks.HIBISCUS);
-         addPottedPlantDrops(HibiscusMiscBlocks.POTTED_HIBISCUS);
-         this.addDrop(HibiscusMiscBlocks.BLUEBELL);
-         this.addDrop(HibiscusMiscBlocks.TIGER_LILY);
-         this.addDrop(HibiscusMiscBlocks.PURPLE_WILDFLOWER);
-         this.addDrop(HibiscusMiscBlocks.YELLOW_WILDFLOWER);
-
          this.addDrop(HibiscusWoods.COCONUT_THATCH);
          this.addDrop(HibiscusWoods.COCONUT_THATCH_CARPET);
          this.addDrop(HibiscusWoods.COCONUT_THATCH_STAIRS);
@@ -359,6 +346,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(BLOOMING_PAPER_PANEL);
          this.addDrop(FRAMED_PAPER_PANEL);
 
+         this.addDrop(RED_MOSS_BLOCK);
+         this.addDrop(RED_MOSS_CARPET);
          this.addDrop(HibiscusMiscBlocks.SANDY_SOIL);
 
          this.addDrop(PINK_SAND);
@@ -505,16 +494,29 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
          dropsWithShears(HibiscusMiscBlocks.SCORCHED_GRASS);
          tallPlantDrop(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, HibiscusMiscBlocks.SCORCHED_GRASS);
+         addPottedPlantDrops(POTTED_SCORCHED_GRASS);
 
          dropsWithShears(BEACH_GRASS);
          tallPlantDrop(TALL_BEACH_GRASS, BEACH_GRASS);
+         addPottedPlantDrops(POTTED_BEACH_GRASS);
 
          dropsWithShears(SEDGE_GRASS);
          tallPlantDrop(TALL_SEDGE_GRASS, SEDGE_GRASS);
+         addPottedPlantDrops(POTTED_SEDGE_GRASS);
 
          dropsWithShears(FLAXEN_FERN);
          addPottedPlantDrops(POTTED_FLAXEN_FERN);
          tallPlantDrop(LARGE_FLAXEN_FERN, FLAXEN_FERN);
+
+         dropsWithShears(RED_BEARBERRIES);
+         dropsWithShears(RED_BITTER_SPROUTS);
+         addPottedPlantDrops(POTTED_RED_BEARBERRIES);
+         dropsWithShears(GREEN_BEARBERRIES);
+         dropsWithShears(GREEN_BITTER_SPROUTS);
+         addPottedPlantDrops(POTTED_GREEN_BEARBERRIES);
+         dropsWithShears(PURPLE_BEARBERRIES);
+         dropsWithShears(PURPLE_BITTER_SPROUTS);
+         addPottedPlantDrops(POTTED_PURPLE_BEARBERRIES);
 
       }
    }
@@ -525,6 +527,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private static final Model LARGE_CROSS = block("large_cross", TextureKey.CROSS);
       private static final Model TALL_CROSS = block("tall_cross", TextureKey.CROSS);
       private static final Model FLOWER_POT_TALL_CROSS = block("flower_pot_tall_cross", TextureKey.PLANT);
+      private static final Model FLOWER_POT_LARGE_CROSS = block("flower_pot_large_cross", TextureKey.PLANT);
       private static final Model CROP = block("crop", TextureKey.CROP);
       private static final Model PAPER_LANTERN = block("template_paper_lantern", TextureKey.TOP, TextureKey.SIDE);
       private static final Model HANGING_PAPER_LANTERN = block("template_hanging_paper_lantern", "_hanging", TextureKey.TOP, TextureKey.SIDE);
@@ -704,6 +707,26 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
+      private void generateFlowerSetBlockStateModels(HashMap <String, FlowerSet> flowers, BlockStateModelGenerator blockStateModelGenerator) {
+         for(FlowerSet flowerSet : flowers.values()) {
+            if (flowerSet.getPreset() == FlowerSet.FlowerPreset.SMALL) {
+               generateFlowerBlockStateModels(flowerSet.getFlowerBlock(), flowerSet.getPottedFlowerBlock(), blockStateModelGenerator);
+            }
+            if (flowerSet.getPreset() == FlowerSet.FlowerPreset.ANEMONE) {
+               generatePottedAnemone(flowerSet.getFlowerBlock(), flowerSet.getPottedFlowerBlock(), blockStateModelGenerator);
+            }
+            if (flowerSet.getPreset() == FlowerSet.FlowerPreset.TALL) {
+               blockStateModelGenerator.registerDoubleBlock(flowerSet.getFlowerBlock(), TintType.NOT_TINTED);
+            }
+            if (flowerSet.getPreset() == FlowerSet.FlowerPreset.BIG_TALL) {
+               generateTallLargeFlower(flowerSet.getFlowerBlock(), blockStateModelGenerator);
+            }
+            if (flowerSet.getPreset() == FlowerSet.FlowerPreset.BIG_SMALL) {
+               generateLargeFlower(flowerSet.getFlowerBlock(), flowerSet.getPottedFlowerBlock(), blockStateModelGenerator);
+            }
+         }
+      }
+
       private void generateStoneBlockStateModels(HashMap <String, StoneSet> stones, BlockStateModelGenerator blockStateModelGenerator) {
          for(StoneSet stoneSet : stones.values()) {
             if (stoneSet.hasTiles()) {
@@ -817,6 +840,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerators.registerDoubleBlock(doubleBlock, identifier, identifier2);
       }
 
+      public final void generateLargeFlower(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
+         registerSpecificFlowerItemModel(block, blockStateModelGenerators);
+         registerTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
+         TextureMap textureMap = TextureMap.plant(block);
+         Identifier identifier = FLOWER_POT_LARGE_CROSS.upload(flowerPot, textureMap, blockStateModelGenerators.modelCollector);
+         blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier));
+      }
+
       public final void generateLargeFlower(Block block, BlockStateModelGenerator blockStateModelGenerators) {
          registerSpecificFlowerItemModel(block, blockStateModelGenerators);
          registerTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
@@ -922,6 +953,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       @Override public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
          generateWoodBlockStateModels(HibiscusRegistryHelper.WoodHashMap, blockStateModelGenerator);
+         generateFlowerSetBlockStateModels(HibiscusRegistryHelper.FlowerHashMap, blockStateModelGenerator);
          generateStoneBlockStateModels(HibiscusRegistryHelper.StoneHashMap, blockStateModelGenerator);
          generateTreeBlockStateModels(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap, blockStateModelGenerator);
 
@@ -929,34 +961,27 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerAmethyst(SMALL_CALCITE_BUD);
          blockStateModelGenerator.registerAmethyst(LARGE_CALCITE_BUD);
 
+         blockStateModelGenerator.registerWoolAndCarpet(RED_MOSS_BLOCK, RED_MOSS_CARPET);
+
          registerCheese(blockStateModelGenerator);
-         generateFlowerBlockStateModels(HibiscusMiscBlocks.HIBISCUS, HibiscusMiscBlocks.POTTED_HIBISCUS, blockStateModelGenerator);
-         generateFlowerBlockStateModels(BLUE_IRIS, POTTED_BLUE_IRIS, blockStateModelGenerator);
-         generateFlowerBlockStateModels(BLACK_IRIS, POTTED_BLACK_IRIS, blockStateModelGenerator);
          generateFlowerBlockStateModels(FLAXEN_FERN, POTTED_FLAXEN_FERN, blockStateModelGenerator);
          generateFlowerBlockStateModels(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
          generateFlowerBlockStateModels(SHIITAKE_MUSHROOM, POTTED_SHIITAKE_MUSHROOM, blockStateModelGenerator);
          registerMushroomBlock(SHIITAKE_MUSHROOM_BLOCK, blockStateModelGenerator);
          registerCropWithoutItem(HibiscusMiscBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, blockStateModelGenerator, 0, 1, 2, 3, 4, 5, 6, 7);
-         blockStateModelGenerator.registerDoubleBlock(HibiscusMiscBlocks.CARNATION, TintType.NOT_TINTED);
-         blockStateModelGenerator.registerDoubleBlock(HibiscusMiscBlocks.GARDENIA, TintType.NOT_TINTED);
-         blockStateModelGenerator.registerDoubleBlock(HibiscusMiscBlocks.SNAPDRAGON, TintType.NOT_TINTED);
-         blockStateModelGenerator.registerDoubleBlock(HibiscusMiscBlocks.MARIGOLD, TintType.NOT_TINTED);
-         blockStateModelGenerator.registerDoubleBlock(HibiscusMiscBlocks.FOXGLOVE, TintType.NOT_TINTED);
          blockStateModelGenerator.registerDoubleBlock(TALL_FRIGID_GRASS, TintType.NOT_TINTED);
          generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_BEACH_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_SEDGE_GRASS, blockStateModelGenerator);
-         generateTallLargeFlower(HibiscusMiscBlocks.LAVENDER, blockStateModelGenerator);
-         generateTallLargeFlower(HibiscusMiscBlocks.BLEEDING_HEART, blockStateModelGenerator);
-         generateLargeFlower(HibiscusMiscBlocks.BLUEBELL, blockStateModelGenerator);
-         generateLargeFlower(HibiscusMiscBlocks.TIGER_LILY, blockStateModelGenerator);
-         generateLargeFlower(HibiscusMiscBlocks.PURPLE_WILDFLOWER, blockStateModelGenerator);
-         generateLargeFlower(HibiscusMiscBlocks.YELLOW_WILDFLOWER, blockStateModelGenerator);
-         generateLargeFlower(HibiscusMiscBlocks.SCORCHED_GRASS, blockStateModelGenerator);
-         generateLargeFlower(BEACH_GRASS, blockStateModelGenerator);
-         generateLargeFlower(SEDGE_GRASS, blockStateModelGenerator);
-         generatePottedAnemone(HibiscusMiscBlocks.ANEMONE, HibiscusMiscBlocks.POTTED_ANEMONE, blockStateModelGenerator);
+         generateLargeFlower(HibiscusMiscBlocks.SCORCHED_GRASS, POTTED_SCORCHED_GRASS, blockStateModelGenerator);
+         generateLargeFlower(RED_BEARBERRIES, POTTED_RED_BEARBERRIES, blockStateModelGenerator);
+         generateLargeFlower(PURPLE_BEARBERRIES, POTTED_PURPLE_BEARBERRIES, blockStateModelGenerator);
+         generateLargeFlower(GREEN_BEARBERRIES, POTTED_GREEN_BEARBERRIES, blockStateModelGenerator);
+         generateLargeFlower(GREEN_BITTER_SPROUTS, blockStateModelGenerator);
+         generateLargeFlower(RED_BITTER_SPROUTS, blockStateModelGenerator);
+         generateLargeFlower(PURPLE_BITTER_SPROUTS, blockStateModelGenerator);
+         generateLargeFlower(BEACH_GRASS, POTTED_BEACH_GRASS, blockStateModelGenerator);
+         generateLargeFlower(SEDGE_GRASS, POTTED_SEDGE_GRASS, blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
@@ -1174,6 +1199,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             }
          }
       }
+      private void generateFlowerTranslations(HashMap <String, FlowerSet> flowers, TranslationBuilder translationBuilder) {
+         for(FlowerSet flowerSet : flowers.values()) {
+            for(Block block : flowerSet.getRegisteredBlocksList()) {
+               generateBlockTranslations(block, translationBuilder);
+            }
+         }
+      }
       private void generateBiomeTranslations(TranslationBuilder translationBuilder) {
          for(String name : BiomesHashMap.keySet()) {
             RegistryKey <Biome> biome = BiomesHashMap.get(name);
@@ -1192,6 +1224,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBiomeTranslations(translationBuilder);
          generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap ,translationBuilder);
          generateStoneTranslations(HibiscusRegistryHelper.StoneHashMap ,translationBuilder);
+         generateFlowerTranslations(HibiscusRegistryHelper.FlowerHashMap ,translationBuilder);
          translationBuilder.add(HibiscusItemGroups.NS_MISC_ITEM_GROUP, "Nature's Spirit Misc.");
          translationBuilder.add(HibiscusItemGroups.NS_WOOD_ITEM_GROUP, "Nature's Spirit Woods");
          translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
@@ -1204,17 +1237,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(SMALL_CALCITE_BUD, "Small Calcite Bud");
          translationBuilder.add(LARGE_CALCITE_BUD, "Large Calcite Bud");
          translationBuilder.add(CALCITE_CLUSTER, "Calcite Cluster");
-         generateBlockTranslations(HibiscusMiscBlocks.ANEMONE, translationBuilder);
-         generateBlockTranslations(BLUE_IRIS, translationBuilder);
-         generateBlockTranslations(BLACK_IRIS, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.LAVENDER, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.BLEEDING_HEART, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.BLUEBELL, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.TIGER_LILY, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.PURPLE_WILDFLOWER, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.YELLOW_WILDFLOWER, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.SCORCHED_GRASS, translationBuilder);
+         generateBlockTranslations(TALL_SCORCHED_GRASS, translationBuilder);
+         generateBlockTranslations(PURPLE_BEARBERRIES, translationBuilder);
+         generateBlockTranslations(RED_BEARBERRIES, translationBuilder);
+         generateBlockTranslations(GREEN_BEARBERRIES, translationBuilder);
+         generateBlockTranslations(RED_BITTER_SPROUTS, translationBuilder);
+         generateBlockTranslations(PURPLE_BITTER_SPROUTS, translationBuilder);
+         generateBlockTranslations(GREEN_BITTER_SPROUTS, translationBuilder);
+         generateBlockTranslations(SCORCHED_GRASS, translationBuilder);
          generateBlockTranslations(TALL_BEACH_GRASS, translationBuilder);
          generateBlockTranslations(BEACH_GRASS, translationBuilder);
          generateBlockTranslations(TALL_SEDGE_GRASS, translationBuilder);
@@ -1225,10 +1255,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(FLAXEN_FERN, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.CARNATION, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.HIBISCUS, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.GARDENIA, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.SNAPDRAGON, translationBuilder);
          generateBlockTranslations(PAPER_BLOCK, translationBuilder);
          generateBlockTranslations(FRAMED_PAPER_BLOCK, translationBuilder);
          generateBlockTranslations(BLOOMING_PAPER_BLOCK, translationBuilder);
@@ -1245,12 +1271,12 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(BLOOMING_PAPER_PANEL, translationBuilder);
          generateBlockTranslations(HibiscusColoredBlocks.PAPER_LANTERN, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.CATTAIL, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.MARIGOLD, translationBuilder);
-         generateBlockTranslations(HibiscusMiscBlocks.FOXGLOVE, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, translationBuilder);
          generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
          generateBlockTranslations(LOTUS_STEM, translationBuilder);
+         generateBlockTranslations(RED_MOSS_BLOCK, translationBuilder);
+         generateBlockTranslations(RED_MOSS_CARPET, translationBuilder);
 
          generateBlockTranslations(HibiscusColoredBlocks.KAOLIN, translationBuilder);
          generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_SLAB, translationBuilder);
@@ -1376,6 +1402,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                     .unlockCriterionName("has_planks")
                     .build();
             generateFamily(consumer, family);
+         }
+      }
+      private void generateFlowerRecipes(HashMap <String, FlowerSet> flowers, Consumer <RecipeJsonProvider> consumer) {
+         for(FlowerSet flowerSet : flowers.values()) {
+            offerShapelessRecipe(consumer, flowerSet.getDyeColor(), flowerSet.getFlowerBlock(), flowerSet.getDyeColor().toString(), flowerSet.getDyeNumber());
          }
       }
 
@@ -1520,14 +1551,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  .criterion("has_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.PINK_SANDSTONE)).criterion("has_chiseled_pink_sandstone", conditionsFromItem(
                          HibiscusMiscBlocks.CHISELED_PINK_SANDSTONE))
                  .offerTo(exporter);
-         createStairsRecipe(HibiscusMiscBlocks.PINK_SANDSTONE_STAIRS, Ingredient.ofItems(new ItemConvertible[]{HibiscusMiscBlocks.PINK_SANDSTONE, HibiscusMiscBlocks.CHISELED_PINK_SANDSTONE, HibiscusMiscBlocks.CUT_PINK_SANDSTONE}))
+         createStairsRecipe(HibiscusMiscBlocks.PINK_SANDSTONE_STAIRS, Ingredient.ofItems(
+                 HibiscusMiscBlocks.PINK_SANDSTONE,
+                 HibiscusMiscBlocks.CHISELED_PINK_SANDSTONE,
+                 HibiscusMiscBlocks.CUT_PINK_SANDSTONE
+         ))
                  .criterion("has_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.PINK_SANDSTONE))
                  .criterion("has_chiseled_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.CHISELED_PINK_SANDSTONE))
                  .criterion("has_cut_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.CUT_PINK_SANDSTONE))
                  .offerTo(exporter);
          offerCutCopperRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusMiscBlocks.CUT_PINK_SANDSTONE, HibiscusMiscBlocks.PINK_SANDSTONE);
          offerWallRecipe(exporter, RecipeCategory.DECORATIONS, HibiscusMiscBlocks.PINK_SANDSTONE_WALL, HibiscusMiscBlocks.PINK_SANDSTONE);
-         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(new ItemConvertible[]{HibiscusMiscBlocks.PINK_SANDSTONE}), RecipeCategory.BUILDING_BLOCKS, HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE.asItem(), 0.1F, 200)
+         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(HibiscusMiscBlocks.PINK_SANDSTONE), RecipeCategory.BUILDING_BLOCKS, HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE.asItem(), 0.1F, 200)
                                  .criterion("has_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.PINK_SANDSTONE))
                                  .offerTo(exporter);
          offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusMiscBlocks.CUT_PINK_SANDSTONE, HibiscusMiscBlocks.PINK_SANDSTONE);
@@ -1540,30 +1575,21 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE_SLAB, HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE, 2);
          offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE_STAIRS, HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE);
 
+
+
+
          offerCarpetRecipe(exporter, HibiscusWoods.COCONUT_THATCH_CARPET, HibiscusWoods.COCONUT_THATCH);
          offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH);
          createStairsRecipe(HibiscusWoods.COCONUT_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.COCONUT_THATCH));
          offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH, HibiscusWoods.COCONUT.getLeaves());
 
+         offerCarpetRecipe(exporter, RED_MOSS_CARPET, RED_MOSS_BLOCK);
 
+
+         generateFlowerRecipes(HibiscusRegistryHelper.FlowerHashMap, exporter);
          generateWoodRecipes(HibiscusRegistryHelper.WoodHashMap, exporter);
          generateStoneRecipes(HibiscusRegistryHelper.StoneHashMap, exporter);
-         offerShapelessRecipe(exporter, Items.BLUE_DYE, HibiscusMiscBlocks.BLUE_IRIS, "blue_dye", 1);
-         offerShapelessRecipe(exporter, Items.BLACK_DYE, BLACK_IRIS, "black_dye", 1);
-         offerShapelessRecipe(exporter, Items.MAGENTA_DYE, HibiscusMiscBlocks.ANEMONE, "magenta_dye", 1);
-         offerShapelessRecipe(exporter, Items.PINK_DYE, HibiscusMiscBlocks.BLEEDING_HEART, "pink_dye", 4);
-         offerShapelessRecipe(exporter, Items.PURPLE_DYE, HibiscusMiscBlocks.LAVENDER, "purple_dye", 4);
-         offerShapelessRecipe(exporter, Items.BLUE_DYE, HibiscusMiscBlocks.BLUEBELL, "blue_dye", 2);
-         offerShapelessRecipe(exporter, Items.ORANGE_DYE, HibiscusMiscBlocks.TIGER_LILY, "orange_dye", 2);
-         offerShapelessRecipe(exporter, Items.PURPLE_DYE, HibiscusMiscBlocks.PURPLE_WILDFLOWER, "purple_dye", 2);
-         offerShapelessRecipe(exporter, Items.YELLOW_DYE, HibiscusMiscBlocks.YELLOW_WILDFLOWER, "yellow_dye", 2);
-         offerShapelessRecipe(exporter, Items.RED_DYE, HibiscusMiscBlocks.CARNATION, "red_dye", 2);
-         offerShapelessRecipe(exporter, Items.PINK_DYE, HibiscusMiscBlocks.SNAPDRAGON, "pink_dye", 2);
          offerShapelessRecipe(exporter, Items.BROWN_DYE, HibiscusMiscBlocks.CATTAIL, "brown_dye", 2);
-         offerShapelessRecipe(exporter, Items.ORANGE_DYE, HibiscusMiscBlocks.MARIGOLD, "orange_dye", 2);
-         offerShapelessRecipe(exporter, Items.PURPLE_DYE, HibiscusMiscBlocks.FOXGLOVE, "purple_dye", 2);
-         offerShapelessRecipe(exporter, Items.RED_DYE, HibiscusMiscBlocks.HIBISCUS, "red_dye", 1);
-         offerShapelessRecipe(exporter, Items.WHITE_DYE, HibiscusMiscBlocks.GARDENIA, "white_dye", 2);
          offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
          offerCompactingRecipe(exporter, RecipeCategory.FOOD, HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, HibiscusMiscBlocks.DESERT_TURNIP, "desert_turnip");
          offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.WHITE_CHALK, HibiscusMiscBlocks.CHALK_POWDER);
@@ -1705,50 +1731,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             getOrCreateTagBuilder(BlockTags.LEAVES).add(leavesType);
          }
       }
-
-      private void addFlowerTags(Block block, Block flowerPot, Boolean isTall) {
-         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{flowerPot});
-
-         if(isTall) {
-            getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(block);
-         }
-         else {
-            getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(block);
-         }
-
-      }
-
-      private void addFlowerTags(Block block, Boolean isTall) {
-
-         if(isTall) {
-            getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(block);
-         }
-         else {
-            getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(block);
-         }
-
-      }
-
       @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
          addWoodTags(HibiscusRegistryHelper.WoodHashMap);
          addStoneTags(HibiscusRegistryHelper.StoneHashMap);
          addTreeTags(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
-         addFlowerTags(HibiscusMiscBlocks.HIBISCUS, HibiscusMiscBlocks.POTTED_HIBISCUS, false);
-         addFlowerTags(HibiscusMiscBlocks.BLUE_IRIS, POTTED_BLUE_IRIS, false);
-         addFlowerTags(BLACK_IRIS, POTTED_BLACK_IRIS, false);
-         addFlowerTags(HibiscusMiscBlocks.ANEMONE, HibiscusMiscBlocks.POTTED_ANEMONE, false);
-         addFlowerTags(HibiscusMiscBlocks.BLUEBELL, false);
-         addFlowerTags(HibiscusMiscBlocks.TIGER_LILY, false);
-         addFlowerTags(HibiscusMiscBlocks.PURPLE_WILDFLOWER, false);
-         addFlowerTags(HibiscusMiscBlocks.YELLOW_WILDFLOWER, false);
-         addFlowerTags(HibiscusMiscBlocks.LAVENDER, true);
-         addFlowerTags(HibiscusMiscBlocks.BLEEDING_HEART, true);
-         addFlowerTags(HibiscusMiscBlocks.CARNATION, true);
-         addFlowerTags(HibiscusMiscBlocks.GARDENIA, true);
-         addFlowerTags(HibiscusMiscBlocks.CATTAIL, true);
-         addFlowerTags(HibiscusMiscBlocks.SNAPDRAGON, true);
-         addFlowerTags(HibiscusMiscBlocks.MARIGOLD, true);
-         addFlowerTags(HibiscusMiscBlocks.FOXGLOVE, true);
+         for (FlowerSet flowerSet : HibiscusRegistryHelper.FlowerHashMap.values()) {
+            if (flowerSet.isTall()) {
+               getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(flowerSet.getFlowerBlock());
+            } else {
+               getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(flowerSet.getPottedFlowerBlock());
+               getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(flowerSet.getFlowerBlock());
+            }
+         }
          getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);
          getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(PAPER_TRAPDOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_TRAPDOOR);
          getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
@@ -1787,10 +1781,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FLAXEN_FERN,
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS,
+                 RED_BEARBERRIES,
+                 GREEN_BEARBERRIES,
+                 PURPLE_BEARBERRIES,
+                 RED_BITTER_SPROUTS,
+                 PURPLE_BITTER_SPROUTS,
+                 GREEN_BITTER_SPROUTS,
                  HibiscusWoods.COCONUT_THATCH,
                  HibiscusWoods.COCONUT_THATCH_STAIRS,
                  HibiscusWoods.COCONUT_THATCH_CARPET,
-                 HibiscusWoods.COCONUT_THATCH_SLAB
+                 HibiscusWoods.COCONUT_THATCH_SLAB,
+                 RED_MOSS_BLOCK,
+                 RED_MOSS_CARPET
          );
          getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(
                  HibiscusMiscBlocks.SCORCHED_GRASS,
@@ -1803,7 +1805,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FLAXEN_FERN,
                  SHIITAKE_MUSHROOM,
                  FRIGID_GRASS,
-                 TALL_FRIGID_GRASS
+                 TALL_FRIGID_GRASS,
+                 RED_BEARBERRIES,
+                 GREEN_BEARBERRIES,
+                 PURPLE_BEARBERRIES,
+                 RED_BITTER_SPROUTS,
+                 PURPLE_BITTER_SPROUTS,
+                 GREEN_BITTER_SPROUTS
          );
          getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(
                  HibiscusMiscBlocks.SCORCHED_GRASS,
@@ -1832,7 +1840,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB);
          getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
-         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM);
+         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(SHIITAKE_MUSHROOM, SHIITAKE_MUSHROOM_BLOCK, DESERT_TURNIP_BLOCK, DESERT_TURNIP_ROOT_BLOCK, DESERT_TURNIP_STEM, PAPER_BLOCK, PAPER_PANEL, PAPER_DOOR, PAPER_SIGN, PAPER_WALL_SIGN, PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, FRAMED_PAPER_BLOCK, FRAMED_PAPER_PANEL, FRAMED_PAPER_DOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_BLOCK, BLOOMING_PAPER_DOOR, BLOOMING_PAPER_TRAPDOOR, BLOOMING_PAPER_PANEL);
          getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(PAPER_HANGING_SIGN);

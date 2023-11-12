@@ -53,6 +53,7 @@
                 "blocks": [
                   "minecraft:stone",
                   "minecraft:grass_block",
+                  "natures_spirit:red_moss_block",
                   "minecraft:dirt"
                 ]
               },
@@ -66,6 +67,7 @@
                 "blocks": [
                   "minecraft:stone",
                   "minecraft:grass_block",
+                  "natures_spirit:red_moss_block",
                   "minecraft:dirt"
                 ]
               }

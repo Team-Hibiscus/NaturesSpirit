@@ -27,6 +27,7 @@ import java.util.HashMap;
 
 public class HibiscusRegistryHelper {
 
+   public static HashMap <String, FlowerSet> FlowerHashMap = new HashMap <>();
    public static HashMap <String, WoodSet> WoodHashMap = new HashMap <>();
    public static HashMap <String, StoneSet> StoneHashMap = new HashMap <>();
    public static HashMap <String, Block[]> SaplingHashMap = new HashMap <>();
@@ -90,9 +91,9 @@ public class HibiscusRegistryHelper {
    }
 
    public static Block registerDoorBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore) {
-      Block block1 = Registry.register(Registries.BLOCK, new Identifier(NatureSpirit.MOD_ID, name), block);
-      RenderLayerHashMap.put(name, block1);
+      Block block1 = registerBlock(name, block);
       registerBlockItem(name, block, tab, itemBefore, ItemGroups.BUILDING_BLOCKS);
+      RenderLayerHashMap.put(name, block1);
       return block1;
    }
 

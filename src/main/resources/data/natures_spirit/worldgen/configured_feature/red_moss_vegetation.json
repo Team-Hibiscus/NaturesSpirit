@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "natures_spirit:red_moss_carpet"
+          },
+          "weight": 25
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:red_bearberries"
+          },
+          "weight": 40
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:purple_bearberries"
+          },
+          "weight": 10
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:purple_bitter_sprouts"
+          },
+          "weight": 10
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:green_bearberries"
+          },
+          "weight": 10
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:green_bitter_sprouts"
+          },
+          "weight": 10
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:red_bitter_sprouts"
+          },
+          "weight": 25
+        }
+      ]
+    }
+  }
+}

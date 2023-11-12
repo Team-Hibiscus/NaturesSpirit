@@ -13,6 +13,7 @@ import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.items.VinegarItem;
+import net.hibiscus.naturespirit.registration.FlowerSet;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.registration.StoneSet;
@@ -30,6 +31,10 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
 public class HibiscusMiscBlocks {
+
+   public static final Block RED_MOSS_BLOCK = registerBlock("red_moss_block", new RedMossBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).strength(0.1F).sounds(BlockSoundGroup.MOSS_BLOCK).pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.MOSS_BLOCK, ItemGroups.NATURAL);
+   public static final Block RED_MOSS_CARPET = registerBlock("red_moss_carpet", new CarpetBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).strength(0.1F).sounds(BlockSoundGroup.MOSS_CARPET).pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.MOSS_CARPET, ItemGroups.NATURAL);
+
    public static final Block SANDY_SOIL = registerBlock("sandy_soil",
            new Block(FabricBlockSettings.create().mapColor(MapColor.DIRT_BROWN).instrument(Instrument.BASEDRUM).strength(0.5F).sounds(BlockSoundGroup.GRAVEL)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
@@ -196,7 +201,6 @@ public class HibiscusMiscBlocks {
    public static final Block LARGE_FLAXEN_FERN = registerPlantBlock("large_flaxen_fern",
            new TallPlantBlock(FabricBlockSettings
                    .create()
-                   .mapColor(MapColor.GOLD)
                    .noCollision()
                    .replaceable()
                    .breakInstantly()
@@ -211,7 +215,6 @@ public class HibiscusMiscBlocks {
    public static final Block FLAXEN_FERN = registerPlantBlock("flaxen_fern",
            new HibiscusFernBlock(FabricBlockSettings
                    .create()
-                   .mapColor(MapColor.GOLD)
                    .noCollision()
                    .replaceable()
                    .breakInstantly()
@@ -222,10 +225,106 @@ public class HibiscusMiscBlocks {
            SCORCHED_GRASS,
            0.3f
    );
-
+   public static final Block GREEN_BEARBERRIES = registerPlantBlock("green_bearberries",
+           new HibiscusBearberriesBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           FLAXEN_FERN,
+           0.3f
+   );
+   public static final Block RED_BEARBERRIES = registerPlantBlock("red_bearberries",
+           new HibiscusBearberriesBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           GREEN_BEARBERRIES,
+           0.3f
+   );
+   public static final Block PURPLE_BEARBERRIES = registerPlantBlock("purple_bearberries",
+           new HibiscusBearberriesBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           RED_BEARBERRIES,
+           0.3f
+   );
+   public static final Block GREEN_BITTER_SPROUTS = registerPlantBlock("green_bitter_sprouts",
+           new HibiscusLargeSproutsBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           PURPLE_BEARBERRIES,
+           0.3f
+   );
+   public static final Block RED_BITTER_SPROUTS = registerPlantBlock("red_bitter_sprouts",
+           new HibiscusLargeSproutsBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           GREEN_BITTER_SPROUTS,
+           0.3f
+   );
+   public static final Block PURPLE_BITTER_SPROUTS = registerPlantBlock("purple_bitter_sprouts",
+           new HibiscusLargeSproutsBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           RED_BITTER_SPROUTS,
+           0.3f
+   );
+   public static final Block CATTAIL = registerPlantBlock("cattail",
+           new Cattails(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.DARK_GREEN)
+                   .noCollision()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .burnable()
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Blocks.LARGE_FERN,
+           0.4f
+   );
+   public static final Block POTTED_SCORCHED_GRASS = registerPottedPlant("scorched_grass", SCORCHED_GRASS);
+   public static final Block POTTED_BEACH_GRASS = registerPottedPlant("beach_grass", BEACH_GRASS);
+   public static final Block POTTED_SEDGE_GRASS = registerPottedPlant("sedge_grass", SEDGE_GRASS);
    public static final Block POTTED_FLAXEN_FERN = registerPottedPlant("flaxen_fern", FLAXEN_FERN);
-
    public static final Block POTTED_FRIGID_GRASS = registerPottedPlant("frigid_grass", FRIGID_GRASS);
+   public static final Block POTTED_GREEN_BEARBERRIES = registerPottedPlant("potted_green_bearberries", GREEN_BEARBERRIES);
+   public static final Block POTTED_RED_BEARBERRIES = registerPottedPlant("potted_red_bearberries", RED_BEARBERRIES);
+   public static final Block POTTED_PURPLE_BEARBERRIES = registerPottedPlant("potted_purple_bearberries", PURPLE_BEARBERRIES);
 
    public static final Block SHIITAKE_MUSHROOM = registerPlantBlock("shiitake_mushroom", new ShiitakeMushroomPlantBlock(
            AbstractBlock.Settings
@@ -248,222 +347,28 @@ public class HibiscusMiscBlocks {
            ItemGroups.NATURAL
    );
 
-   public static final Block LAVENDER = registerPlantBlock("lavender",
-           new LargeTallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           Blocks.PEONY,
-           0.5f
-   );
 
-   public static final Block BLEEDING_HEART = registerPlantBlock("bleeding_heart",
-           new LargeTallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           LAVENDER,
-           0.5f
-   );
+   public static final FlowerSet LAVENDER = new FlowerSet("lavender", Items.PURPLE_DYE, Items.PEONY, FlowerSet.FlowerPreset.BIG_TALL);
+   public static final FlowerSet BLEEDING_HEART = new FlowerSet("bleeding_heart", Items.PINK_DYE, LAVENDER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
-   public static final Block CARNATION = registerPlantBlock("carnation",
-           new TallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           BLEEDING_HEART,
-           0.4f
-   );
+   public static final FlowerSet CARNATION = new FlowerSet("carnation", Items.RED_DYE, BLEEDING_HEART.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
+   public static final FlowerSet GARDENIA = new FlowerSet("gardenia", Items.WHITE_DYE, CARNATION.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
+   public static final FlowerSet SNAPDRAGON = new FlowerSet("snapdragon", Items.PINK_DYE, GARDENIA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
+   public static final FlowerSet MARIGOLD = new FlowerSet("marigold", Items.PINK_DYE, SNAPDRAGON.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
+   public static final FlowerSet FOXGLOVE = new FlowerSet("foxglove", Items.PURPLE_DYE, MARIGOLD.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
 
-   public static final Block GARDENIA = registerPlantBlock("gardenia",
-           new TallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           CARNATION,
-           0.4f
-   );
-
-   public static final Block SNAPDRAGON = registerPlantBlock("snapdragon",
-           new TallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           GARDENIA,
-           0.4f
-   );
-
-   public static final Block MARIGOLD = registerPlantBlock("marigold",
-           new TallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           SNAPDRAGON,
-           0.4f
-   );
-
-   public static final Block FOXGLOVE = registerPlantBlock("foxglove",
-           new TallFlowerBlock(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           MARIGOLD,
-           0.4f
-   );
-
-   public static final Block CATTAIL = registerPlantBlock("cattail",
-           new Cattails(FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           Blocks.LARGE_FERN,
-           0.4f
-   );
-
-   public static final Block BLUEBELL = registerPlantBlock("bluebell", new LargeFlowerBlock(StatusEffects.HASTE,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Blocks.LILY_OF_THE_VALLEY, 0.4f);
-
-   public static final Block TIGER_LILY = registerPlantBlock("tiger_lily", new LargeFlowerBlock(StatusEffects.FIRE_RESISTANCE,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLUEBELL, 0.4f);
-
-   public static final Block PURPLE_WILDFLOWER = registerPlantBlock("purple_wildflower", new LargeFlowerBlock(StatusEffects.SLOW_FALLING,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, TIGER_LILY, 0.4f);
-
-   public static final Block YELLOW_WILDFLOWER = registerPlantBlock("yellow_wildflower", new LargeFlowerBlock(StatusEffects.SLOW_FALLING,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .mapColor(MapColor.DARK_GREEN)
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PURPLE_WILDFLOWER, 0.4f);
-
-   public static final Block ANEMONE = registerPlantBlock("anemone", new MidFlowerBlock(StatusEffects.RESISTANCE,
-           4,
-           FabricBlockSettings
-                   .create()
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, TIGER_LILY, 0.4f);
-
-   public static final Block HIBISCUS = registerPlantBlock("hibiscus", new FlowerBlock(StatusEffects.LUCK,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, ANEMONE, 0.3f);
-
-   public static final Block BLUE_IRIS = registerPlantBlock("blue_iris", new FlowerBlock(StatusEffects.STRENGTH,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, HIBISCUS, 0.3f);
-   public static final Block BLACK_IRIS = registerPlantBlock("black_iris", new FlowerBlock(StatusEffects.STRENGTH,
-           7,
-           FabricBlockSettings
-                   .create()
-                   .noCollision()
-                   .breakInstantly()
-                   .sounds(BlockSoundGroup.GRASS)
-                   .offset(AbstractBlock.OffsetType.XZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)
-   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLUE_IRIS, 0.3f);
-
-   public static final Block POTTED_HIBISCUS = registerPottedPlant("hibiscus", HIBISCUS);
-
-   public static final Block POTTED_ANEMONE = registerPottedPlant("anemone", ANEMONE);
-   public static final Block POTTED_BLUE_IRIS = registerPottedPlant("potted_blue_iris", BLUE_IRIS);
-   public static final Block POTTED_BLACK_IRIS = registerPottedPlant("potted_black_iris", BLACK_IRIS);
+   public static final FlowerSet BLUEBELL = new FlowerSet("bluebell", Items.BLUE_DYE, StatusEffects.HASTE, Items.LILY_OF_THE_VALLEY, FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet TIGER_LILY = new FlowerSet("tiger_lily", Items.ORANGE_DYE, StatusEffects.FIRE_RESISTANCE, BLUEBELL.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet PURPLE_WILDFLOWER = new FlowerSet("purple_wildflower", Items.PURPLE_DYE, StatusEffects.SLOW_FALLING, TIGER_LILY.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet YELLOW_WILDFLOWER = new FlowerSet("yellow_wildflower", Items.YELLOW_DYE, StatusEffects.SLOW_FALLING, PURPLE_WILDFLOWER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet ANEMONE = new FlowerSet("anemone", Items.MAGENTA_DYE, StatusEffects.RESISTANCE, YELLOW_WILDFLOWER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
+   public static final FlowerSet DWARF_BLOSSOMS = new FlowerSet("dwarf_blossoms", Items.PINK_DYE, StatusEffects.RESISTANCE, ANEMONE.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
+   public static final FlowerSet HIBISCUS = new FlowerSet("hibiscus", Items.RED_DYE, StatusEffects.LUCK, DWARF_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet BLUE_IRIS = new FlowerSet("blue_iris", Items.BLUE_DYE, StatusEffects.STRENGTH, HIBISCUS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet BLACK_IRIS = new FlowerSet("black_iris", Items.BLACK_DYE, StatusEffects.STRENGTH, BLUE_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet RED_HEATHER = new FlowerSet("red_heather", Items.RED_DYE, StatusEffects.FIRE_RESISTANCE, BLACK_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet WHITE_HEATHER = new FlowerSet("white_heather", Items.WHITE_DYE, StatusEffects.FIRE_RESISTANCE, RED_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
 
 
    public static final Block LOTUS_FLOWER = HibiscusRegistryHelper.registerPlantBlock("lotus_flower",

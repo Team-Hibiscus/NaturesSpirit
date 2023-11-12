@@ -7,6 +7,7 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusColored
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
@@ -27,6 +28,7 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule CALCITE = makeStateRule(Blocks.CALCITE);
 
    private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(HibiscusMiscBlocks.SANDY_SOIL);
+   private static final MaterialRules.MaterialRule RED_MOSS_BLOCK = makeStateRule(HibiscusMiscBlocks.RED_MOSS_BLOCK);
 
    private static final MaterialRules.MaterialRule COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
 
@@ -40,6 +42,7 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule PINK_SAND = makeStateRule(HibiscusMiscBlocks.PINK_SAND);
 
    private static final MaterialRules.MaterialRule YELLOW_KAOLIN = makeStateRule(HibiscusColoredBlocks.YELLOW_KAOLIN);
+   private static final MaterialRules.MaterialRule SNOW_BLOCK = makeStateRule(Blocks.SNOW_BLOCK);
 
    public static MaterialRules.MaterialRule makeRules() {
       MaterialRules.MaterialCondition materialCondition = MaterialRules.aboveY(YOffset.fixed(256), 0);
@@ -55,6 +58,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialCondition noiseCondition2 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.5454D, -0.3818D);
       MaterialRules.MaterialCondition noiseCondition3 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 0.5454D, 0.909D);
       MaterialRules.MaterialCondition noiseCondition4 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -0.5454D, 0.0454D);
+      MaterialRules.MaterialCondition noiseCondition5 = MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 0.2454D, 6D);
 
       MaterialRules.MaterialCondition above76 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(76), 1);
       MaterialRules.MaterialCondition belowWater = MaterialRules.waterWithStoneDepth(-6, -1);
@@ -67,6 +71,8 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialRule pinkSandstoneOrPinkSand = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), PINK_SAND);
       MaterialRules.MaterialRule pinkSandstoneOrSoil = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, PINK_SANDSTONE), SANDY_SOIL);
       MaterialRules.MaterialRule travertineOrSoil = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, TRAVERTINE), SANDY_SOIL);
+      MaterialRules.MaterialRule stoneOrMoss = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, STONE), RED_MOSS_BLOCK);
+      MaterialRules.MaterialRule stoneOrSnow = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, STONE), SNOW_BLOCK);
 
 
 
@@ -137,6 +143,11 @@ public class NatureSpiritSurfaceRules {
                       MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(noiseCondition4, travertineOrSoil))
               )
       );
+      MaterialRules.MaterialRule tundraRule = MaterialRules.condition(belowWater,
+                      MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH,
+                              MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SNOWY_FIR_FOREST, HibiscusBiomes.TUNDRA),
+                                      MaterialRules.sequence(MaterialRules.condition(noiseCondition4, MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.TUNDRA), stoneOrMoss)), MaterialRules.condition(noiseCondition5, stoneOrSnow))))
+              );
 
 
       ImmutableList.Builder <MaterialRules.MaterialRule> builder = ImmutableList.builder();
@@ -148,6 +159,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialRule woodedDrylandsSurfaceRule = MaterialRules.condition(MaterialRules.surface(), woodedDrylandsRule);
       MaterialRules.MaterialRule shoresSurfaceRule = MaterialRules.condition(MaterialRules.surface(), shoresRule);
       MaterialRules.MaterialRule xericSurfaceRule = MaterialRules.condition(MaterialRules.surface(), xericRule);
+      MaterialRules.MaterialRule tundraSurfaceRule = MaterialRules.condition(MaterialRules.surface(), tundraRule);
       builder.add(stratifiedDesertSurfaceRule);
       builder.add(bloomingDunesSurfaceRule);
       builder.add(livelyDunesSurfaceRule);
@@ -156,6 +168,7 @@ public class NatureSpiritSurfaceRules {
       builder.add(woodedDrylandsSurfaceRule);
       builder.add(shoresSurfaceRule);
       builder.add(xericSurfaceRule);
+      builder.add(tundraSurfaceRule);
       return MaterialRules.sequence(builder
               .build()
               .toArray(MaterialRules.MaterialRule[]::new));

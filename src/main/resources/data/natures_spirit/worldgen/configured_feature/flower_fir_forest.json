@@ -20,16 +20,19 @@
                 "Name": "minecraft:lily_of_the_valley"
               },
               {
-                "Name": "minecraft:oxeye_daisy"
+                "Name": "natures_spirit:white_heather"
               },
               {
-                "Name": "minecraft:oxeye_daisy"
+                "Name": "natures_spirit:white_heather"
               },
               {
-                "Name": "natures_spirit:gardenia",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "natures_spirit:purple_heather"
+              },
+              {
+                "Name": "natures_spirit:red_heather"
+              },
+              {
+                "Name": "natures_spirit:red_heather"
               },
               {
                 "Name": "minecraft:allium"
@@ -48,7 +51,7 @@
         }
       ]
     },
-    "tries": 36,
+    "tries": 30,
     "xz_spread": 6,
     "y_spread": 2
   }

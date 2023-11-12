@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:sandy_soil"
+    "natures_spirit:sandy_soil",
+    "natures_spirit:red_moss_block"
   ]
 }

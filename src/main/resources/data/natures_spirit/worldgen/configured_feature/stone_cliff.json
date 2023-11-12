@@ -50,7 +50,9 @@
                 ],
                 "blocks": [
                   "minecraft:grass_block",
+                  "natures_spirit:red_moss_block",
                   "minecraft:dirt",
+                  "minecraft:snow_block",
                   "minecraft:stone"
                 ]
               },
@@ -69,6 +71,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -82,6 +86,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -95,6 +101,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -108,6 +116,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -121,6 +131,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -134,6 +146,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -147,6 +161,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -160,6 +176,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -178,6 +196,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -191,6 +211,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -204,6 +226,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -217,6 +241,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -230,6 +256,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -243,6 +271,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -256,6 +286,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]
@@ -269,6 +301,8 @@
                         ],
                         "blocks": [
                           "minecraft:grass_block",
+                          "natures_spirit:red_moss_block",
+                          "minecraft:snow_block",
                           "minecraft:stone",
                           "minecraft:dirt"
                         ]

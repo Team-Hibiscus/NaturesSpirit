@@ -29,9 +29,17 @@
     "natures_spirit:flaxen_fern",
     "natures_spirit:frigid_grass",
     "natures_spirit:tall_frigid_grass",
+    "natures_spirit:red_bearberries",
+    "natures_spirit:green_bearberries",
+    "natures_spirit:purple_bearberries",
+    "natures_spirit:red_bitter_sprouts",
+    "natures_spirit:purple_bitter_sprouts",
+    "natures_spirit:green_bitter_sprouts",
     "natures_spirit:coconut_thatch",
     "natures_spirit:coconut_thatch_stairs",
     "natures_spirit:coconut_thatch_carpet",
-    "natures_spirit:coconut_thatch_slab"
+    "natures_spirit:coconut_thatch_slab",
+    "natures_spirit:red_moss_block",
+    "natures_spirit:red_moss_carpet"
   ]
 }

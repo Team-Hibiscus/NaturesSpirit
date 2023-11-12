@@ -1,13 +1,17 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:hibiscus",
+    "natures_spirit:yellow_wildflower",
+    "natures_spirit:purple_wildflower",
+    "natures_spirit:bluebell",
+    "natures_spirit:anemone",
     "natures_spirit:blue_iris",
     "natures_spirit:black_iris",
-    "natures_spirit:anemone",
-    "natures_spirit:bluebell",
+    "natures_spirit:white_heather",
+    "natures_spirit:dwarf_blossoms",
+    "natures_spirit:purple_heather",
+    "natures_spirit:hibiscus",
     "natures_spirit:tiger_lily",
-    "natures_spirit:purple_wildflower",
-    "natures_spirit:yellow_wildflower"
+    "natures_spirit:red_heather"
   ]
 }

@@ -10,13 +10,7 @@
             "entries": [
               {
                 "data": {
-                  "Name": "minecraft:poppy"
-                },
-                "weight": 3
-              },
-              {
-                "data": {
-                  "Name": "minecraft:dandelion"
+                  "Name": "natures_spirit:hibiscus"
                 },
                 "weight": 1
               },

@@ -221,8 +221,8 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               FLOWER_FIR_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.FLOWER_FIR_FOREST),
-              CountPlacementModifier.of(5),
-              RarityFilterPlacementModifier.of(5),
+              CountPlacementModifier.of(6),
+              RarityFilterPlacementModifier.of(8),
               SquarePlacementModifier.of(),
               PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
               BiomePlacementModifier.of()

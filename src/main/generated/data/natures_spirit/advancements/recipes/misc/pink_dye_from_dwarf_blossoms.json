@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dwarf_blossoms": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:dwarf_blossoms"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:pink_dye_from_dwarf_blossoms"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_dwarf_blossoms",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:pink_dye_from_dwarf_blossoms"
+    ]
+  },
+  "sends_telemetry_event": false
+}

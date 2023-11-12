@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_marigold": {
+    "has_red_moss_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:marigold"
+              "natures_spirit:red_moss_block"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:orange_dye_from_marigold"
+        "recipe": "natures_spirit:red_moss_carpet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_marigold",
+      "has_red_moss_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:orange_dye_from_marigold"
+      "natures_spirit:red_moss_carpet"
     ]
   },
   "sends_telemetry_event": false
