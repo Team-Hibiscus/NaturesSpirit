@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "natures_spirit:redwood_leaves",
+    "natures_spirit:yellow_larch_leaves",
     "natures_spirit:purple_wisteria_leaves",
     "natures_spirit:aspen_leaves",
     "natures_spirit:fir_leaves",
@@ -19,6 +20,7 @@
     "natures_spirit:orange_maple_leaves",
     "natures_spirit:ghaf_leaves",
     "natures_spirit:white_wisteria_leaves",
+    "natures_spirit:larch_leaves",
     "natures_spirit:scorched_grass",
     "natures_spirit:tall_scorched_grass",
     "natures_spirit:beach_grass",
@@ -39,6 +41,10 @@
     "natures_spirit:coconut_thatch_stairs",
     "natures_spirit:coconut_thatch_carpet",
     "natures_spirit:coconut_thatch_slab",
+    "natures_spirit:evergreen_thatch",
+    "natures_spirit:evergreen_thatch_stairs",
+    "natures_spirit:evergreen_thatch_carpet",
+    "natures_spirit:evergreen_thatch_slab",
     "natures_spirit:red_moss_block",
     "natures_spirit:red_moss_carpet"
   ]

@@ -41,7 +41,9 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> XERIC_PLAINS = register("xeric_plains");
    public static final RegistryKey <Biome> WHITE_CLIFFS = register("white_cliffs");
    public static final RegistryKey <Biome> PRAIRIE = register("prairie");
+   public static final RegistryKey <Biome> HEATHER_FIELDS = register("heather_fields");
    public static final RegistryKey <Biome> TUNDRA = register("tundra");
+   public static final RegistryKey <Biome> ALPINE_CLEARINGS = register("alpine_clearings");
    public static final RegistryKey <Biome> TROPICAL_SHORES = register("tropical_shores");
 
 
@@ -54,6 +56,7 @@ public class HibiscusBiomes {
    public static boolean has_aspen_forest;
    public static boolean has_maple;
    public static boolean has_fir;
+   public static boolean has_larch;
    public static boolean has_cypress_fields;
    public static boolean has_lively_dunes;
    public static boolean has_drylands;
@@ -105,6 +108,9 @@ public class HibiscusBiomes {
    };
    public static void set_has_xeric_plains(Boolean bl) {
       has_xeric_plains = bl;
+   };
+   public static void set_has_larch(Boolean bl) {
+      has_larch = bl;
    };
 
    private static RegistryKey <Biome> register(String name) {

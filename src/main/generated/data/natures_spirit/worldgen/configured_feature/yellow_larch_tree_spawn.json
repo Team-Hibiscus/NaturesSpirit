@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "natures_spirit:yellow_larch_checked",
+    "features": [
+      {
+        "chance": 0.5,
+        "feature": "natures_spirit:yellow_larch_checked"
+      }
+    ]
+  }
+}

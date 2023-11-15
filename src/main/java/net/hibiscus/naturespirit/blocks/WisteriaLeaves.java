@@ -25,16 +25,16 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock;
       Block vineBlock2;
 
-      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueWisteriaLeaves()) {
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueLeaves()) {
          vineBlock = HibiscusWoods.WISTERIA.getBlueWisteriaVines();
         vineBlock2 = HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkWisteriaLeaves()) {
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkLeaves()) {
 
          vineBlock = HibiscusWoods.WISTERIA.getPinkWisteriaVines();
          vineBlock2 = HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleWisteriaLeaves()) {
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleLeaves()) {
          vineBlock = HibiscusWoods.WISTERIA.getPurpleWisteriaVines();
          vineBlock2 = HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant();
       }
@@ -55,16 +55,16 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       Block vineBlock;
       Block vineBlock2;
 
-      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueWisteriaLeaves()) {
+      if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueLeaves()) {
          vineBlock = HibiscusWoods.WISTERIA.getBlueWisteriaVines();
          vineBlock2 = HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkWisteriaLeaves()) {
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPinkLeaves()) {
 
          vineBlock = HibiscusWoods.WISTERIA.getPinkWisteriaVines();
          vineBlock2 = HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant();
       }
-      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleWisteriaLeaves()) {
+      else if(this.asBlock() == HibiscusWoods.WISTERIA.getPurpleLeaves()) {
          vineBlock = HibiscusWoods.WISTERIA.getPurpleWisteriaVines();
          vineBlock2 = HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant();
       }

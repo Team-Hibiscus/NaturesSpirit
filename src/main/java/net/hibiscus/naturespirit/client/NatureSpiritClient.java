@@ -15,6 +15,7 @@ import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
+import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
@@ -59,7 +60,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ) : -1, HibiscusWoods.SUGI.getLeaves());
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
-      ) : -1, HibiscusWoods.OLIVE.getLeaves());
+      ) : -1, HibiscusWoods.LARCH.getLeaves());
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusMiscBlocks.LOTUS_STEM);
@@ -68,7 +69,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ) : -1, HibiscusMiscBlocks.LOTUS_FLOWER);
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
-      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.OLIVE.getLeaves());
+      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.LARCH.getLeaves());
 
       EntityModelLayers.registerEntityModelLayers();
       EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_0, Topping0::getTexturedModelData);
@@ -82,11 +83,18 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.LARGE_CALCITE_BUD, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.SMALL_CALCITE_BUD, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.CALCITE_CLUSTER, RenderLayer.getCutout());
+
          BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), HibiscusRegistryHelper.RenderLayerHashMap.values().toArray(new Block[0]));
+
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_CARPET, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_SLAB, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_STAIRS, RenderLayer.getCutout());
+
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.EVERGREEN_THATCH_CARPET, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.EVERGREEN_THATCH_SLAB, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.EVERGREEN_THATCH, RenderLayer.getCutout());
+      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.EVERGREEN_THATCH_STAIRS, RenderLayer.getCutout());
 
 
 

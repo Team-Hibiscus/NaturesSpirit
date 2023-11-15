@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "natures_spirit:redwood_sapling",
+    "natures_spirit:yellow_larch_sapling",
     "natures_spirit:purple_wisteria_sapling",
     "natures_spirit:aspen_sapling",
     "natures_spirit:fir_sapling",
@@ -18,6 +19,7 @@
     "natures_spirit:joshua_sapling",
     "natures_spirit:orange_maple_sapling",
     "natures_spirit:ghaf_sapling",
-    "natures_spirit:white_wisteria_sapling"
+    "natures_spirit:white_wisteria_sapling",
+    "natures_spirit:larch_sapling"
   ]
 }

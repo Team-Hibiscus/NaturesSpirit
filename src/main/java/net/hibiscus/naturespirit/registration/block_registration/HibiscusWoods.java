@@ -8,11 +8,9 @@ import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.CoconutHalfItem;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.registration.WoodSet;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
@@ -75,12 +73,12 @@ public class HibiscusWoods {
            new Identifier(MOD_ID, "fir"),
            MapColor.GRAY,
            MapColor.DIRT_BROWN,
-           WISTERIA.getPurpleWisteriaLeaves(),
+           WISTERIA.getPurpleLeaves(),
            WISTERIA.getLog(),
            WISTERIA.getHangingSign(),
            WISTERIA.getChestBoatItem(),
            WISTERIA.getButton(),
-           WISTERIA.getPurpleWisteriaSapling(),
+           WISTERIA.getPurpleSapling(),
            HibiscusBoatEntity.HibiscusBoat.FIR,
            new FirSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
@@ -135,12 +133,12 @@ public class HibiscusWoods {
            new Identifier(MOD_ID, "cypress"),
            MapColor.SPRUCE_BROWN,
            MapColor.OAK_TAN,
-           MAPLE.getYellowMapleLeaves(),
+           MAPLE.getYellowLeaves(),
            MAPLE.getLog(),
            MAPLE.getHangingSign(),
            MAPLE.getChestBoatItem(),
            MAPLE.getButton(),
-           MAPLE.getYellowMapleSapling(),
+           MAPLE.getYellowSapling(),
            HibiscusBoatEntity.HibiscusBoat.CYPRESS,
            new CypressSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
@@ -223,14 +221,14 @@ public class HibiscusWoods {
    );
 
    public static final Block COCONUT_THATCH = registerBlock("coconut_thatch",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, COCONUT.getChestBoatItem());
+           new Block(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, COCONUT.getChestBoatItem());
    public static final Block COCONUT_THATCH_STAIRS = registerBlock(
            "coconut_thatch_stairs",
            new StairsBlock(COCONUT_THATCH.getDefaultState(), FabricBlockSettings.copy(COCONUT_THATCH)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
-   public static final Block COCONUT_THATCH_SLAB = registerBlock("coconut_thatch_slab", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).sounds(BlockSoundGroup.GRASS).strength(0.4f)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP);
+   public static final Block COCONUT_THATCH_SLAB = registerBlock("coconut_thatch_slab", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).sounds(BlockSoundGroup.GRASS).strength(0.4f)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP);
    public static final Block COCONUT_THATCH_CARPET = registerBlock("coconut_thatch_carpet",
-           new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
+           new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
    public static Block YOUNG_COCONUT_BLOCK = registerPlantBlock("young_coconut", new YoungCoconutBlock(
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
@@ -288,6 +286,31 @@ public class HibiscusWoods {
            new CedarSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
            false
+   );
+   public static WoodSet LARCH = new WoodSet(
+           new Identifier(MOD_ID, "larch"),
+           MapColor.BLUE,
+           MapColor.LIGHT_GRAY,
+           CEDAR.getLeaves(),
+           CEDAR.getLog(),
+           CEDAR.getHangingSign(),
+           CEDAR.getChestBoatItem(),
+           CEDAR.getButton(),
+           CEDAR.getSapling(),
+           HibiscusBoatEntity.HibiscusBoat.LARCH,
+           new LarchSaplingGenerator(),
+           WoodSet.WoodPreset.LARCH,
+           false
+   );
+   public static final Block EVERGREEN_THATCH = registerBlock("evergreen_thatch",
+           new Block(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, LARCH.getChestBoatItem());
+   public static final Block EVERGREEN_THATCH_STAIRS = registerBlock(
+           "evergreen_thatch_stairs",
+           new StairsBlock(EVERGREEN_THATCH.getDefaultState(), FabricBlockSettings.copy(EVERGREEN_THATCH)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
+   );
+   public static final Block EVERGREEN_THATCH_SLAB = registerBlock("evergreen_thatch_slab", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).sounds(BlockSoundGroup.GRASS).strength(0.4f)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP);
+   public static final Block EVERGREEN_THATCH_CARPET = registerBlock("evergreen_thatch_carpet",
+           new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
 
    public static void registerWoods() {

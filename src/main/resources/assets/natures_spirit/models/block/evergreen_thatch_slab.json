@@ -1,0 +1,8 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "natures_spirit:block/thatch_slab",
+	"textures": {
+		"3": "natures_spirit:block/evergreen_thatch",
+		"4": "natures_spirit:block/evergreen_thatch_end"
+	}
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_evergreen_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "natures_spirit:evergreen_leaves"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:evergreen_thatch"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_evergreen_leaves",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:evergreen_thatch"
+    ]
+  },
+  "sends_telemetry_event": false
+}

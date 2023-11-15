@@ -13,6 +13,7 @@ public class HibiscusTags {
       public static final TagKey <Item> PIZZA_TOPPINGS = createTag("pizza_toppings");
       public static final TagKey <Item> DISABLED_PIZZA_TOPPINGS = createTag("disabled_pizza_toppings");
       public static final TagKey <Item> CHEESE_MAKER = createTag("cheese_maker");
+      public static final TagKey <Item> EVERGREEN_LEAVES = createTag("evergreen_leaves");
       public static final TagKey <Item> COCONUT_ITEMS = createTag("coconut_items");
 
       private static TagKey <Item> createTag(String name) {

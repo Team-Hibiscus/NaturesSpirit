@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"particle": "minecraft:block/flower_pot",
-		"flowerpot": "minecraft:block/flower_pot",
-		"dirt": "minecraft:block/dirt"
+		"particle": "block/flower_pot",
+		"flowerpot": "block/flower_pot",
+		"dirt": "block/dirt"
 	},
 	"elements": [
 		{
@@ -64,8 +64,8 @@
 			"to": [13.4, 22, 8],
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#plant"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#plant"}
+				"north": {"uv": [0, 4, 16, 16], "texture": "#plant"},
+				"south": {"uv": [0, 4, 16, 16], "texture": "#plant"}
 			}
 		},
 		{
@@ -73,8 +73,8 @@
 			"to": [8, 22, 13.4],
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
 			"faces": {
-				"east": {"uv": [0, 0, 16, 16], "texture": "#plant"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#plant"}
+				"east": {"uv": [0, 4, 16, 16], "texture": "#plant"},
+				"west": {"uv": [0, 4, 16, 16], "texture": "#plant"}
 			}
 		}
 	]

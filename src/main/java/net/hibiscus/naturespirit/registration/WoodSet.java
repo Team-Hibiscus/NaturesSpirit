@@ -18,7 +18,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
@@ -60,27 +59,27 @@ public class WoodSet {
    private Block leaves;
    private Block sapling;
    private Block pottedSapling;
-   private Block redMapleLeaves;
-   private Block redMapleSapling;
-   private Block pottedRedMapleSapling;
-   private Block orangeMapleLeaves;
-   private Block orangeMapleSapling;
-   private Block pottedOrangeMapleSapling;
-   private Block yellowMapleLeaves;
-   private Block yellowMapleSapling;
-   private Block pottedYellowMapleSapling;
-   private Block blueWisteriaLeaves;
-   private Block blueWisteriaSapling;
-   private Block pottedBlueWisteriaSapling;
-   private Block purpleWisteriaLeaves;
-   private Block purpleWisteriaSapling;
-   private Block pottedPurpleWisteriaSapling;
-   private Block pinkWisteriaLeaves;
-   private Block pinkWisteriaSapling;
-   private Block pottedPinkWisteriaSapling;
-   private Block whiteWisteriaLeaves;
-   private Block whiteWisteriaSapling;
-   private Block pottedWhiteWisteriaSapling;
+   private Block redLeaves;
+   private Block redSapling;
+   private Block pottedRedSapling;
+   private Block orangeLeaves;
+   private Block orangeSapling;
+   private Block pottedOrangeSapling;
+   private Block yellowLeaves;
+   private Block yellowSapling;
+   private Block pottedYellowSapling;
+   private Block blueLeaves;
+   private Block blueSapling;
+   private Block pottedBlueSapling;
+   private Block purpleLeaves;
+   private Block purpleSapling;
+   private Block pottedPurpleSapling;
+   private Block pinkLeaves;
+   private Block pinkSapling;
+   private Block pottedPinkSapling;
+   private Block whiteLeaves;
+   private Block whiteSapling;
+   private Block pottedWhiteSapling;
    private static Block willowVines;
    private static Block willowVinesPlant;
    private Block blueWisteriaVines;
@@ -127,6 +126,7 @@ public class WoodSet {
 
       log = this.getWoodPreset() == WoodPreset.JOSHUA ? createJoshuaLog() : createLog();
       strippedLog = this.getWoodPreset() == WoodPreset.JOSHUA ? createStrippedJoshuaLog() : createStrippedLog();
+
       if (this.getWoodPreset() == WoodPreset.JOSHUA) {
          bundle = createBundle();
          strippedBundle = createStrippedBundle();
@@ -137,56 +137,44 @@ public class WoodSet {
          StrippableBlockRegistry.register(log, strippedLog);
       }
 
-      if (this.getWoodPreset() != WoodPreset.BAMBOO && this.getWoodPreset() != WoodPreset.JOSHUA){
+      if (this.getWoodPreset() != WoodPreset.BAMBOO && this.getWoodPreset() != WoodPreset.JOSHUA) {
          wood = createWood();
          strippedWood = createStrippedWood();
          StrippableBlockRegistry.register(wood, strippedWood);
       }
+
       if (this.hasDefaultLeaves()){
          leaves = createLeaves();
-         RenderLayerHashMap.put(this.getName() + "_leaves", this.getLeaves());
-         CompostingChanceRegistry.INSTANCE.add(this.getLeaves(), 0.3F);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getLeaves(), 5, 20);
-         CompostingChanceRegistry.INSTANCE.add(this.getLeaves(), 0.3F);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves()));
-         LeavesHashMap.put(this.getName(), this.getLeaves());
 
          if (this.getWoodPreset() != WoodPreset.NO_SAPLING) {
             sapling = this.isSandy() ? createSandySapling(saplingGenerator) : createSapling(saplingGenerator);
             pottedSapling = createPottedSapling(this.getSapling());
-            RenderLayerHashMap.put(this.getName() + "_sapling", this.getSapling());
-            RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getPottedSapling());
-            CompostingChanceRegistry.INSTANCE.add(this.getSapling(), 0.3F);
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
             SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
          }
       }
+
       if (this.getWoodPreset() == WoodPreset.WILLOW){
          leaves = createWillowLeaves();
-         willowVines = createWillowVines();
-         willowVinesPlant = createWillowVinesPlant(this.getWillowVines());
-         RenderLayerHashMap.put(this.getName() + "_leaves", this.getLeaves());
-         RenderLayerHashMap.put(this.getName() + "_vines", this.getWillowVines());
-         RenderLayerHashMap.put(this.getName() + "_vines_plant", this.getWillowVinesPlant());
-         CompostingChanceRegistry.INSTANCE.add(this.getLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getWillowVines(), 0.3F);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getLeaves(), 5, 20);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves().asItem()));
-         LeavesHashMap.put(this.getName(), this.getLeaves());
+
+         willowVines = createWillowVines();
+         willowVinesPlant = createWillowVinesPlant(getWillowVines());
+         RenderLayerHashMap.put(this.getName() + "_vines", getWillowVines());
+         RenderLayerHashMap.put(this.getName() + "_vines_plant", getWillowVinesPlant());
+         CompostingChanceRegistry.INSTANCE.add(getWillowVines(), 0.3F);
 
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
-         RenderLayerHashMap.put(this.getName() + "_sapling", this.getSapling());
-         RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", this.getPottedSapling());
-         CompostingChanceRegistry.INSTANCE.add(this.getSapling(), 0.3F);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
          SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
       }
       if (this.getWoodPreset() == WoodPreset.WISTERIA) {
-         whiteWisteriaLeaves = createWisteriaLeaves("white_");
-         blueWisteriaLeaves = createWisteriaLeaves("blue_");
-         pinkWisteriaLeaves = createWisteriaLeaves("pink_");
-         purpleWisteriaLeaves = createWisteriaLeaves("purple_");
+         whiteLeaves = createWisteriaLeaves("white_");
+         blueLeaves = createWisteriaLeaves("blue_");
+         pinkLeaves = createWisteriaLeaves("pink_");
+         purpleLeaves = createWisteriaLeaves("purple_");
          whiteWisteriaVines = createWisteriaVines("white_");
          blueWisteriaVines = createWisteriaVines("blue_");
          pinkWisteriaVines = createWisteriaVines("pink_");
@@ -195,18 +183,14 @@ public class WoodSet {
          blueWisteriaVinesPlant = createWisteriaVinesPlant("blue_", this.getBlueWisteriaVines());
          pinkWisteriaVinesPlant = createWisteriaVinesPlant("pink_", this.getPinkWisteriaVines());
          purpleWisteriaVinesPlant = createWisteriaVinesPlant("purple_", this.getPurpleWisteriaVines());
-         whiteWisteriaSapling = createSapling("white_", new WhiteWisteriaSaplingGenerator());
-         blueWisteriaSapling = createSapling("blue_", new BlueWisteriaSaplingGenerator());
-         pinkWisteriaSapling = createSapling("pink_", new PinkWisteriaSaplingGenerator());
-         purpleWisteriaSapling = createSapling("purple_", new PurpleWisteriaSaplingGenerator());
-         pottedWhiteWisteriaSapling = createPottedSapling("white_",this.getWhiteWisteriaSapling());
-         pottedBlueWisteriaSapling = createPottedSapling("blue_", this.getBlueWisteriaSapling());
-         pottedPinkWisteriaSapling = createPottedSapling("pink_", this.getPinkWisteriaSapling());
-         pottedPurpleWisteriaSapling = createPottedSapling("purple_",this.getPurpleWisteriaSapling());
-         RenderLayerHashMap.put("white_" + this.getName() + "_leaves", this.getWhiteWisteriaLeaves());
-         RenderLayerHashMap.put("blue_" + this.getName() + "_leaves", this.getBlueWisteriaLeaves());
-         RenderLayerHashMap.put("pink_" + this.getName() + "_leaves", this.getPinkWisteriaLeaves());
-         RenderLayerHashMap.put("purple_" + this.getName() + "_leaves", this.getPurpleWisteriaLeaves());
+         whiteSapling = createSapling("white_", new WhiteWisteriaSaplingGenerator());
+         blueSapling = createSapling("blue_", new BlueWisteriaSaplingGenerator());
+         pinkSapling = createSapling("pink_", new PinkWisteriaSaplingGenerator());
+         purpleSapling = createSapling("purple_", new PurpleWisteriaSaplingGenerator());
+         pottedWhiteSapling = createPottedSapling("white_",this.getWhiteSapling());
+         pottedBlueSapling = createPottedSapling("blue_", this.getBlueSapling());
+         pottedPinkSapling = createPottedSapling("pink_", this.getPinkSapling());
+         pottedPurpleSapling = createPottedSapling("purple_",this.getPurpleSapling());
          RenderLayerHashMap.put("white_" + this.getName() + "_vines", this.getWhiteWisteriaVines());
          RenderLayerHashMap.put("blue_" + this.getName() + "_vines", this.getBlueWisteriaVines());
          RenderLayerHashMap.put("pink_" + this.getName() + "_vines", this.getPinkWisteriaVines());
@@ -215,91 +199,54 @@ public class WoodSet {
          RenderLayerHashMap.put("blue_" + this.getName() + "_vines_plant", this.getBlueWisteriaVinesPlant());
          RenderLayerHashMap.put("pink_" + this.getName() + "_vines_plant", this.getPinkWisteriaVinesPlant());
          RenderLayerHashMap.put("purple_" + this.getName() + "_vines_plant", this.getPurpleWisteriaVinesPlant());
-         RenderLayerHashMap.put("white_" + this.getName() + "_sapling", this.getWhiteWisteriaSapling());
-         RenderLayerHashMap.put("blue_" + this.getName() + "_sapling", this.getBlueWisteriaSapling());
-         RenderLayerHashMap.put("pink_" + this.getName() + "_sapling", this.getPinkWisteriaSapling());
-         RenderLayerHashMap.put("purple_" + this.getName() + "_sapling", this.getPurpleWisteriaSapling());
-         RenderLayerHashMap.put("potted_white_" + this.getName() + "_sapling", this.getPottedWhiteWisteriaSapling());
-         RenderLayerHashMap.put("potted_blue_" + this.getName() + "_sapling", this.getPottedBlueWisteriaSapling());
-         RenderLayerHashMap.put("potted_pink_" + this.getName() + "_sapling", this.getPottedPinkWisteriaSapling());
-         RenderLayerHashMap.put("potted_purple_" + this.getName() + "_sapling", this.getPottedPurpleWisteriaSapling());
-         FlammableBlockRegistry.getDefaultInstance().add(this.getWhiteWisteriaLeaves(), 5, 20);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getBlueWisteriaLeaves(), 5, 20);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getPinkWisteriaLeaves(), 5, 20);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getPurpleWisteriaLeaves(), 5, 20);
-         CompostingChanceRegistry.INSTANCE.add(this.getWhiteWisteriaLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getBlueWisteriaLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getPinkWisteriaLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getPurpleWisteriaLeaves(), 0.3F);
          CompostingChanceRegistry.INSTANCE.add(this.getWhiteWisteriaVines(), 0.3F);
          CompostingChanceRegistry.INSTANCE.add(this.getBlueWisteriaVines(), 0.3F);
          CompostingChanceRegistry.INSTANCE.add(this.getPinkWisteriaVines(), 0.3F);
          CompostingChanceRegistry.INSTANCE.add(this.getPurpleWisteriaVines(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getWhiteWisteriaSapling(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getBlueWisteriaSapling(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getPinkWisteriaSapling(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getPurpleWisteriaSapling(), 0.3F);
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getWhiteWisteriaLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteWisteriaLeaves(), this.getBlueWisteriaLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueWisteriaLeaves(), this.getPinkWisteriaLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getPinkWisteriaLeaves(), this.getPurpleWisteriaLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getWhiteLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteLeaves(), this.getBlueLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueLeaves(), this.getPinkLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getPinkLeaves(), this.getPurpleLeaves().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Blocks.VINE, this.getWhiteWisteriaVines().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteWisteriaVines(), this.getBlueWisteriaVines().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueWisteriaVines(), this.getPinkWisteriaVines().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getPinkWisteriaVines(), this.getPurpleWisteriaVines().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getWhiteWisteriaSapling().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteWisteriaSapling(), this.getBlueWisteriaSapling().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueWisteriaSapling(), this.getPinkWisteriaSapling().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getPinkWisteriaSapling(), this.getPurpleWisteriaSapling().asItem()));
-         LeavesHashMap.put("white_" + this.getName(), this.getWhiteWisteriaLeaves());
-         LeavesHashMap.put("blue_" + this.getName(), this.getBlueWisteriaLeaves());
-         LeavesHashMap.put("pink_" + this.getName(), this.getPinkWisteriaLeaves());
-         LeavesHashMap.put("purple_" + this.getName(), this.getPurpleWisteriaLeaves());
-         SaplingHashMap.put("white_" + this.getName(), new Block[]{this.getWhiteWisteriaSapling(), this.getPottedWhiteWisteriaSapling()});
-         SaplingHashMap.put("blue_" + this.getName(), new Block[]{this.getBlueWisteriaSapling(), this.getPottedBlueWisteriaSapling()});
-         SaplingHashMap.put("pink_" + this.getName(), new Block[]{this.getPinkWisteriaSapling(), this.getPottedPinkWisteriaSapling()});
-         SaplingHashMap.put("purple_" + this.getName(), new Block[]{this.getPurpleWisteriaSapling(), this.getPottedPurpleWisteriaSapling()});
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getWhiteSapling().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteSapling(), this.getBlueSapling().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueSapling(), this.getPinkSapling().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getPinkSapling(), this.getPurpleSapling().asItem()));
+         SaplingHashMap.put("white_" + this.getName(), new Block[]{this.getWhiteSapling(), this.getPottedWhiteSapling()});
+         SaplingHashMap.put("blue_" + this.getName(), new Block[]{this.getBlueSapling(), this.getPottedBlueSapling()});
+         SaplingHashMap.put("pink_" + this.getName(), new Block[]{this.getPinkSapling(), this.getPottedPinkSapling()});
+         SaplingHashMap.put("purple_" + this.getName(), new Block[]{this.getPurpleSapling(), this.getPottedPurpleSapling()});
       }
       if (this.getWoodPreset() == WoodPreset.MAPLE) {
-         redMapleLeaves = createMapleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE);
-         orangeMapleLeaves = createMapleLeaves("orange_", NatureSpirit.ORANGE_MAPLE_LEAVES_PARTICLE);
-         yellowMapleLeaves = createMapleLeaves("yellow_", NatureSpirit.YELLOW_MAPLE_LEAVES_PARTICLE);
-         redMapleSapling = createSapling("red_", new RedMapleSaplingGenerator());
-         orangeMapleSapling = createSapling("orange_", new OrangeMapleSaplingGenerator());
-         yellowMapleSapling = createSapling("yellow_", new YellowMapleSaplingGenerator());
-         pottedRedMapleSapling = createPottedSapling("red_", this.getRedMapleSapling());
-         pottedOrangeMapleSapling = createPottedSapling("orange_", this.getOrangeMapleSapling());
-         pottedYellowMapleSapling = createPottedSapling("yellow_", this.getYellowMapleSapling());
-         RenderLayerHashMap.put("red_" + this.getName() + "_leaves", this.getRedMapleLeaves());
-         RenderLayerHashMap.put("orange_" + this.getName() + "_leaves", this.getOrangeMapleLeaves());
-         RenderLayerHashMap.put("yellow_" + this.getName() + "_leaves", this.getYellowMapleLeaves());
-         RenderLayerHashMap.put("red_" + this.getName() + "_sapling", this.getRedMapleSapling());
-         RenderLayerHashMap.put("orange_" + this.getName() + "_sapling", this.getOrangeMapleSapling());
-         RenderLayerHashMap.put("yellow_" + this.getName() + "_sapling", this.getYellowMapleSapling());
-         RenderLayerHashMap.put("potted_red_" + this.getName() + "_sapling", this.getPottedRedMapleSapling());
-         RenderLayerHashMap.put("potted_orange_" + this.getName() + "_sapling", this.getPottedOrangeMapleSapling());
-         RenderLayerHashMap.put("potted_yellow_" + this.getName() + "_sapling", this.getPottedYellowMapleSapling());
-         FlammableBlockRegistry.getDefaultInstance().add(this.getRedMapleLeaves(), 5, 20);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getOrangeMapleLeaves(), 5, 20);
-         FlammableBlockRegistry.getDefaultInstance().add(this.getYellowMapleLeaves(), 5, 20);
-         CompostingChanceRegistry.INSTANCE.add(this.getRedMapleLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getOrangeMapleLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getYellowMapleLeaves(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getRedMapleSapling(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getOrangeMapleSapling(), 0.3F);
-         CompostingChanceRegistry.INSTANCE.add(this.getYellowMapleSapling(), 0.3F);
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getRedMapleLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getRedMapleLeaves(), this.getOrangeMapleLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getOrangeMapleLeaves(), this.getYellowMapleLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getRedMapleSapling().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getRedMapleSapling(), this.getOrangeMapleSapling().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getOrangeMapleSapling(), this.getYellowMapleSapling().asItem()));
-         LeavesHashMap.put("red_" + this.getName(), this.getRedMapleLeaves());
-         LeavesHashMap.put("orange_" + this.getName(), this.getOrangeMapleLeaves());
-         LeavesHashMap.put("yellow_" + this.getName(), this.getYellowMapleLeaves());
-         SaplingHashMap.put("red_" + this.getName(), new Block[]{this.getRedMapleSapling(), this.getPottedRedMapleSapling()});
-         SaplingHashMap.put("orange_" + this.getName(), new Block[]{this.getOrangeMapleSapling(), this.getPottedOrangeMapleSapling()});
-         SaplingHashMap.put("yellow_" + this.getName(), new Block[]{this.getYellowMapleSapling(), this.getPottedYellowMapleSapling()});
+         redLeaves = createMapleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE);
+         orangeLeaves = createMapleLeaves("orange_", NatureSpirit.ORANGE_MAPLE_LEAVES_PARTICLE);
+         yellowLeaves = createMapleLeaves("yellow_", NatureSpirit.YELLOW_MAPLE_LEAVES_PARTICLE);
+         redSapling = createSapling("red_", new RedMapleSaplingGenerator());
+         orangeSapling = createSapling("orange_", new OrangeMapleSaplingGenerator());
+         yellowSapling = createSapling("yellow_", new YellowMapleSaplingGenerator());
+         pottedRedSapling = createPottedSapling("red_", this.getRedSapling());
+         pottedOrangeSapling = createPottedSapling("orange_", this.getOrangeSapling());
+         pottedYellowSapling = createPottedSapling("yellow_", this.getYellowSapling());
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getRedLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getRedLeaves(), this.getOrangeLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getOrangeLeaves(), this.getYellowLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getRedSapling().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getRedSapling(), this.getOrangeSapling().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getOrangeSapling(), this.getYellowSapling().asItem()));
+         SaplingHashMap.put("red_" + this.getName(), new Block[]{this.getRedSapling(), this.getPottedRedSapling()});
+         SaplingHashMap.put("orange_" + this.getName(), new Block[]{this.getOrangeSapling(), this.getPottedOrangeSapling()});
+         SaplingHashMap.put("yellow_" + this.getName(), new Block[]{this.getYellowSapling(), this.getPottedYellowSapling()});
+      }
+      if (this.getWoodPreset() == WoodPreset.LARCH) {
+         yellowLeaves = createLeaves("yellow_");
+         yellowSapling = createSapling("yellow_", new YellowLarchSaplingGenerator());
+         pottedYellowSapling = createPottedSapling("yellow_", this.getYellowSapling());
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeaves(), this.getYellowLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSapling(), this.getYellowSapling().asItem()));
+         SaplingHashMap.put("yellow_" + this.getName(), new Block[]{this.getYellowSapling(), this.getPottedYellowSapling()});
       }
       if (this.hasMosaic()){
          mosaic = createMosaic();
@@ -516,68 +463,68 @@ public class WoodSet {
    public static Block getWillowVinesPlant() {
       return willowVinesPlant;
    }
-   public Block getRedMapleLeaves() {
-      return redMapleLeaves;
+   public Block getRedLeaves() {
+      return redLeaves;
    }
-   public Block getOrangeMapleLeaves() {
-      return orangeMapleLeaves;
+   public Block getOrangeLeaves() {
+      return orangeLeaves;
    }
-   public Block getYellowMapleLeaves() {
-      return yellowMapleLeaves;
+   public Block getYellowLeaves() {
+      return yellowLeaves;
    }
-   public Block getBlueWisteriaLeaves() {
-      return blueWisteriaLeaves;
+   public Block getBlueLeaves() {
+      return blueLeaves;
    }
-   public Block getPurpleWisteriaLeaves() {
-      return purpleWisteriaLeaves;
+   public Block getPurpleLeaves() {
+      return purpleLeaves;
    }
-   public Block getPinkWisteriaLeaves() {
-      return pinkWisteriaLeaves;
+   public Block getPinkLeaves() {
+      return pinkLeaves;
    }
-   public Block getWhiteWisteriaLeaves() {
-      return whiteWisteriaLeaves;
+   public Block getWhiteLeaves() {
+      return whiteLeaves;
    }
-   public Block getPottedRedMapleSapling() {
-      return pottedRedMapleSapling;
+   public Block getPottedRedSapling() {
+      return pottedRedSapling;
    }
-   public Block getPottedOrangeMapleSapling() {
-      return pottedOrangeMapleSapling;
+   public Block getPottedOrangeSapling() {
+      return pottedOrangeSapling;
    }
-   public Block getPottedYellowMapleSapling() {
-      return pottedYellowMapleSapling;
+   public Block getPottedYellowSapling() {
+      return pottedYellowSapling;
    }
-   public Block getPottedBlueWisteriaSapling() {
-      return pottedBlueWisteriaSapling;
+   public Block getPottedBlueSapling() {
+      return pottedBlueSapling;
    }
-   public Block getPottedPurpleWisteriaSapling() {
-      return pottedPurpleWisteriaSapling;
+   public Block getPottedPurpleSapling() {
+      return pottedPurpleSapling;
    }
-   public Block getPottedPinkWisteriaSapling() {
-      return pottedPinkWisteriaSapling;
+   public Block getPottedPinkSapling() {
+      return pottedPinkSapling;
    }
-   public Block getPottedWhiteWisteriaSapling() {
-      return pottedWhiteWisteriaSapling;
+   public Block getPottedWhiteSapling() {
+      return pottedWhiteSapling;
    }
-   public Block getRedMapleSapling() {
-      return redMapleSapling;
+   public Block getRedSapling() {
+      return redSapling;
    }
-   public Block getOrangeMapleSapling() {
-      return orangeMapleSapling;
+   public Block getOrangeSapling() {
+      return orangeSapling;
    }
-   public Block getYellowMapleSapling() {
-      return yellowMapleSapling;
+   public Block getYellowSapling() {
+      return yellowSapling;
    }
-   public Block getBlueWisteriaSapling() {
-      return blueWisteriaSapling;
+   public Block getBlueSapling() {
+      return blueSapling;
    }
-   public Block getPurpleWisteriaSapling() {
-      return purpleWisteriaSapling;
+   public Block getPurpleSapling() {
+      return purpleSapling;
    }
-   public Block getPinkWisteriaSapling() {
-      return pinkWisteriaSapling;
+   public Block getPinkSapling() {
+      return pinkSapling;
    }
-   public Block getWhiteWisteriaSapling() {
-      return whiteWisteriaSapling;
+   public Block getWhiteSapling() {
+      return whiteSapling;
    }
    public Block getBlueWisteriaVines() {return blueWisteriaVines;}
    public Block getPurpleWisteriaVines() {return purpleWisteriaVines;}
@@ -647,13 +594,36 @@ public class WoodSet {
       return createBlockWithItem("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
    }
    private Block createLeaves() {
-      return createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
+      RenderLayerHashMap.put(this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(this.getName(), block);
+      return block;
+   }
+   private Block createLeaves(String prefix) {
+      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
+      RenderLayerHashMap.put(prefix + this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(prefix + this.getName(), block);
+      return block;
    }
    private Block createMapleLeaves(String prefix, ParticleEffect particle) {
-      return createBlockWithItem(prefix + this.getName() + "_leaves", new MapleLeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves()), particle));
+      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new MapleLeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves()), particle));
+      RenderLayerHashMap.put(prefix + this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(prefix + this.getName(), block);
+      return block;
    }
    private Block createWisteriaLeaves(String prefix) {
-      return createBlockWithItem(prefix + this.getName() + "_leaves", new WisteriaLeaves(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new WisteriaLeaves(AbstractBlock.Settings.copy(getBaseLeaves())));
+      RenderLayerHashMap.put(prefix + this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(prefix + this.getName(), block);
+      return block;
    }
    private Block createWisteriaVines(String prefix) {
       return createBlockWithItem(prefix + this.getName() + "_vines",
@@ -677,7 +647,12 @@ public class WoodSet {
               .dropsLike(vines), vines));
    }
    private Block createWillowLeaves() {
-      return createBlockWithItem(this.getName() + "_leaves", new WillowLeaves(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(this.getName() + "_leaves", new WillowLeaves(AbstractBlock.Settings.copy(getBaseLeaves())));
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      RenderLayerHashMap.put(this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      LeavesHashMap.put(this.getName(), block);
+      return block;
    }
    private Block createWillowVines() {
       return createBlockWithItem(this.getName() + "_vines",
@@ -750,19 +725,32 @@ public class WoodSet {
    }
 
    public Block createSapling(SaplingGenerator saplingGenerator) {
-      return createBlockWithItem(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      Block block = createBlockWithItem(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      RenderLayerHashMap.put(this.getName() + "_sapling", block);
+      return block;
    }
    public Block createSandySapling(SaplingGenerator saplingGenerator) {
-      return createBlockWithItem(this.getName() + "_sapling", new SandySaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      Block block = createBlockWithItem(this.getName() + "_sapling", new SandySaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      RenderLayerHashMap.put(this.getName() + "_sapling", block);
+      return block;
    }
    public Block createPottedSapling(Block sapling) {
-      return registerBlock("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      Block pot = registerBlock("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", pot);
+      return pot;
    }
    public Block createSapling(String prefix, SaplingGenerator saplingGenerator) {
-      return createBlockWithItem(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      Block block = createBlockWithItem(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      RenderLayerHashMap.put(prefix + this.getName() + "_sapling", block);
+      return block;
    }
    public Block createPottedSapling(String prefix, Block sapling) {
-      return registerBlock("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      Block pot = registerBlock("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      RenderLayerHashMap.put("potted_" + prefix + this.getName() + "_sapling", pot);
+      return pot;
    }
 
    private Item createSignItem(){
@@ -872,7 +860,7 @@ public class WoodSet {
       return this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.SANDY;
    }
    public boolean hasDefaultLeaves(){
-      return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.NO_SAPLING|| this.getWoodPreset() == WoodPreset.SANDY;
+      return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.LARCH || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.NO_SAPLING|| this.getWoodPreset() == WoodPreset.SANDY;
    }
    public boolean hasBark(){
       return this.getWoodPreset() != WoodPreset.JOSHUA && this.getWoodPreset() != WoodPreset.BAMBOO;
@@ -888,6 +876,7 @@ public class WoodSet {
       NO_SAPLING,
       WISTERIA,
       WILLOW,
+      LARCH,
       FANCY,
       NETHER,
       BAMBOO

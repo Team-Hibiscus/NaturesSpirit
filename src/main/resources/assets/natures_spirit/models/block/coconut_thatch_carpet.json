@@ -1,58 +1,9 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "block/thin_block",
+	"parent": "natures_spirit:block/thatch_carpet",
 	"ambientocclusion": false,
 	"textures": {
 		"1": "natures_spirit:block/coconut_thatch",
-		"2": "natures_spirit:block/coconut_thatch_end",
-		"particle": "natures_spirit:block/coconut_thatch"
-	},
-	"elements": [
-		{
-			"from": [0, 0, 0],
-			"to": [16, 1, 16],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 1], "texture": "#1"},
-				"east": {"uv": [0, 0, 16, 1], "texture": "#1"},
-				"south": {"uv": [0, 0, 16, 1], "texture": "#1"},
-				"west": {"uv": [0, 0, 16, 1], "texture": "#1"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
-			}
-		},
-		{
-			"from": [-0.01, -8, 0],
-			"to": [-0.01, 0, 16],
-			"faces": {
-				"east": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "west"},
-				"west": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "west"}
-			}
-		},
-		{
-			"from": [0, -8, -0.01],
-			"to": [16, 0, -0.01],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "north"},
-				"south": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "north"}
-			}
-		},
-		{
-			"from": [16.01, -8, 0],
-			"to": [16.01, 0, 16],
-			"faces": {
-				"east": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "east"},
-				"west": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "east"}
-			}
-		},
-		{
-			"from": [0, -8, 16.01],
-			"to": [16, 0, 16.01],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "south"},
-				"south": {"uv": [0, 0, 16, 8], "texture": "#2", "cullface": "south"}
-			}
-		}
-	]
+		"2": "natures_spirit:block/coconut_thatch_end"
+	}
 }

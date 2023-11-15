@@ -24,7 +24,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -52,7 +51,6 @@ import static net.hibiscus.naturespirit.world.HibiscusWorldGen.*;
 
 public class HibiscusConfiguredFeatures {
 
-   public static final RegistryKey<ConfiguredFeature<?, ?>> RED_MOSS_VEGETATION = registerKey("red_moss_vegetation");
    public static final RegistryKey<ConfiguredFeature<?, ?>> RED_MOSS_PATCH_BONEMEAL = registerKey("red_moss_patch_bonemeal");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_DELTA = registerKey("water_delta");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SWAMP_DELTA = registerKey("swamp_delta");
@@ -78,6 +76,10 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> MAPLE_SPAWN = registerKey("maple_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FIR_TREE = registerKey("fir_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FIR_TREE_SPAWN = registerKey("fir_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LARCH_TREE = registerKey("larch_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LARCH_TREE_SPAWN = registerKey("larch_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> YELLOW_LARCH_TREE = registerKey("yellow_larch_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> YELLOW_LARCH_TREE_SPAWN = registerKey("yellow_larch_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_SPAWN = registerKey("wisteria_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SUGI_TREE = registerKey("sugi_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SUGI_SPAWN = registerKey("sugi_spawn");
@@ -113,7 +115,6 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_GOLDEN_WILDS = registerKey("flower_golden_wilds");
    public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_SHIITAKE_MUSHROOM = registerKey("huge_shiitake_mushroom");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_FIR_FOREST = registerKey("flower_fir_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_CYPRESS_FIELDS = registerKey("flower_cypress_fields");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_SCORCHED_GRASS = registerKey("patch_scorched_grass");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_TALL_SCORCHED_GRASS = registerKey("patch_tall_scorched_grass");
@@ -174,7 +175,7 @@ public class HibiscusConfiguredFeatures {
                       .add(ConstantIntProvider.create(3), 1)
                       .add(ConstantIntProvider.create(4), 1)
                       .build()), UniformIntProvider.create(1, 3), UniformIntProvider.create(-5, -4), UniformIntProvider.create(-4, -1)),
-              BlockStateProvider.of(HibiscusWoods.MAPLE.getRedMapleLeaves()),
+              BlockStateProvider.of(HibiscusWoods.MAPLE.getRedLeaves()),
               new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5), 0.26666667F, 0.53333334F),
               new TwoLayersFeatureSize(1, 0, 2)
       ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build());
@@ -191,7 +192,7 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(-5, -4),
                       UniformIntProvider.create(-4, -1)
               ),
-              BlockStateProvider.of(HibiscusWoods.MAPLE.getOrangeMapleLeaves()),
+              BlockStateProvider.of(HibiscusWoods.MAPLE.getOrangeLeaves()),
               new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5), 0.26666667F, 0.53333334F),
               new TwoLayersFeatureSize(1, 0, 2)
       ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build());
@@ -208,7 +209,7 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(-5, -4),
                       UniformIntProvider.create(-4, -1)
               ),
-              BlockStateProvider.of(HibiscusWoods.MAPLE.getYellowMapleLeaves()),
+              BlockStateProvider.of(HibiscusWoods.MAPLE.getYellowLeaves()),
               new MapleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5), 0.26666667F, 0.53333334F),
               new TwoLayersFeatureSize(1, 0, 2)
       ).ignoreVines().decorators(ImmutableList.of(new MapleGroundTreeDecorator(SimpleBlockStateProvider.of(Blocks.PODZOL), SimpleBlockStateProvider.of(Blocks.COARSE_DIRT)))).build());
@@ -246,9 +247,35 @@ public class HibiscusConfiguredFeatures {
               )
       );
 
-      register(context, RED_MOSS_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(HibiscusMiscBlocks.RED_MOSS_BLOCK),
-              PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(RED_MOSS_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0F, 5, 0.6F, UniformIntProvider.create(1, 2), 0.75F));
+      register(context, LARCH_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.LARCH.getLog()),
+              new StraightTrunkPlacer(12, 0, 4),
+              BlockStateProvider.of(HibiscusWoods.LARCH.getLeaves()),
+              new LarchFoliagePlacer(UniformIntProvider.create(2, 2), UniformIntProvider.create(2, 2), UniformIntProvider.create(13, 15)),
+              new TwoLayersFeatureSize(1, 0, 1)
+      ).ignoreVines().build());
 
+      register(context,
+              LARCH_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARCH_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARCH_CHECKED)
+              )
+      );
+
+      register(context, YELLOW_LARCH_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.LARCH.getLog()),
+              new StraightTrunkPlacer(12, 0, 4),
+              BlockStateProvider.of(HibiscusWoods.LARCH.getYellowLeaves()),
+              new LarchFoliagePlacer(UniformIntProvider.create(2, 2), UniformIntProvider.create(2, 2), UniformIntProvider.create(13, 15)),
+              new TwoLayersFeatureSize(1, 0, 1)
+      ).ignoreVines().build());
+
+      register(context,
+              YELLOW_LARCH_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.YELLOW_LARCH_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.YELLOW_LARCH_CHECKED)
+              )
+      );
 
       register(context,
               WISTERIA_DELTA,
@@ -309,7 +336,7 @@ public class HibiscusConfiguredFeatures {
 
       register(context, WHITE_WISTERIA_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.WISTERIA.getLog()),
               new WisteriaTrunkPlacer(7, 3, 4, UniformIntProvider.create(1, 6), 0.80F, UniformIntProvider.create(7, 10), holderGetter.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getWhiteWisteriaLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getWhiteLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
@@ -327,7 +354,7 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getPinkWisteriaLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getPinkLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
@@ -345,7 +372,7 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getBlueWisteriaLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getBlueLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
@@ -363,7 +390,7 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getPurpleWisteriaLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getPurpleLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
@@ -777,10 +804,6 @@ public class HibiscusConfiguredFeatures {
 
    public static RegistryKey <ConfiguredFeature <?, ?>> registerKey(String name) {
       return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NatureSpirit.MOD_ID, name));
-   }
-
-   public static void registerConfiguredFeatures() {
-      System.out.println("Registering Configured Features For:" + NatureSpirit.MOD_ID);
    }
 }
 

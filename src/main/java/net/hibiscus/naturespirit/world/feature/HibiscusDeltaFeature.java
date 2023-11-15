@@ -33,10 +33,10 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
               Blocks.NETHER_WART,
               Blocks.CHEST,
               Blocks.SPAWNER,
-              HibiscusWoods.WISTERIA.getBlueWisteriaLeaves(),
-              HibiscusWoods.WISTERIA.getPurpleWisteriaLeaves(),
-              HibiscusWoods.WISTERIA.getWhiteWisteriaLeaves(),
-              HibiscusWoods.WISTERIA.getPinkWisteriaLeaves(),
+              HibiscusWoods.WISTERIA.getBlueLeaves(),
+              HibiscusWoods.WISTERIA.getPurpleLeaves(),
+              HibiscusWoods.WISTERIA.getWhiteLeaves(),
+              HibiscusWoods.WISTERIA.getPinkLeaves(),
               HibiscusWoods.WILLOW.getLeaves()
       );
       CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRASS_BLOCK);

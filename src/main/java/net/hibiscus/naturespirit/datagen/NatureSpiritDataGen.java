@@ -41,6 +41,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
@@ -330,6 +331,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusWoods.COCONUT_THATCH_STAIRS);
          this.addDrop(HibiscusWoods.COCONUT_THATCH_SLAB, this::slabDrops);
 
+         this.addDrop(HibiscusWoods.EVERGREEN_THATCH);
+         this.addDrop(HibiscusWoods.EVERGREEN_THATCH_CARPET);
+         this.addDrop(HibiscusWoods.EVERGREEN_THATCH_STAIRS);
+         this.addDrop(HibiscusWoods.EVERGREEN_THATCH_SLAB, this::slabDrops);
 
          this.addDrop(PAPER_DOOR, this::doorDrops);
          this.addDrop(PAPER_TRAPDOOR);
@@ -775,13 +780,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       private void generateTreeBlockStateModels(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves, BlockStateModelGenerator blockStateModelGenerator) {
-         for(String i : leaves.keySet()) {
+         for(String i : saplings.keySet()) {
             Block[] saplingType = saplings.get(i);
             Block leavesType = leaves.get(i);
-            if (!Objects.equals(i, "coconut")) {
                blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
                blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
-            }
          }
       }
 
@@ -1289,10 +1292,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateItemTranslations(HibiscusWoods.YOUNG_COCONUT_SHELL, translationBuilder);
          generateItemTranslations(HibiscusWoods.COCONUT_HALF, translationBuilder);
          generateItemTranslations(HibiscusWoods.YOUNG_COCONUT_HALF, translationBuilder);
+
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_STAIRS, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_CARPET, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_CARPET, translationBuilder);
 
          generateBlockTranslations(PINK_SAND, translationBuilder);
          generateBlockTranslations(PINK_SANDSTONE, translationBuilder);
@@ -1533,6 +1541,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
+      public static void offer2x2CompactingTagRecipe(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, TagKey<Item> input) {
+         ShapedRecipeJsonBuilder.create(category, output, 1).input('#', input).pattern("##").pattern("##").criterion("has_evergreen_leaves", conditionsFromTag(input)).offerTo(exporter);
+      }
+
       @Override public void generate(Consumer <RecipeJsonProvider> exporter) {
 
          createChiseledBlockRecipe(RecipeCategory.BUILDING_BLOCKS, CHISELED_PINK_SANDSTONE, Ingredient.ofItems(PINK_SANDSTONE_SLAB))
@@ -1582,6 +1594,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH);
          createStairsRecipe(HibiscusWoods.COCONUT_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.COCONUT_THATCH));
          offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH, HibiscusWoods.COCONUT.getLeaves());
+
+
+         offerCarpetRecipe(exporter, HibiscusWoods.EVERGREEN_THATCH_CARPET, HibiscusWoods.EVERGREEN_THATCH);
+         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.EVERGREEN_THATCH);
+         createStairsRecipe(HibiscusWoods.EVERGREEN_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.EVERGREEN_THATCH));
+         offer2x2CompactingTagRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.EVERGREEN_THATCH, HibiscusTags.Items.EVERGREEN_LEAVES);
+
 
          offerCarpetRecipe(exporter, RED_MOSS_CARPET, RED_MOSS_BLOCK);
 
@@ -1642,6 +1661,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
          this.copy(BlockTags.WALLS, ItemTags.WALLS);
          this.getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS).add(PINK_SAND.asItem());
+         this.getOrCreateTagBuilder(HibiscusTags.Items.EVERGREEN_LEAVES).add(HibiscusWoods.FIR.getLeaves().asItem(), HibiscusWoods.REDWOOD.getLeaves().asItem(), HibiscusWoods.LARCH.getLeaves().asItem(), Items.SPRUCE_LEAVES);
          this.getOrCreateTagBuilder(HibiscusTags.Items.COCONUT_ITEMS).add(HibiscusWoods.COCONUT_BLOCK.asItem(), HibiscusWoods.YOUNG_COCONUT_BLOCK.asItem(), HibiscusWoods.COCONUT_HALF, HibiscusWoods.YOUNG_COCONUT_HALF, HibiscusWoods.COCONUT_SHELL, HibiscusWoods.YOUNG_COCONUT_SHELL);
       }
    }
@@ -1791,6 +1811,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  HibiscusWoods.COCONUT_THATCH_STAIRS,
                  HibiscusWoods.COCONUT_THATCH_CARPET,
                  HibiscusWoods.COCONUT_THATCH_SLAB,
+                 HibiscusWoods.EVERGREEN_THATCH,
+                 HibiscusWoods.EVERGREEN_THATCH_STAIRS,
+                 HibiscusWoods.EVERGREEN_THATCH_CARPET,
+                 HibiscusWoods.EVERGREEN_THATCH_SLAB,
                  RED_MOSS_BLOCK,
                  RED_MOSS_CARPET
          );
@@ -1836,8 +1860,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  .forceAddTag(HibiscusTags.Blocks.CHALK_STAIRS)
                  .forceAddTag(HibiscusTags.Blocks.CHALK_SLABS)
                  .add(PINK_SANDSTONE, SMOOTH_PINK_SANDSTONE, CUT_PINK_SANDSTONE, PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS, PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, PINK_SANDSTONE_WALL, CHISELED_PINK_SANDSTONE);
-         getOrCreateTagBuilder(BlockTags.STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS);
-         getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB);
+         getOrCreateTagBuilder(BlockTags.STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS, HibiscusWoods.EVERGREEN_THATCH_STAIRS, HibiscusWoods.COCONUT_THATCH_STAIRS);
+         getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH_SLAB);
          getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
          getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS);

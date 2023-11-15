@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "natures_spirit:block/thatch_carpet",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "natures_spirit:block/evergreen_thatch",
+		"2": "natures_spirit:block/evergreen_thatch_end"
+	}
+}
