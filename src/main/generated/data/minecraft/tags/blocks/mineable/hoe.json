@@ -8,6 +8,8 @@
     "natures_spirit:fir_leaves",
     "natures_spirit:red_maple_leaves",
     "natures_spirit:cypress_leaves",
+    "natures_spirit:coconut_leaves",
+    "natures_spirit:wisteria_leaves",
     "natures_spirit:willow_leaves",
     "natures_spirit:cedar_leaves",
     "natures_spirit:sugi_leaves",
@@ -45,6 +47,10 @@
     "natures_spirit:evergreen_thatch_stairs",
     "natures_spirit:evergreen_thatch_carpet",
     "natures_spirit:evergreen_thatch_slab",
+    "natures_spirit:xeric_thatch",
+    "natures_spirit:xeric_thatch_stairs",
+    "natures_spirit:xeric_thatch_carpet",
+    "natures_spirit:xeric_thatch_slab",
     "natures_spirit:red_moss_block",
     "natures_spirit:red_moss_carpet"
   ]

@@ -49,6 +49,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialCondition materialCondition2 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1);
       MaterialRules.MaterialCondition materialCondition3 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(70), 1);
       MaterialRules.MaterialCondition materialCondition4 = MaterialRules.aboveY(YOffset.fixed(63), 0);
+      MaterialRules.MaterialCondition chalkGrassCondition = MaterialRules.aboveY(YOffset.fixed(65), 0);
       MaterialRules.MaterialCondition materialCondition5 = MaterialRules.water(
               -1,
               0
@@ -110,17 +111,16 @@ public class NatureSpiritSurfaceRules {
                       MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, sandySoilRule), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_6, SANDY_SOIL)
               ))
       );
-      MaterialRules.MaterialRule chalkCliffsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS), MaterialRules.sequence(MaterialRules.sequence(
-                      MaterialRules.condition(materialCondition4, MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS)),
-                      WHITE_CHALK
-              ),
+      MaterialRules.MaterialRule chalkCliffsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS),
               MaterialRules.sequence(
-                      MaterialRules.condition(materialCondition4, MaterialRules.condition(MaterialRules.stoneDepth(1, false, VerticalSurfaceType.FLOOR), DIRT)),
-                      WHITE_CHALK
-              ),
-              MaterialRules.condition(MaterialRules.stoneDepth(1, false, 12, VerticalSurfaceType.FLOOR), CALCITE),
-              MaterialRules.condition(MaterialRules.stoneDepth(2, true, 6, VerticalSurfaceType.FLOOR), WHITE_CHALK)
-      ));
+                      MaterialRules.condition(chalkGrassCondition, MaterialRules.sequence(
+                              MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS),
+                              MaterialRules.condition(MaterialRules.stoneDepth(1, false, VerticalSurfaceType.FLOOR), DIRT)
+                      )),
+                      MaterialRules.condition(MaterialRules.stoneDepth(8, false, VerticalSurfaceType.FLOOR), WHITE_CHALK),
+                      MaterialRules.condition(MaterialRules.stoneDepth(24, false, VerticalSurfaceType.FLOOR), CALCITE)
+              )
+      );
       MaterialRules.MaterialRule drylandsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.DRYLANDS),
               MaterialRules.condition(belowWater,
                       MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, pinkSandstoneOrPinkSand), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_30, PINK_SANDSTONE)
@@ -145,8 +145,8 @@ public class NatureSpiritSurfaceRules {
       );
       MaterialRules.MaterialRule tundraRule = MaterialRules.condition(belowWater,
                       MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH,
-                              MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SNOWY_FIR_FOREST, HibiscusBiomes.TUNDRA),
-                                      MaterialRules.sequence(MaterialRules.condition(noiseCondition4, MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.TUNDRA), stoneOrMoss)), MaterialRules.condition(noiseCondition5, stoneOrSnow))))
+                              MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SNOWY_FIR_FOREST, HibiscusBiomes.TUNDRA, HibiscusBiomes.BOREAL_TAIGA),
+                                      MaterialRules.sequence(MaterialRules.condition(noiseCondition4, MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.TUNDRA, HibiscusBiomes.BOREAL_TAIGA), stoneOrMoss)), MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SNOWY_FIR_FOREST, HibiscusBiomes.TUNDRA) ,MaterialRules.condition(noiseCondition5, stoneOrSnow)))))
               );
 
 

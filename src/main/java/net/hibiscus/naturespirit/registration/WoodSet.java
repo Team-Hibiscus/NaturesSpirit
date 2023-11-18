@@ -147,7 +147,7 @@ public class WoodSet {
          leaves = createLeaves();
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves()));
 
-         if (this.getWoodPreset() != WoodPreset.NO_SAPLING) {
+         if (this.hasDefaultSapling()) {
             sapling = this.isSandy() ? createSandySapling(saplingGenerator) : createSapling(saplingGenerator);
             pottedSapling = createPottedSapling(this.getSapling());
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
@@ -860,7 +860,10 @@ public class WoodSet {
       return this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.SANDY;
    }
    public boolean hasDefaultLeaves(){
-      return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.LARCH || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.NO_SAPLING|| this.getWoodPreset() == WoodPreset.SANDY;
+      return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.WISTERIA || this.getWoodPreset() == WoodPreset.LARCH || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.JOSHUA || this.getWoodPreset() == WoodPreset.NO_SAPLING|| this.getWoodPreset() == WoodPreset.SANDY;
+   }
+   public boolean hasDefaultSapling() {
+      return this.getWoodPreset() != WoodPreset.NO_SAPLING && this.getWoodPreset() != WoodPreset.WISTERIA;
    }
    public boolean hasBark(){
       return this.getWoodPreset() != WoodPreset.JOSHUA && this.getWoodPreset() != WoodPreset.BAMBOO;

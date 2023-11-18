@@ -739,6 +739,9 @@ public class Region2Parameters {
       if(temperature == 0 || (temperature == 2 && HibiscusBiomes.has_sugi_forest)) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       }
+      else if(temperature == 1 && HibiscusBiomes.has_wisteria_forest) {
+         return HibiscusBiomes.WISTERIA_FOREST;
+      }
       else if(temperature == 3 && humidity > 2 && HibiscusBiomes.has_bamboo_wetlands) {
          return HibiscusBiomes.BAMBOO_WETLANDS;
       }
@@ -752,7 +755,10 @@ public class Region2Parameters {
    private RegistryKey <Biome> getWetlandType2(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
-      }
+      } else
+      if(temperature == 1 && HibiscusBiomes.has_wisteria_forest) {
+         return HibiscusBiomes.WISTERIA_FOREST;
+      } else
       if(temperature == 2 && HibiscusBiomes.has_sugi_forest) {
          return BiomeKeys.RIVER;
       }

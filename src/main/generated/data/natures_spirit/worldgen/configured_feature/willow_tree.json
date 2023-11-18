@@ -30,6 +30,17 @@
             }
           }
         },
+        "block_provider3": {
+          "type": "minecraft:hibiscus_simple_block_state_provider",
+          "state": {
+            "Name": "natures_spirit:willow_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        },
         "number": 5,
         "probability": 0.65
       }

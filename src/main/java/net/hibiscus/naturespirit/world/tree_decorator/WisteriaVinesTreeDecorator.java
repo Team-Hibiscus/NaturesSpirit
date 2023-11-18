@@ -17,25 +17,29 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
          return treeDecorator.blockProvider;
       }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> {
          return treeDecorator.blockProvider2;
+      }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider3").forGetter((treeDecorator) -> {
+         return treeDecorator.blockProvider3;
       }), Codec.intRange(0, 10).fieldOf("number").forGetter((treeDecorator) -> {
          return treeDecorator.number;
       })).apply(instance, WisteriaVinesTreeDecorator::new);
    });
    protected final BlockStateProvider blockProvider;
    protected final BlockStateProvider blockProvider2;
+   protected final BlockStateProvider blockProvider3;
    private final float probability;
    protected int number;
 
-   public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2, int number) {
+   public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2, BlockStateProvider blockProvider3, int number) {
       this.probability = probability;
       this.blockProvider = blockProvider;
       this.blockProvider2 = blockProvider2;
+      this.blockProvider3 = blockProvider3;
       this.number = number;
    }
 
-   private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, Generator generator, int number) {
+   private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, BlockStateProvider block3, Generator generator, int number) {
       Random random = generator.getRandom();
-      generator.replace(pos, block.get(random, pos));
+      generator.replace(pos, block3.get(random, pos));
       for(pos = pos.down(); number > 0; --number) {
          if(generator.isAir(pos)) {
             if(number == 1 || !generator.isAir(pos.down()) || random.nextBoolean()) {
@@ -60,7 +64,13 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
          if(randomSource.nextFloat() < this.probability) {
             blockPos2 = blockPos.down();
             if(context.isAir(blockPos2)) {
-               placeVines(blockPos2, blockProvider, blockProvider2, context, this.number);
+               if (!context.isAir(blockPos.up())) {
+                  context.replace(blockPos, blockProvider3.get(randomSource, blockPos));
+                  if(!context.isAir(blockPos.up(2))) {
+                     context.replace(blockPos, blockProvider3.get(randomSource, blockPos.up()));
+                  }
+               }
+               placeVines(blockPos2, blockProvider, blockProvider2, blockProvider3, context, this.number);
             }
          }
 

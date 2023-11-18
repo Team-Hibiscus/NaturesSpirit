@@ -86,7 +86,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    @Override public void buildRegistry(RegistryBuilder registryBuilder) {
       registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, HibiscusConfiguredFeatures::bootstrap);
       registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, HibiscusPlacedFeatures::bootstrap);
-      registryBuilder.addRegistry(RegistryKeys.BIOME, HibiscusBiomes::bootstrap);
       System.out.println("Built Registry");
    }
 
@@ -99,7 +98,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    private static class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
       private static final LootCondition.Builder WITH_SILK_TOUCH_OR_SHEARS = WITH_SHEARS.or(WITH_SILK_TOUCH);
       private static final LootCondition.Builder WITHOUT_SILK_TOUCH_NOR_SHEARS = WITH_SILK_TOUCH_OR_SHEARS.invert();
-      private final HashMap <Identifier, LootTable.Builder> map = new HashMap();
+
       private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.4F, 0.4333333333F, 0.5025F, 0.5888F};
 
       protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
@@ -253,7 +252,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             else if(i.equals("joshua")) {
                this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE_2));
             }
-            else if(i.equals("coconut")) {
+            else if(i.equals("coconut") || i.equals("wisteria")) {
                this.addDrop(leavesType, this::coconutLeavesDrops);
             }
             else {
@@ -335,6 +334,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusWoods.EVERGREEN_THATCH_CARPET);
          this.addDrop(HibiscusWoods.EVERGREEN_THATCH_STAIRS);
          this.addDrop(HibiscusWoods.EVERGREEN_THATCH_SLAB, this::slabDrops);
+
+         this.addDrop(HibiscusWoods.XERIC_THATCH);
+         this.addDrop(HibiscusWoods.XERIC_THATCH_CARPET);
+         this.addDrop(HibiscusWoods.XERIC_THATCH_STAIRS);
+         this.addDrop(HibiscusWoods.XERIC_THATCH_SLAB, this::slabDrops);
 
          this.addDrop(PAPER_DOOR, this::doorDrops);
          this.addDrop(PAPER_TRAPDOOR);
@@ -780,11 +784,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       private void generateTreeBlockStateModels(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves, BlockStateModelGenerator blockStateModelGenerator) {
-         for(String i : saplings.keySet()) {
+         for(String i : leaves.keySet()) {
             Block[] saplingType = saplings.get(i);
             Block leavesType = leaves.get(i);
+            if (!Objects.equals(i, "coconut")) {
                blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
-               blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
+               if (!Objects.equals(i, "wisteria")) {
+                  blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
+               }
+            }
          }
       }
 
@@ -1297,10 +1305,16 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_STAIRS, translationBuilder);
          generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_CARPET, translationBuilder);
+
          generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH, translationBuilder);
          generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_STAIRS, translationBuilder);
          generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_CARPET, translationBuilder);
+
+         generateBlockTranslations(HibiscusWoods.XERIC_THATCH, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.XERIC_THATCH_SLAB, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.XERIC_THATCH_STAIRS, translationBuilder);
+         generateBlockTranslations(HibiscusWoods.XERIC_THATCH_CARPET, translationBuilder);
 
          generateBlockTranslations(PINK_SAND, translationBuilder);
          generateBlockTranslations(PINK_SANDSTONE, translationBuilder);
@@ -1601,6 +1615,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          createStairsRecipe(HibiscusWoods.EVERGREEN_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.EVERGREEN_THATCH));
          offer2x2CompactingTagRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.EVERGREEN_THATCH, HibiscusTags.Items.EVERGREEN_LEAVES);
 
+         offerCarpetRecipe(exporter, HibiscusWoods.XERIC_THATCH_CARPET, HibiscusWoods.XERIC_THATCH);
+         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.XERIC_THATCH_SLAB, HibiscusWoods.XERIC_THATCH);
+         createStairsRecipe(HibiscusWoods.XERIC_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.XERIC_THATCH));
+         offer2x2CompactingTagRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.XERIC_THATCH, HibiscusTags.Items.XERIC_LEAVES);
+
 
          offerCarpetRecipe(exporter, RED_MOSS_CARPET, RED_MOSS_BLOCK);
 
@@ -1661,7 +1680,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
          this.copy(BlockTags.WALLS, ItemTags.WALLS);
          this.getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS).add(PINK_SAND.asItem());
-         this.getOrCreateTagBuilder(HibiscusTags.Items.EVERGREEN_LEAVES).add(HibiscusWoods.FIR.getLeaves().asItem(), HibiscusWoods.REDWOOD.getLeaves().asItem(), HibiscusWoods.LARCH.getLeaves().asItem(), Items.SPRUCE_LEAVES);
+         this.getOrCreateTagBuilder(HibiscusTags.Items.EVERGREEN_LEAVES).add(HibiscusWoods.FIR.getLeaves().asItem(), HibiscusWoods.REDWOOD.getLeaves().asItem(), HibiscusWoods.LARCH.getLeaves().asItem(), HibiscusWoods.CEDAR.getLeaves().asItem(),Items.SPRUCE_LEAVES);
+         this.getOrCreateTagBuilder(HibiscusTags.Items.XERIC_LEAVES).add(HibiscusWoods.GHAF.getLeaves().asItem(), HibiscusWoods.OLIVE.getLeaves().asItem(), HibiscusWoods.PALO_VERDE.getLeaves().asItem(), HibiscusWoods.JOSHUA.getLeaves().asItem(),Items.ACACIA_LEAVES);
          this.getOrCreateTagBuilder(HibiscusTags.Items.COCONUT_ITEMS).add(HibiscusWoods.COCONUT_BLOCK.asItem(), HibiscusWoods.YOUNG_COCONUT_BLOCK.asItem(), HibiscusWoods.COCONUT_HALF, HibiscusWoods.YOUNG_COCONUT_HALF, HibiscusWoods.COCONUT_SHELL, HibiscusWoods.YOUNG_COCONUT_SHELL);
       }
    }
@@ -1742,13 +1762,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       private void addTreeTags(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves) {
-         for(String i : saplings.keySet()) {
+         for(String i : leaves.keySet()) {
             Block leavesType = leaves.get(i);
-            Block[] saplingType = saplings.get(i);
             getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(leavesType);
-            getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{saplingType[0]});
-            getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{saplingType[1]});
             getOrCreateTagBuilder(BlockTags.LEAVES).add(leavesType);
+            if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") ) {
+               Block[] saplingType = saplings.get(i);
+               getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{saplingType[0]});
+               getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{saplingType[1]});
+            }
          }
       }
       @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -1815,6 +1837,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  HibiscusWoods.EVERGREEN_THATCH_STAIRS,
                  HibiscusWoods.EVERGREEN_THATCH_CARPET,
                  HibiscusWoods.EVERGREEN_THATCH_SLAB,
+                 HibiscusWoods.XERIC_THATCH,
+                 HibiscusWoods.XERIC_THATCH_STAIRS,
+                 HibiscusWoods.XERIC_THATCH_CARPET,
+                 HibiscusWoods.XERIC_THATCH_SLAB,
                  RED_MOSS_BLOCK,
                  RED_MOSS_CARPET
          );

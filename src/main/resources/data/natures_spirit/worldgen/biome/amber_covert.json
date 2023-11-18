@@ -6,28 +6,25 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.6,
+  "downfall": 0.5,
   "effects": {
     "fog_color": 12638463,
-    "grass_color": 11451757,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "natures_spirit:music.overworld.redwood"
-    },
-    "sky_color": 8168703,
+    "sky_color": 7907327,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 11063154,
+    "foliage_color": 10399058
   },
   "features": [
-    [],
+    [
+      "natures_spirit:andesite_cliff"
+    ],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -74,19 +71,17 @@
     [],
     [
       "minecraft:spring_water",
-      "minecraft:spring_lava",
-      "minecraft:spring_lava_frozen"
+      "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
-      "natures_spirit:redwood_rock_placed",
+      "natures_spirit:tundra_green_moss",
       "minecraft:patch_tall_grass_2",
-      "natures_spirit:large_redwood_placed",
-      "natures_spirit:redwood_placed",
-      "natures_spirit:spruce_bush_placed",
+      "natures_spirit:dense_larchs_placed",
       "minecraft:patch_grass_plain",
-      "natures_spirit:flower_redwood_placed",
-      "minecraft:forest_flowers",
+      "natures_spirit:flower_fir_placed",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin"
     ],
@@ -130,6 +125,18 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 8
+      },
+      {
+        "type": "minecraft:horse",
+        "maxCount": 6,
+        "minCount": 2,
+        "weight": 5
+      },
+      {
+        "type": "minecraft:donkey",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "misc": [],
@@ -194,5 +201,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.4
+  "temperature": 0.7
 }

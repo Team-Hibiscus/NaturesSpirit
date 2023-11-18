@@ -2,15 +2,10 @@ package net.hibiscus.naturespirit.datagen;
 
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.world.NatureSpiritOverworldBiomes;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.PlacedFeature;
 
 import java.util.HashMap;
 
@@ -44,6 +39,10 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> HEATHER_FIELDS = register("heather_fields");
    public static final RegistryKey <Biome> TUNDRA = register("tundra");
    public static final RegistryKey <Biome> ALPINE_CLEARINGS = register("alpine_clearings");
+   public static final RegistryKey <Biome> ALPINE_HIGHLANDS = register("alpine_highlands");
+   public static final RegistryKey <Biome> CONIFEROUS_COVERT = register("coniferous_covert");
+   public static final RegistryKey <Biome> AMBER_COVERT = register("amber_covert");
+   public static final RegistryKey <Biome> BOREAL_TAIGA = register("boreal_taiga");
    public static final RegistryKey <Biome> TROPICAL_SHORES = register("tropical_shores");
 
 
@@ -119,23 +118,6 @@ public class HibiscusBiomes {
       BiomesHashMap.put(name, registryKey);
       return registryKey;
    }
-
-
-   public static void bootstrap(Registerable <Biome> bootstapContext) {
-      RegistryEntryLookup <PlacedFeature> holderGetter = bootstapContext.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
-      RegistryEntryLookup <ConfiguredCarver <?>> holderGetter2 = bootstapContext.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
-
-
-      register(bootstapContext, ERODED_RIVER, NatureSpiritOverworldBiomes.erodedRiver(holderGetter, holderGetter2));
-      register(bootstapContext, REDWOOD_FOREST, NatureSpiritOverworldBiomes.redwoodForest(holderGetter, holderGetter2));
-   }
-
-   private static void register(Registerable <Biome> context, RegistryKey <Biome> key, Biome biome) {
-      System.out.println("Registered Bootstrap for Biome");
-      context.register(key, biome);
-   }
-
-
    public static void registerBiomes() {
    }
 }

@@ -58,8 +58,10 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> RIVER_DELTA = registerKey("river_delta");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE = registerKey("large_redwood_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> EXTRA_LARGE_REDWOOD_TREE = registerKey("extra_large_redwood_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> REDWOOD_TREE = registerKey("redwood_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE_SPAWN = registerKey("large_redwood_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> EXTRA_LARGE_REDWOOD_TREE_SPAWN = registerKey("extra_large_redwood_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> REDWOOD_TREE_SPAWN = registerKey("redwood_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WILLOW_TREE = registerKey("willow_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WILLOW_TREE_SPAWN = registerKey("willow_tree_spawn");
@@ -299,9 +301,9 @@ public class HibiscusConfiguredFeatures {
       );
 
       register(context, LARGE_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD.getLog()),
-              new GiantTrunkPlacer(18, 2, 17),
+              new GiantTrunkPlacer(25, 10, 15),
               BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves()),
-              new MegaPineFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(6, 12)),
+              new MegaPineFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(8, 12)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)))).build());
 
@@ -314,6 +316,22 @@ public class HibiscusConfiguredFeatures {
               )
       );
 
+      register(context, EXTRA_LARGE_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD.getLog()),
+              new RedwoodTrunkPlacer(30, 10, 20),
+              BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves()),
+              new MegaPineFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), UniformIntProvider.create(12, 16)),
+              new TwoLayersFeatureSize(2, 0, 2)
+      ).decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)))).build());
+
+      register(
+              context,
+              EXTRA_LARGE_REDWOOD_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.EXTRA_LARGE_REDWOOD_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.EXTRA_LARGE_REDWOOD_CHECKED)
+              )
+      );
+
 
       register(context, WILLOW_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.WILLOW.getLog()),
               new LargeOakTrunkPlacer(10, 3, 5),
@@ -323,6 +341,7 @@ public class HibiscusConfiguredFeatures {
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.65F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WILLOW.getWillowVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WILLOW.getWillowVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(23, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WILLOW.getLeaves().getDefaultState()),
               5
       ))).ignoreVines().build());
       register(context,
@@ -336,12 +355,13 @@ public class HibiscusConfiguredFeatures {
 
       register(context, WHITE_WISTERIA_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.WISTERIA.getLog()),
               new WisteriaTrunkPlacer(7, 3, 4, UniformIntProvider.create(1, 6), 0.80F, UniformIntProvider.create(7, 10), holderGetter.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getWhiteLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getWhiteWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getWhiteLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
 
@@ -354,12 +374,13 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getPinkLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getPinkWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPinkLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
 
@@ -372,12 +393,13 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getBlueLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getBlueWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getBlueLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
 
@@ -390,12 +412,13 @@ public class HibiscusConfiguredFeatures {
                       UniformIntProvider.create(7, 10),
                       Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
               ),
-              BlockStateProvider.of(HibiscusWoods.WISTERIA.getPurpleLeaves()),
+              BlockStateProvider.of(HibiscusWoods.WISTERIA.getLeaves()),
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getPurpleWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPurpleLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
 

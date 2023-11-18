@@ -22,6 +22,7 @@ import java.util.List;
 public class HibiscusPlacedFeatures {
 
 
+   public static final RegistryKey <PlacedFeature> EXTRA_LARGE_REDWOOD_CHECKED = registerKey("extra_large_redwood_checked");
    public static final RegistryKey <PlacedFeature> LARGE_REDWOOD_CHECKED = registerKey("large_redwood_checked");
    public static final RegistryKey <PlacedFeature> REDWOOD_CHECKED = registerKey("redwood_checked");
    public static final RegistryKey <PlacedFeature> ASPEN_CHECKED = registerKey("aspen_checked");
@@ -68,6 +69,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> MARSH_WATER = registerKey("marsh_water_placed");
    public static final RegistryKey <PlacedFeature> RIVER_WATER = registerKey("river_water_placed");
 
+   public static final RegistryKey <PlacedFeature> EXTRA_LARGE_REDWOOD_PLACED = registerKey("extra_large_redwood_placed");
    public static final RegistryKey <PlacedFeature> LARGE_REDWOOD_PLACED = registerKey("large_redwood_placed");
    public static final RegistryKey <PlacedFeature> REDWOOD_PLACED = registerKey("redwood_placed");
    public static final RegistryKey <PlacedFeature> ASPEN_PLACED = registerKey("aspen_placed");
@@ -107,6 +109,11 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               LARGE_REDWOOD_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE),
+              List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()))
+      );
+      registerKey(context,
+              EXTRA_LARGE_REDWOOD_CHECKED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.EXTRA_LARGE_REDWOOD_TREE),
               List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()))
       );
       registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()));
@@ -284,6 +291,15 @@ public class HibiscusPlacedFeatures {
       registerKey(context, MARSH_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MARSH_DELTA), CountMultilayerPlacementModifier.of(20), BiomePlacementModifier.of());
       registerKey(context, RIVER_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.RIVER_DELTA), CountMultilayerPlacementModifier.of(20), BiomePlacementModifier.of());
 
+      registerKey(context,
+              EXTRA_LARGE_REDWOOD_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.EXTRA_LARGE_REDWOOD_TREE_SPAWN),
+              NoiseBasedCountPlacementModifier.of(5, 10, 0),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
       registerKey(context,
               LARGE_REDWOOD_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE_SPAWN),

@@ -71,14 +71,21 @@ public class Region5Parameters {
    RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_CLEARINGS : BiomeKeys.FOREST;
    RegistryKey<Biome> specialBiomeMeadowCold = HibiscusBiomes.has_larch ? null : BiomeKeys.MEADOW;
    RegistryKey<Biome> commonBiomeSnowyPlainsFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.TUNDRA : BiomeKeys.SNOWY_PLAINS;
-   RegistryKey<Biome> nearBiomeMeadowCold = HibiscusBiomes.has_larch ? HibiscusBiomes.TUNDRA : BiomeKeys.MEADOW;
-   RegistryKey<Biome> nearBiomeMeadowCold2 = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_CLEARINGS : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nearBiomeMeadowCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_HIGHLANDS : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nearBiomeForestCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_HIGHLANDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBiomeTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeOldTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.AMBER_COVERT : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.AMBER_COVERT : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
    RegistryKey<Biome> specialNearBiomeCherryCold = HibiscusBiomes.has_larch ? HibiscusBiomes.HEATHER_FIELDS : BiomeKeys.CHERRY_GROVE;
+   RegistryKey<Biome> commonBiomeSnowyTaigaFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
+   RegistryKey<Biome> uncommonBiomeSnowyTaigaFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
+   RegistryKey<Biome> commonBiomeTaigaFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.TAIGA;
    RegistryKey[] windsweptFrozen = HibiscusBiomes.has_larch ?
            new RegistryKey[]{HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA} :
            new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
    RegistryKey[] windsweptCold = HibiscusBiomes.has_larch ?
-           new RegistryKey[]{HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_CLEARINGS} :
+           new RegistryKey[]{HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS} :
            new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
 
    public Region5Parameters() {
@@ -102,9 +109,9 @@ public class Region5Parameters {
       };
       this.commonBiomes = new RegistryKey[][]{
               {
-                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
+                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyTaigaFrozen, commonBiomeTaigaFrozen
               }, {
-              commonBiomePlainsCold, commonBiomePlainsCold, commonBiomeForestCold, BiomeKeys.TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA
+              commonBiomePlainsCold, commonBiomePlainsCold, commonBiomeForestCold, commonBiomeTaiga, commonBiomeOldTaiga
               }, {
                       BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
@@ -114,17 +121,17 @@ public class Region5Parameters {
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
-              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null},
-              {uncommonBiomePlainsCold, null, null, null, BiomeKeys.OLD_GROWTH_PINE_TAIGA},
+              {BiomeKeys.ICE_SPIKES, null, uncommonBiomeSnowyTaigaFrozen, null, null},
+              {uncommonBiomePlainsCold, null, null, uncommonBiomeTaiga, uncommonBiomeOldTaiga},
               {null, null, null, null, null},
               {null, null, uncommonBiomePlainsWarm, uncommonSparseJungleWarm, uncommonBambooJungleWarm},
               {null, null, null, null, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
-                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_TAIGA
+                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyTaigaFrozen, commonBiomeSnowyTaigaFrozen
               }, {
-              nearBiomeMeadowCold, nearBiomeMeadowCold2, commonBiomeForestCold, BiomeKeys.TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA
+              nearBiomeMeadowCold, nearBiomeMeadowCold, nearBiomeForestCold, commonBiomeTaiga, commonBiomeOldTaiga
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
@@ -135,7 +142,7 @@ public class Region5Parameters {
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
-              specialNearBiomeCherryCold, null, specialBiomeMeadowCold, BiomeKeys.MEADOW, BiomeKeys.OLD_GROWTH_PINE_TAIGA
+              specialNearBiomeCherryCold, null, specialBiomeMeadowCold, uncommonBiomeTaiga, uncommonBiomeOldTaiga
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {

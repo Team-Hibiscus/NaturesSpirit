@@ -189,6 +189,17 @@ public class HibiscusWoods {
            WoodSet.WoodPreset.SANDY,
            false
    );
+
+   public static final Block XERIC_THATCH = registerBlock("xeric_thatch",
+           new Block(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, GHAF.getChestBoatItem());
+   public static final Block XERIC_THATCH_STAIRS = registerBlock(
+           "xeric_thatch_stairs",
+           new StairsBlock(XERIC_THATCH.getDefaultState(), FabricBlockSettings.copy(XERIC_THATCH)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
+   );
+   public static final Block XERIC_THATCH_SLAB = registerBlock("xeric_thatch_slab", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).sounds(BlockSoundGroup.GRASS).strength(0.4f)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP);
+   public static final Block XERIC_THATCH_CARPET = registerBlock("xeric_thatch_carpet",
+           new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
+   );
    public static WoodSet PALO_VERDE = new WoodSet(
            new Identifier(MOD_ID, "palo_verde"),
            MapColor.YELLOW,
@@ -221,14 +232,14 @@ public class HibiscusWoods {
    );
 
    public static final Block COCONUT_THATCH = registerBlock("coconut_thatch",
-           new Block(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, COCONUT.getChestBoatItem());
+           new Block(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, COCONUT.getChestBoatItem());
    public static final Block COCONUT_THATCH_STAIRS = registerBlock(
            "coconut_thatch_stairs",
            new StairsBlock(COCONUT_THATCH.getDefaultState(), FabricBlockSettings.copy(COCONUT_THATCH)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
-   public static final Block COCONUT_THATCH_SLAB = registerBlock("coconut_thatch_slab", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).sounds(BlockSoundGroup.GRASS).strength(0.4f)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP);
+   public static final Block COCONUT_THATCH_SLAB = registerBlock("coconut_thatch_slab", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).sounds(BlockSoundGroup.GRASS).strength(0.4f)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP);
    public static final Block COCONUT_THATCH_CARPET = registerBlock("coconut_thatch_carpet",
-           new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
+           new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
    public static Block YOUNG_COCONUT_BLOCK = registerPlantBlock("young_coconut", new YoungCoconutBlock(
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
@@ -287,6 +298,7 @@ public class HibiscusWoods {
            WoodSet.WoodPreset.DEFAULT,
            false
    );
+
    public static WoodSet LARCH = new WoodSet(
            new Identifier(MOD_ID, "larch"),
            MapColor.BLUE,
