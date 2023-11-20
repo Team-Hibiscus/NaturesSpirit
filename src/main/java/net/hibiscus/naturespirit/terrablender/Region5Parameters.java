@@ -142,7 +142,7 @@ public class Region5Parameters {
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
-              specialNearBiomeCherryCold, null, specialBiomeMeadowCold, uncommonBiomeTaiga, uncommonBiomeOldTaiga
+              specialNearBiomeCherryCold, null, specialBiomeMeadowCold, null, uncommonBiomeOldTaiga
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {

@@ -1,5 +1,5 @@
 {
-  "feature": "natures_spirit:larch_tree_spawn",
+  "feature": "natures_spirit:boreal_trees_spawn",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

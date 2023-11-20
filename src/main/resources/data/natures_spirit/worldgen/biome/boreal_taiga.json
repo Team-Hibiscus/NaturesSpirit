@@ -90,11 +90,13 @@
       "natures_spirit:boreal_trees_placed",
       "natures_spirit:patch_tundra_red_vegetation",
       "natures_spirit:flower_fir_placed",
-      "minecraft:patch_sugar_cane"
+      "minecraft:patch_sugar_cane",
+      "natures_spirit:snow_patch"
     ],
     [
       "natures_spirit:ice_fixer",
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "natures_spirit:snowy_grass_fixer"
     ]
   ],
   "precipitation": "rain",

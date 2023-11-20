@@ -6,6 +6,10 @@
       {
         "chance": 0.3,
         "feature": "natures_spirit:yellow_larch_checked"
+      },
+      {
+        "chance": 0.2,
+        "feature": "natures_spirit:fir_checked"
       }
     ]
   }

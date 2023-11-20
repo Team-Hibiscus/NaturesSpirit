@@ -30,7 +30,8 @@
   },
   "features": [
     [
-      "natures_spirit:stone_cliff"
+      "natures_spirit:stone_cliff",
+      "natures_spirit:snow_patch"
     ],
     [
       "minecraft:lake_lava_underground",
@@ -96,7 +97,8 @@
     ],
     [
       "natures_spirit:ice_fixer",
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "natures_spirit:snowy_grass_fixer"
     ]
   ],
   "precipitation": "rain",

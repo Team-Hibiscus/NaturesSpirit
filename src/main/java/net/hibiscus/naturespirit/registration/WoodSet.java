@@ -69,15 +69,19 @@ public class WoodSet {
    private Block yellowSapling;
    private Block pottedYellowSapling;
    private Block blueLeaves;
+   private Block partBlueLeaves;
    private Block blueSapling;
    private Block pottedBlueSapling;
    private Block purpleLeaves;
+   private Block partPurpleLeaves;
    private Block purpleSapling;
    private Block pottedPurpleSapling;
    private Block pinkLeaves;
+   private Block partPinkLeaves;
    private Block pinkSapling;
    private Block pottedPinkSapling;
    private Block whiteLeaves;
+   private Block partWhiteLeaves;
    private Block whiteSapling;
    private Block pottedWhiteSapling;
    private static Block willowVines;
@@ -175,6 +179,10 @@ public class WoodSet {
          blueLeaves = createWisteriaLeaves("blue_");
          pinkLeaves = createWisteriaLeaves("pink_");
          purpleLeaves = createWisteriaLeaves("purple_");
+         partWhiteLeaves = createWisteriaLeaves("part_white_");
+         partBlueLeaves = createWisteriaLeaves("part_blue_");
+         partPinkLeaves = createWisteriaLeaves("part_pink_");
+         partPurpleLeaves = createWisteriaLeaves("part_purple_");
          whiteWisteriaVines = createWisteriaVines("white_");
          blueWisteriaVines = createWisteriaVines("blue_");
          pinkWisteriaVines = createWisteriaVines("pink_");
@@ -203,10 +211,7 @@ public class WoodSet {
          CompostingChanceRegistry.INSTANCE.add(this.getBlueWisteriaVines(), 0.3F);
          CompostingChanceRegistry.INSTANCE.add(this.getPinkWisteriaVines(), 0.3F);
          CompostingChanceRegistry.INSTANCE.add(this.getPurpleWisteriaVines(), 0.3F);
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getWhiteLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteLeaves(), this.getBlueLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueLeaves(), this.getPinkLeaves().asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getPinkLeaves(), this.getPurpleLeaves().asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getWhiteLeaves().asItem(), this.getPartWhiteLeaves(), this.getBlueLeaves(), this.getPartBlueLeaves(), this.getPinkLeaves(), this.getPartPinkLeaves(), this.getPurpleLeaves(), this.getPartPurpleLeaves()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Blocks.VINE, this.getWhiteWisteriaVines().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getWhiteWisteriaVines(), this.getBlueWisteriaVines().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getBlueWisteriaVines(), this.getPinkWisteriaVines().asItem()));
@@ -219,6 +224,10 @@ public class WoodSet {
          SaplingHashMap.put("blue_" + this.getName(), new Block[]{this.getBlueSapling(), this.getPottedBlueSapling()});
          SaplingHashMap.put("pink_" + this.getName(), new Block[]{this.getPinkSapling(), this.getPottedPinkSapling()});
          SaplingHashMap.put("purple_" + this.getName(), new Block[]{this.getPurpleSapling(), this.getPottedPurpleSapling()});
+         SaplingHashMap.put("part_white_" + this.getName(), new Block[]{this.getWhiteSapling(), this.getPottedWhiteSapling()});
+         SaplingHashMap.put("part_blue_" + this.getName(), new Block[]{this.getBlueSapling(), this.getPottedBlueSapling()});
+         SaplingHashMap.put("part_pink_" + this.getName(), new Block[]{this.getPinkSapling(), this.getPottedPinkSapling()});
+         SaplingHashMap.put("part_purple_" + this.getName(), new Block[]{this.getPurpleSapling(), this.getPottedPurpleSapling()});
       }
       if (this.getWoodPreset() == WoodPreset.MAPLE) {
          redLeaves = createMapleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE);
@@ -871,6 +880,27 @@ public class WoodSet {
    public boolean hasMosaic(){
       return this.hasMosaic;
    }
+
+   public Block getPartBlueLeaves() {
+      return partBlueLeaves;
+   }
+
+   public void setPartBlueLeaves(Block partBlueLeaves) {
+      this.partBlueLeaves = partBlueLeaves;
+   }
+
+   public Block getPartPurpleLeaves() {
+      return partPurpleLeaves;
+   }
+
+   public Block getPartPinkLeaves() {
+      return partPinkLeaves;
+   }
+
+   public Block getPartWhiteLeaves() {
+      return partWhiteLeaves;
+   }
+
    public enum WoodPreset {
       DEFAULT,
       MAPLE,

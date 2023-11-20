@@ -789,7 +789,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             Block leavesType = leaves.get(i);
             if (!Objects.equals(i, "coconut")) {
                blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
-               if (!Objects.equals(i, "wisteria")) {
+               if (!Objects.equals(i, "wisteria") && !i.startsWith("part")) {
                   blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
                }
             }
@@ -1766,7 +1766,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             Block leavesType = leaves.get(i);
             getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(leavesType);
             getOrCreateTagBuilder(BlockTags.LEAVES).add(leavesType);
-            if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") ) {
+            if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") && !i.startsWith("part")) {
                Block[] saplingType = saplings.get(i);
                getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{saplingType[0]});
                getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{saplingType[1]});

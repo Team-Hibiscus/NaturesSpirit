@@ -1,25 +1,25 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:redwood_sapling",
     "natures_spirit:yellow_larch_sapling",
-    "natures_spirit:purple_wisteria_sapling",
-    "natures_spirit:aspen_sapling",
     "natures_spirit:fir_sapling",
-    "natures_spirit:red_maple_sapling",
-    "natures_spirit:cypress_sapling",
-    "natures_spirit:willow_sapling",
     "natures_spirit:cedar_sapling",
-    "natures_spirit:sugi_sapling",
     "natures_spirit:pink_wisteria_sapling",
-    "natures_spirit:yellow_maple_sapling",
-    "natures_spirit:palo_verde_sapling",
     "natures_spirit:blue_wisteria_sapling",
     "natures_spirit:olive_sapling",
     "natures_spirit:joshua_sapling",
     "natures_spirit:orange_maple_sapling",
-    "natures_spirit:ghaf_sapling",
     "natures_spirit:white_wisteria_sapling",
-    "natures_spirit:larch_sapling"
+    "natures_spirit:larch_sapling",
+    "natures_spirit:redwood_sapling",
+    "natures_spirit:purple_wisteria_sapling",
+    "natures_spirit:aspen_sapling",
+    "natures_spirit:red_maple_sapling",
+    "natures_spirit:cypress_sapling",
+    "natures_spirit:willow_sapling",
+    "natures_spirit:sugi_sapling",
+    "natures_spirit:yellow_maple_sapling",
+    "natures_spirit:palo_verde_sapling",
+    "natures_spirit:ghaf_sapling"
   ]
 }

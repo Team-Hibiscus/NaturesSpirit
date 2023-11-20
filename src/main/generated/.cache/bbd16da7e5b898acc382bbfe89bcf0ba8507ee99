@@ -1,6 +1,6 @@
-// 1.20.1	2023-11-18T13:50:32.8915027	Nature's Spirit/Tags for minecraft:item
-b39ea2041f00bb91c25c777a6aa473de6fac10fb data\minecraft\tags\items\wooden_doors.json
+// 1.20.1	2023-11-18T20:15:03.8625313	Nature's Spirit/Tags for minecraft:item
 bb90ccf5da975556fc8eae7ed0a912a5cf4fb5c3 data\minecraft\tags\items\wooden_slabs.json
+b39ea2041f00bb91c25c777a6aa473de6fac10fb data\minecraft\tags\items\wooden_doors.json
 1d5d3aba3aa41b43a6dab4ae0203e0fb6e9903f0 data\minecraft\tags\items\wooden_trapdoors.json
 5b6dc8212d014afbb8bb1051f8820efd6f4253f9 data\natures_spirit\tags\items\maple_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\items\sugi_logs.json
@@ -30,13 +30,13 @@ d7a09944295298d27338a843c7681b0c67f24aa3 data\natures_spirit\tags\items\coconut_
 7a48c7b13da1e17d085f28d47e3ee27547c690ed data\minecraft\tags\items\wooden_fences.json
 58447812ccf0c06559693f643081653e5a207201 data\natures_spirit\tags\items\cedar_logs.json
 189b54063673349938cd1914aeda23d3b42a1fc1 data\natures_spirit\tags\items\ghaf_logs.json
-150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
 1a67b660b4472d543fa159d109e347e50fcc5c4e data\natures_spirit\tags\items\palo_verde_logs.json
+150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
 36d75f05a5b8750f98c16a976b1a8f3a21288af0 data\minecraft\tags\items\wooden_pressure_plates.json
 5bc19c15b4d4a0bba5c700301e7f1b923dccaf08 data\minecraft\tags\items\tall_flowers.json
-6e38183d046bb7c68a6b3fcda3a46c8335db048c data\minecraft\tags\items\leaves.json
+dfc99cf1388ab71f918a0cf033d5905eeb475eaa data\minecraft\tags\items\leaves.json
 f52c7eb0c4a7ebb83f211dfe80bd9ab8dfc4583a data\minecraft\tags\items\boats.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\items\wisteria_logs.json
 90f193adb5921a4b4b4099255409bb4e2baa9030 data\natures_spirit\tags\items\coconut_items.json
-68170cc7eec8881649e98a0497cfc41fb0739096 data\minecraft\tags\items\saplings.json
+0962bb3c03e6b66a3e436fc2d26161e102201f1d data\minecraft\tags\items\saplings.json
 27b0b4f23a725d9fdb12154068f9fc01d299f244 data\minecraft\tags\items\chest_boats.json

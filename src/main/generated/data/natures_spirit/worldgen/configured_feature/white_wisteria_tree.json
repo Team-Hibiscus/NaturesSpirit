@@ -33,6 +33,17 @@
         "block_provider3": {
           "type": "minecraft:hibiscus_simple_block_state_provider",
           "state": {
+            "Name": "natures_spirit:part_white_wisteria_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        },
+        "block_provider4": {
+          "type": "minecraft:hibiscus_simple_block_state_provider",
+          "state": {
             "Name": "natures_spirit:white_wisteria_leaves",
             "Properties": {
               "distance": "7",

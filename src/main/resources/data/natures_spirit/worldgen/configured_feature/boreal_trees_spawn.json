@@ -4,11 +4,11 @@
     "default": "natures_spirit:larch_checked",
     "features": [
       {
-        "chance": 0.3,
+        "chance": 0.4,
         "feature": "natures_spirit:fir_checked"
       },
       {
-        "chance": 0.2,
+        "chance": 0.1,
         "feature": "minecraft:spruce_checked"
       }
     ]

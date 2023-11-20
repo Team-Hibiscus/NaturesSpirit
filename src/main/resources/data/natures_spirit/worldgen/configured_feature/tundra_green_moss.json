@@ -17,7 +17,7 @@
       "placement": [
         {
           "type": "count",
-          "count": 80
+          "count": 20
         },
         {
           "type": "minecraft:random_offset",
@@ -31,7 +31,7 @@
           "y_spread": {
             "type": "minecraft:uniform",
             "value": {
-              "min_inclusive": -2,
+              "min_inclusive": -1,
               "max_inclusive": -1
             }
           }
@@ -45,11 +45,12 @@
                 "type": "minecraft:matching_blocks",
                 "offset": [
                   0,
-                  0,
+                  -1,
                   0
                 ],
                 "blocks": [
-                  "minecraft:stone"
+                  "minecraft:stone",
+                  "minecraft:andesite"
                 ]
               }
             ]

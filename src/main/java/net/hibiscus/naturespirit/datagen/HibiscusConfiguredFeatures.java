@@ -342,6 +342,7 @@ public class HibiscusConfiguredFeatures {
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WILLOW.getWillowVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WILLOW.getWillowVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(23, 25)),
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WILLOW.getLeaves().getDefaultState()),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WILLOW.getLeaves().getDefaultState()),
               5
       ))).ignoreVines().build());
       register(context,
@@ -361,6 +362,7 @@ public class HibiscusConfiguredFeatures {
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getWhiteWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPartWhiteLeaves().getDefaultState()),
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getWhiteLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
@@ -380,6 +382,7 @@ public class HibiscusConfiguredFeatures {
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getPinkWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPartPinkLeaves().getDefaultState()),
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPinkLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
@@ -399,6 +402,7 @@ public class HibiscusConfiguredFeatures {
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getBlueWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPartBlueLeaves().getDefaultState()),
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getBlueLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());
@@ -418,6 +422,7 @@ public class HibiscusConfiguredFeatures {
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant().getDefaultState()),
               new RandomizedIntBlockStateProvider(BlockStateProvider.of(HibiscusWoods.WISTERIA.getPurpleWisteriaVines().getDefaultState()), WisteriaVine.AGE, UniformIntProvider.create(22, 25)),
+              new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPartPurpleLeaves().getDefaultState()),
               new HibiscusSimpleBlockStateProvider(HibiscusWoods.WISTERIA.getPurpleLeaves().getDefaultState()),
               2
       ))).ignoreVines().build());

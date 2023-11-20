@@ -11,35 +11,35 @@ import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 public class WisteriaVinesTreeDecorator extends TreeDecorator {
    public static final Codec <WisteriaVinesTreeDecorator> CODEC = RecordCodecBuilder.create((instance) -> {
-      return instance.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> {
-         return treeDecorator.probability;
-      }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> {
-         return treeDecorator.blockProvider;
-      }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> {
-         return treeDecorator.blockProvider2;
-      }), BlockStateProvider.TYPE_CODEC.fieldOf("block_provider3").forGetter((treeDecorator) -> {
-         return treeDecorator.blockProvider3;
-      }), Codec.intRange(0, 10).fieldOf("number").forGetter((treeDecorator) -> {
-         return treeDecorator.number;
-      })).apply(instance, WisteriaVinesTreeDecorator::new);
+      return instance.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> treeDecorator.probability),
+              BlockStateProvider.TYPE_CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> treeDecorator.blockProvider),
+              BlockStateProvider.TYPE_CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> treeDecorator.blockProvider2),
+              BlockStateProvider.TYPE_CODEC.fieldOf("block_provider3").forGetter((treeDecorator) -> treeDecorator.blockProvider3),
+              BlockStateProvider.TYPE_CODEC.fieldOf("block_provider4").forGetter((treeDecorator) -> treeDecorator.blockProvider4),
+              Codec.intRange(0, 10).fieldOf("number").forGetter((treeDecorator) -> treeDecorator.number)).apply(instance, WisteriaVinesTreeDecorator::new);
    });
    protected final BlockStateProvider blockProvider;
    protected final BlockStateProvider blockProvider2;
    protected final BlockStateProvider blockProvider3;
+   protected final BlockStateProvider blockProvider4;
    private final float probability;
    protected int number;
 
-   public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2, BlockStateProvider blockProvider3, int number) {
+   public WisteriaVinesTreeDecorator(float probability, BlockStateProvider blockProvider, BlockStateProvider blockProvider2, BlockStateProvider blockProvider3, BlockStateProvider blockProvider4,int number) {
       this.probability = probability;
       this.blockProvider = blockProvider;
       this.blockProvider2 = blockProvider2;
       this.blockProvider3 = blockProvider3;
+      this.blockProvider4 = blockProvider4;
       this.number = number;
    }
 
-   private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, BlockStateProvider block3, Generator generator, int number) {
+   private static void placeVines(BlockPos pos, BlockStateProvider block, BlockStateProvider block2, BlockStateProvider block3, BlockStateProvider block4, Generator generator, int number) {
       Random random = generator.getRandom();
       generator.replace(pos, block3.get(random, pos));
+      if(!generator.isAir(pos.up(2)) || !generator.isAir(pos.up(3))) {
+         generator.replace(pos.up(), block4.get(random, pos));
+      }
       for(pos = pos.down(); number > 0; --number) {
          if(generator.isAir(pos)) {
             if(number == 1 || !generator.isAir(pos.down()) || random.nextBoolean()) {
@@ -64,13 +64,7 @@ public class WisteriaVinesTreeDecorator extends TreeDecorator {
          if(randomSource.nextFloat() < this.probability) {
             blockPos2 = blockPos.down();
             if(context.isAir(blockPos2)) {
-               if (!context.isAir(blockPos.up())) {
-                  context.replace(blockPos, blockProvider3.get(randomSource, blockPos));
-                  if(!context.isAir(blockPos.up(2))) {
-                     context.replace(blockPos, blockProvider3.get(randomSource, blockPos.up()));
-                  }
-               }
-               placeVines(blockPos2, blockProvider, blockProvider2, blockProvider3, context, this.number);
+               placeVines(blockPos2, blockProvider, blockProvider2, blockProvider4, blockProvider3, context, this.number);
             }
          }
 

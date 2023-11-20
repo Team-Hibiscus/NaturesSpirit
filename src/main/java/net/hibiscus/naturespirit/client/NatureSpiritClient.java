@@ -61,9 +61,6 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusWoods.LARCH.getLeaves());
-      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
-              blockPos
-      ) : -1, HibiscusWoods.WISTERIA.getLeaves());
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusMiscBlocks.LOTUS_STEM);
@@ -73,7 +70,6 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.LARCH.getLeaves());
-      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.WISTERIA.getLeaves());
 
       EntityModelLayers.registerEntityModelLayers();
       EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_0, Topping0::getTexturedModelData);
