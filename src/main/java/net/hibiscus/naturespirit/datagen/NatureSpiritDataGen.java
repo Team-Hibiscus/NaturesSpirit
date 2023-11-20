@@ -1352,6 +1352,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
          translationBuilder.add("pack.natures_spirit.modified_badlands", "Modified Badlands");
          translationBuilder.add("pack.natures_spirit.modified_vanilla_trees", "Modified Vanilla Trees");
+         generateArchExTranslations("kaolin", translationBuilder);
 
          for (var color : List.of(DYE_COLORS)) {
 
