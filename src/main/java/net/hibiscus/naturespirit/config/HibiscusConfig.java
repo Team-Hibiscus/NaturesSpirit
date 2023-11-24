@@ -28,7 +28,7 @@ public class HibiscusConfig {
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.2.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.2.0.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -104,10 +104,10 @@ public class HibiscusConfig {
       jsonObjects.add("biomes", biomesObject);
 
       JsonObject regionsObject = new JsonObject();
-      regionsObject.addProperty("terra_ferax_frequency", 3);
-      regionsObject.addProperty("terra_solaris_frequency", 3);
-      regionsObject.addProperty("terra_flava_frequency", 1);
-      regionsObject.addProperty("terra_laeta_frequency", 2);
+      regionsObject.addProperty("terra_ferax_frequency", 5);
+      regionsObject.addProperty("terra_solaris_frequency", 5);
+      regionsObject.addProperty("terra_flava_frequency", 5);
+      regionsObject.addProperty("terra_laeta_frequency", 5);
       jsonObjects.add("region_weights", regionsObject);
 
       JsonObject miscObject = new JsonObject();
