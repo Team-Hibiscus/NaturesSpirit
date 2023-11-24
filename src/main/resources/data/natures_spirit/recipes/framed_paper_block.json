@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "natures_spirit:paper_block"
+    },
+    "A": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A#A",
+    " A "
+  ],
+  "result": {
+    "item": "natures_spirit:framed_paper_block"
+  },
+  "show_notification": true
+}

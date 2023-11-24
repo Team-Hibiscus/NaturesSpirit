@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "natures_spirit:paper_block"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "item": "natures_spirit:paper_panel",
+    "count": 8
+  },
+  "show_notification": true
+}

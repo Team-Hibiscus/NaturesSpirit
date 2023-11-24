@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "A": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A#A",
+    " A "
+  ],
+  "result": {
+    "item": "natures_spirit:paper_block"
+  },
+  "show_notification": true
+}

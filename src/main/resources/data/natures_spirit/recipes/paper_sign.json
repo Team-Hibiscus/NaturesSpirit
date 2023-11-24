@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "natures_spirit:paper_block"
+    },
+    "a": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    " a "
+  ],
+  "result": {
+    "item": "natures_spirit:paper_sign",
+    "count": 3
+  },
+  "show_notification": true
+}

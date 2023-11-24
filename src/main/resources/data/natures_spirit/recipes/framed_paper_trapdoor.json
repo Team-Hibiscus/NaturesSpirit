@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "natures_spirit:framed_paper_block"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "natures_spirit:framed_paper_trapdoor",
+    "count": 2
+  },
+  "show_notification": true
+}

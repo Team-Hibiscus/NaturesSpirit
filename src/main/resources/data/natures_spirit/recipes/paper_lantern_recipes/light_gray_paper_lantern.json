@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "paper_lantern",
+  "ingredients": [
+    {
+      "item": "natures_spirit:paper_lantern"
+    },
+    {
+      "item": "minecraft:light_gray_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:light_gray_paper_lantern",
+    "count": 8
+  }
+}
