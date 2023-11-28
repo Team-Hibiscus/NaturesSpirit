@@ -517,6 +517,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addPottedPlantDrops(POTTED_FLAXEN_FERN);
          tallPlantDrop(LARGE_FLAXEN_FERN, FLAXEN_FERN);
 
+         dropsWithShears(OAT_GRASS);
+         addPottedPlantDrops(POTTED_OAT_GRASS);
+         tallPlantDrop(TALL_OAT_GRASS, OAT_GRASS);
+
          dropsWithShears(RED_BEARBERRIES);
          dropsWithShears(RED_BITTER_SPROUTS);
          addPottedPlantDrops(POTTED_RED_BEARBERRIES);
@@ -984,6 +988,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_BEACH_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_SEDGE_GRASS, blockStateModelGenerator);
+         generateTallLargeFlower(TALL_OAT_GRASS, blockStateModelGenerator);
          generateLargeFlower(HibiscusMiscBlocks.SCORCHED_GRASS, POTTED_SCORCHED_GRASS, blockStateModelGenerator);
          generateLargeFlower(RED_BEARBERRIES, POTTED_RED_BEARBERRIES, blockStateModelGenerator);
          generateLargeFlower(PURPLE_BEARBERRIES, POTTED_PURPLE_BEARBERRIES, blockStateModelGenerator);
@@ -993,6 +998,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateLargeFlower(PURPLE_BITTER_SPROUTS, blockStateModelGenerator);
          generateLargeFlower(BEACH_GRASS, POTTED_BEACH_GRASS, blockStateModelGenerator);
          generateLargeFlower(SEDGE_GRASS, POTTED_SEDGE_GRASS, blockStateModelGenerator);
+         generateLargeFlower(OAT_GRASS, POTTED_OAT_GRASS, blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
@@ -1264,6 +1270,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(FRIGID_GRASS, translationBuilder);
          generateBlockTranslations(LARGE_FLAXEN_FERN, translationBuilder);
          generateBlockTranslations(FLAXEN_FERN, translationBuilder);
+         generateBlockTranslations(TALL_OAT_GRASS, translationBuilder);
+         generateBlockTranslations(OAT_GRASS, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
          generateBlockTranslations(PAPER_BLOCK, translationBuilder);
@@ -1351,6 +1359,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add("pack.natures_spirit.newworld_compatibility", "Newworld Compat");
          translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
          translationBuilder.add("pack.natures_spirit.modified_badlands", "Modified Badlands");
+         translationBuilder.add("pack.natures_spirit.modified_savannas", "Modified Savannas");
+         translationBuilder.add("pack.natures_spirit.modified_dark_forest", "Modified Dark Forests");
+         translationBuilder.add("pack.natures_spirit.modified_mountain_biomes", "Modified Mountain Biomes");
          translationBuilder.add("pack.natures_spirit.modified_vanilla_trees", "Modified Vanilla Trees");
          generateArchExTranslations("kaolin", translationBuilder);
 
@@ -1824,6 +1835,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FLAXEN_FERN,
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS,
+                 OAT_GRASS,
+                 TALL_OAT_GRASS,
                  RED_BEARBERRIES,
                  GREEN_BEARBERRIES,
                  PURPLE_BEARBERRIES,
@@ -1857,6 +1870,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  SHIITAKE_MUSHROOM,
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS,
+                 OAT_GRASS,
+                 TALL_OAT_GRASS,
                  RED_BEARBERRIES,
                  GREEN_BEARBERRIES,
                  PURPLE_BEARBERRIES,
@@ -1874,7 +1889,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  LARGE_FLAXEN_FERN,
                  FLAXEN_FERN,
                  FRIGID_GRASS,
-                 TALL_FRIGID_GRASS
+                 TALL_FRIGID_GRASS,
+                 OAT_GRASS,
+                 TALL_OAT_GRASS
          );
          getOrCreateTagBuilder(BlockTags.SAND).add(PINK_SAND, SANDY_SOIL);
          getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);

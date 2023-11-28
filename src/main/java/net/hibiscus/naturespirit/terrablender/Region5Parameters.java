@@ -307,7 +307,7 @@ public class Region5Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey2 : registryKey
+                    HibiscusBiomes.has_xeric_plains ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -316,7 +316,7 @@ public class Region5Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey2 : registryKey
+                    HibiscusBiomes.has_xeric_plains ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -530,7 +530,7 @@ public class Region5Parameters {
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[1], weirdness, 0.0F, i == 0 ? registryKey9 : registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusBiomes.has_drylands ? registryKey : registryKey2);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
@@ -541,7 +541,7 @@ public class Region5Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
+                    HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2
             );
             if(weirdness.max() < 0L) {
                this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey6);
@@ -652,7 +652,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
+                    HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -679,7 +679,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
+                    HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey);
@@ -945,7 +945,7 @@ public class Region5Parameters {
          return HibiscusBiomes.TROPICAL_SHORES;
       }
       else {
-         return temperature == 4 ? (HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
+         return temperature == 4 ? (HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
       }
    }
 
@@ -967,7 +967,7 @@ public class Region5Parameters {
 
 
    private RegistryKey <Biome> getPeakBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      if (temperature <= 1 && HibiscusBiomes.has_fir && humidity <= 2) {
+      if (temperature <= 1 && HibiscusBiomes.has_fir && humidity <= 2 && weirdness.max() >= 0L) {
          return BiomeKeys.STONY_PEAKS;
       }
       if(temperature <= 2) {
@@ -983,8 +983,8 @@ public class Region5Parameters {
          return this.getNearMountainBiome(temperature, humidity, weirdness);
       }
       else {
-         if (HibiscusBiomes.has_fir) {
-            return humidity <= 2 && temperature <= 1 ? HibiscusBiomes.TUNDRA : BiomeKeys.GROVE;
+         if (HibiscusBiomes.has_larch) {
+            return humidity <= 2 && temperature <= 1 && weirdness.max() >= 0L? HibiscusBiomes.TUNDRA : BiomeKeys.GROVE;
          }
          else {
             return humidity <= 1 ? BiomeKeys.SNOWY_SLOPES : BiomeKeys.GROVE;

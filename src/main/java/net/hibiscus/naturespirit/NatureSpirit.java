@@ -74,6 +74,21 @@ public class NatureSpirit implements ModInitializer {
                  ResourcePackActivationType.DEFAULT_ENABLED
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "modified_mountain_biomes"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.modified_mountain_biomes"),
+                 ResourcePackActivationType.DEFAULT_ENABLED
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "modified_savannas"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.modified_savannas"),
+                 ResourcePackActivationType.DEFAULT_ENABLED
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "modified_dark_forest"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.modified_dark_forest"),
+                 ResourcePackActivationType.DEFAULT_ENABLED
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL

@@ -93,6 +93,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> GHAF_TREE_SPAWN = registerKey("ghaf_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE = registerKey("palo_verde_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE_SPAWN = registerKey("palo_verde_tree_spawn");
+//   public static final RegistryKey <ConfiguredFeature <?, ?>> BANYAN_TREE = registerKey("banyan_tree");
+//   public static final RegistryKey <ConfiguredFeature <?, ?>> BANYAN_TREE_SPAWN = registerKey("banyan_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE = registerKey("coconut_tree");
@@ -482,6 +484,21 @@ public class HibiscusConfiguredFeatures {
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.PALO_VERDE_CHECKED)
               )
       );
+
+//      register(context, BANYAN_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.GHAF.getLog()),
+//              new BanyanTrunkPlacer(7, 0, 2, UniformIntProvider.create(4, 6), .95F, UniformIntProvider.create(3, 6), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+//              BlockStateProvider.of(HibiscusWoods.LARCH.getLeaves()),
+//              new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
+//              new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(4))
+//      ).ignoreVines().build());
+
+//      register(context,
+//              BANYAN_TREE_SPAWN,
+//              Feature.RANDOM_SELECTOR,
+//              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.BANYAN_CHECKED), 0.325f)),
+//                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.BANYAN_CHECKED)
+//              )
+//      );
 
       register(context, CEDAR_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.CEDAR.getLog()),
               new PaloVerdeTrunkPlacer(6, 1, 3, UniformIntProvider.create(3, 5), .85F, UniformIntProvider.create(2, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),

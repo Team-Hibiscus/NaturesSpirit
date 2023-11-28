@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "tag": "natures_spirit:paper_block"
+      "item": "natures_spirit:paper_block"
     },
     "a": {
       "item": "minecraft:chain"

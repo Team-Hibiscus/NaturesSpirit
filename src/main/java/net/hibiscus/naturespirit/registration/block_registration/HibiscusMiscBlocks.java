@@ -208,7 +208,7 @@ public class HibiscusMiscBlocks {
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           TALL_SCORCHED_GRASS,
+           TALL_SEDGE_GRASS,
            0.3f
    );
 
@@ -222,7 +222,36 @@ public class HibiscusMiscBlocks {
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) LARGE_FLAXEN_FERN),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           SCORCHED_GRASS,
+           SEDGE_GRASS,
+           0.3f
+   );
+   public static final Block TALL_OAT_GRASS = registerPlantBlock("tall_oat_grass",
+           new TallPlantBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.PALE_YELLOW)
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           LARGE_FLAXEN_FERN,
+           0.3f
+   );
+
+   public static final Block OAT_GRASS = registerPlantBlock("oat_grass",
+           new HibiscusFernBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.PALE_YELLOW)
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_OAT_GRASS),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           FLAXEN_FERN,
            0.3f
    );
    public static final Block GREEN_BEARBERRIES = registerPlantBlock("green_bearberries",
@@ -321,6 +350,7 @@ public class HibiscusMiscBlocks {
    public static final Block POTTED_BEACH_GRASS = registerPottedPlant("beach_grass", BEACH_GRASS);
    public static final Block POTTED_SEDGE_GRASS = registerPottedPlant("sedge_grass", SEDGE_GRASS);
    public static final Block POTTED_FLAXEN_FERN = registerPottedPlant("flaxen_fern", FLAXEN_FERN);
+   public static final Block POTTED_OAT_GRASS = registerPottedPlant("oat_grass", OAT_GRASS);
    public static final Block POTTED_FRIGID_GRASS = registerPottedPlant("frigid_grass", FRIGID_GRASS);
    public static final Block POTTED_GREEN_BEARBERRIES = registerPottedPlant("potted_green_bearberries", GREEN_BEARBERRIES);
    public static final Block POTTED_RED_BEARBERRIES = registerPottedPlant("potted_red_bearberries", RED_BEARBERRIES);

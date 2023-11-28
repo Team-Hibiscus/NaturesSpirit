@@ -325,6 +325,22 @@ public class HibiscusWoods {
            new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
 
+//   public static WoodSet BANYAN = new WoodSet(
+//           new Identifier(MOD_ID, "banyan"),
+//           MapColor.BROWN,
+//           MapColor.LIGHT_GRAY,
+//           LARCH.getLeaves(),
+//           LARCH.getLog(),
+//           LARCH.getHangingSign(),
+//           LARCH.getChestBoatItem(),
+//           LARCH.getButton(),
+//           LARCH.getSapling(),
+//           HibiscusBoatEntity.HibiscusBoat.BANYAN,
+//           new BanyanSaplingGenerator(),
+//           WoodSet.WoodPreset.DEFAULT,
+//           false
+//   );
+
    public static void registerWoods() {
       HibiscusMiscBlocks.registerMiscBlocks();
    }

@@ -1,14 +1,14 @@
-// 1.20.1	2023-11-19T23:51:28.493604	Nature's Spirit/Tags for minecraft:item
-bb90ccf5da975556fc8eae7ed0a912a5cf4fb5c3 data\minecraft\tags\items\wooden_slabs.json
+// 1.20.1	2023-11-27T22:12:09.2835124	Nature's Spirit/Tags for minecraft:item
 b39ea2041f00bb91c25c777a6aa473de6fac10fb data\minecraft\tags\items\wooden_doors.json
+bb90ccf5da975556fc8eae7ed0a912a5cf4fb5c3 data\minecraft\tags\items\wooden_slabs.json
 1d5d3aba3aa41b43a6dab4ae0203e0fb6e9903f0 data\minecraft\tags\items\wooden_trapdoors.json
 5b6dc8212d014afbb8bb1051f8820efd6f4253f9 data\natures_spirit\tags\items\maple_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\items\sugi_logs.json
 0ec61aba3b1bd25702045890275de6264cd96d68 data\minecraft\tags\items\wooden_stairs.json
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\items\willow_logs.json
 922048a8095b06d6b0dff7e3fca4b7b3f5aa0087 data\natures_spirit\tags\items\evergreen_leaves.json
-07448402137f791bfd41b0a20cfbf70539294ee2 data\minecraft\tags\items\logs_that_burn.json
 5a94b056fdf4b5bc9890807aeca0a6bc7b25355b data\minecraft\tags\items\slabs.json
+07448402137f791bfd41b0a20cfbf70539294ee2 data\minecraft\tags\items\logs_that_burn.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\items\signs.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_logs.json
 ade48f16cbd3e19eb83ff6279ff3c3404d71c0b9 data\minecraft\tags\items\fence_gates.json
@@ -25,15 +25,15 @@ fc291607b06ce0700548458687a09883d0f2e865 data\natures_spirit\tags\items\aspen_lo
 bfdb1a78b7ef0b21f3fadbf5d71c462fa266cdf7 data\natures_spirit\tags\items\xeric_leaves.json
 d7a09944295298d27338a843c7681b0c67f24aa3 data\natures_spirit\tags\items\coconut_logs.json
 047080b1828e1748ab364ad00463bb9a55224116 data\minecraft\tags\items\hanging_signs.json
-2d17b182a855eb54e6fd5c8829d1530cee48b9dd data\minecraft\tags\items\planks.json
 4dc5b3ab401e06fe4d92041ba45fb29edb5aa78d data\minecraft\tags\items\sand.json
+2d17b182a855eb54e6fd5c8829d1530cee48b9dd data\minecraft\tags\items\planks.json
 7a48c7b13da1e17d085f28d47e3ee27547c690ed data\minecraft\tags\items\wooden_fences.json
 58447812ccf0c06559693f643081653e5a207201 data\natures_spirit\tags\items\cedar_logs.json
 189b54063673349938cd1914aeda23d3b42a1fc1 data\natures_spirit\tags\items\ghaf_logs.json
 1a67b660b4472d543fa159d109e347e50fcc5c4e data\natures_spirit\tags\items\palo_verde_logs.json
 150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
-36d75f05a5b8750f98c16a976b1a8f3a21288af0 data\minecraft\tags\items\wooden_pressure_plates.json
 5bc19c15b4d4a0bba5c700301e7f1b923dccaf08 data\minecraft\tags\items\tall_flowers.json
+36d75f05a5b8750f98c16a976b1a8f3a21288af0 data\minecraft\tags\items\wooden_pressure_plates.json
 dfc99cf1388ab71f918a0cf033d5905eeb475eaa data\minecraft\tags\items\leaves.json
 f52c7eb0c4a7ebb83f211dfe80bd9ab8dfc4583a data\minecraft\tags\items\boats.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\items\wisteria_logs.json
