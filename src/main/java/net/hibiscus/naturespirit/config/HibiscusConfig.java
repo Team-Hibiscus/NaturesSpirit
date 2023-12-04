@@ -4,17 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.annotations.JsonAdapter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
+import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.file.Path;
-import java.util.HashMap;
 
 public class HibiscusConfig {
 
@@ -22,13 +18,14 @@ public class HibiscusConfig {
    public static int terra_solaris_weight;
    public static int terra_flava_weight;
    public static int terra_laeta_weight;
+   public static int terra_mater_weight;
 
    public static boolean calcite_generator;
    public static boolean deepslate_generator;
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.2.0.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.3.0.1.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -59,11 +56,14 @@ public class HibiscusConfig {
             HibiscusBiomes.set_has_tropical_shores(biomes.get("has_tropical_shores").getAsBoolean());
             HibiscusBiomes.set_has_xeric_plains(biomes.get("has_xeric_plains").getAsBoolean());
             HibiscusBiomes.set_has_larch(biomes.get("has_larch").getAsBoolean());
+            HibiscusBiomes.set_has_oak_savanna(biomes.get("has_oak_savanna").getAsBoolean());
+            HibiscusBiomes.set_has_mahogany(biomes.get("has_mahogany").getAsBoolean());
 
             terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
             terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
             terra_flava_weight = region_weights.get("terra_flava_frequency").getAsInt();
             terra_laeta_weight = region_weights.get("terra_laeta_frequency").getAsInt();
+            terra_mater_weight = region_weights.get("terra_mater_frequency").getAsInt();
 
             calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
             deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
@@ -91,7 +91,9 @@ public class HibiscusConfig {
       NatureSpirit.LOGGER.info("has_white_cliffs = " + HibiscusBiomes.has_white_cliffs);
       NatureSpirit.LOGGER.info("has_tropical_shores = " + HibiscusBiomes.has_tropical_shores);
       NatureSpirit.LOGGER.info("has_xeric_plains = " + HibiscusBiomes.has_xeric_plains);
-      NatureSpirit.LOGGER.info("has_larch = " + HibiscusBiomes.has_xeric_plains);
+      NatureSpirit.LOGGER.info("has_larch = " + HibiscusBiomes.has_larch);
+      NatureSpirit.LOGGER.info("has_oak_savanna = " + HibiscusBiomes.has_oak_savanna);
+      NatureSpirit.LOGGER.info("has_mahogany = " + HibiscusBiomes.has_mahogany);
 
       System.out.println("Thanks for viewing your messages");
    }
@@ -104,10 +106,11 @@ public class HibiscusConfig {
       jsonObjects.add("biomes", biomesObject);
 
       JsonObject regionsObject = new JsonObject();
-      regionsObject.addProperty("terra_ferax_frequency", 5);
-      regionsObject.addProperty("terra_solaris_frequency", 5);
-      regionsObject.addProperty("terra_flava_frequency", 5);
-      regionsObject.addProperty("terra_laeta_frequency", 5);
+      regionsObject.addProperty("terra_ferax_frequency", 4);
+      regionsObject.addProperty("terra_solaris_frequency", 4);
+      regionsObject.addProperty("terra_flava_frequency", 4);
+      regionsObject.addProperty("terra_laeta_frequency", 4);
+      regionsObject.addProperty("terra_mater_frequency", 4);
       jsonObjects.add("region_weights", regionsObject);
 
       JsonObject miscObject = new JsonObject();
@@ -136,6 +139,8 @@ public class HibiscusConfig {
       biomesObject.addProperty("has_tropical_shores", true);
       biomesObject.addProperty("has_xeric_plains", true);
       biomesObject.addProperty("has_larch", true);
+      biomesObject.addProperty("has_oak_savanna", true);
+      biomesObject.addProperty("has_mahogany", true);
       return biomesObject;
    }
 }

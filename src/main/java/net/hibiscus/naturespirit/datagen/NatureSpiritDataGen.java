@@ -57,7 +57,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.datagen.HibiscusBiomes.BiomesHashMap;
+import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
 import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
 import static net.minecraft.data.client.BlockStateModelGenerator.*;
 import static net.minecraft.data.client.TexturedModel.makeFactory;
@@ -99,7 +99,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private static final LootCondition.Builder WITH_SILK_TOUCH_OR_SHEARS = WITH_SHEARS.or(WITH_SILK_TOUCH);
       private static final LootCondition.Builder WITHOUT_SILK_TOUCH_NOR_SHEARS = WITH_SILK_TOUCH_OR_SHEARS.invert();
 
-      private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.4F, 0.4333333333F, 0.5025F, 0.5888F};
+      private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.4F, 0.4533333333F, 0.625F, 0.758F};
 
       protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
          super(dataOutput);
@@ -521,6 +521,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addPottedPlantDrops(POTTED_OAT_GRASS);
          tallPlantDrop(TALL_OAT_GRASS, OAT_GRASS);
 
+         dropsWithShears(LUSH_FERN);
+         addPottedPlantDrops(POTTED_LUSH_FERN);
+         tallPlantDrop(LARGE_LUSH_FERN, LUSH_FERN);
+
          dropsWithShears(RED_BEARBERRIES);
          dropsWithShears(RED_BITTER_SPROUTS);
          addPottedPlantDrops(POTTED_RED_BEARBERRIES);
@@ -537,10 +541,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    private static class NatureSpiritModelGenerator extends FabricModelProvider {
 
       private static final Model TALL_LARGE_CROSS = block("tall_large_cross", TextureKey.CROSS);
+      private static final Model TINTED_TALL_LARGE_CROSS = block("tinted_tall_large_cross", TextureKey.CROSS);
       private static final Model LARGE_CROSS = block("large_cross", TextureKey.CROSS);
+      private static final Model TINTED_LARGE_CROSS = block("tinted_large_cross", TextureKey.CROSS);
       private static final Model TALL_CROSS = block("tall_cross", TextureKey.CROSS);
       private static final Model FLOWER_POT_TALL_CROSS = block("flower_pot_tall_cross", TextureKey.PLANT);
       private static final Model FLOWER_POT_LARGE_CROSS = block("flower_pot_large_cross", TextureKey.PLANT);
+      private static final Model FLOWER_POT_TINTED_LARGE_CROSS = block("tinted_flower_pot_large_cross", TextureKey.PLANT);
       private static final Model CROP = block("crop", TextureKey.CROP);
       private static final Model PAPER_LANTERN = block("template_paper_lantern", TextureKey.TOP, TextureKey.SIDE);
       private static final Model HANGING_PAPER_LANTERN = block("template_hanging_paper_lantern", "_hanging", TextureKey.TOP, TextureKey.SIDE);
@@ -821,6 +828,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          Identifier identifier = TALL_LARGE_CROSS.upload(block, crossTexture, blockStateModelGenerators.modelCollector);
          blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(block, identifier));
       }
+      public final void registerTintedTallLargeBlockState(Block block, TextureMap crossTexture, BlockStateModelGenerator blockStateModelGenerators) {
+         Identifier identifier = TINTED_TALL_LARGE_CROSS.upload(block, crossTexture, blockStateModelGenerators.modelCollector);
+         blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(block, identifier));
+      }
 
       public final void registerSpecificFlowerItemModel(Block block, BlockStateModelGenerator blockStateModelGenerators) {
          Item item = block.asItem();
@@ -829,6 +840,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private void generateFlowerBlockStateModels(Block block, Block block2, BlockStateModelGenerator blockStateModelGenerator) {
          blockStateModelGenerator.registerFlowerPotPlant(block, block2, TintType.NOT_TINTED);
+      }
+      private void generateTintedFlowerBlockStateModels(Block block, Block block2, BlockStateModelGenerator blockStateModelGenerator) {
+         blockStateModelGenerator.registerFlowerPotPlant(block, block2, TintType.TINTED);
       }
 
       private void generatePottedAnemone(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
@@ -854,12 +868,26 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          Identifier identifier2 = blockStateModelGenerators.createSubModel(doubleBlock, "_bottom", LARGE_CROSS, TextureMap::cross);
          blockStateModelGenerators.registerDoubleBlock(doubleBlock, identifier, identifier2);
       }
+      public final void generateTintedTallLargeFlower(Block doubleBlock, BlockStateModelGenerator blockStateModelGenerators) {
+         registerSpecificFlowerItemModel(doubleBlock, blockStateModelGenerators);
+         Identifier identifier = blockStateModelGenerators.createSubModel(doubleBlock, "_top", TINTED_LARGE_CROSS, TextureMap::cross);
+         Identifier identifier2 = blockStateModelGenerators.createSubModel(doubleBlock, "_bottom", TINTED_LARGE_CROSS, TextureMap::cross);
+         blockStateModelGenerators.registerDoubleBlock(doubleBlock, identifier, identifier2);
+      }
 
       public final void generateLargeFlower(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
          registerSpecificFlowerItemModel(block, blockStateModelGenerators);
          registerTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
          TextureMap textureMap = TextureMap.plant(block);
          Identifier identifier = FLOWER_POT_LARGE_CROSS.upload(flowerPot, textureMap, blockStateModelGenerators.modelCollector);
+         blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier));
+      }
+
+      public final void generateTintedLargeFlower(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
+         registerSpecificFlowerItemModel(block, blockStateModelGenerators);
+         registerTintedTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
+         TextureMap textureMap = TextureMap.plant(block);
+         Identifier identifier = FLOWER_POT_TINTED_LARGE_CROSS.upload(flowerPot, textureMap, blockStateModelGenerators.modelCollector);
          blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier));
       }
 
@@ -987,6 +1015,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerDoubleBlock(TALL_FRIGID_GRASS, TintType.NOT_TINTED);
          generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_BEACH_GRASS, blockStateModelGenerator);
+         generateTintedTallLargeFlower(LARGE_LUSH_FERN, blockStateModelGenerator);
          generateTallLargeFlower(TALL_SEDGE_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_OAT_GRASS, blockStateModelGenerator);
          generateLargeFlower(HibiscusMiscBlocks.SCORCHED_GRASS, POTTED_SCORCHED_GRASS, blockStateModelGenerator);
@@ -999,6 +1028,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateLargeFlower(BEACH_GRASS, POTTED_BEACH_GRASS, blockStateModelGenerator);
          generateLargeFlower(SEDGE_GRASS, POTTED_SEDGE_GRASS, blockStateModelGenerator);
          generateLargeFlower(OAT_GRASS, POTTED_OAT_GRASS, blockStateModelGenerator);
+         generateTintedLargeFlower(LUSH_FERN, POTTED_LUSH_FERN, blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
@@ -1161,6 +1191,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          itemModelGenerator.register(CHALK_POWDER, Models.GENERATED);
          itemModelGenerator.register(VINEGAR_BOTTLE, Models.GENERATED);
          itemModelGenerator.register(CHEESE_BUCKET, Models.GENERATED);
+         itemModelGenerator.register(HELVOLA_FLOWER_ITEM, Models.GENERATED);
+         itemModelGenerator.register(HELVOLA_PAD_ITEM, Models.GENERATED);
          for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
             itemModelGenerator.register(boat.boat().asItem(), Models.GENERATED);
             itemModelGenerator.register(boat.chestBoat().asItem(), Models.GENERATED);
@@ -1272,6 +1304,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(FLAXEN_FERN, translationBuilder);
          generateBlockTranslations(TALL_OAT_GRASS, translationBuilder);
          generateBlockTranslations(OAT_GRASS, translationBuilder);
+         generateBlockTranslations(LARGE_LUSH_FERN, translationBuilder);
+         generateBlockTranslations(LUSH_FERN, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
          generateBlockTranslations(PAPER_BLOCK, translationBuilder);
@@ -1292,6 +1326,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusMiscBlocks.CATTAIL, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK, translationBuilder);
          generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, translationBuilder);
+         translationBuilder.add(HELVOLA_PAD_ITEM, "Helvola Pad");
+         generateItemTranslations(HELVOLA_FLOWER_ITEM, translationBuilder);
          generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
          generateBlockTranslations(LOTUS_STEM, translationBuilder);
          generateBlockTranslations(RED_MOSS_BLOCK, translationBuilder);
@@ -1641,6 +1677,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateStoneRecipes(HibiscusRegistryHelper.StoneHashMap, exporter);
          offerShapelessRecipe(exporter, Items.BROWN_DYE, HibiscusMiscBlocks.CATTAIL, "brown_dye", 2);
          offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
+         offerShapelessRecipe(exporter, Items.WHITE_DYE, HELVOLA, "white_dye", 1);
          offerCompactingRecipe(exporter, RecipeCategory.FOOD, HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, HibiscusMiscBlocks.DESERT_TURNIP, "desert_turnip");
          offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.WHITE_CHALK, HibiscusMiscBlocks.CHALK_POWDER);
 
@@ -1833,6 +1870,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  TALL_SEDGE_GRASS,
                  LARGE_FLAXEN_FERN,
                  FLAXEN_FERN,
+                 LARGE_LUSH_FERN,
+                 LUSH_FERN,
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS,
                  OAT_GRASS,
@@ -1872,6 +1911,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  TALL_FRIGID_GRASS,
                  OAT_GRASS,
                  TALL_OAT_GRASS,
+                 LARGE_LUSH_FERN,
+                 LUSH_FERN,
                  RED_BEARBERRIES,
                  GREEN_BEARBERRIES,
                  PURPLE_BEARBERRIES,
@@ -1891,7 +1932,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS,
                  OAT_GRASS,
-                 TALL_OAT_GRASS
+                 TALL_OAT_GRASS,
+                 LARGE_LUSH_FERN,
+                 LUSH_FERN
          );
          getOrCreateTagBuilder(BlockTags.SAND).add(PINK_SAND, SANDY_SOIL);
          getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);
@@ -1908,7 +1951,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH_SLAB);
          getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
-         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS);
+         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS, POTTED_OAT_GRASS, POTTED_LUSH_FERN);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(SHIITAKE_MUSHROOM, SHIITAKE_MUSHROOM_BLOCK, DESERT_TURNIP_BLOCK, DESERT_TURNIP_ROOT_BLOCK, DESERT_TURNIP_STEM, PAPER_BLOCK, PAPER_PANEL, PAPER_DOOR, PAPER_SIGN, PAPER_WALL_SIGN, PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, FRAMED_PAPER_BLOCK, FRAMED_PAPER_PANEL, FRAMED_PAPER_DOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_BLOCK, BLOOMING_PAPER_DOOR, BLOOMING_PAPER_TRAPDOOR, BLOOMING_PAPER_PANEL);
          getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(PAPER_HANGING_SIGN);

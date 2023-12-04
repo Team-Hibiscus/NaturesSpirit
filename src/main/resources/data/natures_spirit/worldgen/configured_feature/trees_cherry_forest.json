@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "natures_spirit:sugi_checked",
+    "features": [
+      {
+        "chance": 0.4555,
+        "feature": {
+          "feature" : "minecraft:cherry_bees_005",
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:cherry_sapling",
+                  "Properties": {
+                    "stage": "0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

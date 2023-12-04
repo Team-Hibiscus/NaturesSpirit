@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "has_precipitation": false,
+  "has_precipitation": true,
   "downfall": 0.7,
   "effects": {
     "sky_color": 9814505,
@@ -84,7 +84,6 @@
       "minecraft:glow_lichen",
       "natures_spirit:andesite_rock",
       "natures_spirit:andesite_block_feature",
-      "natures_spirit:tundra_green_moss",
       "natures_spirit:patch_tall_grass_wooded_drylands",
       "natures_spirit:patch_grass_wooded_drylands",
       "natures_spirit:larch_placed",

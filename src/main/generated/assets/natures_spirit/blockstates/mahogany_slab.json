@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/mahogany_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/mahogany_planks"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/mahogany_slab_top"
+    }
+  }
+}

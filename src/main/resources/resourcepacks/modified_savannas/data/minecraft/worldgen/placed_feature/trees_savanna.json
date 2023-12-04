@@ -2,10 +2,12 @@
   "feature": "minecraft:trees_savanna",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 100.0,
-      "noise_offset": 0.0,
-      "noise_to_count_ratio": 5
+      "type": "minecraft:count",
+      "count": 1
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 40
     },
     {
       "type": "minecraft:in_square"

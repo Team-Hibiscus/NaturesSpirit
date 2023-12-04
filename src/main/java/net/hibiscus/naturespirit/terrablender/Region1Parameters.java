@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
-import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
@@ -64,6 +64,13 @@ public class Region1Parameters {
    RegistryKey<Biome> nearBiomeWoodedBadlands = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.STRATIFIED_DESERT : BiomeKeys.WOODED_BADLANDS;
    RegistryKey<Biome> specialBiomeErodedBadlands = HibiscusBiomes.has_lively_dunes ? null : BiomeKeys.ERODED_BADLANDS;
    RegistryKey<Biome> uncommonBiomePlainsCold = HibiscusBiomes.has_fir ? HibiscusBiomes.HEATHER_FIELDS : null;
+   RegistryKey<Biome> commonBiomeFlowerForestTemperate = HibiscusBiomes.has_oak_savanna ? HibiscusBiomes.OAK_SAVANNA : BiomeKeys.FLOWER_FOREST;
+   RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusBiomes.has_oak_savanna ? HibiscusBiomes.OAK_SAVANNA : BiomeKeys.SAVANNA;
+   RegistryKey<Biome> commonBiomePlainsTemperate = HibiscusBiomes.has_oak_savanna ? HibiscusBiomes.OAK_SAVANNA : BiomeKeys.PLAINS;
+   RegistryKey<Biome> nearBiomeMeadowTemperate = HibiscusBiomes.has_oak_savanna ? HibiscusBiomes.OAK_SAVANNA : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nearBiomeSavannaPlateauTemperate = HibiscusBiomes.has_oak_savanna ? HibiscusBiomes.OAK_SAVANNA : BiomeKeys.SAVANNA_PLATEAU;
+   RegistryKey<Biome> specialBiomeCherryGroveTemperate = HibiscusBiomes.has_oak_savanna ? HibiscusBiomes.OAK_SAVANNA : BiomeKeys.CHERRY_GROVE;
+   RegistryKey<Biome> windsweptBiomeWindsweptHillsTemperate = HibiscusBiomes.has_oak_savanna ? null : BiomeKeys.WINDSWEPT_HILLS;
    RegistryKey[] windsweptFrozen = HibiscusBiomes.has_fir ?
            new RegistryKey[]{HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA} :
            new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
@@ -95,9 +102,9 @@ public class Region1Parameters {
               }, {
               commonBiomePlainsCold, commonBiomePlainsCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
-                      BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
+                      commonBiomeFlowerForestTemperate, commonBiomePlainsTemperate, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
-                      BiomeKeys.SAVANNA, BiomeKeys.SAVANNA, BiomeKeys.FOREST, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
+              commonBiomeSavannaWarm, commonBiomeSavannaWarm, BiomeKeys.FOREST, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE
               }, {
               commonBiomeDesert, commonBiomeDesert, commonBiomeDesert, commonBiomeDesert, commonBiomeDesert2
               }
@@ -115,9 +122,9 @@ public class Region1Parameters {
               }, {
                       BiomeKeys.MEADOW, mountainBiomeMeadowCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
-                      BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
+              nearBiomeMeadowTemperate, nearBiomeMeadowTemperate, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
-                      BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.FOREST, BiomeKeys.FOREST, BiomeKeys.JUNGLE
+              nearBiomeSavannaPlateauTemperate, nearBiomeSavannaPlateauTemperate, BiomeKeys.FOREST, BiomeKeys.FOREST, BiomeKeys.JUNGLE
               }, {
               nearBiomeBadlands, nearBiomeBadlands, nearBiomeBadlands, nearBiomeWoodedBadlands, nearBiomeWoodedBadlands
               }
@@ -125,13 +132,13 @@ public class Region1Parameters {
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null},
               {specialBiomeCherryGrove, null, mountainBiomeMeadowCold, mountainBiomeMeadowCold, uncommonBiomeOldPineCold},
-              {BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null},
+              {specialBiomeCherryGroveTemperate, specialBiomeCherryGroveTemperate, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null},
               {null, null, null, null, null},
               {specialBiomeErodedBadlands, specialBiomeErodedBadlands, null, null, uncommonBiomeDesert}
       };
       this.windsweptBiomes = new RegistryKey[][]{windsweptFrozen,
                                                  windsweptCold,
-                                                 {BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
+                                                 {windsweptBiomeWindsweptHillsTemperate, windsweptBiomeWindsweptHillsTemperate, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
                                                  {null, null, null, null, null},
                                                  {null, null, null, null, null}
       };

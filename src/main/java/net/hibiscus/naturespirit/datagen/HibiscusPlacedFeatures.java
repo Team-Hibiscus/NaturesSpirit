@@ -3,12 +3,14 @@ package net.hibiscus.naturespirit.datagen;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -44,6 +46,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> OLIVE_CHECKED = registerKey("olive_checked");
    public static final RegistryKey <PlacedFeature> GHAF_CHECKED = registerKey("ghaf_checked");
    public static final RegistryKey <PlacedFeature> PALO_VERDE_CHECKED = registerKey("palo_verde_checked");
+   public static final RegistryKey <PlacedFeature> MAHOGANY_CHECKED = registerKey("mahogany_checked");
 //   public static final RegistryKey <PlacedFeature> BANYAN_CHECKED = registerKey("banyan_checked");
    public static final RegistryKey <PlacedFeature> COCONUT_CHECKED = registerKey("coconut_checked");
    public static final RegistryKey <PlacedFeature> CEDAR_CHECKED = registerKey("cedar_checked");
@@ -91,6 +94,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> JOSHUA_PLACED = registerKey("joshua_placed");
    public static final RegistryKey <PlacedFeature> COCONUT_PLACED = registerKey("coconut_placed");
    public static final RegistryKey <PlacedFeature> CEDAR_PLACED = registerKey("cedar_placed");
+   public static final RegistryKey <PlacedFeature> MAHOGANY_PLACED = registerKey("mahogany_placed");
    public static final RegistryKey <PlacedFeature> SPARSE_OLIVE_PLACED = registerKey("sparse_olive_placed");
 
    public static final RegistryKey <PlacedFeature> OAK_BUSH_PLACED = registerKey("oak_bush_placed");
@@ -148,6 +152,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context, LARCH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARCH_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.LARCH.getSapling()));
       registerKey(context, YELLOW_LARCH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.YELLOW_LARCH_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.LARCH.getYellowSapling()));
       registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW.getSapling()));
+      registerKey(context, MAHOGANY_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAHOGANY_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.MAHOGANY.getSapling()));
       registerKey(context,
               WHITE_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE),
@@ -172,7 +177,8 @@ public class HibiscusPlacedFeatures {
 //      registerKey(context, BANYAN_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.BANYAN_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.BANYAN.getSapling()));
       registerKey(context, OLIVE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OLIVE_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.OLIVE.getSapling()));
 
-      registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH), PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING));
+      registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.OAK_BUSH), BlockFilterPlacementModifier.of(BlockPredicate.anyOf(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(),
+              BlockPos.ORIGIN), BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.down(), HibiscusTags.Blocks.KAOLIN))));
       registerKey(context, SPRUCE_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SPRUCE_BUSH), PlacedFeatures.wouldSurvive(Blocks.SPRUCE_SAPLING));
 
       registerKey(context,
@@ -456,6 +462,15 @@ public class HibiscusPlacedFeatures {
               CountPlacementModifier.of(1),
               SquarePlacementModifier.of(),
               TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              MAHOGANY_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAHOGANY_TREE_SPAWN),
+              CountPlacementModifier.of(2),
+              SquarePlacementModifier.of(),
+              SurfaceWaterDepthFilterPlacementModifier.of(7),
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
               BiomePlacementModifier.of()
       );

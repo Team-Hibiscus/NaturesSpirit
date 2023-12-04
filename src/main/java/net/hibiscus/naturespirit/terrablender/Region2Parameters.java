@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
-import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
@@ -54,6 +54,8 @@ public class Region2Parameters {
 
    RegistryKey<Biome> commonPlains = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.PLAINS;
    RegistryKey<Biome> commonForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.FOREST;
+   RegistryKey<Biome> uncommonNull = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.BLOOMING_SUGI_FOREST : null;
+   RegistryKey<Biome> specialForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.BLOOMING_SUGI_FOREST : BiomeKeys.FOREST;
    RegistryKey<Biome> commonBirchForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.BIRCH_FOREST;
    RegistryKey<Biome> uncommonBirchForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.OLD_GROWTH_BIRCH_FOREST;
    RegistryKey<Biome> mountainMeadow = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.MEADOW;
@@ -81,7 +83,7 @@ public class Region2Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
               }, {
-              BiomeKeys.PLAINS, BiomeKeys.PLAINS, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
+                     BiomeKeys.PLAINS, BiomeKeys.PLAINS, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
                       BiomeKeys.FLOWER_FOREST, commonPlains, commonForest, commonBirchForest, BiomeKeys.DARK_FOREST
               }, {
@@ -91,8 +93,9 @@ public class Region2Parameters {
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
-              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null}, {null, null, null, null, uncommonBiomeOldPineCold}, {
-              BiomeKeys.SUNFLOWER_PLAINS, null, null, uncommonBirchForest, null
+              {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null},
+              {null, null, null, null, uncommonBiomeOldPineCold}, {
+              BiomeKeys.SUNFLOWER_PLAINS, uncommonNull, uncommonNull, uncommonBirchForest, null
       }, {
                       null, null, BiomeKeys.PLAINS, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE
               }, {null, null, null, null, null}
@@ -114,19 +117,17 @@ public class Region2Parameters {
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
               BiomeKeys.CHERRY_GROVE, null, BiomeKeys.MEADOW, BiomeKeys.MEADOW, uncommonBiomeOldPineCold
       }, {
-                      BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, commonForest, commonBirchForest, null
+                      BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, specialForest, commonBirchForest, null
               }, {null, null, null, null, null}, {
                       BiomeKeys.ERODED_BADLANDS, BiomeKeys.ERODED_BADLANDS, null, null, null
               }
       };
       this.windsweptBiomes = new RegistryKey[][]{
-              {
-                      BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST
-              }, {
-                      BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST
-              }, {
-              windsweptHills, windsweptHills, windsweptHills, windsweptForest, windsweptForest
-              }, {null, null, null, null, null}, {null, null, null, null, null}
+              {BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
+              {BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
+              {windsweptHills, windsweptHills, windsweptHills, windsweptForest, windsweptForest},
+              {null, null, null, null, null},
+              {null, null, null, null, null}
       };
    }
 

@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "natures_spirit:mahogany_mosaic",
+    "natures_spirit:mahogany_mosaic_slab",
+    "natures_spirit:mahogany_mosaic_stairs",
     "natures_spirit:coconut_mosaic",
     "natures_spirit:coconut_mosaic_slab",
     "natures_spirit:coconut_mosaic_stairs",

@@ -11,6 +11,7 @@
     "natures_spirit:potted_orange_maple_sapling",
     "natures_spirit:potted_white_wisteria_sapling",
     "natures_spirit:potted_larch_sapling",
+    "natures_spirit:potted_mahogany_sapling",
     "natures_spirit:potted_redwood_sapling",
     "natures_spirit:potted_purple_wisteria_sapling",
     "natures_spirit:potted_aspen_sapling",
@@ -38,6 +39,8 @@
     "natures_spirit:potted_shiitake_mushroom",
     "natures_spirit:potted_beach_grass",
     "natures_spirit:potted_sedge_grass",
-    "natures_spirit:potted_scorched_grass"
+    "natures_spirit:potted_scorched_grass",
+    "natures_spirit:potted_oat_grass",
+    "natures_spirit:potted_lush_fern"
   ]
 }

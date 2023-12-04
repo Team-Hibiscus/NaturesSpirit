@@ -32,14 +32,12 @@ import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
-import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
-import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
+import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.*;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
+import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -93,6 +91,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> GHAF_TREE_SPAWN = registerKey("ghaf_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE = registerKey("palo_verde_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PALO_VERDE_TREE_SPAWN = registerKey("palo_verde_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> MAHOGANY_TREE = registerKey("mahogany_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> MAHOGANY_TREE_SPAWN = registerKey("mahogany_tree_spawn");
 //   public static final RegistryKey <ConfiguredFeature <?, ?>> BANYAN_TREE = registerKey("banyan_tree");
 //   public static final RegistryKey <ConfiguredFeature <?, ?>> BANYAN_TREE_SPAWN = registerKey("banyan_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
@@ -248,6 +248,21 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.FIR_CHECKED), 0.5f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.FIR_CHECKED)
+              )
+      );
+
+      register(context, MAHOGANY_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.MAHOGANY.getLog()),
+              new MahoganyTrunkPlacer(18, 0, 5),
+              BlockStateProvider.of(HibiscusWoods.MAHOGANY.getLeaves()),
+              new AcaciaFoliagePlacer(UniformIntProvider.create(2, 2), UniformIntProvider.create(2, 2)),
+              new TwoLayersFeatureSize(1, 0, 1)
+      ).ignoreVines().decorators(ImmutableList.of(new LeavesVineTreeDecorator(.4f))).build());
+
+      register(context,
+              MAHOGANY_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.MAHOGANY_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.MAHOGANY_CHECKED)
               )
       );
 
@@ -441,7 +456,7 @@ public class HibiscusConfiguredFeatures {
       );
 
       register(context, SUGI_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.SUGI.getLog()),
-              new SugiTrunkPlacer(10, 1, 1, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              new SugiTrunkPlacer(12, 1, 1, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
               BlockStateProvider.of(HibiscusWoods.SUGI.getLeaves()),
               new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))

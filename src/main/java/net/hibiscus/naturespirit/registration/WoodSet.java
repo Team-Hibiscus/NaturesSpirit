@@ -885,10 +885,6 @@ public class WoodSet {
       return partBlueLeaves;
    }
 
-   public void setPartBlueLeaves(Block partBlueLeaves) {
-      this.partBlueLeaves = partBlueLeaves;
-   }
-
    public Block getPartPurpleLeaves() {
       return partPurpleLeaves;
    }

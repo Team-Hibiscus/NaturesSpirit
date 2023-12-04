@@ -63,42 +63,38 @@ public class SugiTrunkPlacer extends TrunkPlacer {
       List <TreeNode> list = Lists.newArrayList();
       Mutable mutable = new Mutable();
 
+      Direction direction = Type.HORIZONTAL.random(random);
       for(int i = 0; i < height; ++i) {
          int j = startPos.getY() + i;
-         Direction direction = Type.HORIZONTAL.random(random);
-         Direction direction2 = direction.rotateYClockwise();
-         Direction direction3 = direction2.rotateYClockwise();
-         if(this.getAndSetState(world, replacer, random, mutable.set(startPos.getX(), j, startPos.getZ()), config) && i < height - 1) {
-            int k = this.extraBranchLength.get(random);
-            int l = Math.max(0, k - this.extraBranchLength.get(random) - 1);
-            int l2 = Math.max(random.nextBetween(1, 2), k - this.extraBranchLength.get(random) - 1);
+         if(this.getAndSetState(world, replacer, random, mutable.set(startPos.getX(), j, startPos.getZ()), config) && i < height - 1 && i > 3) {
+            direction = direction.rotateYClockwise();
+            Direction direction2 = direction.rotateYClockwise();
+            Direction direction3 = direction2.rotateYClockwise();
             int m = height - i - 2;
-            if(i > 2) {
-               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, i >= height - 2 ? l2 : l, Math.min(m, 5), i);
-               if(random.nextFloat() < this.placeBranchPerLogProbability - 0.35) {
-                  this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, l, Math.round(m / 1.5F), i);
-               }
-               if(random.nextFloat() < this.placeBranchPerLogProbability - 0.45) {
-                  this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, l, Math.round(m / 1.5F), i);
-               }
+            this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction, Math.min(m, 5), i);
+            if(random.nextFloat() < this.placeBranchPerLogProbability - 0.25) {
+               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction2, Math.min(m, 5), i);
+            }
+            if(random.nextFloat() < this.placeBranchPerLogProbability - 0.35) {
+               this.generateExtraBranch(world, replacer, random, height, config, list, mutable, j, direction3, Math.min(m, 5), i);
             }
          }
          if(i == height - 1) {
             list.add(new TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 0, false));
+            list.add(new TreeNode(mutable.set(startPos.getX(), j, startPos.getZ()), 0, false));
          }
       }
 
       return list;
    }
 
-   private void generateExtraBranch(TestableWorld world, BiConsumer <BlockPos, BlockState> replacer, Random random, int height, TreeFeatureConfig config, List <TreeNode> nodes, Mutable pos, int yOffset, Direction direction, int length, int steps, int b) {
-      int i = yOffset + length;
+   private void generateExtraBranch(TestableWorld world, BiConsumer <BlockPos, BlockState> replacer, Random random, int height, TreeFeatureConfig config, List <TreeNode> nodes, Mutable pos, int yOffset, Direction direction, int steps, int b) {
       int j = pos.getX();
       int k = pos.getZ();
       boolean bl = random.nextFloat() < .5F;
       Direction direction2 = bl ? direction.rotateYClockwise() : direction.rotateYCounterclockwise();
 
-      for(int l = length; l < height && steps > 0 && (steps < (bl ? 7 : 10)); --steps) {
+      for(int l = 0; l < height && steps > 0 && (steps < (bl ? 7 : 10)); --steps) {
          if(l >= 1) {
             j += direction.getOffsetX();
             if(bl) {
@@ -107,26 +103,19 @@ public class SugiTrunkPlacer extends TrunkPlacer {
             else {
                k += direction.getOffsetZ();
             }
-            i = yOffset;
-            if(this.getAndSetState(world, replacer, random, pos.set(j, yOffset, k), config, blockState -> {
-               return blockState.withIfExists(PillarBlock.AXIS, direction.getAxis());
-            })) {
-               i = yOffset + 1;
+            this.getAndSetState(world, replacer, random, pos.set(j, yOffset, k), config, blockState -> blockState.withIfExists(PillarBlock.AXIS, direction.getAxis()));
+
+            if(l == height - 1 || steps == 1) {
+               BlockPos blockPos = new BlockPos(j, yOffset, k);
+               nodes.add(new TreeNode(blockPos, b > 5 ? 0 : 1, false));
             }
          }
          ++l;
       }
 
-      if(i - yOffset >= 1) {
-         BlockPos blockPos = new BlockPos(j, i, k);
-         nodes.add(new TreeNode(blockPos, b > 4 ? 0 : 1, false));
-      }
-
    }
 
    protected boolean canReplace(TestableWorld world, BlockPos pos) {
-      return super.canReplace(world, pos) || world.testBlockState(pos, (state) -> {
-         return state.isIn(this.canGrowThrough);
-      });
+      return super.canReplace(world, pos) || world.testBlockState(pos, (state) -> state.isIn(this.canGrowThrough));
    }
 }

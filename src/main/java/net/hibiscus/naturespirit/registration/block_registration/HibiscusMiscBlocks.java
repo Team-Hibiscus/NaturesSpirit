@@ -254,6 +254,34 @@ public class HibiscusMiscBlocks {
            FLAXEN_FERN,
            0.3f
    );
+
+   public static final Block LARGE_LUSH_FERN = registerPlantBlock("large_lush_fern",
+           new TallPlantBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           TALL_OAT_GRASS,
+           0.3f
+   );
+
+   public static final Block LUSH_FERN = registerPlantBlock("lush_fern",
+           new HibiscusFernBlock(FabricBlockSettings
+                   .create()
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) LARGE_LUSH_FERN),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           OAT_GRASS,
+           0.3f
+   );
    public static final Block GREEN_BEARBERRIES = registerPlantBlock("green_bearberries",
            new HibiscusBearberriesBlock(FabricBlockSettings
                    .create()
@@ -351,6 +379,7 @@ public class HibiscusMiscBlocks {
    public static final Block POTTED_SEDGE_GRASS = registerPottedPlant("sedge_grass", SEDGE_GRASS);
    public static final Block POTTED_FLAXEN_FERN = registerPottedPlant("flaxen_fern", FLAXEN_FERN);
    public static final Block POTTED_OAT_GRASS = registerPottedPlant("oat_grass", OAT_GRASS);
+   public static final Block POTTED_LUSH_FERN = registerPottedPlant("lush_fern", LUSH_FERN);
    public static final Block POTTED_FRIGID_GRASS = registerPottedPlant("frigid_grass", FRIGID_GRASS);
    public static final Block POTTED_GREEN_BEARBERRIES = registerPottedPlant("potted_green_bearberries", GREEN_BEARBERRIES);
    public static final Block POTTED_RED_BEARBERRIES = registerPottedPlant("potted_red_bearberries", RED_BEARBERRIES);
@@ -401,6 +430,30 @@ public class HibiscusMiscBlocks {
    public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
 
 
+   public static final Block HELVOLA = HibiscusRegistryHelper.registerPlantBlock("helvola",
+           new WaterFlowerbedBlock(FabricBlockSettings
+                   .create()
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .ticksRandomly()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.LILY_PAD))
+   );
+
+   public static final Item HELVOLA_PAD_ITEM = registerItem("helvola_pad",
+           new PlaceableOnWaterItem(HELVOLA, new Item.Settings()),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.LILY_PAD,
+           ItemGroups.NATURAL
+   );
+
+   public static final Item HELVOLA_FLOWER_ITEM = registerItem("helvola_flower",
+           new Item(new Item.Settings()),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           HELVOLA_PAD_ITEM,
+           ItemGroups.NATURAL
+   );
+
    public static final Block LOTUS_FLOWER = HibiscusRegistryHelper.registerPlantBlock("lotus_flower",
            new LotusFlowerBlock(FabricBlockSettings
                    .create()
@@ -415,7 +468,7 @@ public class HibiscusMiscBlocks {
    public static final Item LOTUS_FLOWER_ITEM = registerItem("lotus_flower",
            new PlaceableOnWaterItem(LOTUS_FLOWER, new Item.Settings()),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           Items.LILY_PAD,
+           HELVOLA_FLOWER_ITEM,
            ItemGroups.NATURAL
    );
 

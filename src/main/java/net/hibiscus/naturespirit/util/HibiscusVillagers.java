@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.util;
 
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerTypeHelper;
-import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.VillagerType;
 

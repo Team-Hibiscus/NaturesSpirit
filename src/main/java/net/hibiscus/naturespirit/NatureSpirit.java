@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
-import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
+import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.items.HibiscusVinegarDispenserBehavior;
@@ -17,7 +17,6 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlo
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.HibiscusSounds;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;

@@ -35,7 +35,7 @@
     },
     "trunk_placer": {
       "type": "natures_spirit:sugi_trunk_placer",
-      "base_height": 10,
+      "base_height": 12,
       "can_grow_through": "#minecraft:mangrove_logs_can_grow_through",
       "extra_branch_length": {
         "type": "minecraft:uniform",

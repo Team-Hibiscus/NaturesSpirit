@@ -13,7 +13,7 @@
     "fog_color": 13950967,
     "water_color": 5929949,
     "water_fog_color": 1644857,
-    "grass_color": 14406505,
+    "grass_color": 15259000,
     "foliage_color": 10399058,
     "mood_sound": {
       "block_search_extent": 8,
@@ -89,6 +89,7 @@
       "minecraft:patch_grass_plain",
       "natures_spirit:flower_golden_placed",
       "minecraft:forest_flowers",
+      "natures_spirit:patch_savanna_grass",
       "minecraft:patch_sugar_cane"
     ],
     [

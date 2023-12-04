@@ -143,6 +143,14 @@ public class HibiscusBoatEntity extends BoatEntity {
               () -> HibiscusWoods.LARCH.getBoatEntityType(),
               () -> HibiscusWoods.LARCH.getChestBoatEntityType()
       ),
+      MAHOGANY(
+              "mahogany",
+              () -> HibiscusWoods.MAHOGANY.getPlanks(),
+              () -> HibiscusWoods.MAHOGANY.getBoatItem(),
+              () -> HibiscusWoods.MAHOGANY.getChestBoatItem(),
+              () -> HibiscusWoods.MAHOGANY.getBoatEntityType(),
+              () -> HibiscusWoods.MAHOGANY.getChestBoatEntityType()
+      ),
 //      BANYAN(
 //              "banyan",
 //              () -> HibiscusWoods.BANYAN.getPlanks(),

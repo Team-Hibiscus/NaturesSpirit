@@ -8,31 +8,27 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.hibiscus.naturespirit.client.render.EntityModelLayers;
 import net.hibiscus.naturespirit.client.render.PizzaBlockEntityRenderer;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
-import net.hibiscus.naturespirit.datagen.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
-import net.minecraft.block.WoodType;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
-import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.util.math.BlockPos;
 
 import static net.hibiscus.naturespirit.NatureSpirit.*;
@@ -60,7 +56,22 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ) : -1, HibiscusWoods.SUGI.getLeaves());
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
               blockPos
+      ) : -1, HibiscusWoods.MAHOGANY.getLeaves());
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
+              blockPos
       ) : -1, HibiscusWoods.LARCH.getLeaves());
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
+              blockPos
+      ) : -1, HibiscusMiscBlocks.LOTUS_STEM);
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
+              blockPos
+      ) : -1, HibiscusMiscBlocks.LARGE_LUSH_FERN);
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
+              blockPos
+      ) : -1, HibiscusMiscBlocks.LUSH_FERN);
+      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
+              blockPos
+      ) : -1, HibiscusMiscBlocks.POTTED_LUSH_FERN);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
       ) : -1, HibiscusMiscBlocks.LOTUS_STEM);
@@ -70,6 +81,9 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.SUGI.getLeaves());
       ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.LARCH.getLeaves());
+      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), HibiscusWoods.MAHOGANY.getLeaves());
+      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getDefaultColor(), HibiscusMiscBlocks.LUSH_FERN);
+      ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getDefaultColor(), HibiscusMiscBlocks.LARGE_LUSH_FERN);
 
       EntityModelLayers.registerEntityModelLayers();
       EntityModelLayerRegistry.registerModelLayer(EntityModelLayers.TOPPING_0, Topping0::getTexturedModelData);

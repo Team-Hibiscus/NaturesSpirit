@@ -1,0 +1,7 @@
+{
+  "parent": "natures_spirit:block/water_flowerbed_3",
+  "textures": {
+    "flowerbed": "natures_spirit:block/helvola_flower",
+    "stem": "natures_spirit:block/helvola_flower"
+  }
+}
