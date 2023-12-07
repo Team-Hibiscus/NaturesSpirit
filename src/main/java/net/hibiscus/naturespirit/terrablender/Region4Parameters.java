@@ -48,10 +48,16 @@ public class Region4Parameters {
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
    RegistryKey<Biome> commonBiomeJungleWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.TROPICAL_WOODS : BiomeKeys.JUNGLE;
-   RegistryKey<Biome> commonBiomeForestWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.TROPICAL_WOODS : BiomeKeys.FOREST;
+   RegistryKey<Biome> nearBiomeJungleWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SPARSE_TROPICAL_WOODS : BiomeKeys.JUNGLE;
+   RegistryKey<Biome> commonBiomeForestWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SPARSE_TROPICAL_WOODS : BiomeKeys.FOREST;
    RegistryKey<Biome> uncommonBiomeBambooJungleWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.BAMBOO_JUNGLE;
    RegistryKey<Biome> uncommonBiomeSparseJungleWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.SPARSE_JUNGLE;
    RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.PLAINS;
+   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.DESERT;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SCORCHED_DUNES : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeNullHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SCORCHED_DUNES : null;
    public Region4Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -80,7 +86,7 @@ public class Region4Parameters {
               }, {
                       BiomeKeys.SAVANNA, BiomeKeys.SAVANNA, commonBiomeForestWarm, commonBiomeJungleWarm, commonBiomeJungleWarm
               }, {
-                      BiomeKeys.DESERT, BiomeKeys.DESERT, BiomeKeys.DESERT, BiomeKeys.DESERT, BiomeKeys.DESERT
+                      BiomeKeys.DESERT, BiomeKeys.DESERT, commonBiomeDesertHot2, commonBiomeDesertHot, commonBiomeDesertHot
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
@@ -89,7 +95,7 @@ public class Region4Parameters {
               BiomeKeys.SUNFLOWER_PLAINS, null, null, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, null
       }, {
                       null, null, uncommonBiomePlainsWarm, uncommonBiomeSparseJungleWarm, uncommonBiomeBambooJungleWarm
-              }, {null, null, null, null, null}
+              }, {null, commonBiomeNullHot, null, null, null}
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
@@ -99,9 +105,9 @@ public class Region4Parameters {
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
               }, {
-                      BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.SAVANNA_PLATEAU, commonBiomeForestWarm, commonBiomeForestWarm, commonBiomeJungleWarm
+                      BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.SAVANNA_PLATEAU, commonBiomeForestWarm, commonBiomeForestWarm, nearBiomeJungleWarm
               }, {
-                      BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.WOODED_BADLANDS, BiomeKeys.WOODED_BADLANDS
+                      BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, BiomeKeys.BADLANDS, nearBiomeWoodedBadlandsHot, nearBiomeWoodedBadlandsHot
               }
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
@@ -386,7 +392,7 @@ public class Region4Parameters {
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
             RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome2(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getWindsweptOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getNearMountainBiome(i, j, weirdness);
@@ -508,7 +514,7 @@ public class Region4Parameters {
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
             RegistryKey <Biome> registryKey = this.getRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome2(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getShoreBiome(i, j);
             RegistryKey <Biome> registryKey5 = this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
@@ -664,7 +670,7 @@ public class Region4Parameters {
 
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
-            RegistryKey <Biome> registryKey = this.getBadlandsOrRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey = this.getBadlandsOrRegularBiome2(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -745,6 +751,9 @@ public class Region4Parameters {
       return temperature == 4 ? this.getBadlandsBiome(humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
    }
 
+   private RegistryKey <Biome> getBadlandsOrRegularBiome2(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      return temperature == 4 ? this.getBadlandsBiome2(humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
+   }
    private RegistryKey <Biome> getMountainStartBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       return temperature == 0 ? this.getMountainSlopeBiome(temperature, humidity, weirdness) : this.getBadlandsOrRegularBiome(temperature, humidity, weirdness);
    }
@@ -778,7 +787,15 @@ public class Region4Parameters {
          return weirdness.max() < 0L ? BiomeKeys.BADLANDS : BiomeKeys.ERODED_BADLANDS;
       }
       else {
-         return humidity < 3 ? BiomeKeys.BADLANDS : BiomeKeys.WOODED_BADLANDS;
+         return humidity < 3 ? BiomeKeys.BADLANDS : nearBiomeWoodedBadlandsHot;
+      }
+   }
+   private RegistryKey <Biome> getBadlandsBiome2(int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      if(humidity < 2) {
+         return weirdness.max() < 0L ? nearBiomeBadlandsHot : BiomeKeys.ERODED_BADLANDS;
+      }
+      else {
+         return humidity < 3 ? nearBiomeBadlandsHot : nearBiomeWoodedBadlandsHot;
       }
    }
 

@@ -25,7 +25,7 @@ public class HibiscusConfig {
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.3.0.1.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.3.0.2.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();

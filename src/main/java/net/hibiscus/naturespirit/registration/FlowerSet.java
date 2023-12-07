@@ -162,6 +162,9 @@ public class FlowerSet {
    public Block getPottedFlowerBlock() {
       return this.pottedFlowerBlock;
    }
+   public String getName() {
+      return this.name;
+   }
 
    public enum FlowerPreset {
       SMALL,

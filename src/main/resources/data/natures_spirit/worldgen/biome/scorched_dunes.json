@@ -18,12 +18,12 @@
     "sky_color": 7254527,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "foliage_color": 9940541,
-    "grass_color": 15262072
+    "foliage_color": 10923581,
+    "grass_color": 15259000
   },
   "features": [
     [
-      "natures_spirit:travertine_cliff"
+      "natures_spirit:kaolin_cliff"
     ],
     [
       "minecraft:lake_lava_underground",
@@ -76,16 +76,18 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass",
       "minecraft:trees_savanna",
-      "natures_spirit:trees_savanna_2",
+      "natures_spirit:patch_tall_grass_wooded_drylands",
       "minecraft:flower_warm",
-      "minecraft:patch_grass_savanna",
+      "natures_spirit:rooted_desert_turnip_placed",
+      "natures_spirit:patch_dense_drylands_grass",
+      "natures_spirit:acacia_bush_placed",
+      "minecraft:patch_dead_bush_2",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "natures_spirit:patch_savanna_grass",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin"
+      "minecraft:patch_pumpkin",
+      "natures_spirit:patch_cactus_scorched"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -428,6 +428,8 @@ public class HibiscusMiscBlocks {
    public static final FlowerSet RED_HEATHER = new FlowerSet("red_heather", Items.RED_DYE, StatusEffects.FIRE_RESISTANCE, BLACK_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet WHITE_HEATHER = new FlowerSet("white_heather", Items.WHITE_DYE, StatusEffects.FIRE_RESISTANCE, RED_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet PROTEA = new FlowerSet("protea", Items.PINK_DYE, StatusEffects.WATER_BREATHING, PURPLE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet LUSH_GRASS = new FlowerSet("lush_grass", Items.PINK_DYE, StatusEffects.WATER_BREATHING, PROTEA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
 
 
    public static final Block HELVOLA = HibiscusRegistryHelper.registerPlantBlock("helvola",
@@ -436,7 +438,7 @@ public class HibiscusMiscBlocks {
                    .pistonBehavior(PistonBehavior.DESTROY)
                    .ticksRandomly()
                    .nonOpaque()
-                   .breakInstantly()
+                   .breakInstantly().slipperiness(0.8F)
                    .sounds(BlockSoundGroup.LILY_PAD))
    );
 

@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-03T20:10:15.4657291	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2023-12-05T23:51:20.1747565	Nature's Spirit/Tags for minecraft:item
 393e2ab6a86a867501ab9e313142e2a38a150090 data\natures_spirit\tags\items\mahogany_logs.json
 c8e253cfda7be74cda7b76946bbef07a85fdb8e5 data\minecraft\tags\items\wooden_doors.json
 e6b0237b66e5a55307a64533f84302d9a4ac1d0b data\minecraft\tags\items\wooden_slabs.json
@@ -20,7 +20,7 @@ bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_
 12239f51ce0b5f28bf5cf1f06afbb1886125a9a6 data\minecraft\tags\items\stairs.json
 e3c1f165e1b82affb4cc652d7679aba3de648bd0 data\natures_spirit\tags\items\cypress_logs.json
 5398ec09d3a89bd9838d22be67e1c24627b282a1 data\minecraft\tags\items\walls.json
-ff31e1eefa0dadbed83ea85093798976b80d8030 data\minecraft\tags\items\small_flowers.json
+d08912e2244a7997053dc9919ea4414a84c4cef7 data\minecraft\tags\items\small_flowers.json
 80d1b1053ccfa5394166156cceceba92f79aebb7 data\natures_spirit\tags\items\fir_logs.json
 fc291607b06ce0700548458687a09883d0f2e865 data\natures_spirit\tags\items\aspen_logs.json
 bfdb1a78b7ef0b21f3fadbf5d71c462fa266cdf7 data\natures_spirit\tags\items\xeric_leaves.json

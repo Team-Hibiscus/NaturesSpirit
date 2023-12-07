@@ -729,6 +729,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private void generateFlowerSetBlockStateModels(HashMap <String, FlowerSet> flowers, BlockStateModelGenerator blockStateModelGenerator) {
          for(FlowerSet flowerSet : flowers.values()) {
+            if (Objects.equals(flowerSet.getName(), "protea")) {
+               continue;
+            }
             if (flowerSet.getPreset() == FlowerSet.FlowerPreset.SMALL) {
                generateFlowerBlockStateModels(flowerSet.getFlowerBlock(), flowerSet.getPottedFlowerBlock(), blockStateModelGenerator);
             }

@@ -47,7 +47,10 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> BOREAL_TAIGA = register("boreal_taiga");
    public static final RegistryKey <Biome> TROPICAL_SHORES = register("tropical_shores");
    public static final RegistryKey <Biome> TROPICAL_WOODS = register("tropical_woods");
+   public static final RegistryKey <Biome> SPARSE_TROPICAL_WOODS = register("sparse_tropical_woods");
    public static final RegistryKey <Biome> TROPICAL_BASIN = register("tropical_basin");
+   public static final RegistryKey <Biome> ARID_SAVANNA = register("arid_savanna");
+   public static final RegistryKey <Biome> SCORCHED_DUNES = register("scorched_dunes");
 
 
    public static boolean has_sugi_forest;
