@@ -4,7 +4,7 @@
     "default": "minecraft:jungle_tree",
     "features": [
       {
-        "chance": 0.33333334,
+        "chance": 0.73333334,
         "feature": "minecraft:mega_jungle_tree_checked"
       }
     ]

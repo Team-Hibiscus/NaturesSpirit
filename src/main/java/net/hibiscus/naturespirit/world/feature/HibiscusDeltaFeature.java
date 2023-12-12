@@ -7,6 +7,8 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -39,7 +41,7 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
               HibiscusWoods.WISTERIA.getPinkLeaves(),
               HibiscusWoods.WILLOW.getLeaves()
       );
-      CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRASS_BLOCK);
+      CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRASS_BLOCK, Blocks.MUD, Blocks.SAND);
       DIRECTIONS = Direction.values();
    }
 
@@ -56,13 +58,11 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
          return false;
       }
       else if(CAN_REPLACE.contains(blockState.getBlock()) && !blockState.isOf(config.getContents().getBlock())) {
-         Direction[] var4 = DIRECTIONS;
-         int var5 = var4.length;
 
-         for(int var6 = 0; var6 < var5; ++var6) {
-            Direction direction = var4[var6];
+         for(Direction direction : DIRECTIONS) {
             boolean bl = level.getBlockState(pos.offset(direction)).isAir();
-            if(bl && direction != Direction.UP || !bl && direction == Direction.UP) {
+            boolean bl2 = !level.getFluidState(pos.offset(direction).down()).isIn(FluidTags.WATER);
+            if((bl && direction != Direction.UP && (bl2 || level.getRandom().nextFloat() < .7)) || !bl && direction == Direction.UP) {
                return false;
             }
          }
@@ -98,13 +98,14 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
          if(isClear(worldGenLevel, blockPos2, deltaFeatureConfiguration)) {
             if(bl3) {
                bl = true;
-               this.setBlockState(worldGenLevel, blockPos2, deltaFeatureConfiguration.getRim());
+               worldGenLevel.setBlockState(blockPos2, deltaFeatureConfiguration.getRim(), 3);
             }
 
             BlockPos blockPos3 = blockPos2.add(i, 0, j);
             if(isClear(worldGenLevel, blockPos3, deltaFeatureConfiguration)) {
                bl = true;
-               this.setBlockState(worldGenLevel, blockPos3, deltaFeatureConfiguration.getContents());
+               worldGenLevel.setBlockState(blockPos3, deltaFeatureConfiguration.getContents(), 3);
+               worldGenLevel.scheduleFluidTick(blockPos3, Fluids.WATER, 1);
             }
          }
       }

@@ -51,6 +51,8 @@
                 "blocks": [
                   "minecraft:grass_block",
                   "minecraft:dirt",
+                          "minecraft:rooted_dirt",
+                  "minecraft:rooted_dirt",
                   "minecraft:stone",
                   "minecraft:granite"
                 ]
@@ -72,6 +74,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -86,6 +89,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -100,6 +104,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -114,6 +119,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -128,6 +134,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -142,6 +149,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -156,6 +164,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -170,6 +179,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       }
@@ -189,6 +199,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -203,6 +214,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -217,6 +229,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -231,6 +244,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -245,6 +259,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -259,6 +274,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -273,6 +289,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       },
@@ -287,6 +304,7 @@
                           "minecraft:grass_block",
                           "minecraft:stone",
                           "minecraft:dirt",
+                          "minecraft:rooted_dirt",
                           "minecraft:granite"
                         ]
                       }

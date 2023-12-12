@@ -71,9 +71,6 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       ) : -1, HibiscusMiscBlocks.LUSH_FERN);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos
-      ) : -1, HibiscusMiscBlocks.LUSH_GRASS.getFlowerBlock());
-      ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
-              blockPos
       ) : -1, HibiscusMiscBlocks.POTTED_LUSH_FERN);
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
               blockPos

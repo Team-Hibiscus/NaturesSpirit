@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -50,7 +51,7 @@ public class HibiscusVinegarDispenserBehavior extends FallibleItemDispenserBehav
 
    private static boolean tryReaction(ServerWorld world, BlockPos pos) {
       BlockState blockState = world.getBlockState(pos);
-      if (blockState.isOf(Blocks.CALCITE)) {
+      if (blockState.isOf(Blocks.CALCITE) && HibiscusConfig.vinegar_duplication) {
          Vec3d vec3d = Vec3d.add(pos, 0.5, 1.01, 0.5).addRandom(world.random, 0.2F);
          ItemStack itemStack = new ItemStack(HibiscusMiscBlocks.CHALK_POWDER);
          itemStack.setCount(world.getRandom().nextBetween(1, 5));

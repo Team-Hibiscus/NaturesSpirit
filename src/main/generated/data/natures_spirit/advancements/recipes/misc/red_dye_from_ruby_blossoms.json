@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lush_grass": {
+    "has_ruby_blossoms": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:lush_grass"
+              "natures_spirit:ruby_blossoms"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye_from_lush_grass"
+        "recipe": "minecraft:red_dye_from_ruby_blossoms"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lush_grass",
+      "has_ruby_blossoms",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye_from_lush_grass"
+      "minecraft:red_dye_from_ruby_blossoms"
     ]
   },
   "sends_telemetry_event": false

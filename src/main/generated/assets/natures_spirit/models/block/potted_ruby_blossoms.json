@@ -1,6 +1,6 @@
 {
   "parent": "natures_spirit:block/flower_pot_large_cross",
   "textures": {
-    "plant": "natures_spirit:block/lush_grass"
+    "plant": "natures_spirit:block/ruby_blossoms"
   }
 }

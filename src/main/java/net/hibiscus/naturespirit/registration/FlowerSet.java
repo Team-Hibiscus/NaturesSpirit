@@ -44,6 +44,22 @@ public class FlowerSet {
       this.preset = preset;
       this.registerFlower();
    }
+   public FlowerSet(String name, StatusEffect statusEffect, Item itemBefore,FlowerPreset preset) {
+      this.name = name;
+      this.dyeColor = null;
+      this.statusEffect = statusEffect;
+      this.itemBefore = itemBefore;
+      this.preset = preset;
+      this.registerFlower();
+   }
+   public FlowerSet(String name, Item itemBefore, FlowerPreset preset) {
+      this.name = name;
+      this.dyeColor = null;
+      this.statusEffect = null;
+      this.itemBefore = itemBefore;
+      this.preset = preset;
+      this.registerFlower();
+   }
 
    private void registerFlower() {
       if(this.preset == FlowerPreset.BIG_TALL) {

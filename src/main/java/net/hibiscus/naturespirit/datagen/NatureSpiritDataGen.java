@@ -525,6 +525,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addPottedPlantDrops(POTTED_LUSH_FERN);
          tallPlantDrop(LARGE_LUSH_FERN, LUSH_FERN);
 
+         dropsWithShears(MELIC_GRASS);
+         addPottedPlantDrops(POTTED_MELIC_GRASS);
+         tallPlantDrop(TALL_MELIC_GRASS, MELIC_GRASS);
+
          dropsWithShears(RED_BEARBERRIES);
          dropsWithShears(RED_BITTER_SPROUTS);
          addPottedPlantDrops(POTTED_RED_BEARBERRIES);
@@ -1021,6 +1025,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateTintedTallLargeFlower(LARGE_LUSH_FERN, blockStateModelGenerator);
          generateTallLargeFlower(TALL_SEDGE_GRASS, blockStateModelGenerator);
          generateTallLargeFlower(TALL_OAT_GRASS, blockStateModelGenerator);
+         generateTallLargeFlower(TALL_MELIC_GRASS, blockStateModelGenerator);
          generateLargeFlower(HibiscusMiscBlocks.SCORCHED_GRASS, POTTED_SCORCHED_GRASS, blockStateModelGenerator);
          generateLargeFlower(RED_BEARBERRIES, POTTED_RED_BEARBERRIES, blockStateModelGenerator);
          generateLargeFlower(PURPLE_BEARBERRIES, POTTED_PURPLE_BEARBERRIES, blockStateModelGenerator);
@@ -1032,6 +1037,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateLargeFlower(SEDGE_GRASS, POTTED_SEDGE_GRASS, blockStateModelGenerator);
          generateLargeFlower(OAT_GRASS, POTTED_OAT_GRASS, blockStateModelGenerator);
          generateTintedLargeFlower(LUSH_FERN, POTTED_LUSH_FERN, blockStateModelGenerator);
+         generateTintedLargeFlower(MELIC_GRASS, POTTED_MELIC_GRASS, blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(), blockStateModelGenerator);
          generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
@@ -1309,6 +1315,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(OAT_GRASS, translationBuilder);
          generateBlockTranslations(LARGE_LUSH_FERN, translationBuilder);
          generateBlockTranslations(LUSH_FERN, translationBuilder);
+         generateBlockTranslations(TALL_MELIC_GRASS, translationBuilder);
+         generateBlockTranslations(MELIC_GRASS, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
          generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
          generateBlockTranslations(PAPER_BLOCK, translationBuilder);
@@ -1479,7 +1487,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
       private void generateFlowerRecipes(HashMap <String, FlowerSet> flowers, Consumer <RecipeJsonProvider> consumer) {
          for(FlowerSet flowerSet : flowers.values()) {
-            offerShapelessRecipe(consumer, flowerSet.getDyeColor(), flowerSet.getFlowerBlock(), flowerSet.getDyeColor().toString(), flowerSet.getDyeNumber());
+            if (flowerSet.getDyeColor() != null)
+               offerShapelessRecipe(consumer, flowerSet.getDyeColor(), flowerSet.getFlowerBlock(), flowerSet.getDyeColor().toString(), flowerSet.getDyeNumber());
          }
       }
 
@@ -1875,6 +1884,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  FLAXEN_FERN,
                  LARGE_LUSH_FERN,
                  LUSH_FERN,
+                 TALL_MELIC_GRASS,
+                 MELIC_GRASS,
                  FRIGID_GRASS,
                  TALL_FRIGID_GRASS,
                  OAT_GRASS,
@@ -1916,6 +1927,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  TALL_OAT_GRASS,
                  LARGE_LUSH_FERN,
                  LUSH_FERN,
+                 TALL_MELIC_GRASS,
+                 MELIC_GRASS,
                  RED_BEARBERRIES,
                  GREEN_BEARBERRIES,
                  PURPLE_BEARBERRIES,
@@ -1937,7 +1950,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  OAT_GRASS,
                  TALL_OAT_GRASS,
                  LARGE_LUSH_FERN,
-                 LUSH_FERN
+                 LUSH_FERN,
+                 TALL_MELIC_GRASS,
+                 MELIC_GRASS
          );
          getOrCreateTagBuilder(BlockTags.SAND).add(PINK_SAND, SANDY_SOIL);
          getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);
@@ -1954,7 +1969,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH_SLAB);
          getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
-         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS, POTTED_OAT_GRASS, POTTED_LUSH_FERN);
+         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_MELIC_GRASS, POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS, POTTED_OAT_GRASS, POTTED_LUSH_FERN);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(SHIITAKE_MUSHROOM, SHIITAKE_MUSHROOM_BLOCK, DESERT_TURNIP_BLOCK, DESERT_TURNIP_ROOT_BLOCK, DESERT_TURNIP_STEM, PAPER_BLOCK, PAPER_PANEL, PAPER_DOOR, PAPER_SIGN, PAPER_WALL_SIGN, PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, FRAMED_PAPER_BLOCK, FRAMED_PAPER_PANEL, FRAMED_PAPER_DOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_BLOCK, BLOOMING_PAPER_DOOR, BLOOMING_PAPER_TRAPDOOR, BLOOMING_PAPER_PANEL);
          getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(PAPER_HANGING_SIGN);

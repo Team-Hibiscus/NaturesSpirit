@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -48,7 +49,7 @@ public class VinegarItem extends PotionItem {
       BlockState blockState = world.getBlockState(pos);
       PlayerEntity player = context.getPlayer();
       Hand hand = context.getHand();
-      if (player != null && blockState.isOf(Blocks.CALCITE) && player.getStackInHand(hand).isOf(HibiscusMiscBlocks.VINEGAR_BOTTLE)) {
+      if (player != null && blockState.isOf(Blocks.CALCITE) && player.getStackInHand(hand).isOf(HibiscusMiscBlocks.VINEGAR_BOTTLE) && HibiscusConfig.vinegar_duplication) {
 
          Vec3d vec3d = Vec3d.add(pos, 0.5, 1.01, 0.5).addRandom(world.random, 0.2F);
          ItemStack itemStack = new ItemStack(HibiscusMiscBlocks.CHALK_POWDER);

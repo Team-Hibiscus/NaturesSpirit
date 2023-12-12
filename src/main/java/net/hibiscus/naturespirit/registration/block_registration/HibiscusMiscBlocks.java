@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.items.VinegarItem;
@@ -282,6 +283,35 @@ public class HibiscusMiscBlocks {
            OAT_GRASS,
            0.3f
    );
+   public static final Block TALL_MELIC_GRASS = registerPlantBlock("tall_melic_grass",
+           new TallPlantBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.GREEN)
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XZ)
+                   .pistonBehavior(PistonBehavior.DESTROY)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           LARGE_LUSH_FERN,
+           0.3f
+   );
+
+   public static final Block MELIC_GRASS = registerPlantBlock("melic_grass",
+           new HibiscusFernBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.GREEN)
+                   .noCollision()
+                   .replaceable()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .offset(AbstractBlock.OffsetType.XYZ)
+                   .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_MELIC_GRASS),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           LUSH_FERN,
+           0.3f
+   );
    public static final Block GREEN_BEARBERRIES = registerPlantBlock("green_bearberries",
            new HibiscusBearberriesBlock(FabricBlockSettings
                    .create()
@@ -292,7 +322,7 @@ public class HibiscusMiscBlocks {
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           FLAXEN_FERN,
+           MELIC_GRASS,
            0.3f
    );
    public static final Block RED_BEARBERRIES = registerPlantBlock("red_bearberries",
@@ -379,6 +409,7 @@ public class HibiscusMiscBlocks {
    public static final Block POTTED_SEDGE_GRASS = registerPottedPlant("sedge_grass", SEDGE_GRASS);
    public static final Block POTTED_FLAXEN_FERN = registerPottedPlant("flaxen_fern", FLAXEN_FERN);
    public static final Block POTTED_OAT_GRASS = registerPottedPlant("oat_grass", OAT_GRASS);
+   public static final Block POTTED_MELIC_GRASS = registerPottedPlant("melic_grass", MELIC_GRASS);
    public static final Block POTTED_LUSH_FERN = registerPottedPlant("lush_fern", LUSH_FERN);
    public static final Block POTTED_FRIGID_GRASS = registerPottedPlant("frigid_grass", FRIGID_GRASS);
    public static final Block POTTED_GREEN_BEARBERRIES = registerPottedPlant("potted_green_bearberries", GREEN_BEARBERRIES);
@@ -409,8 +440,9 @@ public class HibiscusMiscBlocks {
 
    public static final FlowerSet LAVENDER = new FlowerSet("lavender", Items.PURPLE_DYE, Items.PEONY, FlowerSet.FlowerPreset.BIG_TALL);
    public static final FlowerSet BLEEDING_HEART = new FlowerSet("bleeding_heart", Items.PINK_DYE, LAVENDER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
+   public static final FlowerSet BLUE_BULBS = new FlowerSet("blue_bulbs", Items.BLUE_DYE, BLEEDING_HEART.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
-   public static final FlowerSet CARNATION = new FlowerSet("carnation", Items.RED_DYE, BLEEDING_HEART.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
+   public static final FlowerSet CARNATION = new FlowerSet("carnation", Items.RED_DYE, BLUE_BULBS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
    public static final FlowerSet GARDENIA = new FlowerSet("gardenia", Items.WHITE_DYE, CARNATION.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
    public static final FlowerSet SNAPDRAGON = new FlowerSet("snapdragon", Items.PINK_DYE, GARDENIA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
    public static final FlowerSet MARIGOLD = new FlowerSet("marigold", Items.PINK_DYE, SNAPDRAGON.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
@@ -429,7 +461,8 @@ public class HibiscusMiscBlocks {
    public static final FlowerSet WHITE_HEATHER = new FlowerSet("white_heather", Items.WHITE_DYE, StatusEffects.FIRE_RESISTANCE, RED_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet PROTEA = new FlowerSet("protea", Items.PINK_DYE, StatusEffects.WATER_BREATHING, PURPLE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet LUSH_GRASS = new FlowerSet("lush_grass", Items.PINK_DYE, StatusEffects.WATER_BREATHING, PROTEA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet RUBY_BLOSSOMS = new FlowerSet("ruby_blossoms", Items.RED_DYE, StatusEffects.JUMP_BOOST, PROTEA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet SILVERBUSH = new FlowerSet("silverbush", RUBY_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
 
    public static final Block HELVOLA = HibiscusRegistryHelper.registerPlantBlock("helvola",
@@ -541,12 +574,12 @@ public class HibiscusMiscBlocks {
            ItemGroups.INGREDIENTS
    );
 
-   public static final Item VINEGAR_BOTTLE = registerItem("vinegar_bottle",
+   public static final Item VINEGAR_BOTTLE = HibiscusConfig.vinegar ? registerItem("vinegar_bottle",
            new VinegarItem((new Item.Settings()).recipeRemainder(Items.GLASS_BOTTLE).maxCount(16)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            CHALK_POWDER,
            ItemGroups.INGREDIENTS
-   );
+   ) : null;
 
    public static final Block CHEESE_BLOCK = registerBlock("cheese_block",
            new CheeseBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).strength(2.0F, 1.0F).sounds(BlockSoundGroup.AZALEA_LEAVES))

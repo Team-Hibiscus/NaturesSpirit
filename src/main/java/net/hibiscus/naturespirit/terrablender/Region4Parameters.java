@@ -53,11 +53,17 @@ public class Region4Parameters {
    RegistryKey<Biome> uncommonBiomeBambooJungleWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.BAMBOO_JUNGLE;
    RegistryKey<Biome> uncommonBiomeSparseJungleWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.SPARSE_JUNGLE;
    RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.PLAINS;
-   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.DESERT;
-   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.WOODED_BADLANDS;
-   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SCORCHED_DUNES : BiomeKeys.DESERT;
-   RegistryKey<Biome> commonBiomeNullHot = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SCORCHED_DUNES : null;
+   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_arid ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.DESERT;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_arid ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_arid ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_arid ? HibiscusBiomes.SCORCHED_DUNES : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeNullHot = HibiscusBiomes.has_arid ? HibiscusBiomes.SCORCHED_DUNES : null;
+   RegistryKey<Biome> commonBiomeFlowerForestTemperate = HibiscusBiomes.has_shrublands ? HibiscusBiomes.FLOWERING_SHRUBLAND : BiomeKeys.FLOWER_FOREST;
+   RegistryKey<Biome> uncommonBiomeSunflowerFieldTemperate = HibiscusBiomes.has_shrublands ? null : BiomeKeys.SUNFLOWER_PLAINS;
+   RegistryKey<Biome> commonBiomePlainsTemperate = HibiscusBiomes.has_shrublands ? HibiscusBiomes.SHRUBLAND : BiomeKeys.PLAINS;
+   RegistryKey<Biome> nearBiomeMeadowTemperate = HibiscusBiomes.has_shrublands ? HibiscusBiomes.FLOWERING_SHRUBLAND : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nearBiomeMeadowTemperate2 = HibiscusBiomes.has_shrublands ? HibiscusBiomes.SHRUBLAND : BiomeKeys.MEADOW;
+   RegistryKey<Biome> specialBiomeCherryTemperate = HibiscusBiomes.has_shrublands ? null : BiomeKeys.CHERRY_GROVE;
    public Region4Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -82,7 +88,7 @@ public class Region4Parameters {
               }, {
                      BiomeKeys.PLAINS, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA
               }, {
-                      BiomeKeys.FLOWER_FOREST, BiomeKeys.PLAINS, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
+              commonBiomeFlowerForestTemperate, commonBiomePlainsTemperate, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.DARK_FOREST
               }, {
                       BiomeKeys.SAVANNA, BiomeKeys.SAVANNA, commonBiomeForestWarm, commonBiomeJungleWarm, commonBiomeJungleWarm
               }, {
@@ -92,7 +98,7 @@ public class Region4Parameters {
       this.uncommonBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, BiomeKeys.SNOWY_TAIGA, null, null},
               {null, null, null, null, BiomeKeys.OLD_GROWTH_PINE_TAIGA}, {
-              BiomeKeys.SUNFLOWER_PLAINS, null, null, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, null
+                      uncommonBiomeSunflowerFieldTemperate, null, null, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, null
       }, {
                       null, null, uncommonBiomePlainsWarm, uncommonBiomeSparseJungleWarm, uncommonBiomeBambooJungleWarm
               }, {null, commonBiomeNullHot, null, null, null}
@@ -103,7 +109,7 @@ public class Region4Parameters {
               }, {
               BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.FOREST, BiomeKeys.TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA
               }, {
-                      BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.DARK_FOREST
+              nearBiomeMeadowTemperate, nearBiomeMeadowTemperate2, nearBiomeMeadowTemperate2, nearBiomeMeadowTemperate2, BiomeKeys.DARK_FOREST
               }, {
                       BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.SAVANNA_PLATEAU, commonBiomeForestWarm, commonBiomeForestWarm, nearBiomeJungleWarm
               }, {
@@ -114,7 +120,7 @@ public class Region4Parameters {
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
               BiomeKeys.CHERRY_GROVE, null, BiomeKeys.MEADOW, BiomeKeys.MEADOW, BiomeKeys.OLD_GROWTH_PINE_TAIGA
       }, {
-                      BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
+              specialBiomeCherryTemperate, specialBiomeCherryTemperate, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, null
               }, {null, null, null, null, null}, {
                       BiomeKeys.ERODED_BADLANDS, BiomeKeys.ERODED_BADLANDS, null, null, null
               }

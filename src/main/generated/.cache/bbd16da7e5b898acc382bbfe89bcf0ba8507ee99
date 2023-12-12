@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-05T23:51:20.1747565	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2023-12-09T20:42:35.9295151	Nature's Spirit/Tags for minecraft:item
 393e2ab6a86a867501ab9e313142e2a38a150090 data\natures_spirit\tags\items\mahogany_logs.json
 c8e253cfda7be74cda7b76946bbef07a85fdb8e5 data\minecraft\tags\items\wooden_doors.json
 e6b0237b66e5a55307a64533f84302d9a4ac1d0b data\minecraft\tags\items\wooden_slabs.json
@@ -20,7 +20,7 @@ bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_
 12239f51ce0b5f28bf5cf1f06afbb1886125a9a6 data\minecraft\tags\items\stairs.json
 e3c1f165e1b82affb4cc652d7679aba3de648bd0 data\natures_spirit\tags\items\cypress_logs.json
 5398ec09d3a89bd9838d22be67e1c24627b282a1 data\minecraft\tags\items\walls.json
-d08912e2244a7997053dc9919ea4414a84c4cef7 data\minecraft\tags\items\small_flowers.json
+4966d8e229d3e20fc3f8d6940ec32508ac73f7c1 data\minecraft\tags\items\small_flowers.json
 80d1b1053ccfa5394166156cceceba92f79aebb7 data\natures_spirit\tags\items\fir_logs.json
 fc291607b06ce0700548458687a09883d0f2e865 data\natures_spirit\tags\items\aspen_logs.json
 bfdb1a78b7ef0b21f3fadbf5d71c462fa266cdf7 data\natures_spirit\tags\items\xeric_leaves.json
@@ -31,10 +31,10 @@ f21d15096e34036c39c9fc37a6a5dbc40f04f193 data\minecraft\tags\items\planks.json
 97ac07862ef54980b08a9f82c80da6c486cd42e2 data\minecraft\tags\items\wooden_fences.json
 58447812ccf0c06559693f643081653e5a207201 data\natures_spirit\tags\items\cedar_logs.json
 189b54063673349938cd1914aeda23d3b42a1fc1 data\natures_spirit\tags\items\ghaf_logs.json
-1a67b660b4472d543fa159d109e347e50fcc5c4e data\natures_spirit\tags\items\palo_verde_logs.json
 150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
+1a67b660b4472d543fa159d109e347e50fcc5c4e data\natures_spirit\tags\items\palo_verde_logs.json
 eb0230597f6918f806125073b35ddea37b8b793e data\minecraft\tags\items\wooden_pressure_plates.json
-5bc19c15b4d4a0bba5c700301e7f1b923dccaf08 data\minecraft\tags\items\tall_flowers.json
+249c434bfdf3dc0d896e57b1e4432a3a17158d1a data\minecraft\tags\items\tall_flowers.json
 dc8f7071d1ec37850b03fc2145b58bee676a3f4f data\minecraft\tags\items\leaves.json
 8f1291fa2be4077d101657ed88dba434bdb5c1e9 data\minecraft\tags\items\boats.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\items\wisteria_logs.json

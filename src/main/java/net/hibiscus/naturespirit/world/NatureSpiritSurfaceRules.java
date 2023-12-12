@@ -22,6 +22,8 @@ public class NatureSpiritSurfaceRules {
    private static final MaterialRules.MaterialRule GRASS = makeStateRule(Blocks.GRASS_BLOCK);
 
    private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
+   private static final MaterialRules.MaterialRule ROOTED_DIRT = makeStateRule(Blocks.ROOTED_DIRT);
+   private static final MaterialRules.MaterialRule GRANITE = makeStateRule(Blocks.GRANITE);
 //   private static final MaterialRules.MaterialRule SAND = makeStateRule(Blocks.SAND);
 //   private static final MaterialRules.MaterialRule SANDSTONE = makeStateRule(Blocks.SANDSTONE);
 
@@ -53,6 +55,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialCondition materialCondition2 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1);
       MaterialRules.MaterialCondition materialCondition3 = MaterialRules.aboveYWithStoneDepth(YOffset.fixed(70), 1);
       MaterialRules.MaterialCondition materialCondition4 = MaterialRules.aboveY(YOffset.fixed(63), 0);
+      MaterialRules.MaterialCondition above62 = MaterialRules.aboveY(YOffset.fixed(62), 0);
       MaterialRules.MaterialCondition chalkGrassCondition = MaterialRules.aboveY(YOffset.fixed(65), 0);
       MaterialRules.MaterialCondition materialCondition5 = MaterialRules.water(
               -1,
@@ -128,6 +131,15 @@ public class NatureSpiritSurfaceRules {
                       MaterialRules.condition(MaterialRules.stoneDepth(24, false, VerticalSurfaceType.FLOOR), CALCITE)
               )
       );
+      MaterialRules.MaterialRule aspenRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.ASPEN_FOREST),
+              MaterialRules.sequence(
+                      MaterialRules.condition(above62, MaterialRules.sequence(
+                              MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS),
+                              MaterialRules.condition(MaterialRules.stoneDepth(4, false, VerticalSurfaceType.FLOOR), MaterialRules.sequence(MaterialRules.condition(noiseCondition2, ROOTED_DIRT), MaterialRules.condition(noiseCondition3, ROOTED_DIRT), DIRT))
+                      )),
+                      MaterialRules.condition(MaterialRules.stoneDepth(36, false, VerticalSurfaceType.FLOOR), GRANITE)
+              )
+      );
       MaterialRules.MaterialRule drylandsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.DRYLANDS),
               MaterialRules.condition(belowWater,
                       MaterialRules.sequence(MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, pinkSandstoneOrPinkSand), MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH_RANGE_30, PINK_SANDSTONE)
@@ -186,6 +198,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialRule scorchedDunesSurfaceRule = MaterialRules.condition(MaterialRules.surface(), scorchedDunesRule);
       MaterialRules.MaterialRule tundraSurfaceRule = MaterialRules.condition(MaterialRules.surface(), tundraRule);
       MaterialRules.MaterialRule tropicalBasinSurfaceRule = MaterialRules.condition(MaterialRules.surface(), tropicalBasinRule);
+      MaterialRules.MaterialRule aspenSurfaceRule = MaterialRules.condition(MaterialRules.surface(), aspenRule);
       builder.add(stratifiedDesertSurfaceRule);
       builder.add(bloomingDunesSurfaceRule);
       builder.add(livelyDunesSurfaceRule);
@@ -198,6 +211,7 @@ public class NatureSpiritSurfaceRules {
       builder.add(tundraSurfaceRule);
       builder.add(tropicalBasinSurfaceRule);
       builder.add(scorchedDunesSurfaceRule);
+      builder.add(aspenSurfaceRule);
       return MaterialRules.sequence(builder
               .build()
               .toArray(MaterialRules.MaterialRule[]::new));

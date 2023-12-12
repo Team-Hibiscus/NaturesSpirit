@@ -22,10 +22,12 @@ public class HibiscusConfig {
 
    public static boolean calcite_generator;
    public static boolean deepslate_generator;
+   public static boolean vinegar;
+   public static boolean vinegar_duplication;
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.3.0.2.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.3.0.4.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -58,6 +60,8 @@ public class HibiscusConfig {
             HibiscusBiomes.set_has_larch(biomes.get("has_larch").getAsBoolean());
             HibiscusBiomes.set_has_oak_savanna(biomes.get("has_oak_savanna").getAsBoolean());
             HibiscusBiomes.set_has_mahogany(biomes.get("has_mahogany").getAsBoolean());
+            HibiscusBiomes.set_has_arid(biomes.get("has_arid").getAsBoolean());
+            HibiscusBiomes.set_has_shrublands(biomes.get("has_shrublands").getAsBoolean());
 
             terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
             terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
@@ -67,6 +71,8 @@ public class HibiscusConfig {
 
             calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
             deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
+            vinegar = misc_features.get("vinegar").getAsBoolean();
+            vinegar_duplication = misc_features.get("vinegar_duplication").getAsBoolean();
 
 
          } catch(final IOException e) {
@@ -94,6 +100,8 @@ public class HibiscusConfig {
       NatureSpirit.LOGGER.info("has_larch = " + HibiscusBiomes.has_larch);
       NatureSpirit.LOGGER.info("has_oak_savanna = " + HibiscusBiomes.has_oak_savanna);
       NatureSpirit.LOGGER.info("has_mahogany = " + HibiscusBiomes.has_mahogany);
+      NatureSpirit.LOGGER.info("has_arid = " + HibiscusBiomes.has_arid);
+      NatureSpirit.LOGGER.info("has_shrublands = " + HibiscusBiomes.has_shrublands);
 
       System.out.println("Thanks for viewing your messages");
    }
@@ -116,6 +124,8 @@ public class HibiscusConfig {
       JsonObject miscObject = new JsonObject();
       miscObject.addProperty("deepslate_generator", true);
       miscObject.addProperty("calcite_generator", true);
+      miscObject.addProperty("vinegar", true);
+      miscObject.addProperty("vinegar_duplication", true);
       jsonObjects.add("misc_features", miscObject);
 
       return jsonObjects;
@@ -141,6 +151,8 @@ public class HibiscusConfig {
       biomesObject.addProperty("has_larch", true);
       biomesObject.addProperty("has_oak_savanna", true);
       biomesObject.addProperty("has_mahogany", true);
+      biomesObject.addProperty("has_arid", true);
+      biomesObject.addProperty("has_shrublands", true);
       return biomesObject;
    }
 }
