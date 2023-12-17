@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "natures_spirit:carnation_fields",
+    "natures_spirit:lavender_fields",
+    "natures_spirit:cypress_fields",
+    "natures_spirit:flowering_shrubland",
+    "natures_spirit:shrubland",
+    "natures_spirit:oak_savanna"
+  ]
+}

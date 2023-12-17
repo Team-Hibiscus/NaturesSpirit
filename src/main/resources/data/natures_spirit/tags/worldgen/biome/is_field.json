@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "natures_spirit:heather_fields",
+    "natures_spirit:marigold_meadows",
+    "natures_spirit:xeric_plains",
+    "natures_spirit:alpine_clearings",
+    "natures_spirit:alpine_highlands",
+    "natures_spirit:cypress_fields",
+    "natures_spirit:wooded_drylands",
+    "natures_spirit:arid_savanna",
+    "natures_spirit:prairie",
+    "#natures_spirit:is_warm_lush_field"
+  ]
+}

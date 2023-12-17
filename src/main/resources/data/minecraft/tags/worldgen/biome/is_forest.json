@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "natures_spirit:amber_covert",
+    "natures_spirit:coniferous_covert",
+    "natures_spirit:aspen_forest",
+    "natures_spirit:blooming_sugi_forest",
+    "natures_spirit:maple_woodlands",
+    "natures_spirit:redwood_forest",
+    "natures_spirit:sugi_forest",
+    "natures_spirit:windswept_sugi_forest",
+    "#natures_spirit:is_wisteria",
+    "natures_spirit:fir_forest"
+  ]
+}
