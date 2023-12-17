@@ -11,25 +11,29 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
+import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.block.SaplingGenerator;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
@@ -120,6 +124,9 @@ public class WoodSet {
    private EntityType<BoatEntity> boatEntityType;
    private EntityType<BoatEntity> chestBoatEntityType;
    private SaplingGenerator saplingGenerator;
+   private Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature;
+   private Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature2;
+   private boolean hasLargeTree;
    private boolean hasMosaic;
 
 
@@ -152,6 +159,7 @@ public class WoodSet {
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves()));
 
          if (this.hasDefaultSapling()) {
+            saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), configuredFeature, configuredFeature2);
             sapling = this.isSandy() ? createSandySapling(saplingGenerator) : createSapling(saplingGenerator);
             pottedSapling = createPottedSapling(this.getSapling());
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
@@ -169,6 +177,7 @@ public class WoodSet {
          RenderLayerHashMap.put(this.getName() + "_vines_plant", getWillowVinesPlant());
          CompostingChanceRegistry.INSTANCE.add(getWillowVines(), 0.3F);
 
+         saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), configuredFeature, configuredFeature2);
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
@@ -191,10 +200,10 @@ public class WoodSet {
          blueWisteriaVinesPlant = createWisteriaVinesPlant("blue_", this.getBlueWisteriaVines());
          pinkWisteriaVinesPlant = createWisteriaVinesPlant("pink_", this.getPinkWisteriaVines());
          purpleWisteriaVinesPlant = createWisteriaVinesPlant("purple_", this.getPurpleWisteriaVines());
-         whiteSapling = createSapling("white_", new WhiteWisteriaSaplingGenerator());
-         blueSapling = createSapling("blue_", new BlueWisteriaSaplingGenerator());
-         pinkSapling = createSapling("pink_", new PinkWisteriaSaplingGenerator());
-         purpleSapling = createSapling("purple_", new PurpleWisteriaSaplingGenerator());
+         whiteSapling = createSapling("white_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE), Optional.empty()));
+         blueSapling = createSapling("blue_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.BLUE_WISTERIA_TREE), Optional.empty()));
+         pinkSapling = createSapling("pink_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.PINK_WISTERIA_TREE), Optional.empty()));
+         purpleSapling = createSapling("purple_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.PURPLE_WISTERIA_TREE), Optional.empty()));
          pottedWhiteSapling = createPottedSapling("white_",this.getWhiteSapling());
          pottedBlueSapling = createPottedSapling("blue_", this.getBlueSapling());
          pottedPinkSapling = createPottedSapling("pink_", this.getPinkSapling());
@@ -233,9 +242,9 @@ public class WoodSet {
          redLeaves = createMapleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE);
          orangeLeaves = createMapleLeaves("orange_", NatureSpirit.ORANGE_MAPLE_LEAVES_PARTICLE);
          yellowLeaves = createMapleLeaves("yellow_", NatureSpirit.YELLOW_MAPLE_LEAVES_PARTICLE);
-         redSapling = createSapling("red_", new RedMapleSaplingGenerator());
-         orangeSapling = createSapling("orange_", new OrangeMapleSaplingGenerator());
-         yellowSapling = createSapling("yellow_", new YellowMapleSaplingGenerator());
+         redSapling = createSapling("red_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.RED_MAPLE_TREE), Optional.empty()));
+         orangeSapling = createSapling("orange_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.ORANGE_MAPLE_TREE), Optional.empty()));
+         yellowSapling = createSapling("yellow_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.YELLOW_MAPLE_TREE), Optional.empty()));
          pottedRedSapling = createPottedSapling("red_", this.getRedSapling());
          pottedOrangeSapling = createPottedSapling("orange_", this.getOrangeSapling());
          pottedYellowSapling = createPottedSapling("yellow_", this.getYellowSapling());
@@ -251,7 +260,7 @@ public class WoodSet {
       }
       if (this.getWoodPreset() == WoodPreset.LARCH) {
          yellowLeaves = createLeaves("yellow_");
-         yellowSapling = createSapling("yellow_", new YellowLarchSaplingGenerator());
+         yellowSapling = createSapling("yellow_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.YELLOW_LARCH_TREE), Optional.empty()));
          pottedYellowSapling = createPottedSapling("yellow_", this.getYellowSapling());
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeaves(), this.getYellowLeaves().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSapling(), this.getYellowSapling().asItem()));
@@ -317,7 +326,7 @@ public class WoodSet {
 
 
 
-   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset, boolean hasMosaic){
+   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, WoodPreset woodPreset, boolean hasMosaic, RegistryKey<ConfiguredFeature<?, ?>> configuredFeature){
       this.woodPreset = woodPreset;
       this.name = name;
       this.sideColor = sideColor;
@@ -329,8 +338,28 @@ public class WoodSet {
       this.buttonBefore = buttonBefore;
       this.saplingBefore = saplingBefore;
       this.boatType = boatType;
-      this.saplingGenerator = saplingGenerator;
       this.hasMosaic = hasMosaic;
+      this.configuredFeature = Optional.of(configuredFeature);
+      this.configuredFeature2 = Optional.empty();
+      registerWood();
+      WoodHashMap.put(this.getName(), this);
+   }
+   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, WoodPreset woodPreset, boolean hasMosaic, Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature, Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature2){
+      this.woodPreset = woodPreset;
+      this.name = name;
+      this.sideColor = sideColor;
+      this.topColor = topColor;
+      this.leavesBefore = leavesBefore;
+      this.logBefore = logBefore;
+      this.signBefore = signBefore;
+      this.boatBefore = boatBefore;
+      this.buttonBefore = buttonBefore;
+      this.saplingBefore = saplingBefore;
+      this.boatType = boatType;
+      this.hasMosaic = hasMosaic;
+      this.configuredFeature = configuredFeature;
+      this.configuredFeature2 = configuredFeature2;
+      this.hasLargeTree = true;
       registerWood();
       WoodHashMap.put(this.getName(), this);
    }
@@ -706,31 +735,31 @@ public class WoodSet {
       return createBlockWithItem(this.getName() + "_fence", new FenceBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createFenceGate(){
-      return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getWoodType()));
+      return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(this.getWoodType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createPressurePlate(){
-      return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
+      return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createButton(){
-      return createBlockWithItem(this.getName() + "_button", new ButtonBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
+      return createBlockWithItem(this.getName() + "_button", new ButtonBlock(this.getBlockSetType(), 30, AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createDoor(){
-      return createBlockWithItem(this.getName() + "_door", new DoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
+      return createBlockWithItem(this.getName() + "_door", new DoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor())));
    }
    private Block createTrapDoor(){
-      return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
+      return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor())));
    }
    private Block createSign(){
-      return registerBlock(this.getName() + "_sign", new SignBlock(AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()), woodType));
+      return registerBlock(this.getName() + "_sign", new SignBlock(woodType, AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor())));
    }
    private Block createWallSign(){
-      return registerBlock(this.getName() + "_wall_sign", new WallSignBlock(AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).dropsLike(sign), woodType));
+      return registerBlock(this.getName() + "_wall_sign", new WallSignBlock(woodType, AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).dropsLike(sign)));
    }
    private Block createHangingSign(){
-      return registerBlock(this.getName() + "_hanging_sign", new HangingSignBlock(AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()), woodType));
+      return registerBlock(this.getName() + "_hanging_sign", new HangingSignBlock(woodType, AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor())));
    }
    private Block createWallHangingSign(){
-      return registerBlock(this.getName() + "_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(hangingSign), woodType));
+      return registerBlock(this.getName() + "_wall_hanging_sign", new WallHangingSignBlock(woodType, AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(hangingSign)));
    }
 
    public Block createSapling(SaplingGenerator saplingGenerator) {

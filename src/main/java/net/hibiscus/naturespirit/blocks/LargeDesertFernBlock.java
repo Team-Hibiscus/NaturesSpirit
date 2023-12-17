@@ -11,7 +11,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
-public class LargeDesertFernBlock extends FernBlock {
+public class LargeDesertFernBlock extends ShortPlantBlock {
    protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
    public LargeDesertFernBlock(Settings properties) {

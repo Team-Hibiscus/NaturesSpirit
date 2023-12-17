@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
@@ -21,8 +22,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 public class MilkCauldronBlock extends AbstractCauldronBlock {
 
@@ -31,6 +32,10 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
    public MilkCauldronBlock(Settings settings) {
       super(settings, HibiscusCauldronBehavior.MILK_CAULDRON_BEHAVIOR);
       this.setDefaultState(this.stateManager.getDefaultState().with(ageIntoCheese, false));
+   }
+
+   @Override protected MapCodec <? extends AbstractCauldronBlock> getCodec() {
+      return null;
    }
 
    protected double getFluidHeight(BlockState state) {
@@ -79,7 +84,7 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
       super.randomTick(state, world, pos, random);
    }
 
-   @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+   @Override public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
       return new ItemStack(Blocks.CAULDRON);
    }
 

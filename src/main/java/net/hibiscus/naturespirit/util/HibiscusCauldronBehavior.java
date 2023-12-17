@@ -13,7 +13,7 @@ import static net.minecraft.block.cauldron.CauldronBehavior.*;
 
 public interface HibiscusCauldronBehavior {
 
-   Map <Item, CauldronBehavior> MILK_CAULDRON_BEHAVIOR = createMap();
+   CauldronBehaviorMap MILK_CAULDRON_BEHAVIOR = createMap("milk");
    CauldronBehavior FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> fillCauldron(
            world,
            pos,
@@ -23,7 +23,7 @@ public interface HibiscusCauldronBehavior {
            HibiscusMiscBlocks.MILK_CAULDRON.getDefaultState(),
            SoundEvents.ITEM_BUCKET_EMPTY
    );
-   Map <Item, CauldronBehavior> CHEESE_CAULDRON_BEHAVIOR = createMap();
+   CauldronBehaviorMap CHEESE_CAULDRON_BEHAVIOR = createMap("cheese");
    CauldronBehavior FILL_WITH_CHEESE = (state, world, pos, player, hand, stack) -> fillCauldron(
            world,
            pos,
@@ -35,7 +35,7 @@ public interface HibiscusCauldronBehavior {
    );
 
    static void registerBehavior() {
-      MILK_CAULDRON_BEHAVIOR.put(
+      MILK_CAULDRON_BEHAVIOR.map().put(
               Items.BUCKET,
               (state, world, pos, player, hand, stack) -> emptyCauldron(state,
                       world,
@@ -48,8 +48,8 @@ public interface HibiscusCauldronBehavior {
                       SoundEvents.ENTITY_COW_MILK
               )
       );
-      registerBucketBehavior(MILK_CAULDRON_BEHAVIOR);
-      CHEESE_CAULDRON_BEHAVIOR.put(
+      registerBucketBehavior(MILK_CAULDRON_BEHAVIOR.map());
+      CHEESE_CAULDRON_BEHAVIOR.map().put(
               Items.BUCKET,
               (state, world, pos, player, hand, stack) -> emptyCauldron(state,
                       world,
@@ -62,7 +62,7 @@ public interface HibiscusCauldronBehavior {
                       SoundEvents.ITEM_BUCKET_FILL
               )
       );
-      registerBucketBehavior(CHEESE_CAULDRON_BEHAVIOR);
+      registerBucketBehavior(CHEESE_CAULDRON_BEHAVIOR.map());
    }
 
 

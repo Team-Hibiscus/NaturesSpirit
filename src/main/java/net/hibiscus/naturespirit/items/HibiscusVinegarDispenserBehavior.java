@@ -21,15 +21,15 @@ import net.minecraft.util.math.random.Random;
 
 public class HibiscusVinegarDispenserBehavior extends FallibleItemDispenserBehavior {
    protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
-      ServerWorld serverWorld = pointer.getWorld();
+      ServerWorld serverWorld = pointer.world();
       if (!serverWorld.isClient()) {
-         BlockPos blockPos = pointer.getPos().offset(pointer.getBlockState().get(DispenserBlock.FACING));
+         BlockPos blockPos = pointer.pos().offset(pointer.state().get(DispenserBlock.FACING));
          this.setSuccess(tryReaction(serverWorld, blockPos));
          if (this.isSuccess()) {
             ItemStack itemStack2 = new ItemStack(stack.getRecipeRemainder().getItem());
-            DispenserBlockEntity blockEntity = pointer.getBlockEntity();
+            DispenserBlockEntity blockEntity = pointer.blockEntity();
                if (addToAlikeSlot(blockEntity, itemStack2) == -1) {
-                  if (blockEntity.addToFirstFreeSlot(itemStack2) == -1) spawnItem(serverWorld, itemStack2, 0, pointer.getBlockState().get(DispenserBlock.FACING).getOpposite(), blockPos.toCenterPos());
+                  if (blockEntity.addToFirstFreeSlot(itemStack2) == -1) spawnItem(serverWorld, itemStack2, 0, pointer.state().get(DispenserBlock.FACING).getOpposite(), blockPos.toCenterPos());
                }
             stack.decrement(1);
          }

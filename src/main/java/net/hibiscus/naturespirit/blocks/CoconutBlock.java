@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
@@ -54,6 +55,10 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
    public CoconutBlock(Settings settings) {
       super(settings);
       this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.UP).with(WATERLOGGED, false).with(FILLED, true));
+   }
+
+   @Override protected MapCodec <? extends FallingBlock> getCodec() {
+      return null;
    }
 
    public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -145,7 +150,7 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
    }
 
 
-   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
       return state.get(FACING) == Direction.UP;
    }
 

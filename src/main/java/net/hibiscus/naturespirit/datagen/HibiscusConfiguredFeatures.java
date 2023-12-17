@@ -697,7 +697,7 @@ public class HibiscusConfiguredFeatures {
                                       List.of(
                                               HibiscusMiscBlocks.BLUEBELL.getFlowerBlock().getDefaultState(),
                                               Blocks.ORANGE_TULIP.getDefaultState(),
-                                              Blocks.GRASS.getDefaultState(),
+                                              Blocks.SHORT_GRASS.getDefaultState(),
                                               HibiscusMiscBlocks.CARNATION.getFlowerBlock().getDefaultState(),
                                               HibiscusMiscBlocks.GARDENIA.getFlowerBlock().getDefaultState()
                                       )
@@ -749,17 +749,17 @@ public class HibiscusConfiguredFeatures {
                               new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
                                       new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
                                       0.030833334F,
-                                      List.of(Blocks.GRASS.getDefaultState(),
+                                      List.of(Blocks.SHORT_GRASS.getDefaultState(),
                                               Blocks.TALL_GRASS.getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
                                               HibiscusMiscBlocks.CARNATION.getFlowerBlock().getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
-                                              Blocks.GRASS.getDefaultState(),
+                                              Blocks.SHORT_GRASS.getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
                                               HibiscusMiscBlocks.CARNATION.getFlowerBlock().getDefaultState(),
                                               Blocks.POPPY.getDefaultState(),
                                               Blocks.TALL_GRASS.getDefaultState(),
-                                              Blocks.GRASS.getDefaultState()
+                                              Blocks.SHORT_GRASS.getDefaultState()
                                       )
                               ))
                       )

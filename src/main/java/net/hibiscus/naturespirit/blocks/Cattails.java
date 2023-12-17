@@ -43,7 +43,7 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
       return false;
    }
 
-   public boolean isFertilizable(WorldView levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+   public boolean isFertilizable(WorldView levelReader, BlockPos blockPos, BlockState blockState) {
       return true;
    }
 

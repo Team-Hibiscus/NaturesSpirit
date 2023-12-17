@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
@@ -118,7 +119,7 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
       builder.add(AGE).add(WATERLOGGED);
    }
 
-   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+   public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
       return new ItemStack(this.asItem());
    }
 
@@ -126,11 +127,15 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
       return state.cycle(AGE);
    }
 
+   @Override protected MapCodec <? extends AbstractPlantBlock> getCodec() {
+      return null;
+   }
+
    protected BlockState copyState(BlockState from, BlockState to) {
       return to;
    }
 
-   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
       Optional <BlockPos> optional = this.getFlowerHeadPos(world, pos, this.asBlock());
       Optional <BlockPos> optional2 = this.getStemHeadPos(world, pos, this.asBlock());
       Optional <BlockPos> optional3 = this.getStemHeadPos(world, pos, this.asBlock());

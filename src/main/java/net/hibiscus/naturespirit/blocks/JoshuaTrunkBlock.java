@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
@@ -83,5 +84,9 @@ public class JoshuaTrunkBlock extends ConnectingBlock implements Waterloggable {
 
    static {
       WATERLOGGED = Properties.WATERLOGGED;
+   }
+
+   @Override protected MapCodec <? extends ConnectingBlock> getCodec() {
+      return null;
    }
 }

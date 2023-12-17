@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -13,12 +14,17 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 public class LotusFlowerBlock extends PlantBlock {
    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 1.5D, 14.0D);
 
    public LotusFlowerBlock(Settings properties) {
       super(properties);
+   }
+
+   @Override protected MapCodec <? extends PlantBlock> getCodec() {
+      return null;
    }
 
 
@@ -30,7 +36,7 @@ public class LotusFlowerBlock extends PlantBlock {
 
    }
 
-   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+   public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
       return new ItemStack(HibiscusMiscBlocks.LOTUS_FLOWER_ITEM);
    }
 
