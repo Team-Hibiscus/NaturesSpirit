@@ -3,6 +3,7 @@
   "values": [
     "natures_spirit:prairie",
     "natures_spirit:fir_forest",
-    "#natures_spirit:is_alpine"
+    "#natures_spirit:is_alpine",
+    "#natures_spirit:is_steppe"
   ]
 }

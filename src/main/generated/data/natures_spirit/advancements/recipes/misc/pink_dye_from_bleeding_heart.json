@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_bleeding_heart",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_bleeding_heart"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:pink_dye_from_bleeding_heart"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

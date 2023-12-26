@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_young_coconut",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_young_coconut"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:young_coconut_half_from_young_coconut"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

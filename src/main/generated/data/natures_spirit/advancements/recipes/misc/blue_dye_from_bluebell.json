@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_bluebell",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_bluebell"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:blue_dye_from_bluebell"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

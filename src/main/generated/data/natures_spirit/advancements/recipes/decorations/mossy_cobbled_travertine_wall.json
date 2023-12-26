@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_mossy_cobbled_travertine",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_mossy_cobbled_travertine"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:mossy_cobbled_travertine_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

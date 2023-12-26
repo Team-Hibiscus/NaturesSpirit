@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_vine",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_vine"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:mossy_cobbled_travertine_from_vine"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

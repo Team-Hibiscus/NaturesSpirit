@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_dwarf_blossoms",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_dwarf_blossoms"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:pink_dye_from_dwarf_blossoms"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

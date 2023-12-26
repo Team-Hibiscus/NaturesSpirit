@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:travertine"
+    "natures_spirit:travertine",
+    "natures_spirit:chert"
   ]
 }

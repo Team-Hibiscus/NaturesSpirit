@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.*;
@@ -19,6 +20,7 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -29,6 +31,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.*;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
+import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -39,6 +42,9 @@ import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.resource.featuretoggle.FeatureFlag;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.resource.featuretoggle.FeatureManager;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
@@ -316,6 +322,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addVinesTable(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant());
          addVinesTable(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant());
          addVinesTable(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant());
+
+         this.addDrop(CHERT_COAL_ORE, (Block block) -> this.oreDrops((Block)block, Items.COAL));
+          this.addDrop(CHERT_EMERALD_ORE, (Block block) -> this.oreDrops((Block)block, Items.EMERALD));
+         this.addDrop(CHERT_DIAMOND_ORE, (Block block) -> this.oreDrops((Block)block, Items.DIAMOND));
+         this.addDrop(CHERT_COPPER_ORE, (Block block) -> this.copperOreDrops((Block)block));
+         this.addDrop(CHERT_IRON_ORE, (Block block) -> this.oreDrops((Block)block, Items.RAW_IRON));
+         this.addDrop(CHERT_GOLD_ORE, (Block block) -> this.oreDrops((Block)block, Items.RAW_GOLD));
+         this.addDrop(CHERT_LAPIS_ORE, (Block block) -> this.lapisOreDrops((Block)block));
+
 
          addVinesTable(LOTUS_STEM, LOTUS_STEM);
          this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
@@ -793,7 +808,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
             createSlab(stoneSet.getBase(), stoneSet.getBaseSlab(), blockStateModelGenerator);
             createStairs(stoneSet.getBase(), stoneSet.getBaseStairs(), blockStateModelGenerator);
-            blockStateModelGenerator.registerSimpleCubeAll(stoneSet.getBase());
+            if (stoneSet.isRotatable()) {
+               blockStateModelGenerator.registerLog(stoneSet.getBase()).log(stoneSet.getBase());
+            } else blockStateModelGenerator.registerSimpleCubeAll(stoneSet.getBase());
             
             blockStateModelGenerator.registerSimpleCubeAll(stoneSet.getChiseled());
          }
@@ -1184,6 +1201,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerSingleton(HibiscusColoredBlocks.PINK_CHALK, TexturedModel.CUBE_ALL);
 
          blockStateModelGenerator.registerAxisRotated(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK, TexturedModel.END_FOR_TOP_CUBE_COLUMN, TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL);
+         blockStateModelGenerator.registerSingleton(CHERT_COAL_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_COPPER_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_DIAMOND_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_GOLD_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_EMERALD_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_IRON_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_LAPIS_ORE, TexturedModel.CUBE_ALL);
+         blockStateModelGenerator.registerSingleton(CHERT_REDSTONE_ORE, TexturedModel.CUBE_ALL);
       }
 
       @Override public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -1342,6 +1367,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(RED_MOSS_BLOCK, translationBuilder);
          generateBlockTranslations(RED_MOSS_CARPET, translationBuilder);
 
+         generateBlockTranslations(CHERT_COAL_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_COPPER_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_DIAMOND_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_GOLD_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_EMERALD_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_IRON_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_LAPIS_ORE, translationBuilder);
+         generateBlockTranslations(CHERT_REDSTONE_ORE, translationBuilder);
+
          generateBlockTranslations(HibiscusColoredBlocks.KAOLIN, translationBuilder);
          generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_SLAB, translationBuilder);
          generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_STAIRS, translationBuilder);
@@ -1440,7 +1474,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       public NatureSpiritRecipeGenerator(FabricDataOutput output) {
          super(output);
       }
-
+      private static final FeatureManager.Builder NS_UNIVERSE = new FeatureManager.Builder("natures_spirit");
+      private static final FeatureFlag NS_FEATURES = NS_UNIVERSE.addFlag(new Identifier(MOD_ID, "features"));
       public static final BlockFamily PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.PINK_SANDSTONE).wall(PINK_SANDSTONE_WALL).stairs(PINK_SANDSTONE_STAIRS).slab(PINK_SANDSTONE_SLAB).chiseled(CHISELED_PINK_SANDSTONE).cut(CUT_PINK_SANDSTONE).noGenerateModels().noGenerateRecipes().build();
       public static final BlockFamily CUT_PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.CUT_PINK_SANDSTONE).slab(CUT_PINK_SANDSTONE_SLAB).noGenerateModels().build();
       public static final BlockFamily SMOOTH_PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE).slab(SMOOTH_PINK_SANDSTONE_SLAB).stairs(SMOOTH_PINK_SANDSTONE_STAIRS).noGenerateModels().build();
@@ -1480,7 +1515,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                     .group("wooden")
                     .unlockCriterionName("has_planks")
                     .build();
-            generateFamily(consumer, family, FeatureSet.empty());
+            generateFamily(consumer, family, FeatureSet.of(FeatureFlags.VANILLA));
          }
       }
       private void generateFlowerRecipes(HashMap <String, FlowerSet> flowers, RecipeExporter consumer) {
@@ -1492,9 +1527,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private void generateStoneRecipes(HashMap <String, StoneSet> stoones, RecipeExporter exporter) {
          for(StoneSet stoneSet : stoones.values()) {
-            generateFamily(exporter, stoneSet.getBaseFamily(), FeatureSet.empty());
-            generateFamily(exporter, stoneSet.getBrickFamily(), FeatureSet.empty());
-            generateFamily(exporter, stoneSet.getPolishedFamily(), FeatureSet.empty());
+            generateFamily(exporter, stoneSet.getBaseFamily(), FeatureSet.of(FeatureFlags.VANILLA));
+            generateFamily(exporter, stoneSet.getBrickFamily(), FeatureSet.of(FeatureFlags.VANILLA));
+            generateFamily(exporter, stoneSet.getPolishedFamily(), FeatureSet.of(FeatureFlags.VANILLA));
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getBricks(), 4)
                                    .input('S', stoneSet.getPolished()).pattern("SS")
                                    .pattern("SS")
@@ -1521,9 +1556,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getTilesWall(), stoneSet.getTiles());
             }
             if(stoneSet.hasCobbled()) {
-               generateFamily(exporter, stoneSet.getCobbledFamily(), FeatureSet.empty());
+               generateFamily(exporter, stoneSet.getCobbledFamily(), FeatureSet.of(FeatureFlags.VANILLA));
                if(stoneSet.hasMossy()) {
-                  generateFamily(exporter, stoneSet.getMossyCobbledFamily(), FeatureSet.empty());
+                  generateFamily(exporter, stoneSet.getMossyCobbledFamily(), FeatureSet.of(FeatureFlags.VANILLA));
                   ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbled())
                                             .input(stoneSet.getCobbled()).input(Blocks.MOSS_BLOCK)
                                             .group("mossy_cobblestone")
@@ -1561,9 +1596,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                   offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getTilesWall(), stoneSet.getCobbled());
                }
             } else {
-               offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getCobbledSlab(), stoneSet.getBase(), 2);
-               offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getCobbledStairs(), stoneSet.getBase());
-               offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getCobbledWall(), stoneSet.getBase());
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getChiseled(), stoneSet.getBase());
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getPolished(), stoneSet.getBase());
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getPolishedSlab(), stoneSet.getBase(), 2);
@@ -1581,7 +1613,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                }
             }
             if(stoneSet.hasMossy()) {
-               generateFamily(exporter, stoneSet.getMossyBrickFamily(), FeatureSet.empty());
+               generateFamily(exporter, stoneSet.getMossyBrickFamily(), FeatureSet.of(FeatureFlags.VANILLA));
                ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricks())
                                          .input(stoneSet.getBricks())
                                          .input(Blocks.VINE)
@@ -1618,7 +1650,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       @Override public void generate(RecipeExporter exporter) {
-
          createChiseledBlockRecipe(RecipeCategory.BUILDING_BLOCKS, CHISELED_PINK_SANDSTONE, Ingredient.ofItems(PINK_SANDSTONE_SLAB))
                  .criterion("has_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.PINK_SANDSTONE))
                  .criterion("has_chiseled_pink_sandstone", conditionsFromItem(CHISELED_PINK_SANDSTONE))
@@ -1661,7 +1692,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
 
 
-
          offerCarpetRecipe(exporter, HibiscusWoods.COCONUT_THATCH_CARPET, HibiscusWoods.COCONUT_THATCH);
          offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH);
          createStairsRecipe(HibiscusWoods.COCONUT_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.COCONUT_THATCH));
@@ -1698,8 +1728,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(HibiscusTags.Items.COCONUT_ITEMS), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 125).criterion("has_coconut", conditionsFromTag(HibiscusTags.Items.COCONUT_ITEMS)).offerTo(exporter);
 
 
-         generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY, FeatureSet.empty());
-         generateFamily(exporter, SMOOTH_PINK_SANDSTONE_FAMILY, FeatureSet.empty());
+         generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY, FeatureSet.of(FeatureFlags.VANILLA));
+         generateFamily(exporter, SMOOTH_PINK_SANDSTONE_FAMILY, FeatureSet.of(FeatureFlags.VANILLA));
          
       }
    }
@@ -1738,6 +1768,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.copy(BlockTags.SLABS, ItemTags.SLABS);
          this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
          this.copy(BlockTags.WALLS, ItemTags.WALLS);
+         this.copy(BlockTags.COAL_ORES, ItemTags.COAL_ORES);
+         this.copy(BlockTags.COPPER_ORES, ItemTags.COPPER_ORES);
+         this.copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
+         this.copy(BlockTags.GOLD_ORES, ItemTags.GOLD_ORES);
+         this.copy(BlockTags.EMERALD_ORES, ItemTags.EMERALD_ORES);
+         this.copy(BlockTags.IRON_ORES, ItemTags.IRON_ORES);
+         this.copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
+         this.copy(BlockTags.REDSTONE_ORES, ItemTags.REDSTONE_ORES);
          this.getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS).add(PINK_SAND.asItem());
          this.getOrCreateTagBuilder(HibiscusTags.Items.EVERGREEN_LEAVES).add(HibiscusWoods.FIR.getLeaves().asItem(), HibiscusWoods.REDWOOD.getLeaves().asItem(), HibiscusWoods.LARCH.getLeaves().asItem(), HibiscusWoods.CEDAR.getLeaves().asItem(),Items.SPRUCE_LEAVES);
          this.getOrCreateTagBuilder(HibiscusTags.Items.XERIC_LEAVES).add(HibiscusWoods.GHAF.getLeaves().asItem(), HibiscusWoods.OLIVE.getLeaves().asItem(), HibiscusWoods.PALO_VERDE.getLeaves().asItem(), HibiscusWoods.JOSHUA.getLeaves().asItem(),Items.ACACIA_LEAVES);
@@ -1784,8 +1822,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private void addStoneTags(HashMap <String, StoneSet> stones) {
          for(StoneSet stoneSet : stones.values()) {
 
-            getOrCreateTagBuilder(BlockTags.STONE_ORE_REPLACEABLES).add(new Block[]{stoneSet.getBase()});
-            getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(new Block[]{stoneSet.getBase()});
 
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(stoneSet.getRegisteredBlocksList().toArray(new Block[]{}));
             if (stoneSet.hasTiles()) {
@@ -1974,6 +2010,28 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(PAPER_WALL_HANGING_SIGN);
          getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{PAPER_SIGN});
          getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{PAPER_WALL_SIGN});
+         getOrCreateTagBuilder(BlockTags.COAL_ORES).add(HibiscusMiscBlocks.CHERT_COAL_ORE);
+         getOrCreateTagBuilder(BlockTags.COPPER_ORES).add(HibiscusMiscBlocks.CHERT_COPPER_ORE);
+         getOrCreateTagBuilder(BlockTags.DIAMOND_ORES).add(HibiscusMiscBlocks.CHERT_DIAMOND_ORE);
+         getOrCreateTagBuilder(BlockTags.GOLD_ORES).add(HibiscusMiscBlocks.CHERT_GOLD_ORE);
+         getOrCreateTagBuilder(BlockTags.EMERALD_ORES).add(HibiscusMiscBlocks.CHERT_EMERALD_ORE);
+         getOrCreateTagBuilder(BlockTags.IRON_ORES).add(HibiscusMiscBlocks.CHERT_IRON_ORE);
+         getOrCreateTagBuilder(BlockTags.LAPIS_ORES).add(HibiscusMiscBlocks.CHERT_LAPIS_ORE);
+         getOrCreateTagBuilder(BlockTags.REDSTONE_ORES).add(HibiscusMiscBlocks.CHERT_REDSTONE_ORE);
+         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
+         HibiscusMiscBlocks.CHERT_COAL_ORE,
+         HibiscusMiscBlocks.CHERT_COPPER_ORE,
+         HibiscusMiscBlocks.CHERT_DIAMOND_ORE,
+         HibiscusMiscBlocks.CHERT_GOLD_ORE,
+         HibiscusMiscBlocks.CHERT_EMERALD_ORE,
+         HibiscusMiscBlocks.CHERT_IRON_ORE,
+         HibiscusMiscBlocks.CHERT_LAPIS_ORE,
+         HibiscusMiscBlocks.CHERT_REDSTONE_ORE);
+         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(CHERT_EMERALD_ORE, CHERT_DIAMOND_ORE, CHERT_GOLD_ORE, CHERT_REDSTONE_ORE);
+         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(CHERT_COPPER_ORE, CHERT_IRON_ORE, CHERT_LAPIS_ORE);
+         getOrCreateTagBuilder(BlockTags.STONE_ORE_REPLACEABLES).add(TRAVERTINE.getBase());
+         getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(TRAVERTINE.getBase());
+         getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(CHERT.getBase());
       }
    }
 }

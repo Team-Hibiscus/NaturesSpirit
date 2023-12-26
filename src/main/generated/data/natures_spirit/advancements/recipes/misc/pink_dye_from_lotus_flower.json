@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_lotus_flower",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_lotus_flower"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:pink_dye_from_lotus_flower"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

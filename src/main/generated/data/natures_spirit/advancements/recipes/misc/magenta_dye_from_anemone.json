@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_anemone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_anemone"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:magenta_dye_from_anemone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

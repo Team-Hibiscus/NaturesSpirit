@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_coconut_thatch",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_coconut_thatch"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:coconut_thatch_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

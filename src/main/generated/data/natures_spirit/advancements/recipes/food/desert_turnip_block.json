@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "desert_turnip",
-      "has_the_recipe"
+      "has_the_recipe",
+      "desert_turnip"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:desert_turnip_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

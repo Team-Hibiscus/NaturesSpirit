@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_purple_heather",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_purple_heather"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:purple_dye_from_purple_heather"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

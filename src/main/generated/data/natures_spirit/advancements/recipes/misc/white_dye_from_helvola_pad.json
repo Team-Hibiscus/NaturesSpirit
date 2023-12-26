@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_helvola_pad",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_helvola_pad"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:white_dye_from_helvola_pad"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

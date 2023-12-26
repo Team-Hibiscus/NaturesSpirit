@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_black_iris",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_black_iris"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:black_dye_from_black_iris"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gardenia",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gardenia"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:white_dye_from_gardenia"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_evergreen_leaves",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_evergreen_leaves"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:xeric_thatch"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

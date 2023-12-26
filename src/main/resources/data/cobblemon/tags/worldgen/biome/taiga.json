@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "natures_spirit:snowy_fir_forest",
-    "#natures_spirit:alpine",
+    "#natures_spirit:is_alpine",
     "natures_spirit:prairie",
     "natures_spirit:fir_forest",
     "natures_spirit:boreal_taiga"

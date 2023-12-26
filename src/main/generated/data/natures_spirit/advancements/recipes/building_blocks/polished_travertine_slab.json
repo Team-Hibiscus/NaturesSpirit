@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_polished_travertine",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_polished_travertine"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:polished_travertine_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

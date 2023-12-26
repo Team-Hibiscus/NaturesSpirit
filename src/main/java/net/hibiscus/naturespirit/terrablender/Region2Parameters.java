@@ -47,10 +47,11 @@ public class Region2Parameters {
    private final RegistryKey <Biome>[][] nearMountainBiomes;
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
-   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.WISTERIA_FOREST : BiomeKeys.FOREST;
-   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.WISTERIA_FOREST : BiomeKeys.TAIGA;
-   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.WISTERIA_FOREST : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
-   RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_wisteria_forest ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
+   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_STEPPE : BiomeKeys.FOREST;
+   RegistryKey<Biome> nearBiomeForestCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.MEADOW_STEPPE : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_STEPPE : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_STEPPE : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_steppe ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
 
    RegistryKey<Biome> commonPlains = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.PLAINS;
    RegistryKey<Biome> commonForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.FOREST;
@@ -61,6 +62,13 @@ public class Region2Parameters {
    RegistryKey<Biome> mountainMeadow = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.MEADOW;
    RegistryKey<Biome> windsweptHills = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_HILLS;
    RegistryKey<Biome> windsweptForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_FOREST;
+   RegistryKey<Biome> plainsCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.SHRUBBY_STEPPE : BiomeKeys.PLAINS;
+   RegistryKey<Biome> meadowCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.MEADOW_STEPPE : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nullCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.DESERT_STEPPE : null;
+   RegistryKey<Biome> cherryCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.DESERT_STEPPE : BiomeKeys.CHERRY_GROVE;
+   RegistryKey[] windsweptCold = HibiscusBiomes.has_steppe ?
+           new RegistryKey[]{HibiscusBiomes.DESERT_STEPPE, HibiscusBiomes.DESERT_STEPPE, HibiscusBiomes.SHRUBBY_STEPPE, HibiscusBiomes.SHRUBBY_STEPPE, HibiscusBiomes.SHRUBBY_STEPPE} :
+           new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
    public Region2Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -83,7 +91,7 @@ public class Region2Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.TAIGA
               }, {
-                     BiomeKeys.PLAINS, BiomeKeys.PLAINS, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
+              plainsCold, plainsCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
                       BiomeKeys.FLOWER_FOREST, commonPlains, commonForest, commonBirchForest, BiomeKeys.DARK_FOREST
               }, {
@@ -104,7 +112,7 @@ public class Region2Parameters {
               {
                       BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_PLAINS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_TAIGA
               }, {
-              BiomeKeys.MEADOW, BiomeKeys.MEADOW, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
+              meadowCold, meadowCold, nearBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
                       BiomeKeys.MEADOW, BiomeKeys.MEADOW, mountainMeadow, mountainMeadow, BiomeKeys.DARK_FOREST
               }, {
@@ -115,7 +123,7 @@ public class Region2Parameters {
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
               {BiomeKeys.ICE_SPIKES, null, null, null, null}, {
-              BiomeKeys.CHERRY_GROVE, null, BiomeKeys.MEADOW, BiomeKeys.MEADOW, uncommonBiomeOldPineCold
+              cherryCold, nullCold, meadowCold, meadowCold, uncommonBiomeOldPineCold
       }, {
                       BiomeKeys.CHERRY_GROVE, BiomeKeys.CHERRY_GROVE, specialForest, commonBirchForest, null
               }, {null, null, null, null, null}, {
@@ -124,7 +132,7 @@ public class Region2Parameters {
       };
       this.windsweptBiomes = new RegistryKey[][]{
               {BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
-              {BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
+              windsweptCold,
               {windsweptHills, windsweptHills, windsweptHills, windsweptForest, windsweptForest},
               {null, null, null, null, null},
               {null, null, null, null, null}
@@ -774,7 +782,7 @@ public class Region2Parameters {
       }
    }
    private RegistryKey <Biome> getBadlandsOrRegularBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      return temperature == 4 ? this.getBadlandsBiome(humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
+      return temperature == 4 ? this.getBadlandsBiome(humidity, weirdness) : (temperature == 1 && HibiscusBiomes.has_steppe ? this.getSteppeBiome(humidity) : this.getRegularBiome(temperature, humidity, weirdness));
    }
 
    private RegistryKey <Biome> getMountainStartBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
@@ -813,6 +821,14 @@ public class Region2Parameters {
          return humidity < 3 ? BiomeKeys.BADLANDS : BiomeKeys.WOODED_BADLANDS;
       }
    }
+   private RegistryKey <Biome> getSteppeBiome(int humidity) {
+      if(humidity < 3) {
+         return HibiscusBiomes.DESERT_STEPPE;
+      }
+      else {
+         return humidity < 4 ? HibiscusBiomes.SHRUBBY_STEPPE : HibiscusBiomes.WOODY_STEPPE;
+      }
+   }
 
    private RegistryKey <Biome> getNearMountainBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       if(weirdness.max() >= 0L) {
@@ -826,6 +842,7 @@ public class Region2Parameters {
    }
 
    private RegistryKey <Biome> getPeakBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      if (temperature == 1 && HibiscusBiomes.has_steppe) return HibiscusBiomes.RED_PEAKS;
       if(temperature <= 2) {
          return weirdness.max() < 0L ? BiomeKeys.JAGGED_PEAKS : BiomeKeys.FROZEN_PEAKS;
       }
@@ -838,6 +855,7 @@ public class Region2Parameters {
       if(temperature >= 3) {
          return this.getNearMountainBiome(temperature, humidity, weirdness);
       }
+      if (temperature == 1 && HibiscusBiomes.has_steppe) return HibiscusBiomes.SLEETED_SLOPES;
       else {
          return humidity <= 1 ? BiomeKeys.SNOWY_SLOPES : BiomeKeys.GROVE;
       }

@@ -35,6 +35,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class NatureSpirit implements ModInitializer {
@@ -52,6 +53,12 @@ public class NatureSpirit implements ModInitializer {
    @Override public void onInitialize() {
 
       Optional <ModContainer> modContainer = FabricLoader.getInstance().getModContainer("natures_spirit");
+      try {
+         HibiscusConfig.main();
+      }
+      catch(IOException e) {
+         throw new RuntimeException(e);
+      }
       if(modContainer.isPresent()) {
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "newworld_compatibility"), modContainer.get(),

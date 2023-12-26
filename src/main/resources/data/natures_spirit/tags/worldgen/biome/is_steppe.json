@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "natures_spirit:desert_steppe",
+    "natures_spirit:shrubby_steppe",
+    "natures_spirit:woody_steppe",
+    "natures_spirit:sleeted_slopes",
+    "natures_spirit:red_peaks",
+    "natures_spirit:meadow_steppe"
+  ]
+}

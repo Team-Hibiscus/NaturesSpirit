@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.datagen;
 
 
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Blocks;
@@ -12,6 +13,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.YOffset;
@@ -47,6 +49,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> GHAF_CHECKED = registerKey("ghaf_checked");
    public static final RegistryKey <PlacedFeature> PALO_VERDE_CHECKED = registerKey("palo_verde_checked");
    public static final RegistryKey <PlacedFeature> MAHOGANY_CHECKED = registerKey("mahogany_checked");
+   public static final RegistryKey <PlacedFeature> SAXAUL_CHECKED = registerKey("saxaul_checked");
 //   public static final RegistryKey <PlacedFeature> BANYAN_CHECKED = registerKey("banyan_checked");
    public static final RegistryKey <PlacedFeature> COCONUT_CHECKED = registerKey("coconut_checked");
    public static final RegistryKey <PlacedFeature> CEDAR_CHECKED = registerKey("cedar_checked");
@@ -91,6 +94,8 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> OLIVE_PLACED = registerKey("olive_placed");
    public static final RegistryKey <PlacedFeature> GHAF_PLACED = registerKey("ghaf_placed");
    public static final RegistryKey <PlacedFeature> PALO_VERDE_PLACED = registerKey("palo_verde_placed");
+   public static final RegistryKey <PlacedFeature> SAXAUL_PLACED = registerKey("saxaul_placed");
+   public static final RegistryKey <PlacedFeature> SPARSE_SAXAUL_PLACED = registerKey("sparse_saxaul_placed");
    public static final RegistryKey <PlacedFeature> JOSHUA_PLACED = registerKey("joshua_placed");
    public static final RegistryKey <PlacedFeature> COCONUT_PLACED = registerKey("coconut_placed");
    public static final RegistryKey <PlacedFeature> CEDAR_PLACED = registerKey("cedar_placed");
@@ -153,6 +158,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context, YELLOW_LARCH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.YELLOW_LARCH_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.LARCH.getYellowSapling()));
       registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW.getSapling()));
       registerKey(context, MAHOGANY_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAHOGANY_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.MAHOGANY.getSapling()));
+      registerKey(context, SAXAUL_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SAXAUL_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.SAXAUL.getSapling()));
       registerKey(context,
               WHITE_WISTERIA_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE),
@@ -499,6 +505,25 @@ public class HibiscusPlacedFeatures {
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.PALO_VERDE_TREE_SPAWN),
               CountPlacementModifier.of(11),
               RarityFilterPlacementModifier.of(85),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              SAXAUL_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SAXAUL_TREE_SPAWN),
+              NoiseBasedCountPlacementModifier.of(6, 130, 0),
+              SquarePlacementModifier.of(),
+              TREE_THRESHOLD,
+              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
+              BiomePlacementModifier.of()
+      );
+      registerKey(context,
+              SPARSE_SAXAUL_PLACED,
+              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SAXAUL_TREE_SPAWN),
+              CountPlacementModifier.of(2),
+              RarityFilterPlacementModifier.of(20),
               SquarePlacementModifier.of(),
               TREE_THRESHOLD,
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,

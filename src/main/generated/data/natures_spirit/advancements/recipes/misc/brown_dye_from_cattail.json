@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cattail",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cattail"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:brown_dye_from_cattail"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

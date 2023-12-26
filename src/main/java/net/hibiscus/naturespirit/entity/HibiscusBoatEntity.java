@@ -103,6 +103,14 @@ public class HibiscusBoatEntity extends BoatEntity {
               () -> HibiscusWoods.OLIVE.getBoatEntityType(),
               () -> HibiscusWoods.OLIVE.getChestBoatEntityType()
       ),
+      SAXAUL(
+              "saxaul",
+              () -> HibiscusWoods.SAXAUL.getPlanks(),
+              () -> HibiscusWoods.SAXAUL.getBoatItem(),
+              () -> HibiscusWoods.SAXAUL.getChestBoatItem(),
+              () -> HibiscusWoods.SAXAUL.getBoatEntityType(),
+              () -> HibiscusWoods.SAXAUL.getChestBoatEntityType()
+      ),
       JOSHUA(
               "joshua",
               () -> HibiscusWoods.JOSHUA.getPlanks(),

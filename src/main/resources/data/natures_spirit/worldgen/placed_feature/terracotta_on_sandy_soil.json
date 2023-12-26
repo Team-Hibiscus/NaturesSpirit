@@ -1,0 +1,25 @@
+{
+	"feature": "natures_spirit:terracotta_on_sandy_soil",
+	"placement": [
+		{
+			"type": "minecraft:count",
+			"count": 22
+		},
+		{
+			"type": "minecraft:count",
+			"count": 74
+		},
+		{
+			"type": "minecraft:in_square"
+		},
+		{
+			"type": "minecraft:surface_relative_threshold_filter",
+			"heightmap": "WORLD_SURFACE_WG",
+            "min": 20,
+            "max": 120
+		},
+		{
+			"type": "minecraft:biome"
+		}
+	]
+}

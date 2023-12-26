@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_xeric_thatch",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_xeric_thatch"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:xeric_thatch_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

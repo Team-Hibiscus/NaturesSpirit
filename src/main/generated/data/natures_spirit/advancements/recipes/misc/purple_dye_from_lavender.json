@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_lavender",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_lavender"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:purple_dye_from_lavender"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

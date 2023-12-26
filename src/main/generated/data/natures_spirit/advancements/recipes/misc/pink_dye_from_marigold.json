@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_marigold",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_marigold"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:pink_dye_from_marigold"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

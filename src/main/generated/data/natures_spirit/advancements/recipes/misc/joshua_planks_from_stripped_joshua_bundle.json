@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_stripped_joshua_bundle",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_stripped_joshua_bundle"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:joshua_planks_from_stripped_joshua_bundle"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

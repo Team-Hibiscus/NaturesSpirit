@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_tiger_lily",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tiger_lily"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:orange_dye_from_tiger_lily"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

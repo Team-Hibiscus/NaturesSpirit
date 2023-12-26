@@ -62,13 +62,14 @@ public class StoneSet {
    private boolean hasCobbled;
    private boolean hasCracked;
    private boolean hasMossy;
+   private boolean isRotatable;
    private float hardness;
 
 
 
    private void registerStone(){
 
-      base = createBasic(this.getName(), Blocks.ANDESITE);
+      base = this.isRotatable ? createRotatable(this.getName(), Blocks.ANDESITE) : createBasic(this.getName(), Blocks.ANDESITE);
       baseStairs = createStairs(this.getName(), base);
       baseSlab = createSlab(this.getName(), base);
       chiseled = createBasic("chiseled_" + this.getName(), Blocks.CHISELED_STONE_BRICKS);
@@ -146,6 +147,20 @@ public class StoneSet {
       this.hasMossy = hasMossy;
       registerStone();
    }
+
+   public StoneSet(Identifier name, MapColor mapColor, Item itemBefore, Item item2Before, float hardness, boolean hasCobbled, boolean hasCracked, boolean hasMossy, boolean hasTiles, boolean isRotatable){
+      this.name = name;
+      this.mapColor = mapColor;
+      this.itemBefore = itemBefore;
+      this.item2Before = item2Before;
+      this.hardness = hardness;
+      this.hasTiles = hasTiles;
+      this.hasCobbled = hasCobbled;
+      this.hasCracked = hasCracked;
+      this.hasMossy = hasMossy;
+      this.isRotatable = isRotatable;
+      registerStone();
+   }
    private Block createBlockWithItem(String blockID, Block block){
       registerBlockItem(blockID, block);
       Block listBlock = HibiscusRegistryHelper.registerBlock(blockID, block);
@@ -161,6 +176,9 @@ public class StoneSet {
    }
    private Block createBasic(String name, Block template){
       return createBlockWithItem(name, new Block(AbstractBlock.Settings.copy(template).hardness(this.hardness).mapColor(getMapColor())));
+   }
+   private Block createRotatable(String name, Block template){
+      return createBlockWithItem(name, new PillarBlock(AbstractBlock.Settings.copy(template).hardness(this.hardness).mapColor(getMapColor())));
    }
    private Block createStairs(String name, Block template){
       return createBlockWithItem(name + "_stairs", new StairsBlock(template.getDefaultState(), AbstractBlock.Settings.copy(template)));
@@ -183,6 +201,9 @@ public class StoneSet {
    }
    public boolean hasMossy(){
       return this.hasMossy;
+   }
+   public boolean isRotatable(){
+      return this.isRotatable;
    }
 
    public static void addToBuildingTab(Item proceedingItem, Item naturalStonePlacement, StoneSet stoneSet){

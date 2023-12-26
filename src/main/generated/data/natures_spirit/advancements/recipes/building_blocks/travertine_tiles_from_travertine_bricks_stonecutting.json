@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_travertine_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_travertine_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:travertine_tiles_from_travertine_bricks_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

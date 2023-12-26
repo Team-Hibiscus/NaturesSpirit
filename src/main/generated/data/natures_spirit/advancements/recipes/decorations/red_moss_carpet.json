@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_red_moss_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_red_moss_block"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:red_moss_carpet"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

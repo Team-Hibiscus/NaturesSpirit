@@ -11,7 +11,7 @@
               "condition": "minecraft:block_state_property",
               "block": "natures_spirit:pizza_block",
               "properties": {
-                "pizza_bites": 0
+                "pizza_bites": "0"
               }
             }
           ],
@@ -21,11 +21,6 @@
               "source": "block_entity",
               "function": "minecraft:copy_nbt",
               "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
                 {
                   "source":"pizza_bites",
                   "target": "BlockEntityTag.pizza_bites",
@@ -48,7 +43,7 @@
               "condition": "minecraft:block_state_property",
               "block": "natures_spirit:pizza_block",
               "properties": {
-                "pizza_bites": 1
+                "pizza_bites": "1"
               }
             }
           ],
@@ -58,11 +53,6 @@
               "source": "block_entity",
               "function": "minecraft:copy_nbt",
               "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
                 {
                   "source":"pizza_bites",
                   "target": "BlockEntityTag.pizza_bites",
@@ -85,7 +75,7 @@
               "condition": "minecraft:block_state_property",
               "block": "natures_spirit:pizza_block",
               "properties": {
-                "pizza_bites": 2
+                "pizza_bites": "2"
               }
             }
           ],
@@ -95,11 +85,6 @@
               "source": "block_entity",
               "function": "minecraft:copy_nbt",
               "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
                 {
                   "source":"pizza_bites",
                   "target": "BlockEntityTag.pizza_bites",
@@ -122,7 +107,7 @@
               "condition": "minecraft:block_state_property",
               "block": "natures_spirit:pizza_block",
               "properties": {
-                "pizza_bites": 3
+                "pizza_bites": "3"
               }
             }
           ],
@@ -131,11 +116,6 @@
               "source": "block_entity",
               "function": "minecraft:copy_nbt",
               "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
                 {
                   "source":"pizza_bites",
                   "target": "BlockEntityTag.pizza_bites",

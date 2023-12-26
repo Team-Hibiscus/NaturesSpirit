@@ -159,7 +159,7 @@ public class WoodSet {
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves()));
 
          if (this.hasDefaultSapling()) {
-            saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), configuredFeature, configuredFeature2);
+            saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), configuredFeature2, configuredFeature, Optional.empty());
             sapling = this.isSandy() ? createSandySapling(saplingGenerator) : createSapling(saplingGenerator);
             pottedSapling = createPottedSapling(this.getSapling());
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
@@ -177,7 +177,7 @@ public class WoodSet {
          RenderLayerHashMap.put(this.getName() + "_vines_plant", getWillowVinesPlant());
          CompostingChanceRegistry.INSTANCE.add(getWillowVines(), 0.3F);
 
-         saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), configuredFeature, configuredFeature2);
+         saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), configuredFeature2, configuredFeature, Optional.empty());
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_pink_sandstone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_pink_sandstone"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:cut_pink_sandstone_from_pink_sandstone_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

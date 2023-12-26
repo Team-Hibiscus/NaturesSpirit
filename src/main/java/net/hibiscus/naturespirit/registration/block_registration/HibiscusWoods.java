@@ -346,6 +346,22 @@ public class HibiscusWoods {
               Optional.of(HibiscusConfiguredFeatures.MAHOGANY_TREE)
       );
 
+   public static WoodSet SAXAUL = new WoodSet(
+           new Identifier(MOD_ID, "saxaul"),
+           MapColor.LIGHT_GRAY,
+           MapColor.LIGHT_GRAY,
+           MAHOGANY.getLeaves(),
+           MAHOGANY.getLog(),
+           MAHOGANY.getHangingSign(),
+           MAHOGANY.getChestBoatItem(),
+           MAHOGANY.getButton(),
+           MAHOGANY.getSapling(),
+           HibiscusBoatEntity.HibiscusBoat.SAXAUL,
+           WoodSet.WoodPreset.SANDY,
+           false,
+           HibiscusConfiguredFeatures.SAXAUL_TREE
+   );
+
 //   public static WoodSet BANYAN = new WoodSet(
 //           new Identifier(MOD_ID, "banyan"),
 //           MapColor.BROWN,

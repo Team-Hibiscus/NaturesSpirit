@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_mossy_cobbled_travertine",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_mossy_cobbled_travertine"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:mossy_cobbled_travertine_wall_from_mossy_cobbled_travertine_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

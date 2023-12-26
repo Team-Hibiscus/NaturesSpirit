@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_polished_travertine",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_polished_travertine"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:polished_travertine_slab_from_polished_travertine_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_carnation",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_carnation"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:red_dye_from_carnation"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

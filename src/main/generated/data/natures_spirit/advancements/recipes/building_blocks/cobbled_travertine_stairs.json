@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cobbled_travertine",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cobbled_travertine"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:cobbled_travertine_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

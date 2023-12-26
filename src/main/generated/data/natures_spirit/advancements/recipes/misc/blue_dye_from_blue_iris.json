@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_blue_iris",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_blue_iris"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:blue_dye_from_blue_iris"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

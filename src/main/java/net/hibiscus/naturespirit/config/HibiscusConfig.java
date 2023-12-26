@@ -27,7 +27,7 @@ public class HibiscusConfig {
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.3.0.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.4.0.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -62,6 +62,7 @@ public class HibiscusConfig {
             HibiscusBiomes.set_has_mahogany(biomes.get("has_mahogany").getAsBoolean());
             HibiscusBiomes.set_has_arid(biomes.get("has_arid").getAsBoolean());
             HibiscusBiomes.set_has_shrublands(biomes.get("has_shrublands").getAsBoolean());
+            HibiscusBiomes.set_has_steppe(biomes.get("has_steppe").getAsBoolean());
 
             terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
             terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
@@ -102,6 +103,7 @@ public class HibiscusConfig {
       NatureSpirit.LOGGER.info("has_mahogany = " + HibiscusBiomes.has_mahogany);
       NatureSpirit.LOGGER.info("has_arid = " + HibiscusBiomes.has_arid);
       NatureSpirit.LOGGER.info("has_shrublands = " + HibiscusBiomes.has_shrublands);
+      NatureSpirit.LOGGER.info("has_steppe = " + HibiscusBiomes.has_steppe);
 
       System.out.println("Thanks for viewing your messages");
    }
@@ -153,6 +155,7 @@ public class HibiscusConfig {
       biomesObject.addProperty("has_mahogany", true);
       biomesObject.addProperty("has_arid", true);
       biomesObject.addProperty("has_shrublands", true);
+      biomesObject.addProperty("has_steppe", true);
       return biomesObject;
    }
 }

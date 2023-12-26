@@ -53,6 +53,12 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> SCORCHED_DUNES = register("scorched_dunes");
    public static final RegistryKey <Biome> FLOWERING_SHRUBLAND = register("flowering_shrubland");
    public static final RegistryKey <Biome> SHRUBLAND = register("shrubland");
+   public static final RegistryKey <Biome> DESERT_STEPPE = register("desert_steppe");
+   public static final RegistryKey <Biome> SHRUBBY_STEPPE = register("shrubby_steppe");
+   public static final RegistryKey <Biome> WOODY_STEPPE = register("woody_steppe");
+   public static final RegistryKey <Biome> RED_PEAKS = register("red_peaks");
+   public static final RegistryKey <Biome> SLEETED_SLOPES = register("sleeted_slopes");
+   public static final RegistryKey <Biome> MEADOW_STEPPE = register("meadow_steppe");
 
 
    public static boolean has_sugi_forest;
@@ -75,6 +81,7 @@ public class HibiscusBiomes {
    public static boolean has_mahogany;
    public static boolean has_arid;
    public static boolean has_shrublands;
+   public static boolean has_steppe;
 
    public static void set_has_sugi_forest(Boolean bl) {
       has_sugi_forest = bl;
@@ -152,6 +159,9 @@ public class HibiscusBiomes {
    }
    public static void set_has_shrublands(Boolean bl) {
       has_shrublands = bl;
+   }
+   public static void set_has_steppe(Boolean bl) {
+      has_steppe = bl;
    }
 
    private static RegistryKey <Biome> register(String name) {

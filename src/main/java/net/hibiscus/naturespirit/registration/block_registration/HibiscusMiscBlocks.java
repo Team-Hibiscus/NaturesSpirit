@@ -28,6 +28,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ColorCode;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
@@ -651,8 +653,57 @@ public class HibiscusMiscBlocks {
    );
 
 
-   public static final StoneSet TRAVERTINE = new StoneSet(new Identifier(MOD_ID, "travertine"), MapColor.LIGHT_GRAY, Items.POLISHED_ANDESITE_SLAB, Items.ANDESITE, .8F, true, false, true, true);
+   public static final StoneSet TRAVERTINE = new StoneSet(new Identifier(MOD_ID, "travertine"), MapColor.LIGHT_GRAY, Items.POLISHED_ANDESITE_SLAB, Items.ANDESITE, 1.5F, true, false, true, true);
+   public static final StoneSet CHERT = new StoneSet(new Identifier(MOD_ID, "chert"), MapColor.OAK_TAN, TRAVERTINE.getTilesSlab().asItem(), TRAVERTINE.getBase().asItem(), .9F, false, false, false, true, true);
 
+   public static final Block CHERT_GOLD_ORE = registerBlock("chert_gold_ore",
+           new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.GOLD_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.GOLD_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_IRON_ORE = registerBlock("chert_iron_ore",
+           new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.IRON_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.IRON_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_COAL_ORE = registerBlock("chert_coal_ore",
+           new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.copyShallow(Blocks.COAL_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.COAL_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_LAPIS_ORE = registerBlock("chert_lapis_ore",
+           new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copyShallow(Blocks.LAPIS_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.LAPIS_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_DIAMOND_ORE = registerBlock("chert_diamond_ore",
+           new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.DIAMOND_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.DIAMOND_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_REDSTONE_ORE = registerBlock("chert_redstone_ore",
+           new RedstoneOreBlock(AbstractBlock.Settings.copyShallow(Blocks.REDSTONE_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.REDSTONE_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_EMERALD_ORE = registerBlock("chert_emerald_ore",
+           new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.EMERALD_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.EMERALD_ORE,
+           ItemGroups.NATURAL
+   );
+   public static final Block CHERT_COPPER_ORE = registerBlock("chert_copper_ore",
+           new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.COPPER_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           Items.COPPER_ORE,
+           ItemGroups.NATURAL
+   );
 
 
    public static BlockSetType PAPER_BLOCK_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier(MOD_ID, "paper"));

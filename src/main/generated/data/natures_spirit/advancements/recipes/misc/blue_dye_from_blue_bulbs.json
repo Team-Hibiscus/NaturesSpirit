@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_blue_bulbs",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_blue_bulbs"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:blue_dye_from_blue_bulbs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

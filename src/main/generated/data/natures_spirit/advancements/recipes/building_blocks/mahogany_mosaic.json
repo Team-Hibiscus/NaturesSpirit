@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_mahogany_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_mahogany_planks"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:mahogany_mosaic"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

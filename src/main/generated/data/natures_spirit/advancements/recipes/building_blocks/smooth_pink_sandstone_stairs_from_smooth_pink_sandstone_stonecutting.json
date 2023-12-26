@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_smooth_pink_sandstone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_smooth_pink_sandstone"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:smooth_pink_sandstone_stairs_from_smooth_pink_sandstone_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

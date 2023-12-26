@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_snapdragon",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_snapdragon"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:pink_dye_from_snapdragon"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

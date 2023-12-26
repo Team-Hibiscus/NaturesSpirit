@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_hibiscus",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_hibiscus"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:red_dye_from_hibiscus"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

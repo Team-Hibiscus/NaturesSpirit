@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_ruby_blossoms",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_ruby_blossoms"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:red_dye_from_ruby_blossoms"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_foxglove",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_foxglove"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:purple_dye_from_foxglove"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

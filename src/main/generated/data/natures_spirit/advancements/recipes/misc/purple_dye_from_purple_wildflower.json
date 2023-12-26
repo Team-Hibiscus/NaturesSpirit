@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_purple_wildflower",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_purple_wildflower"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:purple_dye_from_purple_wildflower"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

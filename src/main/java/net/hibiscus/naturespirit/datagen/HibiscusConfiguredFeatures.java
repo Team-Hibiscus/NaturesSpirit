@@ -95,6 +95,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> MAHOGANY_TREE_SPAWN = registerKey("mahogany_tree_spawn");
 //   public static final RegistryKey <ConfiguredFeature <?, ?>> BANYAN_TREE = registerKey("banyan_tree");
 //   public static final RegistryKey <ConfiguredFeature <?, ?>> BANYAN_TREE_SPAWN = registerKey("banyan_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> SAXAUL_TREE = registerKey("saxaul_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> SAXAUL_TREE_SPAWN = registerKey("saxaul_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE = registerKey("coconut_tree");
@@ -514,6 +516,21 @@ public class HibiscusConfiguredFeatures {
 //                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.BANYAN_CHECKED)
 //              )
 //      );
+
+      register(context, SAXAUL_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.SAXAUL.getLog()),
+              new SaxaulTrunkPlacer(3, 0, 2, UniformIntProvider.create(4, 6), .65F, UniformIntProvider.create(3, 6), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              BlockStateProvider.of(HibiscusWoods.SAXAUL.getLeaves()),
+              new RandomSpreadFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 20),
+              new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(1))
+      ).ignoreVines().build());
+
+      register(context,
+              SAXAUL_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SAXAUL_CHECKED), 0.325f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SAXAUL_CHECKED)
+              )
+      );
 
       register(context, CEDAR_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.CEDAR.getLog()),
               new PaloVerdeTrunkPlacer(6, 1, 3, UniformIntProvider.create(3, 5), .85F, UniformIntProvider.create(2, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),

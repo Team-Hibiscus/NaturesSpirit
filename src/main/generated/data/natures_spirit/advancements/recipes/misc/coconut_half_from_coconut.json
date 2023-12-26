@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_coconut",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_coconut"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:coconut_half_from_coconut"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

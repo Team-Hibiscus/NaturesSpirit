@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_coconut_leaves",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_coconut_leaves"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:coconut_thatch"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
