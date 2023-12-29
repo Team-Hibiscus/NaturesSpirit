@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:travertine_tile_stairs_from_travertine_tiles_stonecutting"
+        "recipe": "natures_spirit:travertine_tile_stairs_from_travertine_tiles_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:travertine_tile_stairs_from_travertine_tiles_stonecutting"
+      "natures_spirit:travertine_tile_stairs_from_travertine_tiles_stonecutting"
     ]
   }
 }

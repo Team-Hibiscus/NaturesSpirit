@@ -81,7 +81,7 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "natures_spirit:patch_tall_grass_2",
       "natures_spirit:patch_tall_sedge_grass",
       "minecraft:flower_swamp",
       "minecraft:patch_grass_normal",

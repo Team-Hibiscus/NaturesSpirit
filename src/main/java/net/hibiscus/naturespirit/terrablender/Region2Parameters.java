@@ -47,10 +47,10 @@ public class Region2Parameters {
    private final RegistryKey <Biome>[][] nearMountainBiomes;
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
-   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_STEPPE : BiomeKeys.FOREST;
-   RegistryKey<Biome> nearBiomeForestCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.MEADOW_STEPPE : BiomeKeys.FOREST;
-   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_STEPPE : BiomeKeys.TAIGA;
-   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_STEPPE : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_HIGHLANDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> nearBiomeForestCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.BLOOMING_HIGHLANDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_HIGHLANDS : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.WOODY_HIGHLANDS : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
    RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_steppe ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
 
    RegistryKey<Biome> commonPlains = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.PLAINS;
@@ -62,12 +62,12 @@ public class Region2Parameters {
    RegistryKey<Biome> mountainMeadow = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.MEADOW;
    RegistryKey<Biome> windsweptHills = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_HILLS;
    RegistryKey<Biome> windsweptForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_FOREST;
-   RegistryKey<Biome> plainsCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.SHRUBBY_STEPPE : BiomeKeys.PLAINS;
-   RegistryKey<Biome> meadowCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.MEADOW_STEPPE : BiomeKeys.MEADOW;
-   RegistryKey<Biome> nullCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.DESERT_STEPPE : null;
-   RegistryKey<Biome> cherryCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.DESERT_STEPPE : BiomeKeys.CHERRY_GROVE;
+   RegistryKey<Biome> plainsCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.SHRUBBY_HIGHLANDS : BiomeKeys.PLAINS;
+   RegistryKey<Biome> meadowCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.BLOOMING_HIGHLANDS : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nullCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.ARID_HIGHLANDS : null;
+   RegistryKey<Biome> cherryCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.ARID_HIGHLANDS : BiomeKeys.CHERRY_GROVE;
    RegistryKey[] windsweptCold = HibiscusBiomes.has_steppe ?
-           new RegistryKey[]{HibiscusBiomes.DESERT_STEPPE, HibiscusBiomes.DESERT_STEPPE, HibiscusBiomes.SHRUBBY_STEPPE, HibiscusBiomes.SHRUBBY_STEPPE, HibiscusBiomes.SHRUBBY_STEPPE} :
+           new RegistryKey[]{HibiscusBiomes.ARID_HIGHLANDS, HibiscusBiomes.ARID_HIGHLANDS, HibiscusBiomes.SHRUBBY_HIGHLANDS, HibiscusBiomes.SHRUBBY_HIGHLANDS, HibiscusBiomes.SHRUBBY_HIGHLANDS} :
            new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
    public Region2Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
@@ -745,10 +745,10 @@ public class Region2Parameters {
       }
    }
    private RegistryKey <Biome> getWetlandType(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      if(temperature == 0 || (temperature == 2 && HibiscusBiomes.has_sugi_forest)) {
+      if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       }
-      else if(temperature == 1 && HibiscusBiomes.has_wisteria_forest) {
+      else if(temperature >= 2 && temperature <= 3  && humidity < 3 && HibiscusBiomes.has_wisteria_forest) {
          return HibiscusBiomes.WISTERIA_FOREST;
       }
       else if(temperature == 3 && humidity > 2 && HibiscusBiomes.has_bamboo_wetlands) {
@@ -765,7 +765,7 @@ public class Region2Parameters {
       if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       } else
-      if(temperature == 1 && HibiscusBiomes.has_wisteria_forest) {
+      if(temperature == 3 && humidity < 3 && HibiscusBiomes.has_wisteria_forest) {
          return HibiscusBiomes.WISTERIA_FOREST;
       } else
       if(temperature == 2 && HibiscusBiomes.has_sugi_forest) {
@@ -823,10 +823,10 @@ public class Region2Parameters {
    }
    private RegistryKey <Biome> getSteppeBiome(int humidity) {
       if(humidity < 3) {
-         return HibiscusBiomes.DESERT_STEPPE;
+         return HibiscusBiomes.ARID_HIGHLANDS;
       }
       else {
-         return humidity < 4 ? HibiscusBiomes.SHRUBBY_STEPPE : HibiscusBiomes.WOODY_STEPPE;
+         return humidity < 4 ? HibiscusBiomes.SHRUBBY_HIGHLANDS : HibiscusBiomes.WOODY_HIGHLANDS;
       }
    }
 

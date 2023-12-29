@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye_from_bleeding_heart"
+        "recipe": "natures_spirit:pink_dye_from_bleeding_heart"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye_from_bleeding_heart"
+      "natures_spirit:pink_dye_from_bleeding_heart"
     ]
   }
 }

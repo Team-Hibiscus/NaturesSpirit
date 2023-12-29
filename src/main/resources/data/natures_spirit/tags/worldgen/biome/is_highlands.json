@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "natures_spirit:arid_highlands",
+    "natures_spirit:shrubby_highlands",
+    "natures_spirit:woody_highlands",
+    "natures_spirit:sleeted_slopes",
+    "natures_spirit:red_peaks",
+    "natures_spirit:blooming_highlands"
+  ]
+}

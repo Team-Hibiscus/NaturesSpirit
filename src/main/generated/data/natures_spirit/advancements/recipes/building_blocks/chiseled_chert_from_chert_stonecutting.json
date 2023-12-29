@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:chiseled_chert_from_chert_stonecutting"
+        "recipe": "natures_spirit:chiseled_chert_from_chert_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:chiseled_chert_from_chert_stonecutting"
+      "natures_spirit:chiseled_chert_from_chert_stonecutting"
     ]
   }
 }

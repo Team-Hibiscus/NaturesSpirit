@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye_from_dwarf_blossoms"
+        "recipe": "natures_spirit:pink_dye_from_dwarf_blossoms"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye_from_dwarf_blossoms"
+      "natures_spirit:pink_dye_from_dwarf_blossoms"
     ]
   }
 }

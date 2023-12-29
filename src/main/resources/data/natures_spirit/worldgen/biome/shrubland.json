@@ -75,8 +75,8 @@
     [
       "minecraft:glow_lichen",
       "natures_spirit:patch_tall_grass_wooded_drylands",
-      "minecraft:flower_warm",
-      "minecraft:patch_grass_savanna",
+      "natures_spirit:flower_warm",
+      "natures_spirit:patch_grass_warm",
       "natures_spirit:acacia_bush_dense_placed",
       "natures_spirit:travertine_block_feature",
       "natures_spirit:patch_melic_grass",

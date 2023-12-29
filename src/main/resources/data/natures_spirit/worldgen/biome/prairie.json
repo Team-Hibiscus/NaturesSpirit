@@ -86,8 +86,8 @@
       "natures_spirit:patch_tall_frigid_grass_2",
       "natures_spirit:patch_frigid_grass",
       "natures_spirit:fir_placed",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_tall_grass_2",
+      "natures_spirit:patch_grass_field",
       "natures_spirit:flower_fir_placed",
       "minecraft:forest_flowers",
       "minecraft:patch_sugar_cane"

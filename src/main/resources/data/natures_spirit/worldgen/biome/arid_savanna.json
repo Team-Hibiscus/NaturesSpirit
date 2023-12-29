@@ -23,7 +23,8 @@
   },
   "features": [
     [
-      "natures_spirit:chert_cliff"
+      "natures_spirit:chert_cliff",
+      "natures_spirit:chert_on_orange_terracotta"
     ],
     [
       "minecraft:lake_lava_underground",
@@ -40,6 +41,7 @@
     [],
     [
       "minecraft:ore_dirt",
+      "natures_spirit:ores/ore_stone_transition",
       "minecraft:ore_gravel",
       "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
@@ -79,10 +81,10 @@
       "minecraft:trees_savanna",
       "natures_spirit:trees_savanna_2",
       "natures_spirit:patch_tall_grass_wooded_drylands",
-      "minecraft:flower_warm",
+      "natures_spirit:flower_warm",
       "natures_spirit:rooted_desert_turnip_placed",
       "natures_spirit:patch_dense_drylands_grass",
-      "minecraft:patch_grass_savanna",
+      "natures_spirit:patch_grass_warm",
       "natures_spirit:acacia_bush_placed",
       "minecraft:patch_dead_bush_2",
       "minecraft:brown_mushroom_normal",

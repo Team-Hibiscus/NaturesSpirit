@@ -80,10 +80,10 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "natures_spirit:patch_tall_grass_2",
       "natures_spirit:olive_placed",
       "natures_spirit:dense_cypress_placed",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_grass_field",
       "natures_spirit:flower_cypress_placed",
       "minecraft:forest_flowers",
       "minecraft:patch_sugar_cane",

@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.util;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -19,6 +20,14 @@ public class HibiscusTags {
 
       private static TagKey <Item> createTag(String name) {
          return TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name));
+      }
+   }
+   public static class EntityTypes {
+
+      public static final TagKey <EntityType<?>> CANT_SUCCULENT_SLOWED = createTag("cant_succulent_slowed");
+
+      private static TagKey <EntityType<?>> createTag(String name) {
+         return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NatureSpirit.MOD_ID, name));
       }
    }
 

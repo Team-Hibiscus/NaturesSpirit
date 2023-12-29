@@ -1,0 +1,29 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "#plant"
+	},
+	"elements": [
+		{
+			"from": [0, 6, 3],
+			"to": [16, 6, 19],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 8, 17]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#plant"},
+				"down": {"uv": [16, 16, 0, 0], "texture": "#plant"}
+			}
+		},
+		{
+			"from": [0, 10, 3],
+			"to": [16, 10, 19],
+			"shade": false,
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 8, 17]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#plant"},
+				"down": {"uv": [16, 16, 0, 0], "texture": "#plant"}
+			}
+		}
+	]
+}

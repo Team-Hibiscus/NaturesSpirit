@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:chert_brick_stairs_from_chert_bricks_stonecutting"
+        "recipe": "natures_spirit:chert_brick_stairs_from_chert_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:chert_brick_stairs_from_chert_bricks_stonecutting"
+      "natures_spirit:chert_brick_stairs_from_chert_bricks_stonecutting"
     ]
   }
 }

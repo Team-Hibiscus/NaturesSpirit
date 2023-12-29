@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:coconut_half_from_coconut"
+        "recipe": "natures_spirit:coconut_half_from_coconut"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:coconut_half_from_coconut"
+      "natures_spirit:coconut_half_from_coconut"
     ]
   }
 }

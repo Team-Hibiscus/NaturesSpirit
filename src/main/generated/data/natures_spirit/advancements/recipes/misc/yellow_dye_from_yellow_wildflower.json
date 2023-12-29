@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:yellow_dye_from_yellow_wildflower"
+        "recipe": "natures_spirit:yellow_dye_from_yellow_wildflower"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:yellow_dye_from_yellow_wildflower"
+      "natures_spirit:yellow_dye_from_yellow_wildflower"
     ]
   }
 }

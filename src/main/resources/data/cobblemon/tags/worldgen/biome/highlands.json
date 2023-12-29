@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:alpine_highlands"
+    "natures_spirit:alpine_highlands",
+    "#natures_spirit:is_highlands"
   ]
 }

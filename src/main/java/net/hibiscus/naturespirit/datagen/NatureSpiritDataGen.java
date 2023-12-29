@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.*;
@@ -14,13 +13,13 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlo
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
-import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -31,7 +30,6 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.*;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
-import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -42,9 +40,7 @@ import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.resource.featuretoggle.FeatureFlag;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
-import net.minecraft.resource.featuretoggle.FeatureManager;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
@@ -58,12 +54,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
 import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
 import static net.minecraft.data.client.BlockStateModelGenerator.*;
+import static net.minecraft.data.client.TexturedModel.CORAL_FAN;
 import static net.minecraft.data.client.TexturedModel.makeFactory;
 import static net.minecraft.data.family.BlockFamilies.register;
 
@@ -372,6 +368,22 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(RED_MOSS_CARPET);
          this.addDrop(HibiscusMiscBlocks.SANDY_SOIL);
 
+         this.addDrop(ORNATE_SUCCULENT);
+         this.addDrop(DROWSY_SUCCULENT);
+         this.addDrop(AUREATE_SUCCULENT);
+         this.addDrop(SAGE_SUCCULENT);
+         this.addDrop(FOAMY_SUCCULENT);
+         this.addDrop(IMPERIAL_SUCCULENT);
+         this.addDrop(REGAL_SUCCULENT);
+
+         addPottedPlantDrops(POTTED_ORNATE_SUCCULENT);
+         addPottedPlantDrops(POTTED_DROWSY_SUCCULENT);
+         addPottedPlantDrops(POTTED_AUREATE_SUCCULENT);
+         addPottedPlantDrops(POTTED_SAGE_SUCCULENT);
+         addPottedPlantDrops(POTTED_FOAMY_SUCCULENT);
+         addPottedPlantDrops(POTTED_IMPERIAL_SUCCULENT);
+         addPottedPlantDrops(POTTED_REGAL_SUCCULENT);
+
          this.addDrop(PINK_SAND);
          this.addDrop(PINK_SANDSTONE);
          this.addDrop(PINK_SANDSTONE_SLAB, this::slabDrops);
@@ -564,6 +576,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       private static final Model TALL_CROSS = block("tall_cross", TextureKey.CROSS);
       private static final Model FLOWER_POT_TALL_CROSS = block("flower_pot_tall_cross", TextureKey.PLANT);
       private static final Model FLOWER_POT_LARGE_CROSS = block("flower_pot_large_cross", TextureKey.PLANT);
+      private static final Model SUCCULENT = block("succulent", TextureKey.PLANT);
+      private static final Model SUCCULENT_WALL = block("succulent_wall", TextureKey.PLANT);
+      private static final Model FLOWER_POT_SUCCULENT = block("flower_pot_succulent", TextureKey.PLANT);
       private static final Model FLOWER_POT_TINTED_LARGE_CROSS = block("tinted_flower_pot_large_cross", TextureKey.PLANT);
       private static final Model CROP = block("crop", TextureKey.CROP);
       private static final Model PAPER_LANTERN = block("template_paper_lantern", TextureKey.TOP, TextureKey.SIDE);
@@ -573,6 +588,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
 
+     public static final TexturedModel.Factory TEXTURED_SUCCULENT = makeFactory(TextureMap::plant, SUCCULENT);
      public static final TexturedModel.Factory TEMPLATE_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, PAPER_LANTERN);
      public static final TexturedModel.Factory TEMPLATE_HANGING_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, HANGING_PAPER_LANTERN);
 
@@ -905,6 +921,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier));
       }
 
+      public final void generateSucculent(Block block, Block wall, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
+         TexturedModel texturedModel = TEXTURED_SUCCULENT.get(block);
+         TextureMap textureMap = TextureMap.plant(block);
+         Identifier identifier = texturedModel.upload(block, blockStateModelGenerators.modelCollector);
+         blockStateModelGenerators.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, identifier));
+         Identifier identifier2 = SUCCULENT_WALL.upload(wall, texturedModel.getTextures(), blockStateModelGenerators.modelCollector);
+         blockStateModelGenerators.blockStateCollector.accept(VariantsBlockStateSupplier.create(wall, BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+         blockStateModelGenerators.registerItemModel(block);
+         Identifier identifier3 = FLOWER_POT_SUCCULENT.upload(flowerPot, textureMap, blockStateModelGenerators.modelCollector);
+         blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier3));
+      }
+
       public final void generateTintedLargeFlower(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
          registerSpecificFlowerItemModel(block, blockStateModelGenerators);
          registerTintedTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
@@ -1209,6 +1237,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerSingleton(CHERT_IRON_ORE, TexturedModel.CUBE_ALL);
          blockStateModelGenerator.registerSingleton(CHERT_LAPIS_ORE, TexturedModel.CUBE_ALL);
          blockStateModelGenerator.registerSingleton(CHERT_REDSTONE_ORE, TexturedModel.CUBE_ALL);
+
+
+         generateSucculent(ORNATE_SUCCULENT, ORNATE_WALL_SUCCULENT, POTTED_ORNATE_SUCCULENT, blockStateModelGenerator);
+         generateSucculent(DROWSY_SUCCULENT, DROWSY_WALL_SUCCULENT, POTTED_DROWSY_SUCCULENT, blockStateModelGenerator);
+         generateSucculent(AUREATE_SUCCULENT, AUREATE_WALL_SUCCULENT, POTTED_AUREATE_SUCCULENT, blockStateModelGenerator);
+         generateSucculent(SAGE_SUCCULENT, SAGE_WALL_SUCCULENT, POTTED_SAGE_SUCCULENT, blockStateModelGenerator);
+         generateSucculent(FOAMY_SUCCULENT, FOAMY_WALL_SUCCULENT, POTTED_FOAMY_SUCCULENT, blockStateModelGenerator);
+         generateSucculent(IMPERIAL_SUCCULENT, IMPERIAL_WALL_SUCCULENT, POTTED_IMPERIAL_SUCCULENT, blockStateModelGenerator);
+         generateSucculent(REGAL_SUCCULENT, REGAL_WALL_SUCCULENT, POTTED_REGAL_SUCCULENT, blockStateModelGenerator);
       }
 
       @Override public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -1403,6 +1440,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          generateBlockTranslations(HibiscusWoods.XERIC_THATCH_STAIRS, translationBuilder);
          generateBlockTranslations(HibiscusWoods.XERIC_THATCH_CARPET, translationBuilder);
 
+         generateBlockTranslations(ORNATE_SUCCULENT, translationBuilder);
+         generateBlockTranslations(DROWSY_SUCCULENT, translationBuilder);
+         generateBlockTranslations(AUREATE_SUCCULENT, translationBuilder);
+         generateBlockTranslations(SAGE_SUCCULENT, translationBuilder);
+         generateBlockTranslations(FOAMY_SUCCULENT, translationBuilder);
+         generateBlockTranslations(IMPERIAL_SUCCULENT, translationBuilder);
+         generateBlockTranslations(REGAL_SUCCULENT, translationBuilder);
+
          generateBlockTranslations(PINK_SAND, translationBuilder);
          generateBlockTranslations(PINK_SANDSTONE, translationBuilder);
          generateBlockTranslations(PINK_SANDSTONE_SLAB, translationBuilder);
@@ -1474,12 +1519,21 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       public NatureSpiritRecipeGenerator(FabricDataOutput output) {
          super(output);
       }
-      private static final FeatureManager.Builder NS_UNIVERSE = new FeatureManager.Builder("natures_spirit");
-      private static final FeatureFlag NS_FEATURES = NS_UNIVERSE.addFlag(new Identifier(MOD_ID, "features"));
       public static final BlockFamily PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.PINK_SANDSTONE).wall(PINK_SANDSTONE_WALL).stairs(PINK_SANDSTONE_STAIRS).slab(PINK_SANDSTONE_SLAB).chiseled(CHISELED_PINK_SANDSTONE).cut(CUT_PINK_SANDSTONE).noGenerateModels().noGenerateRecipes().build();
       public static final BlockFamily CUT_PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.CUT_PINK_SANDSTONE).slab(CUT_PINK_SANDSTONE_SLAB).noGenerateModels().build();
       public static final BlockFamily SMOOTH_PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE).slab(SMOOTH_PINK_SANDSTONE_SLAB).stairs(SMOOTH_PINK_SANDSTONE_STAIRS).noGenerateModels().build();
 
+
+      public static void offerShapelessRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, @Nullable String group, int outputCount) {
+         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount).input(input).group(group).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input)));
+      }
+      public static void offerStonecuttingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input) {
+         offerStonecuttingRecipe(exporter, category, output, input, 1);
+      }
+
+      public static void offerStonecuttingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input, int count) {
+         SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(input), category, output, count).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input) + "_stonecutting"));
+      }
 
       private void generateWoodRecipes(HashMap <String, WoodSet> woods, RecipeExporter consumer) {
          for(WoodSet woodSet : woods.values()) {
@@ -1563,13 +1617,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                                             .input(stoneSet.getCobbled()).input(Blocks.MOSS_BLOCK)
                                             .group("mossy_cobblestone")
                                             .criterion("has_moss_block", conditionsFromItem(Blocks.MOSS_BLOCK))
-                                            .offerTo(exporter, convertBetween(stoneSet.getMossyCobbled(), Blocks.MOSS_BLOCK));
+                                            .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyCobbled(), Blocks.MOSS_BLOCK)));
                   ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbled())
                                             .input(stoneSet.getCobbled())
                                             .input(Blocks.VINE)
                                             .group("mossy_cobblestone")
                                             .criterion("has_vine", conditionsFromItem(Blocks.VINE))
-                                            .offerTo(exporter, convertBetween(stoneSet.getMossyCobbled(), Blocks.VINE));
+                                            .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyCobbled(), Blocks.VINE)));
                   offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbledSlab(), stoneSet.getMossyCobbled(), 2);
                   offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbledStairs(), stoneSet.getMossyCobbled());
                   offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getMossyCobbledWall(), stoneSet.getMossyCobbled());
@@ -1619,13 +1673,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                                          .input(Blocks.VINE)
                                          .group("mossy_stone_bricks")
                                          .criterion("has_vine", conditionsFromItem(Blocks.VINE))
-                                         .offerTo(exporter, convertBetween(stoneSet.getMossyBricks(), Blocks.VINE));
+                                         .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyBricks(), Blocks.VINE)));
                ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricks())
                                          .input(stoneSet.getBricks())
                                          .input(Blocks.MOSS_BLOCK)
                                          .group("mossy_stone_bricks")
                                          .criterion("has_moss_block", conditionsFromItem(Blocks.MOSS_BLOCK))
-                                         .offerTo(exporter, convertBetween(stoneSet.getMossyBricks(), Blocks.MOSS_BLOCK));
+                                         .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyBricks(), Blocks.MOSS_BLOCK)));
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricksSlab(), stoneSet.getMossyBricks(), 2);
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricksStairs(), stoneSet.getMossyBricks());
                offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getMossyBricksWall(), stoneSet.getMossyBricks());
@@ -1647,6 +1701,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       public static void offer2x2CompactingTagRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, TagKey<Item> input) {
          ShapedRecipeJsonBuilder.create(category, output, 1).input('#', input).pattern("##").pattern("##").criterion("has_evergreen_leaves", conditionsFromTag(input)).offerTo(exporter);
+      }
+
+      @Override 	protected Identifier getRecipeIdentifier(Identifier identifier) {
+         return new Identifier(MOD_ID, identifier.getPath());
       }
 
       @Override public void generate(RecipeExporter exporter) {
@@ -1718,6 +1776,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          offerShapelessRecipe(exporter, Items.BROWN_DYE, HibiscusMiscBlocks.CATTAIL, "brown_dye", 2);
          offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
          offerShapelessRecipe(exporter, Items.WHITE_DYE, HELVOLA, "white_dye", 1);
+         offerShapelessRecipe(exporter, Items.RED_DYE, ORNATE_SUCCULENT, "red_dye", 1);
+         offerShapelessRecipe(exporter, Items.LIME_DYE, DROWSY_SUCCULENT, "lime_dye", 1);
+         offerShapelessRecipe(exporter, Items.YELLOW_DYE, AUREATE_SUCCULENT, "yellow_dye", 1);
+         offerShapelessRecipe(exporter, Items.GREEN_DYE, SAGE_SUCCULENT, "green_dye", 1);
+         offerShapelessRecipe(exporter, Items.LIGHT_BLUE_DYE, FOAMY_SUCCULENT, "light_blue_dye", 1);
+         offerShapelessRecipe(exporter, Items.PURPLE_DYE, IMPERIAL_SUCCULENT, "purple_dye", 1);
+         offerShapelessRecipe(exporter, Items.PINK_DYE, REGAL_SUCCULENT, "pink_dye", 1);
          offerCompactingRecipe(exporter, RecipeCategory.FOOD, HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, HibiscusMiscBlocks.DESERT_TURNIP, "desert_turnip");
          offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.WHITE_CHALK, HibiscusMiscBlocks.CHALK_POWDER);
 
@@ -1725,7 +1790,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          offerShapelessRecipe(exporter, HibiscusWoods.YOUNG_COCONUT_HALF, HibiscusWoods.YOUNG_COCONUT_BLOCK, "coconut_half", 2);
          offerShapelessRecipe(exporter, Items.BOWL, HibiscusWoods.COCONUT_SHELL, "bowl", 1);
          offerShapelessRecipe(exporter, Items.BOWL, HibiscusWoods.YOUNG_COCONUT_SHELL, "bowl", 1);
-         CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(HibiscusTags.Items.COCONUT_ITEMS), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 125).criterion("has_coconut", conditionsFromTag(HibiscusTags.Items.COCONUT_ITEMS)).offerTo(exporter);
+         CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(HibiscusTags.Items.COCONUT_ITEMS), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 125).criterion("has_coconut", conditionsFromTag(HibiscusTags.Items.COCONUT_ITEMS)).offerTo(exporter, new Identifier(MOD_ID, "charcoal_from_coconuts"));
 
 
          generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY, FeatureSet.of(FeatureFlags.VANILLA));
@@ -1943,7 +2008,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  HibiscusWoods.XERIC_THATCH_CARPET,
                  HibiscusWoods.XERIC_THATCH_SLAB,
                  RED_MOSS_BLOCK,
-                 RED_MOSS_CARPET
+                 RED_MOSS_CARPET, ORNATE_SUCCULENT, AUREATE_SUCCULENT, SAGE_SUCCULENT, FOAMY_SUCCULENT, IMPERIAL_SUCCULENT, REGAL_SUCCULENT
          );
          getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(
                  HibiscusMiscBlocks.SCORCHED_GRASS,
@@ -1986,7 +2051,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                  LARGE_LUSH_FERN,
                  LUSH_FERN,
                  TALL_MELIC_GRASS,
-                 MELIC_GRASS
+                 MELIC_GRASS, AUREATE_SUCCULENT, SAGE_SUCCULENT, FOAMY_SUCCULENT, IMPERIAL_SUCCULENT, REGAL_SUCCULENT
          );
          getOrCreateTagBuilder(BlockTags.SAND).add(PINK_SAND, SANDY_SOIL);
          getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);
@@ -2003,7 +2068,22 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH_SLAB);
          getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
          getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
-         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(POTTED_MELIC_GRASS, POTTED_FLAXEN_FERN, POTTED_FRIGID_GRASS, POTTED_SHIITAKE_MUSHROOM, POTTED_BEACH_GRASS, POTTED_SEDGE_GRASS, POTTED_SCORCHED_GRASS, POTTED_OAT_GRASS, POTTED_LUSH_FERN);
+         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(
+                 POTTED_MELIC_GRASS,
+                 POTTED_FLAXEN_FERN,
+                 POTTED_FRIGID_GRASS,
+                 POTTED_SHIITAKE_MUSHROOM,
+                 POTTED_BEACH_GRASS,
+                 POTTED_SEDGE_GRASS,
+                 POTTED_SCORCHED_GRASS,
+                 POTTED_OAT_GRASS,
+                 POTTED_LUSH_FERN,
+                 POTTED_ORNATE_SUCCULENT,
+                 POTTED_DROWSY_SUCCULENT,
+                 POTTED_AUREATE_SUCCULENT,
+                 POTTED_SAGE_SUCCULENT,
+                 POTTED_FOAMY_SUCCULENT,
+                 POTTED_IMPERIAL_SUCCULENT);
          getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(SHIITAKE_MUSHROOM);
          getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(SHIITAKE_MUSHROOM, SHIITAKE_MUSHROOM_BLOCK, DESERT_TURNIP_BLOCK, DESERT_TURNIP_ROOT_BLOCK, DESERT_TURNIP_STEM, PAPER_BLOCK, PAPER_PANEL, PAPER_DOOR, PAPER_SIGN, PAPER_WALL_SIGN, PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, FRAMED_PAPER_BLOCK, FRAMED_PAPER_PANEL, FRAMED_PAPER_DOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_BLOCK, BLOOMING_PAPER_DOOR, BLOOMING_PAPER_TRAPDOOR, BLOOMING_PAPER_PANEL);
          getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(PAPER_HANGING_SIGN);

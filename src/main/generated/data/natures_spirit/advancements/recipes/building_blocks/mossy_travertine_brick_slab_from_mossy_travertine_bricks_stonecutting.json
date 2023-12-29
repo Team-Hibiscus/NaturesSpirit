@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mossy_travertine_brick_slab_from_mossy_travertine_bricks_stonecutting"
+        "recipe": "natures_spirit:mossy_travertine_brick_slab_from_mossy_travertine_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mossy_travertine_brick_slab_from_mossy_travertine_bricks_stonecutting"
+      "natures_spirit:mossy_travertine_brick_slab_from_mossy_travertine_bricks_stonecutting"
     ]
   }
 }

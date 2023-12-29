@@ -407,6 +407,30 @@ public class HibiscusMiscBlocks {
            Blocks.LARGE_FERN,
            0.4f
    );
+
+   public static final Block ORNATE_SUCCULENT = registerPlantBlock("ornate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).noCollision().breakInstantly()));
+   public static final Block DROWSY_SUCCULENT = registerPlantBlock("drowsy_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).noCollision().breakInstantly()));
+   public static final Block AUREATE_SUCCULENT = registerPlantBlock("aureate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).noCollision().breakInstantly()));
+   public static final Block SAGE_SUCCULENT = registerPlantBlock("sage_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).noCollision().breakInstantly()));
+   public static final Block FOAMY_SUCCULENT = registerPlantBlock("foamy_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).noCollision().breakInstantly()));
+   public static final Block IMPERIAL_SUCCULENT = registerPlantBlock("imperial_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).noCollision().breakInstantly()));
+   public static final Block REGAL_SUCCULENT = registerPlantBlock("regal_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).noCollision().breakInstantly()));
+   public static final Block ORNATE_WALL_SUCCULENT = registerPlantBlock("ornate_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).noCollision().breakInstantly().dropsLike(ORNATE_SUCCULENT)));
+   public static final Block DROWSY_WALL_SUCCULENT = registerPlantBlock("drowsy_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).noCollision().breakInstantly().dropsLike(DROWSY_SUCCULENT)));
+   public static final Block AUREATE_WALL_SUCCULENT = registerPlantBlock("aureate_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).noCollision().breakInstantly().dropsLike(AUREATE_SUCCULENT)));
+   public static final Block SAGE_WALL_SUCCULENT = registerPlantBlock("sage_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).noCollision().breakInstantly().dropsLike(SAGE_SUCCULENT)));
+   public static final Block FOAMY_WALL_SUCCULENT = registerPlantBlock("foamy_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).noCollision().breakInstantly().dropsLike(FOAMY_SUCCULENT)));
+   public static final Block IMPERIAL_WALL_SUCCULENT = registerPlantBlock("imperial_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).noCollision().breakInstantly().dropsLike(IMPERIAL_SUCCULENT)));
+   public static final Block REGAL_WALL_SUCCULENT = registerPlantBlock("regal_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).noCollision().breakInstantly().dropsLike(REGAL_SUCCULENT)));
+
+   public static final Item ORNATE_SUCCULENT_ITEM = registerPlantWallBlockItem("ornate_succulent", ORNATE_SUCCULENT, ORNATE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.PITCHER_PLANT, .5F);
+   public static final Item DROWSY_SUCCULENT_ITEM = registerPlantWallBlockItem("drowsy_succulent", DROWSY_SUCCULENT, DROWSY_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, ORNATE_SUCCULENT_ITEM, .5F);
+   public static final Item AUREATE_SUCCULENT_ITEM = registerPlantWallBlockItem("aureate_succulent", AUREATE_SUCCULENT, AUREATE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, DROWSY_SUCCULENT_ITEM, .5F);
+   public static final Item SAGE_SUCCULENT_ITEM = registerPlantWallBlockItem("sage_succulent", SAGE_SUCCULENT, SAGE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, AUREATE_SUCCULENT, .5F);
+   public static final Item FOAMY_SUCCULENT_ITEM = registerPlantWallBlockItem("foamy_succulent", FOAMY_SUCCULENT, FOAMY_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, SAGE_SUCCULENT, .5F);
+   public static final Item IMPERIAL_SUCCULENT_ITEM = registerPlantWallBlockItem("imperial_succulent", IMPERIAL_SUCCULENT, IMPERIAL_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, FOAMY_SUCCULENT, .5F);
+   public static final Item REGAL_SUCCULENT_ITEM = registerPlantWallBlockItem("regal_succulent", REGAL_SUCCULENT, REGAL_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, IMPERIAL_SUCCULENT, .5F);
+
    public static final Block POTTED_SCORCHED_GRASS = registerPottedPlant("scorched_grass", SCORCHED_GRASS);
    public static final Block POTTED_BEACH_GRASS = registerPottedPlant("beach_grass", BEACH_GRASS);
    public static final Block POTTED_SEDGE_GRASS = registerPottedPlant("sedge_grass", SEDGE_GRASS);
@@ -418,6 +442,15 @@ public class HibiscusMiscBlocks {
    public static final Block POTTED_GREEN_BEARBERRIES = registerPottedPlant("potted_green_bearberries", GREEN_BEARBERRIES);
    public static final Block POTTED_RED_BEARBERRIES = registerPottedPlant("potted_red_bearberries", RED_BEARBERRIES);
    public static final Block POTTED_PURPLE_BEARBERRIES = registerPottedPlant("potted_purple_bearberries", PURPLE_BEARBERRIES);
+
+
+   public static final Block POTTED_ORNATE_SUCCULENT = registerPottedPlant("ornate_succulent", ORNATE_SUCCULENT);
+   public static final Block POTTED_DROWSY_SUCCULENT = registerPottedPlant("drowsy_succulent", DROWSY_SUCCULENT);
+   public static final Block POTTED_AUREATE_SUCCULENT = registerPottedPlant("aureate_succulent", AUREATE_SUCCULENT);
+   public static final Block POTTED_SAGE_SUCCULENT = registerPottedPlant("sage_succulent", SAGE_SUCCULENT);
+   public static final Block POTTED_FOAMY_SUCCULENT = registerPottedPlant("foamy_succulent", FOAMY_SUCCULENT);
+   public static final Block POTTED_IMPERIAL_SUCCULENT = registerPottedPlant("imperial_succulent", IMPERIAL_SUCCULENT);
+   public static final Block POTTED_REGAL_SUCCULENT = registerPottedPlant("regal_succulent", REGAL_SUCCULENT);
 
    public static final Block SHIITAKE_MUSHROOM = registerPlantBlock("shiitake_mushroom", new ShiitakeMushroomPlantBlock(
            AbstractBlock.Settings
@@ -706,78 +739,78 @@ public class HibiscusMiscBlocks {
    );
 
 
-   public static BlockSetType PAPER_BLOCK_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier(MOD_ID, "paper"));
-   public static WoodType PAPER_WOOD_TYPE = new WoodTypeBuilder().register(new Identifier(MOD_ID, "paper"), PAPER_BLOCK_SET);
+   public static final BlockSetType PAPER_BLOCK_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier(MOD_ID, "paper"));
+   public static final WoodType PAPER_WOOD_TYPE = new WoodTypeBuilder().register(new Identifier(MOD_ID, "paper"), PAPER_BLOCK_SET);
 
-   public static Block PAPER_BLOCK = registerBlock("paper_block",
+   public static final Block PAPER_BLOCK = registerBlock("paper_block",
            new Block(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.WARPED_BUTTON,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block PAPER_PANEL = registerBlock("paper_panel",
+   public static final Block PAPER_PANEL = registerBlock("paper_panel",
            new PaneBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block PAPER_DOOR = registerDoorBlock("paper_door",
+   public static final Block PAPER_DOOR = registerDoorBlock("paper_door",
            new DoorBlock(PAPER_BLOCK_SET, FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            PAPER_PANEL
    );
-   public static Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(           PAPER_BLOCK_SET,
+   public static final Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(           PAPER_BLOCK_SET,
            FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_DOOR);
-   public static Block FRAMED_PAPER_BLOCK = registerBlock("framed_paper_block",
+   public static final Block FRAMED_PAPER_BLOCK = registerBlock("framed_paper_block",
            new Block(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            PAPER_TRAPDOOR,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block FRAMED_PAPER_PANEL = registerBlock("framed_paper_panel",
+   public static final Block FRAMED_PAPER_PANEL = registerBlock("framed_paper_panel",
            new PaneBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            FRAMED_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block FRAMED_PAPER_DOOR = registerDoorBlock("framed_paper_door",
+   public static final Block FRAMED_PAPER_DOOR = registerDoorBlock("framed_paper_door",
            new DoorBlock(PAPER_BLOCK_SET, FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            FRAMED_PAPER_PANEL
    );
-   public static Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
+   public static final Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
            FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
 
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, FRAMED_PAPER_DOOR);
-   public static Block BLOOMING_PAPER_BLOCK = registerBlock("blooming_paper_block",
+   public static final Block BLOOMING_PAPER_BLOCK = registerBlock("blooming_paper_block",
            new GlazedTerracottaBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            FRAMED_PAPER_TRAPDOOR,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block BLOOMING_PAPER_PANEL = registerBlock("blooming_paper_panel",
+   public static final Block BLOOMING_PAPER_PANEL = registerBlock("blooming_paper_panel",
            new PaneBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getPlanks())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            BLOOMING_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block BLOOMING_PAPER_DOOR = registerDoorBlock("blooming_paper_door",
+   public static final Block BLOOMING_PAPER_DOOR = registerDoorBlock("blooming_paper_door",
            new DoorBlock(PAPER_BLOCK_SET, FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor())),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            BLOOMING_PAPER_PANEL
    );
-   public static Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
+   public static final Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
            FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLOOMING_PAPER_DOOR);
 
 
-   public static Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign())));
-   public static Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()).dropsLike(PAPER_SIGN)));
-   public static Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign())));
-   public static Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN)));
-   public static Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new FabricItemSettings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
-   public static Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
+   public static final Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign())));
+   public static final Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()).dropsLike(PAPER_SIGN)));
+   public static final Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign())));
+   public static final Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN)));
+   public static final Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new FabricItemSettings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
+   public static final Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
 
    public static void registerMiscBlocks() {
       HibiscusColoredBlocks.registerColoredBlocks();

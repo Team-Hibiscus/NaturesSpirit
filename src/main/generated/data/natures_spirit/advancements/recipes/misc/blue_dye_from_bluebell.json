@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:blue_dye_from_bluebell"
+        "recipe": "natures_spirit:blue_dye_from_bluebell"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:blue_dye_from_bluebell"
+      "natures_spirit:blue_dye_from_bluebell"
     ]
   }
 }

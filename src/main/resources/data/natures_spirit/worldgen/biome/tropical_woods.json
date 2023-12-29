@@ -81,11 +81,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "natures_spirit:patch_tall_grass_2",
       "natures_spirit:trees_acacia_dense",
       "natures_spirit:mahogany_placed",
       "natures_spirit:oak_bush_placed_dense",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_grass_field",
       "natures_spirit:patch_lush_fern",
       "natures_spirit:flower_tropical_woods",
       "minecraft:forest_flowers",

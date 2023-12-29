@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:joshua_planks_from_stripped_joshua_bundle"
+        "recipe": "natures_spirit:joshua_planks_from_stripped_joshua_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:joshua_planks_from_stripped_joshua_bundle"
+      "natures_spirit:joshua_planks_from_stripped_joshua_bundle"
     ]
   }
 }

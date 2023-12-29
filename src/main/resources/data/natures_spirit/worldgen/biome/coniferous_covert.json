@@ -75,8 +75,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_tall_grass_2",
+      "natures_spirit:patch_grass_field",
       "natures_spirit:boreal_trees_placed",
       "natures_spirit:flower_fir_placed",
       "minecraft:brown_mushroom_normal",

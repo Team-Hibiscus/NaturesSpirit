@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:brown_dye_from_cattail"
+        "recipe": "natures_spirit:brown_dye_from_cattail"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:brown_dye_from_cattail"
+      "natures_spirit:brown_dye_from_cattail"
     ]
   }
 }

@@ -83,9 +83,9 @@
       "natures_spirit:pumpkin_patch_feature_placed",
       "natures_spirit:pumpkin_feature_placed",
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "natures_spirit:patch_tall_grass_2",
       "natures_spirit:aspen_placed",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_grass_field",
       "natures_spirit:flower_golden_placed",
       "minecraft:forest_flowers",
       "minecraft:patch_sugar_cane"

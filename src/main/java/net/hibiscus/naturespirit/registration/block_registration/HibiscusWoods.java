@@ -26,7 +26,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
 public class HibiscusWoods {
-   public static WoodSet REDWOOD = new WoodSet(
+   public static final WoodSet REDWOOD = new WoodSet(
            new Identifier(MOD_ID, "redwood"),
            MapColor.TERRACOTTA_BROWN,
            MapColor.RED,
@@ -42,7 +42,7 @@ public class HibiscusWoods {
            Optional.of(HibiscusConfiguredFeatures.REDWOOD_TREE),
            Optional.of(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE)
    );
-   public static WoodSet SUGI = new WoodSet(
+   public static final WoodSet SUGI = new WoodSet(
            new Identifier(MOD_ID, "sugi"),
            MapColor.DEEPSLATE_GRAY,
            MapColor.DIRT_BROWN,
@@ -58,7 +58,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.SUGI_TREE
    );
 
-   public static WoodSet WISTERIA = new WoodSet(
+   public static final WoodSet WISTERIA = new WoodSet(
            new Identifier(MOD_ID, "wisteria"),
            MapColor.GRAY,
            MapColor.TERRACOTTA_WHITE,
@@ -73,7 +73,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE
    );
-   public static WoodSet FIR = new WoodSet(
+   public static final WoodSet FIR = new WoodSet(
            new Identifier(MOD_ID, "fir"),
            MapColor.GRAY,
            MapColor.DIRT_BROWN,
@@ -88,7 +88,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.FIR_TREE
    );
-   public static WoodSet WILLOW = new WoodSet(
+   public static final WoodSet WILLOW = new WoodSet(
            new Identifier(MOD_ID, "willow"),
            MapColor.TERRACOTTA_BLACK,
            MapColor.TERRACOTTA_BROWN,
@@ -103,7 +103,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.WILLOW_TREE
    );
-   public static WoodSet ASPEN = new WoodSet(
+   public static final WoodSet ASPEN = new WoodSet(
            new Identifier(MOD_ID, "aspen"),
            MapColor.WHITE_GRAY,
            MapColor.PALE_YELLOW,
@@ -118,7 +118,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.ASPEN_TREE
    );
-   public static WoodSet MAPLE = new WoodSet(
+   public static final WoodSet MAPLE = new WoodSet(
            new Identifier(MOD_ID,"maple"),
            MapColor.SPRUCE_BROWN,
            MapColor.ORANGE,
@@ -133,7 +133,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.RED_MAPLE_TREE
    );
-   public static WoodSet CYPRESS = new WoodSet(
+   public static final WoodSet CYPRESS = new WoodSet(
            new Identifier(MOD_ID, "cypress"),
            MapColor.SPRUCE_BROWN,
            MapColor.OAK_TAN,
@@ -148,7 +148,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.CYPRESS_TREE
    );
-   public static WoodSet OLIVE = new WoodSet(
+   public static final WoodSet OLIVE = new WoodSet(
            new Identifier(MOD_ID, "olive"),
            MapColor.PALE_YELLOW,
            MapColor.PALE_GREEN,
@@ -163,7 +163,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.OLIVE_TREE
    );
-   public static WoodSet JOSHUA = new WoodSet(
+   public static final WoodSet JOSHUA = new WoodSet(
            new Identifier(MOD_ID, "joshua"),
            MapColor.PALE_GREEN,
            MapColor.DEEPSLATE_GRAY,
@@ -178,7 +178,7 @@ public class HibiscusWoods {
            true,
            HibiscusConfiguredFeatures.JOSHUA_TREE
    );
-   public static WoodSet GHAF = new WoodSet(
+   public static final WoodSet GHAF = new WoodSet(
            new Identifier(MOD_ID, "ghaf"),
            MapColor.LIGHT_GRAY,
            MapColor.BROWN,
@@ -204,7 +204,7 @@ public class HibiscusWoods {
    public static final Block XERIC_THATCH_CARPET = registerBlock("xeric_thatch_carpet",
            new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.YELLOW).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
-   public static WoodSet PALO_VERDE = new WoodSet(
+   public static final WoodSet PALO_VERDE = new WoodSet(
            new Identifier(MOD_ID, "palo_verde"),
            MapColor.YELLOW,
            MapColor.LICHEN_GREEN,
@@ -219,7 +219,7 @@ public class HibiscusWoods {
            false,
            HibiscusConfiguredFeatures.PALO_VERDE_TREE
    );
-   public static WoodSet COCONUT = new WoodSet(
+   public static final WoodSet COCONUT = new WoodSet(
            new Identifier(MOD_ID, "coconut"),
            MapColor.DULL_PINK,
            MapColor.BROWN,
@@ -245,13 +245,13 @@ public class HibiscusWoods {
    public static final Block COCONUT_THATCH_CARPET = registerBlock("coconut_thatch_carpet",
            new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
-   public static Block YOUNG_COCONUT_BLOCK = registerPlantBlock("young_coconut", new YoungCoconutBlock(
+   public static final Block YOUNG_COCONUT_BLOCK = registerPlantBlock("young_coconut", new YoungCoconutBlock(
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, Items.SWEET_BERRIES, 0.2F);
-   public static Block COCONUT_BLOCK = registerPlantBlock("coconut", new CoconutBlock(
+   public static final Block COCONUT_BLOCK = registerPlantBlock("coconut", new CoconutBlock(
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, Items.SWEET_BERRIES, 0.2F);
-   public static Block COCONUT_SPROUT = registerPlantBlock("coconut_sprout", new SproutingCoconutBlock(
+   public static final Block COCONUT_SPROUT = registerPlantBlock("coconut_sprout", new SproutingCoconutBlock(
            new SaplingGenerator(NatureSpirit.MOD_ID + "_coconut", Optional.empty(), Optional.of(HibiscusConfiguredFeatures.COCONUT_TREE), Optional.empty()),
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, PALO_VERDE.getSapling(), 0.2F);
@@ -287,7 +287,7 @@ public class HibiscusWoods {
            ItemGroups.FOOD_AND_DRINK,
            0.1F
    );
-   public static WoodSet CEDAR = new WoodSet(
+   public static final WoodSet CEDAR = new WoodSet(
            new Identifier(MOD_ID, "cedar"),
            MapColor.TERRACOTTA_MAGENTA,
            MapColor.GRAY,
@@ -303,7 +303,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.CEDAR_TREE
    );
 
-   public static WoodSet LARCH = new WoodSet(
+   public static final WoodSet LARCH = new WoodSet(
            new Identifier(MOD_ID, "larch"),
            MapColor.BLUE,
            MapColor.LIGHT_GRAY,
@@ -329,7 +329,7 @@ public class HibiscusWoods {
            new CarpetBlock(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
 
-      public static WoodSet MAHOGANY = new WoodSet(
+      public static final WoodSet MAHOGANY = new WoodSet(
               new Identifier(MOD_ID, "mahogany"),
               MapColor.BROWN,
               MapColor.LIGHT_GRAY,
@@ -346,7 +346,7 @@ public class HibiscusWoods {
               Optional.of(HibiscusConfiguredFeatures.MAHOGANY_TREE)
       );
 
-   public static WoodSet SAXAUL = new WoodSet(
+   public static final WoodSet SAXAUL = new WoodSet(
            new Identifier(MOD_ID, "saxaul"),
            MapColor.LIGHT_GRAY,
            MapColor.LIGHT_GRAY,
@@ -362,7 +362,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.SAXAUL_TREE
    );
 
-//   public static WoodSet BANYAN = new WoodSet(
+//   public static final WoodSet BANYAN = new WoodSet(
 //           new Identifier(MOD_ID, "banyan"),
 //           MapColor.BROWN,
 //           MapColor.LIGHT_GRAY,

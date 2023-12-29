@@ -45,6 +45,12 @@
     "natures_spirit:potted_sedge_grass",
     "natures_spirit:potted_scorched_grass",
     "natures_spirit:potted_oat_grass",
-    "natures_spirit:potted_lush_fern"
+    "natures_spirit:potted_lush_fern",
+    "natures_spirit:potted_ornate_succulent",
+    "natures_spirit:potted_drowsy_succulent",
+    "natures_spirit:potted_aureate_succulent",
+    "natures_spirit:potted_sage_succulent",
+    "natures_spirit:potted_foamy_succulent",
+    "natures_spirit:potted_imperial_succulent"
   ]
 }

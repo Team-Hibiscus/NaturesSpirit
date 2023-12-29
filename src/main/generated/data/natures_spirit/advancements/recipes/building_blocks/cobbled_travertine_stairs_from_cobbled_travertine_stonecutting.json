@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobbled_travertine_stairs_from_cobbled_travertine_stonecutting"
+        "recipe": "natures_spirit:cobbled_travertine_stairs_from_cobbled_travertine_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cobbled_travertine_stairs_from_cobbled_travertine_stonecutting"
+      "natures_spirit:cobbled_travertine_stairs_from_cobbled_travertine_stonecutting"
     ]
   }
 }

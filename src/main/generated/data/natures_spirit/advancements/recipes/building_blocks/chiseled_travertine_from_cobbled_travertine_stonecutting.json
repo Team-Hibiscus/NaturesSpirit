@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:chiseled_travertine_from_cobbled_travertine_stonecutting"
+        "recipe": "natures_spirit:chiseled_travertine_from_cobbled_travertine_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:chiseled_travertine_from_cobbled_travertine_stonecutting"
+      "natures_spirit:chiseled_travertine_from_cobbled_travertine_stonecutting"
     ]
   }
 }

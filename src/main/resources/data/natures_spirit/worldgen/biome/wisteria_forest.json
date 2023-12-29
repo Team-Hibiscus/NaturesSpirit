@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.4,
+  "downfall": 0.65,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -22,8 +22,8 @@
       "sound": "natures_spirit:music.overworld.wisteria"
     },
     "sky_color": 8168703,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": 4171236,
+    "water_fog_color": 333619
   },
   "features": [
     [
@@ -80,9 +80,9 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "natures_spirit:patch_tall_grass_2",
       "natures_spirit:wisteria_placed",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_grass_field",
       "minecraft:forest_flowers",
       "natures_spirit:flower_wisteria_placed",
       "minecraft:patch_waterlily",
@@ -195,5 +195,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.55
+  "temperature": 0.85
 }

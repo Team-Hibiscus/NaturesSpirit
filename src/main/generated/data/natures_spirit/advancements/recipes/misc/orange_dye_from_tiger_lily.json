@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:orange_dye_from_tiger_lily"
+        "recipe": "natures_spirit:orange_dye_from_tiger_lily"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:orange_dye_from_tiger_lily"
+      "natures_spirit:orange_dye_from_tiger_lily"
     ]
   }
 }

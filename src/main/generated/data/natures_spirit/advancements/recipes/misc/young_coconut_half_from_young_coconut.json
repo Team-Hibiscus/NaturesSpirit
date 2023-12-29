@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:young_coconut_half_from_young_coconut"
+        "recipe": "natures_spirit:young_coconut_half_from_young_coconut"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:young_coconut_half_from_young_coconut"
+      "natures_spirit:young_coconut_half_from_young_coconut"
     ]
   }
 }

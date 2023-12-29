@@ -61,11 +61,6 @@ public class NatureSpirit implements ModInitializer {
       }
       if(modContainer.isPresent()) {
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "newworld_compatibility"), modContainer.get(),
-                 Text.translatable("pack.natures_spirit.newworld_compatibility"),
-                 ResourcePackActivationType.NORMAL
-         );
-         ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_vanilla_trees"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_vanilla_trees"),
                  ResourcePackActivationType.NORMAL
@@ -73,6 +68,11 @@ public class NatureSpirit implements ModInitializer {
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_swamp"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_swamp"),
+                 ResourcePackActivationType.DEFAULT_ENABLED
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "modified_desert"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.modified_desert"),
                  ResourcePackActivationType.DEFAULT_ENABLED
          );
          ResourceManagerHelper.registerBuiltinResourcePack(

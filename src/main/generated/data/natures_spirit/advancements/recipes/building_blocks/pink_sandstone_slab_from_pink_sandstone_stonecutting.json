@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_sandstone_slab_from_pink_sandstone_stonecutting"
+        "recipe": "natures_spirit:pink_sandstone_slab_from_pink_sandstone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_sandstone_slab_from_pink_sandstone_stonecutting"
+      "natures_spirit:pink_sandstone_slab_from_pink_sandstone_stonecutting"
     ]
   }
 }

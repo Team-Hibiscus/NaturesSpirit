@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:white_dye_from_helvola_pad"
+        "recipe": "natures_spirit:white_dye_from_helvola_pad"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:white_dye_from_helvola_pad"
+      "natures_spirit:white_dye_from_helvola_pad"
     ]
   }
 }

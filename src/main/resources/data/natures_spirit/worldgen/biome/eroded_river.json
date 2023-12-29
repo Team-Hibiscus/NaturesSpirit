@@ -72,9 +72,9 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "natures_spirit:patch_tall_grass_2",
       "natures_spirit:oak_bush_placed",
-      "minecraft:patch_grass_plain",
+      "natures_spirit:patch_grass_field",
       "natures_spirit:flower_river_placed",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin"

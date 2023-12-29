@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bowl_from_coconut_shell"
+        "recipe": "natures_spirit:bowl_from_coconut_shell"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bowl_from_coconut_shell"
+      "natures_spirit:bowl_from_coconut_shell"
     ]
   }
 }

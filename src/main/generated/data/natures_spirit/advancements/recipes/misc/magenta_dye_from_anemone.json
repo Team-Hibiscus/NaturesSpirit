@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:magenta_dye_from_anemone"
+        "recipe": "natures_spirit:magenta_dye_from_anemone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:magenta_dye_from_anemone"
+      "natures_spirit:magenta_dye_from_anemone"
     ]
   }
 }

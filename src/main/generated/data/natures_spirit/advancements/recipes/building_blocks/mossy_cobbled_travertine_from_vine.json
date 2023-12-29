@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mossy_cobbled_travertine_from_vine"
+        "recipe": "natures_spirit:mossy_cobbled_travertine_from_vine"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mossy_cobbled_travertine_from_vine"
+      "natures_spirit:mossy_cobbled_travertine_from_vine"
     ]
   }
 }

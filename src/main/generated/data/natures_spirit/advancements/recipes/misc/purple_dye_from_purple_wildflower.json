@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:purple_dye_from_purple_wildflower"
+        "recipe": "natures_spirit:purple_dye_from_purple_wildflower"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:purple_dye_from_purple_wildflower"
+      "natures_spirit:purple_dye_from_purple_wildflower"
     ]
   }
 }

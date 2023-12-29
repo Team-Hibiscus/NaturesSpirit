@@ -20,6 +20,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
 import java.util.ArrayList;
@@ -103,6 +104,12 @@ public class HibiscusRegistryHelper {
       RenderLayerHashMap.put(name, block);
       CompostingChanceRegistry.INSTANCE.add(block, compost);
       return Plant;
+   }
+
+   public static Item registerPlantWallBlockItem(String name, Block block, Block wallBlock, RegistryKey<ItemGroup> tab, ItemConvertible itemBefore, float compost) {
+      Item item = registerItem(name, new VerticallyAttachableBlockItem(block, wallBlock, new FabricItemSettings(), Direction.DOWN), tab);
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(itemBefore, item.asItem()));
+      return item;
    }
 
    public static Block registerPlantBlock(String name, Block block) {

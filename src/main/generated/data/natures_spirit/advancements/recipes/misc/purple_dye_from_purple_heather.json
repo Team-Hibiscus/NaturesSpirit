@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:purple_dye_from_purple_heather"
+        "recipe": "natures_spirit:purple_dye_from_purple_heather"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:purple_dye_from_purple_heather"
+      "natures_spirit:purple_dye_from_purple_heather"
     ]
   }
 }
