@@ -183,7 +183,7 @@ public class NatureSpiritSurfaceRules {
       ));
 
       MaterialRules.MaterialRule snowySteppeRule = MaterialRules.sequence(
-              MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SLEETED_SLOPES, HibiscusBiomes.RED_PEAKS),
+              MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SLEETED_SLOPES, HibiscusBiomes.SNOWCAPPED_RED_PEAKS),
                       MaterialRules.sequence(
                               MaterialRules.condition(MaterialRules.steepSlope(), CHERT),
                               MaterialRules.condition(materialCondition7, SNOW_BLOCK),
@@ -203,7 +203,7 @@ public class NatureSpiritSurfaceRules {
               )
       );
 
-      MaterialRules.MaterialRule steppeUndergroundRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SLEETED_SLOPES, HibiscusBiomes.BLOOMING_HIGHLANDS, HibiscusBiomes.RED_PEAKS, HibiscusBiomes.SHRUBBY_HIGHLANDS, HibiscusBiomes.WOODY_HIGHLANDS, HibiscusBiomes.ARID_HIGHLANDS),
+      MaterialRules.MaterialRule steppeUndergroundRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.SLEETED_SLOPES, HibiscusBiomes.BLOOMING_HIGHLANDS, HibiscusBiomes.SNOWCAPPED_RED_PEAKS, HibiscusBiomes.SHRUBBY_HIGHLANDS, HibiscusBiomes.WOODY_HIGHLANDS, HibiscusBiomes.ARID_HIGHLANDS),
               MaterialRules.condition(above25, MaterialRules.terracottaBands())
       );
       MaterialRules.MaterialRule chalkCliffsRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS),
@@ -213,6 +213,23 @@ public class NatureSpiritSurfaceRules {
                               MaterialRules.condition(MaterialRules.stoneDepth(1, false, VerticalSurfaceType.FLOOR), DIRT)
                       ))
               )
+      );
+
+      MaterialRules.MaterialRule dustyRule = MaterialRules.sequence(
+              MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.DUSTY_SLOPES, HibiscusBiomes.RED_PEAKS),
+                      MaterialRules.sequence(
+                              MaterialRules.condition(MaterialRules.steepSlope(), CHERT),
+                              MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(256), 1), SNOW_BLOCK),
+                              MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(
+                                      MaterialRules.condition(materialCondition, CHERT),
+                                      MaterialRules.condition(materialCondition3, MaterialRules.terracottaBands()),
+                                      MaterialRules.condition(materialCondition5, CHERT),
+                                      MaterialRules.condition(MaterialRules.not(holeCondition), CHERT),
+                                      MaterialRules.condition(belowWater, CHERT)
+
+                              )),
+                              MaterialRules.condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(belowWater, CHERT))
+                      ))
       );
       MaterialRules.MaterialRule chalkUndergroundRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.WHITE_CLIFFS),
               MaterialRules.sequence(
@@ -275,6 +292,7 @@ public class NatureSpiritSurfaceRules {
 
 
       ImmutableList.Builder <MaterialRules.MaterialRule> builder = ImmutableList.builder();
+      MaterialRules.MaterialRule dustySurfaceRule = MaterialRules.condition(MaterialRules.surface(), dustyRule);
       MaterialRules.MaterialRule stratifiedDesertSurfaceRule = MaterialRules.condition(MaterialRules.surface(), stratifiedDesertRule);
       MaterialRules.MaterialRule livelyDunesSurfaceRule = MaterialRules.condition(MaterialRules.surface(), livelyDunesRule);
       MaterialRules.MaterialRule chaparralSurfaceRule = MaterialRules.condition(MaterialRules.surface(), chaparralRule);
@@ -292,6 +310,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialRule shrubbySteppeSurfaceRule = MaterialRules.condition(MaterialRules.surface(), shrubbySteppeRule);
       MaterialRules.MaterialRule woodySteppeSurfaceRule = MaterialRules.condition(MaterialRules.surface(), woodySteppeRule);
       MaterialRules.MaterialRule snowySteppeSurfaceRule = MaterialRules.condition(MaterialRules.surface(), snowySteppeRule);
+      builder.add(dustySurfaceRule);
       builder.add(stratifiedDesertSurfaceRule);
       builder.add(stratifiedUndergroundRule);
       builder.add(chaparralSurfaceRule);

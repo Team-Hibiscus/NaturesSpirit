@@ -57,6 +57,8 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> SHRUBBY_HIGHLANDS = register("shrubby_highlands");
    public static final RegistryKey <Biome> WOODY_HIGHLANDS = register("woody_highlands");
    public static final RegistryKey <Biome> RED_PEAKS = register("red_peaks");
+   public static final RegistryKey <Biome> DUSTY_SLOPES = register("dusty_slopes");
+   public static final RegistryKey <Biome> SNOWCAPPED_RED_PEAKS = register("snowcapped_red_peaks");
    public static final RegistryKey <Biome> SLEETED_SLOPES = register("sleeted_slopes");
    public static final RegistryKey <Biome> BLOOMING_HIGHLANDS = register("blooming_highlands");
    public static final RegistryKey <Biome> CHAPARRAL = register("chaparral");

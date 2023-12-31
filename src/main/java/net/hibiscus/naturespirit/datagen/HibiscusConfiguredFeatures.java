@@ -82,7 +82,9 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> YELLOW_LARCH_TREE_SPAWN = registerKey("yellow_larch_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WISTERIA_SPAWN = registerKey("wisteria_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SUGI_TREE = registerKey("sugi_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_SUGI_TREE = registerKey("large_sugi_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> SUGI_SPAWN = registerKey("sugi_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_SUGI_SPAWN = registerKey("large_sugi_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> CYPRESS_TREE = registerKey("cypress_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> CYPRESS_TREE_SPAWN = registerKey("cypress_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> OLIVE_TREE = registerKey("olive_tree");
@@ -469,6 +471,20 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SUGI_CHECKED), 0.325f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.SUGI_CHECKED)
+              )
+      );
+
+      register(context, LARGE_SUGI_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.SUGI.getLog()),
+              new MegaSugiTrunkPlacer(18, 0, 5),
+              BlockStateProvider.of(HibiscusWoods.SUGI.getLeaves()),
+              new SugiFoliagePlacer(UniformIntProvider.create(1, 1), UniformIntProvider.create(0, 0)),
+              new TwoLayersFeatureSize(1, 0, 1)
+      ).ignoreVines().build());
+      register(context,
+              LARGE_SUGI_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_SUGI_CHECKED), 0.325f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_SUGI_CHECKED)
               )
       );
 

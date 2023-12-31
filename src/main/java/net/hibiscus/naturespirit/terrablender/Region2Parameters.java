@@ -842,7 +842,7 @@ public class Region2Parameters {
    }
 
    private RegistryKey <Biome> getPeakBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      if (temperature == 1 && HibiscusBiomes.has_steppe) return HibiscusBiomes.RED_PEAKS;
+      if (temperature == 1 && HibiscusBiomes.has_steppe) return HibiscusBiomes.SNOWCAPPED_RED_PEAKS;
       if(temperature <= 2) {
          return weirdness.max() < 0L ? BiomeKeys.JAGGED_PEAKS : BiomeKeys.FROZEN_PEAKS;
       }

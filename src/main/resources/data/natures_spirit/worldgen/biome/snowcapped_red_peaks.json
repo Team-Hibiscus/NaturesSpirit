@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.17,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -23,12 +23,16 @@
     },
     "sky_color": 7254527,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 14932871,
+    "foliage_color": 10399058
   },
   "features": [
     [
-      "natures_spirit:pink_sandstone_cliff"],
+      "natures_spirit:kaolin_layers2"
+    ],
     [
+      "natures_spirit:terracotta_on_yellow_terracotta",
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
     ],
@@ -55,45 +59,37 @@
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
       "minecraft:ore_tuff",
-      "minecraft:ore_coal_upper",
-      "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_upper",
-      "minecraft:ore_iron_middle",
-      "minecraft:ore_iron_small",
-      "minecraft:ore_gold",
-      "minecraft:ore_gold_lower",
-      "minecraft:ore_redstone",
-      "minecraft:ore_redstone_lower",
-      "minecraft:ore_diamond",
-      "minecraft:ore_diamond_large",
-      "minecraft:ore_diamond_buried",
-      "minecraft:ore_lapis",
-      "minecraft:ore_lapis_buried",
-      "minecraft:ore_copper",
+      "natures_spirit:ores/ore_coal_upper",
+      "natures_spirit:ores/ore_coal_lower",
+      "natures_spirit:ores/ore_iron_upper",
+      "natures_spirit:ores/ore_iron_middle",
+      "natures_spirit:ores/ore_iron_small",
+      "natures_spirit:ores/ore_gold",
+      "natures_spirit:ores/ore_gold_lower",
+      "natures_spirit:ores/ore_redstone",
+      "natures_spirit:ores/ore_redstone_extra",
+      "natures_spirit:ores/ore_redstone_lower",
+      "natures_spirit:ores/ore_diamond",
+      "natures_spirit:ores/ore_diamond_large",
+      "natures_spirit:ores/ore_diamond_buried",
+      "natures_spirit:ores/ore_lapis",
+      "natures_spirit:ores/ore_lapis_buried",
+      "natures_spirit:ores/ore_copper",
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "minecraft:disk_gravel",
+      "natures_spirit:terracotta_on_sandy_soil",
+      "natures_spirit:ores/ore_emerald"
     ],
     [],
     [
       "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:spring_lava",
+      "minecraft:spring_lava_frozen"
     ],
     [
-      "minecraft:glow_lichen",
-      "natures_spirit:patch_tall_grass_wooded_drylands",
-      "natures_spirit:flower_warm",
-      "natures_spirit:patch_grass_wooded_drylands",
-      "natures_spirit:rooted_desert_turnip_placed",
-      "natures_spirit:patch_dense_drylands_grass",
-      "natures_spirit:dense_ghaf_placed",
-      "minecraft:patch_dead_bush_2",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane_desert",
-      "minecraft:patch_pumpkin",
-      "minecraft:patch_cactus_desert"
+      "minecraft:glow_lichen"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -113,10 +109,10 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:rabbit",
+        "type": "minecraft:goat",
         "maxCount": 3,
-        "minCount": 2,
-        "weight": 4
+        "minCount": 1,
+        "weight": 5
       }
     ],
     "misc": [],
@@ -187,5 +183,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 1.94
+  "temperature": 0.0
 }

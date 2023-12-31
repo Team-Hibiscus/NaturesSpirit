@@ -408,28 +408,28 @@ public class HibiscusMiscBlocks {
            0.4f
    );
 
-   public static final Block ORNATE_SUCCULENT = registerPlantBlock("ornate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).noCollision().breakInstantly()));
-   public static final Block DROWSY_SUCCULENT = registerPlantBlock("drowsy_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).noCollision().breakInstantly()));
-   public static final Block AUREATE_SUCCULENT = registerPlantBlock("aureate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).noCollision().breakInstantly()));
-   public static final Block SAGE_SUCCULENT = registerPlantBlock("sage_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).noCollision().breakInstantly()));
-   public static final Block FOAMY_SUCCULENT = registerPlantBlock("foamy_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).noCollision().breakInstantly()));
-   public static final Block IMPERIAL_SUCCULENT = registerPlantBlock("imperial_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).noCollision().breakInstantly()));
-   public static final Block REGAL_SUCCULENT = registerPlantBlock("regal_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).noCollision().breakInstantly()));
-   public static final Block ORNATE_WALL_SUCCULENT = registerPlantBlock("ornate_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).noCollision().breakInstantly().dropsLike(ORNATE_SUCCULENT)));
-   public static final Block DROWSY_WALL_SUCCULENT = registerPlantBlock("drowsy_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).noCollision().breakInstantly().dropsLike(DROWSY_SUCCULENT)));
-   public static final Block AUREATE_WALL_SUCCULENT = registerPlantBlock("aureate_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).noCollision().breakInstantly().dropsLike(AUREATE_SUCCULENT)));
-   public static final Block SAGE_WALL_SUCCULENT = registerPlantBlock("sage_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).noCollision().breakInstantly().dropsLike(SAGE_SUCCULENT)));
-   public static final Block FOAMY_WALL_SUCCULENT = registerPlantBlock("foamy_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).noCollision().breakInstantly().dropsLike(FOAMY_SUCCULENT)));
-   public static final Block IMPERIAL_WALL_SUCCULENT = registerPlantBlock("imperial_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).noCollision().breakInstantly().dropsLike(IMPERIAL_SUCCULENT)));
-   public static final Block REGAL_WALL_SUCCULENT = registerPlantBlock("regal_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).noCollision().breakInstantly().dropsLike(REGAL_SUCCULENT)));
+   public static final Block ORNATE_SUCCULENT = registerPlantBlock("ornate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block DROWSY_SUCCULENT = registerPlantBlock("drowsy_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block AUREATE_SUCCULENT = registerPlantBlock("aureate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block SAGE_SUCCULENT = registerPlantBlock("sage_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block FOAMY_SUCCULENT = registerPlantBlock("foamy_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block IMPERIAL_SUCCULENT = registerPlantBlock("imperial_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block REGAL_SUCCULENT = registerPlantBlock("regal_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
+   public static final Block ORNATE_WALL_SUCCULENT = registerPlantBlock("ornate_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(ORNATE_SUCCULENT)));
+   public static final Block DROWSY_WALL_SUCCULENT = registerPlantBlock("drowsy_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(DROWSY_SUCCULENT)));
+   public static final Block AUREATE_WALL_SUCCULENT = registerPlantBlock("aureate_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(AUREATE_SUCCULENT)));
+   public static final Block SAGE_WALL_SUCCULENT = registerPlantBlock("sage_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(SAGE_SUCCULENT)));
+   public static final Block FOAMY_WALL_SUCCULENT = registerPlantBlock("foamy_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(FOAMY_SUCCULENT)));
+   public static final Block IMPERIAL_WALL_SUCCULENT = registerPlantBlock("imperial_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(IMPERIAL_SUCCULENT)));
+   public static final Block REGAL_WALL_SUCCULENT = registerPlantBlock("regal_wall_succulent", new SucculentWallBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly().dropsLike(REGAL_SUCCULENT)));
 
    public static final Item ORNATE_SUCCULENT_ITEM = registerPlantWallBlockItem("ornate_succulent", ORNATE_SUCCULENT, ORNATE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.PITCHER_PLANT, .5F);
    public static final Item DROWSY_SUCCULENT_ITEM = registerPlantWallBlockItem("drowsy_succulent", DROWSY_SUCCULENT, DROWSY_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, ORNATE_SUCCULENT_ITEM, .5F);
    public static final Item AUREATE_SUCCULENT_ITEM = registerPlantWallBlockItem("aureate_succulent", AUREATE_SUCCULENT, AUREATE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, DROWSY_SUCCULENT_ITEM, .5F);
-   public static final Item SAGE_SUCCULENT_ITEM = registerPlantWallBlockItem("sage_succulent", SAGE_SUCCULENT, SAGE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, AUREATE_SUCCULENT, .5F);
-   public static final Item FOAMY_SUCCULENT_ITEM = registerPlantWallBlockItem("foamy_succulent", FOAMY_SUCCULENT, FOAMY_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, SAGE_SUCCULENT, .5F);
-   public static final Item IMPERIAL_SUCCULENT_ITEM = registerPlantWallBlockItem("imperial_succulent", IMPERIAL_SUCCULENT, IMPERIAL_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, FOAMY_SUCCULENT, .5F);
-   public static final Item REGAL_SUCCULENT_ITEM = registerPlantWallBlockItem("regal_succulent", REGAL_SUCCULENT, REGAL_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, IMPERIAL_SUCCULENT, .5F);
+   public static final Item SAGE_SUCCULENT_ITEM = registerPlantWallBlockItem("sage_succulent", SAGE_SUCCULENT, SAGE_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, AUREATE_SUCCULENT_ITEM, .5F);
+   public static final Item FOAMY_SUCCULENT_ITEM = registerPlantWallBlockItem("foamy_succulent", FOAMY_SUCCULENT, FOAMY_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, SAGE_SUCCULENT_ITEM, .5F);
+   public static final Item IMPERIAL_SUCCULENT_ITEM = registerPlantWallBlockItem("imperial_succulent", IMPERIAL_SUCCULENT, IMPERIAL_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, FOAMY_SUCCULENT_ITEM, .5F);
+   public static final Item REGAL_SUCCULENT_ITEM = registerPlantWallBlockItem("regal_succulent", REGAL_SUCCULENT, REGAL_WALL_SUCCULENT, HibiscusItemGroups.NS_MISC_ITEM_GROUP, IMPERIAL_SUCCULENT_ITEM, .5F);
 
    public static final Block POTTED_SCORCHED_GRASS = registerPottedPlant("scorched_grass", SCORCHED_GRASS);
    public static final Block POTTED_BEACH_GRASS = registerPottedPlant("beach_grass", BEACH_GRASS);

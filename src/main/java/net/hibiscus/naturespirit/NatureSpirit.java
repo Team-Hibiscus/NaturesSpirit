@@ -1,5 +1,7 @@
 package net.hibiscus.naturespirit;
 
+import com.mojang.datafixers.DataFixerBuilder;
+import com.mojang.datafixers.schemas.Schema;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -66,6 +68,11 @@ public class NatureSpirit implements ModInitializer {
                  ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "modified_jungle"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.modified_jungle"),
+                 ResourcePackActivationType.DEFAULT_ENABLED
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_swamp"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_swamp"),
                  ResourcePackActivationType.DEFAULT_ENABLED
@@ -101,7 +108,6 @@ public class NatureSpirit implements ModInitializer {
                  ResourcePackActivationType.NORMAL
          );
       }
-
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);

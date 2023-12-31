@@ -51,7 +51,7 @@ public class Region5Parameters {
    RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
    RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.DESERT;
    RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : BiomeKeys.WOODED_BADLANDS;
    RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.BADLANDS;
    RegistryKey<Biome> specialBiomeErodedBadlandsHot = HibiscusBiomes.has_xeric_plains ? null : BiomeKeys.ERODED_BADLANDS;
    RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.SAVANNA;
@@ -117,7 +117,7 @@ public class Region5Parameters {
               }, {
               commonBiomeSavannaWarm, commonBiomeSavannaWarm, commonBiomeForestWarm, commonBiomeJungleWarm, commonBiomeJungleWarm2
               }, {
-              commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot2
+              commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot2, commonBiomeDesertHot2
               }
       };
       this.uncommonBiomes = new RegistryKey[][]{
@@ -137,7 +137,7 @@ public class Region5Parameters {
               }, {
               nearBiomeSavannaPlateauWarm, nearBiomeSavannaPlateauWarm, nearBiomeForestWarm, nearBiomeForestWarm2, nearBiomeJungleWarm
               }, {
-              nearBiomeBadlandsHot, nearBiomeBadlandsHot, nearBiomeBadlandsHot2, nearBiomeWoodedBadlandsHot, nearBiomeWoodedBadlandsHot
+              nearBiomeBadlandsHot, nearBiomeBadlandsHot, nearBiomeBadlandsHot, nearBiomeWoodedBadlandsHot, nearBiomeWoodedBadlandsHot
               }
       };
       this.specialNearMountainBiomes = new RegistryKey[][]{
@@ -974,15 +974,17 @@ public class Region5Parameters {
          return weirdness.max() < 0L ? BiomeKeys.JAGGED_PEAKS : BiomeKeys.FROZEN_PEAKS;
       }
       else {
-         return temperature == 3 ? BiomeKeys.STONY_PEAKS : this.getBadlandsBiome(humidity, weirdness);
+         return temperature == 3 ? (HibiscusBiomes.has_cypress_fields && humidity < 3 ? HibiscusBiomes.RED_PEAKS : BiomeKeys.STONY_PEAKS) : (HibiscusBiomes.has_drylands ? HibiscusBiomes.RED_PEAKS : this.getBadlandsBiome(humidity, weirdness));
       }
    }
 
    private RegistryKey <Biome> getMountainSlopeBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+      if(temperature == 4) {
+         return HibiscusBiomes.has_drylands ? HibiscusBiomes.DUSTY_SLOPES : this.getNearMountainBiome(temperature, humidity, weirdness);
+      } else
       if(temperature >= 3) {
          return this.getNearMountainBiome(temperature, humidity, weirdness);
-      }
-      else {
+      } else {
          if (HibiscusBiomes.has_larch) {
             return humidity <= 2 && temperature <= 1 && weirdness.max() >= 0L? HibiscusBiomes.TUNDRA : BiomeKeys.GROVE;
          }

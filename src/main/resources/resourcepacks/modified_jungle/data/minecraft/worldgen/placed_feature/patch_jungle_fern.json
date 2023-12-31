@@ -1,22 +1,18 @@
 {
-  "feature": "natures_spirit:ghaf_tree_spawn",
+  "feature": "natures_spirit:patch_lush_fern",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
-      "noise_factor": 80.0,
+      "noise_factor": 25.0,
       "noise_offset": 0.0,
-      "noise_to_count_ratio": 8
+      "noise_to_count_ratio": 11
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 0
-    },
-    {
       "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "heightmap": "MOTION_BLOCKING"
     },
     {
       "type": "minecraft:biome"

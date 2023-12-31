@@ -6,20 +6,23 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:noise_provider",
+            "type": "minecraft:dual_noise_provider",
             "noise": {
               "amplitudes": [
                 1.0
               ],
               "firstOctave": 0
             },
-            "scale": 0.030833334,
-            "seed": 2445,
+            "scale": 1.0,
+            "seed": 2345,
+            "slow_noise": {
+              "amplitudes": [
+                1.0
+              ],
+              "firstOctave": -6
+            },
+            "slow_scale": 1.0,
             "states": [
-
-              {
-                "Name": "natures_spirit:anemone"
-              },
               {
                 "Name": "natures_spirit:foxglove",
                 "Properties": {
@@ -28,18 +31,6 @@
               },
               {
                 "Name": "natures_spirit:lavender",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
-                "Name": "natures_spirit:lavender",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
-                "Name": "natures_spirit:foxglove",
                 "Properties": {
                   "half": "lower"
                 }
@@ -47,6 +38,10 @@
               {
                 "Name": "natures_spirit:anemone"
               }
+            ],
+            "variety": [
+              2,
+              3
             ]
           }
         }
@@ -62,7 +57,7 @@
       ]
     },
     "tries": 120,
-    "xz_spread": 6,
+    "xz_spread": 8,
     "y_spread": 2
   }
 }

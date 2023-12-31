@@ -55,7 +55,8 @@ public class HibiscusWoods {
            HibiscusBoatEntity.HibiscusBoat.SUGI,
            WoodSet.WoodPreset.FANCY,
            true,
-           HibiscusConfiguredFeatures.SUGI_TREE
+           Optional.of(HibiscusConfiguredFeatures.SUGI_TREE),
+           Optional.of(HibiscusConfiguredFeatures.LARGE_SUGI_TREE)
    );
 
    public static final WoodSet WISTERIA = new WoodSet(

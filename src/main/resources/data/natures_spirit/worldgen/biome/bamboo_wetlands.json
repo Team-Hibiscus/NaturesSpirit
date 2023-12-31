@@ -9,6 +9,9 @@
   "has_precipitation": true,
   "downfall": 0.9,
   "effects": {
+    "foliage_color": 4952858,
+    "grass_color": 6009905,
+    "fog_color": 11660501,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -19,17 +22,16 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.swamp"
+      "sound": "minecraft:music.overworld.jungle"
     },
-    "sky_color": 8174539,
-    "fog_color": 10865292,
-    "water_color": 4560575,
-    "water_fog_color": 3823752,
-    "grass_color": 7249204,
-    "foliage_color": 6989855
+    "sky_color": 8054015,
+    "water_color": 4042350,
+    "water_fog_color": 340767
   },
   "features": [
-    [],
+    [
+      "natures_spirit:terracotta_cliff"
+    ],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -91,8 +93,6 @@
       "natures_spirit:flower_helvola",
       "minecraft:brown_mushroom_swamp",
       "minecraft:red_mushroom_swamp",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_swamp",
       "natures_spirit:cattails_placed",
       "natures_spirit:lotus_plant_placed",

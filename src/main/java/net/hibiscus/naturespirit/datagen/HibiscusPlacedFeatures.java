@@ -45,6 +45,7 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> PINK_WISTERIA_CHECKED = registerKey("pink_wisteria_checked");
    public static final RegistryKey <PlacedFeature> PURPLE_WISTERIA_CHECKED = registerKey("purple_wisteria_checked");
    public static final RegistryKey <PlacedFeature> SUGI_CHECKED = registerKey("sugi_checked");
+   public static final RegistryKey <PlacedFeature> LARGE_SUGI_CHECKED = registerKey("large_sugi_checked");
    public static final RegistryKey <PlacedFeature> OLIVE_CHECKED = registerKey("olive_checked");
    public static final RegistryKey <PlacedFeature> GHAF_CHECKED = registerKey("ghaf_checked");
    public static final RegistryKey <PlacedFeature> PALO_VERDE_CHECKED = registerKey("palo_verde_checked");
@@ -158,6 +159,7 @@ public class HibiscusPlacedFeatures {
       registerKey(context, YELLOW_LARCH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.YELLOW_LARCH_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.LARCH.getYellowSapling()));
       registerKey(context, WILLOW_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.WILLOW_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.WILLOW.getSapling()));
       registerKey(context, MAHOGANY_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.MAHOGANY_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.MAHOGANY.getSapling()));
+      registerKey(context, LARGE_SUGI_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_SUGI_SPAWN), PlacedFeatures.wouldSurvive(HibiscusWoods.SUGI.getSapling()));
       registerKey(context, SAXAUL_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.SAXAUL_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.SAXAUL.getSapling()));
       registerKey(context,
               WHITE_WISTERIA_CHECKED,

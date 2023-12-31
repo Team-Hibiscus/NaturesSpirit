@@ -1,13 +1,9 @@
 {
-  "feature": "natures_spirit:flower_lavender_field",
+  "feature": "minecraft:flower_jungle",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 3
-    },
-    {
       "type": "minecraft:rarity_filter",
-      "chance": 2
+      "chance": 12
     },
     {
       "type": "minecraft:in_square"
