@@ -56,7 +56,7 @@ public class HibiscusWoods {
            WoodSet.WoodPreset.FANCY,
            true,
            Optional.of(HibiscusConfiguredFeatures.SUGI_TREE),
-           Optional.of(HibiscusConfiguredFeatures.LARGE_SUGI_TREE)
+           Optional.empty()
    );
 
    public static final WoodSet WISTERIA = new WoodSet(

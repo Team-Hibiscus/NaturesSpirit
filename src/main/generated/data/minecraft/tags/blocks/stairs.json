@@ -19,6 +19,11 @@
     "natures_spirit:pink_sandstone_stairs",
     "natures_spirit:smooth_pink_sandstone_stairs",
     "natures_spirit:evergreen_thatch_stairs",
-    "natures_spirit:coconut_thatch_stairs"
+    "natures_spirit:coconut_thatch_stairs",
+    "#natures_spirit:chalk_stairs",
+    "#natures_spirit:kaolin_stairs",
+    "#natures_spirit:kaolin_brick_stairs",
+    "natures_spirit:pink_sandstone_stairs",
+    "natures_spirit:smooth_pink_sandstone_stairs"
   ]
 }

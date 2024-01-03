@@ -39,6 +39,9 @@ public class HibiscusTags {
       public static final TagKey <Block> KAOLIN = createTag("kaolin");
       public static final TagKey <Block> KAOLIN_STAIRS = createTag("kaolin_stairs");
       public static final TagKey <Block> KAOLIN_SLABS = createTag("kaolin_slabs");
+      public static final TagKey <Block> KAOLIN_BRICKS = createTag("kaolin_bricks");
+      public static final TagKey <Block> KAOLIN_BRICK_STAIRS = createTag("kaolin_brick_stairs");
+      public static final TagKey <Block> KAOLIN_BRICK_SLABS = createTag("kaolin_brick_slabs");
       public static final TagKey <Block> CHALK = createTag("chalk");
       public static final TagKey <Block> CHALK_STAIRS = createTag("chalk_stairs");
       public static final TagKey <Block> CHALK_SLABS = createTag("chalk_slabs");

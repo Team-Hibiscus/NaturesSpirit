@@ -20,6 +20,12 @@
     "natures_spirit:smooth_pink_sandstone_slab",
     "natures_spirit:cut_pink_sandstone_slab",
     "natures_spirit:evergreen_thatch_slab",
-    "natures_spirit:coconut_thatch_slab"
+    "natures_spirit:coconut_thatch_slab",
+    "#natures_spirit:chalk_slabs",
+    "#natures_spirit:kaolin_slabs",
+    "#natures_spirit:kaolin_slabs",
+    "natures_spirit:pink_sandstone_slab",
+    "natures_spirit:smooth_pink_sandstone_slab",
+    "natures_spirit:cut_pink_sandstone_slab"
   ]
 }

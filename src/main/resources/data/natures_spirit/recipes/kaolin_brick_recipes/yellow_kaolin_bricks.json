@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "kaolin_bricks",
+  "ingredients": [
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "natures_spirit:kaolin_bricks"
+    },
+    {
+      "item": "minecraft:yellow_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:yellow_kaolin_bricks",
+    "count": 8
+  }
+}

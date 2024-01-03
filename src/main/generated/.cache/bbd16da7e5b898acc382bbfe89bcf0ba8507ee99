@@ -1,4 +1,4 @@
-// 1.20.4	2023-12-30T16:39:39.4161744	Nature's Spirit/Tags for minecraft:item
+// 1.20.4	2024-01-02T22:53:30.7016401	Nature's Spirit/Tags for minecraft:item
 1357817f3d2c66ec4e86e9638e7d21ad6670be4d data\minecraft\tags\items\wooden_doors.json
 5884e81d1e71b5dc782bcef212da49a7c7b7b98e data\minecraft\tags\items\wooden_trapdoors.json
 e6b435e0150a3a9969164c4370869244554be8db data\minecraft\tags\items\lapis_ores.json
@@ -6,9 +6,9 @@ e6b435e0150a3a9969164c4370869244554be8db data\minecraft\tags\items\lapis_ores.js
 922048a8095b06d6b0dff7e3fca4b7b3f5aa0087 data\natures_spirit\tags\items\evergreen_leaves.json
 c38e300fbdb8cfd1be351c151c1ee3e6645908c9 data\minecraft\tags\items\fence_gates.json
 1758eb56d01dc4e286eccbe9dc0d193a632c293c data\minecraft\tags\items\diamond_ores.json
-2d91d740c69d24bfa5633f24a7d9dbd26ebda5f1 data\minecraft\tags\items\stairs.json
+54119f5fc7b892da9f6d5ca2c597bb4cfee4c8e1 data\minecraft\tags\items\stairs.json
 e3c1f165e1b82affb4cc652d7679aba3de648bd0 data\natures_spirit\tags\items\cypress_logs.json
-2de36c95f4917508c6f177823048d763e4db1f18 data\minecraft\tags\items\walls.json
+9182d9a5f334de5986753b8ae69595f6736953ff data\minecraft\tags\items\walls.json
 4966d8e229d3e20fc3f8d6940ec32508ac73f7c1 data\minecraft\tags\items\small_flowers.json
 7dedd01c196efdb9919616b6f5449dc2c12dab18 data\minecraft\tags\items\hanging_signs.json
 d69fd97288dbda0d2e15246e1b525ecc0f2f82f1 data\minecraft\tags\items\planks.json
@@ -32,7 +32,7 @@ ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\items\sugi_log
 cad331e0dc0be7574f5335f11dc7fbc6b28669f5 data\minecraft\tags\items\wooden_stairs.json
 119aae7d1b0f7ac47c3cef641919170b86666482 data\minecraft\tags\items\emerald_ores.json
 2a8e114b4cd036efef28fbe814f09a66a714255c data\minecraft\tags\items\logs_that_burn.json
-6c950021997beb6749b403b9a7c60be63ef5f46d data\minecraft\tags\items\slabs.json
+409ae949b7334f9ee39fabb9ae776a7b58d00658 data\minecraft\tags\items\slabs.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\items\signs.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_logs.json
 36531583ece4948c91e24d593034ed5f2967ac6f data\minecraft\tags\items\coal_ores.json
