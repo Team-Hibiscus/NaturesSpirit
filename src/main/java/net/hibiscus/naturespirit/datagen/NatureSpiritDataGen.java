@@ -1710,7 +1710,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                                    .offerTo(exporter);
             
             if(stoneSet.hasTiles()) {
-               generateFamily(exporter, stoneSet.getTileFamily(), FeatureSet.empty());
+               generateFamily(exporter, stoneSet.getTileFamily(), FeatureSet.of(FeatureFlags.VANILLA));
                ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getTiles(), 4)
                                       .input('S', stoneSet.getBricks())
                                       .pattern("SS").pattern("SS")
