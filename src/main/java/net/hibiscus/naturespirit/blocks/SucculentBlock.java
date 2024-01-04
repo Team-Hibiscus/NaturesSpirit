@@ -20,12 +20,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class SucculentBlock extends CoralParentBlock {
-   public static final MapCodec<SucculentBlock> CODEC = SucculentBlock.createCodec(SucculentBlock::new);
    private static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   public MapCodec<? extends SucculentBlock> getCodec() {
-      return CODEC;
-   }
 
    public SucculentBlock(AbstractBlock.Settings settings) {
       super(settings);

@@ -20,10 +20,7 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
-import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.*;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -57,6 +54,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
@@ -1645,18 +1643,19 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       public static final BlockFamily SMOOTH_PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE).slab(SMOOTH_PINK_SANDSTONE_SLAB).stairs(SMOOTH_PINK_SANDSTONE_STAIRS).noGenerateModels().build();
 
 
-      public static void offerShapelessRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, @Nullable String group, int outputCount) {
-         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount).input(input).group(group).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input)));
+      public static void offerShapelessRecipe(Consumer <RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input, @Nullable String group, int outputCount) {
+         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount).input(input).group(group).criterion(RecipeProvider.hasItem(input), RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input)));
       }
-      public static void offerStonecuttingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input) {
+      public static void offerStonecuttingRecipe(Consumer <RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input) {
          offerStonecuttingRecipe(exporter, category, output, input, 1);
       }
 
-      public static void offerStonecuttingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input, int count) {
-         SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(input), category, output, count).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input) + "_stonecutting"));
+      public static void offerStonecuttingRecipe(Consumer <RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input, int count) {
+         SingleItemRecipeJsonBuilder
+                 .createStonecutting(Ingredient.ofItems(input), category, output, count).criterion(RecipeProvider.hasItem(input), RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input) + "_stonecutting"));
       }
 
-      private void generateWoodRecipes(HashMap <String, WoodSet> woods, RecipeExporter consumer) {
+      private void generateWoodRecipes(HashMap <String, WoodSet> woods, Consumer <RecipeJsonProvider> consumer) {
          for(WoodSet woodSet : woods.values()) {
             offerPlanksRecipe(consumer, woodSet.getPlanks(), woodSet.getItemLogsTag(), 4);
             if (woodSet.hasBark()) {
@@ -1690,7 +1689,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                     .group("wooden")
                     .unlockCriterionName("has_planks")
                     .build();
-            generateFamily(consumer, family, FeatureSet.of(FeatureFlags.VANILLA));
+            generateFamily(consumer, family);
          }
       }
       private void generateFlowerRecipes(HashMap <String, FlowerSet> flowers, Consumer <RecipeJsonProvider> consumer) {
@@ -1702,9 +1701,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private void generateStoneRecipes(HashMap <String, StoneSet> stoones, Consumer <RecipeJsonProvider> exporter) {
          for(StoneSet stoneSet : stoones.values()) {
-            generateFamily(exporter, stoneSet.getBaseFamily(), FeatureSet.of(FeatureFlags.VANILLA));
-            generateFamily(exporter, stoneSet.getBrickFamily(), FeatureSet.of(FeatureFlags.VANILLA));
-            generateFamily(exporter, stoneSet.getPolishedFamily(), FeatureSet.of(FeatureFlags.VANILLA));
+            generateFamily(exporter, stoneSet.getBaseFamily());
+            generateFamily(exporter, stoneSet.getBrickFamily());
+            generateFamily(exporter, stoneSet.getPolishedFamily());
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getBricks(), 4)
                                    .input('S', stoneSet.getPolished()).pattern("SS")
                                    .pattern("SS")
@@ -1731,9 +1730,9 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getTilesWall(), stoneSet.getTiles());
             }
             if(stoneSet.hasCobbled()) {
-               generateFamily(exporter, stoneSet.getCobbledFamily(), FeatureSet.of(FeatureFlags.VANILLA));
+               generateFamily(exporter, stoneSet.getCobbledFamily());
                if(stoneSet.hasMossy()) {
-                  generateFamily(exporter, stoneSet.getMossyCobbledFamily(), FeatureSet.of(FeatureFlags.VANILLA));
+                  generateFamily(exporter, stoneSet.getMossyCobbledFamily());
                   ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbled())
                                             .input(stoneSet.getCobbled()).input(Blocks.MOSS_BLOCK)
                                             .group("mossy_cobblestone")
@@ -1788,7 +1787,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                }
             }
             if(stoneSet.hasMossy()) {
-               generateFamily(exporter, stoneSet.getMossyBrickFamily(), FeatureSet.of(FeatureFlags.VANILLA));
+               generateFamily(exporter, stoneSet.getMossyBrickFamily());
                ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricks())
                                          .input(stoneSet.getBricks())
                                          .input(Blocks.VINE)
@@ -1828,7 +1827,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          return new Identifier(MOD_ID, identifier.getPath());
       }
 
-      @Override public void generate(RecipeExporter exporter) {
+      @Override public void generate(Consumer <RecipeJsonProvider> exporter) {
          createChiseledBlockRecipe(RecipeCategory.BUILDING_BLOCKS, CHISELED_PINK_SANDSTONE, Ingredient.ofItems(PINK_SANDSTONE_SLAB))
                  .criterion("has_pink_sandstone", conditionsFromItem(HibiscusMiscBlocks.PINK_SANDSTONE))
                  .criterion("has_chiseled_pink_sandstone", conditionsFromItem(CHISELED_PINK_SANDSTONE))
@@ -1933,8 +1932,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(HibiscusTags.Items.COCONUT_ITEMS), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 125).criterion("has_coconut", conditionsFromTag(HibiscusTags.Items.COCONUT_ITEMS)).offerTo(exporter, new Identifier(MOD_ID, "charcoal_from_coconuts"));
 
 
-         generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY, FeatureSet.of(FeatureFlags.VANILLA));
-         generateFamily(exporter, SMOOTH_PINK_SANDSTONE_FAMILY, FeatureSet.of(FeatureFlags.VANILLA));
+         generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY);
+         generateFamily(exporter, SMOOTH_PINK_SANDSTONE_FAMILY);
          
       }
    }

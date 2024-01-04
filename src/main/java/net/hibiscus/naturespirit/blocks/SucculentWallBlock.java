@@ -32,13 +32,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class SucculentWallBlock
         extends SucculentBlock {
-   public static final MapCodec<SucculentWallBlock> CODEC = SucculentWallBlock.createCodec(SucculentWallBlock::new);
    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
    private static final Map<Direction, VoxelShape> FACING_TO_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(0.0, 4.0, 5.0, 16.0, 12.0, 16.0), Direction.SOUTH, Block.createCuboidShape(0.0, 4.0, 0.0, 16.0, 12.0, 11.0), Direction.WEST, Block.createCuboidShape(5.0, 4.0, 0.0, 16.0, 12.0, 16.0), Direction.EAST, Block.createCuboidShape(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)));
-
-   public MapCodec<? extends SucculentWallBlock> getCodec() {
-      return CODEC;
-   }
 
    public SucculentWallBlock(AbstractBlock.Settings settings) {
       super(settings);

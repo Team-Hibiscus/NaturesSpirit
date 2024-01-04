@@ -352,9 +352,9 @@ public class HibiscusWoods {
            MAHOGANY.getButton(),
            MAHOGANY.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.SAXAUL,
+           new SaxaulSaplingGenerator(),
            WoodSet.WoodPreset.SANDY,
-           false,
-           HibiscusConfiguredFeatures.SAXAUL_TREE
+           false
    );
 
 //   public static final WoodSet BANYAN = new WoodSet(

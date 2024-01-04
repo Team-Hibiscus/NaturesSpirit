@@ -689,49 +689,49 @@ public class HibiscusMiscBlocks {
    public static final StoneSet CHERT = new StoneSet(new Identifier(MOD_ID, "chert"), MapColor.OAK_TAN, TRAVERTINE.getTilesSlab().asItem(), TRAVERTINE.getBase().asItem(), .9F, false, false, false, true, true);
 
    public static final Block CHERT_GOLD_ORE = registerBlock("chert_gold_ore",
-           new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.GOLD_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.GOLD_ORE).mapColor(MapColor.OAK_TAN).strength(.9f), ConstantIntProvider.create(0)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.GOLD_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_IRON_ORE = registerBlock("chert_iron_ore",
-           new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.IRON_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.IRON_ORE).mapColor(MapColor.OAK_TAN).strength(.9f), ConstantIntProvider.create(0)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.IRON_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_COAL_ORE = registerBlock("chert_coal_ore",
-           new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.copyShallow(Blocks.COAL_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.COAL_ORE).mapColor(MapColor.OAK_TAN).strength(.9f), UniformIntProvider.create(0, 2)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.COAL_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_LAPIS_ORE = registerBlock("chert_lapis_ore",
-           new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copyShallow(Blocks.LAPIS_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.LAPIS_ORE).mapColor(MapColor.OAK_TAN).strength(.9f), UniformIntProvider.create(2, 5)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.LAPIS_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_DIAMOND_ORE = registerBlock("chert_diamond_ore",
-           new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.DIAMOND_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE).mapColor(MapColor.OAK_TAN).strength(.9f), UniformIntProvider.create(3, 7)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.DIAMOND_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_REDSTONE_ORE = registerBlock("chert_redstone_ore",
-           new RedstoneOreBlock(AbstractBlock.Settings.copyShallow(Blocks.REDSTONE_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
+           new RedstoneOreBlock(FabricBlockSettings.copy(Blocks.REDSTONE_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.REDSTONE_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_EMERALD_ORE = registerBlock("chert_emerald_ore",
-           new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.EMERALD_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.EMERALD_ORE).mapColor(MapColor.OAK_TAN).strength(.6f), UniformIntProvider.create(3, 7)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.EMERALD_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_COPPER_ORE = registerBlock("chert_copper_ore",
-           new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.COPPER_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
+           new ExperienceDroppingBlock(FabricBlockSettings.copy(Blocks.COPPER_ORE).mapColor(MapColor.OAK_TAN).strength(.6f), ConstantIntProvider.create(0)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.COPPER_ORE,
            ItemGroups.NATURAL
@@ -753,12 +753,12 @@ public class HibiscusMiscBlocks {
            PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block PAPER_DOOR = registerDoorBlock("paper_door",
+   public static final Block PAPER_DOOR = registerDoorBlock("paper_door",
            new DoorBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor()), PAPER_BLOCK_SET),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            PAPER_PANEL
    );
-   public static Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(
+   public static final Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(
            FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
            PAPER_BLOCK_SET
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_DOOR);
@@ -774,12 +774,12 @@ public class HibiscusMiscBlocks {
            FRAMED_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block FRAMED_PAPER_DOOR = registerDoorBlock("framed_paper_door",
+   public static final Block FRAMED_PAPER_DOOR = registerDoorBlock("framed_paper_door",
            new DoorBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor()), PAPER_BLOCK_SET),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            FRAMED_PAPER_PANEL
    );
-   public static Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(
+   public static final Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(
            FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
            PAPER_BLOCK_SET
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, FRAMED_PAPER_DOOR);
@@ -795,23 +795,23 @@ public class HibiscusMiscBlocks {
            BLOOMING_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
-   public static Block BLOOMING_PAPER_DOOR = registerDoorBlock("blooming_paper_door",
+   public static final Block BLOOMING_PAPER_DOOR = registerDoorBlock("blooming_paper_door",
            new DoorBlock(FabricBlockSettings.copy(HibiscusWoods.SUGI.getDoor()), PAPER_BLOCK_SET),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            BLOOMING_PAPER_PANEL
    );
-   public static Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(
+   public static final Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(
            FabricBlockSettings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque(),
            PAPER_BLOCK_SET
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLOOMING_PAPER_DOOR);
 
 
-   public static Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()), PAPER_WOOD_TYPE));
-   public static Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()).dropsLike(PAPER_SIGN), PAPER_WOOD_TYPE));
-   public static Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()), PAPER_WOOD_TYPE));
-   public static Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN), PAPER_WOOD_TYPE));
-   public static Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new FabricItemSettings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
-   public static Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
+   public static final Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()), PAPER_WOOD_TYPE));
+   public static final Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()).dropsLike(PAPER_SIGN), PAPER_WOOD_TYPE));
+   public static final Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()), PAPER_WOOD_TYPE));
+   public static final Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN), PAPER_WOOD_TYPE));
+   public static final Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new FabricItemSettings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
+   public static final Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
 
    public static void registerMiscBlocks() {
       HibiscusColoredBlocks.registerColoredBlocks();
