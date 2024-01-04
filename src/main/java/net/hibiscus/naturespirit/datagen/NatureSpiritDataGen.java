@@ -1594,6 +1594,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
          translationBuilder.add("pack.natures_spirit.bushy_leaves_compatibility", "Bushy Leaves Compat");
          translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
+         translationBuilder.add("pack.natures_spirit.modified_desert", "Modified Desert");
          translationBuilder.add("pack.natures_spirit.modified_badlands", "Modified Badlands");
          translationBuilder.add("pack.natures_spirit.modified_savannas", "Modified Savannas");
          translationBuilder.add("pack.natures_spirit.modified_dark_forest", "Modified Dark Forests");
