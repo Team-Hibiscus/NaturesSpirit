@@ -1,8 +1,230 @@
 {
+  "music.overworld.alpine": {
+    "sounds": [
+      {
+        "name": "music/game/a_familiar_room",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/calm1",
+        "stream": true
+      },
+      {
+        "name": "music/game/calm2",
+        "stream": true
+      },
+      {
+        "name": "music/game/calm3",
+        "stream": true
+      },
+      {
+        "name": "music/game/comforting_memories",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/floating_dream",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/hal1",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal2",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal3",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal4",
+        "stream": true
+      },
+      {
+        "name": "music/game/left_to_bloom",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/nuance1",
+        "stream": true
+      },
+      {
+        "name": "music/game/nuance2",
+        "stream": true
+      },
+      {
+        "name": "music/game/one_more_day",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/piano1",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano2",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano3",
+        "stream": true
+      }
+    ]
+  },
+  "music.overworld.arid": {
+    "sounds": [
+      {
+        "name": "music/game/crescent_dunes",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "music/game/echo_in_the_wind",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/hal1",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal2",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal3",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal4",
+        "stream": true
+      },
+      {
+        "name": "music/game/nuance1",
+        "stream": true
+      },
+      {
+        "name": "music/game/nuance2",
+        "stream": true
+      },
+      {
+        "name": "music/game/one_more_day",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/piano1",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano2",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano3",
+        "stream": true
+      }
+    ]
+  },
   "music.overworld.aspen": {
     "sounds": [
       {
         "name": "natures_spirit:music.overworld.aspen",
+        "stream": true
+      }
+    ]
+  },
+  "music.overworld.desert": {
+    "sounds": [
+      {
+        "name": "music/game/crescent_dunes",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 3
+      },
+      {
+        "name": "music/game/hal1",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal2",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal3",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal4",
+        "stream": true
+      },
+      {
+        "name": "music/game/nuance1",
+        "stream": true
+      },
+      {
+        "name": "music/game/nuance2",
+        "stream": true
+      },
+      {
+        "name": "music/game/one_more_day",
+        "stream": true,
+        "volume": 0.4
+      }
+    ]
+  },
+  "music.overworld.jungle": {
+    "sounds": [
+      {
+        "name": "music/game/bromeliad",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 3
+      },
+      {
+        "name": "music/game/hal1",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal2",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal3",
+        "stream": true
+      },
+      {
+        "name": "music/game/hal4",
+        "stream": true
+      },
+      {
+        "name": "music/game/left_to_bloom",
+        "volume": 0.4
+      },
+      {
+        "name": "music/game/nuance1",
+        "stream": true
+      },
+      {
+        "name": "music/game/nuance2",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano1",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano2",
+        "stream": true
+      },
+      {
+        "name": "music/game/piano3",
         "stream": true
       }
     ]

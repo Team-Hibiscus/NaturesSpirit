@@ -21,6 +21,12 @@
     "foliage_color": 9940541,
     "grass_color": 11714919
   },
+  "music": {
+    "max_delay": 24000,
+    "min_delay": 12000,
+    "replace_current_music": false,
+    "sound": "natures_spirit:music.overworld.arid"
+  },
   "features": [
     [
       "natures_spirit:kaolin_layers"
