@@ -1,24 +1,26 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.item.BoatItem;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.item.BoatItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.world.World;
 
 public class HibiscusBoatItem extends BoatItem {
    private final HibiscusBoatEntity.HibiscusBoat boatData;
    private final boolean chest;
 
-   public HibiscusBoatItem(boolean chest, HibiscusBoatEntity.HibiscusBoat boatData, Properties settings) {
-      super(chest, Boat.Type.OAK, settings);
+   public HibiscusBoatItem(boolean chest, HibiscusBoatEntity.HibiscusBoat boatData, Settings settings) {
+      super(chest, BoatEntity.Type.OAK, settings);
       this.chest = chest;
       this.boatData = boatData;
    }
 
-   @Override protected Boat getBoat(Level world, HitResult hitResult) {
+   @Override protected BoatEntity createEntity(World world, HitResult hitResult, ItemStack stack, PlayerEntity player) {
       var entity = boatData.factory(chest).create(boatData.entityType(chest), world);
-      entity.absMoveTo(hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
+      entity.updatePosition(hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z);
       return entity;
    }
 }

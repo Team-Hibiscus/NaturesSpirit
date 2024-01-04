@@ -1,25 +1,25 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.TallGrassBlock;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShortPlantBlock;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 
-public class HibiscusFernBlock extends TallGrassBlock {
+public class HibiscusFernBlock extends ShortPlantBlock {
 
-   DoublePlantBlock tallPlantBlock;
+   TallPlantBlock tallPlantBlock;
 
-   public HibiscusFernBlock(Properties properties, DoublePlantBlock tallPlantBlock) {
+   public HibiscusFernBlock(Settings properties, TallPlantBlock tallPlantBlock) {
       super(properties);
       this.tallPlantBlock = tallPlantBlock;
    }
 
-   public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
-      if(tallPlantBlock.defaultBlockState().canSurvive(world, pos) && world.isEmptyBlock(pos.above())) {
-         DoublePlantBlock.placeAt(world, tallPlantBlock.defaultBlockState(), pos, 2);
+   public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+      if(tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
+         TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
       }
 
    }

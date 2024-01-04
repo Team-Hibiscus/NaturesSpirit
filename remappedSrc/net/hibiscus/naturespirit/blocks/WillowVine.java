@@ -1,25 +1,25 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.NetherVines;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.block.Block;
+import net.minecraft.block.VineLogic;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
 
 
 public class WillowVine extends WisteriaVine {
-   protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+   protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-   public WillowVine(Properties properties) {
+   public WillowVine(Settings properties) {
       super(properties);
    }
 
 
-   protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
-      return NetherVines.getBlocksToGrowWhenBonemealed(randomSource);
+   protected int getGrowthLength(Random randomSource) {
+      return VineLogic.getGrowthLength(randomSource);
    }
 
-   public Block getBodyBlock() {
+   public Block getPlant() {
       return HibiscusWoods.WILLOW.getWillowVinesPlant();
    }
 }

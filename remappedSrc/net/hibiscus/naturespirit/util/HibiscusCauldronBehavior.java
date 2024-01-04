@@ -1,42 +1,45 @@
 package net.hibiscus.naturespirit.util;
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.minecraft.block.cauldron.CauldronBehavior;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.sound.SoundEvents;
+
 import java.util.Map;
 
-import static net.minecraft.core.cauldron.CauldronInteraction.*;
+import static net.minecraft.block.cauldron.CauldronBehavior.*;
+
+import CauldronBehaviorMap;
 
 public interface HibiscusCauldronBehavior {
 
-   Map <Item, CauldronInteraction> MILK_CAULDRON_BEHAVIOR = newInteractionMap();
-   CauldronInteraction FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> emptyBucket(
+   CauldronBehaviorMap MILK_CAULDRON_BEHAVIOR = createMap("milk");
+   CauldronBehavior FILL_WITH_MILK = (state, world, pos, player, hand, stack) -> fillCauldron(
            world,
            pos,
            player,
            hand,
            stack,
-           HibiscusBlocksAndItems.MILK_CAULDRON.defaultBlockState(),
-           SoundEvents.BUCKET_EMPTY
+           HibiscusMiscBlocks.MILK_CAULDRON.getDefaultState(),
+           SoundEvents.ITEM_BUCKET_EMPTY
    );
-   Map <Item, CauldronInteraction> CHEESE_CAULDRON_BEHAVIOR = newInteractionMap();
-   CauldronInteraction FILL_WITH_CHEESE = (state, world, pos, player, hand, stack) -> emptyBucket(
+   CauldronBehaviorMap CHEESE_CAULDRON_BEHAVIOR = createMap("cheese");
+   CauldronBehavior FILL_WITH_CHEESE = (state, world, pos, player, hand, stack) -> fillCauldron(
            world,
            pos,
            player,
            hand,
            stack,
-           HibiscusBlocksAndItems.CHEESE_CAULDRON.defaultBlockState(),
-           SoundEvents.BUCKET_EMPTY
+           HibiscusMiscBlocks.CHEESE_CAULDRON.getDefaultState(),
+           SoundEvents.ITEM_BUCKET_EMPTY
    );
 
    static void registerBehavior() {
-      MILK_CAULDRON_BEHAVIOR.put(
+      MILK_CAULDRON_BEHAVIOR.map().put(
               Items.BUCKET,
-              (state, world, pos, player, hand, stack) -> fillBucket(state,
+              (state, world, pos, player, hand, stack) -> emptyCauldron(state,
                       world,
                       pos,
                       player,
@@ -44,24 +47,24 @@ public interface HibiscusCauldronBehavior {
                       stack,
                       new ItemStack(Items.MILK_BUCKET),
                       (statex) -> {return true;},
-                      SoundEvents.COW_MILK
+                      SoundEvents.ENTITY_COW_MILK
               )
       );
-      addDefaultInteractions(MILK_CAULDRON_BEHAVIOR);
-      CHEESE_CAULDRON_BEHAVIOR.put(
+      registerBucketBehavior(MILK_CAULDRON_BEHAVIOR.map());
+      CHEESE_CAULDRON_BEHAVIOR.map().put(
               Items.BUCKET,
-              (state, world, pos, player, hand, stack) -> fillBucket(state,
+              (state, world, pos, player, hand, stack) -> emptyCauldron(state,
                       world,
                       pos,
                       player,
                       hand,
                       stack,
-                      new ItemStack(HibiscusBlocksAndItems.CHEESE_BUCKET),
+                      new ItemStack(HibiscusMiscBlocks.CHEESE_BUCKET),
                       (statex) -> { return true;},
-                      SoundEvents.BUCKET_FILL
+                      SoundEvents.ITEM_BUCKET_FILL
               )
       );
-      addDefaultInteractions(CHEESE_CAULDRON_BEHAVIOR);
+      registerBucketBehavior(CHEESE_CAULDRON_BEHAVIOR.map());
    }
 
 

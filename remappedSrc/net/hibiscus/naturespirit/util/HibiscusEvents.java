@@ -2,80 +2,80 @@ package net.hibiscus.naturespirit.util;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.hibiscus.naturespirit.blocks.JoshuaTrunkBlock;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.block.BlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.event.GameEvent;
 
 public class HibiscusEvents {
    public static void registerEvents() {
       UseBlockCallback.EVENT.register(((player, world, hand, hitResult) -> {
          BlockPos blockPos = hitResult.getBlockPos();
          BlockState blockState = world.getBlockState(blockPos);
-         if(blockState.is(HibiscusWoods.JOSHUA.getLog()) && player.getItemInHand(hand).is(ItemTags.AXES)) {
-            BlockState blockState2 = HibiscusWoods.JOSHUA.getStrippedLog().defaultBlockState().setValue(JoshuaTrunkBlock.DOWN, blockState.getValue(JoshuaTrunkBlock.DOWN)).setValue(JoshuaTrunkBlock.UP,
-                    blockState.getValue(JoshuaTrunkBlock.UP)
-            ).setValue(JoshuaTrunkBlock.NORTH, blockState.getValue(JoshuaTrunkBlock.NORTH)).setValue(
+         if(blockState.isOf(HibiscusWoods.JOSHUA.getLog()) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
+            BlockState blockState2 = HibiscusWoods.JOSHUA.getStrippedLog().getDefaultState().with(JoshuaTrunkBlock.DOWN, blockState.get(JoshuaTrunkBlock.DOWN)).with(JoshuaTrunkBlock.UP,
+                    blockState.get(JoshuaTrunkBlock.UP)
+            ).with(JoshuaTrunkBlock.NORTH, blockState.get(JoshuaTrunkBlock.NORTH)).with(
                     JoshuaTrunkBlock.SOUTH,
-                    blockState.getValue(JoshuaTrunkBlock.SOUTH)
-            ).setValue(JoshuaTrunkBlock.EAST, blockState.getValue(JoshuaTrunkBlock.EAST)).setValue(JoshuaTrunkBlock.WEST, blockState.getValue(JoshuaTrunkBlock.WEST)).setValue(
+                    blockState.get(JoshuaTrunkBlock.SOUTH)
+            ).with(JoshuaTrunkBlock.EAST, blockState.get(JoshuaTrunkBlock.EAST)).with(JoshuaTrunkBlock.WEST, blockState.get(JoshuaTrunkBlock.WEST)).with(
                     JoshuaTrunkBlock.WATERLOGGED,
-                    blockState.getValue(JoshuaTrunkBlock.WATERLOGGED)
+                    blockState.get(JoshuaTrunkBlock.WATERLOGGED)
             );
-            world.playSound(player, blockPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if(player instanceof ServerPlayer) {
-               CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, blockPos, player.getItemInHand(hand));
+            world.playSound(player, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if(player instanceof ServerPlayerEntity) {
+               Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) player, blockPos, player.getStackInHand(hand));
             }
 
-            world.setBlock(blockPos, blockState2, 11);
-            world.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState2));
+            world.setBlockState(blockPos, blockState2, 11);
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, blockState2));
             if(player != null && !player.isCreative() && !player.isSpectator()) {
-               player.getItemInHand(hand).hurtAndBreak(1, player, (p) -> {
-                  p.broadcastBreakEvent(hand);
+               player.getStackInHand(hand).damage(1, player, (p) -> {
+                  p.sendToolBreakStatus(hand);
                });
             }
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return ActionResult.success(world.isClient);
          }
-         if(blockState.is(BlockTags.CAULDRONS) && player.getItemInHand(hand).is(Items.MILK_BUCKET) && !blockState.is(HibiscusBlocksAndItems.MILK_CAULDRON)) {
-            world.playSound(player, blockPos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if(player instanceof ServerPlayer) {
-               CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, blockPos, player.getItemInHand(hand));
+         if(blockState.isIn(BlockTags.CAULDRONS) && player.getStackInHand(hand).isOf(Items.MILK_BUCKET) && !blockState.isOf(HibiscusMiscBlocks.MILK_CAULDRON)) {
+            world.playSound(player, blockPos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if(player instanceof ServerPlayerEntity) {
+               Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) player, blockPos, player.getStackInHand(hand));
             }
 
-            world.setBlock(blockPos, HibiscusBlocksAndItems.MILK_CAULDRON.defaultBlockState(), 11);
-            world.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, HibiscusBlocksAndItems.MILK_CAULDRON.defaultBlockState()));
+            world.setBlockState(blockPos, HibiscusMiscBlocks.MILK_CAULDRON.getDefaultState(), 11);
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, HibiscusMiscBlocks.MILK_CAULDRON.getDefaultState()));
             if(!player.isCreative() && !player.isSpectator()) {
-               player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+               player.setStackInHand(hand, new ItemStack(Items.BUCKET));
             }
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return ActionResult.success(world.isClient);
          }
-         if(blockState.is(BlockTags.CAULDRONS) && player.getItemInHand(hand).is(HibiscusBlocksAndItems.CHEESE_BUCKET) && !blockState.is(HibiscusBlocksAndItems.CHEESE_CAULDRON)) {
-            world.playSound(player, blockPos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if(player instanceof ServerPlayer) {
-               CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, blockPos, player.getItemInHand(hand));
+         if(blockState.isIn(BlockTags.CAULDRONS) && player.getStackInHand(hand).isOf(HibiscusMiscBlocks.CHEESE_BUCKET) && !blockState.isOf(HibiscusMiscBlocks.CHEESE_CAULDRON)) {
+            world.playSound(player, blockPos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if(player instanceof ServerPlayerEntity) {
+               Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) player, blockPos, player.getStackInHand(hand));
             }
 
-            world.setBlock(blockPos, HibiscusBlocksAndItems.CHEESE_CAULDRON.defaultBlockState(), 11);
-            world.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, HibiscusBlocksAndItems.CHEESE_CAULDRON.defaultBlockState()));
+            world.setBlockState(blockPos, HibiscusMiscBlocks.CHEESE_CAULDRON.getDefaultState(), 11);
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, HibiscusMiscBlocks.CHEESE_CAULDRON.getDefaultState()));
             if(!player.isCreative() && !player.isSpectator()) {
-               player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+               player.setStackInHand(hand, new ItemStack(Items.BUCKET));
             }
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return ActionResult.success(world.isClient);
          }
-         return InteractionResult.PASS;
+         return ActionResult.PASS;
       }));
 
    }

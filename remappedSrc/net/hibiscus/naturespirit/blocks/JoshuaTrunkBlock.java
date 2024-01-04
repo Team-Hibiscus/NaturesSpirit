@@ -1,92 +1,92 @@
 package net.hibiscus.naturespirit.blocks;
 
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.PipeBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SupportType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 
-public class JoshuaTrunkBlock extends PipeBlock implements SimpleWaterloggedBlock {
-   public JoshuaTrunkBlock(Properties settings) {
+public class JoshuaTrunkBlock extends ConnectingBlock implements Waterloggable {
+   public JoshuaTrunkBlock(Settings settings) {
       super(0.3125F, settings);
-      this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(UP, false).setValue(DOWN, false).setValue(WATERLOGGED, false));
+      this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false).with(WATERLOGGED, false));
    }
 
    public static final BooleanProperty WATERLOGGED;
 
-   public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-      FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
-      return this.withConnectionProperties(ctx.getLevel(), ctx.getClickedPos()).setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.getAmount() == 8);
+   public BlockState getPlacementState(ItemPlacementContext ctx) {
+      FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+      return this.withConnectionProperties(ctx.getWorld(), ctx.getBlockPos()).with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8);
    }
 
-   public BlockState withConnectionProperties(BlockGetter world, BlockPos pos) {
-      BlockState blockState = world.getBlockState(pos.below());
-      BlockState blockState2 = world.getBlockState(pos.above());
+   public BlockState withConnectionProperties(BlockView world, BlockPos pos) {
+      BlockState blockState = world.getBlockState(pos.down());
+      BlockState blockState2 = world.getBlockState(pos.up());
       BlockState blockState3 = world.getBlockState(pos.north());
       BlockState blockState4 = world.getBlockState(pos.east());
       BlockState blockState5 = world.getBlockState(pos.south());
       BlockState blockState6 = world.getBlockState(pos.west());
-      return this.defaultBlockState().setValue(DOWN,
-              blockState.is(BlockTags.LEAVES) || blockState.getBlock() instanceof JoshuaTrunkBlock || blockState.isFaceSturdy(world, pos, Direction.UP, SupportType.CENTER)
-      ).setValue(
+      return this.getDefaultState().with(DOWN,
+              blockState.isIn(BlockTags.LEAVES) || blockState.getBlock() instanceof JoshuaTrunkBlock || blockState.isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER)
+      ).with(
               UP,
-              blockState2.is(BlockTags.LEAVES) || blockState2.getBlock() instanceof JoshuaTrunkBlock || blockState2.isFaceSturdy(world, pos, Direction.DOWN, SupportType.CENTER)
-      ).setValue(NORTH, blockState3.is(BlockTags.LEAVES) || blockState3.getBlock() instanceof JoshuaTrunkBlock || blockState3.isFaceSturdy(world, pos, Direction.SOUTH, SupportType.CENTER)).setValue(
+              blockState2.isIn(BlockTags.LEAVES) || blockState2.getBlock() instanceof JoshuaTrunkBlock || blockState2.isSideSolid(world, pos, Direction.DOWN, SideShapeType.CENTER)
+      ).with(NORTH, blockState3.isIn(BlockTags.LEAVES) || blockState3.getBlock() instanceof JoshuaTrunkBlock || blockState3.isSideSolid(world, pos, Direction.SOUTH, SideShapeType.CENTER)).with(
               EAST,
-              blockState4.is(BlockTags.LEAVES) || blockState4.getBlock() instanceof JoshuaTrunkBlock || blockState4.isFaceSturdy(world, pos, Direction.WEST, SupportType.CENTER)
-      ).setValue(SOUTH, blockState5.is(BlockTags.LEAVES) || blockState5.getBlock() instanceof JoshuaTrunkBlock || blockState5.isFaceSturdy(world, pos, Direction.NORTH, SupportType.CENTER)).setValue(
+              blockState4.isIn(BlockTags.LEAVES) || blockState4.getBlock() instanceof JoshuaTrunkBlock || blockState4.isSideSolid(world, pos, Direction.WEST, SideShapeType.CENTER)
+      ).with(SOUTH, blockState5.isIn(BlockTags.LEAVES) || blockState5.getBlock() instanceof JoshuaTrunkBlock || blockState5.isSideSolid(world, pos, Direction.NORTH, SideShapeType.CENTER)).with(
               WEST,
-              blockState6.is(BlockTags.LEAVES) || blockState6.getBlock() instanceof JoshuaTrunkBlock || blockState6.isFaceSturdy(world, pos, Direction.EAST, SupportType.CENTER)
+              blockState6.isIn(BlockTags.LEAVES) || blockState6.getBlock() instanceof JoshuaTrunkBlock || blockState6.isSideSolid(world, pos, Direction.EAST, SideShapeType.CENTER)
       );
    }
 
-   public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
-      boolean bl = neighborState.isFaceSturdy(world, pos, direction.getOpposite(), SupportType.CENTER) || neighborState.getBlock() instanceof JoshuaTrunkBlock || neighborState.is(BlockTags.LEAVES);
-      return state.setValue(PROPERTY_BY_DIRECTION.get(direction), bl);
+   public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+      boolean bl = neighborState.isSideSolid(world, pos, direction.getOpposite(), SideShapeType.CENTER) || neighborState.getBlock() instanceof JoshuaTrunkBlock || neighborState.isIn(BlockTags.LEAVES);
+      return state.with(FACING_PROPERTIES.get(direction), bl);
    }
 
-   public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-      if(!state.canSurvive(world, pos)) {
-         world.destroyBlock(pos, true);
+   public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+      if(!state.canPlaceAt(world, pos)) {
+         world.breakBlock(pos, true);
       }
 
    }
 
-   public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+   public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
       return true;
    }
 
-   protected void createBlockStateDefinition(StateDefinition.Builder <Block, BlockState> builder) {
+   protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
       builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN, WATERLOGGED);
    }
 
-   public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
+   public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
       return false;
    }
 
    public FluidState getFluidState(BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
    }
 
    static {
-      WATERLOGGED = BlockStateProperties.WATERLOGGED;
+      WATERLOGGED = Properties.WATERLOGGED;
+   }
+
+   @Override protected MapCodec <? extends ConnectingBlock> getCodec() {
+      return null;
    }
 }

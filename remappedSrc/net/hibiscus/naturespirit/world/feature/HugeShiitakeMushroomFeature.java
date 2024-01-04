@@ -5,22 +5,22 @@ package net.hibiscus.naturespirit.world.feature;
 //
 
 import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockPos.MutableBlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.HugeMushroomBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.MushroomBlock;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.Mutable;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.gen.feature.HugeMushroomFeature;
+import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
 
-public class HugeShiitakeMushroomFeature extends AbstractHugeMushroomFeature {
-   public HugeShiitakeMushroomFeature(Codec <HugeMushroomFeatureConfiguration> codec) {
+public class HugeShiitakeMushroomFeature extends HugeMushroomFeature {
+   public HugeShiitakeMushroomFeature(Codec <HugeMushroomFeatureConfig> codec) {
       super(codec);
    }
 
-   protected void makeCap(LevelAccessor world, RandomSource random, BlockPos start, int y, MutableBlockPos mutable, HugeMushroomFeatureConfiguration config) {
+   protected void generateCap(WorldAccess world, Random random, BlockPos start, int y, Mutable mutable, HugeMushroomFeatureConfig config) {
       for(int i = y - 3; i <= y + 1; ++i) {
          int j = i < y ? config.foliageRadius : config.foliageRadius - 1;
          int k = config.foliageRadius - 2;
@@ -34,20 +34,20 @@ public class HugeShiitakeMushroomFeature extends AbstractHugeMushroomFeature {
                boolean bl5 = bl || bl2; //first or last
                boolean bl6 = bl3 || bl4; // first or last
                if(i >= y || (bl5 != bl6 && (i == y - 2 || i == y - 1))) {
-                  mutable.setWithOffset(start, l, i, m); //-radius, y. positive radius (corner)
-                  if(!world.getBlockState(mutable).isSolidRender(world, mutable)) {
-                     BlockState blockState = config.capProvider.getState(random, start);
-                     if(blockState.hasProperty(HugeMushroomBlock.WEST) && blockState.hasProperty(HugeMushroomBlock.EAST) && blockState.hasProperty(HugeMushroomBlock.NORTH) && blockState.hasProperty(HugeMushroomBlock.SOUTH) && blockState.hasProperty(
-                             HugeMushroomBlock.UP)) {
+                  mutable.set(start, l, i, m); //-radius, y. positive radius (corner)
+                  if(!world.getBlockState(mutable).isOpaqueFullCube(world, mutable)) {
+                     BlockState blockState = config.capProvider.get(random, start);
+                     if(blockState.contains(MushroomBlock.WEST) && blockState.contains(MushroomBlock.EAST) && blockState.contains(MushroomBlock.NORTH) && blockState.contains(MushroomBlock.SOUTH) && blockState.contains(
+                             MushroomBlock.UP)) {
                         blockState = blockState
-                                .setValue(HugeMushroomBlock.UP, i >= y - 1)
-                                .setValue(HugeMushroomBlock.WEST, l < -k)
-                                .setValue(HugeMushroomBlock.EAST, l > k)
-                                .setValue(HugeMushroomBlock.NORTH, m < -k)
-                                .setValue(HugeMushroomBlock.SOUTH, m > k);
+                                .with(MushroomBlock.UP, i >= y - 1)
+                                .with(MushroomBlock.WEST, l < -k)
+                                .with(MushroomBlock.EAST, l > k)
+                                .with(MushroomBlock.NORTH, m < -k)
+                                .with(MushroomBlock.SOUTH, m > k);
                      }
 
-                     this.setBlock(world, mutable, blockState);
+                     this.setBlockState(world, mutable, blockState);
                   }
                }
             }
@@ -56,16 +56,16 @@ public class HugeShiitakeMushroomFeature extends AbstractHugeMushroomFeature {
 
    }
 
-   protected boolean isValidPosition(LevelAccessor world, BlockPos pos, int height, MutableBlockPos mutablePos, HugeMushroomFeatureConfiguration config) {
+   protected boolean canGenerate(WorldAccess world, BlockPos pos, int height, Mutable mutablePos, HugeMushroomFeatureConfig config) {
       int i = pos.getY();
-      if(i >= world.getMinBuildHeight() + 1 && i + height + 1 < world.getMaxBuildHeight()) {
-         BlockState blockState = world.getBlockState(pos.below());
-         if(!isDirt(blockState) && !blockState.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
+      if(i >= world.getBottomY() + 1 && i + height + 1 < world.getTopY()) {
+         BlockState blockState = world.getBlockState(pos.down());
+         if(!isSoil(blockState) && !blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK)) {
             return false;
          }
          else {
             for(int j = 0; j <= height; ++j) {
-               int k = this.getTreeRadiusForHeight(-1, -1, config.foliageRadius, j);
+               int k = this.getCapSize(-1, -1, config.foliageRadius, j);
             }
 
             return true;
@@ -76,7 +76,7 @@ public class HugeShiitakeMushroomFeature extends AbstractHugeMushroomFeature {
       }
    }
 
-   protected int getTreeRadiusForHeight(int i, int j, int capSize, int y) {
+   protected int getCapSize(int i, int j, int capSize, int y) {
       int k = 0;
       if(y < j && y >= j - 4) {
          k = capSize;

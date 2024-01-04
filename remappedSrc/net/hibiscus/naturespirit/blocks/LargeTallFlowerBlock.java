@@ -1,10 +1,10 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.block.TallFlowerBlock;
 
 public class LargeTallFlowerBlock extends TallFlowerBlock {
 
-   public LargeTallFlowerBlock(Properties properties) {
+   public LargeTallFlowerBlock(Settings properties) {
       super(properties);
    }
 

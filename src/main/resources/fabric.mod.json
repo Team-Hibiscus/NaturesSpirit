@@ -32,9 +32,7 @@
   "depends": {
     "fabricloader": ">=0.15.1",
     "fabric": "*",
-    "minecraft": "1.20.4"
-  },
-  "recommends": {
+    "minecraft": "1.20.1",
     "terrablender": "*"
   },
   "custom": {

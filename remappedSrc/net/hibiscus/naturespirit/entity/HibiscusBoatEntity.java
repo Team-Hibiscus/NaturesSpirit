@@ -1,25 +1,25 @@
 package net.hibiscus.naturespirit.entity;
 
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.entity.vehicle.ChestBoat;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.entity.vehicle.ChestBoatEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.StringIdentifiable;
+import net.minecraft.world.World;
+
 import java.util.function.Supplier;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 import Z;
 
-public class HibiscusBoatEntity extends Boat {
+public class HibiscusBoatEntity extends BoatEntity {
    private final HibiscusBoat boatData;
 
-   public HibiscusBoatEntity(EntityType <? extends Boat> type, Level world, HibiscusBoat boatData) {
+   public HibiscusBoatEntity(EntityType <? extends BoatEntity> type, World world, HibiscusBoat boatData) {
       super(type, world);
       this.boatData = boatData;
    }
@@ -35,18 +35,18 @@ public class HibiscusBoatEntity extends Boat {
    @Override public void setVariant(Type type) {
    }
 
-   @Override public Item getDropItem() {
+   @Override public Item asItem() {
       return boatData.boat().asItem();
    }
 
-   public static Boat copy(Boat original, HibiscusBoat boatData) {
-      var chest = original instanceof ChestBoat;
-      var boat = boatData.factory(chest).create(boatData.entityType(chest), original.getCommandSenderWorld());
-      boat.absMoveTo(original.getX(), original.getY(), original.getZ());
+   public static BoatEntity copy(BoatEntity original, HibiscusBoat boatData) {
+      var chest = original instanceof ChestBoatEntity;
+      var boat = boatData.factory(chest).create(boatData.entityType(chest), original.getEntityWorld());
+      boat.updatePosition(original.getX(), original.getY(), original.getZ());
       return boat;
    }
 
-   public enum HibiscusBoat implements StringRepresentable {
+   public enum HibiscusBoat implements StringIdentifiable {
       REDWOOD(
               "redwood",
               () -> HibiscusWoods.REDWOOD.getPlanks(),
@@ -105,6 +105,14 @@ public class HibiscusBoatEntity extends Boat {
               () -> HibiscusWoods.OLIVE.getBoatEntityType(),
               () -> HibiscusWoods.OLIVE.getChestBoatEntityType()
       ),
+      SAXAUL(
+              "saxaul",
+              () -> HibiscusWoods.SAXAUL.getPlanks(),
+              () -> HibiscusWoods.SAXAUL.getBoatItem(),
+              () -> HibiscusWoods.SAXAUL.getChestBoatItem(),
+              () -> HibiscusWoods.SAXAUL.getBoatEntityType(),
+              () -> HibiscusWoods.SAXAUL.getChestBoatEntityType()
+      ),
       JOSHUA(
               "joshua",
               () -> HibiscusWoods.JOSHUA.getPlanks(),
@@ -112,17 +120,73 @@ public class HibiscusBoatEntity extends Boat {
               () -> HibiscusWoods.JOSHUA.getChestBoatItem(),
               () -> HibiscusWoods.JOSHUA.getBoatEntityType(),
               () -> HibiscusWoods.JOSHUA.getChestBoatEntityType()
-      );
+      ),
+      GHAF(
+              "ghaf",
+                      () -> HibiscusWoods.GHAF.getPlanks(),
+              () -> HibiscusWoods.GHAF.getBoatItem(),
+              () -> HibiscusWoods.GHAF.getChestBoatItem(),
+              () -> HibiscusWoods.GHAF.getBoatEntityType(),
+              () -> HibiscusWoods.GHAF.getChestBoatEntityType()
+              ),
+      PALO_VERDE(
+              "palo_verde",
+              () -> HibiscusWoods.PALO_VERDE.getPlanks(),
+              () -> HibiscusWoods.PALO_VERDE.getBoatItem(),
+              () -> HibiscusWoods.PALO_VERDE.getChestBoatItem(),
+              () -> HibiscusWoods.PALO_VERDE.getBoatEntityType(),
+              () -> HibiscusWoods.PALO_VERDE.getChestBoatEntityType()
+      ),
+      CEDAR(
+              "cedar",
+              () -> HibiscusWoods.CEDAR.getPlanks(),
+              () -> HibiscusWoods.CEDAR.getBoatItem(),
+              () -> HibiscusWoods.CEDAR.getChestBoatItem(),
+              () -> HibiscusWoods.CEDAR.getBoatEntityType(),
+              () -> HibiscusWoods.CEDAR.getChestBoatEntityType()
+      ),
+      LARCH(
+              "larch",
+              () -> HibiscusWoods.LARCH.getPlanks(),
+              () -> HibiscusWoods.LARCH.getBoatItem(),
+              () -> HibiscusWoods.LARCH.getChestBoatItem(),
+              () -> HibiscusWoods.LARCH.getBoatEntityType(),
+              () -> HibiscusWoods.LARCH.getChestBoatEntityType()
+      ),
+      MAHOGANY(
+              "mahogany",
+              () -> HibiscusWoods.MAHOGANY.getPlanks(),
+              () -> HibiscusWoods.MAHOGANY.getBoatItem(),
+              () -> HibiscusWoods.MAHOGANY.getChestBoatItem(),
+              () -> HibiscusWoods.MAHOGANY.getBoatEntityType(),
+              () -> HibiscusWoods.MAHOGANY.getChestBoatEntityType()
+      ),
+//      BANYAN(
+//              "banyan",
+//              () -> HibiscusWoods.BANYAN.getPlanks(),
+//              () -> HibiscusWoods.BANYAN.getBoatItem(),
+//              () -> HibiscusWoods.BANYAN.getChestBoatItem(),
+//              () -> HibiscusWoods.BANYAN.getBoatEntityType(),
+//              () -> HibiscusWoods.BANYAN.getChestBoatEntityType()
+//      ),
+      COCONUT(
+              "coconut",
+                      () -> HibiscusWoods.COCONUT.getPlanks(),
+              () -> HibiscusWoods.COCONUT.getBoatItem(),
+              () -> HibiscusWoods.COCONUT.getChestBoatItem(),
+              () -> HibiscusWoods.COCONUT.getBoatEntityType(),
+              () -> HibiscusWoods.COCONUT.getChestBoatEntityType()
+              );
 
       private final String name;
-      private final Supplier <ItemLike> planks;
-      private final Supplier <ItemLike> boat;
-      private final Supplier <ItemLike> chestBoat;
-      private final Supplier <EntityType <Boat>> entityType;
-      private final Supplier <EntityType <Boat>> chestEntityType;
-      public static final StringRepresentable.EnumCodec <HibiscusBoat> CODEC = StringRepresentable.fromEnum(HibiscusBoatEntity.HibiscusBoat::values);
+      private final Supplier <ItemConvertible> planks;
+      private final Supplier <ItemConvertible> boat;
+      private final Supplier <ItemConvertible> chestBoat;
+      private final Supplier <EntityType <BoatEntity>> entityType;
+      private final Supplier <EntityType <BoatEntity>> chestEntityType;
+      public static final StringIdentifiable.EnumCodec <HibiscusBoat> CODEC = StringIdentifiable.createCodec(HibiscusBoatEntity.HibiscusBoat::values);
 
-      HibiscusBoat(String name, Supplier <ItemLike> planks, Supplier <ItemLike> boat, Supplier <ItemLike> chestBoat, Supplier <EntityType <Boat>> entityType, Supplier <EntityType <Boat>> chestEntityType
+      HibiscusBoat(String name, Supplier <ItemConvertible> planks, Supplier <ItemConvertible> boat, Supplier <ItemConvertible> chestBoat, Supplier <EntityType <BoatEntity>> entityType, Supplier <EntityType <BoatEntity>> chestEntityType
       ) {
          this.name = name;
          this.planks = planks;
@@ -132,35 +196,35 @@ public class HibiscusBoatEntity extends Boat {
          this.chestEntityType = chestEntityType;
       }
 
-      public ItemLike planks() {
+      public ItemConvertible planks() {
          return planks.get();
       }
 
-      public ItemLike boat() {
+      public ItemConvertible boat() {
          return boat.get();
       }
 
-      public ItemLike chestBoat() {
+      public ItemConvertible chestBoat() {
          return chestBoat.get();
       }
 
-      public EntityType <Boat> entityType(boolean chest) {
+      public EntityType <BoatEntity> entityType(boolean chest) {
          return chest ? chestEntityType.get() : entityType.get();
       }
 
       public static HibiscusBoat getType(String name) {
-         return CODEC.byName(name, REDWOOD);
+         return CODEC.byId(name, REDWOOD);
       }
 
-      public EntityType.EntityFactory <Boat> factory(boolean chest) {
+      public EntityType.EntityFactory <BoatEntity> factory(boolean chest) {
          return (type, world) -> chest ? new HibiscusChestBoatEntity(type, world, this) : new HibiscusBoatEntity(type, world, this);
       }
 
-      public ResourceLocation id() {
-         return new ResourceLocation(MOD_ID, name);
+      public Identifier id() {
+         return new Identifier(MOD_ID, name);
       }
 
-      @Override public String getSerializedName() {
+      @Override public String asString() {
          return name;
       }
    }

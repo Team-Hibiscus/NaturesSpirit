@@ -1,12 +1,12 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.util.HibiscusWorldGen;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
+import net.hibiscus.naturespirit.world.HibiscusWorldGen;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
 
 public class HibiscusSimpleBlockStateProvider extends BlockStateProvider {
    public static final Codec <HibiscusSimpleBlockStateProvider> CODEC;
@@ -23,11 +23,11 @@ public class HibiscusSimpleBlockStateProvider extends BlockStateProvider {
       this.state = state;
    }
 
-   @Override protected BlockStateProviderType <?> type() {
+   @Override protected BlockStateProviderType <?> getType() {
       return HibiscusWorldGen.HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER;
    }
 
-   @Override public BlockState getState(RandomSource randomSource, BlockPos blockPos) {
+   @Override public BlockState get(Random randomSource, BlockPos blockPos) {
       return this.state;
    }
 }

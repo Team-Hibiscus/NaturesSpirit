@@ -1,30 +1,35 @@
 package net.hibiscus.naturespirit.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.NetherVines;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.block.AbstractPlantStemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.VineLogic;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.WorldView;
 
 
-public class WisteriaVine extends GrowingPlantHeadBlock {
-   protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+public class WisteriaVine extends AbstractPlantStemBlock {
+   protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-   public WisteriaVine(Properties properties) {
+   public WisteriaVine(Settings properties) {
       super(properties, Direction.DOWN, SHAPE, false, 0.1D);
    }
 
-   protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
-      return NetherVines.getBlocksToGrowWhenBonemealed(randomSource);
+   @Override protected MapCodec <? extends AbstractPlantStemBlock> getCodec() {
+      return null;
    }
 
-   public Block getBodyBlock() {
+   protected int getGrowthLength(Random randomSource) {
+      return VineLogic.getGrowthLength(randomSource);
+   }
+
+   public Block getPlant() {
       if(this.asBlock() == HibiscusWoods.WISTERIA.getBlueWisteriaVines()) {
          return HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant();
       }
@@ -39,21 +44,21 @@ public class WisteriaVine extends GrowingPlantHeadBlock {
       }
    }
 
-   public boolean canGrowInto(BlockState state) {
+   public boolean chooseStemState(BlockState state) {
       return state.isAir();
    }
 
-   @Override public boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
-      BlockPos blockPos = pos.relative(this.growthDirection.getOpposite());
+   @Override public boolean canPlaceAt(BlockState state, WorldView levelReader, BlockPos pos) {
+      BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
       BlockState blockState = levelReader.getBlockState(blockPos);
       if(!this.canAttachTo(blockState)) {
          return false;
       }
       else {
-         return blockState.is(this.getHeadBlock()) || blockState.is(this.getBodyBlock()) || blockState.isFaceSturdy(levelReader,
+         return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(levelReader,
                  blockPos,
                  this.growthDirection
-         ) || blockState.is(BlockTags.LEAVES);
+         ) || blockState.isIn(BlockTags.LEAVES);
       }
    }
 }

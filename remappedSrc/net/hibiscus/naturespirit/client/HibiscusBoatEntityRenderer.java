@@ -3,27 +3,28 @@ package net.hibiscus.naturespirit.client;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.BoatRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.model.BoatEntityModel;
+import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.util.Identifier;
+
 import java.util.Map;
 
-public final class HibiscusBoatEntityRenderer extends BoatRenderer {
-   public HibiscusBoatEntityRenderer(EntityRendererProvider.Context context, boolean chest, HibiscusBoatEntity.HibiscusBoat boatData) {
+public final class HibiscusBoatEntityRenderer extends BoatEntityRenderer {
+   public HibiscusBoatEntityRenderer(EntityRendererFactory.Context context, boolean chest, HibiscusBoatEntity.HibiscusBoat boatData) {
       super(context, chest);
       var id = boatData.id();
-      var texture = new ResourceLocation(id.getNamespace(), "textures/entity/" + (chest ? "chest_boat/" : "boat/") + id.getPath() + ".png");
-      var rootPart = context.bakeLayer(getModelLayer(boatData, chest));
-      var model = chest ? new ChestBoatModel(rootPart) : new BoatModel(rootPart);
-      boatResources = boatResources.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, entry -> Pair.of(texture, model)));
+      var texture = new Identifier(id.getNamespace(), "textures/entity/" + (chest ? "chest_boat/" : "boat/") + id.getPath() + ".png");
+      var rootPart = context.getPart(getModelLayer(boatData, chest));
+      var model = chest ? new ChestBoatEntityModel(rootPart) : new BoatEntityModel(rootPart);
+      texturesAndModels = texturesAndModels.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, entry -> Pair.of(texture, model)));
    }
 
-   public static ModelLayerLocation getModelLayer(HibiscusBoatEntity.HibiscusBoat boat, boolean chest) {
+   public static EntityModelLayer getModelLayer(HibiscusBoatEntity.HibiscusBoat boat, boolean chest) {
       var id = boat.id();
-      return new ModelLayerLocation(new ResourceLocation(id.getNamespace(), (chest ? "chest_boat/" : "boat/") + id.getPath()), "main");
+      return new EntityModelLayer(new Identifier(id.getNamespace(), (chest ? "chest_boat/" : "boat/") + id.getPath()), "main");
    }
 }

@@ -1,49 +1,44 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import com.mojang.serialization.MapCodec;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.FarmBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
+
 import java.util.function.Supplier;
 
-public class DesertPlantBlock extends BushBlock implements BonemealableBlock {
+public class DesertPlantBlock extends PlantBlock implements Fertilizable {
 
    public static final int MAX_AGE = 7;
-   public static final IntegerProperty AGE;
+   public static final IntProperty AGE;
    protected static final float field_31256 = 1.0F;
    protected static final VoxelShape[] AGE_TO_SHAPE;
 
    static {
-      AGE = BlockStateProperties.AGE_7;
+      AGE = Properties.AGE_7;
       AGE_TO_SHAPE = new VoxelShape[]{
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
-              Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
+              Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
       };
    }
 
@@ -51,25 +46,25 @@ public class DesertPlantBlock extends BushBlock implements BonemealableBlock {
    private final DesertTurnipBlock vegetableBlock;
    private final Supplier <Item> pickBlockItem;
 
-   public DesertPlantBlock(DesertTurnipBlock vegetableBlock, Block rootBlock, Properties settings) {
+   public DesertPlantBlock(DesertTurnipBlock vegetableBlock, Block rootBlock, Settings settings) {
       super(settings);
       this.rootBlock = rootBlock;
       this.vegetableBlock = vegetableBlock;
-      this.pickBlockItem = () -> HibiscusBlocksAndItems.DESERT_TURNIP;
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+      this.pickBlockItem = () -> HibiscusMiscBlocks.DESERT_TURNIP;
+      this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
    }
 
-   protected static float getAvailableMoisture(Block block, BlockGetter world, BlockPos pos) {
+   protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {
       float f = 1.0F;
-      BlockPos blockPos = pos.below();
+      BlockPos blockPos = pos.down();
 
       for(int i = -1; i <= 1; ++i) {
          for(int j = -1; j <= 1; ++j) {
             float g = 0.0F;
-            BlockState blockState = world.getBlockState(blockPos.offset(i, 0, j));
-            if(blockState.is(Blocks.FARMLAND)) {
+            BlockState blockState = world.getBlockState(blockPos.add(i, 0, j));
+            if(blockState.isOf(Blocks.FARMLAND)) {
                g = 1.0F;
-               if(blockState.getValue(FarmBlock.MOISTURE) > 0) {
+               if(blockState.get(FarmlandBlock.MOISTURE) > 0) {
                   g = 3.0F;
                }
             }
@@ -86,15 +81,15 @@ public class DesertPlantBlock extends BushBlock implements BonemealableBlock {
       BlockPos blockPos3 = pos.south();
       BlockPos blockPos4 = pos.west();
       BlockPos blockPos5 = pos.east();
-      boolean bl = world.getBlockState(blockPos4).is(block) || world.getBlockState(blockPos5).is(block);
-      boolean bl2 = world.getBlockState(blockPos2).is(block) || world.getBlockState(blockPos3).is(block);
+      boolean bl = world.getBlockState(blockPos4).isOf(block) || world.getBlockState(blockPos5).isOf(block);
+      boolean bl2 = world.getBlockState(blockPos2).isOf(block) || world.getBlockState(blockPos3).isOf(block);
       if(bl && bl2) {
          f /= 2.0F;
       }
       else {
-         boolean bl3 = world.getBlockState(blockPos4.north()).is(block) || world.getBlockState(blockPos5.north()).is(block) || world.getBlockState(blockPos5.south()).is(block) || world
+         boolean bl3 = world.getBlockState(blockPos4.north()).isOf(block) || world.getBlockState(blockPos5.north()).isOf(block) || world.getBlockState(blockPos5.south()).isOf(block) || world
                  .getBlockState(blockPos4.south())
-                 .is(block);
+                 .isOf(block);
          if(bl3) {
             f /= 2.0F;
          }
@@ -103,47 +98,51 @@ public class DesertPlantBlock extends BushBlock implements BonemealableBlock {
       return f;
    }
 
-   protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-      return floor.is(Blocks.FARMLAND) || floor.is(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
+   @Override protected MapCodec <? extends PlantBlock> getCodec() {
+      return null;
    }
 
-   public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-      return AGE_TO_SHAPE[state.getValue(AGE)];
+   protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+      return floor.isOf(Blocks.FARMLAND) || floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
    }
 
-   public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-      if(world.getRawBrightness(pos, 0) >= 9) {
+   public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+      return AGE_TO_SHAPE[state.get(AGE)];
+   }
+
+   public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+      if(world.getBaseLightLevel(pos, 0) >= 9) {
          float f = getAvailableMoisture(this, world, pos);
          if(random.nextInt((int) (25.0F / f) + 1) == 0) {
-            int i = state.getValue(AGE);
+            int i = state.get(AGE);
             if(i < 7) {
-               state = state.setValue(AGE, i + 1);
-               world.setBlock(pos, state, 2);
+               state = state.with(AGE, i + 1);
+               world.setBlockState(pos, state, 2);
             }
             else {
                Direction direction = Direction.DOWN;
-               BlockPos blockPos = pos.relative(direction, 2);
-               BlockPos blockPos2 = pos.relative(direction, 3);
+               BlockPos blockPos = pos.offset(direction, 2);
+               BlockPos blockPos2 = pos.offset(direction, 3);
                BlockState blockState = world.getBlockState(blockPos);
                BlockState blockState2 = world.getBlockState(blockPos2);
-               boolean bl = blockState.is(HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE);
-               boolean bl2 = blockState2.is(HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE);
+               boolean bl = blockState.isIn(HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE);
+               boolean bl2 = blockState2.isIn(HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE);
                if(bl) {
-                  if(bl2 || blockState2.is(this.vegetableBlock)) {
-                     world.setBlockAndUpdate(blockPos, this.rootBlock.defaultBlockState());
+                  if(bl2 || blockState2.isOf(this.vegetableBlock)) {
+                     world.setBlockState(blockPos, this.rootBlock.getDefaultState());
                   }
                   else {
-                     world.setBlockAndUpdate(blockPos, this.vegetableBlock.defaultBlockState());
+                     world.setBlockState(blockPos, this.vegetableBlock.getDefaultState());
                   }
                }
-               if(!blockState.is(this.rootBlock)) {
-                  if(!blockState.is(this.vegetableBlock) && blockState2.is(this.vegetableBlock)) {
-                     state = state.setValue(AGE, 7);
-                     world.setBlock(pos, state, 2);
+               if(!blockState.isOf(this.rootBlock)) {
+                  if(!blockState.isOf(this.vegetableBlock) && blockState2.isOf(this.vegetableBlock)) {
+                     state = state.with(AGE, 7);
+                     world.setBlockState(pos, state, 2);
                   }
                }
-               if(blockState.is(this.rootBlock) && !blockState2.is(this.vegetableBlock) && bl2) {
-                  world.setBlockAndUpdate(blockPos2, this.vegetableBlock.defaultBlockState());
+               if(blockState.isOf(this.rootBlock) && !blockState2.isOf(this.vegetableBlock) && bl2) {
+                  world.setBlockState(blockPos2, this.vegetableBlock.getDefaultState());
                }
             }
          }
@@ -151,30 +150,30 @@ public class DesertPlantBlock extends BushBlock implements BonemealableBlock {
       }
    }
 
-   public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {
+   public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
       return new ItemStack(this.pickBlockItem.get());
    }
 
-   public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state, boolean isClient) {
-      return state.getValue(AGE) < 7;
+   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+      return state.get(AGE) < 7;
    }
 
-   public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
+   public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
       return true;
    }
 
 
-   public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
-      int i = Math.min(7, state.getValue(AGE) + Mth.nextInt(world.random, 2, 5));
-      BlockState blockState = state.setValue(AGE, i);
-      world.setBlock(pos, blockState, 2);
+   public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+      int i = Math.min(7, state.get(AGE) + MathHelper.nextInt(world.random, 2, 5));
+      BlockState blockState = state.with(AGE, i);
+      world.setBlockState(pos, blockState, 2);
       if(i == 7) {
          blockState.randomTick(world, pos, world.random);
       }
 
    }
 
-   protected void createBlockStateDefinition(StateDefinition.Builder <Block, BlockState> builder) {
+   protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
       builder.add(AGE);
    }
 }

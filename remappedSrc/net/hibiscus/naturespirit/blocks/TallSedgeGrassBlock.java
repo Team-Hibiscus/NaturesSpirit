@@ -1,85 +1,80 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.minecraft.block.*;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldView;
 
-public class TallSedgeGrassBlock extends DoublePlantBlock implements SimpleWaterloggedBlock {
+public class TallSedgeGrassBlock extends TallPlantBlock implements Waterloggable {
    public static final EnumProperty <DoubleBlockHalf> HALF;
    public static final BooleanProperty WATERLOGGED;
    protected static final float AABB_OFFSET = 6.0F;
    protected static final VoxelShape SHAPE;
 
    static {
-      WATERLOGGED = BlockStateProperties.WATERLOGGED;
-      HALF = DoublePlantBlock.HALF;
-      SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+      WATERLOGGED = Properties.WATERLOGGED;
+      HALF = TallPlantBlock.HALF;
+      SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
    }
 
-   public TallSedgeGrassBlock(Properties properties) {
+   public TallSedgeGrassBlock(Settings properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(HALF, DoubleBlockHalf.LOWER));
+      this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(HALF, DoubleBlockHalf.LOWER));
    }
 
-   public boolean canBeReplaced(BlockState state, BlockPlaceContext useContext) {
+   public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
       return true;
    }
 
-   protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-      if(level.getFluidState(pos.above()).is(FluidTags.WATER)) {
-         return state.isFaceSturdy(level, pos, Direction.UP) && !state.is(Blocks.MAGMA_BLOCK);
+   protected boolean canPlantOnTop(BlockState state, BlockView level, BlockPos pos) {
+      if(level.getFluidState(pos.up()).isIn(FluidTags.WATER)) {
+         return state.isSideSolidFullSquare(level, pos, Direction.UP) && !state.isOf(Blocks.MAGMA_BLOCK);
       }
       else {
-         return state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND) || state.is(Blocks.CLAY);
+         return state.isIn(BlockTags.DIRT) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.CLAY);
       }
    }
 
-   public BlockState getStateForPlacement(BlockPlaceContext context) {
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return super.getStateForPlacement(context) != null ? this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.getAmount() == 8) : null;
+   public BlockState getPlacementState(ItemPlacementContext context) {
+      FluidState fluidState = context.getWorld().getFluidState(context.getBlockPos());
+      return super.getPlacementState(context) != null ? this.getDefaultState().with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8) : null;
    }
 
-   public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-      if(state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-         BlockState blockState = level.getBlockState(pos.below());
-         return blockState.is(this) && blockState.getValue(HALF) == DoubleBlockHalf.LOWER;
+   public boolean canPlaceAt(BlockState state, WorldView level, BlockPos pos) {
+      if(state.get(HALF) == DoubleBlockHalf.UPPER) {
+         BlockState blockState = level.getBlockState(pos.down());
+         return blockState.isOf(this) && blockState.get(HALF) == DoubleBlockHalf.LOWER;
       }
       else {
-         BlockPos blockPos = pos.below();
-         BlockPos blockPos2 = pos.above();
-         if(state.getValue(WATERLOGGED)) {
-            return super.canSurvive(state, level, pos) && level.getBlockState(blockPos).isFaceSturdy(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).is(FluidTags.WATER);
+         BlockPos blockPos = pos.down();
+         BlockPos blockPos2 = pos.up();
+         if(state.get(WATERLOGGED)) {
+            return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
          }
          else {
-            return super.canSurvive(state, level, pos) && this.mayPlaceOn(level.getBlockState(blockPos), level, blockPos);
+            return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos), level, blockPos);
          }
       }
    }
 
-   protected void createBlockStateDefinition(StateDefinition.Builder <Block, BlockState> builder) {
+   protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
       builder.add(WATERLOGGED);
       builder.add(HALF);
    }
 
    public FluidState getFluidState(BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
    }
 }

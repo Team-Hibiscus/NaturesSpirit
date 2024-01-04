@@ -1,42 +1,36 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.TallGrassBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 
-public class LargeDesertFernBlock extends TallGrassBlock {
-   protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+public class LargeDesertFernBlock extends ShortPlantBlock {
+   protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-   public LargeDesertFernBlock(Properties properties) {
+   public LargeDesertFernBlock(Settings properties) {
       super(properties);
    }
 
-   public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-      Vec3 vec3 = state.getOffset(level, pos);
-      return SHAPE.move(vec3.x, vec3.y, vec3.z);
+   public VoxelShape getOutlineShape(BlockState state, BlockView level, BlockPos pos, ShapeContext context) {
+      Vec3d vec3 = state.getModelOffset(level, pos);
+      return SHAPE.offset(vec3.x, vec3.y, vec3.z);
    }
 
-   @Override protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-      return floor.is(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.is(Blocks.FARMLAND);
+   @Override protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+      return floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.isOf(Blocks.FARMLAND);
    }
 
-   public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
-      DoublePlantBlock tallPlantBlock = (DoublePlantBlock) HibiscusBlocksAndItems.TALL_SCORCHED_GRASS;
-      if(tallPlantBlock.defaultBlockState().canSurvive(world, pos) && world.isEmptyBlock(pos.above())) {
-         DoublePlantBlock.placeAt(world, tallPlantBlock.defaultBlockState(), pos, 2);
+   public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+      TallPlantBlock tallPlantBlock = (TallPlantBlock) HibiscusMiscBlocks.TALL_SCORCHED_GRASS;
+      if(tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
+         TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
       }
 
    }

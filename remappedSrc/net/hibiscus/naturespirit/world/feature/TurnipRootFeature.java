@@ -6,25 +6,26 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.BlockState;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.Mutable;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.chunk.ChunkGenerator;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
+
 import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockPos.MutableBlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 public class TurnipRootFeature extends Feature <TurnipRootFeatureConfig> {
    public TurnipRootFeature(Codec <TurnipRootFeatureConfig> codec) {
       super(codec);
    }
 
-   private static boolean hasSpaceForTree(WorldGenLevel world, TurnipRootFeatureConfig config, BlockPos pos) {
-      MutableBlockPos mutable = pos.mutable();
+   private static boolean hasSpaceForTree(StructureWorldAccess world, TurnipRootFeatureConfig config, BlockPos pos) {
+      Mutable mutable = pos.mutableCopy();
 
       for(int i = 1; i <= config.requiredVerticalSpaceForTree; ++i) {
          mutable.move(Direction.UP);
@@ -43,20 +44,20 @@ public class TurnipRootFeature extends Feature <TurnipRootFeatureConfig> {
       }
       else {
          int i = height + 1;
-         return i <= allowedVerticalWaterForTree && state.getFluidState().is(FluidTags.WATER);
+         return i <= allowedVerticalWaterForTree && state.getFluidState().isIn(FluidTags.WATER);
       }
    }
 
-   private static boolean generateTreeAndRoots(WorldGenLevel world, ChunkGenerator generator, TurnipRootFeatureConfig config, RandomSource random, MutableBlockPos mutablePos, BlockPos pos) {
+   private static boolean generateTreeAndRoots(StructureWorldAccess world, ChunkGenerator generator, TurnipRootFeatureConfig config, Random random, Mutable mutablePos, BlockPos pos) {
       for(int i = 0; i < config.maxRootColumnHeight; ++i) {
          mutablePos.move(Direction.UP);
          if(config.predicate.test(world, mutablePos) && hasSpaceForTree(world, config, mutablePos)) {
-            BlockPos blockPos = mutablePos.below();
-            if(world.getFluidState(blockPos).is(FluidTags.LAVA) || !world.getBlockState(blockPos).isSolid()) {
+            BlockPos blockPos = mutablePos.down();
+            if(world.getFluidState(blockPos).isIn(FluidTags.LAVA) || !world.getBlockState(blockPos).isSolid()) {
                return false;
             }
 
-            if(config.feature.value().place(world, generator, random, mutablePos)) {
+            if(config.feature.value().generateUnregistered(world, generator, random, mutablePos)) {
                generateRootsColumn(pos, pos.getY() + i, world, config, random);
                return true;
             }
@@ -66,10 +67,10 @@ public class TurnipRootFeature extends Feature <TurnipRootFeatureConfig> {
       return false;
    }
 
-   private static void generateRootsColumn(BlockPos pos, int maxY, WorldGenLevel world, TurnipRootFeatureConfig config, RandomSource random) {
+   private static void generateRootsColumn(BlockPos pos, int maxY, StructureWorldAccess world, TurnipRootFeatureConfig config, Random random) {
       int i = pos.getX();
       int j = pos.getZ();
-      MutableBlockPos mutable = pos.mutable();
+      Mutable mutable = pos.mutableCopy();
 
       for(int k = pos.getY(); k < maxY; ++k) {
          generateRoots(world, config, random, i, j, mutable.set(i, k, j));
@@ -77,16 +78,16 @@ public class TurnipRootFeature extends Feature <TurnipRootFeatureConfig> {
 
    }
 
-   private static void generateRoots(WorldGenLevel world, TurnipRootFeatureConfig config, RandomSource random, int x, int z, MutableBlockPos mutablePos) {
+   private static void generateRoots(StructureWorldAccess world, TurnipRootFeatureConfig config, Random random, int x, int z, Mutable mutablePos) {
       int i = config.rootRadius;
       Predicate <BlockState> predicate = (state) -> {
-         return state.is(config.rootReplaceable);
+         return state.isIn(config.rootReplaceable);
       };
 
       for(int j = 0; j < config.rootPlacementAttempts; ++j) {
-         mutablePos.setWithOffset(mutablePos, random.nextInt(i) - random.nextInt(i), 0, random.nextInt(i) - random.nextInt(i));
+         mutablePos.set(mutablePos, random.nextInt(i) - random.nextInt(i), 0, random.nextInt(i) - random.nextInt(i));
          if(predicate.test(world.getBlockState(mutablePos))) {
-            world.setBlock(mutablePos, config.rootStateProvider.getState(random, mutablePos), 2);
+            world.setBlockState(mutablePos, config.rootStateProvider.get(random, mutablePos), 2);
          }
 
          mutablePos.setX(x);
@@ -95,45 +96,45 @@ public class TurnipRootFeature extends Feature <TurnipRootFeatureConfig> {
 
    }
 
-   private static void generateHangingRoots(WorldGenLevel world, TurnipRootFeatureConfig config, RandomSource random, BlockPos pos, MutableBlockPos mutablePos) {
+   private static void generateHangingRoots(StructureWorldAccess world, TurnipRootFeatureConfig config, Random random, BlockPos pos, Mutable mutablePos) {
       int i = config.hangingRootRadius;
       int j = config.hangingRootVerticalSpan;
 
       for(int k = 0; k < config.hangingRootPlacementAttempts; ++k) {
-         mutablePos.setWithOffset(pos, random.nextInt(i) - random.nextInt(i), random.nextInt(j) - random.nextInt(j), random.nextInt(i) - random.nextInt(i));
-         if(world.isEmptyBlock(mutablePos)) {
-            BlockState blockState = config.hangingRootStateProvider.getState(random, mutablePos);
-            if(blockState.canSurvive(world, mutablePos) && world.getBlockState(mutablePos.above()).isFaceSturdy(world, mutablePos, Direction.DOWN)) {
-               world.setBlock(mutablePos, blockState, 2);
+         mutablePos.set(pos, random.nextInt(i) - random.nextInt(i), random.nextInt(j) - random.nextInt(j), random.nextInt(i) - random.nextInt(i));
+         if(world.isAir(mutablePos)) {
+            BlockState blockState = config.hangingRootStateProvider.get(random, mutablePos);
+            if(blockState.canPlaceAt(world, mutablePos) && world.getBlockState(mutablePos.up()).isSideSolidFullSquare(world, mutablePos, Direction.DOWN)) {
+               world.setBlockState(mutablePos, blockState, 2);
             }
          }
       }
 
    }
 
-   private static void generateTurnips(WorldGenLevel world, TurnipRootFeatureConfig config, RandomSource random, BlockPos pos, MutableBlockPos mutablePos) {
+   private static void generateTurnips(StructureWorldAccess world, TurnipRootFeatureConfig config, Random random, BlockPos pos, Mutable mutablePos) {
       int i = config.hangingRootRadius;
       int j = config.hangingRootVerticalSpan;
 
       for(int k = 0; k < config.turnipPlacementAttempts; ++k) {
-         mutablePos.setWithOffset(pos, random.nextInt(i) - random.nextInt(i), random.nextInt(j) - random.nextInt(j), random.nextInt(i) - random.nextInt(i));
-         if(world.getBlockState(mutablePos.relative(Direction.UP, 1)) == config.rootStateProvider.getState(random, mutablePos)) {
-            BlockState blockState = config.turnipStateProvider.getState(random, mutablePos);
-            if(blockState.canSurvive(world, mutablePos) && world.getBlockState(mutablePos.above()).isFaceSturdy(world, mutablePos, Direction.DOWN)) {
-               world.setBlock(mutablePos, blockState, 2);
+         mutablePos.set(pos, random.nextInt(i) - random.nextInt(i), random.nextInt(j) - random.nextInt(j), random.nextInt(i) - random.nextInt(i));
+         if(world.getBlockState(mutablePos.offset(Direction.UP, 1)) == config.rootStateProvider.get(random, mutablePos)) {
+            BlockState blockState = config.turnipStateProvider.get(random, mutablePos);
+            if(blockState.canPlaceAt(world, mutablePos) && world.getBlockState(mutablePos.up()).isSideSolidFullSquare(world, mutablePos, Direction.DOWN)) {
+               world.setBlockState(mutablePos, blockState, 2);
             }
          }
       }
 
    }
 
-   public boolean place(FeaturePlaceContext <TurnipRootFeatureConfig> context) {
-      WorldGenLevel structureWorldAccess = context.level();
-      RandomSource random = context.random();
-      BlockPos blockPos = context.origin();
-      TurnipRootFeatureConfig turnipRootFeatureConfig = context.config();
-      MutableBlockPos mutable = blockPos.mutable();
-      if(generateTreeAndRoots(structureWorldAccess, context.chunkGenerator(), turnipRootFeatureConfig, random, mutable, blockPos)) {
+   public boolean generate(FeatureContext <TurnipRootFeatureConfig> context) {
+      StructureWorldAccess structureWorldAccess = context.getWorld();
+      Random random = context.getRandom();
+      BlockPos blockPos = context.getOrigin();
+      TurnipRootFeatureConfig turnipRootFeatureConfig = context.getConfig();
+      Mutable mutable = blockPos.mutableCopy();
+      if(generateTreeAndRoots(structureWorldAccess, context.getGenerator(), turnipRootFeatureConfig, random, mutable, blockPos)) {
          generateHangingRoots(structureWorldAccess, turnipRootFeatureConfig, random, blockPos, mutable);
          generateTurnips(structureWorldAccess, turnipRootFeatureConfig, random, blockPos, mutable);
       }

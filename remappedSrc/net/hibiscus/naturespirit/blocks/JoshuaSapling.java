@@ -1,19 +1,19 @@
 package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SaplingBlock;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.SaplingBlock;
+import net.minecraft.block.SaplingGenerator;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 
 public class JoshuaSapling extends SaplingBlock {
-   public JoshuaSapling(AbstractTreeGrower generator, Properties settings) {
+   public JoshuaSapling(SaplingGenerator generator, Settings settings) {
       super(generator, settings);
    }
 
-   protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-      return floor.is(Blocks.FARMLAND) || floor.is(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
+   protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+      return floor.isOf(Blocks.FARMLAND) || floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
    }
 }

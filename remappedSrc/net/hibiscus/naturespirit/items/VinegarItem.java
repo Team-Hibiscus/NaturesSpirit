@@ -1,73 +1,73 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusBlocksAndItems;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.item.*;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PotionItem;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.PotionItem;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class VinegarItem extends PotionItem {
 
-   public VinegarItem(Properties settings) {
+   public VinegarItem(Settings settings) {
       super(settings);
    }
 
-   public ItemStack getDefaultInstance() {
+   public ItemStack getDefaultStack() {
       return new ItemStack(this);
    }
 
 
-   public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
-      return this.isEdible() ? user.eat(world, stack) : stack;
+   public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+      return this.isFood() ? user.eatFood(world, stack) : stack;
    }
 
-   public InteractionResult useOn(UseOnContext context) {
-      BlockPos pos = context.getClickedPos();
-      Level world = context.getLevel();
+   public ActionResult useOnBlock(ItemUsageContext context) {
+      BlockPos pos = context.getBlockPos();
+      World world = context.getWorld();
       BlockState blockState = world.getBlockState(pos);
-      Player player = context.getPlayer();
-      InteractionHand hand = context.getHand();
-      if (player != null && blockState.is(Blocks.CALCITE) && player.getItemInHand(hand).is(HibiscusBlocksAndItems.VINEGAR_BOTTLE)) {
+      PlayerEntity player = context.getPlayer();
+      Hand hand = context.getHand();
+      if (player != null && blockState.isOf(Blocks.CALCITE) && player.getStackInHand(hand).isOf(HibiscusMiscBlocks.VINEGAR_BOTTLE) && HibiscusConfig.vinegar_duplication) {
 
-         Vec3 vec3d = Vec3.atLowerCornerWithOffset(pos, 0.5, 1.01, 0.5).offsetRandom(world.random, 0.2F);
-         ItemStack itemStack = new ItemStack(HibiscusBlocksAndItems.CHALK_POWDER);
-         itemStack.setCount(world.getRandom().nextIntBetweenInclusive(1, 5));
-         ItemEntity itemEntity = new ItemEntity(world, vec3d.x(), vec3d.y(), vec3d.z(), itemStack);
-         itemEntity.setDefaultPickUpDelay();
-         world.addFreshEntity(itemEntity);
-         world.playSound(null, pos, SoundEvents.CALCITE_PLACE, SoundSource.BLOCKS, 1.0F, 1.8F);
-         double d = blockState.getShape(world, pos).max(Direction.Axis.Y, 0.5D, 0.5D) + 0.03125D;
-         RandomSource random = world.getRandom();
+         Vec3d vec3d = Vec3d.add(pos, 0.5, 1.01, 0.5).addRandom(world.random, 0.2F);
+         ItemStack itemStack = new ItemStack(HibiscusMiscBlocks.CHALK_POWDER);
+         itemStack.setCount(world.getRandom().nextBetween(1, 5));
+         ItemEntity itemEntity = new ItemEntity(world, vec3d.getX(), vec3d.getY(), vec3d.getZ(), itemStack);
+         itemEntity.setToDefaultPickupDelay();
+         world.spawnEntity(itemEntity);
+         world.playSound(null, pos, SoundEvents.BLOCK_CALCITE_PLACE, SoundCategory.BLOCKS, 1.0F, 1.8F);
+         double d = blockState.getOutlineShape(world, pos).getEndingCoord(Direction.Axis.Y, 0.5D, 0.5D) + 0.03125D;
+         Random random = world.getRandom();
 
          for(int i = 0; i < 10; ++i) {
             double g = random.nextGaussian() * 0.01D;
             double h = random.nextGaussian() * 0.02D;
             double j = random.nextGaussian() * 0.01D;
-            float xOffset = context.getClickedFace() == Direction.WEST ? -.75F : (context.getClickedFace() == Direction.EAST ? .75F : 0F);
-            float zOffset = context.getClickedFace() == Direction.NORTH ? -.75F : (context.getClickedFace() == Direction.SOUTH ? .75F : 0F);
-            float yOffset = context.getClickedFace() == Direction.UP ? 0F : (context.getClickedFace() == Direction.DOWN ? -1F : -.5F);
+            float xOffset = context.getSide() == Direction.WEST ? -.75F : (context.getSide() == Direction.EAST ? .75F : 0F);
+            float zOffset = context.getSide() == Direction.NORTH ? -.75F : (context.getSide() == Direction.SOUTH ? .75F : 0F);
+            float yOffset = context.getSide() == Direction.UP ? 0F : (context.getSide() == Direction.DOWN ? -1F : -.5F);
             world.addParticle(NatureSpirit.CALCITE_BUBBLE_PARTICLE,
                     (double)pos.getX() + xOffset + 0.13124999403953552D + 0.737500011920929D * (double)random.nextFloat(),
                     (double)pos.getY() + yOffset + d + (double)random.nextFloat() * (1.0D - d),
@@ -76,55 +76,55 @@ public class VinegarItem extends PotionItem {
          }
          if (!player.isCreative() && !player.isSpectator())
          {
-            ItemStack itemStack2 = player.getItemInHand(hand).getRecipeRemainder();
-            player.getItemInHand(hand).shrink(1);
-            if (player.getItemInHand(hand).isEmpty()) {
-               player.setItemInHand(hand, itemStack2);
+            ItemStack itemStack2 = player.getStackInHand(hand).getRecipeRemainder();
+            player.getStackInHand(hand).decrement(1);
+            if (player.getStackInHand(hand).isEmpty()) {
+               player.setStackInHand(hand, itemStack2);
             } else {
-               if(player.getInventory().add(itemStack2)) {
-                  player.drop(itemStack2, false);
+               if(player.getInventory().insertStack(itemStack2)) {
+                  player.dropItem(itemStack2, false);
                }
             }
          }
-         return InteractionResult.SUCCESS;
+         return ActionResult.SUCCESS;
       }
-      return InteractionResult.PASS;
+      return ActionResult.PASS;
    }
 
-   public int getUseDuration(ItemStack stack) {
-      if (stack.getItem().isEdible()) {
-         return this.getFoodProperties().isFastFood() ? 16 : 32;
+   public int getMaxUseTime(ItemStack stack) {
+      if (stack.getItem().isFood()) {
+         return this.getFoodComponent().isSnack() ? 16 : 32;
       } else {
          return 0;
       }
    }
 
-   public UseAnim getUseAnimation(ItemStack stack) {
-      return stack.getItem().isEdible() ? UseAnim.EAT : UseAnim.NONE;
+   public UseAction getUseAction(ItemStack stack) {
+      return stack.getItem().isFood() ? UseAction.EAT : UseAction.NONE;
    }
 
-   public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-      if (this.isEdible()) {
-         ItemStack itemStack = user.getItemInHand(hand);
-         if (user.canEat(this.getFoodProperties().canAlwaysEat())) {
-            user.startUsingItem(hand);
-            return InteractionResultHolder.consume(itemStack);
+   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+      if (this.isFood()) {
+         ItemStack itemStack = user.getStackInHand(hand);
+         if (user.canConsume(this.getFoodComponent().isAlwaysEdible())) {
+            user.setCurrentHand(hand);
+            return TypedActionResult.consume(itemStack);
          } else {
-            return InteractionResultHolder.fail(itemStack);
+            return TypedActionResult.fail(itemStack);
          }
       } else {
-         return InteractionResultHolder.pass(user.getItemInHand(hand));
+         return TypedActionResult.pass(user.getStackInHand(hand));
       }
    }
 
-   public String getDescriptionId() {
-      return this.getOrCreateDescriptionId();
+   public String getTranslationKey() {
+      return this.getOrCreateTranslationKey();
    }
 
-   public String getDescriptionId(ItemStack stack) {
-      return this.getDescriptionId();
+   public String getTranslationKey(ItemStack stack) {
+      return this.getTranslationKey();
    }
 
-   public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
+   public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
    }
 }

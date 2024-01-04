@@ -1,15 +1,15 @@
 package net.hibiscus.naturespirit.entity;
 
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.entity.vehicle.ChestBoat;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.entity.vehicle.ChestBoatEntity;
+import net.minecraft.item.Item;
+import net.minecraft.world.World;
 
-public final class HibiscusChestBoatEntity extends ChestBoat implements HibiscusBoatWithData {
+public final class HibiscusChestBoatEntity extends ChestBoatEntity implements HibiscusBoatWithData {
    private final HibiscusBoatEntity.HibiscusBoat boatData;
 
-   public HibiscusChestBoatEntity(EntityType <? extends Boat> entityType, Level world, HibiscusBoatEntity.HibiscusBoat boatData) {
+   public HibiscusChestBoatEntity(EntityType <? extends BoatEntity> entityType, World world, HibiscusBoatEntity.HibiscusBoat boatData) {
       super(entityType, world);
       this.boatData = boatData;
    }
@@ -25,7 +25,7 @@ public final class HibiscusChestBoatEntity extends ChestBoat implements Hibiscus
    @Override public void setVariant(Type type) {
    }
 
-   @Override public Item getDropItem() {
+   @Override public Item asItem() {
       return boatData.chestBoat().asItem();
    }
 }
