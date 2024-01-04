@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
@@ -19,10 +18,6 @@ public class WisteriaVine extends AbstractPlantStemBlock {
 
    public WisteriaVine(Settings properties) {
       super(properties, Direction.DOWN, SHAPE, false, 0.1D);
-   }
-
-   @Override protected MapCodec <? extends AbstractPlantStemBlock> getCodec() {
-      return null;
    }
 
    protected int getGrowthLength(Random randomSource) {

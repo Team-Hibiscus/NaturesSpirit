@@ -21,7 +21,7 @@ public class WisteriaLeaves extends LeavesBlock implements Fertilizable {
       super(properties);
    }
 
-   @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+   @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
       Block vineBlock;
       Block vineBlock2;
 

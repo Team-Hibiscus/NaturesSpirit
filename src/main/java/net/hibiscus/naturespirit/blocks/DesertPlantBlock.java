@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
@@ -98,10 +97,6 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
       return f;
    }
 
-   @Override protected MapCodec <? extends PlantBlock> getCodec() {
-      return null;
-   }
-
    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
       return floor.isOf(Blocks.FARMLAND) || floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
    }
@@ -150,11 +145,11 @@ public class DesertPlantBlock extends PlantBlock implements Fertilizable {
       }
    }
 
-   public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
       return new ItemStack(this.pickBlockItem.get());
    }
 
-   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
       return state.get(AGE) < 7;
    }
 

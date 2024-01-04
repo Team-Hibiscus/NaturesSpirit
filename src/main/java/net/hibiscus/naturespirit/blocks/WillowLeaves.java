@@ -21,7 +21,7 @@ public class WillowLeaves extends LeavesBlock implements Fertilizable {
       super(properties);
    }
 
-   @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+   @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState, boolean bl) {
       Block vineBlock = HibiscusWoods.WILLOW.getWillowVines();
       Block vineBlock2 = HibiscusWoods.WILLOW.getWillowVinesPlant();
       Optional <BlockPos> optional = BlockLocating.findColumnEnd(levelReader, blockPos, vineBlock2, Direction.DOWN, vineBlock);

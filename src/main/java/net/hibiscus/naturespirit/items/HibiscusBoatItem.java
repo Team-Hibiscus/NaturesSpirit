@@ -1,10 +1,8 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.BoatItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
@@ -18,7 +16,7 @@ public class HibiscusBoatItem extends BoatItem {
       this.boatData = boatData;
    }
 
-   @Override protected BoatEntity createEntity(World world, HitResult hitResult, ItemStack stack, PlayerEntity player) {
+   @Override protected BoatEntity createEntity(World world, HitResult hitResult) {
       var entity = boatData.factory(chest).create(boatData.entityType(chest), world);
       entity.updatePosition(hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z);
       return entity;

@@ -22,7 +22,7 @@ public class CheeseBlock extends CakeBlock implements FluidDrainable {
       super(settings);
    }
 
-   @Override public ItemStack tryDrainFluid(PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
+   @Override public ItemStack tryDrainFluid(WorldAccess world, BlockPos pos, BlockState state) {
       if (world.getBlockState(pos).get(BITES) == 0) {
          world.setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
          if (!world.isClient()) {

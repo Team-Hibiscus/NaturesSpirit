@@ -90,7 +90,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
       return (7 - bites) * 2;
    }
 
-   @Override public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+   @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
       Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();

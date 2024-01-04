@@ -182,7 +182,7 @@ public class HibiscusBoatEntity extends BoatEntity {
       private final Supplier <ItemConvertible> chestBoat;
       private final Supplier <EntityType <BoatEntity>> entityType;
       private final Supplier <EntityType <BoatEntity>> chestEntityType;
-      public static final StringIdentifiable.EnumCodec <HibiscusBoat> CODEC = StringIdentifiable.createCodec(HibiscusBoatEntity.HibiscusBoat::values);
+      public static final StringIdentifiable.Codec <HibiscusBoat> CODEC = StringIdentifiable.createCodec(HibiscusBoatEntity.HibiscusBoat::values);
 
       HibiscusBoat(String name, Supplier <ItemConvertible> planks, Supplier <ItemConvertible> boat, Supplier <ItemConvertible> chestBoat, Supplier <EntityType <BoatEntity>> entityType, Supplier <EntityType <BoatEntity>> chestEntityType
       ) {

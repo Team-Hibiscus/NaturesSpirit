@@ -16,7 +16,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
 
    public ShiitakeMushroomPlantBlock(Settings settings, RegistryKey <ConfiguredFeature <?, ?>> featureKey) {
-      super(featureKey, settings);
+      super(settings, featureKey);
    }
 
    public static boolean getCompletdCircle(ServerWorld world, BlockPos pos) {

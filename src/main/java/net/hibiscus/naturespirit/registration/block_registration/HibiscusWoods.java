@@ -2,15 +2,14 @@ package net.hibiscus.naturespirit.registration.block_registration;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.CoconutBlock;
 import net.hibiscus.naturespirit.blocks.SproutingCoconutBlock;
 import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
-import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.CoconutHalfItem;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.WoodSet;
+import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.FoodComponent;
@@ -19,8 +18,6 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-
-import java.util.Optional;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
@@ -37,10 +34,9 @@ public class HibiscusWoods {
            Blocks.BAMBOO_BUTTON,
            Blocks.CHERRY_SAPLING,
            HibiscusBoatEntity.HibiscusBoat.REDWOOD,
+           new RedwoodSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
-           false,
-           Optional.of(HibiscusConfiguredFeatures.REDWOOD_TREE),
-           Optional.of(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE)
+           false
    );
    public static final WoodSet SUGI = new WoodSet(
            new Identifier(MOD_ID, "sugi"),
@@ -53,10 +49,9 @@ public class HibiscusWoods {
            REDWOOD.getButton(),
            REDWOOD.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.SUGI,
+           new SugiSaplingGenerator(),
            WoodSet.WoodPreset.FANCY,
-           true,
-           Optional.of(HibiscusConfiguredFeatures.SUGI_TREE),
-           Optional.empty()
+           true
    );
 
    public static final WoodSet WISTERIA = new WoodSet(
@@ -70,9 +65,9 @@ public class HibiscusWoods {
            SUGI.getButton(),
            SUGI.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.WISTERIA,
+           new WhiteWisteriaSaplingGenerator(),
            WoodSet.WoodPreset.WISTERIA,
-           false,
-           HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE
+           false
    );
    public static final WoodSet FIR = new WoodSet(
            new Identifier(MOD_ID, "fir"),
@@ -85,9 +80,9 @@ public class HibiscusWoods {
            WISTERIA.getButton(),
            WISTERIA.getPurpleSapling(),
            HibiscusBoatEntity.HibiscusBoat.FIR,
+           new FirSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
-           false,
-           HibiscusConfiguredFeatures.FIR_TREE
+           false
    );
    public static final WoodSet WILLOW = new WoodSet(
            new Identifier(MOD_ID, "willow"),
@@ -100,9 +95,9 @@ public class HibiscusWoods {
            FIR.getButton(),
            FIR.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.WILLOW,
+           new WillowSaplingGenerator(),
            WoodSet.WoodPreset.WILLOW,
-           false,
-           HibiscusConfiguredFeatures.WILLOW_TREE
+           false
    );
    public static final WoodSet ASPEN = new WoodSet(
            new Identifier(MOD_ID, "aspen"),
@@ -115,9 +110,9 @@ public class HibiscusWoods {
            WILLOW.getButton(),
            WILLOW.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.ASPEN,
+           new AspenSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
-           false,
-           HibiscusConfiguredFeatures.ASPEN_TREE
+           false
    );
    public static final WoodSet MAPLE = new WoodSet(
            new Identifier(MOD_ID,"maple"),
@@ -130,9 +125,9 @@ public class HibiscusWoods {
            ASPEN.getButton(),
            ASPEN.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.MAPLE,
+           new RedMapleSaplingGenerator(),
            WoodSet.WoodPreset.MAPLE,
-           false,
-           HibiscusConfiguredFeatures.RED_MAPLE_TREE
+           false
    );
    public static final WoodSet CYPRESS = new WoodSet(
            new Identifier(MOD_ID, "cypress"),
@@ -145,9 +140,9 @@ public class HibiscusWoods {
            MAPLE.getButton(),
            MAPLE.getYellowSapling(),
            HibiscusBoatEntity.HibiscusBoat.CYPRESS,
+           new CypressSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
-           false,
-           HibiscusConfiguredFeatures.CYPRESS_TREE
+           false
    );
    public static final WoodSet OLIVE = new WoodSet(
            new Identifier(MOD_ID, "olive"),
@@ -160,9 +155,9 @@ public class HibiscusWoods {
            CYPRESS.getButton(),
            CYPRESS.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.OLIVE,
+           new OliveSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
-           false,
-           HibiscusConfiguredFeatures.OLIVE_TREE
+           false
    );
    public static final WoodSet JOSHUA = new WoodSet(
            new Identifier(MOD_ID, "joshua"),
@@ -175,9 +170,9 @@ public class HibiscusWoods {
            OLIVE.getButton(),
            OLIVE.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.JOSHUA,
+           new JoshuaSaplingGenerator(),
            WoodSet.WoodPreset.JOSHUA,
-           true,
-           HibiscusConfiguredFeatures.JOSHUA_TREE
+           true
    );
    public static final WoodSet GHAF = new WoodSet(
            new Identifier(MOD_ID, "ghaf"),
@@ -190,9 +185,9 @@ public class HibiscusWoods {
            JOSHUA.getButton(),
            JOSHUA.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.GHAF,
+           new GhafSaplingGenerator(),
            WoodSet.WoodPreset.SANDY,
-           false,
-           HibiscusConfiguredFeatures.GHAF_TREE
+           false
    );
 
    public static final Block XERIC_THATCH = registerBlock("xeric_thatch",
@@ -216,9 +211,9 @@ public class HibiscusWoods {
            GHAF.getButton(),
            GHAF.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.PALO_VERDE,
+           new PaloVerdeSaplingGenerator(),
            WoodSet.WoodPreset.SANDY,
-           false,
-           HibiscusConfiguredFeatures.PALO_VERDE_TREE
+           false
    );
    public static final WoodSet COCONUT = new WoodSet(
            new Identifier(MOD_ID, "coconut"),
@@ -231,9 +226,9 @@ public class HibiscusWoods {
            PALO_VERDE.getButton(),
            PALO_VERDE.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.COCONUT,
+           new CoconutSaplingGenerator(),
            WoodSet.WoodPreset.NO_SAPLING,
-           true,
-           HibiscusConfiguredFeatures.COCONUT_TREE
+           true
    );
 
    public static final Block COCONUT_THATCH = registerBlock("coconut_thatch",
@@ -252,8 +247,8 @@ public class HibiscusWoods {
    public static final Block COCONUT_BLOCK = registerPlantBlock("coconut", new CoconutBlock(
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, Items.SWEET_BERRIES, 0.2F);
-   public static final Block COCONUT_SPROUT = registerPlantBlock("coconut_sprout", new SproutingCoconutBlock(
-           new SaplingGenerator(NatureSpirit.MOD_ID + "_coconut", Optional.empty(), Optional.of(HibiscusConfiguredFeatures.COCONUT_TREE), Optional.empty()),
+   public static Block COCONUT_SPROUT = registerPlantBlock("coconut_sprout", new SproutingCoconutBlock(
+           new CoconutSaplingGenerator(),
            FabricBlockSettings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, PALO_VERDE.getSapling(), 0.2F);
    public static final FoodComponent COCONUT_COMPONENT = (new FoodComponent.Builder()).hunger(6).saturationModifier(0.6F).build();
@@ -299,9 +294,9 @@ public class HibiscusWoods {
            COCONUT.getButton(),
            COCONUT_SPROUT,
            HibiscusBoatEntity.HibiscusBoat.CEDAR,
+           new CedarSaplingGenerator(),
            WoodSet.WoodPreset.DEFAULT,
-           false,
-           HibiscusConfiguredFeatures.CEDAR_TREE
+           false
    );
 
    public static final WoodSet LARCH = new WoodSet(
@@ -315,9 +310,9 @@ public class HibiscusWoods {
            CEDAR.getButton(),
            CEDAR.getSapling(),
            HibiscusBoatEntity.HibiscusBoat.LARCH,
+           new LarchSaplingGenerator(),
            WoodSet.WoodPreset.LARCH,
-           false,
-           HibiscusConfiguredFeatures.LARCH_TREE
+           false
    );
    public static final Block EVERGREEN_THATCH = registerBlock("evergreen_thatch",
            new Block(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0.4F).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP, LARCH.getChestBoatItem());
@@ -341,10 +336,9 @@ public class HibiscusWoods {
               LARCH.getButton(),
               LARCH.getSapling(),
               HibiscusBoatEntity.HibiscusBoat.MAHOGANY,
+              new MahoganySaplingGenerator(),
               WoodSet.WoodPreset.DEFAULT,
-              true,
-              Optional.empty(),
-              Optional.of(HibiscusConfiguredFeatures.MAHOGANY_TREE)
+              true
       );
 
    public static final WoodSet SAXAUL = new WoodSet(

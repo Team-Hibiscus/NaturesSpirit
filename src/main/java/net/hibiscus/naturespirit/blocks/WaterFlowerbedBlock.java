@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -38,10 +37,6 @@ public class WaterFlowerbedBlock extends PlantBlock implements Fertilizable {
    public WaterFlowerbedBlock(Settings settings) {
       super(settings);
       this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(FLOWER_AMOUNT, 0));
-   }
-
-   @Override protected MapCodec <? extends PlantBlock> getCodec() {
-      return null;
    }
 
    public BlockState rotate(BlockState state, BlockRotation rotation) {
@@ -91,7 +86,7 @@ public class WaterFlowerbedBlock extends PlantBlock implements Fertilizable {
       builder.add(new Property[]{FACING, FLOWER_AMOUNT});
    }
 
-   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
       return true;
    }
 

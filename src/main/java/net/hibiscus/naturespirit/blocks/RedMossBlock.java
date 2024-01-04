@@ -19,7 +19,7 @@ public class RedMossBlock extends Block implements Fertilizable {
       super(settings);
    }
 
-   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+   public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
       return world.getBlockState(pos.up()).isAir();
    }
 

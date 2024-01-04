@@ -20,7 +20,10 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -280,7 +283,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                          }).state(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(
                                  TallPlantBlock.HALF,
                                  DoubleBlockHalf.UPPER
-                         ))), new BlockPos(0, 1, 0)))).pool(LootPool
+                         ).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool
                  .builder()
                  .with(builder)
                  .conditionally(BlockStatePropertyLootCondition
@@ -293,7 +296,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                          }).state(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(
                                  TallPlantBlock.HALF,
                                  DoubleBlockHalf.LOWER
-                         ))), new BlockPos(0, -1, 0))));
+                         ).build()).build()), new BlockPos(0, -1, 0))));
       }
 
       @Override public void generate() {
@@ -1690,14 +1693,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             generateFamily(consumer, family, FeatureSet.of(FeatureFlags.VANILLA));
          }
       }
-      private void generateFlowerRecipes(HashMap <String, FlowerSet> flowers, RecipeExporter consumer) {
+      private void generateFlowerRecipes(HashMap <String, FlowerSet> flowers, Consumer <RecipeJsonProvider> consumer) {
          for(FlowerSet flowerSet : flowers.values()) {
             if (flowerSet.getDyeColor() != null)
                offerShapelessRecipe(consumer, flowerSet.getDyeColor(), flowerSet.getFlowerBlock(), flowerSet.getDyeColor().toString(), flowerSet.getDyeNumber());
          }
       }
 
-      private void generateStoneRecipes(HashMap <String, StoneSet> stoones, RecipeExporter exporter) {
+      private void generateStoneRecipes(HashMap <String, StoneSet> stoones, Consumer <RecipeJsonProvider> exporter) {
          for(StoneSet stoneSet : stoones.values()) {
             generateFamily(exporter, stoneSet.getBaseFamily(), FeatureSet.of(FeatureFlags.VANILLA));
             generateFamily(exporter, stoneSet.getBrickFamily(), FeatureSet.of(FeatureFlags.VANILLA));
@@ -1709,7 +1712,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                                    .offerTo(exporter);
             
             if(stoneSet.hasTiles()) {
-               generateFamily(exporter, stoneSet.getTileFamily(), FeatureSet.empty());
+               generateFamily(exporter, stoneSet.getTileFamily());
                ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getTiles(), 4)
                                       .input('S', stoneSet.getBricks())
                                       .pattern("SS").pattern("SS")
@@ -1817,7 +1820,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
-      public static void offer2x2CompactingTagRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, TagKey<Item> input) {
+      public static void offer2x2CompactingTagRecipe(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, TagKey<Item> input) {
          ShapedRecipeJsonBuilder.create(category, output, 1).input('#', input).pattern("##").pattern("##").criterion("has_evergreen_leaves", conditionsFromTag(input)).offerTo(exporter);
       }
 
