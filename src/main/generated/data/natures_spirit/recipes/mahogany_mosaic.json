@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:mahogany_mosaic"
-  }
+  },
+  "show_notification": true
 }

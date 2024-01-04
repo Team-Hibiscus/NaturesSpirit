@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_yellow_wildflower"
+      "has_yellow_wildflower",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:yellow_dye_from_yellow_wildflower"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

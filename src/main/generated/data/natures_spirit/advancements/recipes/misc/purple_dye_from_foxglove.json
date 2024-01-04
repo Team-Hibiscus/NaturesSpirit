@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_foxglove"
+      "has_foxglove",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:purple_dye_from_foxglove"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

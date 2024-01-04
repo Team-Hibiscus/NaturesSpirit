@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "natures_spirit:aspen_fence_gate"
-  }
+  },
+  "show_notification": true
 }

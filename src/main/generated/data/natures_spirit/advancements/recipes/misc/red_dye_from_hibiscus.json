@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_hibiscus"
+      "has_hibiscus",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:red_dye_from_hibiscus"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

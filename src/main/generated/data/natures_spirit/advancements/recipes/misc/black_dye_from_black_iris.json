@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_black_iris"
+      "has_black_iris",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:black_dye_from_black_iris"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

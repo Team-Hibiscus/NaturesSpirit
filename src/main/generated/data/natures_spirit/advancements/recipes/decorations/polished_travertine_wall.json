@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_polished_travertine"
+      "has_polished_travertine",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:polished_travertine_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

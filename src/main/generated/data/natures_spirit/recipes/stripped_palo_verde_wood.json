@@ -14,5 +14,6 @@
   "result": {
     "count": 3,
     "item": "natures_spirit:stripped_palo_verde_wood"
-  }
+  },
+  "show_notification": true
 }

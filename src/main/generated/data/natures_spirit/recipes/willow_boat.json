@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "natures_spirit:willow_boat"
-  }
+  },
+  "show_notification": true
 }

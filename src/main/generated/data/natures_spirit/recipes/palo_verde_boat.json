@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "natures_spirit:palo_verde_boat"
-  }
+  },
+  "show_notification": true
 }

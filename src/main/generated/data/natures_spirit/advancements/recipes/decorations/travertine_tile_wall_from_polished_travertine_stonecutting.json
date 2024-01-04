@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_polished_travertine"
+      "has_polished_travertine",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:travertine_tile_wall_from_polished_travertine_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

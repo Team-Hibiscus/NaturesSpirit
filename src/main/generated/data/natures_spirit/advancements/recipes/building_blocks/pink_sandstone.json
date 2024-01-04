@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sand"
+      "has_sand",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:pink_sandstone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

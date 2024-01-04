@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_regal_succulent"
+      "has_regal_succulent",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:pink_dye_from_regal_succulent"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

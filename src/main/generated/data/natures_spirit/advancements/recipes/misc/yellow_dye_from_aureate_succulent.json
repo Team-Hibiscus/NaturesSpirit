@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_aureate_succulent"
+      "has_aureate_succulent",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:yellow_dye_from_aureate_succulent"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

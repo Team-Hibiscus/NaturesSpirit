@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cobbled_travertine"
+      "has_cobbled_travertine",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:travertine_tiles_from_cobbled_travertine_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cobbled_travertine_slab"
+      "has_cobbled_travertine_slab",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:chiseled_travertine"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

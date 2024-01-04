@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_drowsy_succulent"
+      "has_drowsy_succulent",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:lime_dye_from_drowsy_succulent"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

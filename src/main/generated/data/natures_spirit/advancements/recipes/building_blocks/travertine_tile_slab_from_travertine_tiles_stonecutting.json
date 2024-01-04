@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_travertine_tiles"
+      "has_travertine_tiles",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:travertine_tile_slab_from_travertine_tiles_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

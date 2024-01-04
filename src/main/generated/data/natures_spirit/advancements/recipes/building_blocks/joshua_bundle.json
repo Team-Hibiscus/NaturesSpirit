@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_joshua_log"
+      "has_joshua_log",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:joshua_bundle"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "natures_spirit:saxaul_fence_gate"
-  }
+  },
+  "show_notification": true
 }

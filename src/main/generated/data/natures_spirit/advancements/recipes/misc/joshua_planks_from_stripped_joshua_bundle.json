@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_stripped_joshua_bundle"
+      "has_stripped_joshua_bundle",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:joshua_planks_from_stripped_joshua_bundle"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -15,5 +15,6 @@
   "result": {
     "count": 4,
     "item": "natures_spirit:larch_stairs"
-  }
+  },
+  "show_notification": true
 }

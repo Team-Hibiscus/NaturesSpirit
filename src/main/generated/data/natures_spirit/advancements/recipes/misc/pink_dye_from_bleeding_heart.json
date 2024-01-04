@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_bleeding_heart"
+      "has_bleeding_heart",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:pink_dye_from_bleeding_heart"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

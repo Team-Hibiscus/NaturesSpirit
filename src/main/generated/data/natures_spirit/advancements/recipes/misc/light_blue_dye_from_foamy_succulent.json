@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_foamy_succulent"
+      "has_foamy_succulent",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:light_blue_dye_from_foamy_succulent"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

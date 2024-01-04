@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_chalk_powder"
+      "has_chalk_powder",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:white_chalk"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

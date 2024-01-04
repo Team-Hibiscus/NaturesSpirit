@@ -20,13 +20,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_evergreen_leaves"
+      "has_evergreen_leaves",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:evergreen_thatch"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

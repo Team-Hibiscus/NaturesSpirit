@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_xeric_thatch"
+      "has_xeric_thatch",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:xeric_thatch_carpet"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

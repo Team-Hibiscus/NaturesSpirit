@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:sugi_mosaic"
-  }
+  },
+  "show_notification": true
 }

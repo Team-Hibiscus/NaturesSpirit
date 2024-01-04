@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_anemone"
+      "has_anemone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:magenta_dye_from_anemone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

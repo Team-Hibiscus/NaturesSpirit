@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sage_succulent"
+      "has_sage_succulent",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:green_dye_from_sage_succulent"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

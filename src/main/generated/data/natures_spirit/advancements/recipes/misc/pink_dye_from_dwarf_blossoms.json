@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_dwarf_blossoms"
+      "has_dwarf_blossoms",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:pink_dye_from_dwarf_blossoms"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

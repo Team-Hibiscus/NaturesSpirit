@@ -13,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "natures_spirit:redwood_slab"
-  }
+  },
+  "show_notification": true
 }

@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:xeric_thatch"
-  }
+  },
+  "show_notification": true
 }

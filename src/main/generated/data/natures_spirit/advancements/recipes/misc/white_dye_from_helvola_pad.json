@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_helvola_pad"
+      "has_helvola_pad",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:white_dye_from_helvola_pad"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

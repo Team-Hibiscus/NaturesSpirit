@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_red_heather"
+      "has_red_heather",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:red_dye_from_red_heather"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

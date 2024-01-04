@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:coconut_thatch"
-  }
+  },
+  "show_notification": true
 }

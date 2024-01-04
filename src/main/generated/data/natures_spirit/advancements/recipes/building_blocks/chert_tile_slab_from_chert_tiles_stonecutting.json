@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_chert_tiles"
+      "has_chert_tiles",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:chert_tile_slab_from_chert_tiles_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

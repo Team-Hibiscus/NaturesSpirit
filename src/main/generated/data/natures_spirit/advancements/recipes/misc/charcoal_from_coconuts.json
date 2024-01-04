@@ -20,13 +20,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_coconut"
+      "has_coconut",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:charcoal_from_coconuts"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

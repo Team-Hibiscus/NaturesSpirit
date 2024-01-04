@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_chert"
+      "has_chert",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:chert_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

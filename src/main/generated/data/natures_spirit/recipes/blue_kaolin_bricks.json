@@ -13,5 +13,6 @@
   "result": {
     "count": 4,
     "item": "natures_spirit:blue_kaolin_bricks"
-  }
+  },
+  "show_notification": true
 }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_smooth_pink_sandstone"
+      "has_smooth_pink_sandstone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:smooth_pink_sandstone_slab_from_smooth_pink_sandstone_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

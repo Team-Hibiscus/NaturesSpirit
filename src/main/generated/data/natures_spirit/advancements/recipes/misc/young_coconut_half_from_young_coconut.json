@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_young_coconut"
+      "has_young_coconut",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:young_coconut_half_from_young_coconut"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

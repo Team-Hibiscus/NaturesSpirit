@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_brown_kaolin"
+      "has_brown_kaolin",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:brown_kaolin_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

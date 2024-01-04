@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_lavender"
+      "has_lavender",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:purple_dye_from_lavender"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

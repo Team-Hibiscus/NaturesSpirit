@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_coconut"
+      "has_coconut",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:coconut_half_from_coconut"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

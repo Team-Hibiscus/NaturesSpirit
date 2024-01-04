@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:white_chalk"
-  }
+  },
+  "show_notification": true
 }

@@ -17,7 +17,7 @@
             "seed": 2445,
             "states": [
               {
-                "Name": "minecraft:short_grass"
+                "Name": "minecraft:grass"
               },
               {
                 "Name": "minecraft:tall_grass",
@@ -38,7 +38,7 @@
                 "Name": "minecraft:poppy"
               },
               {
-                "Name": "minecraft:short_grass"
+                "Name": "minecraft:grass"
               },
               {
                 "Name": "minecraft:poppy"
@@ -59,7 +59,7 @@
                 }
               },
               {
-                "Name": "minecraft:short_grass"
+                "Name": "minecraft:grass"
               }
             ]
           }

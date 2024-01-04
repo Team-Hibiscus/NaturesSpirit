@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_ruby_blossoms"
+      "has_ruby_blossoms",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:red_dye_from_ruby_blossoms"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

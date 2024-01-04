@@ -34,14 +34,15 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
       "has_pink_sandstone",
-      "has_chiseled_pink_sandstone"
+      "has_chiseled_pink_sandstone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:pink_sandstone_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

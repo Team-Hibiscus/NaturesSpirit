@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_snapdragon"
+      "has_snapdragon",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:pink_dye_from_snapdragon"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

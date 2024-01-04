@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_bluebell"
+      "has_bluebell",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:blue_dye_from_bluebell"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

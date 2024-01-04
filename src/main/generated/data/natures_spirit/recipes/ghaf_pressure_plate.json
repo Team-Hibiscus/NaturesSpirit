@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:ghaf_pressure_plate"
-  }
+  },
+  "show_notification": true
 }

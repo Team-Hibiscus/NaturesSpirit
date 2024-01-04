@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cyan_kaolin"
+      "has_cyan_kaolin",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:cyan_kaolin_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

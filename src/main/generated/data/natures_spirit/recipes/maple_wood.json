@@ -14,5 +14,6 @@
   "result": {
     "count": 3,
     "item": "natures_spirit:maple_wood"
-  }
+  },
+  "show_notification": true
 }

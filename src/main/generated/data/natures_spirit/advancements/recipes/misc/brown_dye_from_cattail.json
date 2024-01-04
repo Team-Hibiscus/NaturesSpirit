@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cattail"
+      "has_cattail",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:brown_dye_from_cattail"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

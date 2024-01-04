@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_log"
+      "has_log",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:willow_wood"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

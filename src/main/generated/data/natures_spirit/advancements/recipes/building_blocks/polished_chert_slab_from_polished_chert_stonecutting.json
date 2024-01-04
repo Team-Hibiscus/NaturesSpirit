@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_polished_chert"
+      "has_polished_chert",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:polished_chert_slab_from_polished_chert_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

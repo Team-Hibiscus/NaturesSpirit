@@ -1,4 +1,4 @@
-// 1.20.4	2024-01-02T22:53:30.6844626	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2024-01-04T01:38:06.6273123	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\wisteria_logs.json
@@ -6,8 +6,8 @@ d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\wisteri
 2a8e114b4cd036efef28fbe814f09a66a714255c data\minecraft\tags\blocks\logs_that_burn.json
 7dedd01c196efdb9919616b6f5449dc2c12dab18 data\minecraft\tags\blocks\ceiling_hanging_signs.json
 633085cbb28397e7566b8c063d8eac56ecec63aa data\minecraft\tags\blocks\base_stone_overworld.json
-d7a09944295298d27338a843c7681b0c67f24aa3 data\natures_spirit\tags\blocks\coconut_logs.json
 409ae949b7334f9ee39fabb9ae776a7b58d00658 data\minecraft\tags\blocks\slabs.json
+d7a09944295298d27338a843c7681b0c67f24aa3 data\natures_spirit\tags\blocks\coconut_logs.json
 aa8eada3228cd28a74d41ed94644b440bb188342 data\minecraft\tags\blocks\wooden_buttons.json
 36185b9fb1563d681dacf2e88daa42226eeee670 data\minecraft\tags\blocks\wooden_slabs.json
 363c0fa5811bd9eaeb9d6ebcaac56640ea93f543 data\minecraft\tags\blocks\copper_ores.json

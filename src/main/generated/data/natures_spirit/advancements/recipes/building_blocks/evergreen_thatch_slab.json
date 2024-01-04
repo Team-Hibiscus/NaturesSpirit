@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_evergreen_thatch"
+      "has_evergreen_thatch",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:evergreen_thatch_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

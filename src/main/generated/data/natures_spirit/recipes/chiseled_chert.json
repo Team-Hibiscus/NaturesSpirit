@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:chiseled_chert"
-  }
+  },
+  "show_notification": true
 }

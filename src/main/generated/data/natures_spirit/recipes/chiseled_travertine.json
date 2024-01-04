@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:chiseled_travertine"
-  }
+  },
+  "show_notification": true
 }

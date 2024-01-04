@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "natures_spirit:chiseled_pink_sandstone"
-  }
+  },
+  "show_notification": true
 }

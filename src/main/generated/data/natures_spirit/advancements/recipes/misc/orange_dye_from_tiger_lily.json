@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_tiger_lily"
+      "has_tiger_lily",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:orange_dye_from_tiger_lily"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

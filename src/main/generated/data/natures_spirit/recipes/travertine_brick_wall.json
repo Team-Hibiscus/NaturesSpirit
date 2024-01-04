@@ -13,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "natures_spirit:travertine_brick_wall"
-  }
+  },
+  "show_notification": true
 }

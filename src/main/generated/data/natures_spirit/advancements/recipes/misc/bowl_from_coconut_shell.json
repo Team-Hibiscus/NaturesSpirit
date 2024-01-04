@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_coconut_shell"
+      "has_coconut_shell",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:bowl_from_coconut_shell"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

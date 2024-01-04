@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_blue_bulbs"
+      "has_blue_bulbs",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:blue_dye_from_blue_bulbs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
