@@ -179,7 +179,7 @@
       }
     ]
   },
-  "music.overworld.jungle": {
+  "music.overworld.tropical": {
     "sounds": [
       {
         "name": "music/game/bromeliad",
