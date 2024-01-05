@@ -26,7 +26,7 @@
       "min_delay": 12000,
       "replace_current_music": false,
       "sound": "natures_spirit:music.overworld.alpine"
-    },
+    }
   },
   "features": [
     [
