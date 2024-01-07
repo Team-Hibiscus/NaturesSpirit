@@ -5,6 +5,7 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlo
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -31,7 +32,7 @@ public class CheeseBlock extends CakeBlock implements FluidDrainable {
 
          return new ItemStack(HibiscusMiscBlocks.CHEESE_BUCKET);
       }
-      return null;
+      return  new ItemStack(Items.BUCKET);
    }
 
    @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
