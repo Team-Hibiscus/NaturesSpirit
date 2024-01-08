@@ -6,6 +6,10 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEntityTypeTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.*;
@@ -81,6 +85,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       pack.addProvider(NatureSpiritBlockLootTableProvider::new);
       NatureSpiritBlockTagGenerator blockTagProvider = pack.addProvider(NatureSpiritBlockTagGenerator::new);
       pack.addProvider((output, registries) -> new NatureSpiritItemTagGenerator(output, registries, blockTagProvider));
+      pack.addProvider(NatureSpiritEntityTypeGenerator::new);
       System.out.println("Initialized Data Generator");
    }
 
@@ -2249,6 +2254,18 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          getOrCreateTagBuilder(BlockTags.STAIRS).forceAddTag(HibiscusTags.Blocks.CHALK_STAIRS).forceAddTag(HibiscusTags.Blocks.KAOLIN_STAIRS).forceAddTag(HibiscusTags.Blocks.KAOLIN_BRICK_STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS);
          getOrCreateTagBuilder(BlockTags.SLABS).forceAddTag(HibiscusTags.Blocks.CHALK_SLABS).forceAddTag(HibiscusTags.Blocks.KAOLIN_SLABS).forceAddTag(HibiscusTags.Blocks.KAOLIN_SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB);
          getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
+      }
+   }
+   public static class NatureSpiritEntityTypeGenerator extends FabricTagProvider.EntityTypeTagProvider {
+
+      public NatureSpiritEntityTypeGenerator(FabricDataOutput output, CompletableFuture <RegistryWrapper.WrapperLookup> completableFuture) {
+         super(output, completableFuture);
+      }
+
+      @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
+         for (WoodSet woodSet : HibiscusRegistryHelper.WoodHashMap.values()) {
+            getOrCreateTagBuilder(ConventionalEntityTypeTags.BOATS).add(woodSet.getBoatEntityType(), woodSet.getChestBoatEntityType());
+         }
       }
    }
 }
