@@ -3,14 +3,16 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "natures_spirit:travertine_tiles"
+      "item": "natures_spirit:chert_tiles"
     }
   },
   "pattern": [
+    "#  ",
+    "## ",
     "###"
   ],
   "result": {
-    "count": 6,
-    "item": "natures_spirit:travertine_tile_slab"
+    "count": 4,
+    "item": "natures_spirit:chert_tile_stairs"
   }
 }

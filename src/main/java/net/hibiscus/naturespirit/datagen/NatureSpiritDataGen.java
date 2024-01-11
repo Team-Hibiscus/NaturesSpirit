@@ -110,11 +110,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          super(dataOutput);
       }
 
-      public static LootTable.Builder dropsWithShears(ItemConvertible drop) {
-         LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(WITH_SHEARS).with(ItemEntry.builder(drop)));
-         return null;
-      }
-
       private void addWoodTable(HashMap <String, WoodSet> woods) {
          for(WoodSet woodSet : woods.values()) {
 
@@ -266,41 +261,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          }
       }
 
-      private void addVinesTable(Block vine, Block vinePlant) {
-         this.addVinePlantDrop(vine, vinePlant);
-      }
-
-      public void tallPlantDrop(Block tallGrass, Block grass) {
-         net.minecraft.loot.entry.LootPoolEntry.Builder <?> builder = ItemEntry.builder(grass).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)));
-         LootTable.builder().pool(LootPool
-                 .builder()
-                 .with(builder)
-                 .conditionally(BlockStatePropertyLootCondition
-                         .builder(tallGrass)
-                         .properties(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER)))
-                 .conditionally(LocationCheckLootCondition.builder(net.minecraft.predicate.entity.LocationPredicate.Builder
-                         .create()
-                         .block(net.minecraft.predicate.BlockPredicate.Builder.create().blocks(new Block[]{
-                                 tallGrass
-                         }).state(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(
-                                 TallPlantBlock.HALF,
-                                 DoubleBlockHalf.UPPER
-                         ))), new BlockPos(0, 1, 0)))).pool(LootPool
-                 .builder()
-                 .with(builder)
-                 .conditionally(BlockStatePropertyLootCondition
-                         .builder(tallGrass)
-                         .properties(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER)))
-                 .conditionally(LocationCheckLootCondition.builder(net.minecraft.predicate.entity.LocationPredicate.Builder
-                         .create()
-                         .block(net.minecraft.predicate.BlockPredicate.Builder.create().blocks(new Block[]{
-                                 tallGrass
-                         }).state(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(
-                                 TallPlantBlock.HALF,
-                                 DoubleBlockHalf.LOWER
-                         ))), new BlockPos(0, -1, 0))));
-      }
-
       @Override public void generate() {
          addFlowerTable(HibiscusRegistryHelper.FlowerHashMap);
          addStoneTable(HibiscusRegistryHelper.StoneHashMap);
@@ -308,8 +268,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addTreeTable(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
 
          this.addDrop(CALCITE_CLUSTER, (block) -> dropsWithSilkTouch(block,
-                 ItemEntry
-                         .builder(CALCITE_SHARD)
+                 ItemEntry.builder(CALCITE_SHARD)
                          .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4.0F)))
                          .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
                          .conditionally(MatchToolLootCondition.builder(net.minecraft.predicate.item.ItemPredicate.Builder.create().tag(ItemTags.CLUSTER_MAX_HARVESTABLES)))
@@ -318,22 +277,22 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDropWithSilkTouch(SMALL_CALCITE_BUD);
          this.addDropWithSilkTouch(LARGE_CALCITE_BUD);
 
-         addVinesTable(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant());
-         addVinesTable(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant());
-         addVinesTable(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant());
-         addVinesTable(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant());
-         addVinesTable(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant());
+         addVinePlantDrop(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant());
+         addVinePlantDrop(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant());
+         addVinePlantDrop(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant());
+         addVinePlantDrop(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant());
+         addVinePlantDrop(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant());
 
-         this.addDrop(CHERT_COAL_ORE, (Block block) -> this.oreDrops((Block)block, Items.COAL));
-          this.addDrop(CHERT_EMERALD_ORE, (Block block) -> this.oreDrops((Block)block, Items.EMERALD));
-         this.addDrop(CHERT_DIAMOND_ORE, (Block block) -> this.oreDrops((Block)block, Items.DIAMOND));
-         this.addDrop(CHERT_COPPER_ORE, (Block block) -> this.copperOreDrops((Block)block));
-         this.addDrop(CHERT_IRON_ORE, (Block block) -> this.oreDrops((Block)block, Items.RAW_IRON));
-         this.addDrop(CHERT_GOLD_ORE, (Block block) -> this.oreDrops((Block)block, Items.RAW_GOLD));
-         this.addDrop(CHERT_LAPIS_ORE, (Block block) -> this.lapisOreDrops((Block)block));
+         this.addDrop(CHERT_COAL_ORE, (Block block) -> this.oreDrops(block, Items.COAL));
+         this.addDrop(CHERT_EMERALD_ORE, (Block block) -> this.oreDrops(block, Items.EMERALD));
+         this.addDrop(CHERT_DIAMOND_ORE, (Block block) -> this.oreDrops(block, Items.DIAMOND));
+         this.addDrop(CHERT_COPPER_ORE, this::copperOreDrops);
+         this.addDrop(CHERT_IRON_ORE, (Block block) -> this.oreDrops(block, Items.RAW_IRON));
+         this.addDrop(CHERT_GOLD_ORE, (Block block) -> this.oreDrops(block, Items.RAW_GOLD));
+         this.addDrop(CHERT_LAPIS_ORE, this::lapisOreDrops);
 
 
-         addVinesTable(LOTUS_STEM, LOTUS_STEM);
+         addVinePlantDrop(LOTUS_STEM, LOTUS_STEM);
          this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
 
          this.addDrop(SHIITAKE_MUSHROOM);
@@ -581,47 +540,41 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusWoods.COCONUT_BLOCK);
          this.addDrop(HibiscusWoods.YOUNG_COCONUT_BLOCK);
 
-         dropsWithShears(FRIGID_GRASS);
-         tallPlantDrop(TALL_FRIGID_GRASS, FRIGID_GRASS);
-         addPottedPlantDrops(POTTED_FRIGID_GRASS);
+         this.addDrop(FRIGID_GRASS, this::shortPlantDrops);
+         this.addDrop(SCORCHED_GRASS, this::shortPlantDrops);
+         this.addDrop(BEACH_GRASS, this::shortPlantDrops);
+         this.addDrop(SEDGE_GRASS, this::shortPlantDrops);
+         this.addDrop(FLAXEN_FERN, this::shortPlantDrops);
+         this.addDrop(OAT_GRASS, this::shortPlantDrops);
+         this.addDrop(LUSH_FERN, this::shortPlantDrops);
+         this.addDrop(MELIC_GRASS, this::shortPlantDrops);
+         this.addDrop(RED_BEARBERRIES, this::shortPlantDrops);
+         this.addDrop(RED_BITTER_SPROUTS, this::shortPlantDrops);
+         this.addDrop(GREEN_BEARBERRIES, this::shortPlantDrops);
+         this.addDrop(GREEN_BITTER_SPROUTS, this::shortPlantDrops);
+         this.addDrop(PURPLE_BEARBERRIES, this::shortPlantDrops);
+         this.addDrop(PURPLE_BITTER_SPROUTS, this::shortPlantDrops);
 
-         dropsWithShears(HibiscusMiscBlocks.SCORCHED_GRASS);
-         tallPlantDrop(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, HibiscusMiscBlocks.SCORCHED_GRASS);
-         addPottedPlantDrops(POTTED_SCORCHED_GRASS);
+         this.addDrop(TALL_FRIGID_GRASS, tallPlantDrops(TALL_FRIGID_GRASS, FRIGID_GRASS));
+         this.addDrop(TALL_SCORCHED_GRASS, tallPlantDrops(TALL_SCORCHED_GRASS, SCORCHED_GRASS));
+         this.addDrop(TALL_BEACH_GRASS, tallPlantDrops(TALL_BEACH_GRASS, BEACH_GRASS));
+         this.addDrop(TALL_SEDGE_GRASS, tallPlantDrops(TALL_SEDGE_GRASS, SEDGE_GRASS));
+         this.addDrop(LARGE_FLAXEN_FERN, tallPlantDrops(LARGE_FLAXEN_FERN, FLAXEN_FERN));
+         this.addDrop(TALL_OAT_GRASS, tallPlantDrops(TALL_OAT_GRASS, OAT_GRASS));
+         this.addDrop(LARGE_LUSH_FERN, tallPlantDrops(LARGE_LUSH_FERN, LUSH_FERN));
+         this.addDrop(TALL_MELIC_GRASS, tallPlantDrops(TALL_MELIC_GRASS, MELIC_GRASS));
 
-         dropsWithShears(BEACH_GRASS);
-         tallPlantDrop(TALL_BEACH_GRASS, BEACH_GRASS);
-         addPottedPlantDrops(POTTED_BEACH_GRASS);
-
-         dropsWithShears(SEDGE_GRASS);
-         tallPlantDrop(TALL_SEDGE_GRASS, SEDGE_GRASS);
-         addPottedPlantDrops(POTTED_SEDGE_GRASS);
-
-         dropsWithShears(FLAXEN_FERN);
-         addPottedPlantDrops(POTTED_FLAXEN_FERN);
-         tallPlantDrop(LARGE_FLAXEN_FERN, FLAXEN_FERN);
-
-         dropsWithShears(OAT_GRASS);
-         addPottedPlantDrops(POTTED_OAT_GRASS);
-         tallPlantDrop(TALL_OAT_GRASS, OAT_GRASS);
-
-         dropsWithShears(LUSH_FERN);
-         addPottedPlantDrops(POTTED_LUSH_FERN);
-         tallPlantDrop(LARGE_LUSH_FERN, LUSH_FERN);
-
-         dropsWithShears(MELIC_GRASS);
-         addPottedPlantDrops(POTTED_MELIC_GRASS);
-         tallPlantDrop(TALL_MELIC_GRASS, MELIC_GRASS);
-
-         dropsWithShears(RED_BEARBERRIES);
-         dropsWithShears(RED_BITTER_SPROUTS);
-         addPottedPlantDrops(POTTED_RED_BEARBERRIES);
-         dropsWithShears(GREEN_BEARBERRIES);
-         dropsWithShears(GREEN_BITTER_SPROUTS);
-         addPottedPlantDrops(POTTED_GREEN_BEARBERRIES);
-         dropsWithShears(PURPLE_BEARBERRIES);
-         dropsWithShears(PURPLE_BITTER_SPROUTS);
          addPottedPlantDrops(POTTED_PURPLE_BEARBERRIES);
+         addPottedPlantDrops(POTTED_GREEN_BEARBERRIES);
+         addPottedPlantDrops(POTTED_RED_BEARBERRIES);
+         addPottedPlantDrops(POTTED_MELIC_GRASS);
+         addPottedPlantDrops(POTTED_OAT_GRASS);
+         addPottedPlantDrops(POTTED_LUSH_FERN);
+         addPottedPlantDrops(POTTED_FLAXEN_FERN);
+         addPottedPlantDrops(POTTED_SEDGE_GRASS);
+         addPottedPlantDrops(POTTED_SCORCHED_GRASS);
+         addPottedPlantDrops(POTTED_FRIGID_GRASS);
+         addPottedPlantDrops(POTTED_BEACH_GRASS);
 
       }
    }
