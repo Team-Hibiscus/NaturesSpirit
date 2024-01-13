@@ -287,6 +287,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(CHERT_EMERALD_ORE, (Block block) -> this.oreDrops(block, Items.EMERALD));
          this.addDrop(CHERT_DIAMOND_ORE, (Block block) -> this.oreDrops(block, Items.DIAMOND));
          this.addDrop(CHERT_COPPER_ORE, this::copperOreDrops);
+         this.addDrop(CHERT_REDSTONE_ORE, this::redstoneOreDrops);
          this.addDrop(CHERT_IRON_ORE, (Block block) -> this.oreDrops(block, Items.RAW_IRON));
          this.addDrop(CHERT_GOLD_ORE, (Block block) -> this.oreDrops(block, Items.RAW_GOLD));
          this.addDrop(CHERT_LAPIS_ORE, this::lapisOreDrops);

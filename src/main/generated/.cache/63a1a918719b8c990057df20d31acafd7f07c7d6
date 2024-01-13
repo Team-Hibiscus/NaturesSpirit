@@ -1,4 +1,4 @@
-// 1.20.4	2024-01-11T16:11:19.8619092	Nature's Spirit/Block Loot Tables
+// 1.20.4	2024-01-13T14:29:37.5347788	Nature's Spirit/Block Loot Tables
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 86b0b28d804dbfd4c3a3dd5db05d4ccfed363e89 data\natures_spirit\loot_tables\blocks\saxaul_sapling.json
 bb41c6af03a8c80937ab0aece6ea9168df760049 data\natures_spirit\loot_tables\blocks\smooth_pink_sandstone_slab.json
@@ -16,6 +16,7 @@ f36a3e63382e3340f6c28bad0701122daed019ef data\natures_spirit\loot_tables\blocks\
 0843f7bfc8f037b0cec356eca2fda370005f5ffa data\natures_spirit\loot_tables\blocks\aspen_slab.json
 b3f43228f5e8ddb77067df790edf2f3932ac30b9 data\natures_spirit\loot_tables\blocks\fir_fence_gate.json
 b1713cbb5d92b9edf7ff57b667268c5c71c08aab data\natures_spirit\loot_tables\blocks\cypress_button.json
+d8ec58ac0abd858201bc911101ee8102a1b162bd data\natures_spirit\loot_tables\blocks\chert_redstone_ore.json
 0260a75d27ec8b195c9d10cb967f6a20a0e6c50d data\natures_spirit\loot_tables\blocks\foxglove.json
 962bf644c421c329fd270d2acd16b7b54bc4651c data\natures_spirit\loot_tables\blocks\orange_kaolin_slab.json
 93fdcb2eeaa0eae0f9dee50321809343a76e222c data\natures_spirit\loot_tables\blocks\framed_paper_door.json
@@ -215,8 +216,8 @@ d95c715c4bf7ef500c9f1638cc0e5d66231d5ccb data\natures_spirit\loot_tables\blocks\
 2ca164a00620bf3ed50936c58862c3f419a718bf data\natures_spirit\loot_tables\blocks\maple_pressure_plate.json
 0cbdc40e0ef5eb55cff109c6382bb4f618a27af0 data\natures_spirit\loot_tables\blocks\ghaf_sapling.json
 e3a4996531c1b93c8cac4382ad7b786e190e4b1c data\natures_spirit\loot_tables\blocks\brown_kaolin.json
-f685df4d6333e09715e50c157cd779fe65bda387 data\natures_spirit\loot_tables\blocks\marigold.json
 92a296a867ab2995999fe0829535a80f7d88ab60 data\natures_spirit\loot_tables\blocks\purple_bearberries.json
+f685df4d6333e09715e50c157cd779fe65bda387 data\natures_spirit\loot_tables\blocks\marigold.json
 40673be6d581e46ef3a49b2c157bb9ee96996f25 data\natures_spirit\loot_tables\blocks\travertine_tile_slab.json
 068f8ccb14967b97e69a2c7d2d34a208c71d0386 data\natures_spirit\loot_tables\blocks\evergreen_thatch_slab.json
 7270c7263d53bfa9fba81269ca0f6925fadced5a data\natures_spirit\loot_tables\blocks\chert_tile_stairs.json
