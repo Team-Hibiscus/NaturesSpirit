@@ -1629,7 +1629,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                offerShapelessRecipe(consumer, woodSet.getPlanks(), woodSet.getStrippedBundle(), "planks", 4);
             }
             if (woodSet.hasMosaic()) {
-               offerMosaicRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaic(), woodSet.getPlanks());
+               offerMosaicRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaic(), woodSet.getSlab());
                createStairsRecipe(woodSet.getMosaicStairs(), Ingredient.ofItems(woodSet.getMosaic()));
                createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaicSlab(), Ingredient.ofItems(woodSet.getMosaic()));
             }
@@ -1924,7 +1924,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
          this.copy(BlockTags.LEAVES, ItemTags.LEAVES);
          this.copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
-         this.copy(BlockTags.SIGNS, ItemTags.SIGNS);
+         this.copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
          this.copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
          this.copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
          this.copy(BlockTags.TALL_FLOWERS, ItemTags.TALL_FLOWERS);
