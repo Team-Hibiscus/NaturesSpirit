@@ -293,6 +293,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(CHERT_GOLD_ORE, (Block block) -> this.oreDrops(block, Items.RAW_GOLD));
          this.addDrop(CHERT_LAPIS_ORE, this::lapisOreDrops);
 
+         this.addDrop(CATTAIL, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
 
          addVinePlantDrop(LOTUS_STEM, LOTUS_STEM);
          this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
