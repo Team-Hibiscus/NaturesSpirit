@@ -7,8 +7,9 @@
     }
   },
   "pattern": [
-    "###",
-    "###"
+    "##",
+    "##",
+    "##"
   ],
   "result": {
     "item": "natures_spirit:framed_paper_door",
