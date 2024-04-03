@@ -277,6 +277,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDropWithSilkTouch(SMALL_CALCITE_BUD);
          this.addDropWithSilkTouch(LARGE_CALCITE_BUD);
 
+         this.addDrop(CATTAIL, (block) -> this.dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
+
          addVinePlantDrop(HibiscusWoods.WISTERIA.getWhiteWisteriaVines(), HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant());
          addVinePlantDrop(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant());
          addVinePlantDrop(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant());
