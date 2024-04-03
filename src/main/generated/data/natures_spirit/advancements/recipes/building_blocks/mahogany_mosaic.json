@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mahogany_planks": {
+    "has_mahogany_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:mahogany_planks"
+              "natures_spirit:mahogany_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_mahogany_planks",
+      "has_mahogany_slab",
       "has_the_recipe"
     ]
   ],

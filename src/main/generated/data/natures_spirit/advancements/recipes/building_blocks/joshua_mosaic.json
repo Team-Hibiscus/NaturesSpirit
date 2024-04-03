@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_joshua_planks": {
+    "has_joshua_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:joshua_planks"
+              "natures_spirit:joshua_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_joshua_planks",
+      "has_joshua_slab",
       "has_the_recipe"
     ]
   ],

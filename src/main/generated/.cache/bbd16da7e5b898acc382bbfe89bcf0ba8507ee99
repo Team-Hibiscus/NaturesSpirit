@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-13T20:50:22.2416694	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2024-04-02T20:19:33.46628	Nature's Spirit/Tags for minecraft:item
 1357817f3d2c66ec4e86e9638e7d21ad6670be4d data\minecraft\tags\items\wooden_doors.json
 5884e81d1e71b5dc782bcef212da49a7c7b7b98e data\minecraft\tags\items\wooden_trapdoors.json
 e6b435e0150a3a9969164c4370869244554be8db data\minecraft\tags\items\lapis_ores.json
@@ -33,7 +33,7 @@ cad331e0dc0be7574f5335f11dc7fbc6b28669f5 data\minecraft\tags\items\wooden_stairs
 119aae7d1b0f7ac47c3cef641919170b86666482 data\minecraft\tags\items\emerald_ores.json
 2a8e114b4cd036efef28fbe814f09a66a714255c data\minecraft\tags\items\logs_that_burn.json
 409ae949b7334f9ee39fabb9ae776a7b58d00658 data\minecraft\tags\items\slabs.json
-8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\items\signs.json
+ee612b43b9eec53816dab893a8ff01c0dd8d0af7 data\minecraft\tags\items\signs.json
 bf27ff7a9f26284d42aabbc1cfefa820e15d192b data\natures_spirit\tags\items\redwood_logs.json
 36531583ece4948c91e24d593034ed5f2967ac6f data\minecraft\tags\items\coal_ores.json
 61af56f99583c3bd40cb9021e80c77c53b449a6c data\minecraft\tags\items\smelts_to_glass.json
