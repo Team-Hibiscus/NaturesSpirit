@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sugi_planks": {
+    "has_sugi_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:sugi_planks"
+              "natures_spirit:sugi_slab"
             ]
           }
         ]
@@ -23,7 +23,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_sugi_planks"
+      "has_sugi_slab"
     ]
   ],
   "rewards": {

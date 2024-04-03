@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_coconut_planks": {
+    "has_coconut_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:coconut_planks"
+              "natures_spirit:coconut_slab"
             ]
           }
         ]
@@ -23,7 +23,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_coconut_planks"
+      "has_coconut_slab"
     ]
   ],
   "rewards": {
