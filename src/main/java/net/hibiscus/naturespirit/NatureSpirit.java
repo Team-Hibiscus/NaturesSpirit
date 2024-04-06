@@ -65,42 +65,42 @@ public class NatureSpirit implements ModInitializer {
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_vanilla_trees"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_vanilla_trees"),
-                 ResourcePackActivationType.NORMAL
+                 HibiscusConfig.vanilla_trees_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_jungle"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_jungle"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.jungle_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_swamp"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_swamp"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.swamp_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_desert"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_desert"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.desert_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_badlands"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_badlands"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.badlands_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_mountain_biomes"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_mountain_biomes"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.mountain_biomes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_savannas"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_savannas"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.savanna_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_dark_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_dark_forest"),
-                 ResourcePackActivationType.DEFAULT_ENABLED
+                 HibiscusConfig.dark_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
