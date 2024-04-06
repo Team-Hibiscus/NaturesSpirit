@@ -24,6 +24,14 @@ public class HibiscusConfig {
    public static boolean deepslate_generator;
    public static boolean vinegar;
    public static boolean vinegar_duplication;
+   public static boolean vanilla_trees_toggle;
+   public static boolean jungle_toggle;
+   public static boolean swamp_toggle;
+   public static boolean desert_toggle;
+   public static boolean badlands_toggle;
+   public static boolean mountain_biomes_toggle;
+   public static boolean savanna_toggle;
+   public static boolean dark_forest_toggle;
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
@@ -41,6 +49,7 @@ public class HibiscusConfig {
             JsonObject biomes = (JsonObject) obj.get("biomes");
             JsonObject region_weights = (JsonObject) obj.get("region_weights");
             JsonObject misc_features = (JsonObject) obj.get("misc_features");
+            JsonObject datapack_toggles = (JsonObject) obj.get("datapack_toggles");
 
             HibiscusBiomes.set_has_sugi_forest(biomes.get("has_sugi_forest").getAsBoolean());
             HibiscusBiomes.set_has_eroded_river(biomes.get("has_eroded_river").getAsBoolean());
@@ -75,6 +84,14 @@ public class HibiscusConfig {
             vinegar = misc_features.get("vinegar").getAsBoolean();
             vinegar_duplication = misc_features.get("vinegar_duplication").getAsBoolean();
 
+            vanilla_trees_toggle  = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
+            jungle_toggle = datapack_toggles.get("jungle_toggle").getAsBoolean();
+            swamp_toggle = datapack_toggles.get("swamp_toggle").getAsBoolean();
+            desert_toggle = datapack_toggles.get("desert_toggle").getAsBoolean();
+            badlands_toggle = datapack_toggles.get("badlands_toggle").getAsBoolean();
+            mountain_biomes_toggle = datapack_toggles.get("mountain_biomes_toggle").getAsBoolean();
+            savanna_toggle = datapack_toggles.get("savanna_toggle").getAsBoolean();
+            dark_forest_toggle = datapack_toggles.get("dark_forest_toggle").getAsBoolean();
 
          } catch(final IOException e) {
             System.err.println("An error occurred, delete the natures_spirit.config file in .minecraft/config and relaunch");
@@ -129,6 +146,17 @@ public class HibiscusConfig {
       miscObject.addProperty("vinegar", true);
       miscObject.addProperty("vinegar_duplication", true);
       jsonObjects.add("misc_features", miscObject);
+
+      JsonObject datapackTogglesObject = new JsonObject();
+      datapackTogglesObject.addProperty("vanilla_trees_toggle", false);
+      datapackTogglesObject.addProperty("jungle_toggle", true);
+      datapackTogglesObject.addProperty("swamp_toggle", true);
+      datapackTogglesObject.addProperty("desert_toggle", true);
+      datapackTogglesObject.addProperty("badlands_toggle", true);
+      datapackTogglesObject.addProperty("mountain_biomes_toggle", true);
+      datapackTogglesObject.addProperty("savanna_toggle", true);
+      datapackTogglesObject.addProperty("dark_forest_toggle", true);
+      jsonObjects.add("datapack_toggles", datapackTogglesObject);
 
       return jsonObjects;
    }
