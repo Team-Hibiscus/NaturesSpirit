@@ -297,10 +297,10 @@ public class WoodSet {
       chestBoatEntityType = HibiscusEntityTypes.registerEntityType(this.getName() + "_chest_boat", HibiscusEntityTypes.createBoatType(true, this.getboatType()));
 
       boatItem = createItem(this.getName() + "_boat",
-              new HibiscusBoatItem(false, this.getboatType(), new Item.Settings())
+              new HibiscusBoatItem(false, this.getboatType(), new Item.Settings().maxCount(1))
       );
       chestBoatItem = createItem(this.getName() + "_chest_boat",
-              new HibiscusBoatItem(true, this.getboatType(), new Item.Settings())
+              new HibiscusBoatItem(true, this.getboatType(), new Item.Settings().maxCount(1))
       );
       RenderLayerHashMap.put(this.getName() + "_door", this.getDoor());
       RenderLayerHashMap.put(this.getName() + "_trapdoor", this.getTrapDoor());
