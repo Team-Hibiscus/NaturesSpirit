@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "natures_spirit:block/amber_chalk",
+    "side": "natures_spirit:block/amber_chalk",
+    "top": "natures_spirit:block/amber_chalk"
+  }
+}

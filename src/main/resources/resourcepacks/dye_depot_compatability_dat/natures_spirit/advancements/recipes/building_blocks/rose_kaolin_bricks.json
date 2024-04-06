@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rose_kaolin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:rose_kaolin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:rose_kaolin_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_rose_kaolin",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:rose_kaolin_bricks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

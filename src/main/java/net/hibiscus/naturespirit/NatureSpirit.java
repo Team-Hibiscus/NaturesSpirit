@@ -11,6 +11,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocksCompatability;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
@@ -107,6 +108,18 @@ public class NatureSpirit implements ModInitializer {
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL
          );
+         if(FabricLoader.getInstance().isModLoaded("dye_depot")) {
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    new Identifier(MOD_ID, "dye_depot_compatibility_dat"), modContainer.get(),
+                    Text.translatable("pack.natures_spirit.dye_depot_compatibility"),
+                    ResourcePackActivationType.DEFAULT_ENABLED
+            );
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    new Identifier(MOD_ID, "dye_depot_compatibility_res"), modContainer.get(),
+                    Text.translatable("pack.natures_spirit.dye_depot_compatibility"),
+                    ResourcePackActivationType.DEFAULT_ENABLED
+            );
+         }
       }
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
@@ -118,6 +131,9 @@ public class NatureSpirit implements ModInitializer {
       HibiscusBlocks.registerWoods();
       HibiscusBlocks.registerColoredBlocks();
       HibiscusBlocks.registerMisc();
+      if (FabricLoader.getInstance().isModLoaded("dye_depot")) {
+         HibiscusColoredBlocksCompatability.registerColoredBlocks();
+      }
       HibiscusEvents.registerEvents();
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();

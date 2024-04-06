@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "natures_spirit:item/coral_paper_lantern"
+  }
+}

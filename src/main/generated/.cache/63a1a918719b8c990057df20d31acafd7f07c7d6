@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-02T20:26:10.3935308	Nature's Spirit/Block Loot Tables
+// 1.20.1	2024-04-06T14:26:13.5732172	Nature's Spirit/Block Loot Tables
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 86b0b28d804dbfd4c3a3dd5db05d4ccfed363e89 data\natures_spirit\loot_tables\blocks\saxaul_sapling.json
 bb41c6af03a8c80937ab0aece6ea9168df760049 data\natures_spirit\loot_tables\blocks\smooth_pink_sandstone_slab.json
@@ -55,8 +55,8 @@ c5bfeddf8b14fb6d318f6c3d68a3356e14163c73 data\natures_spirit\loot_tables\blocks\
 4576be294aaa7fe9b1443368b26b2b28c41e1f5c data\natures_spirit\loot_tables\blocks\wisteria_hanging_sign.json
 9166fd8453a2ea5b3e721c5157a79c9c919819f9 data\natures_spirit\loot_tables\blocks\potted_tiger_lily.json
 b39b6b8223b48ad2aee9eb95a73895d8a40dd878 data\natures_spirit\loot_tables\blocks\gray_chalk.json
-946b7d843fe9d8dd0b575c43a0494f46d7241c9f data\natures_spirit\loot_tables\blocks\black_iris.json
 ab8626659037e3ac1467b8b3642a55ed5cf79d28 data\natures_spirit\loot_tables\blocks\cut_pink_sandstone_slab.json
+946b7d843fe9d8dd0b575c43a0494f46d7241c9f data\natures_spirit\loot_tables\blocks\black_iris.json
 e611c97aefe83d401a5d32067990b1475f2d5e1c data\natures_spirit\loot_tables\blocks\olive_leaves.json
 86496531a33cac8072aec41c974bb6b0423d4e96 data\natures_spirit\loot_tables\blocks\cypress_hanging_sign.json
 c1304cdef26897d52cbd541af8d406c35b0d87e2 data\natures_spirit\loot_tables\blocks\maple_log.json

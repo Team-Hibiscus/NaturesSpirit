@@ -13,6 +13,7 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.*;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocksCompatability;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
@@ -73,6 +74,22 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    public static final String[] DYE_COLORS = {
            "white", "light_gray", "gray", "black", "brown", "red", "orange", "yellow", "lime",
            "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"
+//           "maroon",
+//           "rose",
+//           "coral",
+//           "ginger",
+//           "tan",
+//           "beige",
+//           "amber",
+//           "olive",
+//           "forest",
+//           "verdant",
+//           "teal",
+//           "mint",
+//           "aqua",
+//           "slate",
+//           "navy",
+//           "indigo"
    };
 
    @Override public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
@@ -536,6 +553,167 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.addDrop(HibiscusColoredBlocks.PURPLE_CHALK_STAIRS);
          this.addDrop(HibiscusColoredBlocks.MAGENTA_CHALK_STAIRS);
          this.addDrop(HibiscusColoredBlocks.PINK_CHALK_STAIRS);
+
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICKS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_PAPER_LANTERN);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_CHALK);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_CHALK_SLAB, this::slabDrops);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MAROON_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.ROSE_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.CORAL_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.GINGER_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TAN_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.BEIGE_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AMBER_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.OLIVE_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.FOREST_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.VERDANT_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.TEAL_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.MINT_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.AQUA_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.SLATE_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.NAVY_CHALK_STAIRS);
+//         this.addDrop(HibiscusColoredBlocksCompatability.INDIGO_CHALK_STAIRS);
 
          this.addDrop(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK);
 
@@ -1299,6 +1477,182 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerSingleton(HibiscusColoredBlocks.MAGENTA_CHALK, TexturedModel.CUBE_ALL);
          blockStateModelGenerator.registerSingleton(HibiscusColoredBlocks.PINK_CHALK, TexturedModel.CUBE_ALL);
 
+
+
+
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.MAROON_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.ROSE_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.CORAL_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.GINGER_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.TAN_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.BEIGE_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.AMBER_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.OLIVE_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.FOREST_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.VERDANT_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.TEAL_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.MINT_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.AQUA_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.SLATE_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.NAVY_PAPER_LANTERN, blockStateModelGenerator);
+//         registerPaperLantern(HibiscusColoredBlocksCompatability.INDIGO_PAPER_LANTERN, blockStateModelGenerator);
+//
+//
+//         createSlab(HibiscusColoredBlocksCompatability.MAROON_KAOLIN, HibiscusColoredBlocksCompatability.MAROON_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.ROSE_KAOLIN, HibiscusColoredBlocksCompatability.ROSE_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.CORAL_KAOLIN, HibiscusColoredBlocksCompatability.CORAL_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.GINGER_KAOLIN, HibiscusColoredBlocksCompatability.GINGER_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.TAN_KAOLIN, HibiscusColoredBlocksCompatability.TAN_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN, HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.AMBER_KAOLIN, HibiscusColoredBlocksCompatability.AMBER_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN, HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.FOREST_KAOLIN, HibiscusColoredBlocksCompatability.FOREST_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN, HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.TEAL_KAOLIN, HibiscusColoredBlocksCompatability.TEAL_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.MINT_KAOLIN, HibiscusColoredBlocksCompatability.MINT_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.AQUA_KAOLIN, HibiscusColoredBlocksCompatability.AQUA_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.SLATE_KAOLIN, HibiscusColoredBlocksCompatability.SLATE_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.NAVY_KAOLIN, HibiscusColoredBlocksCompatability.NAVY_KAOLIN_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN, HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_SLAB, blockStateModelGenerator);
+//
+//         createStairs(HibiscusColoredBlocksCompatability.MAROON_KAOLIN, HibiscusColoredBlocksCompatability.MAROON_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.ROSE_KAOLIN, HibiscusColoredBlocksCompatability.ROSE_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.CORAL_KAOLIN, HibiscusColoredBlocksCompatability.CORAL_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.GINGER_KAOLIN, HibiscusColoredBlocksCompatability.GINGER_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.TAN_KAOLIN, HibiscusColoredBlocksCompatability.TAN_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN, HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.AMBER_KAOLIN, HibiscusColoredBlocksCompatability.AMBER_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN, HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.FOREST_KAOLIN, HibiscusColoredBlocksCompatability.FOREST_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN, HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.TEAL_KAOLIN, HibiscusColoredBlocksCompatability.TEAL_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.MINT_KAOLIN, HibiscusColoredBlocksCompatability.MINT_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.AQUA_KAOLIN, HibiscusColoredBlocksCompatability.AQUA_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.SLATE_KAOLIN, HibiscusColoredBlocksCompatability.SLATE_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.NAVY_KAOLIN, HibiscusColoredBlocksCompatability.NAVY_KAOLIN_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN, HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_STAIRS, blockStateModelGenerator);
+//
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.MAROON_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.ROSE_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.CORAL_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.GINGER_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.TAN_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.AMBER_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.FOREST_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.TEAL_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.MINT_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.AQUA_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.SLATE_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.NAVY_KAOLIN, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN, TexturedModel.CUBE_ALL);
+//
+//         createSlab(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICK_SLAB, blockStateModelGenerator);
+//
+//         createStairs(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICKS, HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICK_STAIRS, blockStateModelGenerator);
+//
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICKS, TexturedModel.CUBE_ALL);
+//
+//         createSlab(HibiscusColoredBlocksCompatability.MAROON_CHALK, HibiscusColoredBlocksCompatability.MAROON_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.ROSE_CHALK, HibiscusColoredBlocksCompatability.ROSE_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.CORAL_CHALK, HibiscusColoredBlocksCompatability.CORAL_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.GINGER_CHALK, HibiscusColoredBlocksCompatability.GINGER_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.TAN_CHALK, HibiscusColoredBlocksCompatability.TAN_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.BEIGE_CHALK, HibiscusColoredBlocksCompatability.BEIGE_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.AMBER_CHALK, HibiscusColoredBlocksCompatability.AMBER_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.OLIVE_CHALK, HibiscusColoredBlocksCompatability.OLIVE_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.FOREST_CHALK, HibiscusColoredBlocksCompatability.FOREST_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.VERDANT_CHALK, HibiscusColoredBlocksCompatability.VERDANT_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.TEAL_CHALK, HibiscusColoredBlocksCompatability.TEAL_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.MINT_CHALK, HibiscusColoredBlocksCompatability.MINT_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.AQUA_CHALK, HibiscusColoredBlocksCompatability.AQUA_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.SLATE_CHALK, HibiscusColoredBlocksCompatability.SLATE_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.NAVY_CHALK, HibiscusColoredBlocksCompatability.NAVY_CHALK_SLAB, blockStateModelGenerator);
+//         createSlab(HibiscusColoredBlocksCompatability.INDIGO_CHALK, HibiscusColoredBlocksCompatability.INDIGO_CHALK_SLAB, blockStateModelGenerator);
+//
+//         createStairs(HibiscusColoredBlocksCompatability.MAROON_CHALK, HibiscusColoredBlocksCompatability.MAROON_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.ROSE_CHALK, HibiscusColoredBlocksCompatability.ROSE_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.CORAL_CHALK, HibiscusColoredBlocksCompatability.CORAL_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.GINGER_CHALK, HibiscusColoredBlocksCompatability.GINGER_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.TAN_CHALK, HibiscusColoredBlocksCompatability.TAN_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.BEIGE_CHALK, HibiscusColoredBlocksCompatability.BEIGE_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.AMBER_CHALK, HibiscusColoredBlocksCompatability.AMBER_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.OLIVE_CHALK, HibiscusColoredBlocksCompatability.OLIVE_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.FOREST_CHALK, HibiscusColoredBlocksCompatability.FOREST_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.VERDANT_CHALK, HibiscusColoredBlocksCompatability.VERDANT_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.TEAL_CHALK, HibiscusColoredBlocksCompatability.TEAL_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.MINT_CHALK, HibiscusColoredBlocksCompatability.MINT_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.AQUA_CHALK, HibiscusColoredBlocksCompatability.AQUA_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.SLATE_CHALK, HibiscusColoredBlocksCompatability.SLATE_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.NAVY_CHALK, HibiscusColoredBlocksCompatability.NAVY_CHALK_STAIRS, blockStateModelGenerator);
+//         createStairs(HibiscusColoredBlocksCompatability.INDIGO_CHALK, HibiscusColoredBlocksCompatability.INDIGO_CHALK_STAIRS, blockStateModelGenerator);
+//
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.MAROON_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.ROSE_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.CORAL_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.GINGER_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.TAN_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.BEIGE_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.AMBER_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.OLIVE_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.FOREST_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.VERDANT_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.TEAL_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.MINT_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.AQUA_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.SLATE_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.NAVY_CHALK, TexturedModel.CUBE_ALL);
+//         blockStateModelGenerator.registerSingleton(HibiscusColoredBlocksCompatability.INDIGO_CHALK, TexturedModel.CUBE_ALL);
+
+
+
          blockStateModelGenerator.registerAxisRotated(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK, TexturedModel.END_FOR_TOP_CUBE_COLUMN, TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL);
          blockStateModelGenerator.registerSingleton(CHERT_COAL_ORE, TexturedModel.CUBE_ALL);
          blockStateModelGenerator.registerSingleton(CHERT_COPPER_ORE, TexturedModel.CUBE_ALL);
@@ -1562,6 +1916,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add("pack.natures_spirit.modified_mountain_biomes", "Modified Mountain Biomes");
          translationBuilder.add("pack.natures_spirit.modified_vanilla_trees", "Modified Vanilla Trees");
          translationBuilder.add("pack.natures_spirit.modified_jungle", "Modified Jungles");
+         translationBuilder.add("pack.natures_spirit.dyed_depot_compatibility", "Dyed Depot Compatibility");
          generateArchExTranslations("kaolin", translationBuilder);
          generateArchExTranslations("kaolin_bricks", translationBuilder);
 
@@ -1865,6 +2220,24 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.MAGENTA_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocks.MAGENTA_KAOLIN).pattern("SS").pattern("SS").criterion("has_magenta_kaolin", conditionsFromItem(HibiscusColoredBlocks.MAGENTA_KAOLIN)).offerTo(exporter);
          ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.PINK_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocks.PINK_KAOLIN).pattern("SS").pattern("SS").criterion("has_pink_kaolin", conditionsFromItem(HibiscusColoredBlocks.PINK_KAOLIN)).offerTo(exporter);
 
+
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.MAROON_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.MAROON_KAOLIN).pattern("SS").pattern("SS").criterion("has_maroon_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.MAROON_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.ROSE_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.ROSE_KAOLIN).pattern("SS").pattern("SS").criterion("has_rose_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.ROSE_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.CORAL_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.CORAL_KAOLIN).pattern("SS").pattern("SS").criterion("has_coral_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.CORAL_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.GINGER_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.GINGER_KAOLIN).pattern("SS").pattern("SS").criterion("has_ginger_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.GINGER_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.TAN_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.TAN_KAOLIN).pattern("SS").pattern("SS").criterion("has_tan_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.TAN_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.BEIGE_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.BEIGE_KAOLIN).pattern("SS").pattern("SS").criterion("has_beige_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.BEIGE_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.AMBER_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.AMBER_KAOLIN).pattern("SS").pattern("SS").criterion("has_amber_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.AMBER_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.OLIVE_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.OLIVE_KAOLIN).pattern("SS").pattern("SS").criterion("has_olive_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.OLIVE_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.FOREST_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.FOREST_KAOLIN).pattern("SS").pattern("SS").criterion("has_forest_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.FOREST_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.VERDANT_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.VERDANT_KAOLIN).pattern("SS").pattern("SS").criterion("has_verdant_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.VERDANT_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.TEAL_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.TEAL_KAOLIN).pattern("SS").pattern("SS").criterion("has_teal_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.TEAL_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.MINT_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.MINT_KAOLIN).pattern("SS").pattern("SS").criterion("has_mint_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.MINT_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.AQUA_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.AQUA_KAOLIN).pattern("SS").pattern("SS").criterion("has_aqua_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.AQUA_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.SLATE_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.SLATE_KAOLIN).pattern("SS").pattern("SS").criterion("has_slate_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.SLATE_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.NAVY_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.NAVY_KAOLIN).pattern("SS").pattern("SS").criterion("has_navy_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.NAVY_KAOLIN)).offerTo(exporter);
+//         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocksCompatability.INDIGO_KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocksCompatability.INDIGO_KAOLIN).pattern("SS").pattern("SS").criterion("has_indigo_kaolin", conditionsFromItem(HibiscusColoredBlocksCompatability.INDIGO_KAOLIN)).offerTo(exporter);
+//
 
 
          offerCarpetRecipe(exporter, RED_MOSS_CARPET, RED_MOSS_BLOCK);
