@@ -1916,7 +1916,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add("pack.natures_spirit.modified_mountain_biomes", "Modified Mountain Biomes");
          translationBuilder.add("pack.natures_spirit.modified_vanilla_trees", "Modified Vanilla Trees");
          translationBuilder.add("pack.natures_spirit.modified_jungle", "Modified Jungles");
-         translationBuilder.add("pack.natures_spirit.dyed_depot_compatibility", "Dyed Depot Compatibility");
+         translationBuilder.add("pack.natures_spirit.dye_depot_compatibility", "Dye Depot Compatibility");
          generateArchExTranslations("kaolin", translationBuilder);
          generateArchExTranslations("kaolin_bricks", translationBuilder);
 

@@ -112,12 +112,12 @@ public class NatureSpirit implements ModInitializer {
             ResourceManagerHelper.registerBuiltinResourcePack(
                     new Identifier(MOD_ID, "dye_depot_compatibility_dat"), modContainer.get(),
                     Text.translatable("pack.natures_spirit.dye_depot_compatibility"),
-                    ResourcePackActivationType.DEFAULT_ENABLED
+                    ResourcePackActivationType.ALWAYS_ENABLED
             );
             ResourceManagerHelper.registerBuiltinResourcePack(
                     new Identifier(MOD_ID, "dye_depot_compatibility_res"), modContainer.get(),
                     Text.translatable("pack.natures_spirit.dye_depot_compatibility"),
-                    ResourcePackActivationType.DEFAULT_ENABLED
+                    ResourcePackActivationType.ALWAYS_ENABLED
             );
          }
       }
