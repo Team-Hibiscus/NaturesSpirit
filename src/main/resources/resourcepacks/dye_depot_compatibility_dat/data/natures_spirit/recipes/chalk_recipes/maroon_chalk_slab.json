@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "maroon_chalk",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:maroon_chalk"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:maroon_chalk_slab",
+    "count": 6
+  }
+}

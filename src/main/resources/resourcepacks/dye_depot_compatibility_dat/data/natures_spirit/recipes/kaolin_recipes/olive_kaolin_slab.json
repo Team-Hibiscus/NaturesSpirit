@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "olive_kaolin",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:olive_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:olive_kaolin_slab",
+    "count": 6
+  }
+}

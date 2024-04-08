@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "maroon_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:maroon_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:maroon_kaolin_stairs",
+    "count": 4
+  }
+}

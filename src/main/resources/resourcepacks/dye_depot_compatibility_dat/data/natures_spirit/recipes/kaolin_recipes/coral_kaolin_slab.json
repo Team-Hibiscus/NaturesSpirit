@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "coral_kaolin",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:coral_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:coral_kaolin_slab",
+    "count": 6
+  }
+}

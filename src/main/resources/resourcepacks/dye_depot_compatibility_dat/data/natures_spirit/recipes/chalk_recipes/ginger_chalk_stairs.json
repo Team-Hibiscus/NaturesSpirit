@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "ginger_chalk",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:ginger_chalk"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:ginger_chalk_stairs",
+    "count": 4
+  }
+}

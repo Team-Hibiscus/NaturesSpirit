@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "rose_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:rose_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:rose_kaolin_stairs",
+    "count": 4
+  }
+}

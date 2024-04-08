@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "rose_chalk",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:rose_chalk"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:rose_chalk_slab",
+    "count": 6
+  }
+}

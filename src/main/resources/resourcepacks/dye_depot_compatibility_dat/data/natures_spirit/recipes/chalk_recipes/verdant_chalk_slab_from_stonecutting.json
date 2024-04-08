@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "natures_spirit:verdant_chalk"
+  },
+  "result": "natures_spirit:verdant_chalk_slab"
+}

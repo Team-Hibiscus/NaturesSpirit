@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "chalk",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:tan_chalk"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:tan_chalk_stairs",
+    "count": 4
+  }
+}

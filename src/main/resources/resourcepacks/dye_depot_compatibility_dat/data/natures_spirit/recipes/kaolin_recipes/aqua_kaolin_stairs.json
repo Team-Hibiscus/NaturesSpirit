@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "aqua_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:aqua_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:aqua_kaolin_stairs",
+    "count": 4
+  }
+}

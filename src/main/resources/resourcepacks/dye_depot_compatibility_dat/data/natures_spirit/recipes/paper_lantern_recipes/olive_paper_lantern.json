@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "paper_lantern",
+  "ingredients": [
+    {
+      "item": "natures_spirit:paper_lantern"
+    },
+    {
+      "item": "dye_depot:olive_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:olive_paper_lantern",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "natures_spirit:teal_chalk"
+  },
+  "result": "natures_spirit:teal_chalk_stairs"
+}

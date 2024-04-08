@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "paper_lantern",
+  "ingredients": [
+    {
+      "item": "natures_spirit:paper_lantern"
+    },
+    {
+      "item": "dye_depot:ginger_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:ginger_paper_lantern",
+    "count": 1
+  }
+}

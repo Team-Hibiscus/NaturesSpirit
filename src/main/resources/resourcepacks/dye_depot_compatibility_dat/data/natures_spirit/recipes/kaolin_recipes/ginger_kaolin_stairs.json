@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "ginger_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:ginger_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:ginger_kaolin_stairs",
+    "count": 4
+  }
+}
