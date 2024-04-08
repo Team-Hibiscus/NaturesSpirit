@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "rose_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:carnation"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "dye_depot:rose_dye"
+  }
+}

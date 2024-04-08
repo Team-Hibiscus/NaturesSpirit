@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "slate_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:bluebell"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dye_depot:slate_dye"
+  }
+}
