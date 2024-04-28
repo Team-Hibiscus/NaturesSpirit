@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.registration;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.hibiscus.naturespirit.blocks.LargeFlowerBlock;
 import net.hibiscus.naturespirit.blocks.LargeTallFlowerBlock;
 import net.hibiscus.naturespirit.blocks.MidFlowerBlock;
@@ -9,6 +8,8 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.ArrayList;
@@ -21,14 +22,14 @@ public class FlowerSet {
 
    private String name;
    private Item dyeColor;
-   private StatusEffect statusEffect;
+   private RegistryEntry <StatusEffect> statusEffect;
    private Item itemBefore;
    private FlowerPreset preset;
    private Block flowerBlock;
    private Block pottedFlowerBlock;
    private List <Block> registeredBlocksList = new ArrayList <>();
    private List<Item> registeredItemsList = new ArrayList<>();
-   public FlowerSet(String name, Item dyeColor, StatusEffect statusEffect, Item itemBefore,FlowerPreset preset) {
+   public FlowerSet(String name, Item dyeColor, RegistryEntry <StatusEffect> statusEffect, Item itemBefore,FlowerPreset preset) {
       this.name = name;
       this.dyeColor = dyeColor;
       this.statusEffect = statusEffect;
@@ -44,7 +45,7 @@ public class FlowerSet {
       this.preset = preset;
       this.registerFlower();
    }
-   public FlowerSet(String name, StatusEffect statusEffect, Item itemBefore,FlowerPreset preset) {
+   public FlowerSet(String name, RegistryEntry <StatusEffect> statusEffect, Item itemBefore,FlowerPreset preset) {
       this.name = name;
       this.dyeColor = null;
       this.statusEffect = statusEffect;
@@ -64,7 +65,7 @@ public class FlowerSet {
    private void registerFlower() {
       if(this.preset == FlowerPreset.BIG_TALL) {
       this.flowerBlock = registerPlantBlock(this.name,
-              new LargeTallFlowerBlock(FabricBlockSettings
+              new LargeTallFlowerBlock(AbstractBlock.Settings
                       .create()
                       .noCollision()
                       .breakInstantly()
@@ -79,7 +80,7 @@ public class FlowerSet {
    } else
       if(this.preset == FlowerPreset.TALL) {
          this.flowerBlock = registerPlantBlock(this.name,
-                 new TallFlowerBlock(FabricBlockSettings
+                 new TallFlowerBlock(AbstractBlock.Settings
                          .create()
                          .noCollision()
                          .breakInstantly()
@@ -96,7 +97,7 @@ public class FlowerSet {
          this.flowerBlock = registerPlantBlock(this.name, new LargeFlowerBlock(
                  this.statusEffect,
                  7,
-                 FabricBlockSettings
+                 AbstractBlock.Settings
                          .create()
                          .mapColor(MapColor.DARK_GREEN)
                          .noCollision()
@@ -110,7 +111,7 @@ public class FlowerSet {
          this.flowerBlock = registerPlantBlock(this.name, new FlowerBlock(
                  this.statusEffect,
                  7,
-                 FabricBlockSettings
+                 AbstractBlock.Settings
                          .create()
                          .mapColor(MapColor.DARK_GREEN)
                          .noCollision()
@@ -124,7 +125,7 @@ public class FlowerSet {
          this.flowerBlock = registerPlantBlock(this.name, new MidFlowerBlock(
                  this.statusEffect,
                  7,
-                 FabricBlockSettings
+                 AbstractBlock.Settings
                          .create()
                          .mapColor(MapColor.DARK_GREEN)
                          .noCollision()

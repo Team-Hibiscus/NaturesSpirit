@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.world.trunk;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.BlockState;
@@ -20,7 +21,7 @@ import java.util.function.BiConsumer;
 
 public class MegaSugiTrunkPlacer extends TrunkPlacer {
 
-   public static final Codec <MegaSugiTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> fillTrunkPlacerFields(instance).apply(instance, MegaSugiTrunkPlacer::new));
+   public static final MapCodec <MegaSugiTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> fillTrunkPlacerFields(instance).apply(instance, MegaSugiTrunkPlacer::new));
 
    public MegaSugiTrunkPlacer(int i, int j, int k) {
       super(i, j, k);

@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.blocks.CoconutBlock;
 import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
@@ -18,9 +19,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CoconutTreeDecorator extends TreeDecorator {
-   public static final Codec <CoconutTreeDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(CoconutTreeDecorator::new, (decorator) -> {
+   public static final MapCodec <CoconutTreeDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(CoconutTreeDecorator::new, (decorator) -> {
       return decorator.probability;
-   }).codec();
+   });
    private final float probability;
 
    public CoconutTreeDecorator(float probability) {

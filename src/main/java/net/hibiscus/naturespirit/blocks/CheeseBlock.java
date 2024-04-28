@@ -10,6 +10,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -35,15 +36,13 @@ public class CheeseBlock extends CakeBlock implements FluidDrainable {
       return  new ItemStack(Items.BUCKET);
    }
 
-   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-      ItemStack itemStack = player.getStackInHand(hand);
-
+   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
       if (world.isClient) {
          if (tryEat(world, pos, state, player).isAccepted()) {
             return ActionResult.SUCCESS;
          }
 
-         if (itemStack.isEmpty()) {
+         if (player.getStackInHand(Hand.MAIN_HAND).isEmpty()) {
             return ActionResult.CONSUME;
          }
       }

@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.BlockState;
@@ -18,7 +19,7 @@ import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class CoconutFoliagePlacer extends FoliagePlacer {
-   public static final Codec <CoconutFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+   public static final MapCodec <CoconutFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
       return fillFoliagePlacerFields(instance).apply(instance, CoconutFoliagePlacer::new);
    });
 

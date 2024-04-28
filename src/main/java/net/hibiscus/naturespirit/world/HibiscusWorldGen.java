@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.world;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
@@ -89,13 +90,13 @@ public class HibiscusWorldGen {
            new LeveledRandomPatch(RandomPatchFeatureConfig.CODEC)
    );
 
-   private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, Codec <P> codec) {
+   private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, MapCodec<P> codec) {
       return (FoliagePlacerType)Registry.register(Registries.FOLIAGE_PLACER_TYPE, new Identifier (MOD_ID, id), new FoliagePlacerType(codec));
    }
-   private static <P extends TrunkPlacer> TrunkPlacerType<P> registerTrunkPlacer(String id, Codec<P> codec) {
+   private static <P extends TrunkPlacer> TrunkPlacerType<P> registerTrunkPlacer(String id, MapCodec<P> codec) {
       return (TrunkPlacerType)Registry.register(Registries.TRUNK_PLACER_TYPE,  new Identifier (MOD_ID, id), new TrunkPlacerType(codec));
    }
-   private static <P extends TreeDecorator> TreeDecoratorType<P> registerTreeDecorator(String id, Codec<P> codec) {
+   private static <P extends TreeDecorator> TreeDecoratorType<P> registerTreeDecorator(String id, MapCodec<P> codec) {
       return (TreeDecoratorType)Registry.register(Registries.TREE_DECORATOR_TYPE,  new Identifier (MOD_ID, id), new TreeDecoratorType(codec));
    }
 

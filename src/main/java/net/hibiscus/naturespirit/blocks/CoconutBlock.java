@@ -90,15 +90,15 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
 
    }
 
-   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-      ItemStack itemStack = player.getStackInHand(hand);
+   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+      ItemStack itemStack = player.getStackInHand(player.getActiveHand());
       boolean bl = state.get(FILLED);
       Item item = itemStack.getItem();
       if(itemStack.isOf(Items.BUCKET) && bl) {
          itemStack.decrement(1);
          world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_COW_MILK, SoundCategory.BLOCKS, 1.0F, 1.0F);
          if(itemStack.isEmpty()) {
-            player.setStackInHand(hand, new ItemStack(Items.MILK_BUCKET));
+            player.setStackInHand(player.getActiveHand(), new ItemStack(Items.MILK_BUCKET));
          }
          else if(!player.getInventory().insertStack(new ItemStack(Items.MILK_BUCKET))) {
             player.dropItem(new ItemStack(Items.MILK_BUCKET), false);
@@ -108,7 +108,7 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
          world.emitGameEvent(player, GameEvent.FLUID_PICKUP, pos);
       } if(!world.isClient() && bl) {
          player.incrementStat(Stats.USED.getOrCreateStat(item));
-      } return super.onUse(state, world, pos, player, hand, hit);
+      } return super.onUse(state, world, pos, player, hit);
 
    }
 

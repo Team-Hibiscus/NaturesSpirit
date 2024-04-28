@@ -117,11 +117,11 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
       return BITES_TO_SHAPE[0];
    }
 
-   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
       Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
-         ItemStack itemStack = player.getStackInHand(hand);
+         ItemStack itemStack = player.getStackInHand(player.getActiveHand());
          Item item = itemStack.getItem();
          if(pizzaBlockEntity.canPlaceTopping(itemStack, pizzaBlockEntity)) {
             if(!player.isCreative()) {
@@ -150,7 +150,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
 
          return tryEat(world, pos, state, player);
       }
-      return super.onUse(state, world, pos, player, hand, hit);
+      return super.onUse(state, world, pos, player, hit);
    }
 
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {

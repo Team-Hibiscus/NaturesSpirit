@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.registration;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -47,7 +46,7 @@ public class HibiscusRegistryHelper {
       return pottedPlant;
    }
 
-   public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(String name, FabricBlockEntityTypeBuilder<T> factory) {
+   public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(String name, BlockEntityType.Builder<T> factory) {
       return Registry.register(
               Registries.BLOCK_ENTITY_TYPE,
               new Identifier(NatureSpirit.MOD_ID, name),
@@ -107,7 +106,7 @@ public class HibiscusRegistryHelper {
    }
 
    public static Item registerPlantWallBlockItem(String name, Block block, Block wallBlock, RegistryKey<ItemGroup> tab, ItemConvertible itemBefore, float compost) {
-      Item item = registerItem(name, new VerticallyAttachableBlockItem(block, wallBlock, new FabricItemSettings(), Direction.DOWN), tab);
+      Item item = registerItem(name, new VerticallyAttachableBlockItem(block, wallBlock, new Item.Settings(), Direction.DOWN), tab);
       ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(itemBefore, item.asItem()));
       return item;
    }
@@ -119,14 +118,14 @@ public class HibiscusRegistryHelper {
    }
 
    public static void registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab) {
-      registerItem(name, new BlockItem(block, new FabricItemSettings()), tab);
+      registerItem(name, new BlockItem(block, new Item.Settings()), tab);
    }
    public static void registerBlockItem(String name, Block block) {
-      registerItem(name, new BlockItem(block, new FabricItemSettings()));
+      registerItem(name, new BlockItem(block, new Item.Settings()));
    }
 
    public static void registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
-      Item item = registerItem(name, new BlockItem(block, new FabricItemSettings()));
+      Item item = registerItem(name, new BlockItem(block, new Item.Settings()));
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
       ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
    }

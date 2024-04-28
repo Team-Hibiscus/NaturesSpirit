@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +11,7 @@ import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 public class WisteriaVinesTreeDecorator extends TreeDecorator {
-   public static final Codec <WisteriaVinesTreeDecorator> CODEC = RecordCodecBuilder.create((instance) -> {
+   public static final MapCodec <WisteriaVinesTreeDecorator> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
       return instance.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> treeDecorator.probability),
               BlockStateProvider.TYPE_CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> treeDecorator.blockProvider),
               BlockStateProvider.TYPE_CODEC.fieldOf("block_provider2").forGetter((treeDecorator) -> treeDecorator.blockProvider2),

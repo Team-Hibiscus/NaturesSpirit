@@ -46,8 +46,8 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
       return state.get(ageIntoCheese);
    }
 
-   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-      if (player.getStackInHand(hand).isIn(HibiscusTags.Items.CHEESE_MAKER) && !state.get(ageIntoCheese)) {
+   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+      if (player.getStackInHand(player.getActiveHand()).isIn(HibiscusTags.Items.CHEESE_MAKER) && !state.get(ageIntoCheese)) {
          world.setBlockState(pos, state.with(ageIntoCheese, true), 2);
          BlockState blockState = world.getBlockState(pos);
          world.playSound(null, pos, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -62,10 +62,10 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
          }
          if (!player.isCreative() && !player.isSpectator())
          {
-            ItemStack itemStack = player.getStackInHand(hand).getRecipeRemainder();
-            player.getStackInHand(hand).decrement(1);
-            if (player.getStackInHand(hand).isEmpty()) {
-               player.setStackInHand(hand, itemStack);
+            ItemStack itemStack = player.getStackInHand(player.getActiveHand()).getRecipeRemainder();
+            player.getStackInHand(player.getActiveHand()).decrement(1);
+            if (player.getStackInHand(player.getActiveHand()).isEmpty()) {
+               player.setStackInHand(player.getActiveHand(), itemStack);
             } else {
                   if(player.getInventory().insertStack(itemStack)) {
                      player.dropItem(itemStack, false);
@@ -74,7 +74,7 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
          }
          return ActionResult.SUCCESS;
       }
-      return super.onUse(state, world, pos, player, hand, hit);
+      return super.onUse(state, world, pos, player, hit);
    }
 
    @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

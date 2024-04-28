@@ -1,8 +1,6 @@
 package net.hibiscus.naturespirit.registration;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -373,10 +371,10 @@ public class WoodSet {
    }
 
    private Item createSignItem(Block sign, Block wallSign) {
-      return new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign);
+      return new SignItem(new Item.Settings().maxCount(16), sign, wallSign);
    }
    private Item createHangingSignItem(Block hangingSign, Block hangingWallSign) {
-      return new HangingSignItem(hangingSign, hangingWallSign, new FabricItemSettings().maxCount(16));
+      return new HangingSignItem(hangingSign, hangingWallSign, new Item.Settings().maxCount(16));
    }
    public Item createItem(String blockID, Item item){
       Item listItem = registerItem(blockID, item);
@@ -620,10 +618,10 @@ public class WoodSet {
       return createBlockWithItem("stripped_" + this.getName() + "_bundle", createLogBlock(this.getSideColor(), this.getTopColor()));
    }
    private Block createJoshuaLog() {
-      return createBlockWithItem(getLogName(), new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+      return createBlockWithItem(getLogName(), new JoshuaTrunkBlock(AbstractBlock.Settings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
    }
    private Block createStrippedJoshuaLog() {
-      return createBlockWithItem("stripped_" + getLogName(), new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+      return createBlockWithItem("stripped_" + getLogName(), new JoshuaTrunkBlock(AbstractBlock.Settings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
    }
    private Block createWood() {
       return createBlockWithItem(getWoodName(), createLogBlock(this.getSideColor(), this.getSideColor()));
@@ -665,7 +663,7 @@ public class WoodSet {
    }
    private Block createWisteriaVines(String prefix) {
       return createBlockWithItem(prefix + this.getName() + "_vines",
-              new WisteriaVine(FabricBlockSettings
+              new WisteriaVine(AbstractBlock.Settings
               .create()
               .pistonBehavior(PistonBehavior.DESTROY)
               .ticksRandomly()
@@ -675,7 +673,7 @@ public class WoodSet {
               .sounds(BlockSoundGroup.WEEPING_VINES)));
    }
    private Block createWisteriaVinesPlant(String prefix, Block vines) {
-      return registerBlock(prefix + this.getName() + "_vines_plant", new WisteriaVinePlant(FabricBlockSettings
+      return registerBlock(prefix + this.getName() + "_vines_plant", new WisteriaVinePlant(AbstractBlock.Settings
               .create()
               .pistonBehavior(PistonBehavior.DESTROY)
               .noCollision()
@@ -694,7 +692,7 @@ public class WoodSet {
    }
    private Block createWillowVines() {
       return createBlockWithItem(this.getName() + "_vines",
-              new WillowVine(FabricBlockSettings
+              new WillowVine(AbstractBlock.Settings
                       .create()
                       .pistonBehavior(PistonBehavior.DESTROY)
                       .ticksRandomly()
@@ -704,7 +702,7 @@ public class WoodSet {
                       .sounds(BlockSoundGroup.WEEPING_VINES)));
    }
    private Block createWillowVinesPlant(Block vines) {
-      return registerBlock(this.getName() + "_vines_plant", new WillowVinePlant(FabricBlockSettings
+      return registerBlock(this.getName() + "_vines_plant", new WillowVinePlant(AbstractBlock.Settings
               .create()
               .pistonBehavior(PistonBehavior.DESTROY)
               .noCollision()
@@ -763,30 +761,30 @@ public class WoodSet {
    }
 
    public Block createSapling(SaplingGenerator saplingGenerator) {
-      Block block = createBlockWithItem(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      Block block = createBlockWithItem(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       RenderLayerHashMap.put(this.getName() + "_sapling", block);
       return block;
    }
    public Block createSandySapling(SaplingGenerator saplingGenerator) {
-      Block block = createBlockWithItem(this.getName() + "_sapling", new SandySaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      Block block = createBlockWithItem(this.getName() + "_sapling", new SandySaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       RenderLayerHashMap.put(this.getName() + "_sapling", block);
       return block;
    }
    public Block createPottedSapling(Block sapling) {
-      Block pot = registerBlock("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      Block pot = registerBlock("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
       RenderLayerHashMap.put("potted_" + this.getName() + "_sapling", pot);
       return pot;
    }
    public Block createSapling(String prefix, SaplingGenerator saplingGenerator) {
-      Block block = createBlockWithItem(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+      Block block = createBlockWithItem(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       RenderLayerHashMap.put(prefix + this.getName() + "_sapling", block);
       return block;
    }
    public Block createPottedSapling(String prefix, Block sapling) {
-      Block pot = registerBlock("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      Block pot = registerBlock("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
       RenderLayerHashMap.put("potted_" + prefix + this.getName() + "_sapling", pot);
       return pot;
    }

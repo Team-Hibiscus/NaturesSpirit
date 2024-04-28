@@ -5,7 +5,6 @@ import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,7 +39,7 @@ public class VinegarItem extends PotionItem {
 
 
    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-      return this.isFood() ? user.eatFood(world, stack) : stack;
+      return stack;
    }
 
    public ActionResult useOnBlock(ItemUsageContext context) {
@@ -92,29 +91,15 @@ public class VinegarItem extends PotionItem {
    }
 
    public int getMaxUseTime(ItemStack stack) {
-      if (stack.getItem().isFood()) {
-         return this.getFoodComponent().isSnack() ? 16 : 32;
-      } else {
          return 0;
-      }
    }
 
    public UseAction getUseAction(ItemStack stack) {
-      return stack.getItem().isFood() ? UseAction.EAT : UseAction.NONE;
+      return UseAction.NONE;
    }
 
    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-      if (this.isFood()) {
-         ItemStack itemStack = user.getStackInHand(hand);
-         if (user.canConsume(this.getFoodComponent().isAlwaysEdible())) {
-            user.setCurrentHand(hand);
-            return TypedActionResult.consume(itemStack);
-         } else {
-            return TypedActionResult.fail(itemStack);
-         }
-      } else {
          return TypedActionResult.pass(user.getStackInHand(hand));
-      }
    }
 
    public String getTranslationKey() {

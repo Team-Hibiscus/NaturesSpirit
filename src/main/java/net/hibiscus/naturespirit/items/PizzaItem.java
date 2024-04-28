@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.items;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,8 +50,8 @@ public class PizzaItem extends AliasedBlockItem {
       getAllToppings(stack);
    }
 
-   public void appendTooltip(ItemStack stack, @Nullable World world, List <Text> tooltip, TooltipContext context) {
-      super.appendTooltip(stack, world, tooltip, context);
+   public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+      super.appendTooltip(stack, context, tooltip, type);
 
 
       NbtCompound nbtCompound = stack.getOrCreateSubNbt("BlockEntityTag");

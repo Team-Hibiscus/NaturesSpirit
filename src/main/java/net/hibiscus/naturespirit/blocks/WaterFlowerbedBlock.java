@@ -59,7 +59,8 @@ public class WaterFlowerbedBlock extends PlantBlock implements Fertilizable {
       return Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 3.0, 16.0);
    }
 
-   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+      Hand hand = player.getActiveHand();
       boolean bl = player.getStackInHand(hand).isOf(HibiscusMiscBlocks.HELVOLA_FLOWER_ITEM) && (Integer)state.get(FLOWER_AMOUNT) < 4;
       if (bl) {
          world.setBlockState(pos, state.with(FLOWER_AMOUNT, Math.min(4, (Integer)state.get(FLOWER_AMOUNT) + 1)));
@@ -67,7 +68,7 @@ public class WaterFlowerbedBlock extends PlantBlock implements Fertilizable {
             player.getStackInHand(hand).decrement(1);
          }
       }
-      return bl ? ActionResult.SUCCESS : super.onUse(state, world, pos, player, hand, hit);
+      return bl ? ActionResult.SUCCESS : super.onUse(state, world, pos, player, hit);
    }
 
    public BlockState getPlacementState(ItemPlacementContext ctx) {

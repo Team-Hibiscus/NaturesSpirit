@@ -7,6 +7,7 @@ package net.hibiscus.naturespirit.world.trunk;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.Block;
@@ -31,7 +32,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class CoconutTrunkPlacer extends TrunkPlacer {
-   public static final Codec <CoconutTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+   public static final MapCodec <CoconutTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
       return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("trunk_steps").forGetter((trunkPlacer) -> {
          return trunkPlacer.trunkSteps;
       }), Codec.floatRange(0.0F, 1.0F).fieldOf("fork_probability").forGetter((trunkPlacer) -> {

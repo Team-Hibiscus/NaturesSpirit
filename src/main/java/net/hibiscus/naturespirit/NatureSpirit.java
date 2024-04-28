@@ -27,7 +27,7 @@ import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.item.Items;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -46,11 +46,11 @@ public class NatureSpirit implements ModInitializer {
    public static final Logger LOGGER = LoggerFactory.getLogger("Nature's Spirit");
    public static final Identifier EAT_PIZZA_SLICE = StatsTypeAccessor.registerNew("eat_pizza_slice", StatFormatter.DEFAULT);
    public static final Identifier EAT_CHEESE = StatsTypeAccessor.registerNew("eat_cheese", StatFormatter.DEFAULT);
-   public static final DefaultParticleType RED_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
-   public static final DefaultParticleType ORANGE_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
-   public static final DefaultParticleType YELLOW_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
-   public static final DefaultParticleType MILK_PARTICLE = FabricParticleTypes.simple(false);
-   public static final DefaultParticleType CALCITE_BUBBLE_PARTICLE = FabricParticleTypes.simple(false);
+   public static final SimpleParticleType RED_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
+   public static final SimpleParticleType ORANGE_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
+   public static final SimpleParticleType YELLOW_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
+   public static final SimpleParticleType MILK_PARTICLE = FabricParticleTypes.simple(false);
+   public static final SimpleParticleType CALCITE_BUBBLE_PARTICLE = FabricParticleTypes.simple(false);
 
    @Override public void onInitialize() {
 
@@ -125,7 +125,7 @@ public class NatureSpirit implements ModInitializer {
       HibiscusSounds.registerSounds();
       HibiscusCauldronBehavior.registerBehavior();
       if (HibiscusConfig.vinegar) {
-         BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusMiscBlocks.VINEGAR_BOTTLE);
+//         BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusMiscBlocks.VINEGAR_BOTTLE);
          DispenserBlock.registerBehavior(HibiscusMiscBlocks.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
       }
 
