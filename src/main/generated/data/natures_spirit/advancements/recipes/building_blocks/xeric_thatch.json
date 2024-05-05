@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:xeric_leaves"
+            "items": "#natures_spirit:xeric_leaves"
           }
         ]
       },

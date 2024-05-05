@@ -5,6 +5,9 @@ import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.BlockStateComponent;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -75,6 +78,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
                   world.getServer().getOverworld().updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
                }
                world.setBlockState(pos, state.with(BITES, state.get(BITES) + 1), 2);
+               pizzaBlockEntity.markDirty();
             }
             else {
                world.removeBlock(pos, false);
@@ -97,11 +101,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
          int BITE_STATE = pizzaBlockEntity.BITES;
          Item item = BITE_STATE == 0 ? HibiscusMiscBlocks.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusMiscBlocks.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusMiscBlocks.HALF_PIZZA : HibiscusMiscBlocks.QUARTER_PIZZA;
          ItemStack itemStack = new ItemStack(item);
-
-         NbtCompound nbtCompound = itemStack.getOrCreateSubNbt("BlockEntityTag");
-         assert nbtCompound != null;
-         pizzaBlockEntity.writeNbt(nbtCompound);
-         pizzaBlockEntity.markDirty();
+         pizzaBlockEntity.setStackNbt(itemStack, world.getRegistryManager());
          return itemStack;
       }
       return super.getPickStack(world, pos, state);
@@ -176,10 +176,6 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
 
    public boolean hasComparatorOutput(BlockState state) {
       return true;
-   }
-
-   public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-      return false;
    }
 
    @Nullable @Override public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:coconut_shell"
-            ]
+            "items": "natures_spirit:coconut_shell"
           }
         ]
       },

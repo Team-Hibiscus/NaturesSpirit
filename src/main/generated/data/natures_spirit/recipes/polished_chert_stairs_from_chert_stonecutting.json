@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "natures_spirit:chert"
   },
-  "result": "natures_spirit:polished_chert_stairs"
+  "result": {
+    "count": 1,
+    "id": "natures_spirit:polished_chert_stairs"
+  }
 }

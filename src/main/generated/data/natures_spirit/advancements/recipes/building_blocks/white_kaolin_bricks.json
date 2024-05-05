@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:white_kaolin"
-            ]
+            "items": "natures_spirit:white_kaolin"
           }
         ]
       },

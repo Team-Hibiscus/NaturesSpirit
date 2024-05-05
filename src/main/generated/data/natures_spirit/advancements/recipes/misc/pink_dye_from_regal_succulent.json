@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:regal_succulent"
-            ]
+            "items": "natures_spirit:regal_succulent"
           }
         ]
       },

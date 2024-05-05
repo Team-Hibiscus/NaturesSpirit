@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:evergreen_leaves"
+            "items": "#natures_spirit:evergreen_leaves"
           }
         ]
       },

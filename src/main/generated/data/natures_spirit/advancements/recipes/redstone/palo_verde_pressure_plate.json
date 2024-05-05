@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:palo_verde_planks"
-            ]
+            "items": "natures_spirit:palo_verde_planks"
           }
         ]
       },

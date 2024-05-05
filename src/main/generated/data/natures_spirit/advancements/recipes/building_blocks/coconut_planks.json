@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:coconut_logs"
+            "items": "#natures_spirit:coconut_logs"
           }
         ]
       },

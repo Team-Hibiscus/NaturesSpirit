@@ -106,8 +106,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
       private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.4F, 0.4533333333F, 0.625F, 0.758F};
 
-      protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput) {
-         super(dataOutput);
+      protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+         super(dataOutput, registryLookup);
       }
 
       private void addWoodTable(HashMap <String, WoodSet> woods) {
@@ -1342,8 +1342,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
    private static class NatureSpiritLangGenerator extends FabricLanguageProvider {
 
-      protected NatureSpiritLangGenerator(FabricDataOutput dataOutput) {
-         super(dataOutput);
+      protected NatureSpiritLangGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+         super(dataOutput, registryLookup);
       }
 
       public static String capitalizeString(String string) {
@@ -1409,7 +1409,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add("block." + MOD_ID + "." + group, capitalizeString(group.replace("_", " ")));
       }
 
-      @Override public void generateTranslations(TranslationBuilder translationBuilder) {
+      @Override public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
          generateBiomeTranslations(translationBuilder);
          generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap ,translationBuilder);
          generateStoneTranslations(HibiscusRegistryHelper.StoneHashMap ,translationBuilder);
@@ -1596,8 +1596,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    }
 
    public static class NatureSpiritRecipeGenerator extends FabricRecipeProvider {
-      public NatureSpiritRecipeGenerator(FabricDataOutput output) {
-         super(output);
+      public NatureSpiritRecipeGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+         super(output, registryLookup);
       }
       public static final BlockFamily PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.PINK_SANDSTONE).wall(PINK_SANDSTONE_WALL).stairs(PINK_SANDSTONE_STAIRS).slab(PINK_SANDSTONE_SLAB).chiseled(CHISELED_PINK_SANDSTONE).cut(CUT_PINK_SANDSTONE).noGenerateModels().noGenerateRecipes().build();
       public static final BlockFamily CUT_PINK_SANDSTONE_FAMILY = register(HibiscusMiscBlocks.CUT_PINK_SANDSTONE).slab(CUT_PINK_SANDSTONE_SLAB).noGenerateModels().build();

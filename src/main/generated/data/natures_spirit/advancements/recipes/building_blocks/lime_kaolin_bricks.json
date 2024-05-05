@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:lime_kaolin"
-            ]
+            "items": "natures_spirit:lime_kaolin"
           }
         ]
       },

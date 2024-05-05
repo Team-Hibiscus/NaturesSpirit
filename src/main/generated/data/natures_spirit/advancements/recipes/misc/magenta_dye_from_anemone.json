@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:anemone"
-            ]
+            "items": "natures_spirit:anemone"
           }
         ]
       },

@@ -14,10 +14,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 7,
                 "max_inclusive": 12
-              }
+              
             }
           }
         },
@@ -35,10 +34,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 7,
                 "max_inclusive": 12
-              }
+              
             }
           }
         },
@@ -56,10 +54,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 7,
                 "max_inclusive": 12
-              }
+              
             }
           }
         },
@@ -77,10 +74,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 4,
                 "max_inclusive": 6
-              }
+              
             }
           }
         },
@@ -98,10 +94,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 7,
                 "max_inclusive": 12
-              }
+              
             }
           }
         },
@@ -119,10 +114,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 7,
                 "max_inclusive": 12
-              }
+              
             }
           }
         },
@@ -140,10 +134,9 @@
             },
             "radius": {
               "type": "minecraft:uniform",
-              "value": {
                 "min_inclusive": 7,
                 "max_inclusive": 12
-              }
+              
             }
           }
         },

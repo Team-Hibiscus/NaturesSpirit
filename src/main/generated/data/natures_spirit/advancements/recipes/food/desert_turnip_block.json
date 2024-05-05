@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:desert_turnip"
-            ]
+            "items": "natures_spirit:desert_turnip"
           }
         ]
       },

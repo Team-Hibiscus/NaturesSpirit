@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:cobbled_travertine_slab"
-            ]
+            "items": "natures_spirit:cobbled_travertine_slab"
           }
         ]
       },

@@ -12,26 +12,26 @@
 			"type": "minecraft:random_offset",
 			"xz_spread": {
 				"type": "minecraft:uniform",
-				"value": {
+				
 					"min_inclusive": -16,
 					"max_inclusive": 16
-				}
+				
 			},
 			"y_spread": {
 				"type": "minecraft:uniform",
-				"value": {
+				
 					"min_inclusive": 0,
 					"max_inclusive": 0
-				}
+				
 			}
 		},
 		{
 			"type": "minecraft:height_range",
 			"height": {
 				"type": "minecraft:constant",
-				"value": {
+				
 					"absolute": 80
-				}
+				
 			}
 		},
 		{

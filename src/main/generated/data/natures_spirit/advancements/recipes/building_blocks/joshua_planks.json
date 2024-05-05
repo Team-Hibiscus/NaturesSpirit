@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:joshua_logs"
+            "items": "#natures_spirit:joshua_logs"
           }
         ]
       },

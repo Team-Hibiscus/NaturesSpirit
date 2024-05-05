@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:olive_log"
-            ]
+            "items": "natures_spirit:olive_log"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:mahogany_slab"
-            ]
+            "items": "natures_spirit:mahogany_slab"
           }
         ]
       },

@@ -4,5 +4,5 @@
   "ingredient": {
     "item": "natures_spirit:light_blue_chalk"
   },
-  "result": "natures_spirit:light_blue_chalk_stairs"
-}
+  "result": {"id": "natures_spirit:light_blue_chalk_stairs"
+}}

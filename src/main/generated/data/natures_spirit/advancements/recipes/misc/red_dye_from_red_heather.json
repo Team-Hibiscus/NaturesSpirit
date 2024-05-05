@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:red_heather"
-            ]
+            "items": "natures_spirit:red_heather"
           }
         ]
       },

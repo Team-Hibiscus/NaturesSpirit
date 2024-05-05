@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:sugi_log"
-            ]
+            "items": "natures_spirit:sugi_log"
           }
         ]
       },

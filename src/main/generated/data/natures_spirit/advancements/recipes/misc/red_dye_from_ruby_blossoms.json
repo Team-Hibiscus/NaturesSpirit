@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:ruby_blossoms"
-            ]
+            "items": "natures_spirit:ruby_blossoms"
           }
         ]
       },

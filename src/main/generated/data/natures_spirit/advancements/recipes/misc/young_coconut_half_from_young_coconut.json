@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:young_coconut"
-            ]
+            "items": "natures_spirit:young_coconut"
           }
         ]
       },

@@ -80,17 +80,13 @@
       },
       "branch_end_offset_from_top": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": -1,
-          "min_inclusive": -4
-        }
+        "max_inclusive": -1,
+        "min_inclusive": -4
       },
       "branch_horizontal_length": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 3,
-          "min_inclusive": 1
-        }
+        "max_inclusive": 3,
+        "min_inclusive": 1
       },
       "branch_start_offset_from_top": {
         "max_inclusive": -4,

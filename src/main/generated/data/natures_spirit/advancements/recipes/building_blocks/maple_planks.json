@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:maple_logs"
+            "items": "#natures_spirit:maple_logs"
           }
         ]
       },

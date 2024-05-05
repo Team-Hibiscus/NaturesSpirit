@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:white_heather"
-            ]
+            "items": "natures_spirit:white_heather"
           }
         ]
       },

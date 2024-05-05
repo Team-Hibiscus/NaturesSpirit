@@ -4,5 +4,5 @@
   "ingredient": {
     "item": "natures_spirit:cyan_kaolin"
   },
-  "result": "natures_spirit:cyan_kaolin_stairs"
-}
+  "result": {"id": "natures_spirit:cyan_kaolin_stairs"
+}}

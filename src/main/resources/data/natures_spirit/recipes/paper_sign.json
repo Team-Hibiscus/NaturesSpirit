@@ -15,7 +15,7 @@
     " a "
   ],
   "result": {
-    "item": "natures_spirit:paper_sign",
+    "id": "natures_spirit:paper_sign",
     "count": 3
   },
   "show_notification": true

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:chiseled_pink_sandstone"
-            ]
+            "items": "natures_spirit:chiseled_pink_sandstone"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:pink_sandstone"
-            ]
+            "items": "natures_spirit:pink_sandstone"
           }
         ]
       },

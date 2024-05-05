@@ -25,6 +25,9 @@ import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.component.DataComponentType;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.item.Items;
 import net.minecraft.particle.SimpleParticleType;
@@ -113,6 +116,7 @@ public class NatureSpirit implements ModInitializer {
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "milk"), MILK_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
+      HibiscusSounds.registerSounds();
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
       HibiscusBlocks.registerWoods();
@@ -122,7 +126,6 @@ public class NatureSpirit implements ModInitializer {
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
-      HibiscusSounds.registerSounds();
       HibiscusCauldronBehavior.registerBehavior();
       if (HibiscusConfig.vinegar) {
 //         BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusMiscBlocks.VINEGAR_BOTTLE);

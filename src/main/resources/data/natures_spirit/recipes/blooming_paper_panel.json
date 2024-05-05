@@ -10,7 +10,7 @@
     "###"
   ],
   "result": {
-    "item": "natures_spirit:blooming_paper_panel",
+    "id": "natures_spirit:blooming_paper_panel",
     "count": 8
   },
   "show_notification": true

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:stripped_fir_log"
-            ]
+            "items": "natures_spirit:stripped_fir_log"
           }
         ]
       },

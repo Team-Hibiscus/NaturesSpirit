@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:bluebell"
-            ]
+            "items": "natures_spirit:bluebell"
           }
         ]
       },

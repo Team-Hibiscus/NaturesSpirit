@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:mossy_travertine_bricks"
-            ]
+            "items": "natures_spirit:mossy_travertine_bricks"
           }
         ]
       },

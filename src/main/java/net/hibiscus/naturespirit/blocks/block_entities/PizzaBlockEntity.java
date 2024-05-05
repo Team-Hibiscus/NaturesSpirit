@@ -12,6 +12,7 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,7 +26,7 @@ public class PizzaBlockEntity extends BlockEntity {
       super(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
    }
    @Override
-   public void writeNbt(NbtCompound nbt) {
+   public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
       NbtList nbtElement = new NbtList();
       for(String string : TOPPINGS) {
          nbtElement.add(NbtString.of(string));
@@ -35,10 +36,10 @@ public class PizzaBlockEntity extends BlockEntity {
       nbt.putInt("pizza_bites", this.BITES);
       this.markDirty();
 
-      super.writeNbt(nbt);
+      super.writeNbt(nbt, registryLookup);
    }
    @Override
-   public void readNbt(NbtCompound nbt) {
+   public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
       NbtList nbt2 = ((NbtList)nbt.get("topping_types"));
       if (nbt2 != null) {
          TOPPINGS.clear();
@@ -49,7 +50,7 @@ public class PizzaBlockEntity extends BlockEntity {
       this.TOPPING_NUMBER = nbt.getInt("toppings_number");
       this.BITES = nbt.getInt("pizza_bites");
 
-      super.readNbt(nbt);
+      super.readNbt(nbt, registryLookup);
    }
    public boolean checkTopping(ItemStack itemStack) {
       return itemStack.isIn(HibiscusTags.Items.PIZZA_TOPPINGS);
@@ -71,7 +72,7 @@ public class PizzaBlockEntity extends BlockEntity {
    }
 
    @Override
-   public NbtCompound toInitialChunkDataNbt() {
-      return createNbt();
+   public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
+      return createNbt(registryLookup);
    }
 }

@@ -12,24 +12,18 @@
       "type": "natures_spirit:larch_foliage_placer",
       "offset": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 2,
-          "min_inclusive": 2
-        }
+        "max_inclusive": 2,
+        "min_inclusive": 2
       },
       "radius": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 2,
-          "min_inclusive": 2
-        }
+        "max_inclusive": 2,
+        "min_inclusive": 2
       },
       "trunk_height": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 15,
-          "min_inclusive": 13
-        }
+        "max_inclusive": 15,
+        "min_inclusive": 13
       }
     },
     "foliage_provider": {

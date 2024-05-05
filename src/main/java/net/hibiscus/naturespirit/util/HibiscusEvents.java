@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlo
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.BlockTags;
@@ -33,16 +34,15 @@ public class HibiscusEvents {
                     blockState.get(JoshuaTrunkBlock.WATERLOGGED)
             );
             world.playSound(player, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
             if(player instanceof ServerPlayerEntity) {
                Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) player, blockPos, player.getStackInHand(hand));
             }
 
             world.setBlockState(blockPos, blockState2, 11);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, blockState2));
-            if(player != null && !player.isCreative() && !player.isSpectator()) {
-               player.getStackInHand(hand).damage(1, player, (p) -> {
-                  p.sendToolBreakStatus(hand);
-               });
+            if(player != null) {
+               player.getStackInHand(hand).damage(1, player, LivingEntity.getSlotForHand(player.getActiveHand()));
             }
 
             return ActionResult.success(world.isClient);

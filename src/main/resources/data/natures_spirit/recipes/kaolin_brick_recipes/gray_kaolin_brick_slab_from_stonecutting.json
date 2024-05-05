@@ -4,5 +4,5 @@
   "ingredient": {
     "item": "natures_spirit:gray_kaolin_bricks"
   },
-  "result": "natures_spirit:gray_kaolin_brick_slab"
-}
+  "result": {"id": "natures_spirit:gray_kaolin_brick_slab"
+}}

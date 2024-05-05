@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:travertine_bricks"
-            ]
+            "items": "natures_spirit:travertine_bricks"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:wisteria_log"
-            ]
+            "items": "natures_spirit:wisteria_log"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:stripped_saxaul_log"
-            ]
+            "items": "natures_spirit:stripped_saxaul_log"
           }
         ]
       },

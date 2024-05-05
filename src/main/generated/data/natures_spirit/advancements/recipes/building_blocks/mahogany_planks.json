@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:mahogany_logs"
+            "items": "#natures_spirit:mahogany_logs"
           }
         ]
       },

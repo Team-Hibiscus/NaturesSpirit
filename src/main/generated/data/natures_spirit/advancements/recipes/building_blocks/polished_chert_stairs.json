@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:polished_chert"
-            ]
+            "items": "natures_spirit:polished_chert"
           }
         ]
       },

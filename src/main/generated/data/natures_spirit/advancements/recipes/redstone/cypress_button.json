@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:cypress_planks"
-            ]
+            "items": "natures_spirit:cypress_planks"
           }
         ]
       },

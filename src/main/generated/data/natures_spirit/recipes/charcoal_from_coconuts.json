@@ -6,5 +6,7 @@
   "ingredient": {
     "tag": "natures_spirit:coconut_items"
   },
-  "result": "minecraft:charcoal"
+  "result": {
+    "id": "minecraft:charcoal"
+  }
 }

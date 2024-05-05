@@ -6,5 +6,7 @@
   "ingredient": {
     "item": "natures_spirit:cobbled_travertine"
   },
-  "result": "natures_spirit:travertine"
+  "result": {
+    "id": "natures_spirit:travertine"
+  }
 }

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:joshua_bundle"
-            ]
+            "items": "natures_spirit:joshua_bundle"
           }
         ]
       },

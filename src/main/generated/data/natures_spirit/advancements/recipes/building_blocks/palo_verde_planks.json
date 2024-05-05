@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "natures_spirit:palo_verde_logs"
+            "items": "#natures_spirit:palo_verde_logs"
           }
         ]
       },

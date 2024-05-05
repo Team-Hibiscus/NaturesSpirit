@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:yellow_wildflower"
-            ]
+            "items": "natures_spirit:yellow_wildflower"
           }
         ]
       },

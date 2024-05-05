@@ -19,18 +19,13 @@
             {
 
               "source": "block_entity",
-              "function": "minecraft:copy_nbt",
-              "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
-                {
-                  "source":"topping_types",
-                  "target": "BlockEntityTag.topping_types",
-                  "op": "replace"
-                }
+              "function": "minecraft:copy_components"
+            },
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites"
               ]
             }
           ],
@@ -51,18 +46,13 @@
             {
 
               "source": "block_entity",
-              "function": "minecraft:copy_nbt",
-              "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
-                {
-                  "source":"topping_types",
-                  "target": "BlockEntityTag.topping_types",
-                  "op": "replace"
-                }
+              "function": "minecraft:copy_components"
+            },
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites"
               ]
             }
           ],
@@ -83,18 +73,13 @@
             {
 
               "source": "block_entity",
-              "function": "minecraft:copy_nbt",
-              "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
-                {
-                  "source":"topping_types",
-                  "target": "BlockEntityTag.topping_types",
-                  "op": "replace"
-                }
+              "function": "minecraft:copy_components"
+            },
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites"
               ]
             }
           ],
@@ -113,19 +98,15 @@
           ],
           "functions": [
             {
+
               "source": "block_entity",
-              "function": "minecraft:copy_nbt",
-              "ops": [
-                {
-                  "source":"pizza_bites",
-                  "target": "BlockEntityTag.pizza_bites",
-                  "op": "replace"
-                },
-                {
-                  "source":"topping_types",
-                  "target": "BlockEntityTag.topping_types",
-                  "op": "replace"
-                }
+              "function": "minecraft:copy_components"
+            },
+            {
+              "block": "natures_spirit:pizza_block",
+              "function": "minecraft:copy_state",
+              "properties": [
+                "pizza_bites"
               ]
             }
           ],

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:larch_planks"
-            ]
+            "items": "natures_spirit:larch_planks"
           }
         ]
       },
