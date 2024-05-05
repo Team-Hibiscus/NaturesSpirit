@@ -44,9 +44,12 @@ public class PizzaBlockEntityRenderer implements BlockEntityRenderer<PizzaBlockE
             case 2 -> model = this.topping_2;
             default -> model = this.topping_3;
          }
-         for(String string : entity.TOPPINGS) {
-            VertexConsumer vertexConsumer = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/" + string.replace(":", "_") + "_topping")).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
-            model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+         if (entity.TOPPINGS != null) {
+            for(Identifier identifier : entity.TOPPINGS) {
+               String string = identifier.toString();
+               VertexConsumer vertexConsumer = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(MOD_ID, "block/pizza/" + string.replace(":", "_") + "_topping")).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+               model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+            }
          }
       }
    }

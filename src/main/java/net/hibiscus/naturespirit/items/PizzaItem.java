@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
+import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipType;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,45 +38,27 @@ public class PizzaItem extends AliasedBlockItem {
       NbtComponent blockEntityComponent = pizza.get(DataComponentTypes.BLOCK_ENTITY_DATA);
       int pizzaSlice = this.asItem() == HibiscusMiscBlocks.WHOLE_PIZZA ? 0 : this.asItem() == HibiscusMiscBlocks.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == HibiscusMiscBlocks.HALF_PIZZA ? 2 : 3;
       pizza.set(DataComponentTypes.BLOCK_STATE, blockStateComponent.with(PizzaBlock.BITES, pizzaSlice));
-      if (blockEntityComponent != null) {
-         blockEntityComponent.apply(nbtCompound -> nbtCompound.putInt("pizza_bites", pizzaSlice));
-      } else {
+      if (blockEntityComponent == null) {
          NbtCompound nbtCompound = new NbtCompound();
-         nbtCompound.putInt("pizza_bites", pizzaSlice);
          nbtCompound.putString("id", "natures_spirit:pizza_block_entity");
          pizza.set(DataComponentTypes.BLOCK_ENTITY_DATA, NbtComponent.of(nbtCompound));
       }
    }
 
-   public void getAllToppings(ItemStack pizza) {
-      NbtComponent nbtComponent = pizza.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-      assert nbtComponent != null;
-      nbtComponent.apply(nbtCompound -> {
-         NbtList nbtList = ((NbtList) nbtCompound.get("topping_types"));
-         if (nbtList != null) nbtCompound.putInt("toppings_number", nbtList.size());
-      });
-   }
-
    @Override public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
       addBitesToPizza(stack);
-      getAllToppings(stack);
    }
 
    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
       super.appendTooltip(stack, context, tooltip, type);
 
 
-      NbtComponent nbtComponent = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-      if (nbtComponent != null) {
-         nbtComponent.apply(nbtCompound -> {
-            NbtList nbtList = (NbtList) nbtCompound.get("topping_types");
-            if (nbtList != null) {
-               int j = nbtList.size();
+      List <Identifier> list = stack.get(HibiscusDataComponents.TOPPINGS);
+      if (list != null) {
+               int j = list.size();
                for(int i = 0; i < j; ++i) {
-                  tooltip.add(Text.translatable("block.natures_spirit.pizza." + nbtList.getString(i).replace(":", ".")).formatted(Formatting.GRAY));
+                  tooltip.add(Text.translatable("block.natures_spirit.pizza." + list.get(i).toString().replace(":", ".")).formatted(Formatting.GRAY));
                }
-            }
-         });
       }
    }
 
@@ -84,21 +68,15 @@ public class PizzaItem extends AliasedBlockItem {
 
       PlayerEntity holder = (PlayerEntity) user;
       holder.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
-      NbtComponent nbtComponent = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-      if (nbtComponent != null) {
-         nbtComponent.apply(nbtCompound -> {
-            NbtList nbtList = (NbtList) nbtCompound.get("topping_types");
+      List<Identifier> list = stack.get(HibiscusDataComponents.TOPPINGS);
+      if (list != null) {
             int foodAmount = 2;
             float saturationModifier = 0.2F;
-            if (nbtList != null) {
-               int j = nbtList.size();
-               for(int i = 0; i < j; i++) {
+               for(int i = 0; i < list.size(); i++) {
                   foodAmount++;
                   saturationModifier = saturationModifier + 0.1F;
                }
-            }
             holder.getHungerManager().add(foodAmount, saturationModifier);
-         });
       }
       if(((PlayerEntity) user).getAbilities().creativeMode) {
          return itemStack;

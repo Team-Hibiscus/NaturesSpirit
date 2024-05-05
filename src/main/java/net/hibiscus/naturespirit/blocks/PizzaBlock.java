@@ -20,6 +20,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -62,18 +63,17 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
             player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
             int foodAmount = 2;
             float saturationModifier = 0.2F;
-            for(String string: pizzaBlockEntity.TOPPINGS) {
+            for(Identifier identifier: pizzaBlockEntity.TOPPINGS) {
                foodAmount++;
                saturationModifier = saturationModifier + 0.1F;
             }
 
             player.getHungerManager().add(foodAmount, saturationModifier);
 
-            int i = pizzaBlockEntity.BITES;
+            int i = state.get(BITES);
             world.emitGameEvent(player, GameEvent.EAT, pos);
             world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             if(i < 3) {
-               pizzaBlockEntity.BITES ++;
                if (!world.isClient()) {
                   world.getServer().getOverworld().updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
                }
@@ -98,7 +98,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
       Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
-         int BITE_STATE = pizzaBlockEntity.BITES;
+         int BITE_STATE = state.get(BITES);
          Item item = BITE_STATE == 0 ? HibiscusMiscBlocks.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusMiscBlocks.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusMiscBlocks.HALF_PIZZA : HibiscusMiscBlocks.QUARTER_PIZZA;
          ItemStack itemStack = new ItemStack(item);
          pizzaBlockEntity.setStackNbt(itemStack, world.getRegistryManager());
@@ -108,13 +108,8 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
-      if (optionalPizzaBlockEntity.isPresent()) {
-         PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
-         int BITE_STATE = pizzaBlockEntity.BITES;
+         int BITE_STATE = state.get(BITES);
          return BITES_TO_SHAPE[BITE_STATE];
-      }
-      return BITES_TO_SHAPE[0];
    }
 
    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
@@ -165,13 +160,8 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
-      if (optionalPizzaBlockEntity.isPresent()) {
-         PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
-         int BITE_STATE = pizzaBlockEntity.BITES;
+         int BITE_STATE = state.get(BITES);
          return getComparatorOutput(BITE_STATE);
-      }
-      return getComparatorOutput(0);
    }
 
    public boolean hasComparatorOutput(BlockState state) {

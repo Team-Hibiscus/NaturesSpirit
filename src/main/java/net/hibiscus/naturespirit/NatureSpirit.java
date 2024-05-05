@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
+import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
@@ -117,6 +118,7 @@ public class NatureSpirit implements ModInitializer {
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "milk"), MILK_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
       HibiscusSounds.registerSounds();
+      HibiscusDataComponents.registerDataComponents();
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
       HibiscusBlocks.registerWoods();
