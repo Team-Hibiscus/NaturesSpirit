@@ -62,6 +62,7 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> SLEETED_SLOPES = register("sleeted_slopes");
    public static final RegistryKey <Biome> BLOOMING_HIGHLANDS = register("blooming_highlands");
    public static final RegistryKey <Biome> CHAPARRAL = register("chaparral");
+   public static final RegistryKey <Biome> FLORAL_RIDGES = register("floral_ridges");
 
 
    public static boolean has_sugi_forest;
