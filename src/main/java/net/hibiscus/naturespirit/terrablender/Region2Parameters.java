@@ -61,6 +61,7 @@ public class Region2Parameters {
    RegistryKey<Biome> uncommonBirchForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.OLD_GROWTH_BIRCH_FOREST;
    RegistryKey<Biome> mountainMeadow = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.MEADOW;
    RegistryKey<Biome> windsweptHills = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_HILLS;
+   RegistryKey<Biome> windsweptHills2 = HibiscusBiomes.has_wisteria_forest ? HibiscusBiomes.FLORAL_RIDGES : BiomeKeys.WINDSWEPT_HILLS;
    RegistryKey<Biome> windsweptForest = HibiscusBiomes.has_sugi_forest ? HibiscusBiomes.SUGI_FOREST : BiomeKeys.WINDSWEPT_FOREST;
    RegistryKey<Biome> plainsCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.SHRUBBY_HIGHLANDS : BiomeKeys.PLAINS;
    RegistryKey<Biome> meadowCold = HibiscusBiomes.has_steppe ? HibiscusBiomes.BLOOMING_HIGHLANDS : BiomeKeys.MEADOW;
@@ -133,7 +134,7 @@ public class Region2Parameters {
       this.windsweptBiomes = new RegistryKey[][]{
               {BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST},
               windsweptCold,
-              {windsweptHills, windsweptHills, windsweptHills, windsweptForest, windsweptForest},
+              {windsweptHills2, windsweptHills2, windsweptHills, windsweptForest, windsweptForest},
               {null, null, null, null, null},
               {null, null, null, null, null}
       };
@@ -790,8 +791,11 @@ public class Region2Parameters {
    }
 
    private RegistryKey <Biome> getBiomeOrWindsweptSavanna(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
-      if (temperature == 2 && HibiscusBiomes.has_sugi_forest) {
-         return humidity < 4 && weirdness.max() >= 0L ? HibiscusBiomes.WINDSWEPT_SUGI_FOREST : biomeKey;
+      if (temperature == 2 && humidity < 4 && HibiscusBiomes.has_sugi_forest) {
+         return  weirdness.max() >= 0L ? HibiscusBiomes.WINDSWEPT_SUGI_FOREST : biomeKey;
+      } else
+      if (temperature == 3 && humidity < 4 && HibiscusBiomes.has_wisteria_forest) {
+         return  weirdness.max() >= 0L ? HibiscusBiomes.FLORAL_RIDGES : biomeKey;
       }
       return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? BiomeKeys.WINDSWEPT_SAVANNA : biomeKey;
    }
