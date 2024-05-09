@@ -13,6 +13,10 @@ public class HibiscusSounds {
    public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_MAPLE = registerReference("music.overworld.maple");
    public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_WISTERIA = registerReference("music.overworld.wisteria");
    public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_REDWOOD = registerReference("music.overworld.redwood");
+   public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_DESERT = registerReference("music.overworld.desert");
+   public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_ARID = registerReference("music.overworld.arid");
+   public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_TROPICAL = registerReference("music.overworld.tropical");
+   public static final RegistryEntry.Reference<SoundEvent> MUSIC_OVERWORLD_ALPINE = registerReference("music.overworld.alpine");
 
    private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
       return registerReference(new Identifier(MOD_ID, id));
