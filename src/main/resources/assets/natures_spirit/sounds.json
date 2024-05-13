@@ -2,133 +2,16 @@
   "music.overworld.alpine": {
     "sounds": [
       {
-        "name": "music/game/a_familiar_room",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/minecraft",
-        "stream": true
-      },
-      {
-        "name": "music/game/clark",
-        "stream": true
-      },
-      {
-        "name": "music/game/sweden",
-        "stream": true
-      },
-      {
-        "name": "music/game/comforting_memories",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/floating_dream",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/subwoofer_lullaby",
-        "stream": true
-      },
-      {
-        "name": "music/game/living_mice",
-        "stream": true
-      },
-      {
-        "name": "music/game/haggstrom",
-        "stream": true
-      },
-      {
-        "name": "music/game/danny",
-        "stream": true
-      },
-      {
-        "name": "music/game/left_to_bloom",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/key",
-        "stream": true
-      },
-      {
-        "name": "music/game/oxygene",
-        "stream": true
-      },
-      {
-        "name": "music/game/one_more_day",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/dry_hands",
-        "stream": true
-      },
-      {
-        "name": "music/game/wet_hands",
-        "stream": true
-      },
-      {
-        "name": "music/game/mice_on_venus",
-        "stream": true
+        "name": "minecraft:music.game",
+        "type": "event"
       }
     ]
   },
   "music.overworld.arid": {
     "sounds": [
       {
-        "name": "music/game/crescent_dunes",
-        "stream": true,
-        "volume": 0.4,
-        "weight": 2
-      },
-      {
-        "name": "music/game/echo_in_the_wind",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/subwoofer_lullaby",
-        "stream": true
-      },
-      {
-        "name": "music/game/living_mice",
-        "stream": true
-      },
-      {
-        "name": "music/game/haggstrom",
-        "stream": true
-      },
-      {
-        "name": "music/game/danny",
-        "stream": true
-      },
-      {
-        "name": "music/game/key",
-        "stream": true
-      },
-      {
-        "name": "music/game/oxygene",
-        "stream": true
-      },
-      {
-        "name": "music/game/one_more_day",
-        "stream": true,
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/dry_hands",
-        "stream": true
-      },
-      {
-        "name": "music/game/wet_hands",
-        "stream": true
-      },
-      {
-        "name": "music/game/mice_on_venus",
-        "stream": true
+        "name": "minecraft:music.overworld.badlands",
+        "type": "event"
       }
     ]
   },
@@ -143,89 +26,16 @@
   "music.overworld.desert": {
     "sounds": [
       {
-        "name": "music/game/crescent_dunes",
-        "stream": true,
-        "volume": 0.4,
-        "weight": 3
-      },
-      {
-        "name": "music/game/subwoofer_lullaby",
-        "stream": true
-      },
-      {
-        "name": "music/game/living_mice",
-        "stream": true
-      },
-      {
-        "name": "music/game/haggstrom",
-        "stream": true
-      },
-      {
-        "name": "music/game/danny",
-        "stream": true
-      },
-      {
-        "name": "music/game/key",
-        "stream": true
-      },
-      {
-        "name": "music/game/oxygene",
-        "stream": true
-      },
-      {
-        "name": "music/game/one_more_day",
-        "stream": true,
-        "volume": 0.4
+        "name": "minecraft:music.overworld.desert",
+        "type": "event"
       }
     ]
   },
   "music.overworld.tropical": {
     "sounds": [
       {
-        "name": "music/game/bromeliad",
-        "stream": true,
-        "volume": 0.4,
-        "weight": 3
-      },
-      {
-        "name": "music/game/subwoofer_lullaby",
-        "stream": true
-      },
-      {
-        "name": "music/game/living_mice",
-        "stream": true
-      },
-      {
-        "name": "music/game/haggstrom",
-        "stream": true
-      },
-      {
-        "name": "music/game/danny",
-        "stream": true
-      },
-      {
-        "name": "music/game/left_to_bloom",
-        "volume": 0.4
-      },
-      {
-        "name": "music/game/key",
-        "stream": true
-      },
-      {
-        "name": "music/game/oxygene",
-        "stream": true
-      },
-      {
-        "name": "music/game/dry_hands",
-        "stream": true
-      },
-      {
-        "name": "music/game/wet_hands",
-        "stream": true
-      },
-      {
-        "name": "music/game/mice_on_venus",
-        "stream": true
+        "name": "minecraft:music.overworld.jungle",
+        "type": "event"
       }
     ]
   },
