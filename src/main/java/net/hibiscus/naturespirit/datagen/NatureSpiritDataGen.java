@@ -1917,6 +1917,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          this.copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
          this.copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
          this.copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
+         this.copy(HibiscusTags.Blocks.STRIPPED_LOGS, HibiscusTags.Items.STRIPPED_LOGS);
          this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
          this.copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
          this.copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
@@ -1963,8 +1964,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{woodSet.getSlab()});
             getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{woodSet.getFence()});
             getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedLog(), woodSet.getLog());
-            if (woodSet.hasBark())
+            getOrCreateTagBuilder(HibiscusTags.Blocks.STRIPPED_LOGS).add(woodSet.getStrippedLog());
+            if (woodSet.hasBark()) {
                getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedWood(), woodSet.getWood());
+               getOrCreateTagBuilder(HibiscusTags.Blocks.STRIPPED_LOGS).add(woodSet.getStrippedWood());
+            }
             if(woodSet.hasMosaic()) {
                getOrCreateTagBuilder(BlockTags.SLABS).add(woodSet.getMosaicSlab());
                getOrCreateTagBuilder(BlockTags.STAIRS).add(woodSet.getMosaicStairs());
