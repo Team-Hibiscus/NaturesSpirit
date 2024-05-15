@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-06T15:32:25.2578847	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2024-05-15T14:54:17.7289674	Nature's Spirit/Tags for minecraft:item
 1357817f3d2c66ec4e86e9638e7d21ad6670be4d data\minecraft\tags\items\wooden_doors.json
 5884e81d1e71b5dc782bcef212da49a7c7b7b98e data\minecraft\tags\items\wooden_trapdoors.json
 e6b435e0150a3a9969164c4370869244554be8db data\minecraft\tags\items\lapis_ores.json
@@ -12,6 +12,7 @@ e3c1f165e1b82affb4cc652d7679aba3de648bd0 data\natures_spirit\tags\items\cypress_
 4966d8e229d3e20fc3f8d6940ec32508ac73f7c1 data\minecraft\tags\items\small_flowers.json
 7dedd01c196efdb9919616b6f5449dc2c12dab18 data\minecraft\tags\items\hanging_signs.json
 d69fd97288dbda0d2e15246e1b525ecc0f2f82f1 data\minecraft\tags\items\planks.json
+5e76b9eda40463a263ca06df64397a60fc6d9b7c data\natures_spirit\tags\items\stripped_logs.json
 d751312ed96812aacae500233894cc6d1d32ce7b data\minecraft\tags\items\wooden_fences.json
 308193ded6adf22b3dca91fc170b931d1504d1cb data\natures_spirit\tags\items\saxaul_logs.json
 189b54063673349938cd1914aeda23d3b42a1fc1 data\natures_spirit\tags\items\ghaf_logs.json

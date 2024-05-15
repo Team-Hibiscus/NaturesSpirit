@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-06T15:32:25.2404032	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2024-05-15T14:54:17.7114376	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\wisteria_logs.json
@@ -60,6 +60,7 @@ ab7ea3cc0024fe4dd336d75b332fa4fb12c3a115 data\minecraft\tags\blocks\mineable\hoe
 9182d9a5f334de5986753b8ae69595f6736953ff data\minecraft\tags\blocks\walls.json
 119aae7d1b0f7ac47c3cef641919170b86666482 data\minecraft\tags\blocks\emerald_ores.json
 129c1d244c05b58ccdccba05523da1556f0dd059 data\minecraft\tags\blocks\wall_hanging_signs.json
+5e76b9eda40463a263ca06df64397a60fc6d9b7c data\natures_spirit\tags\blocks\stripped_logs.json
 0ed11f4987e1336cffe611827c1ff2a4e787ea2e data\minecraft\tags\blocks\stone_ore_replaceables.json
 06c3f07a36cbfab1092ba38afd47f2d0cf5487f3 data\minecraft\tags\blocks\sword_efficient.json
 7a9922bf7995dd94dcd11f47eedabdda234f1040 data\natures_spirit\tags\blocks\joshua_logs.json
