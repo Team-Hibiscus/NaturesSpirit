@@ -487,15 +487,15 @@ public class HibiscusMiscBlocks {
    public static final FlowerSet TIGER_LILY = new FlowerSet("tiger_lily", Items.ORANGE_DYE, StatusEffects.FIRE_RESISTANCE, BLUEBELL.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
    public static final FlowerSet PURPLE_WILDFLOWER = new FlowerSet("purple_wildflower", Items.PURPLE_DYE, StatusEffects.SLOW_FALLING, TIGER_LILY.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
    public static final FlowerSet YELLOW_WILDFLOWER = new FlowerSet("yellow_wildflower", Items.YELLOW_DYE, StatusEffects.SLOW_FALLING, PURPLE_WILDFLOWER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
-   public static final FlowerSet ANEMONE = new FlowerSet("anemone", Items.MAGENTA_DYE, StatusEffects.RESISTANCE, YELLOW_WILDFLOWER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
+   public static final FlowerSet RED_HEATHER = new FlowerSet("red_heather", Items.RED_DYE, StatusEffects.FIRE_RESISTANCE, YELLOW_WILDFLOWER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet WHITE_HEATHER = new FlowerSet("white_heather", Items.WHITE_DYE, StatusEffects.FIRE_RESISTANCE, RED_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet ANEMONE = new FlowerSet("anemone", Items.MAGENTA_DYE, StatusEffects.RESISTANCE, PURPLE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
    public static final FlowerSet DWARF_BLOSSOMS = new FlowerSet("dwarf_blossoms", Items.PINK_DYE, StatusEffects.RESISTANCE, ANEMONE.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
    public static final FlowerSet HIBISCUS = new FlowerSet("hibiscus", Items.RED_DYE, StatusEffects.LUCK, DWARF_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet BLUE_IRIS = new FlowerSet("blue_iris", Items.BLUE_DYE, StatusEffects.STRENGTH, HIBISCUS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet BLACK_IRIS = new FlowerSet("black_iris", Items.BLACK_DYE, StatusEffects.STRENGTH, BLUE_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet RED_HEATHER = new FlowerSet("red_heather", Items.RED_DYE, StatusEffects.FIRE_RESISTANCE, BLACK_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet WHITE_HEATHER = new FlowerSet("white_heather", Items.WHITE_DYE, StatusEffects.FIRE_RESISTANCE, RED_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet PROTEA = new FlowerSet("protea", Items.PINK_DYE, StatusEffects.WATER_BREATHING, PURPLE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet PROTEA = new FlowerSet("protea", Items.PINK_DYE, StatusEffects.WATER_BREATHING, BLACK_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet RUBY_BLOSSOMS = new FlowerSet("ruby_blossoms", Items.RED_DYE, StatusEffects.JUMP_BOOST, PROTEA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
    public static final FlowerSet SILVERBUSH = new FlowerSet("silverbush", RUBY_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
