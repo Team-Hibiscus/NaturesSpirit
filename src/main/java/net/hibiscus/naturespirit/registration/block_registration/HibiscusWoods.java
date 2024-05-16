@@ -81,7 +81,7 @@ public class HibiscusWoods {
            WISTERIA.getPurpleSapling(),
            HibiscusBoatEntity.HibiscusBoat.FIR,
            new FirSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT,
+           WoodSet.WoodPreset.FIR,
            false
    );
    public static final WoodSet WILLOW = new WoodSet(

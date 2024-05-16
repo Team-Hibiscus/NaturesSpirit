@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "natures_spirit:block/red_moss_block"
+      },
+      {
+        "model": "natures_spirit:block/red_moss_block",
+        "y": 90
+      },
+      {
+        "model": "natures_spirit:block/red_moss_block",
+        "y": 180
+      },
+      {
+        "model": "natures_spirit:block/red_moss_block",
+        "y": 270
+      }
+  ]
+  }
+}

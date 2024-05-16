@@ -13,12 +13,14 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
+import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleEffect;
@@ -57,6 +59,7 @@ public class WoodSet {
    private Block wood;
    private Block strippedWood;
    private Block leaves;
+   private Block frostyLeaves;
    private Block sapling;
    private Block pottedSapling;
    private Block redLeaves;
@@ -157,6 +160,17 @@ public class WoodSet {
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
             SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
          }
+      }
+
+      if (this.getWoodPreset() == WoodPreset.FIR){
+         frostyLeaves = createLeaves("frosty_");
+         leaves = createFirLeaves();
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves(), this.getFrostyLeaves()));
+         sapling = createSapling(saplingGenerator);
+         pottedSapling = createPottedSapling(this.getSapling());
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
+         SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
+
       }
 
       if (this.getWoodPreset() == WoodPreset.WILLOW){
@@ -466,6 +480,7 @@ public class WoodSet {
       return mosaicSlab;
    }
    public Block getLeaves() {return leaves;}
+   public Block getFrostyLeaves() {return frostyLeaves;}
    public Block getSapling() {return sapling;}
    public Block getPottedSapling() {return pottedSapling;}
    public static Block getWillowVines() {return willowVines;}
@@ -616,6 +631,14 @@ public class WoodSet {
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
       LeavesHashMap.put(prefix + this.getName(), block);
+      return block;
+   }
+   private Block createFirLeaves() {
+      Block block = createBlockWithItem( this.getName() + "_leaves", new ProjectileLeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves()), this.getFrostyLeaves()));
+      RenderLayerHashMap.put(this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(this.getName(), block);
       return block;
    }
    private Block createMapleLeaves(String prefix, ParticleEffect particle) {
@@ -900,6 +923,7 @@ public class WoodSet {
    public enum WoodPreset {
       DEFAULT,
       MAPLE,
+      FIR,
       JOSHUA,
       SANDY,
       NO_SAPLING,

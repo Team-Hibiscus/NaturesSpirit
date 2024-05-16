@@ -300,6 +300,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addVinePlantDrop(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant());
          addVinePlantDrop(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant());
          addVinePlantDrop(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant());
+         this.addDrop(HibiscusWoods.FIR.getFrostyLeaves(), leavesDrops(HibiscusWoods.FIR.getFrostyLeaves(), HibiscusWoods.FIR.getSapling(), SAPLING_DROP_CHANCE));
 
          this.addDrop(CHERT_COAL_ORE, (Block block) -> this.oreDrops(block, Items.COAL));
          this.addDrop(CHERT_EMERALD_ORE, (Block block) -> this.oreDrops(block, Items.EMERALD));
@@ -1031,7 +1032,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             Block leavesType = leaves.get(i);
             if (!Objects.equals(i, "coconut")) {
                blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
-               if (!Objects.equals(i, "wisteria") && !i.startsWith("part")) {
+               if (!Objects.equals(i, "wisteria") && !i.startsWith("part") && !i.startsWith("frosty")) {
                   blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
                }
             }
@@ -1246,8 +1247,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          blockStateModelGenerator.registerAmethyst(CALCITE_CLUSTER);
          blockStateModelGenerator.registerAmethyst(SMALL_CALCITE_BUD);
          blockStateModelGenerator.registerAmethyst(LARGE_CALCITE_BUD);
-
-         blockStateModelGenerator.registerWoolAndCarpet(RED_MOSS_BLOCK, RED_MOSS_CARPET);
 
          registerCheese(blockStateModelGenerator);
          generateFlowerBlockStateModels(FLAXEN_FERN, POTTED_FLAXEN_FERN, blockStateModelGenerator);
@@ -2403,7 +2402,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             Block leavesType = leaves.get(i);
             getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(leavesType);
             getOrCreateTagBuilder(BlockTags.LEAVES).add(leavesType);
-            if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") && !i.startsWith("part")) {
+            if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") && !i.startsWith("part") && !i.startsWith("frosty")) {
                Block[] saplingType = saplings.get(i);
                getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{saplingType[0]});
                getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{saplingType[1]});
