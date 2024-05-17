@@ -83,7 +83,7 @@ public class HibiscusWoods {
            WISTERIA.getButton(),
            WISTERIA.getPurpleSapling(),
            HibiscusBoatEntity.HibiscusBoat.FIR,
-           WoodSet.WoodPreset.DEFAULT,
+           WoodSet.WoodPreset.FIR,
            false,
            HibiscusConfiguredFeatures.FIR_TREE
    );

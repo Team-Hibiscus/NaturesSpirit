@@ -59,6 +59,7 @@ public class WoodSet {
    private Block wood;
    private Block strippedWood;
    private Block leaves;
+   private Block frostyLeaves;
    private Block sapling;
    private Block pottedSapling;
    private Block redLeaves;
@@ -163,6 +164,16 @@ public class WoodSet {
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
             SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
          }
+      }
+      if (this.getWoodPreset() == WoodPreset.FIR){
+         frostyLeaves = createLeaves("frosty_");
+         leaves = createFirLeaves();
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves(), this.getFrostyLeaves()));
+         sapling = createSapling(saplingGenerator);
+         pottedSapling = createPottedSapling(this.getSapling());
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
+         SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
+
       }
 
       if (this.getWoodPreset() == WoodPreset.WILLOW){
@@ -493,6 +504,7 @@ public class WoodSet {
       return mosaicSlab;
    }
    public Block getLeaves() {return leaves;}
+   public Block getFrostyLeaves() {return frostyLeaves;}
    public Block getSapling() {return sapling;}
    public Block getPottedSapling() {return pottedSapling;}
    public static Block getWillowVines() {return willowVines;}
@@ -628,6 +640,14 @@ public class WoodSet {
    }
    private Block createStrippedWood() {
       return createBlockWithItem("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
+   }
+   private Block createFirLeaves() {
+      Block block = createBlockWithItem( this.getName() + "_leaves", new ProjectileLeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves()), this.getFrostyLeaves()));
+      RenderLayerHashMap.put(this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(this.getName(), block);
+      return block;
    }
    private Block createLeaves() {
       Block block = createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
@@ -926,6 +946,7 @@ public class WoodSet {
 
    public enum WoodPreset {
       DEFAULT,
+      FIR,
       MAPLE,
       JOSHUA,
       SANDY,
