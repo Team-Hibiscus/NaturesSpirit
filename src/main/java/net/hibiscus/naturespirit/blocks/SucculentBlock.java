@@ -2,11 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CoralParentBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -14,17 +10,19 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 public class SucculentBlock extends CoralParentBlock {
    private static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
    public SucculentBlock(AbstractBlock.Settings settings) {
       super(settings);
-      this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(WATERLOGGED, false));
+      this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
    }
 
    @Override
@@ -40,5 +38,9 @@ public class SucculentBlock extends CoralParentBlock {
       entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
    }
 
+   public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+      BlockPos blockPos = pos.down();
+      return world.getBlockState(blockPos).isSideSolid(world, blockPos, Direction.UP, SideShapeType.CENTER) || world.getBlockState(blockPos).isIn(HibiscusTags.Blocks.SUCCULENT_VERTICAL_PLACEMENT_OVERRIDE);
+   }
 }
 

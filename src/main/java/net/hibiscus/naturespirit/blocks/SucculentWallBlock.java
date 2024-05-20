@@ -5,13 +5,7 @@ import com.mojang.serialization.MapCodec;
 import java.util.Map;
 
 import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DeadCoralFanBlock;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.Fluids;
@@ -76,7 +70,7 @@ public class SucculentWallBlock
       Direction direction = state.get(FACING);
       BlockPos blockPos = pos.offset(direction.getOpposite());
       BlockState blockState = world.getBlockState(blockPos);
-      return blockState.isSideSolidFullSquare(world, blockPos, direction);
+      return blockState.isSideSolid(world, blockPos, direction, SideShapeType.CENTER) || blockState.isIn(HibiscusTags.Blocks.SUCCULENT_HORIZONTAL_PLACEMENT_OVERRIDE);
    }
 
    @Override

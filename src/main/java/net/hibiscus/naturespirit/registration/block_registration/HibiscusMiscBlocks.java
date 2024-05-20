@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
@@ -551,6 +552,13 @@ public class HibiscusMiscBlocks {
            .breakInstantly()
            .sounds(BlockSoundGroup.LILY_PAD), LOTUS_FLOWER), HibiscusItemGroups.NS_MISC_ITEM_GROUP, LOTUS_FLOWER, 0.2F);
 
+   public static final Block ALLUAUDIA = registerPlantBlock("alluaudia", new GrowingBranchingTrunkBlock(FabricBlockSettings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.CACTUS, .2f);
+   public static final Block STRIPPED_ALLUAUDIA = registerPlantBlock("stripped_alluaudia", new GrowingBranchingTrunkBlock(FabricBlockSettings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, HibiscusMiscBlocks.ALLUAUDIA, .2f);
+   public static final Block ALLUAUDIA_BUNDLE = registerPlantBlock("alluaudia_bundle", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, STRIPPED_ALLUAUDIA, .2f);
+   public static final Block STRIPPED_ALLUAUDIA_BUNDLE = registerPlantBlock("stripped_alluaudia_bundle", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, ALLUAUDIA_BUNDLE, .2f);
+
+
+
    public static final Block POTTED_SHIITAKE_MUSHROOM = registerPottedPlant("shiitake_mushroom", SHIITAKE_MUSHROOM);
 
    public static final FoodComponent GREEN_OLIVE_COMPONENT = (new FoodComponent.Builder()).hunger(2).saturationModifier(0.4F).build();
@@ -824,5 +832,6 @@ public class HibiscusMiscBlocks {
       CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_CARPET, 0.1F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_STAIRS, 0.2F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_SLAB, 0.15F);
+      StrippableBlockRegistry.register(ALLUAUDIA_BUNDLE, STRIPPED_ALLUAUDIA_BUNDLE);
    }
 }

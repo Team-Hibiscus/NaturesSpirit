@@ -76,6 +76,10 @@ public class HibiscusWorldGen {
            new Identifier(MOD_ID, "joshua_tree_feature"),
            new JoshuaTreeFeature(DefaultFeatureConfig.CODEC)
    );
+   public static final Feature <DefaultFeatureConfig> ALLUAUDIA_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "alluaudia_feature"),
+           new AlluaudiaFeature(DefaultFeatureConfig.CODEC)
+   );
    public static final Feature <HugeMushroomFeatureConfig> HUGE_SHIITAKE_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "huge_shiitake_mushroom_feature"),
            new HugeShiitakeMushroomFeature(HugeMushroomFeatureConfig.CODEC)

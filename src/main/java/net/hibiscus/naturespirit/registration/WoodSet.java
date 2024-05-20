@@ -13,14 +13,12 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleEffect;
@@ -606,10 +604,10 @@ public class WoodSet {
       return createBlockWithItem("stripped_" + this.getName() + "_bundle", createLogBlock(this.getSideColor(), this.getTopColor()));
    }
    private Block createJoshuaLog() {
-      return createBlockWithItem(getLogName(), new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+      return createBlockWithItem(getLogName(), new BranchingTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
    }
    private Block createStrippedJoshuaLog() {
-      return createBlockWithItem("stripped_" + getLogName(), new JoshuaTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+      return createBlockWithItem("stripped_" + getLogName(), new BranchingTrunkBlock(FabricBlockSettings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
    }
    private Block createWood() {
       return createBlockWithItem(getWoodName(), createLogBlock(this.getSideColor(), this.getSideColor()));

@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.blocks.JoshuaTrunkBlock;
+import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
@@ -46,7 +46,7 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
    }
 
    private static void generate2(WorldAccess world, BlockPos pos, Random random, BlockPos rootPos, int size, int layer) {
-      JoshuaTrunkBlock joshuaTrunkBlock = (JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog();
+      BranchingTrunkBlock branchingTrunkBlock = (BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog();
       int i = random.nextInt(4) + 1;
       if(layer == 0) {
          ++i;
@@ -60,8 +60,8 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
          if(!isSurroundedByAir(world, blockPos, null)) {
             return;
          }
-         world.setBlockState(blockPos, joshuaTrunkBlock.withConnectionProperties(world, blockPos), 2);
-         world.setBlockState(blockPos.down(), joshuaTrunkBlock.withConnectionProperties(world, blockPos.down()), 2);
+         world.setBlockState(blockPos, branchingTrunkBlock.withConnectionProperties(world, blockPos), 2);
+         world.setBlockState(blockPos.down(), branchingTrunkBlock.withConnectionProperties(world, blockPos.down()), 2);
       }
 
       boolean bl = true;
@@ -81,10 +81,10 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
                     blockPos2,
                     direction.getOpposite()
             )) {
-               world.setBlockState(blockPos2, joshuaTrunkBlock.withConnectionProperties(world, blockPos2), 2);
-               world.setBlockState(blockPos2.offset(direction.getOpposite()), joshuaTrunkBlock.withConnectionProperties(world, blockPos2.offset(direction.getOpposite())), 2);
+               world.setBlockState(blockPos2, branchingTrunkBlock.withConnectionProperties(world, blockPos2), 2);
+               world.setBlockState(blockPos2.offset(direction.getOpposite()), branchingTrunkBlock.withConnectionProperties(world, blockPos2.offset(direction.getOpposite())), 2);
                for(int p = o; p > 0; --p) {
-                  world.setBlockState(blockPos2.offset(direction.getOpposite(), p), joshuaTrunkBlock.withConnectionProperties(world, blockPos2.offset(direction.getOpposite(), p)), 2);
+                  world.setBlockState(blockPos2.offset(direction.getOpposite(), p), branchingTrunkBlock.withConnectionProperties(world, blockPos2.offset(direction.getOpposite(), p)), 2);
                }
                generate2(world, blockPos2, random, rootPos, size, layer + 1);
                bl = false;
@@ -92,23 +92,23 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
                if(world.isAir(blockPos2.up())) {
 
                   world.setBlockState(blockPos2.up(), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                  world.setBlockState(blockPos2, ((JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
+                  world.setBlockState(blockPos2, ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
 
                   Direction direction2 = Direction.Type.HORIZONTAL.random(random);
                   if(random.nextBoolean() && world.isAir(blockPos2.offset(direction, 1))) {
                      world.setBlockState(blockPos2.offset(direction2, 1), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                     world.setBlockState(blockPos2, ((JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
+                     world.setBlockState(blockPos2, ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
                   }
                }
                else if((world.isAir(blockPos2.up(2)) && !world.isAir(blockPos2.up()))) {
 
                   world.setBlockState(blockPos2.up(2), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                  world.setBlockState(blockPos2.up(1), ((JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
+                  world.setBlockState(blockPos2.up(1), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
 
                   Direction direction2 = Direction.Type.HORIZONTAL.random(random);
                   if(random.nextBoolean() && world.isAir(blockPos2.up().offset(direction, 1))) {
                      world.setBlockState(blockPos2.up().offset(direction2, 1), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                     world.setBlockState(blockPos2.up(), ((JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
+                     world.setBlockState(blockPos2.up(), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
                   }
                }
             }
@@ -116,11 +116,11 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
       }
       if(bl) {
          world.setBlockState(pos.up(i), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-         world.setBlockState(pos.up(i - 1), ((JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
+         world.setBlockState(pos.up(i - 1), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
          Direction direction = Direction.Type.HORIZONTAL.random(random);
          if(random.nextBoolean() && world.isAir(pos.up(i - 1).offset(direction, 1))) {
             world.setBlockState(pos.up(i - 1).offset(direction, 1), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-            world.setBlockState(pos.up(i - 1), ((JoshuaTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
+            world.setBlockState(pos.up(i - 1), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
          }
       }
 

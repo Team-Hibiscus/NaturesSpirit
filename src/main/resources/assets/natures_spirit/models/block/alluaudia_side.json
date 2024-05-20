@@ -1,0 +1,21 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "texture": "natures_spirit:block/alluaudia",
+        "texture_top": "natures_spirit:block/alluaudia_top",
+        "inside": "natures_spirit:block/alluaudia_top",
+        "particle": "natures_spirit:block/alluaudia"
+    },
+    "elements": [
+        {   "from": [ 4, 4, 0 ],
+            "to": [ 12, 12, 4 ],
+            "faces": {
+                "down":  { "texture": "#texture" },
+                "up":    { "texture": "#texture" },
+                "north": { "texture": "#texture_top", "cullface":"north" },
+                "west":  { "texture": "#texture" },
+                "east":  { "texture": "#texture" }
+            }
+        }
+    ]
+}
