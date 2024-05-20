@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:alluaudia"
-            ]
+            "items": "natures_spirit:alluaudia"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_alluaudia",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_alluaudia"
     ]
   ],
   "rewards": {
     "recipes": [
       "natures_spirit:alluaudia_bundle"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

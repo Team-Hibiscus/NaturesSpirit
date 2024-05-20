@@ -4,6 +4,7 @@ package net.hibiscus.naturespirit.blocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -55,7 +56,7 @@ public class GrowingBranchingTrunkBlock extends BranchingTrunkBlock implements F
       return false;
    }
 
-   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
       return !state.get(UP) && !state.get(EAST) && !state.get(WEST) && !state.get(NORTH) && !state.get(SOUTH) && (world.getBlockState(pos.up()).isAir() || world.getBlockState(pos.east()).isAir() || world.getBlockState(pos.west()).isAir() || world.getBlockState(pos.north()).isAir() || world.getBlockState(pos.south()).isAir());
    }
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
@@ -64,8 +65,9 @@ public class GrowingBranchingTrunkBlock extends BranchingTrunkBlock implements F
       return !state.get(SHEARED) ? state.with(FACING_PROPERTIES.get(direction), bl) : state;
    }
 
-   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+   @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 
+      Hand hand = player.getActiveHand();
       if(player.getStackInHand(hand).getItem() == Items.SHEARS && !state.get(SHEARED)) {
          ItemStack itemStack = player.getStackInHand(hand);
          if (player instanceof ServerPlayerEntity) {
@@ -76,13 +78,11 @@ public class GrowingBranchingTrunkBlock extends BranchingTrunkBlock implements F
          BlockState blockState2 = state.with(SHEARED, true);
          world.setBlockState(pos, blockState2);
          world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState2));
-         itemStack.damage(1, player, (playerEntity) -> {
-            playerEntity.sendToolBreakStatus(hand);
-         });
+         player.getStackInHand(hand).damage(1, player, LivingEntity.getSlotForHand(player.getActiveHand()));
 
          return ActionResult.success(world.isClient);
       }
-      return super.onUse(state, world, pos, player, hand, hit);
+      return super.onUse(state, world, pos, player, hit);
    }
 
    @Override public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {

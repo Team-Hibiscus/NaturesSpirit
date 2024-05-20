@@ -552,10 +552,10 @@ public class HibiscusMiscBlocks {
            .breakInstantly()
            .sounds(BlockSoundGroup.LILY_PAD), LOTUS_FLOWER), HibiscusItemGroups.NS_MISC_ITEM_GROUP, LOTUS_FLOWER, 0.2F);
 
-   public static final Block ALLUAUDIA = registerPlantBlock("alluaudia", new GrowingBranchingTrunkBlock(FabricBlockSettings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.CACTUS, .2f);
-   public static final Block STRIPPED_ALLUAUDIA = registerPlantBlock("stripped_alluaudia", new GrowingBranchingTrunkBlock(FabricBlockSettings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, HibiscusMiscBlocks.ALLUAUDIA, .2f);
-   public static final Block ALLUAUDIA_BUNDLE = registerPlantBlock("alluaudia_bundle", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, STRIPPED_ALLUAUDIA, .2f);
-   public static final Block STRIPPED_ALLUAUDIA_BUNDLE = registerPlantBlock("stripped_alluaudia_bundle", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, ALLUAUDIA_BUNDLE, .2f);
+   public static final Block ALLUAUDIA = registerPlantBlock("alluaudia", new GrowingBranchingTrunkBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.CACTUS, .2f);
+   public static final Block STRIPPED_ALLUAUDIA = registerPlantBlock("stripped_alluaudia", new GrowingBranchingTrunkBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, HibiscusMiscBlocks.ALLUAUDIA, .2f);
+   public static final Block ALLUAUDIA_BUNDLE = registerPlantBlock("alluaudia_bundle", new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, STRIPPED_ALLUAUDIA, .2f);
+   public static final Block STRIPPED_ALLUAUDIA_BUNDLE = registerPlantBlock("stripped_alluaudia_bundle", new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, ALLUAUDIA_BUNDLE, .2f);
 
 
 

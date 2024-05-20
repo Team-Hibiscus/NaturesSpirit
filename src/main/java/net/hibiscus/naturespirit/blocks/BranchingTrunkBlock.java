@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -110,5 +111,8 @@ public class BranchingTrunkBlock extends ConnectingBlock implements Waterloggabl
 
    static {
       WATERLOGGED = Properties.WATERLOGGED;
+   }
+   @Override protected MapCodec <? extends ConnectingBlock> getCodec() {
+      return null;
    }
 }
