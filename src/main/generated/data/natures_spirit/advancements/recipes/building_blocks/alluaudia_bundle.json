@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_alluaudia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:alluaudia"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:alluaudia_bundle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_alluaudia",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:alluaudia_bundle"
+    ]
+  },
+  "sends_telemetry_event": false
+}

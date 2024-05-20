@@ -1,0 +1,17 @@
+{
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "natures_spirit:block/stripped_alluaudia",
+		"inside": "natures_spirit:block/stripped_alluaudia"
+	},
+	"elements": [
+		{
+			"from": [4, 4, 4],
+			"to": [12, 12, 12],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 12, 12], "rotation": 90, "texture": "#inside"}
+			}
+		}
+	]
+}

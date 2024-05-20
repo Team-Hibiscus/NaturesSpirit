@@ -1,10 +1,11 @@
 package net.hibiscus.naturespirit.util;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.hibiscus.naturespirit.blocks.JoshuaTrunkBlock;
+import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -23,15 +24,17 @@ public class HibiscusEvents {
       UseBlockCallback.EVENT.register(((player, world, hand, hitResult) -> {
          BlockPos blockPos = hitResult.getBlockPos();
          BlockState blockState = world.getBlockState(blockPos);
-         if(blockState.isOf(HibiscusWoods.JOSHUA.getLog()) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
-            BlockState blockState2 = HibiscusWoods.JOSHUA.getStrippedLog().getDefaultState().with(JoshuaTrunkBlock.DOWN, blockState.get(JoshuaTrunkBlock.DOWN)).with(JoshuaTrunkBlock.UP,
-                    blockState.get(JoshuaTrunkBlock.UP)
-            ).with(JoshuaTrunkBlock.NORTH, blockState.get(JoshuaTrunkBlock.NORTH)).with(
-                    JoshuaTrunkBlock.SOUTH,
-                    blockState.get(JoshuaTrunkBlock.SOUTH)
-            ).with(JoshuaTrunkBlock.EAST, blockState.get(JoshuaTrunkBlock.EAST)).with(JoshuaTrunkBlock.WEST, blockState.get(JoshuaTrunkBlock.WEST)).with(
-                    JoshuaTrunkBlock.WATERLOGGED,
-                    blockState.get(JoshuaTrunkBlock.WATERLOGGED)
+         if((blockState.isOf(HibiscusWoods.JOSHUA.getLog()) || blockState.isOf(HibiscusMiscBlocks.ALLUAUDIA)) && player.getStackInHand(hand).isIn(ItemTags.AXES)) {
+            Block block = blockState.isOf(HibiscusWoods.JOSHUA.getLog()) ? HibiscusWoods.JOSHUA.getStrippedLog() : HibiscusMiscBlocks.STRIPPED_ALLUAUDIA;
+            BlockState blockState2 = block.getDefaultState().with(BranchingTrunkBlock.DOWN, blockState.get(BranchingTrunkBlock.DOWN)).with(
+                    BranchingTrunkBlock.UP,
+                    blockState.get(BranchingTrunkBlock.UP)
+            ).with(BranchingTrunkBlock.NORTH, blockState.get(BranchingTrunkBlock.NORTH)).with(
+                    BranchingTrunkBlock.SOUTH,
+                    blockState.get(BranchingTrunkBlock.SOUTH)
+            ).with(BranchingTrunkBlock.EAST, blockState.get(BranchingTrunkBlock.EAST)).with(BranchingTrunkBlock.WEST, blockState.get(BranchingTrunkBlock.WEST)).with(
+                    BranchingTrunkBlock.WATERLOGGED,
+                    blockState.get(BranchingTrunkBlock.WATERLOGGED)
             );
             world.playSound(player, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
 

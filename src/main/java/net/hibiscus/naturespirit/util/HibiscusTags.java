@@ -17,7 +17,9 @@ public class HibiscusTags {
       public static final TagKey <Item> EVERGREEN_LEAVES = createTag("evergreen_leaves");
       public static final TagKey <Item> XERIC_LEAVES = createTag("xeric_leaves");
       public static final TagKey <Item> COCONUT_ITEMS = createTag("coconut_items");
+      public static final TagKey <Item> SUCCULENTS = createTag("succulents");
       public static final TagKey <Item> STRIPPED_LOGS = createTag("stripped_logs");
+      public static final TagKey <Item> ALLUAUDIA_BUNDLES = createTag("alluaudia_bundles");
 
       private static TagKey <Item> createTag(String name) {
          return TagKey.of(RegistryKeys.ITEM, new Identifier(NatureSpirit.MOD_ID, name));
@@ -47,6 +49,10 @@ public class HibiscusTags {
       public static final TagKey <Block> CHALK_STAIRS = createTag("chalk_stairs");
       public static final TagKey <Block> CHALK_SLABS = createTag("chalk_slabs");
       public static final TagKey <Block> STRIPPED_LOGS = createTag("stripped_logs");
+      public static final TagKey <Block> ALLUAUDIA_BUNDLES = createTag("alluaudia_bundles");
+      public static final TagKey <Block> SUCCULENTS = createTag("succulents");
+      public static final TagKey <Block> SUCCULENT_VERTICAL_PLACEMENT_OVERRIDE = createTag("succulent_vertical_placement_override");
+      public static final TagKey <Block> SUCCULENT_HORIZONTAL_PLACEMENT_OVERRIDE = createTag("succulent_horizontal_placement_override");
 
       private static TagKey <Block> createTag(String name) {
          return TagKey.of(RegistryKeys.BLOCK, new Identifier(NatureSpirit.MOD_ID, name));

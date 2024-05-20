@@ -101,6 +101,8 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> SAXAUL_TREE_SPAWN = registerKey("saxaul_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE = registerKey("joshua_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> JOSHUA_TREE_SPAWN = registerKey("joshua_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> ALLUAUDIA = registerKey("alluaudia");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> ALLUAUDIA_SPAWN = registerKey("alluaudia_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE = registerKey("coconut_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> COCONUT_TREE_SPAWN = registerKey("coconut_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> CEDAR_TREE = registerKey("cedar_tree");
@@ -594,6 +596,7 @@ public class HibiscusConfiguredFeatures {
       );
 
       register(context, JOSHUA_TREE, JOSHUA_TREE_FEATURE, FeatureConfig.DEFAULT);
+      register(context, ALLUAUDIA, ALLUAUDIA_FEATURE, FeatureConfig.DEFAULT);
 
       register(
               context,
@@ -601,6 +604,15 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.JOSHUA_CHECKED), 0.325f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.JOSHUA_CHECKED)
+              )
+      );
+
+      register(
+              context,
+              ALLUAUDIA_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.ALLUAUDIA_CHECKED), 0.325f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.ALLUAUDIA_CHECKED)
               )
       );
 
