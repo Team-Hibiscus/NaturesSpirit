@@ -12,7 +12,7 @@
     //         {
     //   "element": {
     //     "element_type": "minecraft:single_pool_element",
-    //     "location": "minecraft:village/wisteria/terminators",
+    //     "location": "natures_spirit:village/wisteria/terminators",
     //     "processors": "minecraft:empty",
     //     "projection": "rigid"
     //   },

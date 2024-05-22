@@ -82,6 +82,6 @@
       "weight": 2
     }
   ],
-  "fallback": "minecraft:village/wisteria/terminators",
+  "fallback": "natures_spirit:village/wisteria/terminators",
   "name": "natures_spirit:village/cypress/cypress_butcher_extension"
 }

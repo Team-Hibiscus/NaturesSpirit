@@ -10,5 +10,5 @@
       "weight": 2
     }
   ],
-  "fallback": "minecraft:village/wisteria/terminators"
+  "fallback": "natures_spirit:village/wisteria/terminators"
 }
