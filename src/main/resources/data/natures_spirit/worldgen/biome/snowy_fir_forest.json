@@ -1,9 +1,9 @@
 {
   "carvers": {
     "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
+      "natures_spirit:replaceable_cave",
+      "natures_spirit:replaceable_cave_extra_underground",
+      "natures_spirit:replaceable_canyon"
     ]
   },
   "downfall": 0.6,
