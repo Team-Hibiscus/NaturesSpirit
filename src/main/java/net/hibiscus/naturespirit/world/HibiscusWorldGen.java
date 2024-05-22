@@ -2,6 +2,10 @@ package net.hibiscus.naturespirit.world;
 
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
+import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarver;
+import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarverConfig;
+import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarver;
+import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarverConfig;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
 import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
@@ -11,6 +15,7 @@ import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.carver.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
@@ -52,6 +57,10 @@ public class HibiscusWorldGen {
    public static final FoliagePlacerType <CypressFoliagePlacer> CYPRESS_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("cypress_foliage_placer", CypressFoliagePlacer.CODEC);
    public static final FoliagePlacerType <MapleFoliagePlacer> MAPLE_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("maple_foliage_placer", MapleFoliagePlacer.CODEC);
    public static final FoliagePlacerType <CoconutFoliagePlacer> COCONUT_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("coconut_foliage_placer", CoconutFoliagePlacer.CODEC);
+
+
+   public static final Carver <ReplaceableCaveCarverConfig> REPLACEABLE_CAVE_CARVER = registerCaveCarver("replaceable_cave", new ReplaceableCaveCarver(ReplaceableCaveCarverConfig.CAVE_CODEC));
+   public static final Carver <ReplaceableRavineCarverConfig> REPLACEABLE_RAVINE_CARVER = registerCaveCarver("replaceable_canyon", new ReplaceableRavineCarver(ReplaceableRavineCarverConfig.RAVINE_CODEC));
 
    public static final BlockStateProviderType <HibiscusSimpleBlockStateProvider> HIBISCUS_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("hibiscus_simple_block_state_provider",
            HibiscusSimpleBlockStateProvider.CODEC
@@ -101,6 +110,10 @@ public class HibiscusWorldGen {
    }
    private static <P extends TreeDecorator> TreeDecoratorType<P> registerTreeDecorator(String id, Codec<P> codec) {
       return (TreeDecoratorType)Registry.register(Registries.TREE_DECORATOR_TYPE,  new Identifier (MOD_ID, id), new TreeDecoratorType(codec));
+   }
+
+   private static <C extends CarverConfig, F extends Carver <C>> Carver<C> registerCaveCarver(String id, F carver) {
+      return (Carver)Registry.register(Registries.CARVER, new Identifier(MOD_ID, id), carver);
    }
 
    public static void registerWorldGen() {

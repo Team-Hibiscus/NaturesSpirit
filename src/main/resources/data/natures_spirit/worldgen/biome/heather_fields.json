@@ -7,7 +7,7 @@
     ]
   },
   "has_precipitation": true,
-  "downfall": 0.7,
+  "downfall": 0.5,
   "effects": {
     "sky_color": 9814505,
     "fog_color": 13950967,
@@ -194,5 +194,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.2
+  "temperature": 0.7
 }
