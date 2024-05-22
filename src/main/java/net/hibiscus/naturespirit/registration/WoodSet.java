@@ -169,6 +169,7 @@ public class WoodSet {
          frostyLeaves = createLeaves("frosty_");
          leaves = createFirLeaves();
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeavesBefore(), this.getLeaves(), this.getFrostyLeaves()));
+         saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), configuredFeature2, configuredFeature, Optional.empty());
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(this.getSapling());
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
