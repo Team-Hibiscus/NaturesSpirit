@@ -79,11 +79,12 @@
     ],
     [
       "minecraft:glow_lichen",
+      "natures_spirit:birch_bush",
       "natures_spirit:patch_tall_grass_2",
       "natures_spirit:patch_grass_field",
       "minecraft:forest_flowers",
       "minecraft:trees_birch",
-      "natures_spirit:flower_wisteria_placed",
+      "natures_spirit:flower_birch_placed",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",

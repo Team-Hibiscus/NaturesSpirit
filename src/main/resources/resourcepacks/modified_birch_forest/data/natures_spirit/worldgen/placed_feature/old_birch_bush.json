@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:birch_tall",
+  "feature": "natures_spirit:birch_bush",
   "placement": [
     {
       "type": "minecraft:count",
@@ -11,7 +11,7 @@
             "weight": 9
           },
           {
-            "data": 6,
+            "data": 7,
             "weight": 1
           }
         ]
@@ -30,6 +30,18 @@
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "minecraft:birch_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
     }
   ]
 }

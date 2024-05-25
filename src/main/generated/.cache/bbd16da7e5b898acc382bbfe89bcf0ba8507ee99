@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-19T17:08:55.9827538	Nature's Spirit/Tags for minecraft:item
+// 1.20.1	2024-05-25T15:17:53.2383553	Nature's Spirit/Tags for minecraft:item
 1357817f3d2c66ec4e86e9638e7d21ad6670be4d data\minecraft\tags\items\wooden_doors.json
 5884e81d1e71b5dc782bcef212da49a7c7b7b98e data\minecraft\tags\items\wooden_trapdoors.json
 716bc7a6f9d5b973b0c742bcef69a86083a6a2b4 data\natures_spirit\tags\items\alluaudia_bundles.json
@@ -18,16 +18,18 @@ d751312ed96812aacae500233894cc6d1d32ce7b data\minecraft\tags\items\wooden_fences
 308193ded6adf22b3dca91fc170b931d1504d1cb data\natures_spirit\tags\items\saxaul_logs.json
 189b54063673349938cd1914aeda23d3b42a1fc1 data\natures_spirit\tags\items\ghaf_logs.json
 927ddb7ff8f53cee40f99221bf50463f6f6cee2a data\minecraft\tags\items\redstone_ores.json
-150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
 1a67b660b4472d543fa159d109e347e50fcc5c4e data\natures_spirit\tags\items\palo_verde_logs.json
+150b8e2b79e597110ae8c1687c01a43c88e267ed data\natures_spirit\tags\items\olive_logs.json
 997782b51f31fed0c0c491b26277ad9794e1dc49 data\minecraft\tags\items\wooden_pressure_plates.json
 6ed13fd615dd216189d850a41e95c7d60e15cf56 data\minecraft\tags\items\iron_ores.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\items\wisteria_logs.json
+e98622ccdbdf23467288c54d085d0e8ee5c71cb9 data\minecraft\tags\items\stone_tool_materials.json
 0877e7f2e7cf28c35e34eb34b58e527344a9bc0e data\minecraft\tags\items\saplings.json
 f92afa6a78ed56ea7236bdf0dd4ce72397112ec3 data\minecraft\tags\items\chest_boats.json
 363c0fa5811bd9eaeb9d6ebcaac56640ea93f543 data\minecraft\tags\items\copper_ores.json
 393e2ab6a86a867501ab9e313142e2a38a150090 data\natures_spirit\tags\items\mahogany_logs.json
 36185b9fb1563d681dacf2e88daa42226eeee670 data\minecraft\tags\items\wooden_slabs.json
+e98622ccdbdf23467288c54d085d0e8ee5c71cb9 data\minecraft\tags\items\stone_crafting_materials.json
 5b6dc8212d014afbb8bb1051f8820efd6f4253f9 data\natures_spirit\tags\items\maple_logs.json
 09a802fdad5d114ae08b078e8acb1e9627b49a6d data\minecraft\tags\items\gold_ores.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\items\sugi_logs.json
