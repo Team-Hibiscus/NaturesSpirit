@@ -9,8 +9,8 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 3,
+      "type": "natures_spirit:birch_foliage_placer",
+      "height": 7,
       "offset": 0,
       "radius": 2
     },

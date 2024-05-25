@@ -4,7 +4,7 @@
     "decorators": [
       {
         "type": "minecraft:beehive",
-        "probability": 0.002
+        "probability": 1.0
       }
     ],
     "dirt_provider": {
@@ -14,8 +14,8 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 3,
+      "type": "natures_spirit:birch_foliage_placer",
+      "height": 7,
       "offset": 0,
       "radius": 2
     },
@@ -40,9 +40,9 @@
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",
-      "base_height": 9,
+      "base_height": 12,
       "height_rand_a": 2,
-      "height_rand_b": 5
+      "height_rand_b": 6
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",

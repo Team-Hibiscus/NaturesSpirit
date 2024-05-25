@@ -1565,6 +1565,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add("pack.natures_spirit.bushy_leaves_compatibility", "Bushy Leaves Compat");
          translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
          translationBuilder.add("pack.natures_spirit.modified_desert", "Modified Desert");
+         translationBuilder.add("pack.natures_spirit.modified_birch_forest", "Modified Birch Forest");
          translationBuilder.add("pack.natures_spirit.modified_badlands", "Modified Badlands");
          translationBuilder.add("pack.natures_spirit.modified_savannas", "Modified Savannas");
          translationBuilder.add("pack.natures_spirit.modified_dark_forest", "Modified Dark Forests");
@@ -1923,6 +1924,15 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
             getOrCreateTagBuilder(ItemTags.BOATS).add(woodSet.getBoatItem());
             getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(woodSet.getChestBoatItem());
          }
+
+         for(StoneSet stoneSet : HibiscusRegistryHelper.StoneHashMap.values()) {
+            if (stoneSet.hasCobbled()) {
+               getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS).add(stoneSet.getCobbled().asItem());
+               getOrCreateTagBuilder(ItemTags.STONE_TOOL_MATERIALS).add(stoneSet.getCobbled().asItem());
+            }
+         }
+            getOrCreateTagBuilder(ItemTags.STONE_TOOL_MATERIALS).add(CHERT.getBase().asItem());
+            getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS).add(CHERT.getBase().asItem());
             this.copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
             this.copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
             this.copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);

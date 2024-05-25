@@ -25,6 +25,7 @@ public class HibiscusConfig {
    public static boolean vinegar;
    public static boolean vinegar_duplication;
    public static boolean vanilla_trees_toggle;
+   public static boolean birch_forest_toggle;
    public static boolean jungle_toggle;
    public static boolean swamp_toggle;
    public static boolean desert_toggle;
@@ -35,7 +36,7 @@ public class HibiscusConfig {
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.4.5-1.20.6.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.4.6-1.20.6.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -85,6 +86,7 @@ public class HibiscusConfig {
             vinegar_duplication = misc_features.get("vinegar_duplication").getAsBoolean();
 
             vanilla_trees_toggle  = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
+            birch_forest_toggle  = datapack_toggles.get("birch_forest_toggle").getAsBoolean();
             jungle_toggle = datapack_toggles.get("jungle_toggle").getAsBoolean();
             swamp_toggle = datapack_toggles.get("swamp_toggle").getAsBoolean();
             desert_toggle = datapack_toggles.get("desert_toggle").getAsBoolean();
@@ -149,6 +151,7 @@ public class HibiscusConfig {
 
       JsonObject datapackTogglesObject = new JsonObject();
       datapackTogglesObject.addProperty("vanilla_trees_toggle", false);
+      datapackTogglesObject.addProperty("birch_forest_toggle", true);
       datapackTogglesObject.addProperty("jungle_toggle", true);
       datapackTogglesObject.addProperty("swamp_toggle", true);
       datapackTogglesObject.addProperty("desert_toggle", true);

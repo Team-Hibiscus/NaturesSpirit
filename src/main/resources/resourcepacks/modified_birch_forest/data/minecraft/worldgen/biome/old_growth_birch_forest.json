@@ -24,8 +24,8 @@
     "fog_color": 12638463,
     "water_color": 4174564,
     "water_fog_color": 335667,
-    "grass_color": 9554806,
-    "foliage_color": 9816956
+    "grass_color": 8704608,
+    "foliage_color": 8438369
   },
   "features": [
     [],
@@ -79,11 +79,13 @@
     ],
     [
       "minecraft:glow_lichen",
-      "natures_spirit:patch_tall_grass_2",
+      "natures_spirit:old_birch_bush",
+      "natures_spirit:birch_tall",
+      "natures_spirit:patch_tall_grass_birch",
       "natures_spirit:patch_grass_field",
+      "natures_spirit:patch_lush_fern_birch",
       "minecraft:forest_flowers",
-      "minecraft:birch_tall",
-      "natures_spirit:flower_wisteria_placed",
+      "natures_spirit:flower_birch_placed",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
