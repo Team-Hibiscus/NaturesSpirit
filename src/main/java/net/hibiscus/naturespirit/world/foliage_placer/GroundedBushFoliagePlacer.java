@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.Blocks;
@@ -17,7 +18,7 @@ import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import java.util.function.Predicate;
 
 public class GroundedBushFoliagePlacer extends FoliagePlacer {
-   public static final Codec<GroundedBushFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+   public static final MapCodec <GroundedBushFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
       return fillFoliagePlacerFields(instance).and(instance.group(IntProvider.createValidatingCodec(1, 512).fieldOf("foliage_height").forGetter((placer) -> {
          return placer.foliageHeight;
       }), Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter((placer) -> {

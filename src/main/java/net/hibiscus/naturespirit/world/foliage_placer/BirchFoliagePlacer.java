@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
@@ -14,7 +15,7 @@ import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class BirchFoliagePlacer extends FoliagePlacer {
-   public static final Codec<BirchFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+   public static final MapCodec <BirchFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
       return createCodec(instance).apply(instance, BirchFoliagePlacer::new);
    });
    protected final int height;
