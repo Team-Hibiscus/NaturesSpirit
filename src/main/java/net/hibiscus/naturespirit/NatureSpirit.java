@@ -69,6 +69,11 @@ public class NatureSpirit implements ModInitializer {
                  HibiscusConfig.vanilla_trees_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "modified_flower_forest"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.modified_flower_forest"),
+                 HibiscusConfig.flower_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_birch_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_birch_forest"),
                  HibiscusConfig.birch_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
