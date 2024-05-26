@@ -42,12 +42,6 @@ public class GrowingBranchingTrunkBlock extends BranchingTrunkBlock implements F
    }
 
 
-   public BlockState getPlacementState(ItemPlacementContext ctx) {
-      FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-      return this.withConnectionProperties(ctx.getWorld(), ctx.getBlockPos()).with(WATERLOGGED, fluidState.isIn(FluidTags.WATER) && fluidState.getLevel() == 8);
-   }
-
-
    protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
       builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN, WATERLOGGED, SHEARED);
    }
