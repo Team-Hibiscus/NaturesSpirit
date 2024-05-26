@@ -582,14 +582,14 @@ public class HibiscusMiscBlocks {
    );
 
    public static final Block DESERT_TURNIP_ROOT_BLOCK = registerBlock("desert_turnip_root_block",
-           new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(MapColor.SPRUCE_BROWN).strength(2.0F).sounds(BlockSoundGroup.ROOTS)),
+           new PillarBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(MapColor.SPRUCE_BROWN).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.SHROOMLIGHT,
            ItemGroups.NATURAL
    );
 
    public static final Block DESERT_TURNIP_BLOCK = registerBlock("desert_turnip_block",
-           new DesertTurnipBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(MapColor.PALE_PURPLE).strength(2.0F).sounds(BlockSoundGroup.ROOTS)),
+           new DesertTurnipBlock(FabricBlockSettings.create().burnable().instrument(Instrument.BASS).mapColor(MapColor.PALE_PURPLE).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK,
            ItemGroups.NATURAL
@@ -600,7 +600,7 @@ public class HibiscusMiscBlocks {
            FabricBlockSettings.create().noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY)
    ));
 
-   public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(4).saturationModifier(0.6F).build();
+   public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(4).saturationModifier(0.6F).snack().build();
 
    public static final Item DESERT_TURNIP = registerItem("desert_turnip",
            new AliasedBlockItem(DESERT_TURNIP_STEM, (new Item.Settings()).food(DESERT_TURNIP_FOOD_COMPONENT)),
