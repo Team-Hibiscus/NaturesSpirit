@@ -9,10 +9,6 @@ public class DesertTurnipItem extends AliasedBlockItem {
       super(block, settings);
    }
    @Override public int getMaxUseTime(ItemStack stack) {
-      if (stack.getItem().isFood()) {
-         return this.getFoodComponent().isSnack() ? 24 : 32;
-      } else {
-         return 0;
-      }
+         return 24;
    }
 }
