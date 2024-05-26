@@ -11,6 +11,7 @@ import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
+import net.hibiscus.naturespirit.items.DesertTurnipItem;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.items.VinegarItem;
 import net.hibiscus.naturespirit.registration.FlowerSet;
@@ -603,7 +604,7 @@ public class HibiscusMiscBlocks {
    public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).nutrition(2).saturationModifier(0.3F).snack().build();
 
    public static final Item DESERT_TURNIP = registerItem("desert_turnip",
-           new AliasedBlockItem(DESERT_TURNIP_STEM, (new Item.Settings()).food(DESERT_TURNIP_FOOD_COMPONENT)),
+           new DesertTurnipItem(DESERT_TURNIP_STEM, (new Item.Settings()).food(DESERT_TURNIP_FOOD_COMPONENT)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Items.BEETROOT,
            ItemGroups.FOOD_AND_DRINK
