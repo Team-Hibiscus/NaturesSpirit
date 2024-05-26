@@ -600,7 +600,7 @@ public class HibiscusMiscBlocks {
            FabricBlockSettings.create().noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY)
    ));
 
-   public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(4).saturationModifier(0.6F).snack().build();
+   public static final FoodComponent DESERT_TURNIP_FOOD_COMPONENT = (new FoodComponent.Builder()).hunger(2).saturationModifier(0.3F).snack().build();
 
    public static final Item DESERT_TURNIP = registerItem("desert_turnip",
            new AliasedBlockItem(DESERT_TURNIP_STEM, (new Item.Settings()).food(DESERT_TURNIP_FOOD_COMPONENT)),
