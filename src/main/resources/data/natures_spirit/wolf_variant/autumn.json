@@ -1,0 +1,6 @@
+{
+  "angry_texture": "natures_spirit:entity/wolf/wolf_autumn_angry",
+  "biomes": "#natures_spirit:is_autumn",
+  "tame_texture": "natures_spirit:entity/wolf/wolf_autumn_tame",
+  "wild_texture": "natures_spirit:entity/wolf/wolf_autumn"
+}

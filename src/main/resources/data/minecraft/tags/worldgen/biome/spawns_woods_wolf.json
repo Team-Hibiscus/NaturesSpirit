@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:forest",
+    "#natures_spirit:is_cypress",
+    "natures_spirit:sugi_forest",
+    "natures_spirit:windswept_sugi_forest"
+  ]
+}

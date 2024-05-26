@@ -147,10 +147,10 @@
         "weight": 1
       },
       {
-        "type": "minecraft:donkey",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 1
+        "type": "minecraft:wolf",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 5
       }
     ],
     "misc": [],
