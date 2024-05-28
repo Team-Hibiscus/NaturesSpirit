@@ -1,0 +1,42 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/coconut/terminators/terminator_01",
+        "processors": "natures_spirit:street_coconut",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/coconut/terminators/terminator_02",
+        "processors": "natures_spirit:street_coconut",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/coconut/terminators/terminator_03",
+        "processors": "natures_spirit:street_coconut",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "natures_spirit:village/coconut/terminators/terminator_04",
+        "processors": "natures_spirit:street_coconut",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty",
+  "name": "natures_spirit:village/coconut/terminators"
+}

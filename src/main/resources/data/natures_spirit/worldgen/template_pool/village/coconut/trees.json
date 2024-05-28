@@ -1,0 +1,13 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:feature_pool_element",
+        "feature": "natures_spirit:coconut_checked",
+        "projection": "rigid"
+      },
+      "weight": 100
+    }
+  ],
+  "fallback": "minecraft:empty"
+}
