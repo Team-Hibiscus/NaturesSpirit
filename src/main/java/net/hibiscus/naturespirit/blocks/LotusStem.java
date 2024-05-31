@@ -2,6 +2,8 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.*;
+import net.minecraft.entity.MovementType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,6 +17,7 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.*;
@@ -133,9 +136,15 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
       Optional <BlockPos> optional = this.getFlowerHeadPos(world, pos, this.asBlock());
       Optional <BlockPos> optional2 = this.getStemHeadPos(world, pos, this.asBlock());
-      Optional <BlockPos> optional3 = this.getStemHeadPos(world, pos, this.asBlock());
+      Optional <BlockPos> optional3 = this.getStemHeadWaterPos2(world, pos, this.asBlock());
       BlockPos blockPos = optional2.isPresent() ? optional2.get().down() : optional3.isPresent() ? optional3.get().down() : optional.orElse(pos);
-      return this.chooseStemState(world.getBlockState(blockPos.offset(this.growthDirection))) || world.getFluidState(blockPos.offset(this.growthDirection)).isIn(FluidTags.WATER);
+      boolean lotusPowered = false;
+      if (optional.isPresent()) {
+         BlockPos blockPos2 = optional.get();
+         LotusFlowerBlock lotusFlowerBlock = (LotusFlowerBlock) world.getBlockState(blockPos2).getBlock();
+         lotusPowered = lotusFlowerBlock.isPowered(world, blockPos2);
+      }
+      return (this.chooseStemState(world.getBlockState(blockPos.offset(this.growthDirection))) || world.getFluidState(blockPos.offset(this.growthDirection)).isIn(FluidTags.WATER)) && !lotusPowered;
    }
 
    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
@@ -145,25 +154,25 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
       Optional <BlockPos> optional = this.getFlowerHeadPos(world, pos, this.asBlock());
       Optional <BlockPos> optional2 = this.getStemHeadPos(world, pos, this.asBlock());
-      Optional <BlockPos> optional3 = this.getStemHeadPos(world, pos, this.asBlock());
+      Optional <BlockPos> optional3 = this.getStemHeadWaterPos2(world, pos, this.asBlock());
       BlockPos blockPos = optional2.isPresent() ? optional2.get().down() : optional3.isPresent() ? optional3.get().down() : optional.orElse(pos);
       int i = Math.min(state.get(AGE) + 1, 3);
-      int j = Math.max(3, this.getGrowthLength(random));
 
-      for(int k = 0; k < j && (this.chooseStemState(world.getBlockState(blockPos)) || world.getBlockState(blockPos).isOf(this.getPlant()) || world.getBlockState(blockPos).isOf(this.asBlock()) || world
-              .getFluidState(blockPos)
-              .isIn(FluidTags.WATER)); ++k) {
+      if (this.chooseStemState(world.getBlockState(blockPos)) || world.getBlockState(blockPos).isOf(this.getPlant()) || world.getBlockState(blockPos).isOf(this.asBlock()) || world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
          world.setBlockState(blockPos, state.with(AGE, i).with(WATERLOGGED, world.getFluidState(blockPos).isIn(FluidTags.WATER)));
          if(world.getBlockState(blockPos.up()).isOf(Blocks.AIR)) {
             world.setBlockState(blockPos.offset(this.growthDirection, 1), this.getPlant().getDefaultState());
          }
          if(world.getBlockState(blockPos.up()).isOf(Blocks.WATER)) {
-            world.setBlockState(blockPos.offset(this.growthDirection, 1),
-                    this.asBlock().getDefaultState().with(AGE, i).with(WATERLOGGED, world.getFluidState(blockPos.offset(this.growthDirection, 1)).isIn(FluidTags.WATER))
-            );
+            world.setBlockState(blockPos.offset(this.growthDirection, 1), this.asBlock().getDefaultState().with(AGE, i).with(WATERLOGGED, world.getFluidState(blockPos.offset(this.growthDirection, 1)).isIn(FluidTags.WATER)));
          }
-         blockPos = blockPos.offset(this.growthDirection);
-         i = Math.min(i + 1, 3);
+         if (optional.isPresent()) {
+            BlockPos blockPos2 = optional.get();
+            PlayerEntity player = world.getClosestPlayer(blockPos2.getX(), blockPos2.getY(), blockPos2.getZ(), 1.25D, false);
+            if (player != null) {
+               player.move(MovementType.SHULKER_BOX, new Vec3d(0, 1.01, 0));
+            }
+         }
       }
 
    }
@@ -180,10 +189,9 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
       return BlockLocating.findColumnEnd(world, pos, Blocks.WATER, Direction.UP, block);
    }
 
-   protected int getGrowthLength(Random randomSource) {
-      return VineLogic.getGrowthLength(randomSource);
+   private Optional <BlockPos> getStemHeadWaterPos2(BlockView world, BlockPos pos, Block block) {
+      return BlockLocating.findColumnEnd(world, pos, block, this.growthDirection, Blocks.WATER);
    }
-
    public Block getPlant() {
       return headBlock;
    }
