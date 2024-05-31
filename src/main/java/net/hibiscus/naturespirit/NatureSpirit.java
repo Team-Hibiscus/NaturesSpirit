@@ -151,7 +151,6 @@ public class NatureSpirit implements ModInitializer {
       HibiscusSounds.registerSounds();
       HibiscusCauldronBehavior.registerBehavior();
       if (HibiscusConfig.vinegar) {
-         BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusMiscBlocks.VINEGAR_BOTTLE);
          DispenserBlock.registerBehavior(HibiscusMiscBlocks.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
       }
 
