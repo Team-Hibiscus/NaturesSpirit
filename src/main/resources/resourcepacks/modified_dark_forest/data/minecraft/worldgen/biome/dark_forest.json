@@ -79,9 +79,10 @@
     [
       "minecraft:glow_lichen",
       "minecraft:dark_forest_vegetation",
+      "natures_spirit:patch_tall_grass_2",
+      "natures_spirit:patch_grass_field",
       "minecraft:forest_flowers",
       "minecraft:flower_default",
-      "minecraft:patch_grass_forest",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
