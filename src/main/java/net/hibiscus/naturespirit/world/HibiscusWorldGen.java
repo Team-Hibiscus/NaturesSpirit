@@ -8,6 +8,8 @@ import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarverConfig;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarverConfig;
 import net.hibiscus.naturespirit.world.feature.*;
+import net.hibiscus.naturespirit.world.feature.HugeBrownMushroomFeature;
+import net.hibiscus.naturespirit.world.feature.HugeRedMushroomFeature;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
 import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
@@ -18,6 +20,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.carver.*;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
@@ -95,6 +98,14 @@ public class HibiscusWorldGen {
    public static final Feature <HugeMushroomFeatureConfig> HUGE_SHIITAKE_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "huge_shiitake_mushroom_feature"),
            new HugeShiitakeMushroomFeature(HugeMushroomFeatureConfig.CODEC)
+   );
+   public static final Feature <net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig> HUGE_RED_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "huge_red_mushroom_feature"),
+           new HugeRedMushroomFeature(net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig.CODEC)
+   );
+   public static final Feature <net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig> HUGE_BROWN_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "huge_brown_mushroom_feature"),
+           new HugeBrownMushroomFeature(net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> LOTUS_PLANT_FEATURE = Registry.register(Registries.FEATURE,
            new Identifier(MOD_ID, "lotus_plant_feature"),

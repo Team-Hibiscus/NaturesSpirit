@@ -6,14 +6,14 @@
       {
         "chance": 0.05,
         "feature": {
-          "feature": "minecraft:huge_brown_mushroom",
+          "feature": "natures_spirit:huge_brown_mushroom",
           "placement": []
         }
       },
       {
         "chance": 0.1,
         "feature": {
-          "feature": "minecraft:huge_red_mushroom",
+          "feature": "natures_spirit:huge_red_mushroom",
           "placement": []
         }
       },
