@@ -58,11 +58,6 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
           mutable.move(Direction.DOWN);
           blockState = world.getBlockState(mutable);
           if (world.isReceivingRedstonePower(mutable)) {
-             for(Direction direction: Direction.Type.HORIZONTAL) {
-                if (world.getBlockState(mutable.offset(direction)).isOf(Blocks.DISPENSER)) {
-                   world.getBlockState(mutable.offset(direction))
-                }
-             }
              return world.getReceivedRedstonePower(mutable);
           }
        } while(blockState.isOf(HibiscusMiscBlocks.LOTUS_STEM));
