@@ -15,7 +15,7 @@
         }
       }
     },
-    "foliage_radius": 3,
+    "foliage_radius": 4,
     "base_height": 10,
     "height_rand_a": 0,
     "height_rand_b": 3,
