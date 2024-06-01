@@ -98,9 +98,10 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
       return entity.isOnGround() && entity.getPos().y > (double)((float)pos.getY()) && entity.isSneaking();
    }
 
-   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+   public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
       return new ItemStack(HibiscusMiscBlocks.LOTUS_FLOWER_ITEM);
    }
+
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
       return SHAPE;
@@ -113,7 +114,7 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
               HibiscusMiscBlocks.LOTUS_STEM);
    }
 
-   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
       return world.getBlockState(pos.up()).isAir() && !world.getBlockState(pos.down()).isOf(Blocks.WATER) && !isPowered(world, pos);
    }
 
