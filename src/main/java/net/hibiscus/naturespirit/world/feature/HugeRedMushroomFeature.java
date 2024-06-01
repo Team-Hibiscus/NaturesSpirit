@@ -23,23 +23,30 @@ public class HugeRedMushroomFeature extends HugeMushroomFeature {
 
          for(int l = -j; l <= j; ++l) {
             for(int m = -j; m <= j; ++m) {
-               boolean bl = l == -j;
-               boolean bl2 = l == j;
-               boolean bl3 = m == -j;
-               boolean bl4 = m == j;
-               boolean bl5 = bl || bl2;
-               boolean bl6 = bl3 || bl4;
-               if (i >= y || bl5 != bl6) {
+               int x = Math.abs(l);
+               int z = Math.abs(m);
+               boolean bl;
+               if (i < y - 1) {
+                  bl = (x==j) != (z==j);
+               } else if (i == y - 1) {
+                  bl = (x==j && z < j - 1) || (z==j && x < j - 1) || (x == j - 1 && z == j - 1);
+               }
+               else {
+                  bl = !(x==j && z==j);
+               }
+
+               if (bl) {
                   mutable.set(start, l, i, m);
                   if (!world.getBlockState(mutable).isOpaqueFullCube(world, mutable)) {
                      BlockState blockState = config.capProvider.get(random, start);
                      if (blockState.contains(MushroomBlock.WEST) && blockState.contains(MushroomBlock.EAST) && blockState.contains(MushroomBlock.NORTH) && blockState.contains(MushroomBlock.SOUTH) && blockState.contains(MushroomBlock.UP)) {
-                        blockState = (BlockState)((BlockState)((BlockState)((BlockState)((BlockState)blockState.with(MushroomBlock.UP, i >= y - 1)).with(MushroomBlock.WEST, l < -k)).with(MushroomBlock.EAST, l > k)).with(MushroomBlock.NORTH, m < -k)).with(MushroomBlock.SOUTH, m > k);
+                        blockState = (BlockState)((BlockState)((BlockState)((BlockState)((BlockState)blockState.with(MushroomBlock.UP, i >= y - 1 || (i == y - 2 && (x == j - 1 || z == j - 1)))).with(MushroomBlock.WEST, l < -k || (i >= y - 1 && x == k))).with(MushroomBlock.EAST, l > k || (i >= y - 1 && x == k))).with(MushroomBlock.NORTH, m < -k || (i >= y - 1 && z == k))).with(MushroomBlock.SOUTH, m > k || (i >= y - 1 && z == k));
                      }
 
                      this.setBlockState(world, mutable, blockState);
                   }
                }
+
             }
          }
       }
