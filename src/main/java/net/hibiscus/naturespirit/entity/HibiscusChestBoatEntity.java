@@ -25,6 +25,8 @@ public final class HibiscusChestBoatEntity extends ChestBoatEntity implements Hi
    @Override public void setVariant(Type type) {
    }
 
+
+
    @Override public Item asItem() {
       return boatData.chestBoat().asItem();
    }
