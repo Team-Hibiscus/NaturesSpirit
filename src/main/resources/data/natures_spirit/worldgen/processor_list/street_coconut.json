@@ -26,7 +26,7 @@
             "predicate_type": "minecraft:block_match"
           },
           "output_state": {
-            "Name": "natures_spirit:coconut_planks"
+            "Name": "minecraft:dirt_path"
           }
         },
         {
