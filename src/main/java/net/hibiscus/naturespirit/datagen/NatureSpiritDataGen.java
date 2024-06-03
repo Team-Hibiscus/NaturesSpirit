@@ -1334,7 +1334,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          itemModelGenerator.register(HibiscusWoods.COCONUT_HALF, Models.GENERATED);
          itemModelGenerator.register(CALCITE_SHARD, Models.GENERATED);
          itemModelGenerator.register(CHALK_POWDER, Models.GENERATED);
-         itemModelGenerator.register(VINEGAR_BOTTLE, Models.GENERATED);
          itemModelGenerator.register(CHEESE_BUCKET, Models.GENERATED);
          itemModelGenerator.register(HELVOLA_FLOWER_ITEM, Models.GENERATED);
          itemModelGenerator.register(HELVOLA_PAD_ITEM, Models.GENERATED);
@@ -1424,7 +1423,6 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(HibiscusItemGroups.NS_MISC_ITEM_GROUP, "Nature's Spirit Misc.");
          translationBuilder.add(HibiscusItemGroups.NS_WOOD_ITEM_GROUP, "Nature's Spirit Woods");
          translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
-         translationBuilder.add(VINEGAR_BOTTLE, "Vinegar Bottle");
          translationBuilder.add(CHALK_POWDER, "Chalk Powder");
          translationBuilder.add(HibiscusMiscBlocks.GREEN_OLIVES, "Green Olives");
          translationBuilder.add(HibiscusMiscBlocks.BLACK_OLIVES, "Black Olives");

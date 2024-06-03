@@ -139,10 +139,6 @@ public class NatureSpirit implements ModInitializer {
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
       HibiscusCauldronBehavior.registerBehavior();
-      if (HibiscusConfig.vinegar) {
-//         BrewingRecipeRegistry.registerItemRecipe(Items.POTION, Items.SWEET_BERRIES, HibiscusMiscBlocks.VINEGAR_BOTTLE);
-         DispenserBlock.registerBehavior(HibiscusMiscBlocks.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
-      }
 
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
