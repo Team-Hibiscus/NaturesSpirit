@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-01T21:16:34.6251595	Nature's Spirit/Block Loot Tables
+// 1.20.1	2024-06-02T00:50:10.0709652	Nature's Spirit/Block Loot Tables
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 86b0b28d804dbfd4c3a3dd5db05d4ccfed363e89 data\natures_spirit\loot_tables\blocks\saxaul_sapling.json
 bb41c6af03a8c80937ab0aece6ea9168df760049 data\natures_spirit\loot_tables\blocks\smooth_pink_sandstone_slab.json
@@ -301,8 +301,8 @@ b4f50612e0ac4655aacf82f48f4792c326341d71 data\natures_spirit\loot_tables\blocks\
 afde5f8672b32bb08e1abc3bc8aa959bf7bcef15 data\natures_spirit\loot_tables\blocks\sugi_door.json
 bd966d12a7d5266d3f59c9ff679ce2cac82a76ff data\natures_spirit\loot_tables\blocks\mossy_travertine_brick_stairs.json
 e1322c14f385c9d1ff64948231e82d2f8661c479 data\natures_spirit\loot_tables\blocks\polished_travertine.json
-8e68691268762349e55e0cd1dc6e609b5a6e8c46 data\natures_spirit\loot_tables\blocks\brown_kaolin_bricks.json
 29bc5770a6c4445d62c164862c7376aee87df30e data\natures_spirit\loot_tables\blocks\redwood_trapdoor.json
+8e68691268762349e55e0cd1dc6e609b5a6e8c46 data\natures_spirit\loot_tables\blocks\brown_kaolin_bricks.json
 41094ed942488df6ed9e1a534a21a483d43b4b5a data\natures_spirit\loot_tables\blocks\fir_door.json
 16d1d19629db264b2f924e140b9c471d9337dc21 data\natures_spirit\loot_tables\blocks\flaxen_fern.json
 2ea5ded9328d4e994e452c360709e56b059c2f3c data\natures_spirit\loot_tables\blocks\purple_wisteria_leaves.json

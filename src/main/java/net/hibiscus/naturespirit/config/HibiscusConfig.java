@@ -22,8 +22,6 @@ public class HibiscusConfig {
 
    public static boolean calcite_generator;
    public static boolean deepslate_generator;
-   public static boolean vinegar;
-   public static boolean vinegar_duplication;
    public static boolean vanilla_trees_toggle;
    public static boolean birch_forest_toggle;
    public static boolean flower_forest_toggle;
@@ -83,8 +81,6 @@ public class HibiscusConfig {
 
             calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
             deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
-            vinegar = misc_features.get("vinegar").getAsBoolean();
-            vinegar_duplication = misc_features.get("vinegar_duplication").getAsBoolean();
 
             vanilla_trees_toggle  = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
             birch_forest_toggle  = datapack_toggles.get("birch_forest_toggle").getAsBoolean();

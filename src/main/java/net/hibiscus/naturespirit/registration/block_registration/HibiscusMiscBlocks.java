@@ -618,13 +618,6 @@ public class HibiscusMiscBlocks {
            ItemGroups.INGREDIENTS
    );
 
-   public static final Item VINEGAR_BOTTLE = HibiscusConfig.vinegar ? registerItem("vinegar_bottle",
-           new VinegarItem((new Item.Settings()).recipeRemainder(Items.GLASS_BOTTLE).maxCount(16)),
-           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
-           CHALK_POWDER,
-           ItemGroups.INGREDIENTS
-   ) : null;
-
    public static final Block CHEESE_BLOCK = registerBlock("cheese_block",
            new CheeseBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).strength(2.0F, 1.0F).sounds(BlockSoundGroup.AZALEA_LEAVES))
    );

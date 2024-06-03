@@ -150,9 +150,6 @@ public class NatureSpirit implements ModInitializer {
       HibiscusEntityTypes.registerEntityTypes();
       HibiscusSounds.registerSounds();
       HibiscusCauldronBehavior.registerBehavior();
-      if (HibiscusConfig.vinegar) {
-         DispenserBlock.registerBehavior(HibiscusMiscBlocks.VINEGAR_BOTTLE, new HibiscusVinegarDispenserBehavior());
-      }
 
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
