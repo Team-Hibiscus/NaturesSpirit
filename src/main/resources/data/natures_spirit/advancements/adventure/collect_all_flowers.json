@@ -1,0 +1,582 @@
+{
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "blue_wisteria_vines":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:blue_wisteria_vines"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white_wisteria_vines":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:white_wisteria_vines"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pink_wisteria_vines":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:pink_wisteria_vines"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purple_wisteria_vines":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:purple_wisteria_vines"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lotus_flower":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:lotus_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "yellow_wildflower":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:yellow_wildflower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purple_wildflower":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:purple_wildflower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bluebell":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:bluebell"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "anemone":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:anemone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue_iris":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:blue_iris"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white_heather":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:white_heather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "black_iris":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:black_iris"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purple_heather":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:purple_heather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dwarf_blossoms":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:dwarf_blossoms"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ruby_blossoms":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:ruby_blossoms"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "hibiscus":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:hibiscus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tiger_lily":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:tiger_lily"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "protea":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:protea"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_heather":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:red_heather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gardenia":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:gardenia"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "foxglove":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:foxglove"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bleeding_heart":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:bleeding_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "carnation":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:carnation"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue_bulbs":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:blue_bulbs"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "marigold":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:marigold"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "snapdragon":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:snapdragon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lavender":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "natures_spirit:lavender"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dandelion":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:dandelion"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "poppy":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:poppy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue_orchid":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:blue_orchid"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "allium":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:allium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "azure_bluet":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:azure_bluet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_tulip":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:red_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "orange_tulip":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:orange_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white_tulip":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:white_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pink_tulip":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:pink_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "oxeye_daisy":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:oxeye_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cornflower":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cornflower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lily_of_the_valley":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lily_of_the_valley"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sunflower":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sunflower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lilac":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lilac"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "peony":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:peony"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rose_bush":  {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:rose_bush"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.collect_all_flowers.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "natures_spirit:lavender"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.collect_all_flowers.title"
+    }
+  },
+  "requirements": [
+    ["blue_wisteria_vines"],
+    ["white_wisteria_vines"],
+    ["pink_wisteria_vines"],
+    ["purple_wisteria_vines"],
+    ["lotus_flower"],
+    ["yellow_wildflower"],
+    ["purple_wildflower"],
+    ["bluebell"],
+    ["anemone"],
+    ["blue_iris"],
+    ["white_heather"],
+    ["black_iris"],
+    ["purple_heather"],
+    ["dwarf_blossoms"],
+    ["ruby_blossoms"],
+    ["hibiscus"],
+    ["tiger_lily"],
+    ["protea"],
+    ["red_heather"],
+    ["gardenia"],
+    ["foxglove"],
+    ["bleeding_heart"],
+    ["carnation"],
+    ["blue_bulbs"],
+    ["marigold"],
+    ["snapdragon"],
+    ["lavender"],
+    ["dandelion"],
+    ["poppy"],
+    ["blue_orchid"],
+    ["allium"],
+    ["azure_bluet"],
+    ["red_tulip"],
+    ["orange_tulip"],
+    ["white_tulip"],
+    ["pink_tulip"],
+    ["oxeye_daisy"],
+    ["cornflower"],
+    ["lily_of_the_valley"],
+    ["sunflower"],
+    ["lilac"],
+    ["peony"],
+    ["rose_bush"]
+  ],
+  "sends_telemetry_event": true
+}

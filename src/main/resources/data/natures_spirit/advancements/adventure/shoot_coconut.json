@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:adventure/shoot_arrow",
+  "criteria": {
+    "shot": {
+      "trigger": "natures_spirit:coconut_hit"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.shoot_coconut.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "natures_spirit:coconut"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.shoot_coconut.title"
+    }
+  },
+  "requirements": [
+    [
+      "shot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,52 @@
+{
+  "parent": "minecraft:adventure/kill_a_mob",
+  "criteria": {
+    "minecraft:zombie": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:zombie"
+            }
+          }
+        ],
+        "killing_blow": {
+          "direct_entity": {
+            "equipment": {
+              "mainhand": {
+                "items":
+                  [
+                    "natures_spirit:kaolin"
+                  ]
+              }
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.kaolin_kill.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "natures_spirit:kaolin"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.kaolin_kill.title"
+    }
+  },
+  "requirements": [
+    [
+      "minecraft:zombie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

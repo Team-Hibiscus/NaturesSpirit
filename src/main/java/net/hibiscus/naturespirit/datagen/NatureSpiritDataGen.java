@@ -1423,6 +1423,21 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          translationBuilder.add(HibiscusItemGroups.NS_MISC_ITEM_GROUP, "Nature's Spirit Misc.");
          translationBuilder.add(HibiscusItemGroups.NS_WOOD_ITEM_GROUP, "Nature's Spirit Woods");
          translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
+
+
+
+         translationBuilder.add("advancements.adventure.kaolin_kill.description", "Kill a Zombie with a Kaolin block");
+         translationBuilder.add("advancements.adventure.kaolin_kill.title", "You're Kaolin This!");
+
+         translationBuilder.add("advancements.adventure.shoot_coconut.description", "Hit a Coconut with a projectile");
+         translationBuilder.add("advancements.adventure.shoot_coconut.title", "Tropical Blast!");
+
+         translationBuilder.add("advancements.adventure.collect_all_flowers.description", "Collect all flowers.");
+         translationBuilder.add("advancements.adventure.collect_all_flowers.title", "Flower Power");
+
+         translationBuilder.add("advancements.adventure.sandy_forage.description", "Follow the Roots of a Turnip to a Turnip block");
+         translationBuilder.add("advancements.adventure.sandy_forage.title", "Sandy Forage");
+
          translationBuilder.add(CHALK_POWDER, "Chalk Powder");
          translationBuilder.add(HibiscusMiscBlocks.GREEN_OLIVES, "Green Olives");
          translationBuilder.add(HibiscusMiscBlocks.BLACK_OLIVES, "Black Olives");
