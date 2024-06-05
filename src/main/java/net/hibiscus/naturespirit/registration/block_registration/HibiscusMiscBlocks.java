@@ -11,11 +11,10 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
-import net.hibiscus.naturespirit.config.HibiscusConfig;
+import net.hibiscus.naturespirit.blocks.SemiTallGrassBlock;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.DesertTurnipItem;
 import net.hibiscus.naturespirit.items.PizzaItem;
-import net.hibiscus.naturespirit.items.VinegarItem;
 import net.hibiscus.naturespirit.registration.FlowerSet;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
@@ -231,7 +230,7 @@ public class HibiscusMiscBlocks {
            0.3f
    );
    public static final Block TALL_OAT_GRASS = registerPlantBlock("tall_oat_grass",
-           new TallPlantBlock(FabricBlockSettings
+           new SemiTallGrassBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.PALE_YELLOW)
                    .noCollision()
@@ -494,11 +493,11 @@ public class HibiscusMiscBlocks {
    public static final FlowerSet PURPLE_HEATHER = new FlowerSet("purple_heather", Items.PURPLE_DYE, StatusEffects.FIRE_RESISTANCE, WHITE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
    public static final FlowerSet ANEMONE = new FlowerSet("anemone", Items.MAGENTA_DYE, StatusEffects.RESISTANCE, PURPLE_HEATHER.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
    public static final FlowerSet DWARF_BLOSSOMS = new FlowerSet("dwarf_blossoms", Items.PINK_DYE, StatusEffects.RESISTANCE, ANEMONE.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
-   public static final FlowerSet HIBISCUS = new FlowerSet("hibiscus", Items.RED_DYE, StatusEffects.LUCK, DWARF_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
+   public static final FlowerSet PROTEA = new FlowerSet("protea", Items.PINK_DYE, StatusEffects.WATER_BREATHING, DWARF_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.ANEMONE);
+   public static final FlowerSet HIBISCUS = new FlowerSet("hibiscus", Items.RED_DYE, StatusEffects.LUCK, PROTEA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet BLUE_IRIS = new FlowerSet("blue_iris", Items.BLUE_DYE, StatusEffects.STRENGTH, HIBISCUS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
    public static final FlowerSet BLACK_IRIS = new FlowerSet("black_iris", Items.BLACK_DYE, StatusEffects.STRENGTH, BLUE_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet PROTEA = new FlowerSet("protea", Items.PINK_DYE, StatusEffects.WATER_BREATHING, BLACK_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.SMALL);
-   public static final FlowerSet RUBY_BLOSSOMS = new FlowerSet("ruby_blossoms", Items.RED_DYE, StatusEffects.JUMP_BOOST, PROTEA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
+   public static final FlowerSet RUBY_BLOSSOMS = new FlowerSet("ruby_blossoms", Items.RED_DYE, StatusEffects.JUMP_BOOST, BLACK_IRIS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_SMALL);
    public static final FlowerSet SILVERBUSH = new FlowerSet("silverbush", RUBY_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
 

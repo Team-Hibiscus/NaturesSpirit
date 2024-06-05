@@ -12,15 +12,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class LargeDesertFernBlock extends FernBlock {
-   protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+   protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
    public LargeDesertFernBlock(Settings properties) {
       super(properties);
-   }
-
-   public VoxelShape getOutlineShape(BlockState state, BlockView level, BlockPos pos, ShapeContext context) {
-      Vec3d vec3 = state.getModelOffset(level, pos);
-      return SHAPE.offset(vec3.x, vec3.y, vec3.z);
    }
 
    @Override protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
