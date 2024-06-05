@@ -1,6 +1,6 @@
 {
   "angry_texture": "minecraft:entity/wolf/wolf_ashen_angry",
-  "biomes": "minecraft:spawns_ashen_wolf",
+  "biomes": "#minecraft:spawns_ashen_wolf",
   "tame_texture": "minecraft:entity/wolf/wolf_ashen_tame",
   "wild_texture": "minecraft:entity/wolf/wolf_ashen"
 }
