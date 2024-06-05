@@ -1,32 +1,27 @@
 package net.hibiscus.naturespirit.advancements;
 
-import com.google.gson.JsonObject;
-import net.hibiscus.naturespirit.NatureSpirit;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.hibiscus.naturespirit.registration.HibiscusCriteria;
+import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.criterion.AbstractCriterion;
-import net.minecraft.advancement.criterion.AbstractCriterionConditions;
 import net.minecraft.entity.Entity;
 import net.minecraft.loot.context.LootContext;
-import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
-import net.minecraft.predicate.entity.AdvancementEntityPredicateSerializer;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.LootContextPredicate;
+import net.minecraft.predicate.entity.LootContextPredicateValidator;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
+
+import java.util.Optional;
 
 public class CoconutHitCriterion extends AbstractCriterion <CoconutHitCriterion.Conditions> {
-   static final Identifier ID = new Identifier(NatureSpirit.MOD_ID, "coconut_hit");
 
    public CoconutHitCriterion() {
    }
 
-   public Identifier getId() {
-      return ID;
-   }
 
-   public CoconutHitCriterion.Conditions conditionsFromJson(JsonObject jsonObject, LootContextPredicate lootContextPredicate, AdvancementEntityPredicateDeserializer advancementEntityPredicateDeserializer) {
-      LootContextPredicate lootContextPredicate2 = EntityPredicate.contextPredicateFromJson(jsonObject, "projectile", advancementEntityPredicateDeserializer);
-      return new CoconutHitCriterion.Conditions(lootContextPredicate, lootContextPredicate2);
+   public Codec<CoconutHitCriterion.Conditions> getConditionsCodec() {
+      return CoconutHitCriterion.Conditions.CODEC;
    }
 
    public void trigger(ServerPlayerEntity player, Entity projectile) {
@@ -36,26 +31,28 @@ public class CoconutHitCriterion extends AbstractCriterion <CoconutHitCriterion.
       });
    }
 
-   public static class Conditions extends AbstractCriterionConditions {
-      private final LootContextPredicate projectile;
-
-      public Conditions(LootContextPredicate player, LootContextPredicate projectile) {
-         super(CoconutHitCriterion.ID, player);
-         this.projectile = projectile;
-      }
-
-      public static CoconutHitCriterion.Conditions create(LootContextPredicate projectile) {
-         return new CoconutHitCriterion.Conditions(LootContextPredicate.EMPTY, projectile);
-      }
-
-      public JsonObject toJson(AdvancementEntityPredicateSerializer predicateSerializer) {
-         JsonObject jsonObject = super.toJson(predicateSerializer);
-         jsonObject.add("projectile", this.projectile.toJson(predicateSerializer));
-         return jsonObject;
+   public static record Conditions(Optional <LootContextPredicate> player, Optional<LootContextPredicate> projectile) implements AbstractCriterion.Conditions {
+      public static final Codec <CoconutHitCriterion.Conditions> CODEC = RecordCodecBuilder.create((instance) -> {
+         return instance.group(EntityPredicate.LOOT_CONTEXT_PREDICATE_CODEC.optionalFieldOf("player").forGetter(CoconutHitCriterion.Conditions::player), EntityPredicate.LOOT_CONTEXT_PREDICATE_CODEC.optionalFieldOf("projectile").forGetter(CoconutHitCriterion.Conditions::projectile)).apply(instance, CoconutHitCriterion.Conditions::new);
+      });
+      public static AdvancementCriterion <CoconutHitCriterion.Conditions> create(Optional<LootContextPredicate> projectile) {
+         return HibiscusCriteria.COCONUT_HIT_CRITERION.create(new CoconutHitCriterion.Conditions(Optional.empty(), projectile));
       }
 
       public boolean test(LootContext projectileContext) {
-            return this.projectile.test(projectileContext);
+         return this.projectile.isEmpty() || this.projectile.get().test(projectileContext);
+      }
+
+
+      public void validate(LootContextPredicateValidator validator) {
+         validator.validateEntityPredicate(this.projectile, ".projectile");
+      }
+      public Optional<LootContextPredicate> player() {
+         return this.player;
+      }
+
+      public Optional<LootContextPredicate> projectile() {
+         return this.projectile;
       }
    }
 }

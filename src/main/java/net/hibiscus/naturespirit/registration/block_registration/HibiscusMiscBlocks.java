@@ -230,7 +230,7 @@ public class HibiscusMiscBlocks {
            0.3f
    );
    public static final Block TALL_OAT_GRASS = registerPlantBlock("tall_oat_grass",
-           new SemiTallGrassBlock(FabricBlockSettings
+           new SemiTallGrassBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.PALE_YELLOW)
                    .noCollision()
