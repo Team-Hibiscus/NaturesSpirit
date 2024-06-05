@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-02T00:50:10.0609658	Nature's Spirit/Recipes
+// 1.20.1	2024-06-03T18:46:19.7556807	Nature's Spirit/Recipes
 3de9b09fc06f5c5e611ce77b73725eeb9049da9d data\natures_spirit\recipes\coconut_button.json
 5eb53a28cdf79a30b80e64f2fb9380913251d711 data\natures_spirit\advancements\recipes\transportation\mahogany_chest_boat.json
 38f82bf6a7a2f5b702fdeff271f56dec88f4c9b4 data\natures_spirit\advancements\recipes\building_blocks\cobbled_travertine_stairs.json
@@ -310,8 +310,8 @@ af3c77aab92f2863d0b4a193f73b355a9a80f0ee data\natures_spirit\recipes\ghaf_fence_
 b5ec99da5e79c65ee6f1cb0c691585e9518e004c data\natures_spirit\recipes\chert_tile_stairs.json
 8a313290cebde4a3cec07eeed35f81eefd59584a data\natures_spirit\advancements\recipes\decorations\larch_hanging_sign.json
 246831b21c3effbcc13f2387c02273a47da9defd data\natures_spirit\recipes\joshua_trapdoor.json
-23857c89091ce95b9b647ba644338295b4741ba2 data\natures_spirit\recipes\saxaul_planks.json
 0b2f3c32021563b5c1b9fb5861d7be39aa8f4be8 data\natures_spirit\recipes\maple_planks.json
+23857c89091ce95b9b647ba644338295b4741ba2 data\natures_spirit\recipes\saxaul_planks.json
 e328aba09a2094d2fdde9086d212032a89a01c72 data\natures_spirit\recipes\mahogany_fence_gate.json
 b971b50f13f4166c4465c87229393fb9c067a4a8 data\natures_spirit\recipes\redwood_fence.json
 94ac6d95ed37e64505818e0565b58521bfb2c483 data\natures_spirit\recipes\maple_slab.json

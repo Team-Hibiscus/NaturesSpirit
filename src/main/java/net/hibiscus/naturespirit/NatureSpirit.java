@@ -10,12 +10,12 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
+import net.hibiscus.naturespirit.registration.HibiscusCriteria;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocksCompatability;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
-import net.hibiscus.naturespirit.items.HibiscusVinegarDispenserBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
@@ -149,6 +149,7 @@ public class NatureSpirit implements ModInitializer {
       HibiscusItemGroups.registerItemGroup();
       HibiscusEntityTypes.registerEntityTypes();
       HibiscusSounds.registerSounds();
+      HibiscusCriteria.registerCriteria();
       HibiscusCauldronBehavior.registerBehavior();
 
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK.asItem(), 0.5F);

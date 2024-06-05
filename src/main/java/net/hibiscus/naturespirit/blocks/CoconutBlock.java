@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import net.hibiscus.naturespirit.registration.HibiscusCriteria;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
@@ -75,7 +76,7 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
    public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
       Entity entity = projectile.getOwner();
       if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
-         serverPlayerEntity.incrementStat(Stats.TARGET_HIT);
+         HibiscusCriteria.COCONUT_HIT_CRITERION.trigger(serverPlayerEntity, projectile);
       }
       if (canFallThrough(world.getBlockState(hit.getBlockPos().down())) && !state.get(WATERLOGGED)) {
          world.setBlockState(hit.getBlockPos(), state.with(FACING, Direction.UP));
