@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.registration;
 
-import net.fabricmc.fabric.mixin.object.builder.CriteriaAccessor;
 import net.hibiscus.naturespirit.advancements.CoconutHitCriterion;
+import net.hibiscus.naturespirit.mixin.CriteriaAccessor;
 
 public class HibiscusCriteria {
    public static void registerCriteria() {}

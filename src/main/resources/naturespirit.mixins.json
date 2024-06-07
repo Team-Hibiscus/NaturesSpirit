@@ -11,6 +11,7 @@
     "BoatDispenserBehaviorMixin",
     "BoatEntityMixin",
     "CoralBlockBlockMixin",
+    "CriteriaAccessor",
     "StatsTypeAccessor"
   ],
   "client": [
