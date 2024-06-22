@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "minecraft:blue_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:blue_bulbs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:blue_dye"
+  }
+}

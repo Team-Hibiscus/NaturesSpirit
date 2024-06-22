@@ -2,10 +2,10 @@ package net.hibiscus.naturespirit.blocks;
 
 
 import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.TallPlantBlock;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class TallLargeDesertFernBlock extends TallPlantBlock {

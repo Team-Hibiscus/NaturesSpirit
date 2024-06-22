@@ -25,7 +25,7 @@ import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
 
 public class HibiscusWoods {
    public static final WoodSet REDWOOD = new WoodSet(
-           new Identifier(MOD_ID, "redwood"),
+           Identifier.of(MOD_ID, "redwood"),
            MapColor.TERRACOTTA_BROWN,
            MapColor.RED,
            Blocks.CHERRY_LEAVES,
@@ -41,7 +41,7 @@ public class HibiscusWoods {
            Optional.of(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE)
    );
    public static final WoodSet SUGI = new WoodSet(
-           new Identifier(MOD_ID, "sugi"),
+           Identifier.of(MOD_ID, "sugi"),
            MapColor.DEEPSLATE_GRAY,
            MapColor.DIRT_BROWN,
            REDWOOD.getLeaves(),
@@ -58,7 +58,7 @@ public class HibiscusWoods {
    );
 
    public static final WoodSet WISTERIA = new WoodSet(
-           new Identifier(MOD_ID, "wisteria"),
+           Identifier.of(MOD_ID, "wisteria"),
            MapColor.GRAY,
            MapColor.TERRACOTTA_WHITE,
            SUGI.getLeaves(),
@@ -73,7 +73,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE
    );
    public static final WoodSet FIR = new WoodSet(
-           new Identifier(MOD_ID, "fir"),
+           Identifier.of(MOD_ID, "fir"),
            MapColor.GRAY,
            MapColor.DIRT_BROWN,
            WISTERIA.getPurpleLeaves(),
@@ -88,7 +88,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.FIR_TREE
    );
    public static final WoodSet WILLOW = new WoodSet(
-           new Identifier(MOD_ID, "willow"),
+           Identifier.of(MOD_ID, "willow"),
            MapColor.TERRACOTTA_BLACK,
            MapColor.TERRACOTTA_BROWN,
            FIR.getLeaves(),
@@ -103,7 +103,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.WILLOW_TREE
    );
    public static final WoodSet ASPEN = new WoodSet(
-           new Identifier(MOD_ID, "aspen"),
+           Identifier.of(MOD_ID, "aspen"),
            MapColor.WHITE_GRAY,
            MapColor.PALE_YELLOW,
            WILLOW.getLeaves(),
@@ -118,7 +118,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.ASPEN_TREE
    );
    public static final WoodSet MAPLE = new WoodSet(
-           new Identifier(MOD_ID,"maple"),
+           Identifier.of(MOD_ID,"maple"),
            MapColor.SPRUCE_BROWN,
            MapColor.ORANGE,
            ASPEN.getLeaves(),
@@ -133,7 +133,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.RED_MAPLE_TREE
    );
    public static final WoodSet CYPRESS = new WoodSet(
-           new Identifier(MOD_ID, "cypress"),
+           Identifier.of(MOD_ID, "cypress"),
            MapColor.SPRUCE_BROWN,
            MapColor.OAK_TAN,
            MAPLE.getYellowLeaves(),
@@ -148,7 +148,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.CYPRESS_TREE
    );
    public static final WoodSet OLIVE = new WoodSet(
-           new Identifier(MOD_ID, "olive"),
+           Identifier.of(MOD_ID, "olive"),
            MapColor.PALE_YELLOW,
            MapColor.PALE_GREEN,
            CYPRESS.getLeaves(),
@@ -163,7 +163,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.OLIVE_TREE
    );
    public static final WoodSet JOSHUA = new WoodSet(
-           new Identifier(MOD_ID, "joshua"),
+           Identifier.of(MOD_ID, "joshua"),
            MapColor.PALE_GREEN,
            MapColor.DEEPSLATE_GRAY,
            OLIVE.getLeaves(),
@@ -178,7 +178,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.JOSHUA_TREE
    );
    public static final WoodSet GHAF = new WoodSet(
-           new Identifier(MOD_ID, "ghaf"),
+           Identifier.of(MOD_ID, "ghaf"),
            MapColor.LIGHT_GRAY,
            MapColor.BROWN,
            JOSHUA.getLeaves(),
@@ -204,7 +204,7 @@ public class HibiscusWoods {
            new CarpetBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).strength(0F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.GRASS)), HibiscusItemGroups.NS_WOOD_ITEM_GROUP
    );
    public static final WoodSet PALO_VERDE = new WoodSet(
-           new Identifier(MOD_ID, "palo_verde"),
+           Identifier.of(MOD_ID, "palo_verde"),
            MapColor.YELLOW,
            MapColor.LICHEN_GREEN,
            GHAF.getLeaves(),
@@ -219,7 +219,7 @@ public class HibiscusWoods {
            HibiscusConfiguredFeatures.PALO_VERDE_TREE
    );
    public static final WoodSet COCONUT = new WoodSet(
-           new Identifier(MOD_ID, "coconut"),
+           Identifier.of(MOD_ID, "coconut"),
            MapColor.DULL_PINK,
            MapColor.BROWN,
            PALO_VERDE.getLeaves(),
@@ -287,7 +287,7 @@ public class HibiscusWoods {
            0.1F
    );
    public static final WoodSet CEDAR = new WoodSet(
-           new Identifier(MOD_ID, "cedar"),
+           Identifier.of(MOD_ID, "cedar"),
            MapColor.TERRACOTTA_MAGENTA,
            MapColor.GRAY,
            COCONUT.getLeaves(),
@@ -303,7 +303,7 @@ public class HibiscusWoods {
    );
 
    public static final WoodSet LARCH = new WoodSet(
-           new Identifier(MOD_ID, "larch"),
+           Identifier.of(MOD_ID, "larch"),
            MapColor.BLUE,
            MapColor.LIGHT_GRAY,
            CEDAR.getLeaves(),
@@ -329,7 +329,7 @@ public class HibiscusWoods {
    );
 
       public static final WoodSet MAHOGANY = new WoodSet(
-              new Identifier(MOD_ID, "mahogany"),
+              Identifier.of(MOD_ID, "mahogany"),
               MapColor.BROWN,
               MapColor.LIGHT_GRAY,
               LARCH.getLeaves(),
@@ -346,7 +346,7 @@ public class HibiscusWoods {
       );
 
    public static final WoodSet SAXAUL = new WoodSet(
-           new Identifier(MOD_ID, "saxaul"),
+           Identifier.of(MOD_ID, "saxaul"),
            MapColor.LIGHT_GRAY,
            MapColor.LIGHT_GRAY,
            MAHOGANY.getLeaves(),
@@ -362,7 +362,7 @@ public class HibiscusWoods {
    );
 
 //   public static final WoodSet BANYAN = new WoodSet(
-//           new Identifier(MOD_ID, "banyan"),
+//           Identifier.of(MOD_ID, "banyan"),
 //           MapColor.BROWN,
 //           MapColor.LIGHT_GRAY,
 //           LARCH.getLeaves(),

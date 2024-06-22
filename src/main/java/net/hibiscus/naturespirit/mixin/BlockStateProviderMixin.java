@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.mixin;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;

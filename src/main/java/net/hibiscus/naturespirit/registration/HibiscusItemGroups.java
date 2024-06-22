@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -31,7 +30,7 @@ public class HibiscusItemGroups {
    }
 
    private static RegistryKey <ItemGroup> register(String id) {
-      return RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, id));
+      return RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of(MOD_ID, id));
    }
 
    private static void build(RegistryKey <ItemGroup> key, ItemGroup itemGroup) {

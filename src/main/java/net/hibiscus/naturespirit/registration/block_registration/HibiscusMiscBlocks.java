@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.registration.block_registration;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -9,7 +8,6 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
-import net.hibiscus.naturespirit.blocks.SemiTallGrassBlock;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.items.DesertTurnipItem;
 import net.hibiscus.naturespirit.items.PizzaItem;
@@ -19,7 +17,7 @@ import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.registration.StoneSet;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffects;
@@ -40,28 +38,28 @@ public class HibiscusMiscBlocks {
    public static final Block RED_MOSS_CARPET = registerBlock("red_moss_carpet", new CarpetBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).strength(0.1F).sounds(BlockSoundGroup.MOSS_CARPET).pistonBehavior(PistonBehavior.DESTROY)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.MOSS_CARPET, ItemGroups.NATURAL);
 
    public static final Block SANDY_SOIL = registerBlock("sandy_soil",
-           new Block(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(Instrument.BASEDRUM).strength(0.5F).sounds(BlockSoundGroup.GRAVEL)),
+           new Block(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).sounds(BlockSoundGroup.GRAVEL)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.FARMLAND,
            ItemGroups.NATURAL
    );
    public static final Block PINK_SAND = registerBlock("pink_sand",
-           new ColoredFallingBlock(new ColorCode(14331784), AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(Instrument.SNARE).strength(0.5F).sounds(BlockSoundGroup.SAND)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
+           new ColoredFallingBlock(new ColorCode(14331784), AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sounds(BlockSoundGroup.SAND)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
    );
 
    public static final Block PINK_SANDSTONE = registerBlock("pink_sandstone",
-           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
+           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
    );
 
    public static final Block CHISELED_PINK_SANDSTONE = registerBlock("chiseled_pink_sandstone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(
-           Instrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
+           NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
 
    public static final Block CUT_PINK_SANDSTONE = registerBlock("cut_pink_sandstone",
-           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
+           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
    );
 
    public static final Block SMOOTH_PINK_SANDSTONE = registerBlock("smooth_pink_sandstone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(
-           Instrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
+           NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
 
    public static final Block PINK_SANDSTONE_STAIRS = registerBlock(
            "pink_sandstone_stairs",
@@ -73,10 +71,10 @@ public class HibiscusMiscBlocks {
    );
 
    public static final Block PINK_SANDSTONE_SLAB = registerBlock("pink_sandstone_slab", new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(
-           Instrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
+           NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
 
    public static final Block CUT_PINK_SANDSTONE_SLAB = registerBlock("cut_pink_sandstone_slab",
-           new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
+           new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_MISC_ITEM_GROUP
    );
 
    public static final Block SMOOTH_PINK_SANDSTONE_SLAB = registerBlock("smooth_pink_sandstone_slab", new SlabBlock(AbstractBlock.Settings.copy(SMOOTH_PINK_SANDSTONE)), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
@@ -467,7 +465,7 @@ public class HibiscusMiscBlocks {
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Blocks.RED_MUSHROOM, 0.1F);
 
    public static final Block SHIITAKE_MUSHROOM_BLOCK = registerBlock("shiitake_mushroom_block",
-           new MushroomBlock(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(Instrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
+           new MushroomBlock(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(NoteBlockInstrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.RED_MUSHROOM_BLOCK,
            ItemGroups.NATURAL
@@ -582,14 +580,14 @@ public class HibiscusMiscBlocks {
    );
 
    public static final Block DESERT_TURNIP_ROOT_BLOCK = registerBlock("desert_turnip_root_block",
-           new PillarBlock(AbstractBlock.Settings.create().burnable().instrument(Instrument.BASS).mapColor(MapColor.SPRUCE_BROWN).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
+           new PillarBlock(AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.SPRUCE_BROWN).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.SHROOMLIGHT,
            ItemGroups.NATURAL
    );
 
    public static final Block DESERT_TURNIP_BLOCK = registerBlock("desert_turnip_block",
-           new DesertTurnipBlock(AbstractBlock.Settings.create().burnable().instrument(Instrument.BASS).mapColor(MapColor.PALE_PURPLE).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
+           new DesertTurnipBlock(AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.PALE_PURPLE).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK,
            ItemGroups.NATURAL
@@ -686,8 +684,8 @@ public class HibiscusMiscBlocks {
    );
 
 
-   public static final StoneSet TRAVERTINE = new StoneSet(new Identifier(MOD_ID, "travertine"), MapColor.LIGHT_GRAY, Items.POLISHED_ANDESITE_SLAB, Items.ANDESITE, 1.5F, true, false, true, true);
-   public static final StoneSet CHERT = new StoneSet(new Identifier(MOD_ID, "chert"), MapColor.OAK_TAN, TRAVERTINE.getTilesSlab().asItem(), TRAVERTINE.getBase().asItem(), .9F, false, false, false, true, true);
+   public static final StoneSet TRAVERTINE = new StoneSet(Identifier.of(MOD_ID, "travertine"), MapColor.LIGHT_GRAY, Items.POLISHED_ANDESITE_SLAB, Items.ANDESITE, 1.5F, true, false, true, true);
+   public static final StoneSet CHERT = new StoneSet(Identifier.of(MOD_ID, "chert"), MapColor.OAK_TAN, TRAVERTINE.getTilesSlab().asItem(), TRAVERTINE.getBase().asItem(), .9F, false, false, false, true, true);
 
    public static final Block CHERT_GOLD_ORE = registerBlock("chert_gold_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.GOLD_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
@@ -739,8 +737,8 @@ public class HibiscusMiscBlocks {
    );
 
 
-   public static final BlockSetType PAPER_BLOCK_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(new Identifier(MOD_ID, "paper"));
-   public static final WoodType PAPER_WOOD_TYPE = new WoodTypeBuilder().register(new Identifier(MOD_ID, "paper"), PAPER_BLOCK_SET);
+   public static final BlockSetType PAPER_BLOCK_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(Identifier.of(MOD_ID, "paper"));
+   public static final WoodType PAPER_WOOD_TYPE = new WoodTypeBuilder().register(Identifier.of(MOD_ID, "paper"), PAPER_BLOCK_SET);
 
    public static final Block PAPER_BLOCK = registerBlock("paper_block",
            new Block(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
@@ -760,7 +758,7 @@ public class HibiscusMiscBlocks {
            PAPER_PANEL
    );
    public static final Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(           PAPER_BLOCK_SET,
-           AbstractBlock.Settings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
+           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, PAPER_DOOR);
    public static final Block FRAMED_PAPER_BLOCK = registerBlock("framed_paper_block",
            new Block(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
@@ -780,7 +778,7 @@ public class HibiscusMiscBlocks {
            FRAMED_PAPER_PANEL
    );
    public static final Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
-           AbstractBlock.Settings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
+           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
 
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, FRAMED_PAPER_DOOR);
    public static final Block BLOOMING_PAPER_BLOCK = registerBlock("blooming_paper_block",
@@ -801,7 +799,7 @@ public class HibiscusMiscBlocks {
            BLOOMING_PAPER_PANEL
    );
    public static final Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
-           AbstractBlock.Settings.create().burnable().instrument(Instrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
+           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, BLOOMING_PAPER_DOOR);
 
 

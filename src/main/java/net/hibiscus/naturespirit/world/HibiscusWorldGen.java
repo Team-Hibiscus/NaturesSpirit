@@ -1,15 +1,14 @@
 package net.hibiscus.naturespirit.world;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.mixin.BlockStateProviderMixin;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarverConfig;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarverConfig;
-import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.feature.HugeBrownMushroomFeature;
 import net.hibiscus.naturespirit.world.feature.HugeRedMushroomFeature;
+import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
 import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
@@ -18,9 +17,10 @@ import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.carver.*;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.carver.Carver;
+import net.minecraft.world.gen.carver.CarverConfig;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
@@ -72,62 +72,62 @@ public class HibiscusWorldGen {
            HibiscusSimpleBlockStateProvider.CODEC
    );
    public static final Feature <DeltaFeatureConfig> HIBISCUS_DELTA_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "water_delta_feature"),
+           Identifier.of(MOD_ID, "water_delta_feature"),
            new HibiscusDeltaFeature(DeltaFeatureConfig.CODEC)
    );
    public static final Feature <OreFeatureConfig> HIBISCUS_PUMPKIN_PATCH_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "pumpkin_patch_feature"),
+           Identifier.of(MOD_ID, "pumpkin_patch_feature"),
            new PumpkinPatchFeature(OreFeatureConfig.CODEC)
    );
    public static final Feature <BlockPileFeatureConfig> HIBISCUS_LARGE_PUMPKIN_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "large_pumpkin_feature"),
+           Identifier.of(MOD_ID, "large_pumpkin_feature"),
            new LargePumpkinFeature(BlockPileFeatureConfig.CODEC)
    );
    public static final Feature <TurnipRootFeatureConfig> HIBISCUS_TURNIP_ROOT_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "turnip_root_feature"),
+           Identifier.of(MOD_ID, "turnip_root_feature"),
            new TurnipRootFeature(TurnipRootFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> JOSHUA_TREE_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "joshua_tree_feature"),
+           Identifier.of(MOD_ID, "joshua_tree_feature"),
            new JoshuaTreeFeature(DefaultFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> ALLUAUDIA_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "alluaudia_feature"),
+           Identifier.of(MOD_ID, "alluaudia_feature"),
            new AlluaudiaFeature(DefaultFeatureConfig.CODEC)
    );
    public static final Feature <HugeMushroomFeatureConfig> HUGE_SHIITAKE_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "huge_shiitake_mushroom_feature"),
+           Identifier.of(MOD_ID, "huge_shiitake_mushroom_feature"),
            new HugeShiitakeMushroomFeature(HugeMushroomFeatureConfig.CODEC)
    );
    public static final Feature <net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig> HUGE_RED_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "huge_red_mushroom_feature"),
+           Identifier.of(MOD_ID, "huge_red_mushroom_feature"),
            new HugeRedMushroomFeature(net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig.CODEC)
    );
    public static final Feature <net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig> HUGE_BROWN_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "huge_brown_mushroom_feature"),
+           Identifier.of(MOD_ID, "huge_brown_mushroom_feature"),
            new HugeBrownMushroomFeature(net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> LOTUS_PLANT_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "lotus_plant_feature"),
+           Identifier.of(MOD_ID, "lotus_plant_feature"),
            new LotusPlantFeature(DefaultFeatureConfig.CODEC)
    );
    public static final Feature <RandomPatchFeatureConfig> LEVELED_RANDOM_PATCH_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "leveled_random_patch_feature"),
+           Identifier.of(MOD_ID, "leveled_random_patch_feature"),
            new LeveledRandomPatch(RandomPatchFeatureConfig.CODEC)
    );
 
    private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, MapCodec<P> codec) {
-      return (FoliagePlacerType)Registry.register(Registries.FOLIAGE_PLACER_TYPE, new Identifier (MOD_ID, id), new FoliagePlacerType(codec));
+      return (FoliagePlacerType)Registry.register(Registries.FOLIAGE_PLACER_TYPE, Identifier.of (MOD_ID, id), new FoliagePlacerType(codec));
    }
    private static <P extends TrunkPlacer> TrunkPlacerType<P> registerTrunkPlacer(String id, MapCodec<P> codec) {
-      return (TrunkPlacerType)Registry.register(Registries.TRUNK_PLACER_TYPE,  new Identifier (MOD_ID, id), new TrunkPlacerType(codec));
+      return (TrunkPlacerType)Registry.register(Registries.TRUNK_PLACER_TYPE,  Identifier.of (MOD_ID, id), new TrunkPlacerType(codec));
    }
    private static <P extends TreeDecorator> TreeDecoratorType<P> registerTreeDecorator(String id, MapCodec<P> codec) {
-      return (TreeDecoratorType)Registry.register(Registries.TREE_DECORATOR_TYPE,  new Identifier (MOD_ID, id), new TreeDecoratorType(codec));
+      return (TreeDecoratorType)Registry.register(Registries.TREE_DECORATOR_TYPE,  Identifier.of (MOD_ID, id), new TreeDecoratorType(codec));
    }
 
    private static <C extends CarverConfig, F extends Carver <C>> Carver<C> registerCaveCarver(String id, F carver) {
-      return (Carver)Registry.register(Registries.CARVER, new Identifier(MOD_ID, id), carver);
+      return (Carver)Registry.register(Registries.CARVER, Identifier.of(MOD_ID, id), carver);
    }
 
    public static void registerWorldGen() {

@@ -13,9 +13,8 @@ import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatItem;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.block.SaplingGenerator;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
@@ -28,7 +27,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -326,8 +324,8 @@ public class WoodSet {
       FuelRegistry.INSTANCE.add(this.getFence(), 300);
       FuelRegistry.INSTANCE.add(this.getFenceGate(), 300);
 
-      blockLogsTag = TagKey.of(RegistryKeys.BLOCK, new Identifier(this.getModID(), this.getName() + "_logs"));
-      itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(this.getModID(), this.getName() + "_logs"));
+      blockLogsTag = TagKey.of(RegistryKeys.BLOCK, Identifier.of(this.getModID(), this.getName() + "_logs"));
+      itemLogsTag = TagKey.of(RegistryKeys.ITEM, Identifier.of(this.getModID(), this.getName() + "_logs"));
       addToBuildingTab(getButtonBefore(), getLogBefore(), getSignBefore(), getBoatBefore(), this);
 
       for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
@@ -631,10 +629,10 @@ public class WoodSet {
       return createBlockWithItem("stripped_" + this.getName() + "_bundle", createLogBlock(this.getSideColor(), this.getTopColor()));
    }
    private Block createJoshuaLog() {
-      return createBlockWithItem(getLogName(), new BranchingTrunkBlock(AbstractBlock.Settings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+      return createBlockWithItem(getLogName(), new BranchingTrunkBlock(AbstractBlock.Settings.create().burnable().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
    }
    private Block createStrippedJoshuaLog() {
-      return createBlockWithItem("stripped_" + getLogName(), new BranchingTrunkBlock(AbstractBlock.Settings.create().burnable().mapColor(MapColor.GRAY).instrument(Instrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+      return createBlockWithItem("stripped_" + getLogName(), new BranchingTrunkBlock(AbstractBlock.Settings.create().burnable().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
    }
    private Block createWood() {
       return createBlockWithItem(getWoodName(), createLogBlock(this.getSideColor(), this.getSideColor()));
