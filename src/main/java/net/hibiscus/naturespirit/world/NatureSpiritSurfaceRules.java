@@ -1,8 +1,8 @@
 package net.hibiscus.naturespirit.world;
 
 import com.google.common.collect.ImmutableList;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.VerticalSurfaceType;

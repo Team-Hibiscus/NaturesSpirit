@@ -2,13 +2,11 @@ package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
@@ -22,7 +20,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HibiscusRegistryHelper {
@@ -49,13 +46,13 @@ public class HibiscusRegistryHelper {
    public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(String name, BlockEntityType.Builder<T> factory) {
       return Registry.register(
               Registries.BLOCK_ENTITY_TYPE,
-              new Identifier(NatureSpirit.MOD_ID, name),
+              Identifier.of(NatureSpirit.MOD_ID, name),
               factory.build()
       );
    }
 
    public static Block registerBlock(String name, Block block) {
-      return Registry.register(Registries.BLOCK, new Identifier(NatureSpirit.MOD_ID, name), block);
+      return Registry.register(Registries.BLOCK, Identifier.of(NatureSpirit.MOD_ID, name), block);
    }
 
    public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab) {
@@ -131,7 +128,7 @@ public class HibiscusRegistryHelper {
    }
 
    public static Item registerItem(String name, Item item) {
-      Item item1 = Registry.register(Registries.ITEM, new Identifier(NatureSpirit.MOD_ID, name), item);
+      Item item1 = Registry.register(Registries.ITEM, Identifier.of(NatureSpirit.MOD_ID, name), item);
       NatureSpiritItemHashMap.put(name, item1);
       return item1;
    }

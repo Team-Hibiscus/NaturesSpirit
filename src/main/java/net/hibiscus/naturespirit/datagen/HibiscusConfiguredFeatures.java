@@ -14,7 +14,10 @@ import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.trunk.*;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.MushroomBlock;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntryList;
@@ -34,7 +37,10 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
-import net.minecraft.world.gen.stateprovider.*;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
+import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
@@ -908,7 +914,7 @@ public class HibiscusConfiguredFeatures {
    }
 
    public static RegistryKey <ConfiguredFeature <?, ?>> registerKey(String name) {
-      return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NatureSpirit.MOD_ID, name));
+      return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(NatureSpirit.MOD_ID, name));
    }
 }
 

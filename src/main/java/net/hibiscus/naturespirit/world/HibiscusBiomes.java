@@ -170,7 +170,7 @@ public class HibiscusBiomes {
 
    private static RegistryKey <Biome> register(String name) {
       System.out.println("Registered Resource Key for biome: " + name);
-      RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, new Identifier(NatureSpirit.MOD_ID, name));
+      RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(NatureSpirit.MOD_ID, name));
       BiomesHashMap.put(name, registryKey);
       return registryKey;
    }

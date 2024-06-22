@@ -2,7 +2,6 @@ package net.hibiscus.naturespirit.datagen;
 
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Blocks;
@@ -13,7 +12,6 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.YOffset;
@@ -626,7 +624,7 @@ public class HibiscusPlacedFeatures {
    }
 
    public static RegistryKey <PlacedFeature> registerKey(String name) {
-      return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(NatureSpirit.MOD_ID, name));
+      return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(NatureSpirit.MOD_ID, name));
    }
 
    private static void registerKey(Registerable <PlacedFeature> context, RegistryKey <PlacedFeature> key, RegistryEntry <ConfiguredFeature <?, ?>> configuration, List <PlacementModifier> modifiers) {

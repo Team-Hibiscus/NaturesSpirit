@@ -21,6 +21,6 @@ public class EntityModelLayers {
    }
 
    private static EntityModelLayer create(String id, String layer) {
-      return new EntityModelLayer(new Identifier(NatureSpirit.MOD_ID, id), layer);
+      return new EntityModelLayer(Identifier.of(NatureSpirit.MOD_ID, id), layer);
    }
 }

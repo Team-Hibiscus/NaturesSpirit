@@ -19,10 +19,10 @@ public class HibiscusEntityTypes {
 
 
    public static <T extends EntityType <?>> T registerEntityType(String id, T type) {
-      return Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, id), type);
+      return Registry.register(Registries.ENTITY_TYPE, Identifier.of(MOD_ID, id), type);
    }
 //   public static <T extends Entity> EntityType<T> registerMobEntityType(String id, FabricEntityTypeBuilder<T> type) {
-//      EntityType<T> entityType = Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, id), type.build());
+//      EntityType<T> entityType = Registry.register(Registries.ENTITY_TYPE, Identifier.of(MOD_ID, id), type.build());
 //         registerItem(id + "spawn_egg", new SpawnEggItem((EntityType <? extends MobEntity>) entityType, 15771042, 14377823, new FabricItemSettings().maxCount(64)), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.COW_SPAWN_EGG,
 //                 ItemGroups.SPAWN_EGGS);
 //      return entityType;

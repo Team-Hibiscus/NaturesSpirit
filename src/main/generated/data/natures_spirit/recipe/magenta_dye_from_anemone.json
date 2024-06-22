@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "minecraft:magenta_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:anemone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:magenta_dye"
+  }
+}

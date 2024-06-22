@@ -1,7 +1,5 @@
 package net.hibiscus.naturespirit;
 
-import com.mojang.datafixers.DataFixerBuilder;
-import com.mojang.datafixers.schemas.Schema;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -10,29 +8,20 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
-import net.hibiscus.naturespirit.registration.HibiscusCriteria;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
-import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
+import net.hibiscus.naturespirit.registration.*;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.registration.HibiscusSounds;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
+import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.component.DataComponentType;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.passive.CatVariant;
-import net.minecraft.item.Items;
 import net.minecraft.particle.SimpleParticleType;
-import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.stat.StatFormatter;
@@ -67,66 +56,66 @@ public class NatureSpirit implements ModInitializer {
       }
       if(modContainer.isPresent()) {
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_vanilla_trees"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_vanilla_trees"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_vanilla_trees"),
                  HibiscusConfig.vanilla_trees_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_flower_forest"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_flower_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_flower_forest"),
                  HibiscusConfig.flower_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_birch_forest"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_birch_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_birch_forest"),
                  HibiscusConfig.birch_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_jungle"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_jungle"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_jungle"),
                  HibiscusConfig.jungle_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_swamp"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_swamp"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_swamp"),
                  HibiscusConfig.swamp_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_desert"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_desert"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_desert"),
                  HibiscusConfig.desert_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_badlands"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_badlands"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_badlands"),
                  HibiscusConfig.badlands_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_mountain_biomes"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_mountain_biomes"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_mountain_biomes"),
                  HibiscusConfig.mountain_biomes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_savannas"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_savannas"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_savannas"),
                  HibiscusConfig.savanna_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_dark_forest"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_dark_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_dark_forest"),
                  HibiscusConfig.dark_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
+                 Identifier.of(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL
          );
       }
-      Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "milk"), MILK_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
+      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
+      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
+      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
+      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "milk"), MILK_PARTICLE);
+      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
       HibiscusSounds.registerSounds();
       HibiscusDataComponents.registerDataComponents();
       HibiscusVillagers.registerVillagers();
@@ -150,6 +139,6 @@ public class NatureSpirit implements ModInitializer {
          DispenserBlock.registerBehavior(boat.chestBoat(), new HibiscusBoatDispensorBehavior(boat, true));
       }
 
-      Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(new Identifier(MOD_ID, "textures/entity/cat/trans" + ".png")));
+      Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
    }
 }

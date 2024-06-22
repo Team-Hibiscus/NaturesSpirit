@@ -219,7 +219,7 @@ public class HibiscusBoatEntity extends BoatEntity {
       }
 
       public Identifier id() {
-         return new Identifier(MOD_ID, name);
+         return Identifier.of(MOD_ID, name);
       }
 
       @Override public String asString() {

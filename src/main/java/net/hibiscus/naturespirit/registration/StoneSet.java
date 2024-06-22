@@ -10,7 +10,8 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.StoneHashMap;
+import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerBlockItem;
 import static net.minecraft.data.family.BlockFamilies.register;
 
 public class StoneSet {

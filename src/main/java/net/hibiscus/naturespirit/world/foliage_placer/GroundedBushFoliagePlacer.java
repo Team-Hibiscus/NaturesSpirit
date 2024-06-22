@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.world.foliage_placer;
 
-import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -13,7 +12,6 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 
 import java.util.function.Predicate;
 

@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.world.feature;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.BlockState;

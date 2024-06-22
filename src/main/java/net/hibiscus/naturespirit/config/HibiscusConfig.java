@@ -9,7 +9,9 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Path;
 
 public class HibiscusConfig {

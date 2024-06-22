@@ -1,8 +1,6 @@
 package net.hibiscus.naturespirit.world.carver;
 
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -21,6 +19,8 @@ import net.minecraft.world.gen.chunk.AquiferSampler;
 import net.minecraft.world.gen.densityfunction.DensityFunction;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Function;
 
 public class ReplaceableCaveCarver extends Carver <ReplaceableCaveCarverConfig> {
 public ReplaceableCaveCarver(Codec<ReplaceableCaveCarverConfig> codec) {

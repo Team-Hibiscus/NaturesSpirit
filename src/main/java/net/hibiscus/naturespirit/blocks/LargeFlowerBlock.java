@@ -8,7 +8,6 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 

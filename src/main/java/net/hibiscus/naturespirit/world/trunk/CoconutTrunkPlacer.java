@@ -12,7 +12,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.PillarBlock;
 import net.minecraft.registry.RegistryCodecs;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntryList;

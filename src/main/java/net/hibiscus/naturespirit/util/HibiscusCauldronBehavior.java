@@ -2,12 +2,9 @@ package net.hibiscus.naturespirit.util;
 
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.cauldron.CauldronBehavior;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvents;
-
-import java.util.Map;
 
 import static net.minecraft.block.cauldron.CauldronBehavior.*;
 

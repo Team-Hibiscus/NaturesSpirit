@@ -10,8 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.UndergroundConfiguredFeatures;
 
 public class RedMossBlock extends Block implements Fertilizable {
 

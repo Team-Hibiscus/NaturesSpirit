@@ -1,13 +1,9 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
 import net.hibiscus.naturespirit.blocks.GrowingBranchingTrunkBlock;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.Block;
-import net.minecraft.block.ConnectingBlock;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;

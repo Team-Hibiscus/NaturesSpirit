@@ -5,14 +5,10 @@ import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.nbt.NbtString;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -23,7 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PizzaBlockEntity extends BlockEntity {
    public ArrayList <Identifier> TOPPINGS = new ArrayList <>();

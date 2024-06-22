@@ -6,15 +6,12 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEntityTypeTags;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.*;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.advancement.AdvancementCriterion;
@@ -25,13 +22,16 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamily;
 import net.minecraft.data.server.recipe.*;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.*;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.loot.condition.MatchToolLootCondition;
+import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
@@ -49,7 +49,6 @@ import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
@@ -60,10 +59,9 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
 import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
 import static net.minecraft.data.client.BlockStateModelGenerator.*;
-import static net.minecraft.data.client.TexturedModel.CORAL_FAN;
 import static net.minecraft.data.client.TexturedModel.makeFactory;
 import static net.minecraft.data.family.BlockFamilies.register;
 
@@ -101,10 +99,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
 
    private static class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
-      private static final LootCondition.Builder WITH_SILK_TOUCH_OR_SHEARS = WITH_SHEARS.or(WITH_SILK_TOUCH);
-      private static final LootCondition.Builder WITHOUT_SILK_TOUCH_NOR_SHEARS = WITH_SILK_TOUCH_OR_SHEARS.invert();
 
       private final float[] SAPLING_DROP_CHANCE_2 = new float[]{0.4F, 0.4533333333F, 0.625F, 0.758F};
+
+      private final static float[] LEAVES_STICK_DROP_CHANCE = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
       protected NatureSpiritBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
          super(dataOutput, registryLookup);
@@ -204,13 +202,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       public net.minecraft.loot.LootTable.Builder blackOlivesDrop(Block leaves, Block drop, float... chance) {
+         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
          return this.leavesDrops(leaves, drop, chance).pool(LootPool
                  .builder()
                  .rolls(ConstantLootNumberProvider.create(1.0F))
-                 .conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS)
+                 .conditionally(createWithoutShearsOrSilkTouchCondition())
                  .with(((net.minecraft.loot.entry.LeafEntry.Builder <?>) this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(HibiscusMiscBlocks.BLACK_OLIVES))).conditionally(
                          TableBonusLootCondition.builder(
-                                 Enchantments.FORTUNE,
+                                 impl.getOrThrow(Enchantments.FORTUNE),
                                  0.01F,
                                  0.0111111114F,
                                  0.0125F,
@@ -220,13 +219,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       public net.minecraft.loot.LootTable.Builder greenOlivesDrop(Block leaves, Block drop, float... chance) {
+         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
          return this.blackOlivesDrop(leaves, drop, chance).pool(LootPool
                  .builder()
                  .rolls(ConstantLootNumberProvider.create(1.0F))
-                 .conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS)
+                 .conditionally(createWithoutShearsOrSilkTouchCondition())
                  .with(((net.minecraft.loot.entry.LeafEntry.Builder <?>) this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(HibiscusMiscBlocks.GREEN_OLIVES))).conditionally(
                          TableBonusLootCondition.builder(
-                                 Enchantments.FORTUNE,
+                                 impl.getOrThrow(Enchantments.FORTUNE),
                                  0.01F,
                                  0.0111111114F,
                                  0.0125F,
@@ -236,8 +236,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       public LootTable.Builder coconutLeavesDrops(Block leaves) {
+
+         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
          return dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder)this.applyExplosionDecay(leaves, ItemEntry.builder(Items.STICK).apply(SetCountLootFunction.builder(
-                 UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, LEAVES_STICK_DROP_CHANCE)));
+                 UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(impl.getOrThrow(Enchantments.FORTUNE), LEAVES_STICK_DROP_CHANCE)));
       }
 
       private void addTreeTable(HashMap <String, Block[]> saplings, HashMap <String, Block> leaves) {
@@ -267,10 +269,11 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          addWoodTable(HibiscusRegistryHelper.WoodHashMap);
          addTreeTable(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
 
+         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
          this.addDrop(CALCITE_CLUSTER, (block) -> dropsWithSilkTouch(block,
                  ItemEntry.builder(CALCITE_SHARD)
                          .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4.0F)))
-                         .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
+                         .apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE)))
                          .conditionally(MatchToolLootCondition.builder(net.minecraft.predicate.item.ItemPredicate.Builder.create().tag(ItemTags.CLUSTER_MAX_HARVESTABLES)))
                          .alternatively(this.applyExplosionDecay(block, ItemEntry.builder(CALCITE_SHARD).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)))))
          ));
@@ -618,10 +621,10 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       private static Model block(String parent, TextureKey... requiredTextureKeys) {
-         return new Model(Optional.of(new Identifier("natures_spirit", "block/" + parent)), Optional.empty(), requiredTextureKeys);
+         return new Model(Optional.of(Identifier.of("natures_spirit", "block/" + parent)), Optional.empty(), requiredTextureKeys);
       }
       private static Model block(String parent, String variant, TextureKey... requiredTextureKeys) {
-         return new Model(Optional.of(new Identifier("natures_spirit", "block/" + parent)), Optional.of(variant), requiredTextureKeys);
+         return new Model(Optional.of(Identifier.of("natures_spirit", "block/" + parent)), Optional.of(variant), requiredTextureKeys);
       }
 
       public static Identifier getId(Block block) {
@@ -1630,14 +1633,14 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
 
 
       public static void offerShapelessRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, @Nullable String group, int outputCount) {
-         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount).input(input).group(group).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input)));
+         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount).input(input).group(group).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, Identifier.of(MOD_ID, RecipeProvider.convertBetween(output, input)));
       }
       public static void offerStonecuttingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input) {
          offerStonecuttingRecipe(exporter, category, output, input, 1);
       }
 
       public static void offerStonecuttingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input, int count) {
-         SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(input), category, output, count).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, new Identifier(MOD_ID, RecipeProvider.convertBetween(output, input) + "_stonecutting"));
+         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(input), category, output, count).criterion(RecipeProvider.hasItem(input), (AdvancementCriterion)RecipeProvider.conditionsFromItem(input)).offerTo(exporter, Identifier.of(MOD_ID, RecipeProvider.convertBetween(output, input) + "_stonecutting"));
       }
 
       private void generateWoodRecipes(HashMap <String, WoodSet> woods, RecipeExporter consumer) {
@@ -1722,13 +1725,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                                             .input(stoneSet.getCobbled()).input(Blocks.MOSS_BLOCK)
                                             .group("mossy_cobblestone")
                                             .criterion("has_moss_block", conditionsFromItem(Blocks.MOSS_BLOCK))
-                                            .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyCobbled(), Blocks.MOSS_BLOCK)));
+                                            .offerTo(exporter, Identifier.of(MOD_ID, convertBetween(stoneSet.getMossyCobbled(), Blocks.MOSS_BLOCK)));
                   ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbled())
                                             .input(stoneSet.getCobbled())
                                             .input(Blocks.VINE)
                                             .group("mossy_cobblestone")
                                             .criterion("has_vine", conditionsFromItem(Blocks.VINE))
-                                            .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyCobbled(), Blocks.VINE)));
+                                            .offerTo(exporter, Identifier.of(MOD_ID, convertBetween(stoneSet.getMossyCobbled(), Blocks.VINE)));
                   offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbledSlab(), stoneSet.getMossyCobbled(), 2);
                   offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyCobbledStairs(), stoneSet.getMossyCobbled());
                   offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getMossyCobbledWall(), stoneSet.getMossyCobbled());
@@ -1778,13 +1781,13 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
                                          .input(Blocks.VINE)
                                          .group("mossy_stone_bricks")
                                          .criterion("has_vine", conditionsFromItem(Blocks.VINE))
-                                         .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyBricks(), Blocks.VINE)));
+                                         .offerTo(exporter, Identifier.of(MOD_ID, convertBetween(stoneSet.getMossyBricks(), Blocks.VINE)));
                ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricks())
                                          .input(stoneSet.getBricks())
                                          .input(Blocks.MOSS_BLOCK)
                                          .group("mossy_stone_bricks")
                                          .criterion("has_moss_block", conditionsFromItem(Blocks.MOSS_BLOCK))
-                                         .offerTo(exporter, new Identifier(MOD_ID, convertBetween(stoneSet.getMossyBricks(), Blocks.MOSS_BLOCK)));
+                                         .offerTo(exporter, Identifier.of(MOD_ID, convertBetween(stoneSet.getMossyBricks(), Blocks.MOSS_BLOCK)));
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricksSlab(), stoneSet.getMossyBricks(), 2);
                offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneSet.getMossyBricksStairs(), stoneSet.getMossyBricks());
                offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneSet.getMossyBricksWall(), stoneSet.getMossyBricks());
@@ -1809,7 +1812,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
       }
 
       @Override 	protected Identifier getRecipeIdentifier(Identifier identifier) {
-         return new Identifier(MOD_ID, identifier.getPath());
+         return Identifier.of(MOD_ID, identifier.getPath());
       }
 
       @Override public void generate(RecipeExporter exporter) {
@@ -1916,7 +1919,7 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
          offerShapelessRecipe(exporter, HibiscusWoods.YOUNG_COCONUT_HALF, HibiscusWoods.YOUNG_COCONUT_BLOCK, "coconut_half", 2);
          offerShapelessRecipe(exporter, Items.BOWL, HibiscusWoods.COCONUT_SHELL, "bowl", 1);
          offerShapelessRecipe(exporter, Items.BOWL, HibiscusWoods.YOUNG_COCONUT_SHELL, "bowl", 1);
-         CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(HibiscusTags.Items.COCONUT_ITEMS), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 125).criterion("has_coconut", conditionsFromTag(HibiscusTags.Items.COCONUT_ITEMS)).offerTo(exporter, new Identifier(MOD_ID, "charcoal_from_coconuts"));
+         CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(HibiscusTags.Items.COCONUT_ITEMS), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 125).criterion("has_coconut", conditionsFromTag(HibiscusTags.Items.COCONUT_ITEMS)).offerTo(exporter, Identifier.of(MOD_ID, "charcoal_from_coconuts"));
 
 
          generateFamily(exporter, CUT_PINK_SANDSTONE_FAMILY, FeatureSet.of(FeatureFlags.VANILLA));

@@ -6,9 +6,7 @@ import net.hibiscus.naturespirit.blocks.MidFlowerBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.BlockSoundGroup;
 
