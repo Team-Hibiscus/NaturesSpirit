@@ -51,7 +51,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
 
     private void generateWoodTranslations(HashMap<String, WoodSet> woods, TranslationBuilder translationBuilder) {
         for (WoodSet woodSet : woods.values()) {
-            for (Block block : woodSet.getRegisteredAllBlocksList()) {
+            for (Block block : woodSet.getRegisteredBlocksList()) {
                 generateBlockTranslations(block, translationBuilder);
             }
             generateBlockTranslations(woodSet.getSign(), translationBuilder);

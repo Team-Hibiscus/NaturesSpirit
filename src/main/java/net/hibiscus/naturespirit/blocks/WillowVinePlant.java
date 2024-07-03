@@ -18,6 +18,7 @@ public class WillowVinePlant extends WisteriaVinePlant {
       super(properties, block);
    }
 
+
    protected AbstractPlantStemBlock getStem() {
       return (AbstractPlantStemBlock) block;
    }
