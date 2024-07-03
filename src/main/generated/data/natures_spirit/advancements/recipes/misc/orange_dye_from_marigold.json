@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "natures_spirit:pink_dye_from_marigold"
+        "recipe": "natures_spirit:orange_dye_from_marigold"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "natures_spirit:pink_dye_from_marigold"
+      "natures_spirit:orange_dye_from_marigold"
     ]
   },
   "sends_telemetry_event": false

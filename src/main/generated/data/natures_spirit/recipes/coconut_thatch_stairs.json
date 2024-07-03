@@ -3,15 +3,17 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "natures_spirit:travertine_tiles"
+      "item": "natures_spirit:coconut_thatch"
     }
   },
   "pattern": [
+    "#  ",
+    "## ",
     "###"
   ],
   "result": {
-    "count": 6,
-    "item": "natures_spirit:travertine_tile_slab"
+    "count": 4,
+    "item": "natures_spirit:coconut_thatch_stairs"
   },
   "show_notification": true
 }

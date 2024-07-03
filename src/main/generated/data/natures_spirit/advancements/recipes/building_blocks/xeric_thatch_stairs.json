@@ -3,16 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "natures_spirit:travertine_tile_slab"
+        "recipe": "natures_spirit:xeric_thatch_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_travertine_tiles": {
+    "has_xeric_thatch": {
       "conditions": {
         "items": [
           {
             "items": [
-              "natures_spirit:travertine_tiles"
+              "natures_spirit:xeric_thatch"
             ]
           }
         ]
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "has_travertine_tiles",
+      "has_xeric_thatch",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "natures_spirit:travertine_tile_slab"
+      "natures_spirit:xeric_thatch_stairs"
     ]
   },
   "sends_telemetry_event": false
