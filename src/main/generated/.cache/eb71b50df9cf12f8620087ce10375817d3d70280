@@ -1,4 +1,4 @@
-// 1.21	2024-06-22T13:00:29.33002	Nature's Spirit/Tags for minecraft:block
+// 1.21	2024-07-03T18:53:06.841257	Nature's Spirit/Tags for minecraft:block
 7901dd3508efa973586d2df083ae4f80250fe96b data/minecraft/tags/block/needs_stone_tool.json
 464ba58e07fa0189b6f94531dba9aa625faa8efb data/minecraft/tags/block/maintains_farmland.json
 9efb188c111d35fffea8772b29d866f7f15ca0c1 data/minecraft/tags/block/logs_that_burn.json
@@ -46,8 +46,8 @@ db4314b9140e8bf51ee0581afab727742852b4c8 data/natures_spirit/tags/block/willow_l
 b50320fce662e85bee0c7cda06ef700f3f736e40 data/minecraft/tags/block/copper_ores.json
 9f6c0a51592eec6d93a9e019b57a8bfb872a9ad8 data/minecraft/tags/block/mineable/axe.json
 7cb634f21d0e956c018944fbe35140abab0f4e50 data/natures_spirit/tags/block/saxaul_logs.json
-8e8adaa977e503a74f60447903ea2c751133177f data/minecraft/tags/block/wooden_pressure_plates.json
 41e43be6d6298587f11fc7422242b801d035727e data/natures_spirit/tags/block/fir_logs.json
+8e8adaa977e503a74f60447903ea2c751133177f data/minecraft/tags/block/wooden_pressure_plates.json
 5b5bace360d5da111e8e9e8b8ea6ddd92fdec649 data/minecraft/tags/block/planks.json
 c377c2c8f77381aaef99bda580584e2e00c6f77c data/minecraft/tags/block/slabs.json
 bd5d9ab020342c05fbf1aa537198112c658648db data/natures_spirit/tags/block/wisteria_logs.json

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_marigold": {
+    "has_coconut_thatch": {
       "conditions": {
         "items": [
           {
-            "items": "natures_spirit:marigold"
+            "items": "natures_spirit:coconut_thatch"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "natures_spirit:pink_dye_from_marigold"
+        "recipe": "natures_spirit:coconut_thatch_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_marigold"
+      "has_coconut_thatch"
     ]
   ],
   "rewards": {
     "recipes": [
-      "natures_spirit:pink_dye_from_marigold"
+      "natures_spirit:coconut_thatch_stairs"
     ]
   }
 }
