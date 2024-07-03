@@ -479,7 +479,7 @@ public class HibiscusMiscBlocks {
 
    public static final FlowerSet GARDENIA = new FlowerSet("gardenia", Items.WHITE_DYE, CARNATION.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
    public static final FlowerSet SNAPDRAGON = new FlowerSet("snapdragon", Items.PINK_DYE, GARDENIA.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
-   public static final FlowerSet MARIGOLD = new FlowerSet("marigold", Items.PINK_DYE, SNAPDRAGON.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
+   public static final FlowerSet MARIGOLD = new FlowerSet("marigold", Items.ORANGE_DYE, SNAPDRAGON.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
    public static final FlowerSet FOXGLOVE = new FlowerSet("foxglove", Items.PURPLE_DYE, MARIGOLD.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.TALL);
 
    public static final FlowerSet BLUEBELL = new FlowerSet("bluebell", Items.BLUE_DYE, StatusEffects.HASTE, Items.LILY_OF_THE_VALLEY, FlowerSet.FlowerPreset.BIG_SMALL);
