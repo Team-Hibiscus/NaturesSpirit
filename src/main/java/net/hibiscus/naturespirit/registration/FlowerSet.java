@@ -139,7 +139,6 @@ public class FlowerSet {
          registeredBlocksList.add(this.pottedFlowerBlock);
       }
       registeredBlocksList.add(this.flowerBlock);
-      registeredItemsList.add(this.flowerBlock.asItem());
       HibiscusRegistryHelper.FlowerHashMap.put(this.name, this);
    }
 
@@ -153,10 +152,6 @@ public class FlowerSet {
 
    public List <Block> getRegisteredBlocksList() {
       return registeredBlocksList;
-   }
-
-   public List <Item> getRegisteredItemsList() {
-      return registeredItemsList;
    }
 
    public FlowerPreset getPreset () {
