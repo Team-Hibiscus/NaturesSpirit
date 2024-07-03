@@ -526,7 +526,8 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "natures_spirit:lavender"
+      "id": "natures_spirit:lavender",
+      "count":  1
     },
     "show_toast": true,
     "title": {

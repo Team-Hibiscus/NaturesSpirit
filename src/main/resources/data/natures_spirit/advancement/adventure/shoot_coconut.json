@@ -13,7 +13,8 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "natures_spirit:coconut"
+      "id": "natures_spirit:coconut",
+      "count":  1
     },
     "show_toast": true,
     "title": {

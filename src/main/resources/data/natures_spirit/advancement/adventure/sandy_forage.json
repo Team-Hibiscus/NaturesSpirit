@@ -22,7 +22,8 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "natures_spirit:desert_turnip_block"
+      "id": "natures_spirit:desert_turnip_block",
+      "count":  1
     },
     "show_toast": true,
     "title": {
