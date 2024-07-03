@@ -18,6 +18,11 @@ public class WillowVinePlant extends WisteriaVinePlant {
       super(properties, block);
    }
 
+
+   public String getTranslationKey() {
+      return this.asItem().getTranslationKey();
+   }
+
    protected AbstractPlantStemBlock getStem() {
       return (AbstractPlantStemBlock) block;
    }

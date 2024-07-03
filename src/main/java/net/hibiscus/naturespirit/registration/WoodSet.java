@@ -43,7 +43,6 @@ public class WoodSet {
    private ItemConvertible boatBefore;
    private ItemConvertible buttonBefore;
    private List<Block> registeredBlocksList = new ArrayList<>();
-   private List<Block> registeredAllBlocksList = new ArrayList<>();
    private List<Item> registeredItemsList = new ArrayList<>();
    private Identifier name;
    private MapColor sideColor;
@@ -381,12 +380,6 @@ public class WoodSet {
       return listBlock;
    }
 
-   private Block registerBlock(String blockID, Block block){
-      Block listBlock = HibiscusRegistryHelper.registerBlock(blockID, block);
-      registeredAllBlocksList.add(listBlock);
-      return listBlock;
-   }
-
    private Item createSignItem(Block sign, Block wallSign) {
       return new SignItem(new Item.Settings().maxCount(16), sign, wallSign);
    }
@@ -617,9 +610,6 @@ public class WoodSet {
 
    public List<Block> getRegisteredBlocksList() {
       return registeredBlocksList;
-   }
-   public List<Block> getRegisteredAllBlocksList() {
-      return registeredAllBlocksList;
    }
 
    public List<Item> getRegisteredItemsList() {

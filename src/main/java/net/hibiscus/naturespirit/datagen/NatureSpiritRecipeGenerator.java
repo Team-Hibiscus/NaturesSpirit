@@ -272,18 +272,17 @@ public class NatureSpiritRecipeGenerator extends FabricRecipeProvider {
 
       offerCarpetRecipe(exporter, HibiscusWoods.COCONUT_THATCH_CARPET, HibiscusWoods.COCONUT_THATCH);
       offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH);
-      createStairsRecipe(HibiscusWoods.COCONUT_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.COCONUT_THATCH));
+      createStairsRecipe(HibiscusWoods.COCONUT_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.COCONUT_THATCH)).criterion(hasItem(HibiscusWoods.COCONUT_THATCH), conditionsFromItem(HibiscusWoods.COCONUT_THATCH)).offerTo(exporter);
       offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.COCONUT_THATCH, HibiscusWoods.COCONUT.getLeaves());
-
 
       offerCarpetRecipe(exporter, HibiscusWoods.EVERGREEN_THATCH_CARPET, HibiscusWoods.EVERGREEN_THATCH);
       offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.EVERGREEN_THATCH);
-      createStairsRecipe(HibiscusWoods.EVERGREEN_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.EVERGREEN_THATCH));
+      createStairsRecipe(HibiscusWoods.EVERGREEN_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.EVERGREEN_THATCH)).criterion(hasItem(HibiscusWoods.EVERGREEN_THATCH), conditionsFromItem(HibiscusWoods.EVERGREEN_THATCH)).offerTo(exporter);
       offer2x2CompactingTagRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.EVERGREEN_THATCH, HibiscusTags.Items.EVERGREEN_LEAVES);
 
       offerCarpetRecipe(exporter, HibiscusWoods.XERIC_THATCH_CARPET, HibiscusWoods.XERIC_THATCH);
       offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.XERIC_THATCH_SLAB, HibiscusWoods.XERIC_THATCH);
-      createStairsRecipe(HibiscusWoods.XERIC_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.XERIC_THATCH));
+      createStairsRecipe(HibiscusWoods.XERIC_THATCH_STAIRS, Ingredient.ofItems(HibiscusWoods.XERIC_THATCH)).criterion(hasItem(HibiscusWoods.XERIC_THATCH), conditionsFromItem(HibiscusWoods.XERIC_THATCH)).offerTo(exporter);
       offer2x2CompactingTagRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HibiscusWoods.XERIC_THATCH, HibiscusTags.Items.XERIC_LEAVES);
 
       ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HibiscusColoredBlocks.KAOLIN_BRICKS, 4).input(Character.valueOf('S'), HibiscusColoredBlocks.KAOLIN).pattern("SS").pattern("SS").criterion("has_kaolin", conditionsFromItem(HibiscusColoredBlocks.KAOLIN)).offerTo(exporter);
