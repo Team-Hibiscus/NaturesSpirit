@@ -78,7 +78,7 @@ public class LotusStem extends AbstractPlantBlock implements Waterloggable {
    }
 
    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-      if(state.get(AGE) < 3 && random.nextDouble() < this.growthChance) {
+      if(state.get(AGE) < 3 && random.nextDouble() < this.growthChance && this.isFertilizable(world, pos, state)) {
          BlockPos blockPos = pos.offset(this.growthDirection);
          if(this.chooseStemState(world.getBlockState(blockPos))) {
             world.setBlockState(blockPos, this.getPlant().getDefaultState());
