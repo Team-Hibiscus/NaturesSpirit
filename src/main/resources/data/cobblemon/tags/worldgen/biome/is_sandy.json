@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+      "natures_spirit:arid_savanna",
+      "natures_spirit:chaparrel",
+      "natures_spirit:dusty_slopes",
+      "natures_spirit:red_peaks",
+      "natures_spirit:shrubby_highlands",
+      "natures_spirit:wooded_drylands",
+      "natures_spirit:woody_highlands",
+      "natures_spirit:xeric_plains"
+    ]
+}

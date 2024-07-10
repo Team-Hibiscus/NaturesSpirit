@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+      "#natures_spirit:is_desert",
+      "#natures_spirit:is_scorched"
+    ]
+}
