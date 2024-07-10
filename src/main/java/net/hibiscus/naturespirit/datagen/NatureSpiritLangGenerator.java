@@ -253,8 +253,8 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       translationBuilder.add(HibiscusMiscBlocks.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
       translationBuilder.add(HibiscusMiscBlocks.QUARTER_PIZZA, "Quarter of a Pizza");
       translationBuilder.add(HibiscusMiscBlocks.WHOLE_PIZZA, "Pizza");
-
       translationBuilder.add("pack.natures_spirit.bushy_leaves_compatibility", "Bushy Leaves Compat");
+      translationBuilder.add("pack.natures_spirit.emissive_ores_compatibility", "Emissive Ores Compat");
       translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
       translationBuilder.add("pack.natures_spirit.modified_desert", "Modified Desert");
       translationBuilder.add("pack.natures_spirit.modified_birch_forest", "Modified Birch Forest");

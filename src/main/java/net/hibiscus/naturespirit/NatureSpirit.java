@@ -110,6 +110,11 @@ public class NatureSpirit implements ModInitializer {
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL
          );
+         ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "emissive_ores_compatibility"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.emissive_ores_compatibility"),
+                 ResourcePackActivationType.NORMAL
+         );
       }
       Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
