@@ -9,7 +9,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:random_spread_foliage_placer",
+      "type": "natures_spirit:grounded_bush_foliage_placer",
       "foliage_height": 2,
       "leaf_placement_attempts": 75,
       "offset": 0,

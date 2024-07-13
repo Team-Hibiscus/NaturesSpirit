@@ -649,7 +649,7 @@ public class WoodSet {
       return block;
    }
    private Block createLeaves() {
-      Block block = createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       RenderLayerHashMap.put(this.getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -657,15 +657,23 @@ public class WoodSet {
       return block;
    }
    private Block createLeaves(String prefix) {
-      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       RenderLayerHashMap.put(prefix + this.getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
       LeavesHashMap.put(prefix + this.getName(), block);
       return block;
    }
+   private Block createFirLeaves() {
+      Block block = createBlockWithItem( this.getName() + "_leaves", new ProjectileLeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), this.getFrostyLeaves()));
+      RenderLayerHashMap.put(this.getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(this.getName(), block);
+      return block;
+   }
    private Block createMapleLeaves(String prefix, ParticleEffect particle) {
-      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new MapleLeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves()), particle));
+      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new MapleLeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle));
       RenderLayerHashMap.put(prefix + this.getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -673,7 +681,7 @@ public class WoodSet {
       return block;
    }
    private Block createWisteriaLeaves(String prefix) {
-      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new WisteriaLeaves(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(prefix + this.getName() + "_leaves", new WisteriaLeaves(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       RenderLayerHashMap.put(prefix + this.getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -702,7 +710,7 @@ public class WoodSet {
               .dropsLike(vines), vines));
    }
    private Block createWillowLeaves() {
-      Block block = createBlockWithItem(this.getName() + "_leaves", new WillowLeaves(AbstractBlock.Settings.copy(getBaseLeaves())));
+      Block block = createBlockWithItem(this.getName() + "_leaves", new WillowLeaves(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
       RenderLayerHashMap.put(this.getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
@@ -836,16 +844,6 @@ public class WoodSet {
          name = this.getName() + "_log";
       }
       return name;
-   }
-   private Block getBaseLeaves(){
-      Block base;
-      if (this.getWoodPreset() == WoodPreset.FANCY){
-         base = Blocks.AZALEA_LEAVES;
-      }
-      else{
-         base = Blocks.OAK_LEAVES;
-      }
-      return base;
    }
    private Block getBase(){
       Block base;
