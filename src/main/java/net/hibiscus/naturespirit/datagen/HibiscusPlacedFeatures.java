@@ -26,7 +26,6 @@ import java.util.List;
 public class HibiscusPlacedFeatures {
 
 
-   public static final RegistryKey <PlacedFeature> EXTRA_LARGE_REDWOOD_CHECKED = registerKey("extra_large_redwood_checked");
    public static final RegistryKey <PlacedFeature> LARGE_REDWOOD_CHECKED = registerKey("large_redwood_checked");
    public static final RegistryKey <PlacedFeature> REDWOOD_CHECKED = registerKey("redwood_checked");
    public static final RegistryKey <PlacedFeature> ASPEN_CHECKED = registerKey("aspen_checked");
@@ -78,7 +77,6 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> MARSH_WATER = registerKey("marsh_water_placed");
    public static final RegistryKey <PlacedFeature> RIVER_WATER = registerKey("river_water_placed");
 
-   public static final RegistryKey <PlacedFeature> EXTRA_LARGE_REDWOOD_PLACED = registerKey("extra_large_redwood_placed");
    public static final RegistryKey <PlacedFeature> LARGE_REDWOOD_PLACED = registerKey("large_redwood_placed");
    public static final RegistryKey <PlacedFeature> REDWOOD_PLACED = registerKey("redwood_placed");
    public static final RegistryKey <PlacedFeature> ASPEN_PLACED = registerKey("aspen_placed");
@@ -90,7 +88,6 @@ public class HibiscusPlacedFeatures {
    public static final RegistryKey <PlacedFeature> FIR_PLACED = registerKey("fir_placed");
    public static final RegistryKey <PlacedFeature> DENSE_FIR_PLACED = registerKey("dense_fir_placed");
    public static final RegistryKey <PlacedFeature> SPRUCE_BUSH_PLACED = registerKey("spruce_bush_placed");
-   public static final RegistryKey <PlacedFeature> REDWOOD_ROCK_PLACED = registerKey("redwood_rock_placed");
    public static final RegistryKey <PlacedFeature> WISTERIA_PLACED = registerKey("wisteria_placed");
    public static final RegistryKey <PlacedFeature> SUGI_PLACED = registerKey("sugi_placed");
    public static final RegistryKey <PlacedFeature> OLIVE_PLACED = registerKey("olive_placed");
@@ -121,11 +118,6 @@ public class HibiscusPlacedFeatures {
       registerKey(context,
               LARGE_REDWOOD_CHECKED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE),
-              List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()))
-      );
-      registerKey(context,
-              EXTRA_LARGE_REDWOOD_CHECKED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.EXTRA_LARGE_REDWOOD_TREE),
               List.of(PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()))
       );
       registerKey(context, REDWOOD_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.REDWOOD_TREE), PlacedFeatures.wouldSurvive(HibiscusWoods.REDWOOD.getSapling()));
@@ -310,15 +302,6 @@ public class HibiscusPlacedFeatures {
       registerKey(context, RIVER_WATER, configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.RIVER_DELTA), CountMultilayerPlacementModifier.of(20), BiomePlacementModifier.of());
 
       registerKey(context,
-              EXTRA_LARGE_REDWOOD_PLACED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.EXTRA_LARGE_REDWOOD_TREE_SPAWN),
-              NoiseBasedCountPlacementModifier.of(5, 10, 0),
-              SquarePlacementModifier.of(),
-              TREE_THRESHOLD,
-              PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
-              BiomePlacementModifier.of()
-      );
-      registerKey(context,
               LARGE_REDWOOD_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE_SPAWN),
               CountPlacementModifier.of(3),
@@ -447,15 +430,6 @@ public class HibiscusPlacedFeatures {
               SquarePlacementModifier.of(),
               TREE_THRESHOLD,
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
-              BiomePlacementModifier.of()
-      );
-      registerKey(context,
-              REDWOOD_ROCK_PLACED,
-              configuredFeatureRegistryEntryLookup.getOrThrow(MiscConfiguredFeatures.FOREST_ROCK),
-              CountPlacementModifier.of(1),
-              SquarePlacementModifier.of(),
-              TREE_THRESHOLD,
-              PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
               BiomePlacementModifier.of()
       );
       registerKey(context,

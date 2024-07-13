@@ -12,6 +12,7 @@ import net.hibiscus.naturespirit.world.feature.HugeRedMushroomFeature;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
 import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
+import net.hibiscus.naturespirit.world.tree_decorator.RedwoodBranchTreeDecorator;
 import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
 import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.registry.Registries;
@@ -50,6 +51,7 @@ public class HibiscusWorldGen {
    );
    public static final TreeDecoratorType <MapleGroundTreeDecorator> MAPLE_GROUND_TREE_DECORATOR = registerTreeDecorator("maple_ground_tree_decorator", MapleGroundTreeDecorator.CODEC);
    public static final TreeDecoratorType <CoconutTreeDecorator> COCONUT_TREE_DECORATOR = registerTreeDecorator("coconut_tree_decorator", CoconutTreeDecorator.CODEC);
+   public static final TreeDecoratorType <RedwoodBranchTreeDecorator> REDWOOD_BRANCH_DECORATOR = registerTreeDecorator("redwood_branch_decorator", RedwoodBranchTreeDecorator.CODEC);
 
 
    public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("wisteria_foliage_placer", WisteriaFoliagePlacer.CODEC);
@@ -57,6 +59,7 @@ public class HibiscusWorldGen {
    public static final FoliagePlacerType <AspenFoliagePlacer> ASPEN_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("aspen_foliage_placer", AspenFoliagePlacer.CODEC);
    public static final FoliagePlacerType <FirFoliagePlacer> FIR_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("fir_foliage_placer", FirFoliagePlacer.CODEC);
    public static final FoliagePlacerType <LarchFoliagePlacer> LARCH_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("larch_foliage_placer", LarchFoliagePlacer.CODEC);
+   public static final FoliagePlacerType <RedwoodFoliagePlacer> REDWOOD_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("redwood_foliage_placer", RedwoodFoliagePlacer.CODEC);
    public static final FoliagePlacerType <CypressFoliagePlacer> CYPRESS_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("cypress_foliage_placer", CypressFoliagePlacer.CODEC);
    public static final FoliagePlacerType <MapleFoliagePlacer> MAPLE_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("maple_foliage_placer", MapleFoliagePlacer.CODEC);
    public static final FoliagePlacerType <CoconutFoliagePlacer> COCONUT_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("coconut_foliage_placer", CoconutFoliagePlacer.CODEC);
