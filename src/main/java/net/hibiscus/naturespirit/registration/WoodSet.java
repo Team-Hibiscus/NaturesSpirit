@@ -763,10 +763,10 @@ public class WoodSet {
       return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(this.getWoodType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createPressurePlate(){
-      return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.create().mapColor(this.getBase().getDefaultMapColor()).solid().instrument(Instrument.BASS).noCollision().strength(0.5F).burnable().pistonBehavior(PistonBehavior.DESTROY), this.getBlockSetType()));
    }
    private Block createButton(){
-      return createBlockWithItem(this.getName() + "_button", new ButtonBlock(this.getBlockSetType(), 30, AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(this.getName() + "_button", new ButtonBlock(AbstractBlock.Settings.create().noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.getBlockSetType(), 30, true));
    }
    private Block createDoor(){
       return createBlockWithItem(this.getName() + "_door", new DoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor())));

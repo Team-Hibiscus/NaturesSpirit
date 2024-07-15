@@ -51,6 +51,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
 
 
   public static final TexturedModel.Factory TEXTURED_SUCCULENT = makeFactory(TextureMap::plant, SUCCULENT);
+  public static final TexturedModel.Factory TEXTURED_POLYPORE = makeFactory(TextureMap::plant, POLYPORE);
   public static final TexturedModel.Factory TEMPLATE_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, PAPER_LANTERN);
   public static final TexturedModel.Factory TEMPLATE_HANGING_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, HANGING_PAPER_LANTERN);
 
@@ -395,6 +396,12 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
       blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier3));
    }
 
+   public final void generatePolypore(Block wall, BlockStateModelGenerator blockStateModelGenerators) {
+      Identifier identifier2 = TEXTURED_POLYPORE.upload(wall, blockStateModelGenerators.modelCollector);
+      blockStateModelGenerators.blockStateCollector.accept(VariantsBlockStateSupplier.create(wall, BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+      blockStateModelGenerators.registerItemModel(wall);
+   }
+
    public final void generateTintedLargeFlower(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
       registerSpecificFlowerItemModel(block, blockStateModelGenerators);
       registerTintedTallLargeBlockState(block, TextureMap.cross(block), blockStateModelGenerators);
@@ -521,6 +528,8 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
       generateFlowerBlockStateModels(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
       generateFlowerBlockStateModels(SHIITAKE_MUSHROOM, POTTED_SHIITAKE_MUSHROOM, blockStateModelGenerator);
       registerMushroomBlock(SHIITAKE_MUSHROOM_BLOCK, blockStateModelGenerator);
+      generatePolypore(GRAY_POLYPORE, blockStateModelGenerator);
+      registerMushroomBlock(GRAY_POLYPORE_BLOCK, blockStateModelGenerator);
       registerCropWithoutItem(HibiscusMiscBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, blockStateModelGenerator, 0, 1, 2, 3, 4, 5, 6, 7);
       blockStateModelGenerator.registerDoubleBlock(TALL_FRIGID_GRASS, TintType.NOT_TINTED);
       generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);

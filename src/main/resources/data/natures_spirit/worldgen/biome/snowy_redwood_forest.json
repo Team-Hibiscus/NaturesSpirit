@@ -1,9 +1,9 @@
 {
   "carvers": {
     "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
+      "natures_spirit:replaceable_cave",
+      "natures_spirit:replaceable_cave_extra_underground",
+      "natures_spirit:replaceable_canyon"
     ]
   },
   "downfall": 0.6,
@@ -27,7 +27,8 @@
     "water_fog_color": 329011
   },
   "features": [
-    [],
+    [
+    ],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -61,7 +62,6 @@
       "minecraft:ore_redstone",
       "minecraft:ore_redstone_lower",
       "minecraft:ore_diamond",
-      "minecraft:ore_diamond_medium",
       "minecraft:ore_diamond_large",
       "minecraft:ore_diamond_buried",
       "minecraft:ore_lapis",
@@ -82,21 +82,20 @@
       "minecraft:glow_lichen",
       "natures_spirit:redwood_rock_placed",
       "natures_spirit:patch_tall_grass_2",
-      "natures_spirit:large_redwood_placed",
-      "natures_spirit:redwood_placed",
+      "natures_spirit:large_frosty_redwood_placed",
+      "natures_spirit:frosty_redwood_placed",
       "natures_spirit:spruce_bush_placed",
-      "natures_spirit:patch_grass_field",
-      "natures_spirit:patch_lush_fern",
+      "natures_spirit:patch_grass_sparse",
       "natures_spirit:flower_redwood_placed",
       "minecraft:patch_dead_bush",
       "minecraft:brown_mushroom_old_growth",
-      "minecraft:red_mushroom_old_growth",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin"
     ],
     [
+      "natures_spirit:ice_fixer",
       "minecraft:freeze_top_layer"
     ]
   ],
@@ -200,5 +199,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.4
+  "temperature": 0.0
 }

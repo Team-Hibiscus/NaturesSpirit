@@ -14,6 +14,7 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -191,7 +192,7 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
             this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE_2));
          }
          else if(i.equals("coconut") || i.equals("wisteria")) {
-            this.addDrop(leavesType, this::coconutLeavesDrops);
+            this.addDrop(leavesType, (block) -> this.leavesDrops(block, Items.STICK, SAPLING_DROP_CHANCE));
          }
          else {
             this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE));
@@ -237,6 +238,13 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
       this.addDrop(CHERT_IRON_ORE, (Block block) -> this.oreDrops(block, Items.RAW_IRON));
       this.addDrop(CHERT_GOLD_ORE, (Block block) -> this.oreDrops(block, Items.RAW_GOLD));
       this.addDrop(CHERT_LAPIS_ORE, this::lapisOreDrops);
+
+      
+
+      this.addDrop(SHIITAKE_MUSHROOM);
+      this.addDrop(SHIITAKE_MUSHROOM_BLOCK, this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM));
+     this.addDrop(GRAY_POLYPORE);
+     this.addDrop(GRAY_POLYPORE_BLOCK, this.mushroomBlockDrops(GRAY_POLYPORE_BLOCK, GRAY_POLYPORE));
 
 
       addVinePlantDrop(LOTUS_STEM, LOTUS_STEM);

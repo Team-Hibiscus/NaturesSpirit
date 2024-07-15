@@ -35,7 +35,7 @@ public class HibiscusWoods {
            Blocks.BAMBOO_BUTTON,
            Blocks.CHERRY_SAPLING,
            HibiscusBoatEntity.HibiscusBoat.REDWOOD,
-           WoodSet.WoodPreset.DEFAULT,
+           WoodSet.WoodPreset.FIR,
            false,
            Optional.of(HibiscusConfiguredFeatures.REDWOOD_TREE),
            Optional.of(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE)

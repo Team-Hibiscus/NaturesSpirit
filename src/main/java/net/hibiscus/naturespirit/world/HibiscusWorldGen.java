@@ -10,10 +10,7 @@ import net.hibiscus.naturespirit.world.feature.HugeBrownMushroomFeature;
 import net.hibiscus.naturespirit.world.feature.HugeRedMushroomFeature;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
-import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
-import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
-import net.hibiscus.naturespirit.world.tree_decorator.RedwoodBranchTreeDecorator;
-import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.tree_decorator.*;
 import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -53,6 +50,8 @@ public class HibiscusWorldGen {
    public static final TreeDecoratorType <MapleGroundTreeDecorator> MAPLE_GROUND_TREE_DECORATOR = registerTreeDecorator("maple_ground_tree_decorator", MapleGroundTreeDecorator.CODEC);
    public static final TreeDecoratorType <CoconutTreeDecorator> COCONUT_TREE_DECORATOR = registerTreeDecorator("coconut_tree_decorator", CoconutTreeDecorator.CODEC);
    public static final TreeDecoratorType <RedwoodBranchTreeDecorator> REDWOOD_BRANCH_DECORATOR = registerTreeDecorator("redwood_branch_decorator", RedwoodBranchTreeDecorator.CODEC);
+   public static final TreeDecoratorType <SnowTreeDecorator> SNOW_DECORATOR = registerTreeDecorator("snow_decorator", SnowTreeDecorator.CODEC);
+   public static final TreeDecoratorType <PolyporeTreeDecorator> POLYPORE_DECORATOR = registerTreeDecorator("polypore_decorator", PolyporeTreeDecorator.CODEC);
 
 
    public static final FoliagePlacerType <WisteriaFoliagePlacer> WISTERIA_FOLIAGE_PLACER_TYPE = registerFoliagePlacer("wisteria_foliage_placer", WisteriaFoliagePlacer.CODEC);
@@ -109,6 +108,10 @@ public class HibiscusWorldGen {
    public static final Feature <net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig> HUGE_BROWN_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
            Identifier.of(MOD_ID, "huge_brown_mushroom_feature"),
            new HugeBrownMushroomFeature(net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig.CODEC)
+   );
+   public static final Feature <DefaultFeatureConfig> POLYPORE_FEATURE = Registry.register(Registries.FEATURE,
+           new Identifier(MOD_ID, "polypore_feature"),
+           new PolyporeFeature(DefaultFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> LOTUS_PLANT_FEATURE = Registry.register(Registries.FEATURE,
            Identifier.of(MOD_ID, "lotus_plant_feature"),

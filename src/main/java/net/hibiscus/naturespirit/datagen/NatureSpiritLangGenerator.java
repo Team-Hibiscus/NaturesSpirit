@@ -147,6 +147,8 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(MELIC_GRASS, translationBuilder);
       generateBlockTranslations(SHIITAKE_MUSHROOM, translationBuilder);
       generateBlockTranslations(SHIITAKE_MUSHROOM_BLOCK, translationBuilder);
+      generateBlockTranslations(GRAY_POLYPORE, translationBuilder);
+      generateBlockTranslations(GRAY_POLYPORE_BLOCK, translationBuilder);
       generateBlockTranslations(PAPER_BLOCK, translationBuilder);
       generateBlockTranslations(FRAMED_PAPER_BLOCK, translationBuilder);
       generateBlockTranslations(BLOOMING_PAPER_BLOCK, translationBuilder);
