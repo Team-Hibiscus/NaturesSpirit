@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-13T10:44:55.4210223	Nature's Spirit/Tags for minecraft:block
+// 1.20.1	2024-07-14T21:30:10.0826111	Nature's Spirit/Tags for minecraft:block
 33d999db382b367e73753d01e67a7990b8e5b203 data\natures_spirit\tags\blocks\willow_logs.json
 ca0d781c3c694f168de8b85bd8939fc28c78e0bc data\natures_spirit\tags\blocks\sugi_logs.json
 d6401c70b813bc3b706e8be5241e88d4bd73c5dd data\natures_spirit\tags\blocks\wisteria_logs.json
@@ -18,12 +18,12 @@ fc291607b06ce0700548458687a09883d0f2e865 data\natures_spirit\tags\blocks\aspen_l
 308193ded6adf22b3dca91fc170b931d1504d1cb data\natures_spirit\tags\blocks\saxaul_logs.json
 249c434bfdf3dc0d896e57b1e4432a3a17158d1a data\minecraft\tags\blocks\tall_flowers.json
 997782b51f31fed0c0c491b26277ad9794e1dc49 data\minecraft\tags\blocks\wooden_pressure_plates.json
-095b5476b6fa129755763c6e1eb835f9bb6cbaac data\minecraft\tags\blocks\mineable\axe.json
+5930b34b3f3d7604092c69989b6a8b012925c7c7 data\minecraft\tags\blocks\mineable\axe.json
 716bc7a6f9d5b973b0c742bcef69a86083a6a2b4 data\natures_spirit\tags\blocks\alluaudia_bundles.json
 03952c7831ebac3f0bd5c1a62908d2d9ef782c07 data\natures_spirit\tags\blocks\larch_logs.json
 54119f5fc7b892da9f6d5ca2c597bb4cfee4c8e1 data\minecraft\tags\blocks\stairs.json
 61af56f99583c3bd40cb9021e80c77c53b449a6c data\minecraft\tags\blocks\smelts_to_glass.json
-33f7143fe497491b0545415ae0c5be137a171180 data\minecraft\tags\blocks\leaves.json
+59964d41641d877fefe0f43c0a0fcde343409e14 data\minecraft\tags\blocks\leaves.json
 d751312ed96812aacae500233894cc6d1d32ce7b data\minecraft\tags\blocks\wooden_fences.json
 a1bd493afdc5473b8e7d67a52d4f788aeadb2cf8 data\minecraft\tags\blocks\maintains_farmland.json
 405159dd2f506b49f1f1038abd8e5e74485fa0ec data\minecraft\tags\blocks\flower_pots.json
@@ -57,13 +57,13 @@ a1bd493afdc5473b8e7d67a52d4f788aeadb2cf8 data\minecraft\tags\blocks\crops.json
 393e2ab6a86a867501ab9e313142e2a38a150090 data\natures_spirit\tags\blocks\mahogany_logs.json
 c0e30f5d4ea6290339ce1d4866faceb87965eb6a data\minecraft\tags\blocks\overworld_natural_logs.json
 1357817f3d2c66ec4e86e9638e7d21ad6670be4d data\minecraft\tags\blocks\wooden_doors.json
-f7bf8024395bbab4b80714adaadc186e003f8c7c data\minecraft\tags\blocks\mineable\hoe.json
+4a506bed594aae1268464c003cb11e53db3ace11 data\minecraft\tags\blocks\mineable\hoe.json
 9182d9a5f334de5986753b8ae69595f6736953ff data\minecraft\tags\blocks\walls.json
 119aae7d1b0f7ac47c3cef641919170b86666482 data\minecraft\tags\blocks\emerald_ores.json
 129c1d244c05b58ccdccba05523da1556f0dd059 data\minecraft\tags\blocks\wall_hanging_signs.json
 5e76b9eda40463a263ca06df64397a60fc6d9b7c data\natures_spirit\tags\blocks\stripped_logs.json
 0ed11f4987e1336cffe611827c1ff2a4e787ea2e data\minecraft\tags\blocks\stone_ore_replaceables.json
-06c3f07a36cbfab1092ba38afd47f2d0cf5487f3 data\minecraft\tags\blocks\sword_efficient.json
+fa79adaac29d7b4a2229e7061e67df15e083d76f data\minecraft\tags\blocks\sword_efficient.json
 7a9922bf7995dd94dcd11f47eedabdda234f1040 data\natures_spirit\tags\blocks\joshua_logs.json
 1758eb56d01dc4e286eccbe9dc0d193a632c293c data\minecraft\tags\blocks\diamond_ores.json
 625ceba09fac4a3d93dad1a0181331e9565f9fe5 data\minecraft\tags\blocks\bee_growables.json

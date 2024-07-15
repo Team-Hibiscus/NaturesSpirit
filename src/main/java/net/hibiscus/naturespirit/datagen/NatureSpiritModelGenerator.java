@@ -38,6 +38,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
     private static final Model TALL_CROSS = block("tall_cross", TextureKey.CROSS);
     private static final Model FLOWER_POT_TALL_CROSS = block("flower_pot_tall_cross", TextureKey.PLANT);
     private static final Model FLOWER_POT_LARGE_CROSS = block("flower_pot_large_cross", TextureKey.PLANT);
+    private static final Model POLYPORE = block("polypore", TextureKey.PLANT);
     private static final Model SUCCULENT = block("succulent", TextureKey.PLANT);
     private static final Model SUCCULENT_WALL = block("succulent_wall", TextureKey.PLANT);
     private static final Model FLOWER_POT_SUCCULENT = block("flower_pot_succulent", TextureKey.PLANT);
@@ -52,6 +53,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
 
 
     public static final TexturedModel.Factory TEXTURED_SUCCULENT = makeFactory(TextureMap::plant, SUCCULENT);
+    public static final TexturedModel.Factory TEXTURED_POLYPORE = makeFactory(TextureMap::plant, POLYPORE);
     public static final TexturedModel.Factory TEMPLATE_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, PAPER_LANTERN);
     public static final TexturedModel.Factory TEMPLATE_HANGING_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, HANGING_PAPER_LANTERN);
 
@@ -299,7 +301,10 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
             Block leavesType = leaves.get(i);
             if (!Objects.equals(i, "coconut")) {
                 blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
-                if (!Objects.equals(i, "wisteria") && !i.startsWith("part") && !i.startsWith("frosty")) {
+                if (i.equals("redwood")) {
+                   generatePottedAnemone(saplingType[0], saplingType[1], blockStateModelGenerator);
+                }
+                else if (!Objects.equals(i, "wisteria") && !i.startsWith("part") && !i.startsWith("frosty")) {
                     blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
                 }
             }
@@ -396,6 +401,11 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
         Identifier identifier3 = FLOWER_POT_SUCCULENT.upload(flowerPot, textureMap, blockStateModelGenerators.modelCollector);
         blockStateModelGenerators.blockStateCollector.accept(createSingletonBlockState(flowerPot, identifier3));
     }
+   public final void generatePolypore(Block wall, BlockStateModelGenerator blockStateModelGenerators) {
+      Identifier identifier2 = TEXTURED_POLYPORE.upload(wall, blockStateModelGenerators.modelCollector);
+      blockStateModelGenerators.blockStateCollector.accept(VariantsBlockStateSupplier.create(wall, BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+      blockStateModelGenerators.registerItemModel(wall);
+   }
 
     public final void generateTintedLargeFlower(Block block, Block flowerPot, BlockStateModelGenerator blockStateModelGenerators) {
         registerSpecificFlowerItemModel(block, blockStateModelGenerators);
@@ -524,6 +534,8 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
         generateFlowerBlockStateModels(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
         generateFlowerBlockStateModels(SHIITAKE_MUSHROOM, POTTED_SHIITAKE_MUSHROOM, blockStateModelGenerator);
         registerMushroomBlock(SHIITAKE_MUSHROOM_BLOCK, blockStateModelGenerator);
+        generatePolypore(GRAY_POLYPORE, blockStateModelGenerator);
+        registerMushroomBlock(GRAY_POLYPORE_BLOCK, blockStateModelGenerator);
         registerCropWithoutItem(HibiscusMiscBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, blockStateModelGenerator, 0, 1, 2, 3, 4, 5, 6, 7);
         blockStateModelGenerator.registerDoubleBlock(TALL_FRIGID_GRASS, TintType.NOT_TINTED);
         generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);

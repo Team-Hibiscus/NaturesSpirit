@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "natures_spirit:block/tall_cross",
   "textures": {
     "cross": "natures_spirit:block/redwood_sapling"
   }

@@ -16,6 +16,35 @@
           }
         },
         "probability": 0.1
+      },
+      {
+        "type": "natures_spirit:polypore_decorator",
+        "big_probability": 0.2,
+        "block_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "natures_spirit:gray_polypore_block",
+            "Properties": {
+              "down": "true",
+              "east": "true",
+              "north": "true",
+              "south": "true",
+              "up": "true",
+              "west": "true"
+            }
+          }
+        },
+        "chance": 0.05,
+        "polypore_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "natures_spirit:gray_polypore",
+            "Properties": {
+              "facing": "north"
+            }
+          }
+        },
+        "small_probability": 0.3
       }
     ],
     "dirt_provider": {

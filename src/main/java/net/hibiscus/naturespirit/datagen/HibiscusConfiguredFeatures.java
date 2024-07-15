@@ -10,10 +10,7 @@ import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.hibiscus.naturespirit.world.feature.HibiscusSimpleBlockStateProvider;
 import net.hibiscus.naturespirit.world.feature.TurnipRootFeatureConfig;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
-import net.hibiscus.naturespirit.world.tree_decorator.CoconutTreeDecorator;
-import net.hibiscus.naturespirit.world.tree_decorator.MapleGroundTreeDecorator;
-import net.hibiscus.naturespirit.world.tree_decorator.RedwoodBranchTreeDecorator;
-import net.hibiscus.naturespirit.world.tree_decorator.WisteriaVinesTreeDecorator;
+import net.hibiscus.naturespirit.world.tree_decorator.*;
 import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
@@ -61,6 +58,10 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> REDWOOD_TREE = registerKey("redwood_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_REDWOOD_TREE_SPAWN = registerKey("large_redwood_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> REDWOOD_TREE_SPAWN = registerKey("redwood_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_FROSTY_REDWOOD_TREE = registerKey("large_frosty_redwood_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FROSTY_REDWOOD_TREE = registerKey("frosty_redwood_tree");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> LARGE_FROSTY_REDWOOD_TREE_SPAWN = registerKey("large_frosty_redwood_tree_spawn");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> FROSTY_REDWOOD_TREE_SPAWN = registerKey("frosty_redwood_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WILLOW_TREE = registerKey("willow_tree");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WILLOW_TREE_SPAWN = registerKey("willow_tree_spawn");
    public static final RegistryKey <ConfiguredFeature <?, ?>> WHITE_WISTERIA_TREE = registerKey("white_wisteria_tree");
@@ -121,7 +122,6 @@ public class HibiscusConfiguredFeatures {
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_REDWOOD_FOREST = registerKey("flower_redwood_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_ERODED_RIVER = registerKey("flower_eroded_river");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_GOLDEN_WILDS = registerKey("flower_golden_wilds");
    public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_SHIITAKE_MUSHROOM = registerKey("huge_shiitake_mushroom");
@@ -132,6 +132,7 @@ public class HibiscusConfiguredFeatures {
    public static final RegistryKey <ConfiguredFeature <?, ?>> CATTAILS = registerKey("cattails");
    public static final RegistryKey <ConfiguredFeature <?, ?>> LOTUS_PLANT = registerKey("lotus_plant");
    public static final RegistryKey <ConfiguredFeature <?, ?>> ROOTED_DESERT_TURNIP = registerKey("rooted_desert_turnip");
+   public static final RegistryKey <ConfiguredFeature <?, ?>> GRAY_POLYPORE = registerKey("gray_polypore");
 
 
    public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {
@@ -144,7 +145,7 @@ public class HibiscusConfiguredFeatures {
               BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves()),
               new RedwoodFoliagePlacer(UniformIntProvider.create(1, 3), UniformIntProvider.create(1, 2), UniformIntProvider.create(22, 32)),
               new TwoLayersFeatureSize(2, 0, 2)
-      ).ignoreVines().decorators(ImmutableList.of(new RedwoodBranchTreeDecorator(.1f, BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves())))).build());
+      ).ignoreVines().decorators(ImmutableList.of(new RedwoodBranchTreeDecorator(.1f, BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves())), new PolyporeTreeDecorator(.3f,.2f, .05f, BlockStateProvider.of(HibiscusMiscBlocks.GRAY_POLYPORE_BLOCK), BlockStateProvider.of(HibiscusMiscBlocks.GRAY_POLYPORE)))).build());
 
       register(
               context,
@@ -152,6 +153,54 @@ public class HibiscusConfiguredFeatures {
               Feature.RANDOM_SELECTOR,
               new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_CHECKED), 0.5f)),
                       placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.REDWOOD_CHECKED)
+              )
+      );
+
+      register(context, LARGE_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD.getLog()),
+              new GiantTrunkPlacer(25, 1, 6),
+              BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves()),
+              new RedwoodFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(27, 31)),
+              new TwoLayersFeatureSize(2, 0, 2)
+      ).decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)), new RedwoodBranchTreeDecorator(.05f, BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves())), new PolyporeTreeDecorator(.2f, .1f, .05f, BlockStateProvider.of(HibiscusMiscBlocks.GRAY_POLYPORE_BLOCK), BlockStateProvider.of(HibiscusMiscBlocks.GRAY_POLYPORE)))).build());
+
+      register(
+              context,
+              LARGE_REDWOOD_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED)
+              )
+      );
+
+      register(context, FROSTY_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD.getLog()),
+              new StraightTrunkPlacer(20, 1, 10),
+              BlockStateProvider.of(HibiscusWoods.REDWOOD.getFrostyLeaves()),
+              new RedwoodFoliagePlacer(UniformIntProvider.create(1, 3), UniformIntProvider.create(1, 2), UniformIntProvider.create(22, 32)),
+              new TwoLayersFeatureSize(2, 0, 2)
+      ).ignoreVines().decorators(ImmutableList.of(new RedwoodBranchTreeDecorator(.1f, BlockStateProvider.of(HibiscusWoods.REDWOOD.getFrostyLeaves())), new SnowTreeDecorator())).build());
+
+      register(
+              context,
+              FROSTY_REDWOOD_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.FROSTY_REDWOOD_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.FROSTY_REDWOOD_CHECKED)
+              )
+      );
+
+      register(context, LARGE_FROSTY_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD.getLog()),
+              new GiantTrunkPlacer(25, 1, 6),
+              BlockStateProvider.of(HibiscusWoods.REDWOOD.getFrostyLeaves()),
+              new RedwoodFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(27, 31)),
+              new TwoLayersFeatureSize(2, 0, 2)
+      ).decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)), new RedwoodBranchTreeDecorator(.05f, BlockStateProvider.of(HibiscusWoods.REDWOOD.getFrostyLeaves())), new SnowTreeDecorator())).build());
+
+      register(
+              context,
+              LARGE_FROSTY_REDWOOD_TREE_SPAWN,
+              Feature.RANDOM_SELECTOR,
+              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_FROSTY_REDWOOD_CHECKED), 0.5f)),
+                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_FROSTY_REDWOOD_CHECKED)
               )
       );
 
@@ -321,22 +370,6 @@ public class HibiscusConfiguredFeatures {
               RIVER_DELTA,
               HIBISCUS_DELTA_FEATURE,
               new DeltaFeatureConfig(Blocks.WATER.getDefaultState(), Blocks.COARSE_DIRT.getDefaultState(), UniformIntProvider.create(2, 6), UniformIntProvider.create(1, 3))
-      );
-
-      register(context, LARGE_REDWOOD_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(HibiscusWoods.REDWOOD.getLog()),
-              new GiantTrunkPlacer(25, 1, 6),
-              BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves()),
-              new RedwoodFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(27, 31)),
-              new TwoLayersFeatureSize(2, 0, 2)
-      ).decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)), new RedwoodBranchTreeDecorator(.05f, BlockStateProvider.of(HibiscusWoods.REDWOOD.getLeaves())))).build());
-
-      register(
-              context,
-              LARGE_REDWOOD_TREE_SPAWN,
-              Feature.RANDOM_SELECTOR,
-              new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED), 0.5f)),
-                      placedFeatureRegistryEntryLookup.getOrThrow(HibiscusPlacedFeatures.LARGE_REDWOOD_CHECKED)
-              )
       );
 
 
@@ -580,6 +613,7 @@ public class HibiscusConfiguredFeatures {
       );
 
       register(context, JOSHUA_TREE, JOSHUA_TREE_FEATURE, FeatureConfig.DEFAULT);
+      register(context, GRAY_POLYPORE, POLYPORE_FEATURE, FeatureConfig.DEFAULT);
       register(context, ALLUAUDIA, ALLUAUDIA_FEATURE, FeatureConfig.DEFAULT);
 
       register(
@@ -707,28 +741,6 @@ public class HibiscusConfiguredFeatures {
                                               HibiscusMiscBlocks.BLEEDING_HEART.getFlowerBlock().getDefaultState(),
                                               HibiscusMiscBlocks.ANEMONE.getFlowerBlock().getDefaultState(),
                                               HibiscusMiscBlocks.HIBISCUS.getFlowerBlock().getDefaultState()
-                                      )
-                              ))
-                      )
-              )
-      );
-
-      register(context,
-              FLOWER_REDWOOD_FOREST,
-              Feature.FLOWER,
-              new RandomPatchFeatureConfig(36,
-                      6,
-                      2,
-                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                              new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2445L,
-                                      new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D),
-                                      0.030833334F,
-                                      List.of(
-                                              HibiscusMiscBlocks.BLUEBELL.getFlowerBlock().getDefaultState(),
-                                              HibiscusMiscBlocks.BLUE_IRIS.getFlowerBlock().getDefaultState(),
-                                              Blocks.GRASS.getDefaultState(),
-                                              HibiscusMiscBlocks.CARNATION.getFlowerBlock().getDefaultState(),
-                                              HibiscusMiscBlocks.GARDENIA.getFlowerBlock().getDefaultState()
                                       )
                               ))
                       )

@@ -21,6 +21,7 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> BAMBOO_WETLANDS = register("bamboo_wetlands");
    public static final RegistryKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
    public static final RegistryKey <Biome> REDWOOD_FOREST = register("redwood_forest");
+   public static final RegistryKey <Biome> SNOWY_REDWOOD_FOREST = register("snowy_redwood_forest");
    public static final RegistryKey <Biome> ASPEN_FOREST = register("aspen_forest");
    public static final RegistryKey <Biome> MAPLE_WOODLANDS = register("maple_woodlands");
    public static final RegistryKey <Biome> GOLDEN_WILDS = register("golden_wilds");

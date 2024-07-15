@@ -56,6 +56,7 @@ public class Region1Parameters {
    RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_fir ? HibiscusBiomes.FIR_FOREST : BiomeKeys.TAIGA;
    RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_redwood_forest ? HibiscusBiomes.REDWOOD_FOREST : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
    RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_redwood_forest ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
+   RegistryKey<Biome> commonBiomeSnowyTaigaFrozen2 = HibiscusBiomes.has_redwood_forest ? HibiscusBiomes.SNOWY_REDWOOD_FOREST : BiomeKeys.SNOWY_TAIGA;
    RegistryKey<Biome> specialBiomeCherryGrove = HibiscusBiomes.has_fir ? HibiscusBiomes.HEATHER_FIELDS : BiomeKeys.CHERRY_GROVE;
    RegistryKey<Biome> commonBiomeDesert = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.LIVELY_DUNES : BiomeKeys.DESERT;
    RegistryKey<Biome> commonBiomeDesert2 = HibiscusBiomes.has_lively_dunes ? HibiscusBiomes.BLOOMING_DUNES : BiomeKeys.DESERT;
@@ -105,7 +106,7 @@ public class Region1Parameters {
       };
       this.commonBiomes = new RegistryKey[][]{
               {
-                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyTaigaFrozen, commonBiomeSnowyTaigaFrozen
+                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyTaigaFrozen, commonBiomeSnowyTaigaFrozen2
               }, {
               commonBiomePlainsCold, commonBiomePlainsCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
@@ -125,7 +126,7 @@ public class Region1Parameters {
       };
       this.nearMountainBiomes = new RegistryKey[][]{
               {
-                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyTaigaFrozen, commonBiomeSnowyTaigaFrozen
+                      commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyPlainsFrozen, commonBiomeSnowyTaigaFrozen, commonBiomeSnowyTaigaFrozen2
               }, {
                       BiomeKeys.MEADOW, mountainBiomeMeadowCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
               }, {
@@ -833,7 +834,7 @@ public class Region1Parameters {
       }
       else {
          if (HibiscusBiomes.has_fir) {
-            return humidity <= 2 && temperature <= 1 ? HibiscusBiomes.TUNDRA : temperature == 0 ? HibiscusBiomes.SNOWY_FIR_FOREST : BiomeKeys.GROVE;
+            return humidity <= 2 && temperature <= 1 ? HibiscusBiomes.TUNDRA : temperature == 0 && humidity == 3 ? HibiscusBiomes.SNOWY_FIR_FOREST : BiomeKeys.GROVE;
          }
          else {
             return humidity <= 1 ? BiomeKeys.SNOWY_SLOPES : BiomeKeys.GROVE;

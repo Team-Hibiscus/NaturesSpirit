@@ -35,7 +35,7 @@ public class HibiscusWoods {
            Blocks.CHERRY_SAPLING,
            HibiscusBoatEntity.HibiscusBoat.REDWOOD,
            new RedwoodSaplingGenerator(),
-           WoodSet.WoodPreset.DEFAULT,
+           WoodSet.WoodPreset.FIR,
            false
    );
    public static final WoodSet SUGI = new WoodSet(

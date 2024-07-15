@@ -472,6 +472,26 @@ public class HibiscusMiscBlocks {
            Blocks.RED_MUSHROOM_BLOCK,
            ItemGroups.NATURAL
    );
+   public static final Block GRAY_POLYPORE = registerPlantBlock("gray_polypore", new PolyporeBlock(
+           AbstractBlock.Settings
+                   .create()
+                   .mapColor(MapColor.BROWN)
+                   .noCollision()
+                   .ticksRandomly()
+                   .breakInstantly()
+                   .sounds(BlockSoundGroup.GRASS)
+                   .luminance((state) -> 1)
+                   .postProcess(Blocks::always)
+                   .pistonBehavior(PistonBehavior.DESTROY),
+           HibiscusConfiguredFeatures.GRAY_POLYPORE
+   ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, SHIITAKE_MUSHROOM, 0.1F);
+
+   public static final Block GRAY_POLYPORE_BLOCK = registerBlock("gray_polypore_block",
+           new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
+           HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+           SHIITAKE_MUSHROOM_BLOCK,
+           ItemGroups.NATURAL
+   );
 
 
    public static final FlowerSet LAVENDER = new FlowerSet("lavender", Items.PURPLE_DYE, Items.PEONY, FlowerSet.FlowerPreset.BIG_TALL);

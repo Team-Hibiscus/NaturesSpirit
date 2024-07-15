@@ -13,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -163,12 +164,9 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
                                 0.05F
                         ))));
     }
-
-    public LootTable.Builder coconutLeavesDrops(Block leaves) {
-        return dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder) this.applyExplosionDecay(leaves, ItemEntry.builder(Items.STICK).apply(SetCountLootFunction.builder(
-                UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, LEAVES_STICK_DROP_CHANCE)));
-    }
-
+   public LootTable.Builder leavesDrops(Block leaves, Item drop, float... chance) {
+      return dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(drop))).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, chance))).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS).with(((LeafEntry.Builder)this.applyExplosionDecay(leaves, ItemEntry.builder(Items.STICK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, LEAVES_STICK_DROP_CHANCE))));
+   }
     private void addTreeTable(HashMap<String, Block[]> saplings, HashMap<String, Block> leaves) {
         for (String i : saplings.keySet()) {
             Block[] saplingType = saplings.get(i);
@@ -180,7 +178,7 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
             } else if (i.equals("joshua")) {
                 this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE_2));
             } else if (i.equals("coconut") || i.equals("wisteria")) {
-                this.addDrop(leavesType, this::coconutLeavesDrops);
+                this.addDrop(leavesType, (block) -> this.leavesDrops(block, Items.STICK, SAPLING_DROP_CHANCE));
             } else {
                 this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE));
             }
@@ -230,7 +228,9 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
         this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
 
         this.addDrop(SHIITAKE_MUSHROOM);
-        this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM);
+        this.addDrop(SHIITAKE_MUSHROOM_BLOCK, this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM));
+       this.addDrop(GRAY_POLYPORE);
+       this.addDrop(GRAY_POLYPORE_BLOCK, this.mushroomBlockDrops(GRAY_POLYPORE_BLOCK, GRAY_POLYPORE));
 
         this.addDrop(HibiscusWoods.COCONUT_THATCH);
         this.addDrop(HibiscusWoods.COCONUT_THATCH_CARPET);
