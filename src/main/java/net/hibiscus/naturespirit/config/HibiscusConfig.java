@@ -32,10 +32,11 @@ public class HibiscusConfig {
    public static boolean mountain_biomes_toggle;
    public static boolean savanna_toggle;
    public static boolean dark_forest_toggle;
+   public static boolean windswept_hills_toggle;
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.5.0.1-1.20.1.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.6.0.3-1.20.1.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -92,6 +93,7 @@ public class HibiscusConfig {
             mountain_biomes_toggle = datapack_toggles.get("mountain_biomes_toggle").getAsBoolean();
             savanna_toggle = datapack_toggles.get("savanna_toggle").getAsBoolean();
             dark_forest_toggle = datapack_toggles.get("dark_forest_toggle").getAsBoolean();
+            windswept_hills_toggle = datapack_toggles.get("windswept_hills_toggle").getAsBoolean();
 
          } catch(final IOException e) {
             System.err.println("An error occurred, delete the natures_spirit.config file in .minecraft/config and relaunch");
@@ -158,6 +160,7 @@ public class HibiscusConfig {
       datapackTogglesObject.addProperty("mountain_biomes_toggle", true);
       datapackTogglesObject.addProperty("savanna_toggle", true);
       datapackTogglesObject.addProperty("dark_forest_toggle", true);
+      datapackTogglesObject.addProperty("windswept_hills_toggle", true);
       jsonObjects.add("datapack_toggles", datapackTogglesObject);
 
       return jsonObjects;

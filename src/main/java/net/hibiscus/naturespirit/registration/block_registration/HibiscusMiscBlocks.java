@@ -84,7 +84,7 @@ public class HibiscusMiscBlocks {
    public static final Block PINK_SANDSTONE_WALL = registerBlock("pink_sandstone_wall", new WallBlock(FabricBlockSettings.copy(PINK_SANDSTONE).solid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
 
    public static final Block TALL_FRIGID_GRASS = registerPlantBlock("tall_frigid_grass",
-           new TallPlantBlock(FabricBlockSettings
+           new SemiTallGrassBlock(FabricBlockSettings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
                    .noCollision()

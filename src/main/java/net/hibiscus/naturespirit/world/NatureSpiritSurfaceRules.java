@@ -6,6 +6,7 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusColored
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
@@ -289,12 +290,21 @@ public class NatureSpiritSurfaceRules {
                       MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.MARSH, HibiscusBiomes.TROPICAL_BASIN, HibiscusBiomes.BAMBOO_WETLANDS), MaterialRules.condition(materialCondition6, MaterialRules.condition(MaterialRules.not(materialCondition4), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE_SWAMP, 0.0), WATER))))
               ))
       );
-      MaterialRules.MaterialRule redwoodForestRule = MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.REDWOOD_FOREST),
+      MaterialRules.MaterialRule redwoodForestRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.REDWOOD_FOREST),
               MaterialRules.sequence(
                       MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 1.75 / 8.25, Double.MAX_VALUE), MaterialRules.condition(MaterialRules.stoneDepth(1, true, VerticalSurfaceType.FLOOR), COARSE_DIRT)),
-                      MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.95 / 8.25, Double.MAX_VALUE), MaterialRules.condition(materialCondition7, PODZOL)))
+                      MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.95 / 8.25, Double.MAX_VALUE), MaterialRules.condition(materialCondition7, PODZOL))),
+                      MaterialRules.sequence(MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS)), MaterialRules.condition(MaterialRules.stoneDepth(1, true, VerticalSurfaceType.FLOOR), DIRT))
               )
-      ), MaterialRules.sequence(MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS)), MaterialRules.condition(MaterialRules.stoneDepth(1, true, VerticalSurfaceType.FLOOR), DIRT)));
+      );
+
+
+//      MaterialRules.MaterialRule windsweptRule = MaterialRules.condition(MaterialRules.biome(BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_HILLS),
+//              MaterialRules.sequence(
+//                      MaterialRules.condition(MaterialRules.stoneDepth(0, true, VerticalSurfaceType.FLOOR),
+//                              MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.95 / 8.25, Double.MAX_VALUE),
+//                                      MaterialRules.condition(materialCondition7, COARSE_DIRT))),
+//                      MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS))));
 
 
 

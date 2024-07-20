@@ -20,7 +20,7 @@ public class WisteriaVinePlant extends AbstractPlantBlock {
    }
 
    public String getTranslationKey() {
-      return this.asItem().getTranslationKey();
+      return headBlock.getTranslationKey();
    }
 
    protected AbstractPlantStemBlock getStem() {

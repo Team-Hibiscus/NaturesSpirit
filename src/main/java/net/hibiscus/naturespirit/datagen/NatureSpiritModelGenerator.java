@@ -531,13 +531,12 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
 
         registerCheese(blockStateModelGenerator);
         generateFlowerBlockStateModels(FLAXEN_FERN, POTTED_FLAXEN_FERN, blockStateModelGenerator);
-        generateFlowerBlockStateModels(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
         generateFlowerBlockStateModels(SHIITAKE_MUSHROOM, POTTED_SHIITAKE_MUSHROOM, blockStateModelGenerator);
         registerMushroomBlock(SHIITAKE_MUSHROOM_BLOCK, blockStateModelGenerator);
         generatePolypore(GRAY_POLYPORE, blockStateModelGenerator);
         registerMushroomBlock(GRAY_POLYPORE_BLOCK, blockStateModelGenerator);
         registerCropWithoutItem(HibiscusMiscBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, blockStateModelGenerator, 0, 1, 2, 3, 4, 5, 6, 7);
-        blockStateModelGenerator.registerDoubleBlock(TALL_FRIGID_GRASS, TintType.NOT_TINTED);
+        generateTallLargeFlower(TALL_FRIGID_GRASS, blockStateModelGenerator);
         generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
         generateTallLargeFlower(TALL_BEACH_GRASS, blockStateModelGenerator);
         generateTintedTallLargeFlower(LARGE_LUSH_FERN, blockStateModelGenerator);
@@ -551,6 +550,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
         generateLargeFlower(GREEN_BITTER_SPROUTS, blockStateModelGenerator);
         generateLargeFlower(RED_BITTER_SPROUTS, blockStateModelGenerator);
         generateLargeFlower(PURPLE_BITTER_SPROUTS, blockStateModelGenerator);
+        generateLargeFlower(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
         generateLargeFlower(BEACH_GRASS, POTTED_BEACH_GRASS, blockStateModelGenerator);
         generateLargeFlower(SEDGE_GRASS, POTTED_SEDGE_GRASS, blockStateModelGenerator);
         generateLargeFlower(OAT_GRASS, POTTED_OAT_GRASS, blockStateModelGenerator);

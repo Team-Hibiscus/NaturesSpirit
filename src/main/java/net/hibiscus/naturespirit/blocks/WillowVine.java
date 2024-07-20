@@ -13,8 +13,6 @@ public class WillowVine extends WisteriaVine {
    public WillowVine(Settings properties) {
       super(properties);
    }
-
-
    protected int getGrowthLength(Random randomSource) {
       return VineLogic.getGrowthLength(randomSource);
    }
