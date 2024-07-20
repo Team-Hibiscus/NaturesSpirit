@@ -124,7 +124,6 @@ public class HibiscusConfiguredFeatures {
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> PUMPKIN_PATCH_FEATURE = registerKey("pumpkin_patch_feature");
    public static final RegistryKey <ConfiguredFeature <?, ?>> PUMPKIN_FEATURE = registerKey("pumpkin_feature");
-   public static final RegistryKey <ConfiguredFeature <?, ?>> TRAVERTINE_BLOCK_FEATURE = registerKey("travertine_block_feature");
 
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_WISTERIA_FOREST = registerKey("flower_wisteria_forest");
    public static final RegistryKey <ConfiguredFeature <?, ?>> FLOWER_SUGI_FOREST = registerKey("flower_sugi_forest");
@@ -901,7 +900,6 @@ public class HibiscusConfiguredFeatures {
               new OreFeatureConfig(new BlockMatchRuleTest(Blocks.AIR), Blocks.OAK_LEAVES.getDefaultState().with(LeavesBlock.PERSISTENT, true), 43, 0)
       );
       register(context, PUMPKIN_FEATURE, HIBISCUS_LARGE_PUMPKIN_FEATURE, new BlockPileFeatureConfig(new HibiscusSimpleBlockStateProvider(Blocks.PUMPKIN.getDefaultState())));
-      register(context, TRAVERTINE_BLOCK_FEATURE, HIBISCUS_LARGE_PUMPKIN_FEATURE, new BlockPileFeatureConfig(new HibiscusSimpleBlockStateProvider(HibiscusMiscBlocks.TRAVERTINE.getBase().getDefaultState())));
 
    }
 

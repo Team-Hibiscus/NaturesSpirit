@@ -525,15 +525,14 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
 
       registerCheese(blockStateModelGenerator);
       generateFlowerBlockStateModels(FLAXEN_FERN, POTTED_FLAXEN_FERN, blockStateModelGenerator);
-      generateFlowerBlockStateModels(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
       generateFlowerBlockStateModels(SHIITAKE_MUSHROOM, POTTED_SHIITAKE_MUSHROOM, blockStateModelGenerator);
       registerMushroomBlock(SHIITAKE_MUSHROOM_BLOCK, blockStateModelGenerator);
       generatePolypore(GRAY_POLYPORE, blockStateModelGenerator);
       registerMushroomBlock(GRAY_POLYPORE_BLOCK, blockStateModelGenerator);
       registerCropWithoutItem(HibiscusMiscBlocks.DESERT_TURNIP_STEM, DesertPlantBlock.AGE, blockStateModelGenerator, 0, 1, 2, 3, 4, 5, 6, 7);
-      blockStateModelGenerator.registerDoubleBlock(TALL_FRIGID_GRASS, TintType.NOT_TINTED);
       generateTallLargeFlower(HibiscusMiscBlocks.TALL_SCORCHED_GRASS, blockStateModelGenerator);
       generateTallLargeFlower(TALL_BEACH_GRASS, blockStateModelGenerator);
+      generateTallLargeFlower(TALL_FRIGID_GRASS, blockStateModelGenerator);
       generateTintedTallLargeFlower(LARGE_LUSH_FERN, blockStateModelGenerator);
       generateTallLargeFlower(TALL_SEDGE_GRASS, blockStateModelGenerator);
       generateTallLargeFlower(TALL_OAT_GRASS, blockStateModelGenerator);
@@ -548,6 +547,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
       generateLargeFlower(BEACH_GRASS, POTTED_BEACH_GRASS, blockStateModelGenerator);
       generateLargeFlower(SEDGE_GRASS, POTTED_SEDGE_GRASS, blockStateModelGenerator);
       generateLargeFlower(OAT_GRASS, POTTED_OAT_GRASS, blockStateModelGenerator);
+      generateLargeFlower(FRIGID_GRASS, POTTED_FRIGID_GRASS, blockStateModelGenerator);
       generateTintedLargeFlower(LUSH_FERN, POTTED_LUSH_FERN, blockStateModelGenerator);
       generateTintedLargeFlower(MELIC_GRASS, POTTED_MELIC_GRASS, blockStateModelGenerator);
       generateVineBlockStateModels(HibiscusWoods.WISTERIA.getBlueWisteriaVines(), HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);

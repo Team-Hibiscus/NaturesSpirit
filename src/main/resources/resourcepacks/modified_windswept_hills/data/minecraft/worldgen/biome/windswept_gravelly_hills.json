@@ -7,24 +7,20 @@
     ]
   },
   "downfall": 0.3,
+  "temperature": 0.3,
   "effects": {
     "fog_color": 12638463,
-    "grass_color": 11977352,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.forest"
-    },
-    "sky_color": 8103167,
+    "sky_color": 7907327,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 10009468,
+    "foliage_color": 9352813
   },
   "features": [
     [
@@ -63,7 +59,6 @@
       "minecraft:ore_redstone",
       "minecraft:ore_redstone_lower",
       "minecraft:ore_diamond",
-      "minecraft:ore_diamond_medium",
       "minecraft:ore_diamond_large",
       "minecraft:ore_diamond_buried",
       "minecraft:ore_lapis",
@@ -72,20 +67,23 @@
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "minecraft:disk_gravel",
+      "minecraft:ore_emerald"
     ],
-    [],
+    [
+      "minecraft:ore_infested"
+    ],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
-      "natures_spirit:patch_tall_grass_2",
-      "natures_spirit:dense_fir_placed",
-      "natures_spirit:patch_grass_field",
-      "natures_spirit:flower_fir_placed",
-      "minecraft:forest_flowers",
+      "minecraft:trees_windswept_hills",
+      "minecraft:flower_default",
+      "minecraft:patch_grass_badlands",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin"
     ],
@@ -129,6 +127,12 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 8
+      },
+      {
+        "type": "minecraft:llama",
+        "maxCount": 6,
+        "minCount": 4,
+        "weight": 5
       }
     ],
     "misc": [],
@@ -192,6 +196,5 @@
     ],
     "water_ambient": [],
     "water_creature": []
-  },
-  "temperature": 0.2
+  }
 }
