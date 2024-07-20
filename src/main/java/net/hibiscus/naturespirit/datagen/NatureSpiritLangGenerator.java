@@ -267,6 +267,14 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       translationBuilder.add("pack.natures_spirit.modified_vanilla_trees", "Modified Vanilla Trees");
       translationBuilder.add("pack.natures_spirit.modified_windswept_hills", "Modified Windswept Hills");
       translationBuilder.add("pack.natures_spirit.modified_jungle", "Modified Jungles");
+      translationBuilder.add("painting.natures_spirit.redwood.title", "Woody Spires");
+      translationBuilder.add("painting.natures_spirit.redwood.author", "Aeramisu");
+      translationBuilder.add("painting.natures_spirit.lavender.title", "Happy Days");
+      translationBuilder.add("painting.natures_spirit.lavender.author", "Aeramisu");
+      translationBuilder.add("painting.natures_spirit.aspen.title", "Aureate");
+      translationBuilder.add("painting.natures_spirit.aspen.author", "Aeramisu");
+      translationBuilder.add("painting.natures_spirit.sandy_trees.title", "Lost");
+      translationBuilder.add("painting.natures_spirit.sandy_trees.author", "Aeramisu");
       generateArchExTranslations("kaolin", translationBuilder);
       generateArchExTranslations("kaolin_bricks", translationBuilder);
 
