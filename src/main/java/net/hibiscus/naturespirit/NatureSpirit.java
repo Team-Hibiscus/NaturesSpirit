@@ -106,17 +106,17 @@ public class NatureSpirit implements ModInitializer {
                  HibiscusConfig.dark_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "modified_windswept_hills"), modContainer.get(),
+                 Identifier.of(MOD_ID, "modified_windswept_hills"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_windswept_hills"),
                  HibiscusConfig.windswept_hills_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
+                 Identifier.of(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
-                 new Identifier(MOD_ID, "emissive_ores_compatibility"), modContainer.get(),
+                 Identifier.of(MOD_ID, "emissive_ores_compatibility"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.emissive_ores_compatibility"),
                  ResourcePackActivationType.NORMAL
          );

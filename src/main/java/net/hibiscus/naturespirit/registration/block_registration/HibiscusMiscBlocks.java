@@ -82,7 +82,7 @@ public class HibiscusMiscBlocks {
    public static final Block PINK_SANDSTONE_WALL = registerBlock("pink_sandstone_wall", new WallBlock(AbstractBlock.Settings.copy(PINK_SANDSTONE).solid()), HibiscusItemGroups.NS_MISC_ITEM_GROUP);
 
    public static final Block TALL_FRIGID_GRASS = registerPlantBlock("tall_frigid_grass",
-           new SemiTallGrassBlock(FabricBlockSettings
+           new SemiTallGrassBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
                    .noCollision()
@@ -485,7 +485,7 @@ public class HibiscusMiscBlocks {
    ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, SHIITAKE_MUSHROOM, 0.1F);
 
    public static final Block GRAY_POLYPORE_BLOCK = registerBlock("gray_polypore_block",
-           new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(Instrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
+           new MushroomBlock(AbstractBlock.Settings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            SHIITAKE_MUSHROOM_BLOCK,
            ItemGroups.NATURAL

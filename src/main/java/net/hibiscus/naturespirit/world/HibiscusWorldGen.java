@@ -110,7 +110,7 @@ public class HibiscusWorldGen {
            new HugeBrownMushroomFeature(net.hibiscus.naturespirit.world.feature.HugeMushroomFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> POLYPORE_FEATURE = Registry.register(Registries.FEATURE,
-           new Identifier(MOD_ID, "polypore_feature"),
+           Identifier.of(MOD_ID, "polypore_feature"),
            new PolyporeFeature(DefaultFeatureConfig.CODEC)
    );
    public static final Feature <DefaultFeatureConfig> LOTUS_PLANT_FEATURE = Registry.register(Registries.FEATURE,

@@ -29,7 +29,7 @@ public class PolyporeBlock extends MushroomPlantBlock {
    private static final Map <Direction, VoxelShape> FACING_TO_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(0.0, 4.0, 10.0, 16.0, 12.0, 16.0), Direction.SOUTH, Block.createCuboidShape(0.0, 4.0, 0.0, 16.0, 12.0, 6.0), Direction.WEST, Block.createCuboidShape(10.0, 4.0, 0.0, 16.0, 12.0, 16.0), Direction.EAST, Block.createCuboidShape(0.0, 4.0, 0.0, 6.0, 12.0, 16.0)));
 
    public PolyporeBlock(Settings settings, RegistryKey <ConfiguredFeature <?, ?>> featureKey) {
-      super(settings, featureKey);
+      super(featureKey, settings);
       this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)));
    }
 

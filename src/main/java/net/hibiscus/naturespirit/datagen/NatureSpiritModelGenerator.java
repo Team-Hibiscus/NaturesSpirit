@@ -39,6 +39,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
    private static final Model FLOWER_POT_TALL_CROSS = block("flower_pot_tall_cross", TextureKey.PLANT);
    private static final Model FLOWER_POT_LARGE_CROSS = block("flower_pot_large_cross", TextureKey.PLANT);
    private static final Model SUCCULENT = block("succulent", TextureKey.PLANT);
+   private static final Model POLYPORE = block("polypore", TextureKey.PLANT);
    private static final Model SUCCULENT_WALL = block("succulent_wall", TextureKey.PLANT);
    private static final Model FLOWER_POT_SUCCULENT = block("flower_pot_succulent", TextureKey.PLANT);
    private static final Model FLOWER_POT_TINTED_LARGE_CROSS = block("tinted_flower_pot_large_cross", TextureKey.PLANT);
