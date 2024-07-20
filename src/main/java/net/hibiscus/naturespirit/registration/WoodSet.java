@@ -640,14 +640,6 @@ public class WoodSet {
    private Block createStrippedWood() {
       return createBlockWithItem("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
    }
-   private Block createFirLeaves() {
-      Block block = createBlockWithItem( this.getName() + "_leaves", new ProjectileLeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves()), this.getFrostyLeaves()));
-      RenderLayerHashMap.put(this.getName() + "_leaves", block);
-      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
-      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
-      LeavesHashMap.put(this.getName(), block);
-      return block;
-   }
    private Block createLeaves() {
       Block block = createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       RenderLayerHashMap.put(this.getName() + "_leaves", block);
@@ -763,10 +755,10 @@ public class WoodSet {
       return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(this.getWoodType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createPressurePlate(){
-      return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.create().mapColor(this.getBase().getDefaultMapColor()).solid().instrument(Instrument.BASS).noCollision().strength(0.5F).burnable().pistonBehavior(PistonBehavior.DESTROY), this.getBlockSetType()));
+      return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(this.getBlockSetType(), AbstractBlock.Settings.create().mapColor(this.getBase().getDefaultMapColor()).solid().instrument(NoteBlockInstrument.BASS).noCollision().strength(0.5F).burnable().pistonBehavior(PistonBehavior.DESTROY)));
    }
    private Block createButton(){
-      return createBlockWithItem(this.getName() + "_button", new ButtonBlock(AbstractBlock.Settings.create().noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.getBlockSetType(), 30, true));
+      return createBlockWithItem(this.getName() + "_button", new ButtonBlock( this.getBlockSetType(), 30, AbstractBlock.Settings.create().noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY)));
    }
    private Block createDoor(){
       return createBlockWithItem(this.getName() + "_door", new DoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor())));
