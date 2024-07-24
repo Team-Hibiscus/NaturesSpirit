@@ -151,9 +151,6 @@ public class NatureSpirit implements ModInitializer {
       HibiscusCauldronBehavior.registerBehavior();
       DynamicRegistries.registerSynced(PIZZA_TOPPING_VARIANT, PizzaToppingVariant.CODEC);
 
-      CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
-      CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
-
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
          DispenserBlock.registerBehavior(boat.boat(), new HibiscusBoatDispensorBehavior(boat, false));
          DispenserBlock.registerBehavior(boat.chestBoat(), new HibiscusBoatDispensorBehavior(boat, true));

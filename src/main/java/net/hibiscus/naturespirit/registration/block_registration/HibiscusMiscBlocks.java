@@ -135,7 +135,7 @@ public class HibiscusMiscBlocks {
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
+                   .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_SCORCHED_GRASS),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.FERN,
            0.3f
@@ -164,7 +164,7 @@ public class HibiscusMiscBlocks {
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
-                   .pistonBehavior(PistonBehavior.DESTROY)),
+                   .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_BEACH_GRASS),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.FERN,
            0.3f
@@ -837,10 +837,45 @@ public class HibiscusMiscBlocks {
       FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.COCONUT_THATCH_SLAB, 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.COCONUT_THATCH_STAIRS, 5, 20);
       FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.COCONUT_THATCH_CARPET, 5, 20);
-      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.XERIC_THATCH, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.XERIC_THATCH_SLAB, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.XERIC_THATCH_STAIRS, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.XERIC_THATCH_CARPET, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.EVERGREEN_THATCH, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.EVERGREEN_THATCH_SLAB, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.EVERGREEN_THATCH_STAIRS, 5, 20);
+      FlammableBlockRegistry.getDefaultInstance().add(HibiscusWoods.EVERGREEN_THATCH_CARPET, 5, 20);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH, 0.65F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_CARPET, 0.1F);
-      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_STAIRS, 0.2F);
-      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_SLAB, 0.15F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_STAIRS, 0.5F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.COCONUT_THATCH_SLAB, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.XERIC_THATCH, 0.65F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.XERIC_THATCH_CARPET, 0.1F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.XERIC_THATCH_STAIRS, 0.5F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.XERIC_THATCH_SLAB, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.EVERGREEN_THATCH, 0.65F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.EVERGREEN_THATCH_CARPET, 0.1F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.EVERGREEN_THATCH_STAIRS, 0.5F);
+      CompostingChanceRegistry.INSTANCE.add(HibiscusWoods.EVERGREEN_THATCH_SLAB, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(RED_MOSS_BLOCK, 0.65F);
+      CompostingChanceRegistry.INSTANCE.add(RED_MOSS_CARPET, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(LOTUS_FLOWER_ITEM, 0.65F);
+      CompostingChanceRegistry.INSTANCE.add(HELVOLA_FLOWER_ITEM, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(HELVOLA_PAD_ITEM, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(DESERT_TURNIP, 0.3F);
+      CompostingChanceRegistry.INSTANCE.add(DESERT_TURNIP_BLOCK, 0.65F);
+      CompostingChanceRegistry.INSTANCE.add(DESERT_TURNIP_ROOT_BLOCK, 0.5F);
+      CompostingChanceRegistry.INSTANCE.add(WHOLE_PIZZA, 1.0F);
+      CompostingChanceRegistry.INSTANCE.add(THREE_QUARTERS_PIZZA, .85F);
+      CompostingChanceRegistry.INSTANCE.add(HALF_PIZZA, .5F);
+      CompostingChanceRegistry.INSTANCE.add(QUARTER_PIZZA, .35F);
+      CompostingChanceRegistry.INSTANCE.add(AUREATE_SUCCULENT_ITEM, .65F);
+      CompostingChanceRegistry.INSTANCE.add(DROWSY_SUCCULENT_ITEM, .65F);
+      CompostingChanceRegistry.INSTANCE.add(FOAMY_SUCCULENT_ITEM, .65F);
+      CompostingChanceRegistry.INSTANCE.add(SAGE_SUCCULENT_ITEM, .65F);
+      CompostingChanceRegistry.INSTANCE.add(IMPERIAL_SUCCULENT_ITEM, .65F);
+      CompostingChanceRegistry.INSTANCE.add(ORNATE_SUCCULENT_ITEM, .65F);
+      CompostingChanceRegistry.INSTANCE.add(REGAL_SUCCULENT_ITEM, .65F);
       StrippableBlockRegistry.register(ALLUAUDIA_BUNDLE, STRIPPED_ALLUAUDIA_BUNDLE);
    }
 }
