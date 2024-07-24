@@ -1,0 +1,7 @@
+{
+  "texture_path": "natures_spirit:block/pizza/cooked_cod",
+  "hunger": 1,
+  "saturation": 0.15,
+  "translation_key": "cooked_cod",
+  "item": "minecraft:cooked_cod"
+}

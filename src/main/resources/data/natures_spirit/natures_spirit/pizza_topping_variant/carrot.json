@@ -1,0 +1,7 @@
+{
+  "texture_path": "natures_spirit:block/pizza/carrot",
+  "hunger": 1,
+  "saturation": 0.15,
+  "translation_key": "carrot",
+  "item": "minecraft:carrot"
+}

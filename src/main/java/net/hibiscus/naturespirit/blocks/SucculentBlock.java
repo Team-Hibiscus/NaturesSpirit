@@ -5,6 +5,8 @@ import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -45,7 +47,8 @@ public class SucculentBlock extends CoralParentBlock implements Fertilizable{
       return world.getBlockState(blockPos).isSideSolid(world, blockPos, Direction.UP, SideShapeType.CENTER) || world.getBlockState(blockPos).isIn(HibiscusTags.Blocks.SUCCULENT_VERTICAL_PLACEMENT_OVERRIDE);
    }
 
-   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+
+   @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
       return true;
    }
 

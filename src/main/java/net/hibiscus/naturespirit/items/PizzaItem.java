@@ -2,6 +2,8 @@ package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.Block;
@@ -50,12 +52,11 @@ public class PizzaItem extends AliasedBlockItem {
       super.appendTooltip(stack, context, tooltip, type);
 
 
-      List <Identifier> list = stack.get(HibiscusDataComponents.TOPPINGS);
+      List <PizzaToppingVariant> list = stack.get(HibiscusDataComponents.TOPPINGS);
       if (list != null) {
-               int j = list.size();
-               for(int i = 0; i < j; ++i) {
-                  tooltip.add(Text.translatable("block.natures_spirit.pizza." + list.get(i).toString().replace(":", ".")).formatted(Formatting.GRAY));
-               }
+         for(PizzaToppingVariant pizzaToppingVariant: list) {
+            tooltip.add(Text.translatable("block.natures_spirit.pizza." + pizzaToppingVariant.translationKey().replace(":", ".")).formatted(Formatting.GRAY));
+         }
       }
    }
 
@@ -65,13 +66,13 @@ public class PizzaItem extends AliasedBlockItem {
 
       PlayerEntity holder = (PlayerEntity) user;
       holder.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
-      List<Identifier> list = stack.get(HibiscusDataComponents.TOPPINGS);
+      List<PizzaToppingVariant> list = stack.get(HibiscusDataComponents.TOPPINGS);
       if (list != null) {
             int foodAmount = 2;
             float saturationModifier = 0.2F;
-               for(int i = 0; i < list.size(); i++) {
-                  foodAmount++;
-                  saturationModifier = saturationModifier + 0.1F;
+               for(PizzaToppingVariant pizzaToppingVariant: list) {
+                  foodAmount += pizzaToppingVariant.hunger();
+                  saturationModifier += pizzaToppingVariant.saturation();
                }
             holder.getHungerManager().add(foodAmount, saturationModifier);
       }

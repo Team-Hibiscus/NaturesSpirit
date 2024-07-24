@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -57,9 +58,9 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
             player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
             int foodAmount = 2;
             float saturationModifier = 0.2F;
-            for(Identifier identifier: pizzaBlockEntity.TOPPINGS) {
-               foodAmount++;
-               saturationModifier = saturationModifier + 0.1F;
+            for(PizzaToppingVariant pizzaToppingVariant: pizzaBlockEntity.TOPPINGS) {
+               foodAmount+= pizzaToppingVariant.hunger();
+               saturationModifier += pizzaToppingVariant.saturation();
             }
 
             player.getHungerManager().add(foodAmount, saturationModifier);
@@ -112,7 +113,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          ItemStack itemStack = player.getStackInHand(player.getActiveHand());
          Item item = itemStack.getItem();
-         if(pizzaBlockEntity.canPlaceTopping(itemStack, pizzaBlockEntity)) {
+         if(pizzaBlockEntity.canPlaceTopping(itemStack, world, pizzaBlockEntity)) {
             if(!player.isCreative()) {
                itemStack.decrement(1);
             }

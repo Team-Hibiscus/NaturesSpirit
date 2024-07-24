@@ -6,11 +6,13 @@ import net.hibiscus.naturespirit.registration.*;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.util.HibiscusTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.world.biome.Biome;
 
 import java.util.HashMap;
@@ -48,6 +50,10 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
    private void generateItemTranslations(Item item, TranslationBuilder translationBuilder) {
       String temp = capitalizeString(Registries.ITEM.getId(item).getPath().replace("_", " "));
       translationBuilder.add(item, temp);
+   }
+   private void generateItemTagTranslations(TagKey<Item> itemTag, TranslationBuilder translationBuilder) {
+      String temp = capitalizeString(itemTag.id().getPath().replace("_", " "));
+      translationBuilder.add(itemTag, temp);
    }
 
    private void generateWoodTranslations(HashMap<String, WoodSet> woods, TranslationBuilder translationBuilder) {
@@ -242,15 +248,15 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(CHEESE_CAULDRON, translationBuilder);
       generateBlockTranslations(MILK_CAULDRON, translationBuilder);
       translationBuilder.add(CHEESE_BUCKET, "Cheese Bucket");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_chicken", "With Cooked Chicken");
-      translationBuilder.add("block.natures_spirit.pizza.natures_spirit.green_olives", "With Green Olives");
-      translationBuilder.add("block.natures_spirit.pizza.natures_spirit.black_olives", "With Black Olives");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.brown_mushroom", "With Mushrooms");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.beetroot", "With Beetroots");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.carrot", "With Carrots");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_cod", "With Cooked Cod");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_porkchop", "With Cooked Porkchop");
-      translationBuilder.add("block.natures_spirit.pizza.minecraft.cooked_rabbit", "With Cooked Rabbit");
+      translationBuilder.add("block.natures_spirit.pizza.cooked_chicken", "With Cooked Chicken");
+      translationBuilder.add("block.natures_spirit.pizza.green_olives", "With Green Olives");
+      translationBuilder.add("block.natures_spirit.pizza.black_olives", "With Black Olives");
+      translationBuilder.add("block.natures_spirit.pizza.brown_mushroom", "With Mushrooms");
+      translationBuilder.add("block.natures_spirit.pizza.beetroot", "With Beetroots");
+      translationBuilder.add("block.natures_spirit.pizza.carrot", "With Carrots");
+      translationBuilder.add("block.natures_spirit.pizza.cooked_cod", "With Cooked Cod");
+      translationBuilder.add("block.natures_spirit.pizza.cooked_porkchop", "With Cooked Porkchop");
+      translationBuilder.add("block.natures_spirit.pizza.cooked_rabbit", "With Cooked Rabbit");
       translationBuilder.add(HibiscusMiscBlocks.HALF_PIZZA, "Half of a Pizza");
       translationBuilder.add(HibiscusMiscBlocks.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
       translationBuilder.add(HibiscusMiscBlocks.QUARTER_PIZZA, "Quarter of a Pizza");
@@ -275,6 +281,28 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       translationBuilder.add("painting.natures_spirit.aspen.author", "Aeramisu");
       translationBuilder.add("painting.natures_spirit.sandy_trees.title", "Lost");
       translationBuilder.add("painting.natures_spirit.sandy_trees.author", "Aeramisu");
+      generateItemTagTranslations(HibiscusTags.Items.PIZZA_TOPPINGS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.CHEESE_MAKER, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.EVERGREEN_LEAVES, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.XERIC_LEAVES, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.COCONUT_ITEMS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.SUCCULENTS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.STRIPPED_LOGS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.ALLUAUDIA_BUNDLES, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.KAOLIN, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_STAIRS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_SLABS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_BRICKS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_BRICK_STAIRS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_BRICK_SLABS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.CHALK, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.CHALK_STAIRS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.CHALK_SLABS, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.COCONUT_HALVES, translationBuilder);
+      generateItemTagTranslations(HibiscusTags.Items.OLIVES, translationBuilder);
+
+
       generateArchExTranslations("kaolin", translationBuilder);
       generateArchExTranslations("kaolin_bricks", translationBuilder);
 

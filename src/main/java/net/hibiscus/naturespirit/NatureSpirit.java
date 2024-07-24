@@ -1,12 +1,15 @@
 package net.hibiscus.naturespirit;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
@@ -20,10 +23,14 @@ import net.hibiscus.naturespirit.util.HibiscusVillagers;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.resource.ResourceManager;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -31,6 +38,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
 
 public class NatureSpirit implements ModInitializer {
@@ -44,6 +52,7 @@ public class NatureSpirit implements ModInitializer {
    public static final SimpleParticleType YELLOW_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
    public static final SimpleParticleType MILK_PARTICLE = FabricParticleTypes.simple(false);
    public static final SimpleParticleType CALCITE_BUBBLE_PARTICLE = FabricParticleTypes.simple(false);
+   public static final RegistryKey <Registry<PizzaToppingVariant>> PIZZA_TOPPING_VARIANT = RegistryKey.ofRegistry(Identifier.of(MOD_ID, "pizza_topping_variant"));
 
    @Override public void onInitialize() {
 
@@ -140,6 +149,7 @@ public class NatureSpirit implements ModInitializer {
       HibiscusSounds.registerSounds();
       HibiscusCriteria.registerCriteria();
       HibiscusCauldronBehavior.registerBehavior();
+      DynamicRegistries.registerSynced(PIZZA_TOPPING_VARIANT, PizzaToppingVariant.CODEC);
 
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK.asItem(), 0.5F);
       CompostingChanceRegistry.INSTANCE.add(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK.asItem(), 0.4F);
@@ -150,5 +160,7 @@ public class NatureSpirit implements ModInitializer {
       }
 
       Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
+
+
    }
 }

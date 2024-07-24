@@ -1,0 +1,7 @@
+{
+  "texture_path": "natures_spirit:block/pizza/brown_mushroom",
+  "hunger": 1,
+  "saturation": 0.1,
+  "translation_key": "brown_mushroom",
+  "item": "minecraft:brown_mushroom"
+}

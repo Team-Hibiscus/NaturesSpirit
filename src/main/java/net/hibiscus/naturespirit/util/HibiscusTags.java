@@ -10,7 +10,6 @@ import net.minecraft.util.Identifier;
 
 public class HibiscusTags {
    public static class Items {
-
       public static final TagKey <Item> PIZZA_TOPPINGS = createTag("pizza_toppings");
       public static final TagKey <Item> DISABLED_PIZZA_TOPPINGS = createTag("disabled_pizza_toppings");
       public static final TagKey <Item> CHEESE_MAKER = createTag("cheese_maker");
@@ -20,6 +19,17 @@ public class HibiscusTags {
       public static final TagKey <Item> SUCCULENTS = createTag("succulents");
       public static final TagKey <Item> STRIPPED_LOGS = createTag("stripped_logs");
       public static final TagKey <Item> ALLUAUDIA_BUNDLES = createTag("alluaudia_bundles");
+      public static final TagKey <Item> KAOLIN = createTag("kaolin");
+      public static final TagKey <Item> KAOLIN_STAIRS = createTag("kaolin_stairs");
+      public static final TagKey <Item> KAOLIN_SLABS = createTag("kaolin_slabs");
+      public static final TagKey <Item> KAOLIN_BRICKS = createTag("kaolin_bricks");
+      public static final TagKey <Item> KAOLIN_BRICK_STAIRS = createTag("kaolin_brick_stairs");
+      public static final TagKey <Item> KAOLIN_BRICK_SLABS = createTag("kaolin_brick_slabs");
+      public static final TagKey <Item> CHALK = createTag("chalk");
+      public static final TagKey <Item> CHALK_STAIRS = createTag("chalk_stairs");
+      public static final TagKey <Item> CHALK_SLABS = createTag("chalk_slabs");
+      public static final TagKey <Item> COCONUT_HALVES = createTag("coconut_halves");
+      public static final TagKey <Item> OLIVES = createTag("olives");
 
       private static TagKey <Item> createTag(String name) {
          return TagKey.of(RegistryKeys.ITEM, Identifier.of(NatureSpirit.MOD_ID, name));

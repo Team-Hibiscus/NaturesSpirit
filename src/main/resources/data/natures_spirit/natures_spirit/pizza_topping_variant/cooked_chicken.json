@@ -1,0 +1,7 @@
+{
+  "texture_path": "natures_spirit:block/pizza/cooked_chicken",
+  "hunger": 2,
+  "saturation": 0.15,
+  "translation_key": "cooked_chicken",
+  "item": "minecraft:cooked_chicken"
+}

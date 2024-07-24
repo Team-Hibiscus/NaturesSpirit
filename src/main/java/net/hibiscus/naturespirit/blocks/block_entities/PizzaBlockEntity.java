@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks.block_entities;
 
+import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
 import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
@@ -16,12 +17,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
 public class PizzaBlockEntity extends BlockEntity {
-   public ArrayList <Identifier> TOPPINGS = new ArrayList <>();
+   public ArrayList <PizzaToppingVariant> TOPPINGS = new ArrayList <>();
    public int TOPPING_NUMBER = 0;
    public PizzaBlockEntity(BlockPos pos, BlockState state) {
       super(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
@@ -41,15 +43,25 @@ public class PizzaBlockEntity extends BlockEntity {
       this.markDirty();
    }
 
-   public boolean canPlaceTopping(ItemStack itemStack, PizzaBlockEntity pizzaBlockEntity) {
+   public boolean canPlaceTopping(ItemStack itemStack, World world, PizzaBlockEntity pizzaBlockEntity) {
       Identifier itemId = Registries.ITEM.getId(itemStack.getItem());
-      boolean bl = pizzaBlockEntity.getCachedState().get(PizzaBlock.BITES) == 0 && pizzaBlockEntity.TOPPING_NUMBER < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && itemStack.isIn(HibiscusTags.Items.PIZZA_TOPPINGS) && !TOPPINGS.contains(itemId);
+      PizzaToppingVariant toppingVariant = getVariantFromItem(itemId, world);
+      boolean bl = pizzaBlockEntity.getCachedState().get(PizzaBlock.BITES) == 0 && pizzaBlockEntity.TOPPING_NUMBER < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && toppingVariant != null && !TOPPINGS.contains(toppingVariant);
       if (bl) {
-         TOPPINGS.add(itemId);
+         TOPPINGS.add(toppingVariant);
       }
       this.markDirty();
      return bl;
    }
+
+   @Nullable
+   public static PizzaToppingVariant getVariantFromItem(Identifier itemId, World world) {
+      for(PizzaToppingVariant pizzaToppingVariant: world.getRegistryManager().get(NatureSpirit.PIZZA_TOPPING_VARIANT)) {
+         if (pizzaToppingVariant.itemId().equals(itemId)) return pizzaToppingVariant;
+      }
+      return null;
+   }
+
    @Nullable
    @Override
    public Packet <ClientPlayPacketListener> toUpdatePacket() {

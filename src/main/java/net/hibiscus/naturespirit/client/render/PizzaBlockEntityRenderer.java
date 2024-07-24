@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
@@ -18,8 +19,6 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-
-import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 @Environment(EnvType.CLIENT)
 public class PizzaBlockEntityRenderer implements BlockEntityRenderer<PizzaBlockEntity> {
@@ -45,9 +44,8 @@ public class PizzaBlockEntityRenderer implements BlockEntityRenderer<PizzaBlockE
             default -> model = this.topping_3;
          }
          if (entity.TOPPINGS != null) {
-            for(Identifier identifier : entity.TOPPINGS) {
-               String string = identifier.toString();
-               VertexConsumer vertexConsumer = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, Identifier.of(MOD_ID, "block/pizza/" + string.replace(":", "_") + "_topping")).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+            for(PizzaToppingVariant pizzaToppingVariant : entity.TOPPINGS) {
+               VertexConsumer vertexConsumer = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, pizzaToppingVariant.texturePath()).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
                model.render(matrices, vertexConsumer, light, overlay, -1);
             }
          }
