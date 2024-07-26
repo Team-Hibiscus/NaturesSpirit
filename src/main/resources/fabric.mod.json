@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "natures_spirit",
-  "version": "1.6.0.2-1.20.1",
+  "version": "${version}",
   "name": "Nature's Spirit",
   "description": "A mod which enhances the environment of Minecraft.",
   "authors": [
@@ -32,7 +32,7 @@
   "depends": {
     "fabricloader": ">=0.14.25",
     "fabric": "*",
-    "minecraft": "1.20.1",
+    "minecraft": "${minecraft_version}",
     "terrablender": "*"
   },
   "custom": {

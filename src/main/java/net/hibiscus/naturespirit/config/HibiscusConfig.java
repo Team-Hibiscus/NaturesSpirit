@@ -145,8 +145,6 @@ public class HibiscusConfig {
       JsonObject miscObject = new JsonObject();
       miscObject.addProperty("deepslate_generator", true);
       miscObject.addProperty("calcite_generator", true);
-      miscObject.addProperty("vinegar", true);
-      miscObject.addProperty("vinegar_duplication", true);
       jsonObjects.add("misc_features", miscObject);
 
       JsonObject datapackTogglesObject = new JsonObject();
