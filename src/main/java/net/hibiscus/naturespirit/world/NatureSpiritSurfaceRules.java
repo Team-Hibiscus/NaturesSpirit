@@ -299,12 +299,11 @@ public class NatureSpiritSurfaceRules {
       );
 
 
-//      MaterialRules.MaterialRule windsweptRule = MaterialRules.condition(MaterialRules.biome(BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_HILLS),
-//              MaterialRules.sequence(
-//                      MaterialRules.condition(MaterialRules.stoneDepth(0, true, VerticalSurfaceType.FLOOR),
-//                              MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.95 / 8.25, Double.MAX_VALUE),
-//                                      MaterialRules.condition(materialCondition7, COARSE_DIRT))),
-//                      MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS))));
+      MaterialRules.MaterialRule alpineRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.CONIFEROUS_COVERT, HibiscusBiomes.AMBER_COVERT, HibiscusBiomes.HEATHER_FIELDS),
+              MaterialRules.sequence(
+                      MaterialRules.condition(MaterialRules.stoneDepth(0, true, VerticalSurfaceType.FLOOR),
+                              MaterialRules.condition(noiseCondition2, MaterialRules.condition(materialCondition7, COARSE_DIRT))),
+                      MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS))));
 
 
 
@@ -328,6 +327,7 @@ public class NatureSpiritSurfaceRules {
       MaterialRules.MaterialRule woodySteppeSurfaceRule = MaterialRules.condition(MaterialRules.surface(), woodySteppeRule);
       MaterialRules.MaterialRule snowySteppeSurfaceRule = MaterialRules.condition(MaterialRules.surface(), snowySteppeRule);
       MaterialRules.MaterialRule redwoodForestSurfaceRule = MaterialRules.condition(MaterialRules.surface(), redwoodForestRule);
+      MaterialRules.MaterialRule alpineSurfaceRule = MaterialRules.condition(MaterialRules.surface(), alpineRule);
       builder.add(dustySurfaceRule);
       builder.add(stratifiedDesertSurfaceRule);
       builder.add(stratifiedUndergroundRule);
@@ -350,6 +350,7 @@ public class NatureSpiritSurfaceRules {
       builder.add(snowySteppeSurfaceRule);
       builder.add(steppeUndergroundRule);
       builder.add(redwoodForestSurfaceRule);
+      builder.add(alpineSurfaceRule);
       return MaterialRules.sequence(builder
               .build()
               .toArray(MaterialRules.MaterialRule[]::new));
