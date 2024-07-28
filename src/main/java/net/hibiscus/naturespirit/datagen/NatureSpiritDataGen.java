@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEntityTypeTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
 import net.hibiscus.naturespirit.registration.*;
 import net.minecraft.registry.*;
 

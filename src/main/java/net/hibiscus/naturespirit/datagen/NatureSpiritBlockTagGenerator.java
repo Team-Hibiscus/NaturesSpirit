@@ -121,7 +121,6 @@ public class NatureSpiritBlockTagGenerator extends FabricTagProvider.BlockTagPro
       }
       getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(CATTAIL);
       getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(LOTUS_FLOWER);
-      getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(HELVOLA);
       getOrCreateTagBuilder(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES).add(STRIPPED_ALLUAUDIA_BUNDLE, ALLUAUDIA_BUNDLE);
       getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES);
       getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);
