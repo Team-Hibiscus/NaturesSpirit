@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "natures_spirit:block/amber_paper_lantern"
+    },
+    "hanging=true": {
+      "model": "natures_spirit:block/amber_paper_lantern_hanging"
+    }
+  }
+}

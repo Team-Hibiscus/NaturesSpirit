@@ -1,0 +1,7 @@
+{
+  "parent": "natures_spirit:block/template_paper_lantern",
+  "textures": {
+    "side": "natures_spirit:block/mold_paper_lantern",
+    "top": "natures_spirit:block/mold_paper_lantern_top"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "kaolin",
+  "ingredients": [
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "natures_spirit:kaolin"
+    },
+    {
+      "item": "mint:fuchsia_dye"
+    }
+  ],
+  "result": {
+    "item": "natures_spirit:fuchsia_kaolin",
+    "count": 8
+  }
+}

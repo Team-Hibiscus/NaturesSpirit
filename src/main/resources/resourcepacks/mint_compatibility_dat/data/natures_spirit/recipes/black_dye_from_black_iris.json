@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "natures_spirit:black_iris"
+        }
+    },
+    "result": {
+        "item": "mint:navy_dye",
+        "count": 1
+    }
+}

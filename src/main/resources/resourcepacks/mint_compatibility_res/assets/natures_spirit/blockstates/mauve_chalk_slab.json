@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/mauve_chalk_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/mauve_kaolin"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/mauve_chalk_slab_top"
+    }
+  }
+}

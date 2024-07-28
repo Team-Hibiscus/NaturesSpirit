@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "natures_spirit:foxglove"
+        }
+    },
+    "result": {
+        "item": "mint:indigo_dye",
+        "count": 2
+    }
+}

@@ -1,10 +1,7 @@
 package net.hibiscus.naturespirit;
 
-import com.mojang.datafixers.DataFixerBuilder;
-import com.mojang.datafixers.schemas.Schema;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -12,12 +9,12 @@ import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.registration.HibiscusCriteria;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocksCompatability;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusDyeDepotCompatibility;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMintCompatibility;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
 import net.hibiscus.naturespirit.registration.HibiscusSounds;
@@ -27,9 +24,7 @@ import net.hibiscus.naturespirit.util.HibiscusVillagers;
 import net.hibiscus.naturespirit.world.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.passive.CatVariant;
-import net.minecraft.item.Items;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.stat.StatFormatter;
@@ -140,6 +135,18 @@ public class NatureSpirit implements ModInitializer {
                     ResourcePackActivationType.ALWAYS_ENABLED
             );
          }
+         if(FabricLoader.getInstance().isModLoaded("mint")) {
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    new Identifier(MOD_ID, "mint_compatibility_dat"), modContainer.get(),
+                    Text.translatable("pack.natures_spirit.mint_compatibility"),
+                    ResourcePackActivationType.ALWAYS_ENABLED
+            );
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    new Identifier(MOD_ID, "mint_compatibility_res"), modContainer.get(),
+                    Text.translatable("pack.natures_spirit.mint_compatibility"),
+                    ResourcePackActivationType.ALWAYS_ENABLED
+            );
+         }
       }
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
@@ -152,7 +159,10 @@ public class NatureSpirit implements ModInitializer {
       HibiscusBlocks.registerColoredBlocks();
       HibiscusBlocks.registerMisc();
       if (FabricLoader.getInstance().isModLoaded("dye_depot")) {
-         HibiscusColoredBlocksCompatability.registerColoredBlocks();
+         HibiscusDyeDepotCompatibility.registerColoredBlocks();
+      }
+      if (FabricLoader.getInstance().isModLoaded("mint")) {
+         HibiscusMintCompatibility.registerColoredBlocks();
       }
       HibiscusEvents.registerEvents();
       HibiscusWorldGen.registerWorldGen();

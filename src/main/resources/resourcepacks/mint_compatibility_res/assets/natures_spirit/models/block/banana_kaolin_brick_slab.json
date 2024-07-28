@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "natures_spirit:block/banana_kaolin_bricks",
+    "side": "natures_spirit:block/banana_kaolin_bricks",
+    "top": "natures_spirit:block/banana_kaolin_bricks"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:amber_kaolin"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:amber_kaolin_stairs",
+    "count": 4
+  }
+}

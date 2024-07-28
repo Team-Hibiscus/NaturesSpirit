@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/peach_kaolin_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/peach_chalk"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/peach_kaolin_slab_top"
+    }
+  }
+}

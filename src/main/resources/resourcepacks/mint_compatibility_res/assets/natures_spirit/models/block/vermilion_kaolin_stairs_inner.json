@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "natures_spirit:block/vermilion_kaolin",
+    "side": "natures_spirit:block/vermilion_kaolin",
+    "top": "natures_spirit:block/vermilion_kaolin"
+  }
+}

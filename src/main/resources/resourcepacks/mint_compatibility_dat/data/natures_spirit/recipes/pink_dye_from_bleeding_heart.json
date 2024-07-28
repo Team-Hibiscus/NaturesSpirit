@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "natures_spirit:bleeding_heart"
+        }
+    },
+    "result": {
+        "item": "mint:fuchsia_dye",
+        "count": 2
+    }
+}

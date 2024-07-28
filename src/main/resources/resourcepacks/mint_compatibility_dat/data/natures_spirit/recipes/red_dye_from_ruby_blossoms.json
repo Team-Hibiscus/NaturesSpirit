@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "natures_spirit:ruby_blossoms"
+        }
+    },
+    "result": {
+        "item": "mint:velvet_dye",
+        "count": 1
+    }
+}

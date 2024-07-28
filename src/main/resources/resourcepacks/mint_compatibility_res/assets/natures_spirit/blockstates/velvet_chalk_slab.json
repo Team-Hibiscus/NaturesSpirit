@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/velvet_chalk_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/velvet_kaolin"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/velvet_chalk_slab_top"
+    }
+  }
+}

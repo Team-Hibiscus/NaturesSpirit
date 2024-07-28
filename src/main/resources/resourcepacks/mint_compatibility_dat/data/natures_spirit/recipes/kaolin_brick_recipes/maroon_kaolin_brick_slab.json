@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "kaolin_bricks",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+      "#": {
+        "item": "natures_spirit:maroon_kaolin_bricks"
+      }
+    },
+  "result": {
+    "item": "natures_spirit:maroon_kaolin_brick_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/periwinkle_kaolin_brick_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/periwinkle_kaolin_bricks"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/periwinkle_kaolin_brick_slab_top"
+    }
+  }
+}

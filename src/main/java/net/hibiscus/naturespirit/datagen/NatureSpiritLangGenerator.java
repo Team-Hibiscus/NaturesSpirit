@@ -272,6 +272,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("pack.natures_spirit.modified_jungle", "Modified Jungles");
         translationBuilder.add("pack.natures_spirit.modified_windswept_hills", "Modified Windswept Hills");
         translationBuilder.add("pack.natures_spirit.dye_depot_compatibility", "Dye Depot Compatibility");
+        translationBuilder.add("pack.natures_spirit.mint_compatibility", "El's and L's Dyes Compatibility");
         generateArchExTranslations("kaolin", translationBuilder);
         generateArchExTranslations("kaolin_bricks", translationBuilder);
 
