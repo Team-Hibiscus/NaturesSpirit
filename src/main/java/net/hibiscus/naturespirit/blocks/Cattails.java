@@ -78,7 +78,7 @@ public class Cattails extends TallPlantBlock implements Waterloggable, Fertiliza
          BlockPos blockPos = pos.down();
          BlockPos blockPos2 = pos.up();
          if(state.get(WATERLOGGED)) {
-            return super.canPlaceAt(state, level, pos) && level.getBlockState(blockPos).isSideSolidFullSquare(level, blockPos, Direction.UP) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
+            return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos), level, blockPos) && !level.getFluidState(blockPos2).isIn(FluidTags.WATER);
          }
          else {
             return super.canPlaceAt(state, level, pos) && this.canPlantOnTop(level.getBlockState(blockPos), level, blockPos);

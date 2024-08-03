@@ -401,7 +401,6 @@ public class HibiscusMiscBlocks {
                    .breakInstantly()
                    .sounds(BlockSoundGroup.GRASS)
                    .burnable()
-                   .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
            HibiscusItemGroups.NS_MISC_ITEM_GROUP,
            Blocks.LARGE_FERN,

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "natures_spirit:block/cattail"
+    "layer0": "natures_spirit:item/cattail"
   }
 }
