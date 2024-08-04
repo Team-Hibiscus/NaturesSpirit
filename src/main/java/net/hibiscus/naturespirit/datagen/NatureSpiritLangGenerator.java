@@ -248,6 +248,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(CHEESE_CAULDRON, translationBuilder);
       generateBlockTranslations(MILK_CAULDRON, translationBuilder);
       translationBuilder.add(CHEESE_BUCKET, "Cheese Bucket");
+      translationBuilder.add(CHEESE_ARROW, "Cheese Arrow");
       translationBuilder.add("block.natures_spirit.pizza.cooked_chicken", "With Cooked Chicken");
       translationBuilder.add("block.natures_spirit.pizza.green_olives", "With Green Olives");
       translationBuilder.add("block.natures_spirit.pizza.black_olives", "With Black Olives");
