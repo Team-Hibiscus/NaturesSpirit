@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_cheese_arrow",
+      "has_cheese_bucket",
       "has_the_recipe"
     ]
   ],
