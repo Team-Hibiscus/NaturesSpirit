@@ -15,8 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.CHERT;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.PINK_SAND;
+import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
 
 public class NatureSpiritItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
@@ -72,6 +71,7 @@ public class NatureSpiritItemTagGenerator extends FabricTagProvider.ItemTagProvi
         this.copy(BlockTags.IRON_ORES, ItemTags.IRON_ORES);
         this.copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         this.copy(BlockTags.REDSTONE_ORES, ItemTags.REDSTONE_ORES);
+        this.getOrCreateTagBuilder(ItemTags.ARROWS).add(CHEESE_ARROW);
         this.getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS).add(PINK_SAND.asItem());
         this.getOrCreateTagBuilder(HibiscusTags.Items.EVERGREEN_LEAVES).add(
                 HibiscusWoods.FIR.getLeaves().asItem(),

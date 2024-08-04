@@ -20,6 +20,7 @@ public class HibiscusConfig {
    public static int terra_laeta_weight;
    public static int terra_mater_weight;
 
+   public static boolean cheese_arrow;
    public static boolean calcite_generator;
    public static boolean deepslate_generator;
    public static boolean vanilla_trees_toggle;
@@ -36,7 +37,7 @@ public class HibiscusConfig {
    public HibiscusConfig() {}
 
    public static void main() throws IOException {
-      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.6.0.3-1.20.1.json");
+      Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.6.1-1.20.1.json");
          try {
             if (configPath.toFile().createNewFile()) {
                JsonObject jsonObjects = getJsonObject();
@@ -82,6 +83,7 @@ public class HibiscusConfig {
 
             calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
             deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
+            cheese_arrow = misc_features.get("cheese_arrow").getAsBoolean();
 
             vanilla_trees_toggle  = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
             birch_forest_toggle  = datapack_toggles.get("birch_forest_toggle").getAsBoolean();
@@ -145,6 +147,7 @@ public class HibiscusConfig {
       JsonObject miscObject = new JsonObject();
       miscObject.addProperty("deepslate_generator", true);
       miscObject.addProperty("calcite_generator", true);
+      miscObject.addProperty("cheese_arrow", true);
       jsonObjects.add("misc_features", miscObject);
 
       JsonObject datapackTogglesObject = new JsonObject();

@@ -1000,6 +1000,7 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(CHEESE_BUCKET, Models.GENERATED);
         itemModelGenerator.register(HELVOLA_FLOWER_ITEM, Models.GENERATED);
         itemModelGenerator.register(HELVOLA_PAD_ITEM, Models.GENERATED);
+        itemModelGenerator.register(CHEESE_ARROW, Models.GENERATED);
         for (HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
             itemModelGenerator.register(boat.boat().asItem(), Models.GENERATED);
             itemModelGenerator.register(boat.chestBoat().asItem(), Models.GENERATED);

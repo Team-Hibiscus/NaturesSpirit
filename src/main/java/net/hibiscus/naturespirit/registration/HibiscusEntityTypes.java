@@ -1,10 +1,13 @@
 package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
+import net.hibiscus.naturespirit.entity.CheeseArrowEntity;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.projectile.SpectralArrowEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,9 +16,13 @@ import net.minecraft.util.Identifier;
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 public class HibiscusEntityTypes {
-//   public static EntityType<BisonEntity> BISON = registerMobEntityType("bison", FabricEntityTypeBuilder.createMob().spawnGroup(SpawnGroup.CREATURE).defaultAttributes(BisonEntity::createBisonAttributes).entityFactory(BisonEntity::new).dimensions(EntityDimensions.fixed(2.0F, 1.75F)).trackRangeChunks(10));
+
+   private static final FabricEntityTypeBuilder<CheeseArrowEntity> CHEESE_ARROW_ENTITY_BUILDER = FabricEntityTypeBuilder.create(SpawnGroup.MISC).entityFactory(CheeseArrowEntity::new);
+   public static EntityType<CheeseArrowEntity> CHEESE_ARROW = HibiscusConfig.cheese_arrow ? registerEntityType("cheese_arrow", CHEESE_ARROW_ENTITY_BUILDER.dimensions(EntityDimensions.fixed(0.5F, 0.5F)).trackRangeChunks(4).trackedUpdateRate(20).build()) : null;
+
    public static void registerEntityTypes() {
    }
+   //   public static EntityType<BisonEntity> BISON = registerMobEntityType("bison", FabricEntityTypeBuilder.createMob().spawnGroup(SpawnGroup.CREATURE).defaultAttributes(BisonEntity::createBisonAttributes).entityFactory(BisonEntity::new).dimensions(EntityDimensions.fixed(2.0F, 1.75F)).trackRangeChunks(10));
 
 
    public static <T extends EntityType <?>> T registerEntityType(String id, T type) {

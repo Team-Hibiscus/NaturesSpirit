@@ -20,8 +20,6 @@ public class CheeseCauldronBlock extends AbstractCauldronBlock {
    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
       return VoxelShapes.fullCube();
    }
-
-
    @Override public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
       return new ItemStack(Blocks.CAULDRON);
    }

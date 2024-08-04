@@ -8,13 +8,16 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.hibiscus.naturespirit.client.render.CheeseArrowEntityRenderer;
 import net.hibiscus.naturespirit.client.render.EntityModelLayers;
 import net.hibiscus.naturespirit.client.render.PizzaBlockEntityRenderer;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
+import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
@@ -27,6 +30,7 @@ import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.entity.ArrowEntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
 import net.minecraft.util.math.BlockPos;
@@ -98,7 +102,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.SMALL_CALCITE_BUD, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusMiscBlocks.CALCITE_CLUSTER, RenderLayer.getCutout());
 
-         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), HibiscusRegistryHelper.RenderLayerHashMap.values().toArray(new Block[0]));
+      BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), HibiscusRegistryHelper.RenderLayerHashMap.values().toArray(new Block[0]));
 
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_CARPET, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.COCONUT_THATCH_SLAB, RenderLayer.getCutout());
@@ -115,9 +119,9 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH_STAIRS, RenderLayer.getCutout());
 
-      BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH_STAIRS, RenderLayer.getCutout());
-
-
+      if (HibiscusConfig.cheese_arrow) {
+         EntityRendererRegistry.register(HibiscusEntityTypes.CHEESE_ARROW, CheeseArrowEntityRenderer::new);
+      }
 
 
 

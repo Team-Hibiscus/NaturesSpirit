@@ -12,7 +12,9 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.blocks.SemiTallGrassBlock;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
+import net.hibiscus.naturespirit.items.CheeseArrowItem;
 import net.hibiscus.naturespirit.items.DesertTurnipItem;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.registration.FlowerSet;
@@ -646,6 +648,7 @@ public class HibiscusMiscBlocks {
            Items.MILK_BUCKET,
            ItemGroups.FOOD_AND_DRINK
    );
+   public static final Item CHEESE_ARROW = HibiscusConfig.cheese_arrow ? registerItem("cheese_arrow", new CheeseArrowItem(new Item.Settings()), HibiscusItemGroups.NS_MISC_ITEM_GROUP, Items.SPECTRAL_ARROW, ItemGroups.COMBAT) : null;
 
    public static final Block MILK_CAULDRON = registerBlock("milk_cauldron", new MilkCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON).dropsLike(Blocks.CAULDRON)));
 
