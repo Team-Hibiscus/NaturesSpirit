@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "natures_spirit:cheese_bucket"
-            ]
+            "items": "natures_spirit:cheese_bucket"
           }
         ]
       },
@@ -30,6 +28,5 @@
     "recipes": [
       "natures_spirit:cheese_arrow"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -17,8 +17,8 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 public class HibiscusEntityTypes {
 
-   private static final FabricEntityTypeBuilder<CheeseArrowEntity> CHEESE_ARROW_ENTITY_BUILDER = FabricEntityTypeBuilder.create(SpawnGroup.MISC).entityFactory(CheeseArrowEntity::new);
-   public static EntityType<CheeseArrowEntity> CHEESE_ARROW = HibiscusConfig.cheese_arrow ? registerEntityType("cheese_arrow", CHEESE_ARROW_ENTITY_BUILDER.dimensions(EntityDimensions.fixed(0.5F, 0.5F)).trackRangeChunks(4).trackedUpdateRate(20).build()) : null;
+   private static final EntityType.Builder<CheeseArrowEntity> CHEESE_ARROW_ENTITY_BUILDER = EntityType.Builder.create(CheeseArrowEntity::new, SpawnGroup.MISC);
+   public static EntityType<CheeseArrowEntity> CHEESE_ARROW = HibiscusConfig.cheese_arrow ? registerEntityType("cheese_arrow", CHEESE_ARROW_ENTITY_BUILDER.dimensions(0.5F, 0.5F).maxTrackingRange(4).trackingTickInterval(20).build()) : null;
 
    public static void registerEntityTypes() {
    }
@@ -36,7 +36,7 @@ public class HibiscusEntityTypes {
 //   }
 
    public static EntityType <BoatEntity> createBoatType(boolean chest, HibiscusBoatEntity.HibiscusBoat boat) {
-      return FabricEntityTypeBuilder.create(SpawnGroup.MISC, boat.factory(chest)).dimensions(EntityDimensions.changing(1.375f, 0.5625f)).trackRangeChunks(10).build();
+      return EntityType.Builder.create(boat.factory(chest), SpawnGroup.MISC).dimensions(1.375f, 0.5625f).maxTrackingRange(10).build();
    }
 
 }

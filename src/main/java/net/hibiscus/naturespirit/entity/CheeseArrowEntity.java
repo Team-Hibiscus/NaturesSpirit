@@ -13,6 +13,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class CheeseArrowEntity extends PersistentProjectileEntity {
 
@@ -20,12 +21,12 @@ public class CheeseArrowEntity extends PersistentProjectileEntity {
       super(entityType, world);
    }
 
-   public CheeseArrowEntity(World world, LivingEntity owner) {
-      super(HibiscusEntityTypes.CHEESE_ARROW, owner, world);
+   public CheeseArrowEntity(World world, LivingEntity owner, ItemStack stack, @Nullable ItemStack weapon) {
+      super(HibiscusEntityTypes.CHEESE_ARROW, owner, world, stack, weapon);
    }
 
-   public CheeseArrowEntity(World world, double x, double y, double z) {
-      super(HibiscusEntityTypes.CHEESE_ARROW, x, y, z, world);
+   public CheeseArrowEntity(double x, double y, double z, World world, ItemStack stack, @Nullable ItemStack weapon) {
+      super(HibiscusEntityTypes.CHEESE_ARROW, x, y, z, world, stack, weapon);
    }
 
    public void tick() {
@@ -36,7 +37,7 @@ public class CheeseArrowEntity extends PersistentProjectileEntity {
 
    }
 
-   protected ItemStack asItemStack() {
+   @Override protected ItemStack getDefaultItemStack() {
       return new ItemStack(HibiscusMiscBlocks.CHEESE_ARROW);
    }
 
