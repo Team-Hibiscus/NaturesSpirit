@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -27,6 +28,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import net.minecraft.village.TradeOffers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -157,6 +159,7 @@ public class WoodSet {
             pottedSapling = createPottedSapling(this.getSapling());
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
             SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
+            TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(new TradeOffers.SellItemFactory(sapling, 5, 1, 8, 1)));
          }
       }
 
@@ -168,6 +171,7 @@ public class WoodSet {
          pottedSapling = createPottedSapling(this.getSapling());
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
          SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
+         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(new TradeOffers.SellItemFactory(sapling, 5, 1, 8, 1)));
 
       }
 
@@ -185,6 +189,7 @@ public class WoodSet {
          pottedSapling = createPottedSapling(this.getSapling());
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSaplingBefore(), this.getSapling().asItem()));
          SaplingHashMap.put(this.getName(), new Block[]{this.getSapling(), this.getPottedSapling()});
+         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(new TradeOffers.SellItemFactory(sapling, 5, 1, 8, 1)));
       }
       if (this.getWoodPreset() == WoodPreset.WISTERIA) {
          whiteLeaves = createWisteriaLeaves("white_");
@@ -240,6 +245,12 @@ public class WoodSet {
          SaplingHashMap.put("part_blue_" + this.getName(), new Block[]{this.getBlueSapling(), this.getPottedBlueSapling()});
          SaplingHashMap.put("part_pink_" + this.getName(), new Block[]{this.getPinkSapling(), this.getPottedPinkSapling()});
          SaplingHashMap.put("part_purple_" + this.getName(), new Block[]{this.getPurpleSapling(), this.getPottedPurpleSapling()});
+         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> {
+            factories.add(new TradeOffers.SellItemFactory(whiteSapling, 5, 1, 8, 1));
+            factories.add(new TradeOffers.SellItemFactory(blueSapling, 5, 1, 8, 1));
+            factories.add(new TradeOffers.SellItemFactory(purpleSapling, 5, 1, 8, 1));
+            factories.add(new TradeOffers.SellItemFactory(pinkSapling, 5, 1, 8, 1));
+         });
       }
       if (this.getWoodPreset() == WoodPreset.MAPLE) {
          redLeaves = createMapleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE);
@@ -260,6 +271,11 @@ public class WoodSet {
          SaplingHashMap.put("red_" + this.getName(), new Block[]{this.getRedSapling(), this.getPottedRedSapling()});
          SaplingHashMap.put("orange_" + this.getName(), new Block[]{this.getOrangeSapling(), this.getPottedOrangeSapling()});
          SaplingHashMap.put("yellow_" + this.getName(), new Block[]{this.getYellowSapling(), this.getPottedYellowSapling()});
+         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> {
+            factories.add(new TradeOffers.SellItemFactory(redSapling, 5, 1, 8, 1));
+            factories.add(new TradeOffers.SellItemFactory(orangeSapling, 5, 1, 8, 1));
+            factories.add(new TradeOffers.SellItemFactory(yellowSapling, 5, 1, 8, 1));
+         });
       }
       if (this.getWoodPreset() == WoodPreset.LARCH) {
          yellowLeaves = createLeaves("yellow_");
@@ -268,6 +284,7 @@ public class WoodSet {
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getLeaves(), this.getYellowLeaves().asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(this.getSapling(), this.getYellowSapling().asItem()));
          SaplingHashMap.put("yellow_" + this.getName(), new Block[]{this.getYellowSapling(), this.getPottedYellowSapling()});
+         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(new TradeOffers.SellItemFactory(yellowSapling, 5, 1, 8, 1)));
       }
       if (this.hasMosaic()){
          mosaic = createMosaic();
@@ -323,8 +340,8 @@ public class WoodSet {
       itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(this.getModID(), this.getName() + "_logs"));
       addToBuildingTab(getButtonBefore(), getLogBefore(), getSignBefore(), getBoatBefore(), this);
 
-      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
-      for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
 
@@ -727,7 +744,7 @@ public class WoodSet {
       return createBlockWithItem(this.getName() + "_fence", new FenceBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createFenceGate(){
-      return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getWoodType()));
+      return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(AbstractBlock.Settings.create().mapColor(getBase().getDefaultMapColor()).solid().instrument(Instrument.BASS).strength(2.0F, 3.0F).burnable(), WoodType.OAK));
    }
    private Block createPressurePlate(){
       return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.create().mapColor(this.getBase().getDefaultMapColor()).solid().instrument(Instrument.BASS).noCollision().strength(0.5F).burnable().pistonBehavior(PistonBehavior.DESTROY), this.getBlockSetType()));

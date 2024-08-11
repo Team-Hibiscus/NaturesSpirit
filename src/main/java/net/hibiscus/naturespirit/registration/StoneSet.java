@@ -1,44 +1,16 @@
 package net.hibiscus.naturespirit.registration;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.blocks.*;
-import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.Instrument;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.data.family.BlockFamily;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.HangingSignItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SignItem;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE_SLAB;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.SMOOTH_PINK_SANDSTONE_STAIRS;
 import static net.minecraft.data.family.BlockFamilies.register;
 
 public class StoneSet {
@@ -160,7 +132,7 @@ public class StoneSet {
       addToBuildingTab(this.itemBefore, this.item2Before, this);
       StoneHashMap.put(this.getName(), this);
 
-      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_MISC_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
    public StoneSet(Identifier name, MapColor mapColor, Item itemBefore, Item item2Before, float hardness, boolean hasCobbled, boolean hasCracked, boolean hasMossy, boolean hasTiles){

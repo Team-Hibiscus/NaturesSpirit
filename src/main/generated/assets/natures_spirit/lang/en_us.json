@@ -899,8 +899,7 @@
   "item.natures_spirit.wisteria_chest_boat": "Wisteria Boat with Chest",
   "item.natures_spirit.young_coconut_half": "Young Coconut Half",
   "item.natures_spirit.young_coconut_shell": "Young Coconut Shell",
-  "itemGroup.natures_spirit.misc_item_group": "Nature's Spirit Misc.",
-  "itemGroup.natures_spirit.wood_item_group": "Nature's Spirit Woods",
+  "itemGroup.natures_spirit.item_group": "Nature's Spirit",
   "pack.natures_spirit.bushy_leaves_compatibility": "Bushy Leaves Compat",
   "pack.natures_spirit.dye_depot_compatibility": "Dye Depot Compatibility",
   "pack.natures_spirit.emissive_ores_compatibility": "Emissive Ores Compat",
@@ -915,5 +914,6 @@
   "pack.natures_spirit.modified_swamp": "Modified Swamp",
   "pack.natures_spirit.modified_vanilla_trees": "Modified Vanilla Trees",
   "pack.natures_spirit.modified_windswept_hills": "Modified Windswept Hills",
+  "pack.natures_spirit.plank_consistency": "Plank Consistency",
   "stat.minecraft.eat_pizza_slice": "Pizza Slices Eaten"
 }

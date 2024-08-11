@@ -114,6 +114,11 @@ public class NatureSpirit implements ModInitializer {
                  HibiscusConfig.windswept_hills_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
+                 new Identifier(MOD_ID, "plank_consistency"), modContainer.get(),
+                 Text.translatable("pack.natures_spirit.plank_consistency"),
+                 ResourcePackActivationType.NORMAL
+         );
+         ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL

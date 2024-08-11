@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-03T21:12:50.5796416	Nature's Spirit/Block Loot Tables
+// 1.20.1	2024-08-10T23:10:30.4768675	Nature's Spirit/Block Loot Tables
 1ce3838a6398155e98e96d69a66efdb2911254e1 data\natures_spirit\loot_tables\blocks\green_chalk_stairs.json
 86b0b28d804dbfd4c3a3dd5db05d4ccfed363e89 data\natures_spirit\loot_tables\blocks\saxaul_sapling.json
 bb41c6af03a8c80937ab0aece6ea9168df760049 data\natures_spirit\loot_tables\blocks\smooth_pink_sandstone_slab.json
@@ -579,8 +579,8 @@ f39593b40b2852f697a8af250a3ed2894b8c96ef data\natures_spirit\loot_tables\blocks\
 c9bf53006ca98754c20a0223b9d587c6027d04ae data\natures_spirit\loot_tables\blocks\kaolin_brick_stairs.json
 24b799462334aa9071d43971ce6d4e8a14c56436 data\natures_spirit\loot_tables\blocks\paper_trapdoor.json
 2771c8617e021b5e8aa8d8467ce83948d5e713dd data\natures_spirit\loot_tables\blocks\stripped_mahogany_wood.json
-72b77de6cf4e433e8835550b4f58530fcf9bd92f data\natures_spirit\loot_tables\blocks\lime_chalk_slab.json
 9b5248c36383daab763df17d288791dd01160c45 data\natures_spirit\loot_tables\blocks\brown_chalk_slab.json
+72b77de6cf4e433e8835550b4f58530fcf9bd92f data\natures_spirit\loot_tables\blocks\lime_chalk_slab.json
 7d5ba1d712d45cb1c41ec4ee533ff7fcd6d34886 data\natures_spirit\loot_tables\blocks\stripped_alluaudia.json
 919c0ea261a86d630c91bb93f52a74d1409375f0 data\natures_spirit\loot_tables\blocks\cedar_sign.json
 f020cd39db21ae3bd6fe65a03b14e935018a5940 data\natures_spirit\loot_tables\blocks\stripped_ghaf_wood.json

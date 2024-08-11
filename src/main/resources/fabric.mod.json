@@ -9,7 +9,7 @@
   ],
   "contact": {},
   "license": "All Rights Reserved",
-  "icon": "assets/natures_spirit/icon.gif",
+  "icon": "assets/natures_spirit/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [

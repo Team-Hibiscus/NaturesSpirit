@@ -101,8 +101,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
         generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap, translationBuilder);
         generateStoneTranslations(HibiscusRegistryHelper.StoneHashMap, translationBuilder);
         generateFlowerTranslations(HibiscusRegistryHelper.FlowerHashMap, translationBuilder);
-        translationBuilder.add(HibiscusItemGroups.NS_MISC_ITEM_GROUP, "Nature's Spirit Misc.");
-        translationBuilder.add(HibiscusItemGroups.NS_WOOD_ITEM_GROUP, "Nature's Spirit Woods");
+        translationBuilder.add(HibiscusItemGroups.NS_ITEM_GROUP, "Nature's Spirit");
         translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
 
 
@@ -261,6 +260,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(HibiscusMiscBlocks.WHOLE_PIZZA, "Pizza");
 
         translationBuilder.add("pack.natures_spirit.bushy_leaves_compatibility", "Bushy Leaves Compat");
+        translationBuilder.add("pack.natures_spirit.plank_consistency", "Plank Consistency");
         translationBuilder.add("pack.natures_spirit.emissive_ores_compatibility", "Emissive Ores Compat");
         translationBuilder.add("pack.natures_spirit.modified_swamp", "Modified Swamp");
         translationBuilder.add("pack.natures_spirit.modified_desert", "Modified Desert");
