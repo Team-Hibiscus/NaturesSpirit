@@ -71,7 +71,7 @@ public class FlowerSet {
                       .burnable()
                       .offset(AbstractBlock.OffsetType.XZ)
                       .pistonBehavior(PistonBehavior.DESTROY)),
-              HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+              HibiscusItemGroups.NS_ITEM_GROUP,
               this.itemBefore,
               0.4f
       );
@@ -86,7 +86,7 @@ public class FlowerSet {
                          .burnable()
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)),
-                 HibiscusItemGroups.NS_MISC_ITEM_GROUP,
+                 HibiscusItemGroups.NS_ITEM_GROUP,
                  this.itemBefore,
                  0.4f
          );
@@ -103,7 +103,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, this.itemBefore, 0.4f);
+         ), HibiscusItemGroups.NS_ITEM_GROUP, this.itemBefore, 0.4f);
       } else
       if(this.preset == FlowerPreset.SMALL) {
          this.flowerBlock = registerPlantBlock(this.name, new FlowerBlock(
@@ -117,7 +117,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, this.itemBefore, 0.3f);
+         ), HibiscusItemGroups.NS_ITEM_GROUP, this.itemBefore, 0.3f);
       }else
       if(this.preset == FlowerPreset.ANEMONE) {
          this.flowerBlock = registerPlantBlock(this.name, new MidFlowerBlock(
@@ -131,7 +131,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), HibiscusItemGroups.NS_MISC_ITEM_GROUP, this.itemBefore, 0.3f);
+         ), HibiscusItemGroups.NS_ITEM_GROUP, this.itemBefore, 0.3f);
       }
       if (this.hasFlowerPot()) {
          this.pottedFlowerBlock = registerPottedPlant(this.name, this.flowerBlock);

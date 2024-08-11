@@ -1,8 +1,15 @@
 package net.hibiscus.naturespirit.util;
 
+import com.google.common.collect.ImmutableMap;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerTypeHelper;
+import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerType;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
@@ -26,6 +33,17 @@ public class HibiscusVillagers {
       BIOME_TO_TYPE.put(HibiscusBiomes.DRYLANDS, DESERT);
       BIOME_TO_TYPE.put(HibiscusBiomes.WOODED_DRYLANDS, DESERT);
       BIOME_TO_TYPE.put(HibiscusBiomes.TROPICAL_SHORES, COCONUT);
+
+
+      TradeOfferHelper.registerWanderingTraderOffers(1,
+              factories -> {
+                 factories.add(new TradeOffers.SellItemFactory(HibiscusMiscBlocks.RED_MOSS_BLOCK, 1, 2, 5, 1));
+                 factories.add(new TradeOffers.SellItemFactory(HibiscusMiscBlocks.BLUEBELL.getFlowerBlock(), 1, 1, 12, 1));
+                 factories.add(new TradeOffers.SellItemFactory(HibiscusMiscBlocks.ANEMONE.getFlowerBlock(), 1, 1, 12, 1));
+                 factories.add(new TradeOffers.SellItemFactory(HibiscusMiscBlocks.LOTUS_FLOWER_ITEM, 1, 1, 12, 1));
+              }
+      );
+
    }
 
 }

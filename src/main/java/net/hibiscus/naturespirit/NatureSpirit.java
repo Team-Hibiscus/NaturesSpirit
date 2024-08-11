@@ -124,6 +124,13 @@ public class NatureSpirit implements ModInitializer {
                  Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
                  ResourcePackActivationType.NORMAL
          );
+
+         ResourceManagerHelper.registerBuiltinResourcePack(
+                Identifier.of(MOD_ID, "plank_consistency"), modContainer.get(),
+                Text.translatable("pack.natures_spirit.plank_consistency"),
+                ResourcePackActivationType.NORMAL
+         );
+
          ResourceManagerHelper.registerBuiltinResourcePack(
                  Identifier.of(MOD_ID, "emissive_ores_compatibility"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.emissive_ores_compatibility"),

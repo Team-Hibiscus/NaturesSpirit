@@ -133,7 +133,7 @@ public class StoneSet {
       addToBuildingTab(this.itemBefore, this.item2Before, this);
       StoneHashMap.put(this.getName(), this);
 
-      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_MISC_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
    public StoneSet(Identifier name, MapColor mapColor, Item itemBefore, Item item2Before, float hardness, boolean hasCobbled, boolean hasCracked, boolean hasMossy, boolean hasTiles){
