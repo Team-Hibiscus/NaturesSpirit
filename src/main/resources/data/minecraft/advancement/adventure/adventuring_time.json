@@ -1121,22 +1121,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "natures_spirit:eroded_river": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "natures_spirit:eroded_river"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "natures_spirit:fir_forest": {
       "conditions": {
         "player": [
@@ -1892,9 +1876,6 @@
     ],
     [
       "natures_spirit:dusty_slopes"
-    ],
-    [
-      "natures_spirit:eroded_river"
     ],
     [
       "natures_spirit:fir_forest"
