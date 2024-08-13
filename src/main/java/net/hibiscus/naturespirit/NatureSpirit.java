@@ -158,6 +158,7 @@ public class NatureSpirit implements ModInitializer {
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "milk"), MILK_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
+      HibiscusEntityTypes.registerEntityTypes();
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
       HibiscusBlocks.registerWoods();
@@ -172,7 +173,6 @@ public class NatureSpirit implements ModInitializer {
       HibiscusEvents.registerEvents();
       HibiscusWorldGen.registerWorldGen();
       HibiscusItemGroups.registerItemGroup();
-      HibiscusEntityTypes.registerEntityTypes();
       HibiscusSounds.registerSounds();
       HibiscusCriteria.registerCriteria();
       HibiscusCauldronBehavior.registerBehavior();
