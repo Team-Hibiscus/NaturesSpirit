@@ -28,6 +28,7 @@ public class HibiscusTags {
    public static class EntityTypes {
 
       public static final TagKey <EntityType<?>> CANT_SUCCULENT_SLOWED = createTag("cant_succulent_slowed");
+      public static final TagKey <EntityType<?>> IMPERMEABLE_TO_AZOLLA = createTag("impermeable_to_azolla");
 
       private static TagKey <EntityType<?>> createTag(String name) {
          return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NatureSpirit.MOD_ID, name));

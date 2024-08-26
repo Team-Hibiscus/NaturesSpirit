@@ -10,8 +10,8 @@
   "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": 7246889,
-    "grass_color": 7376685,
+    "grass_color": 7837743,
+    "foliage_color": 7181858,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -89,12 +89,13 @@
       "natures_spirit:patch_sedge_grass",
       "natures_spirit:patch_sedge_grass_water",
       "minecraft:patch_dead_bush",
-      "minecraft:patch_waterlily",
+      "natures_spirit:patch_waterlily_noise",
       "minecraft:brown_mushroom_swamp",
       "minecraft:red_mushroom_swamp",
       "minecraft:patch_sugar_cane_swamp",
       "natures_spirit:cattails_placed",
       "natures_spirit:lotus_plant_placed",
+      "natures_spirit:patch_azolla",
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_swamp"
     ],

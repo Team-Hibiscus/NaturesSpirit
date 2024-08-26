@@ -91,7 +91,6 @@ public class NatureSpiritBlockTagGenerator extends FabricTagProvider.BlockTagPro
             getOrCreateTagBuilder(BlockTags.WALLS).add(stoneSet.getBricksWall());
             getOrCreateTagBuilder(BlockTags.SLABS).add(stoneSet.getBaseSlab());
             getOrCreateTagBuilder(BlockTags.STAIRS).add(stoneSet.getBaseStairs());
-
         }
     }
 
@@ -121,8 +120,9 @@ public class NatureSpiritBlockTagGenerator extends FabricTagProvider.BlockTagPro
                 getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(flowerSet.getFlowerBlock());
             }
         }
-         getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(CATTAIL);
-         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(LOTUS_FLOWER);
+        getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(AZOLLA);
+        getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(CATTAIL);
+        getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(LOTUS_FLOWER);
         getOrCreateTagBuilder(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES).add(STRIPPED_ALLUAUDIA_BUNDLE, ALLUAUDIA_BUNDLE);
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES);
         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);

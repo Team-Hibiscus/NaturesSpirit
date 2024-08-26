@@ -173,6 +173,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
         generateItemTranslations(HELVOLA_FLOWER_ITEM, translationBuilder);
         generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
         generateBlockTranslations(LOTUS_STEM, translationBuilder);
+        generateBlockTranslations(AZOLLA, translationBuilder);
         generateBlockTranslations(RED_MOSS_BLOCK, translationBuilder);
         generateBlockTranslations(RED_MOSS_CARPET, translationBuilder);
         generateBlockTranslations(ALLUAUDIA, translationBuilder);

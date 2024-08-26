@@ -1,0 +1,18 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "#plant"
+	},
+	"elements": [
+		{
+			"from": [0, 0.1, 8],
+			"to": [8, 0.1, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -1, 0]},
+			"faces": {
+				"up": {"uv": [0, 8, 8, 16], "texture": "#plant"},
+				"down": {"uv": [0, 16, 8, 8], "texture": "#plant"}
+			}
+		}
+	]
+}

@@ -18,19 +18,23 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
+import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.HashMap;
+import java.util.stream.IntStream;
 
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerBlock;
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerPaperLanternBlock;
@@ -168,26 +172,41 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
                                 0.05F
                         ))));
     }
-   public LootTable.Builder leavesDrops(Block leaves, Item drop, float... chance) {
-      return dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(drop))).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, chance))).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS).with(((LeafEntry.Builder)this.applyExplosionDecay(leaves, ItemEntry.builder(Items.STICK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, LEAVES_STICK_DROP_CHANCE))));
+   public LootTable.Builder noSaplingLeavesDrop(Block leaves) {
+       Item drop = Items.STICK;
+      return dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder <?>)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(drop)))
+              .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
+              SAPLING_DROP_CHANCE
+      ))).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F))
+                       .conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS)
+                       .with(((LeafEntry.Builder <?>)this.applyExplosionDecay(
+                               leaves, ItemEntry.builder(Items.STICK).apply(
+                                       SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))))
+                               .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, LEAVES_STICK_DROP_CHANCE))));
    }
     private void addTreeTable(HashMap<String, Block[]> saplings, HashMap<String, Block> leaves) {
-        for (String i : saplings.keySet()) {
-            Block[] saplingType = saplings.get(i);
-            Block leavesType = leaves.get(i);
-            addDrop(saplingType[0]);
-            addPottedPlantDrops(saplingType[1]);
-            if (i.equals("olive")) {
-                this.addDrop(leavesType, (block) -> this.greenOlivesDrop(block, saplingType[0], SAPLING_DROP_CHANCE));
-            } else if (i.equals("joshua")) {
-                this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE_2));
-            } else if (i.equals("coconut") || i.equals("wisteria")) {
-                this.addDrop(leavesType, (block) -> this.leavesDrops(block, Items.STICK, SAPLING_DROP_CHANCE));
+        for (String i : leaves.keySet()) {
+           Block leavesType = leaves.get(i);
+            if (saplings.get(i) != null) {
+               Block[] saplingType = saplings.get(i);
+               addDrop(saplingType[0]);
+               addPottedPlantDrops(saplingType[1]);
+               switch(i) {
+                  case "olive" -> this.addDrop(leavesType, (block) -> this.greenOlivesDrop(block, saplingType[0], SAPLING_DROP_CHANCE));
+                  case "joshua" -> this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE_2));
+                  default -> this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE));
+               }
             } else {
-                this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE));
+               this.addDrop(leavesType, this::noSaplingLeavesDrop);
             }
         }
     }
+
+   public LootTable.Builder flowerbedDropsWithShears(Block flowerbed) {
+      return LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).with(this.applyExplosionDecay(flowerbed, ItemEntry.builder(flowerbed).apply(
+              IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount)).conditionally(BlockStatePropertyLootCondition
+                      .builder(flowerbed).properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))).conditionally(WITH_SILK_TOUCH_OR_SHEARS)))));
+   }
 
     @Override
     public void generate() {
@@ -230,6 +249,7 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         addVinePlantDrop(LOTUS_STEM, LOTUS_STEM);
         this.addDrop(LOTUS_FLOWER, LOTUS_FLOWER_ITEM);
+        this.addDrop(AZOLLA, this::flowerbedDropsWithShears);
 
         this.addDrop(SHIITAKE_MUSHROOM);
         this.addDrop(SHIITAKE_MUSHROOM_BLOCK, this.mushroomBlockDrops(SHIITAKE_MUSHROOM_BLOCK, SHIITAKE_MUSHROOM));

@@ -14,6 +14,7 @@ import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.blocks.SemiTallGrassBlock;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
+import net.hibiscus.naturespirit.items.AzollaItem;
 import net.hibiscus.naturespirit.items.CheeseArrowItem;
 import net.hibiscus.naturespirit.items.DesertTurnipItem;
 import net.hibiscus.naturespirit.items.PizzaItem;
@@ -407,6 +408,25 @@ public class HibiscusMiscBlocks {
            HibiscusItemGroups.NS_ITEM_GROUP,
            Blocks.LARGE_FERN,
            0.4f
+   );
+
+   public static final Block AZOLLA = HibiscusRegistryHelper.registerPlantBlock("azolla",
+           new AzollaBlock(FabricBlockSettings
+                   .create()
+                   .mapColor(MapColor.GREEN)
+                   .pistonBehavior(PistonBehavior.DESTROY)
+                   .ticksRandomly()
+                   .nonOpaque()
+                   .breakInstantly()
+                   .noCollision()
+                   .sounds(BlockSoundGroup.LILY_PAD))
+   );
+
+   public static final Item AZOLLA_ITEM = registerItem("azolla",
+           new AzollaItem(AZOLLA, new Item.Settings()),
+           HibiscusItemGroups.NS_ITEM_GROUP,
+           Items.LILY_PAD,
+           ItemGroups.NATURAL
    );
 
    public static final Block ORNATE_SUCCULENT = registerPlantBlock("ornate_succulent", new SucculentBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).sounds(BlockSoundGroup.GRASS).noCollision().breakInstantly()));
@@ -866,6 +886,7 @@ public class HibiscusMiscBlocks {
       CompostingChanceRegistry.INSTANCE.add(RED_MOSS_BLOCK, 0.65F);
       CompostingChanceRegistry.INSTANCE.add(RED_MOSS_CARPET, 0.3F);
       CompostingChanceRegistry.INSTANCE.add(LOTUS_FLOWER_ITEM, 0.65F);
+      CompostingChanceRegistry.INSTANCE.add(AZOLLA_ITEM, 0.3F);
       CompostingChanceRegistry.INSTANCE.add(HELVOLA_FLOWER_ITEM, 0.3F);
       CompostingChanceRegistry.INSTANCE.add(HELVOLA_PAD_ITEM, 0.3F);
       CompostingChanceRegistry.INSTANCE.add(DESERT_TURNIP, 0.3F);

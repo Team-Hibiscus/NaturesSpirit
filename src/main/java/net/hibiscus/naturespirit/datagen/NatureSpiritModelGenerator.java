@@ -4,6 +4,8 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.blocks.AzollaBlock;
 import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.FlowerSet;
@@ -21,6 +23,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -48,6 +51,11 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
     private static final Model PAPER_LANTERN = block("template_paper_lantern", TextureKey.TOP, TextureKey.SIDE);
     private static final Model HANGING_PAPER_LANTERN = block("template_hanging_paper_lantern", "_hanging", TextureKey.TOP, TextureKey.SIDE);
 
+    private static final Model AZOLLA_1 = block("template_azolla_1", "_1", TextureKey.PLANT);
+    private static final Model AZOLLA_2 = block("template_azolla_2", "_2", TextureKey.PLANT);
+    private static final Model AZOLLA_3 = block("template_azolla_3", "_3", TextureKey.PLANT);
+    private static final Model AZOLLA_4 = block("template_azolla_4", "_4", TextureKey.PLANT);
+
     public static TextureMap paperLantern(Block block) {
         return (new TextureMap()).put(TextureKey.SIDE, getId(block)).put(TextureKey.TOP, getId(block).withSuffixedPath("_top"));
     }
@@ -58,17 +66,22 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
     public static final TexturedModel.Factory TEMPLATE_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, PAPER_LANTERN);
     public static final TexturedModel.Factory TEMPLATE_HANGING_PAPER_LANTERN = makeFactory(NatureSpiritModelGenerator::paperLantern, HANGING_PAPER_LANTERN);
 
+    public static final TexturedModel.Factory TEXTURED_AZOLLA_1 = makeFactory(TextureMap::plant, AZOLLA_1);
+    public static final TexturedModel.Factory TEXTURED_AZOLLA_2 = makeFactory(TextureMap::plant, AZOLLA_2);
+    public static final TexturedModel.Factory TEXTURED_AZOLLA_3 = makeFactory(TextureMap::plant, AZOLLA_3);
+    public static final TexturedModel.Factory TEXTURED_AZOLLA_4 = makeFactory(TextureMap::plant, AZOLLA_4);
+
 
     public NatureSpiritModelGenerator(FabricDataOutput output) {
         super(output);
     }
 
     private static Model block(String parent, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(new Identifier("natures_spirit", "block/" + parent)), Optional.empty(), requiredTextureKeys);
+        return new Model(Optional.of(new Identifier(NatureSpirit.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
     private static Model block(String parent, String variant, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(new Identifier("natures_spirit", "block/" + parent)), Optional.of(variant), requiredTextureKeys);
+        return new Model(Optional.of(new Identifier(NatureSpirit.MOD_ID, "block/" + parent)), Optional.of(variant), requiredTextureKeys);
     }
 
     public static Identifier getId(Block block) {
@@ -519,6 +532,15 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).coordinate(createNorthDefaultHorizontalRotationStates()));
     }
 
+   public final void registerAzolla(Item item, Block flowerbed, BlockStateModelGenerator blockStateModelGenerator) {
+      blockStateModelGenerator.registerItemModel(item);
+      Identifier identifier = TEXTURED_AZOLLA_1.upload(flowerbed, blockStateModelGenerator.modelCollector);
+      Identifier identifier2 = TEXTURED_AZOLLA_2.upload(flowerbed, blockStateModelGenerator.modelCollector);
+      Identifier identifier3 = TEXTURED_AZOLLA_3.upload(flowerbed, blockStateModelGenerator.modelCollector);
+      Identifier identifier4 = TEXTURED_AZOLLA_4.upload(flowerbed, blockStateModelGenerator.modelCollector);
+      blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(flowerbed).with(When.create().set(Properties.FLOWER_AMOUNT, 1, new Integer[]{2, 3, 4}).set(Properties.HORIZONTAL_FACING, Direction.NORTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.FLOWER_AMOUNT, 1, new Integer[]{2, 3, 4}).set(Properties.HORIZONTAL_FACING, Direction.EAST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.FLOWER_AMOUNT, 1, new Integer[]{2, 3, 4}).set(Properties.HORIZONTAL_FACING, Direction.SOUTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R180)).with(When.create().set(Properties.FLOWER_AMOUNT, 1, new Integer[]{2, 3, 4}).set(Properties.HORIZONTAL_FACING, Direction.WEST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R270)).with(When.create().set(Properties.FLOWER_AMOUNT, 2, new Integer[]{3, 4}).set(Properties.HORIZONTAL_FACING, Direction.NORTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.FLOWER_AMOUNT, 2, new Integer[]{3, 4}).set(Properties.HORIZONTAL_FACING, Direction.EAST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.FLOWER_AMOUNT, 2, new Integer[]{3, 4}).set(Properties.HORIZONTAL_FACING, Direction.SOUTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R180)).with(When.create().set(Properties.FLOWER_AMOUNT, 2, new Integer[]{3, 4}).set(Properties.HORIZONTAL_FACING, Direction.WEST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R270)).with(When.create().set(Properties.FLOWER_AMOUNT, 3, new Integer[]{4}).set(Properties.HORIZONTAL_FACING, Direction.NORTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)).with(When.create().set(Properties.FLOWER_AMOUNT, 3, new Integer[]{4}).set(Properties.HORIZONTAL_FACING, Direction.EAST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.FLOWER_AMOUNT, 3, new Integer[]{4}).set(Properties.HORIZONTAL_FACING, Direction.SOUTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R180)).with(When.create().set(Properties.FLOWER_AMOUNT, 3, new Integer[]{4}).set(Properties.HORIZONTAL_FACING, Direction.WEST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R270)).with(When.create().set(Properties.FLOWER_AMOUNT, 4).set(Properties.HORIZONTAL_FACING, Direction.NORTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)).with(When.create().set(Properties.FLOWER_AMOUNT, 4).set(Properties.HORIZONTAL_FACING, Direction.EAST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.FLOWER_AMOUNT, 4).set(Properties.HORIZONTAL_FACING, Direction.SOUTH), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R180)).with(When.create().set(Properties.FLOWER_AMOUNT, 4).set(Properties.HORIZONTAL_FACING, Direction.WEST), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R270)));
+   }
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         generateWoodBlockStateModels(HibiscusRegistryHelper.WoodHashMap, blockStateModelGenerator);
@@ -562,6 +584,8 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
         generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPurpleWisteriaVines(), HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
         generateVineBlockStateModels(HibiscusWoods.WISTERIA.getPinkWisteriaVines(), HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(), blockStateModelGenerator);
         generateVineBlockStateModels(HibiscusWoods.WILLOW.getWillowVines(), HibiscusWoods.WILLOW.getWillowVinesPlant(), blockStateModelGenerator);
+        registerAzolla(AZOLLA_ITEM, AZOLLA, blockStateModelGenerator);
+//        blockStateModelGenerator.registerFlowerbed(AZOLLA);
 
         blockStateModelGenerator.registerLog(ALLUAUDIA_BUNDLE).log(ALLUAUDIA_BUNDLE);
         blockStateModelGenerator.registerLog(STRIPPED_ALLUAUDIA_BUNDLE).log(STRIPPED_ALLUAUDIA_BUNDLE);

@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
@@ -48,43 +49,43 @@ public class Region5Parameters {
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
 
-   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
-   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.DESERT;
-   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : BiomeKeys.WOODED_BADLANDS;
-   RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> specialBiomeErodedBadlandsHot = HibiscusBiomes.has_xeric_plains ? null : BiomeKeys.ERODED_BADLANDS;
-   RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.SAVANNA;
-   RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusBiomes.has_cypress_fields ? null : BiomeKeys.PLAINS;
-   RegistryKey<Biome> commonBiomeForestWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> commonBiomeJungleWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.JUNGLE;
-   RegistryKey<Biome> commonBiomeJungleWarm2 = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.LAVENDER_FIELDS : BiomeKeys.JUNGLE;
-   RegistryKey<Biome> nearBiomeSavannaPlateauWarm = HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.SAVANNA_PLATEAU;
-   RegistryKey<Biome> nearBiomeForestWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> nearBiomeForestWarm2 = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> nearBiomeJungleWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.LAVENDER_FIELDS : BiomeKeys.JUNGLE;
-   RegistryKey<Biome> uncommonSparseJungleWarm = HibiscusBiomes.has_cypress_fields ? null : BiomeKeys.SPARSE_JUNGLE;
-   RegistryKey<Biome> uncommonBambooJungleWarm = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CARNATION_FIELDS : BiomeKeys.BAMBOO_JUNGLE;
-   RegistryKey<Biome> specialBiomeNull = HibiscusBiomes.has_cypress_fields ? HibiscusBiomes.CARNATION_FIELDS : null;
-   RegistryKey<Biome> commonBiomePlainsCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_CLEARINGS : BiomeKeys.PLAINS;
-   RegistryKey<Biome> uncommonBiomePlainsCold = HibiscusBiomes.has_larch ? HibiscusBiomes.HEATHER_FIELDS : null;
-   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_CLEARINGS : BiomeKeys.FOREST;
-   RegistryKey<Biome> specialBiomeMeadowCold = HibiscusBiomes.has_larch ? null : BiomeKeys.MEADOW;
-   RegistryKey<Biome> commonBiomeSnowyPlainsFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.TUNDRA : BiomeKeys.SNOWY_PLAINS;
-   RegistryKey<Biome> nearBiomeMeadowCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_HIGHLANDS : BiomeKeys.MEADOW;
-   RegistryKey<Biome> nearBiomeForestCold = HibiscusBiomes.has_larch ? HibiscusBiomes.ALPINE_HIGHLANDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> commonBiomeTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.TAIGA;
-   RegistryKey<Biome> commonBiomeOldTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
-   RegistryKey<Biome> uncommonBiomeOldTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.AMBER_COVERT : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
-   RegistryKey<Biome> uncommonBiomeTaiga = HibiscusBiomes.has_larch ? HibiscusBiomes.AMBER_COVERT : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
-   RegistryKey<Biome> specialNearBiomeCherryCold = HibiscusBiomes.has_larch ? HibiscusBiomes.HEATHER_FIELDS : BiomeKeys.CHERRY_GROVE;
-   RegistryKey<Biome> commonBiomeSnowyTaigaFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
-   RegistryKey<Biome> uncommonBiomeSnowyTaigaFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
-   RegistryKey<Biome> commonBiomeTaigaFrozen = HibiscusBiomes.has_larch ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.TAIGA;
-   RegistryKey[] windsweptFrozen = HibiscusBiomes.has_larch ?
+   RegistryKey<Biome> commonBiomeDesertHot = HibiscusConfig.has_xeric_plains && HibiscusConfig.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusConfig.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.DESERT;
+   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusConfig.has_xeric_plains && HibiscusConfig.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusConfig.has_xeric_plains && HibiscusConfig.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusConfig.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> specialBiomeErodedBadlandsHot = HibiscusConfig.has_xeric_plains ? null : BiomeKeys.ERODED_BADLANDS;
+   RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusConfig.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.SAVANNA;
+   RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusConfig.has_cypress_fields ? null : BiomeKeys.PLAINS;
+   RegistryKey<Biome> commonBiomeForestWarm = HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBiomeJungleWarm = HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.JUNGLE;
+   RegistryKey<Biome> commonBiomeJungleWarm2 = HibiscusConfig.has_lavender_fields ? HibiscusBiomes.LAVENDER_FIELDS : (HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS: BiomeKeys.JUNGLE);
+   RegistryKey<Biome> nearBiomeSavannaPlateauWarm = HibiscusConfig.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.SAVANNA_PLATEAU;
+   RegistryKey<Biome> nearBiomeForestWarm = HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> nearBiomeForestWarm2 = HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> nearBiomeJungleWarm = HibiscusConfig.has_lavender_fields ? HibiscusBiomes.LAVENDER_FIELDS : (HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS: BiomeKeys.JUNGLE);
+   RegistryKey<Biome> uncommonSparseJungleWarm = HibiscusConfig.has_cypress_fields ? null : BiomeKeys.SPARSE_JUNGLE;
+   RegistryKey<Biome> uncommonBambooJungleWarm = HibiscusConfig.has_carnation_fields ? HibiscusBiomes.CARNATION_FIELDS : (HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CYPRESS_FIELDS:  BiomeKeys.BAMBOO_JUNGLE);
+   RegistryKey<Biome> specialBiomeNull = HibiscusConfig.has_cypress_fields ? HibiscusBiomes.CARNATION_FIELDS : null;
+   RegistryKey<Biome> commonBiomePlainsCold = HibiscusConfig.has_alpine_clearings ? HibiscusBiomes.ALPINE_CLEARINGS : BiomeKeys.PLAINS;
+   RegistryKey<Biome> uncommonBiomePlainsCold = HibiscusConfig.has_heather_fields ? HibiscusBiomes.HEATHER_FIELDS : null;
+   RegistryKey<Biome> commonBiomeForestCold = HibiscusConfig.has_alpine_clearings ? HibiscusBiomes.ALPINE_CLEARINGS : BiomeKeys.FOREST;
+   RegistryKey<Biome> specialBiomeMeadowCold = HibiscusConfig.has_alpine_clearings ? null : BiomeKeys.MEADOW;
+   RegistryKey<Biome> commonBiomeSnowyPlainsFrozen = HibiscusConfig.has_tundra && (HibiscusConfig.has_alpine_highlands || HibiscusConfig.has_alpine_clearings) ? HibiscusBiomes.TUNDRA : BiomeKeys.SNOWY_PLAINS;
+   RegistryKey<Biome> nearBiomeMeadowCold = HibiscusConfig.has_alpine_highlands ? HibiscusBiomes.ALPINE_HIGHLANDS : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nearBiomeForestCold = HibiscusConfig.has_alpine_highlands ? HibiscusBiomes.ALPINE_HIGHLANDS : (HibiscusConfig.has_alpine_clearings ? BiomeKeys.MEADOW : BiomeKeys.FOREST);
+   RegistryKey<Biome> commonBiomeTaiga = HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldTaiga = HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeOldTaiga = HibiscusConfig.has_amber_covert ? HibiscusBiomes.AMBER_COVERT : (HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT: BiomeKeys.OLD_GROWTH_PINE_TAIGA);
+   RegistryKey<Biome> uncommonBiomeTaiga = HibiscusConfig.has_amber_covert ? HibiscusBiomes.AMBER_COVERT : (HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT: BiomeKeys.OLD_GROWTH_PINE_TAIGA);
+   RegistryKey<Biome> specialNearBiomeCherryCold = HibiscusConfig.has_heather_fields ? HibiscusBiomes.HEATHER_FIELDS : (HibiscusConfig.has_alpine_clearings ? HibiscusBiomes.ALPINE_CLEARINGS: BiomeKeys.CHERRY_GROVE);
+   RegistryKey<Biome> commonBiomeSnowyTaigaFrozen = HibiscusConfig.has_boreal_taiga ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
+   RegistryKey<Biome> uncommonBiomeSnowyTaigaFrozen = HibiscusConfig.has_boreal_taiga ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
+   RegistryKey<Biome> commonBiomeTaigaFrozen = HibiscusConfig.has_boreal_taiga ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.TAIGA;
+   RegistryKey[] windsweptFrozen = HibiscusConfig.has_tundra && HibiscusConfig.has_alpine_clearings ?
            new RegistryKey[]{HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA, HibiscusBiomes.TUNDRA} :
            new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
-   RegistryKey[] windsweptCold = HibiscusBiomes.has_larch ?
+   RegistryKey[] windsweptCold = HibiscusConfig.has_alpine_highlands ?
            new RegistryKey[]{HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.ALPINE_HIGHLANDS} :
            new RegistryKey[]{BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_GRAVELLY_HILLS, BiomeKeys.WINDSWEPT_HILLS, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.WINDSWEPT_FOREST};
 
@@ -223,7 +224,7 @@ public class Region5Parameters {
                     this.erosionParameters[0],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_white_cliffs ? registryKey10 : registryKey7
+                    HibiscusConfig.has_white_cliffs ? registryKey10 : registryKey7
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -232,7 +233,7 @@ public class Region5Parameters {
                     this.erosionParameters[1],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_white_cliffs ? registryKey10 : registryKey3
+                    HibiscusConfig.has_white_cliffs ? registryKey10 : registryKey3
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -241,7 +242,7 @@ public class Region5Parameters {
                     this.erosionParameters[2],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_white_cliffs ? registryKey10 : registryKey
+                    HibiscusConfig.has_white_cliffs ? registryKey10 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -307,7 +308,7 @@ public class Region5Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_xeric_plains ? registryKey2 : registryKey
+                    HibiscusConfig.has_xeric_plains ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -316,7 +317,7 @@ public class Region5Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_xeric_plains ? registryKey2 : registryKey
+                    HibiscusConfig.has_xeric_plains ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -325,7 +326,7 @@ public class Region5Parameters {
                     this.erosionParameters[5],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_white_cliffs ? registryKey11 : registryKey6
+                    HibiscusConfig.has_white_cliffs ? registryKey11 : registryKey6
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -361,7 +362,7 @@ public class Region5Parameters {
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getWindsweptOrRegularBiome(i, j, weirdness);
-            RegistryKey <Biome> registryKey6 = HibiscusBiomes.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey) : this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey6 = HibiscusConfig.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey) : this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey7 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getPeakBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey11 = this.getShoreCliffBiome(i, j, weirdness);
@@ -372,7 +373,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[2]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_white_cliffs ? registryKey11 : registryKey
+                    HibiscusConfig.has_white_cliffs ? registryKey11 : registryKey
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[0], weirdness, 0.0F, registryKey7);
             this.writeBiomeParameters(parameters,
@@ -486,7 +487,7 @@ public class Region5Parameters {
             RegistryKey <Biome> registryKey4 = this.getWindsweptOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey5 = this.getNearMountainBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey6 = this.getShoreBiome(i, j);
-            RegistryKey <Biome> registryKey7 = HibiscusBiomes.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey) : this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey7 = HibiscusConfig.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey) : this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey8 = this.getErodedShoreBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey9 = this.getMountainSlopeBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey12 = this.getShoreCliffBiome(i, j, weirdness);
@@ -508,7 +509,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[2]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_white_cliffs ? registryKey12 : BiomeKeys.STONY_SHORE
+                    HibiscusConfig.has_white_cliffs ? registryKey12 : BiomeKeys.STONY_SHORE
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -530,7 +531,7 @@ public class Region5Parameters {
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[1], weirdness, 0.0F, i == 0 ? registryKey9 : registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusConfig.has_xeric_plains ? registryKey : registryKey2);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[3], weirdness, 0.0F, registryKey);
@@ -541,7 +542,7 @@ public class Region5Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2
+                    HibiscusConfig.has_xeric_plains ? registryKey : registryKey2
             );
             if(weirdness.max() < 0L) {
                this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey6);
@@ -652,7 +653,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2
+                    HibiscusConfig.has_xeric_plains ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -679,7 +680,7 @@ public class Region5Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_xeric_plains ? registryKey : registryKey2
+                    HibiscusConfig.has_xeric_plains ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey4);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey);
@@ -828,7 +829,7 @@ public class Region5Parameters {
 
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
-            RegistryKey <Biome> registryKey = HibiscusBiomes.has_xeric_plains ? this.getRegularBiome(i, j, weirdness) : this.getBadlandsOrRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey = HibiscusConfig.has_xeric_plains ? this.getRegularBiome(i, j, weirdness) : this.getBadlandsOrRegularBiome(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -907,7 +908,7 @@ public class Region5Parameters {
       if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       }
-      else if((humidity <= 3 || temperature >= 3) && HibiscusBiomes.has_marsh) {
+      else if((humidity <= 3 || temperature >= 3) && HibiscusConfig.has_marsh) {
          return HibiscusBiomes.MARSH;
       }
       else {
@@ -916,14 +917,14 @@ public class Region5Parameters {
    }
 
    private RegistryKey <Biome> getXericPlainsOrRegularBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      return temperature == 4 ? (HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : this.getBadlandsBiome(humidity, weirdness)) : this.getRegularBiome(temperature, humidity, weirdness);
+      return temperature == 4 ? (HibiscusConfig.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : this.getBadlandsBiome(humidity, weirdness)) : this.getRegularBiome(temperature, humidity, weirdness);
    }
    private RegistryKey <Biome> getMountainStartBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       return temperature == 0 ? this.getMountainSlopeBiome(temperature, humidity, weirdness) : this.getRegularBiome(temperature, humidity, weirdness);
    }
 
    private RegistryKey <Biome> getBiomeOrWindsweptSavanna(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
-      return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? (HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.WINDSWEPT_SAVANNA) : biomeKey;
+      return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? (HibiscusConfig.has_xeric_plains ? HibiscusBiomes.XERIC_PLAINS : BiomeKeys.WINDSWEPT_SAVANNA) : biomeKey;
    }
 
    private RegistryKey <Biome> getBiomeOrChalkCliffs(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
@@ -941,11 +942,11 @@ public class Region5Parameters {
       if(temperature == 0) {
          return BiomeKeys.SNOWY_BEACH;
       }
-      else if (temperature == 3 && humidity > 2 && HibiscusBiomes.has_tropical_shores) {
+      else if (temperature == 3 && humidity > 2 && HibiscusConfig.has_tropical_shores) {
          return HibiscusBiomes.TROPICAL_SHORES;
       }
       else {
-         return temperature == 4 ? (HibiscusBiomes.has_xeric_plains ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
+         return temperature == 4 ? (HibiscusConfig.has_xeric_plains ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
       }
    }
 
@@ -967,25 +968,25 @@ public class Region5Parameters {
 
 
    private RegistryKey <Biome> getPeakBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-      if (temperature <= 1 && HibiscusBiomes.has_fir && humidity <= 2 && weirdness.max() >= 0L) {
+      if (temperature <= 1 && (HibiscusConfig.has_alpine_highlands || HibiscusConfig.has_alpine_clearings) && humidity <= 2 && weirdness.max() >= 0L) {
          return BiomeKeys.STONY_PEAKS;
       }
       if(temperature <= 2) {
          return weirdness.max() < 0L ? BiomeKeys.JAGGED_PEAKS : BiomeKeys.FROZEN_PEAKS;
       }
       else {
-         return temperature == 3 ? (HibiscusBiomes.has_cypress_fields && humidity < 3 ? HibiscusBiomes.RED_PEAKS : BiomeKeys.STONY_PEAKS) : (HibiscusBiomes.has_drylands ? HibiscusBiomes.RED_PEAKS : this.getBadlandsBiome(humidity, weirdness));
+         return temperature == 3 ? (HibiscusConfig.has_red_peaks && humidity < 3 ? HibiscusBiomes.RED_PEAKS : BiomeKeys.STONY_PEAKS) : (HibiscusConfig.has_red_peaks ? HibiscusBiomes.RED_PEAKS : this.getBadlandsBiome(humidity, weirdness));
       }
    }
 
    private RegistryKey <Biome> getMountainSlopeBiome(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
       if(temperature == 4) {
-         return HibiscusBiomes.has_drylands ? HibiscusBiomes.DUSTY_SLOPES : this.getNearMountainBiome(temperature, humidity, weirdness);
+         return HibiscusConfig.has_dusty_slopes ? HibiscusBiomes.DUSTY_SLOPES : this.getNearMountainBiome(temperature, humidity, weirdness);
       } else
       if(temperature >= 3) {
          return this.getNearMountainBiome(temperature, humidity, weirdness);
       } else {
-         if (HibiscusBiomes.has_larch) {
+         if (HibiscusConfig.has_tundra && (HibiscusConfig.has_alpine_clearings || HibiscusConfig.has_alpine_highlands)) {
             return humidity <= 2 && temperature <= 1 && weirdness.max() >= 0L? HibiscusBiomes.TUNDRA : BiomeKeys.GROVE;
          }
          else {
