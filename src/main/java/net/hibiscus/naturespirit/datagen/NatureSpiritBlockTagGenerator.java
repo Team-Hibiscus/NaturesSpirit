@@ -119,6 +119,7 @@ public class NatureSpiritBlockTagGenerator extends FabricTagProvider.BlockTagPro
             getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(flowerSet.getFlowerBlock());
          }
       }
+      getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(AZOLLA);
       getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(CATTAIL);
       getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(LOTUS_FLOWER);
       getOrCreateTagBuilder(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES).add(STRIPPED_ALLUAUDIA_BUNDLE, ALLUAUDIA_BUNDLE);

@@ -39,7 +39,7 @@ public class SedgeGrassBlock extends ShortPlantBlock implements Waterloggable {
 
 
    public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
-      return true;
+      return !useContext.getStack().isOf(HibiscusMiscBlocks.AZOLLA_ITEM);
    }
 
    public BlockState getPlacementState(ItemPlacementContext context) {

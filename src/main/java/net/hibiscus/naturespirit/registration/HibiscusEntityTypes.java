@@ -18,7 +18,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 public class HibiscusEntityTypes {
 
    private static final EntityType.Builder<CheeseArrowEntity> CHEESE_ARROW_ENTITY_BUILDER = EntityType.Builder.create(CheeseArrowEntity::new, SpawnGroup.MISC);
-   public static EntityType<CheeseArrowEntity> CHEESE_ARROW = HibiscusConfig.cheese_arrow ? registerEntityType("cheese_arrow", CHEESE_ARROW_ENTITY_BUILDER.dimensions(0.5F, 0.5F).maxTrackingRange(4).trackingTickInterval(20).build()) : null;
+   public static EntityType<CheeseArrowEntity> CHEESE_ARROW = registerEntityType("cheese_arrow", CHEESE_ARROW_ENTITY_BUILDER.dimensions(0.5F, 0.5F).maxTrackingRange(4).trackingTickInterval(20).build());
 
    public static void registerEntityTypes() {
    }

@@ -35,13 +35,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.FoliageColors;
 import net.minecraft.world.biome.GrassColors;
 
+import java.io.IOException;
+
 import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 @Environment(EnvType.CLIENT) public class NatureSpiritClient implements ClientModInitializer {
 
 //   public static final EntityModelLayer BISON_MODEL_LAYER = new EntityModelLayer(Identifier.of(MOD_ID, "bison"), "main");
    @Override public void onInitializeClient() {
-
 
 //      EntityRendererRegistry.register(HibiscusEntityTypes.BISON, BisonEntityRenderer::new);
 //
@@ -118,10 +119,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH_SLAB, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH_STAIRS, RenderLayer.getCutout());
-
-      if (HibiscusConfig.cheese_arrow) {
-         EntityRendererRegistry.register(HibiscusEntityTypes.CHEESE_ARROW, CheeseArrowEntityRenderer::new);
-      }
+      EntityRendererRegistry.register(HibiscusEntityTypes.CHEESE_ARROW, CheeseArrowEntityRenderer::new);
 
 
 

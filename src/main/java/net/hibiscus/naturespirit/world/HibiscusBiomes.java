@@ -16,7 +16,6 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> WINDSWEPT_SUGI_FOREST = register("windswept_sugi_forest");
    public static final RegistryKey <Biome> BLOOMING_SUGI_FOREST = register("blooming_sugi_forest");
    public static final RegistryKey <Biome> LAVENDER_FIELDS = register("lavender_fields");
-   public static final RegistryKey <Biome> ERODED_RIVER = register("eroded_river");
    public static final RegistryKey <Biome> MARSH = register("marsh");
    public static final RegistryKey <Biome> BAMBOO_WETLANDS = register("bamboo_wetlands");
    public static final RegistryKey <Biome> WISTERIA_FOREST = register("wisteria_forest");
@@ -64,110 +63,6 @@ public class HibiscusBiomes {
    public static final RegistryKey <Biome> BLOOMING_HIGHLANDS = register("blooming_highlands");
    public static final RegistryKey <Biome> CHAPARRAL = register("chaparral");
    public static final RegistryKey <Biome> FLORAL_RIDGES = register("floral_ridges");
-
-
-   public static boolean has_sugi_forest;
-   public static boolean has_eroded_river;
-   public static boolean has_marsh;
-   public static boolean has_bamboo_wetlands;
-   public static boolean has_wisteria_forest;
-   public static boolean has_redwood_forest;
-   public static boolean has_aspen_forest;
-   public static boolean has_maple;
-   public static boolean has_fir;
-   public static boolean has_larch;
-   public static boolean has_oak_savanna;
-   public static boolean has_cypress_fields;
-   public static boolean has_lively_dunes;
-   public static boolean has_drylands;
-   public static boolean has_xeric_plains;
-   public static boolean has_white_cliffs;
-   public static boolean has_tropical_shores;
-   public static boolean has_mahogany;
-   public static boolean has_arid;
-   public static boolean has_shrublands;
-   public static boolean has_steppe;
-
-   public static void set_has_sugi_forest(Boolean bl) {
-      has_sugi_forest = bl;
-   }
-
-   public static void set_has_eroded_river(Boolean bl) {
-      has_eroded_river = bl;
-   }
-
-   public static void set_has_marsh(Boolean bl) {
-      has_marsh = bl;
-   }
-
-   public static void set_has_bamboo_wetlands(Boolean bl) {
-      has_bamboo_wetlands = bl;
-   }
-
-   public static void set_has_wisteria_forest(Boolean bl) {
-      has_wisteria_forest = bl;
-   }
-
-   public static void set_has_redwood_forest(Boolean bl) {
-      has_redwood_forest = bl;
-   }
-
-   public static void set_has_aspen_forest(Boolean bl) {
-      has_aspen_forest = bl;
-   }
-
-   public static void set_has_maple(Boolean bl) {
-      has_maple = bl;
-   }
-
-   public static void set_has_fir(Boolean bl) {
-      has_fir = bl;
-   }
-
-   public static void set_has_cypress_fields(Boolean bl) {
-      has_cypress_fields = bl;
-   }
-
-   public static void set_has_lively_dunes(Boolean bl) {
-      has_lively_dunes = bl;
-   }
-
-   public static void set_has_drylands(Boolean bl) {
-      has_drylands = bl;
-   }
-
-   public static void set_has_white_cliffs(Boolean bl) {
-      has_white_cliffs = bl;
-   }
-
-   public static void set_has_tropical_shores(Boolean bl) {
-      has_tropical_shores = bl;
-   }
-
-   public static void set_has_xeric_plains(Boolean bl) {
-      has_xeric_plains = bl;
-   }
-
-   public static void set_has_larch(Boolean bl) {
-      has_larch = bl;
-   }
-
-   public static void set_has_oak_savanna(Boolean bl) {
-      has_oak_savanna = bl;
-   }
-
-   public static void set_has_mahogany(Boolean bl) {
-      has_mahogany = bl;
-   }
-   public static void set_has_arid(Boolean bl) {
-      has_arid = bl;
-   }
-   public static void set_has_shrublands(Boolean bl) {
-      has_shrublands = bl;
-   }
-   public static void set_has_steppe(Boolean bl) {
-      has_steppe = bl;
-   }
 
    private static RegistryKey <Biome> register(String name) {
       System.out.println("Registered Resource Key for biome: " + name);

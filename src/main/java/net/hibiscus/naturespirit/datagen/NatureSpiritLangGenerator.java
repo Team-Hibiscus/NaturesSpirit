@@ -174,6 +174,7 @@ class NatureSpiritLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, translationBuilder);
       translationBuilder.add(HELVOLA_PAD_ITEM, "Helvola Pad");
       generateItemTranslations(HELVOLA_FLOWER_ITEM, translationBuilder);
+      generateBlockTranslations(AZOLLA, translationBuilder);
       generateBlockTranslations(LOTUS_FLOWER, translationBuilder);
       generateBlockTranslations(LOTUS_STEM, translationBuilder);
       generateBlockTranslations(RED_MOSS_BLOCK, translationBuilder);

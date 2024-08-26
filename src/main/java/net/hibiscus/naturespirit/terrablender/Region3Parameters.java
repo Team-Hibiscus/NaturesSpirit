@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
@@ -47,24 +48,24 @@ public class Region3Parameters {
    private final RegistryKey <Biome>[][] nearMountainBiomes;
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
-   RegistryKey<Biome> commonBiomePlainsCold = HibiscusBiomes.has_maple ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.PLAINS;
-   RegistryKey<Biome> mountainBiomeMeadowCold = HibiscusBiomes.has_maple ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.MEADOW;
-   RegistryKey<Biome> mountainBiomeForestCold = HibiscusBiomes.has_maple ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> mountainBiomeMeadowCold2 = HibiscusBiomes.has_maple ? HibiscusBiomes.MARIGOLD_MEADOWS : BiomeKeys.MEADOW;
-   RegistryKey<Biome> uncommonBiomeCold = HibiscusBiomes.has_maple ? HibiscusBiomes.MARIGOLD_MEADOWS : null;
-   RegistryKey<Biome> commonBiomeForestCold = HibiscusBiomes.has_maple ? HibiscusBiomes.MAPLE_WOODLANDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusBiomes.has_aspen_forest ? HibiscusBiomes.ASPEN_FOREST : BiomeKeys.TAIGA;
-   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusBiomes.has_aspen_forest ? HibiscusBiomes.ASPEN_FOREST : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
-   RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusBiomes.has_maple ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
-   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
-   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.DESERT;
-   RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.SAVANNA;
-   RegistryKey<Biome> commonBiomeForestWarm = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.FOREST;
-   RegistryKey<Biome> nearBiomeSavannaPlateauWarm = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.SAVANNA_PLATEAU;
-   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.WOODED_BADLANDS;
-   RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusBiomes.has_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> specialBiomeErodedBadlandsHot = HibiscusBiomes.has_drylands ? null : BiomeKeys.ERODED_BADLANDS;
+   RegistryKey<Biome> commonBiomePlainsCold = HibiscusConfig.has_golden_wilds ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.PLAINS;
+   RegistryKey<Biome> mountainBiomeMeadowCold = HibiscusConfig.has_golden_wilds ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.MEADOW;
+   RegistryKey<Biome> mountainBiomeForestCold = HibiscusConfig.has_golden_wilds ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> mountainBiomeMeadowCold2 = HibiscusConfig.has_marigold_meadows ? HibiscusBiomes.MARIGOLD_MEADOWS : (HibiscusConfig.has_golden_wilds ? HibiscusBiomes.GOLDEN_WILDS : BiomeKeys.MEADOW);
+   RegistryKey<Biome> uncommonBiomeCold = HibiscusConfig.has_marigold_meadows ? HibiscusBiomes.MARIGOLD_MEADOWS : null;
+   RegistryKey<Biome> commonBiomeForestCold = HibiscusConfig.has_maple_woodlands ? HibiscusBiomes.MAPLE_WOODLANDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> commonBiomeTaigaCold = HibiscusConfig.has_aspen_forest ? HibiscusBiomes.ASPEN_FOREST : BiomeKeys.TAIGA;
+   RegistryKey<Biome> commonBiomeOldSpruceCold = HibiscusConfig.has_aspen_forest ? HibiscusBiomes.ASPEN_FOREST : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeOldPineCold = HibiscusConfig.has_aspen_forest ? null : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
+   RegistryKey<Biome> commonBiomeDesertHot = HibiscusConfig.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusConfig.has_wooded_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeSavannaWarm = HibiscusConfig.has_wooded_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.SAVANNA;
+   RegistryKey<Biome> commonBiomeForestWarm = HibiscusConfig.has_wooded_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.FOREST;
+   RegistryKey<Biome> nearBiomeSavannaPlateauWarm = HibiscusConfig.has_wooded_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.SAVANNA_PLATEAU;
+   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusConfig.has_drylands ? HibiscusBiomes.DRYLANDS : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusConfig.has_wooded_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeBadlandsHot2 = HibiscusConfig.has_wooded_drylands ? HibiscusBiomes.WOODED_DRYLANDS : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> specialBiomeErodedBadlandsHot = HibiscusConfig.has_drylands ? null : BiomeKeys.ERODED_BADLANDS;
 
    public Region3Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
@@ -246,7 +247,7 @@ public class Region3Parameters {
                     this.erosionParameters[4],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey2 : registryKey
+                    HibiscusConfig.has_drylands ? registryKey2 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -447,7 +448,7 @@ public class Region3Parameters {
             );
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[1], weirdness, 0.0F, i == 0 ? registryKey9 : registryKey5);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey);
-            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusBiomes.has_drylands ? registryKey : registryKey2);
+            this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, HibiscusConfig.has_drylands ? registryKey : registryKey2);
             this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey5);
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -465,7 +466,7 @@ public class Region3Parameters {
                     this.erosionParameters[3],
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
+                    HibiscusConfig.has_drylands ? registryKey : registryKey2
             );
             if(weirdness.max() < 0L) {
                this.writeBiomeParameters(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey6);
@@ -572,7 +573,7 @@ public class Region3Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
+                    HibiscusConfig.has_drylands ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -599,7 +600,7 @@ public class Region3Parameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    HibiscusBiomes.has_drylands ? registryKey : registryKey2
+                    HibiscusConfig.has_drylands ? registryKey : registryKey2
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,
@@ -737,7 +738,7 @@ public class Region3Parameters {
 
          for(int j = 0; j < this.humidityParameters.length; ++j) {
             MultiNoiseUtil.ParameterRange parameterRange2 = this.humidityParameters[j];
-            RegistryKey <Biome> registryKey = HibiscusBiomes.has_drylands ? this.getRegularBiome(i, j, weirdness) : this.getBadlandsOrRegularBiome(i, j, weirdness);
+            RegistryKey <Biome> registryKey = HibiscusConfig.has_drylands ? this.getRegularBiome(i, j, weirdness) : this.getBadlandsOrRegularBiome(i, j, weirdness);
             this.writeBiomeParameters(parameters,
                     parameterRange,
                     parameterRange2,
@@ -823,11 +824,11 @@ public class Region3Parameters {
       if(temperature == 0) {
          return BiomeKeys.SNOWY_BEACH;
       }
-      else if (temperature == 3 && HibiscusBiomes.has_tropical_shores) {
+      else if (temperature == 3 && HibiscusConfig.has_tropical_shores) {
          return HibiscusBiomes.TROPICAL_SHORES;
       }
       else {
-         return temperature == 4 ? (HibiscusBiomes.has_drylands ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
+         return temperature == 4 ? (HibiscusConfig.has_drylands ? HibiscusBiomes.DRYLANDS : (BiomeKeys.DESERT)) : BiomeKeys.BEACH;
       }
    }
 

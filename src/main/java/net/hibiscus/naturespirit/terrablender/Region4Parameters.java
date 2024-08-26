@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
+import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
@@ -47,23 +48,23 @@ public class Region4Parameters {
    private final RegistryKey <Biome>[][] nearMountainBiomes;
    private final RegistryKey <Biome>[][] specialNearMountainBiomes;
    private final RegistryKey <Biome>[][] windsweptBiomes;
-   RegistryKey<Biome> commonBiomeJungleWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.TROPICAL_WOODS : BiomeKeys.JUNGLE;
-   RegistryKey<Biome> nearBiomeJungleWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SPARSE_TROPICAL_WOODS : BiomeKeys.JUNGLE;
-   RegistryKey<Biome> commonBiomeForestWarm = HibiscusBiomes.has_mahogany ? HibiscusBiomes.SPARSE_TROPICAL_WOODS : BiomeKeys.FOREST;
-   RegistryKey<Biome> uncommonBiomeBambooJungleWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.BAMBOO_JUNGLE;
-   RegistryKey<Biome> uncommonBiomeSparseJungleWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.SPARSE_JUNGLE;
-   RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusBiomes.has_mahogany ? null : BiomeKeys.PLAINS;
-   RegistryKey<Biome> commonBiomeDesertHot = HibiscusBiomes.has_arid ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.DESERT;
-   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusBiomes.has_arid ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.WOODED_BADLANDS;
-   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusBiomes.has_arid ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.BADLANDS;
-   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusBiomes.has_arid ? HibiscusBiomes.SCORCHED_DUNES : BiomeKeys.DESERT;
-   RegistryKey<Biome> commonBiomeNullHot = HibiscusBiomes.has_arid ? HibiscusBiomes.SCORCHED_DUNES : null;
-   RegistryKey<Biome> commonBiomeFlowerForestTemperate = HibiscusBiomes.has_shrublands ? HibiscusBiomes.FLOWERING_SHRUBLAND : BiomeKeys.FLOWER_FOREST;
-   RegistryKey<Biome> uncommonBiomeSunflowerFieldTemperate = HibiscusBiomes.has_shrublands ? null : BiomeKeys.SUNFLOWER_PLAINS;
-   RegistryKey<Biome> commonBiomePlainsTemperate = HibiscusBiomes.has_shrublands ? HibiscusBiomes.SHRUBLAND : BiomeKeys.PLAINS;
-   RegistryKey<Biome> nearBiomeMeadowTemperate = HibiscusBiomes.has_shrublands ? HibiscusBiomes.FLOWERING_SHRUBLAND : BiomeKeys.MEADOW;
-   RegistryKey<Biome> nearBiomeMeadowTemperate2 = HibiscusBiomes.has_shrublands ? HibiscusBiomes.SHRUBLAND : BiomeKeys.MEADOW;
-   RegistryKey<Biome> specialBiomeCherryTemperate = HibiscusBiomes.has_shrublands ? null : BiomeKeys.CHERRY_GROVE;
+   RegistryKey<Biome> commonBiomeJungleWarm = HibiscusConfig.has_tropical_woods ? HibiscusBiomes.TROPICAL_WOODS : BiomeKeys.JUNGLE;
+   RegistryKey<Biome> nearBiomeJungleWarm = HibiscusConfig.has_sparse_tropical_woods ? HibiscusBiomes.SPARSE_TROPICAL_WOODS : BiomeKeys.JUNGLE;
+   RegistryKey<Biome> commonBiomeForestWarm = HibiscusConfig.has_sparse_tropical_woods ? HibiscusBiomes.SPARSE_TROPICAL_WOODS : BiomeKeys.FOREST;
+   RegistryKey<Biome> uncommonBiomeBambooJungleWarm = HibiscusConfig.has_tropical_woods ? null : BiomeKeys.BAMBOO_JUNGLE;
+   RegistryKey<Biome> uncommonBiomeSparseJungleWarm = HibiscusConfig.has_tropical_woods ? null : BiomeKeys.SPARSE_JUNGLE;
+   RegistryKey<Biome> uncommonBiomePlainsWarm = HibiscusConfig.has_sparse_tropical_woods ? null : BiomeKeys.PLAINS;
+   RegistryKey<Biome> commonBiomeDesertHot = HibiscusConfig.has_arid_savanna ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.DESERT;
+   RegistryKey<Biome> nearBiomeWoodedBadlandsHot = HibiscusConfig.has_arid_savanna ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.WOODED_BADLANDS;
+   RegistryKey<Biome> nearBiomeBadlandsHot = HibiscusConfig.has_arid_savanna ? HibiscusBiomes.ARID_SAVANNA : BiomeKeys.BADLANDS;
+   RegistryKey<Biome> commonBiomeDesertHot2 = HibiscusConfig.has_scorched_dunes ? HibiscusBiomes.SCORCHED_DUNES : BiomeKeys.DESERT;
+   RegistryKey<Biome> commonBiomeNullHot = HibiscusConfig.has_scorched_dunes ? HibiscusBiomes.SCORCHED_DUNES : null;
+   RegistryKey<Biome> commonBiomeFlowerForestTemperate = HibiscusConfig.has_flowering_shrubland ? HibiscusBiomes.FLOWERING_SHRUBLAND : BiomeKeys.FLOWER_FOREST;
+   RegistryKey<Biome> uncommonBiomeSunflowerFieldTemperate = HibiscusConfig.has_flowering_shrubland ? null : BiomeKeys.SUNFLOWER_PLAINS;
+   RegistryKey<Biome> commonBiomePlainsTemperate = HibiscusConfig.has_shrubland ? HibiscusBiomes.SHRUBLAND : BiomeKeys.PLAINS;
+   RegistryKey<Biome> nearBiomeMeadowTemperate = HibiscusConfig.has_flowering_shrubland ? HibiscusBiomes.FLOWERING_SHRUBLAND : BiomeKeys.MEADOW;
+   RegistryKey<Biome> nearBiomeMeadowTemperate2 = HibiscusConfig.has_shrubland ? HibiscusBiomes.SHRUBLAND : BiomeKeys.MEADOW;
+   RegistryKey<Biome> specialBiomeCherryTemperate = HibiscusConfig.has_flowering_shrubland ? null : BiomeKeys.CHERRY_GROVE;
    public Region4Parameters() {
       this.frozenTemperature = this.temperatureParameters[0];
       this.nonFrozenTemperatureParameters = MultiNoiseUtil.ParameterRange.combine(this.temperatureParameters[1], this.temperatureParameters[4]);
@@ -743,10 +744,10 @@ public class Region4Parameters {
       if(temperature == 0) {
          return this.getRegularBiome(temperature, humidity, weirdness);
       }
-      else if(temperature == 3 && humidity > 1 && HibiscusBiomes.has_mahogany) {
+      else if(temperature == 3 && humidity > 1 && HibiscusConfig.has_tropical_basin) {
          return HibiscusBiomes.TROPICAL_BASIN;
       }
-      else if((humidity <= 3 || temperature == 4) && HibiscusBiomes.has_marsh) {
+      else if((humidity <= 3 || temperature == 4) && HibiscusConfig.has_marsh) {
          return HibiscusBiomes.MARSH;
       }
       else {
@@ -765,7 +766,7 @@ public class Region4Parameters {
    }
 
    private RegistryKey <Biome> getBiomeOrWindsweptSavanna(int temperature, int humidity, MultiNoiseUtil.ParameterRange weirdness, RegistryKey <Biome> biomeKey) {
-      if (temperature == 2 && HibiscusBiomes.has_sugi_forest) {
+      if (temperature == 2 && HibiscusConfig.has_sugi_forest) {
          return humidity < 4 && weirdness.max() >= 0L ? HibiscusBiomes.WINDSWEPT_SUGI_FOREST : biomeKey;
       }
       return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? BiomeKeys.WINDSWEPT_SAVANNA : biomeKey;
@@ -780,7 +781,7 @@ public class Region4Parameters {
       if(temperature == 0) {
          return BiomeKeys.SNOWY_BEACH;
       }
-      else if (temperature == 3 && HibiscusBiomes.has_tropical_shores) {
+      else if (temperature == 3 && HibiscusConfig.has_tropical_shores) {
          return HibiscusBiomes.TROPICAL_SHORES;
       }
       else {

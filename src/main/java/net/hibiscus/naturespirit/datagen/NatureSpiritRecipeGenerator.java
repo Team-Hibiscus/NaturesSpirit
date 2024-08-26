@@ -313,7 +313,7 @@ public class NatureSpiritRecipeGenerator extends FabricRecipeProvider {
       generateStoneRecipes(HibiscusRegistryHelper.StoneHashMap, exporter);
       offerShapelessRecipe(exporter, Items.BROWN_DYE, HibiscusMiscBlocks.CATTAIL, "brown_dye", 2);
       offerShapelessRecipe(exporter, Items.PINK_DYE, LOTUS_FLOWER, "pink_dye", 1);
-      offerShapelessRecipe(exporter, Items.WHITE_DYE, HELVOLA, "white_dye", 1);
+      offerShapelessRecipe(exporter, Items.WHITE_DYE, HELVOLA_FLOWER_ITEM, "white_dye", 1);
       offerShapelessRecipe(exporter, Items.RED_DYE, ORNATE_SUCCULENT, "red_dye", 1);
       offerShapelessRecipe(exporter, Items.LIME_DYE, DROWSY_SUCCULENT, "lime_dye", 1);
       offerShapelessRecipe(exporter, Items.YELLOW_DYE, AUREATE_SUCCULENT, "yellow_dye", 1);
