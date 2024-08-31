@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "natures_spirit:cobbled_travertine"
-  },
-  "result": "natures_spirit:polished_travertine"
-}

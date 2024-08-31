@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "natures_spirit:block/desert_turnip_stem_stage3"
-  }
-}

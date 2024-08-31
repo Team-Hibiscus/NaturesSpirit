@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "natures_spirit:block/chert_bricks",
-    "side": "natures_spirit:block/chert_bricks",
-    "top": "natures_spirit:block/chert_bricks"
-  }
-}

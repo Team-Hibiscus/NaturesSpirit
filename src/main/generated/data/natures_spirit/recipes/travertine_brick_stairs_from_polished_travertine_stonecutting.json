@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "natures_spirit:polished_travertine"
-  },
-  "result": "natures_spirit:travertine_brick_stairs"
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side",
-  "textures": {
-    "wall": "natures_spirit:block/travertine_bricks"
-  }
-}

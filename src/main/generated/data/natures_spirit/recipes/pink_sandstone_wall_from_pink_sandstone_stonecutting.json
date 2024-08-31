@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "natures_spirit:pink_sandstone"
-  },
-  "result": "natures_spirit:pink_sandstone_wall"
-}
