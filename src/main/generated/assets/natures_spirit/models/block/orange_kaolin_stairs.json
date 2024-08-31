@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "natures_spirit:block/orange_kaolin",
-    "side": "natures_spirit:block/orange_kaolin",
-    "top": "natures_spirit:block/orange_kaolin"
-  }
-}

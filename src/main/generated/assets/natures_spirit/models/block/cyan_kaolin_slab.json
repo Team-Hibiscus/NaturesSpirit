@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "natures_spirit:block/cyan_kaolin",
-    "side": "natures_spirit:block/cyan_kaolin",
-    "top": "natures_spirit:block/cyan_kaolin"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "natures_spirit:block/mossy_cobbled_travertine",
-    "side": "natures_spirit:block/mossy_cobbled_travertine",
-    "top": "natures_spirit:block/mossy_cobbled_travertine"
-  }
-}

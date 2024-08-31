@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "natures_spirit:block/cobbled_travertine",
-    "side": "natures_spirit:block/cobbled_travertine",
-    "top": "natures_spirit:block/cobbled_travertine"
-  }
-}

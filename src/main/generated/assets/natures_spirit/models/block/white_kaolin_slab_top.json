@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "natures_spirit:block/white_kaolin",
-    "side": "natures_spirit:block/white_kaolin",
-    "top": "natures_spirit:block/white_kaolin"
-  }
-}
