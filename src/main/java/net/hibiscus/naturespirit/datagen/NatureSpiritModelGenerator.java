@@ -316,7 +316,10 @@ class NatureSpiritModelGenerator extends FabricModelProvider {
          Block leavesType = leaves.get(i);
          if (!Objects.equals(i, "coconut")) {
             blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
-            if (!Objects.equals(i, "wisteria") && !i.startsWith("part") && !i.startsWith("frosty")) {
+            if (i.equals("redwood")) {
+               generatePottedAnemone(saplingType[0], saplingType[1], blockStateModelGenerator);
+            }
+            else if (!Objects.equals(i, "wisteria") && !i.startsWith("part") && !i.startsWith("frosty")) {
                blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
             }
          }

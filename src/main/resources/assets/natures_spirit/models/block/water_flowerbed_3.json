@@ -6,9 +6,10 @@
 	},
 	"elements": [
 		{
-			"from": [9, 0, 9],
-			"to": [15, 3, 15],
+			"from": [9, 0.2, 9],
+			"to": [15, 3.2, 15],
 			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0.3, 0]},
 			"faces": {
 				"north": {"uv": [6, 0, 12, 3], "texture": "#flowerbed"},
 				"east": {"uv": [6, 0, 12, 3], "texture": "#flowerbed"},
@@ -19,10 +20,10 @@
 			}
 		},
 		{
-			"from": [8, -3.5, 8.35],
-			"to": [16, 1.5, 8.35],
+			"from": [8, -3.35, 8.35],
+			"to": [16, 1.65, 8.35],
 			"shade": false,
-			"rotation": {"angle": -22.5, "axis": "x", "origin": [0, 0, 0]},
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [0, 0.3, 0]},
 			"faces": {
 				"north": {"uv": [0, 6, 8, 11], "texture": "#flowerbed"},
 				"east": {"uv": [0, 9, 0, 11], "texture": "#flowerbed"},
@@ -33,10 +34,10 @@
 			}
 		},
 		{
-			"from": [15.65, -3.5, 8],
-			"to": [15.65, 1.5, 16],
+			"from": [15.65, -3.35, 8],
+			"to": [15.65, 1.65, 16],
 			"shade": false,
-			"rotation": {"angle": -22.5, "axis": "z", "origin": [24, 0, 24]},
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [24, 0.3, 24]},
 			"faces": {
 				"north": {"uv": [0, 9, 0, 11], "texture": "#flowerbed"},
 				"east": {"uv": [0, 6, 8, 11], "texture": "#flowerbed"},
@@ -47,10 +48,10 @@
 			}
 		},
 		{
-			"from": [8, -3.5, 15.65],
-			"to": [16, 1.5, 15.65],
+			"from": [8, -3.35, 15.65],
+			"to": [16, 1.65, 15.65],
 			"shade": false,
-			"rotation": {"angle": 22.5, "axis": "x", "origin": [24, 0, 24]},
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [24, 0.3, 24]},
 			"faces": {
 				"north": {"uv": [0, 6, 8, 11], "texture": "#flowerbed"},
 				"east": {"uv": [0, 9, 0, 11], "texture": "#flowerbed"},
@@ -61,10 +62,10 @@
 			}
 		},
 		{
-			"from": [8.35, -3.5, 8],
-			"to": [8.35, 1.5, 16],
+			"from": [8.35, -3.35, 8],
+			"to": [8.35, 1.65, 16],
 			"shade": false,
-			"rotation": {"angle": 22.5, "axis": "z", "origin": [0, 0, 0]},
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [0, 0.3, 0]},
 			"faces": {
 				"north": {"uv": [0, 6, 8, 11], "texture": "#flowerbed"},
 				"east": {"uv": [0, 6, 8, 11], "texture": "#flowerbed"},

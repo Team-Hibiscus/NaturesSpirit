@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"particle": "#flowerbed"
+		"particle": "#stem"
 	},
 	"elements": [
 		{
@@ -16,7 +16,7 @@
 				"south": {"uv": [0, 0, 8, 0], "texture": "#stem", "tintindex": 0},
 				"west": {"uv": [0, 0, 8, 0], "texture": "#stem", "tintindex": 0},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#stem", "tintindex": 0},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#stem", "tintindex": 0}
+				"down": {"uv": [0, 16, 16, 0], "texture": "#stem", "tintindex": 0}
 			}
 		}
 	]

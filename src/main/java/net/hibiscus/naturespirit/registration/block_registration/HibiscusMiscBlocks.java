@@ -409,7 +409,7 @@ public class HibiscusMiscBlocks {
    );
 
    public static final Block AZOLLA = HibiscusRegistryHelper.registerPlantBlock("azolla",
-           new AzollaBlock(FabricBlockSettings
+           new AzollaBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.GREEN)
                    .pistonBehavior(PistonBehavior.DESTROY)

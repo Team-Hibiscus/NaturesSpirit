@@ -10,19 +10,23 @@ import net.hibiscus.naturespirit.registration.block_registration.HibiscusColored
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
 import net.minecraft.block.Block;
+import net.minecraft.block.FlowerbedBlock;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.entry.LootPoolEntryTypes;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -33,6 +37,7 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.IntStream;
 
 import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
 
@@ -172,29 +177,22 @@ class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
                       ))));
    }
 
-   public LootTable.Builder leavesDrops(Block leaves, Item sapling, float... saplingChance) {
-      RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
-      return this.dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(sapling))).conditionally(TableBonusLootCondition.builder(impl.getOrThrow(Enchantments.FORTUNE), saplingChance))).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(this.createWithoutShearsOrSilkTouchCondition()).with(((LeafEntry.Builder)this.applyExplosionDecay(leaves, ItemEntry.builder(Items.STICK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(impl.getOrThrow(Enchantments.FORTUNE), LEAVES_STICK_DROP_CHANCE))));
+   public final LootTable.Builder dropsWithSilkTouchOrShears2(ItemConvertible drop) {
+      return LootTable.builder().pool(LootPool.builder().conditionally(this.createWithShearsOrSilkTouchCondition()).rolls(ConstantLootNumberProvider.create(1.0F)).with(ItemEntry.builder(drop)));
    }
 
-public LootTable.Builder flowerbedDropsWithShears(Block flowerbed) {
-   return LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).with(this.applyExplosionDecay(flowerbed, ItemEntry.builder(flowerbed).apply(
-           IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount)).conditionally(BlockStatePropertyLootCondition
-                   .builder(flowerbed).properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))).conditionally(WITH_SILK_TOUCH_OR_SHEARS)))));
-}
+   public LootTable.Builder noSaplingLeavesDrop(Block leaves) {
+      RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+      return this.dropsWithSilkTouchOrShears2(leaves)
+                 .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(this.createWithoutShearsOrSilkTouchCondition()).with(((LeafEntry.Builder)this.applyExplosionDecay(leaves, ItemEntry.builder(Items.STICK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F))))).conditionally(TableBonusLootCondition.builder(impl.getOrThrow(Enchantments.FORTUNE), LEAVES_STICK_DROP_CHANCE))));
+   }
+   public LootTable.Builder flowerbedDropsWithShears(Block flowerbed) {
+      return LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).with(this.applyExplosionDecay(flowerbed, ItemEntry.builder(flowerbed).apply(
+              IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount)).conditionally(
+                      BlockStatePropertyLootCondition
+                              .builder(flowerbed).properties(net.minecraft.predicate.StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))).conditionally(this.createWithShearsOrSilkTouchCondition())))));
+   }
 
-public LootTable.Builder noSaplingLeavesDrop(Block leaves) {
-   Item drop = Items.STICK;
-  return dropsWithSilkTouchOrShears(leaves, ((LeafEntry.Builder <?>)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(drop)))
-          .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
-          SAPLING_DROP_CHANCE
-  ))).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F))
-                   .conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS)
-                   .with(((LeafEntry.Builder <?>)this.applyExplosionDecay(
-                           leaves, ItemEntry.builder(Items.STICK).apply(
-                                   SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))))
-                           .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, LEAVES_STICK_DROP_CHANCE))));
-}
 private void addTreeTable(HashMap<String, Block[]> saplings, HashMap<String, Block> leaves) {
     for (String i : leaves.keySet()) {
        Block leavesType = leaves.get(i);
