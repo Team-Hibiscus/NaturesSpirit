@@ -1,6 +1,0 @@
-{
-  "parent": "natures_spirit:block/template_azolla_1",
-  "textures": {
-    "plant": "natures_spirit:block/azolla"
-  }
-}
