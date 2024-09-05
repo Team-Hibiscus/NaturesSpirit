@@ -32,7 +32,7 @@
   "depends": {
     "fabricloader": ">=0.14.25",
     "fabric": "*",
-    "minecraft": "${minecraft_version}",
+    "minecraft": "1.21.*",
     "terrablender": "*"
   },
   "custom": {
