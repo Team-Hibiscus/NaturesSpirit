@@ -2,8 +2,7 @@ package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -29,7 +28,7 @@ public class RedwoodBranchTreeDecorator extends TreeDecorator {
    }
 
    protected TreeDecoratorType <?> getType() {
-      return HibiscusWorldGen.REDWOOD_BRANCH_DECORATOR;
+      return NSWorldGen.REDWOOD_BRANCH_DECORATOR;
    }
 
    public void generate(Generator generator) {

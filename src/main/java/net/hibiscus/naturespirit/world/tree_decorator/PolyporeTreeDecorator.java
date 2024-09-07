@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.world.tree_decorator;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.hibiscus.naturespirit.blocks.PolyporeBlock;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.MushroomBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -39,7 +39,7 @@ public class PolyporeTreeDecorator extends TreeDecorator {
    }
 
    protected TreeDecoratorType <?> getType() {
-      return HibiscusWorldGen.POLYPORE_DECORATOR;
+      return NSWorldGen.POLYPORE_DECORATOR;
    }
 
    public void generate(Generator generator) {

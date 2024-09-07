@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.mixin;
 
-import net.hibiscus.naturespirit.config.HibiscusConfig;
+import net.hibiscus.naturespirit.config.NSConfig;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
    @Inject(method = "onLanding", at = @At("HEAD"))
    private void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo ci) {
-      if (HibiscusConfig.deepslate_generator) {
+      if (NSConfig.deepslate_generator) {
          if(world.getBlockState(pos.down()).isOf(Blocks.STONE) && world.getBlockState(pos.down(2)).isOf(Blocks.MAGMA_BLOCK)) {
             world.setBlockState(
                     pos.down(),

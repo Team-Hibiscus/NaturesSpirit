@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.random.Random;
@@ -25,7 +25,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
    }
 
    protected FoliagePlacerType <?> getType() {
-      return HibiscusWorldGen.ASPEN_FOLIAGE_PLACER_TYPE;
+      return NSWorldGen.ASPEN_FOLIAGE_PLACER_TYPE;
    }
 
    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {

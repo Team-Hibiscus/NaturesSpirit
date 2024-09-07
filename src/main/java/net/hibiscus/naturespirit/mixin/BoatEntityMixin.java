@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.mixin;
 
-import net.hibiscus.naturespirit.entity.HibiscusBoatWithData;
+import net.hibiscus.naturespirit.entity.NSBoatWithData;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.ItemConvertible;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
    @ModifyArg(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;dropItem(Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/entity/ItemEntity;", ordinal = 0), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity$Type;getBaseBlock()Lnet/minecraft/block/Block;")), allow = 1)
    private ItemConvertible modifyPlanks(ItemConvertible convertible) {
       // noinspection ConstantConditions
-      if(this instanceof HibiscusBoatWithData boat) {
+      if(this instanceof NSBoatWithData boat) {
          return boat.getBoatData().planks();
       }
 

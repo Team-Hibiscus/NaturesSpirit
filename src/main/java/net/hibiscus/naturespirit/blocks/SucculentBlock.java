@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +30,7 @@ public class SucculentBlock extends CoralParentBlock implements Fertilizable{
 
    @Override
    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-      if (!(entity instanceof LivingEntity) || entity.isSneaking() || entity.getType().isIn(HibiscusTags.EntityTypes.CANT_SUCCULENT_SLOWED)) {
+      if (!(entity instanceof LivingEntity) || entity.isSneaking() || entity.getType().isIn(NSTags.EntityTypes.CANT_SUCCULENT_SLOWED)) {
          return;
       }
       entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
@@ -38,7 +38,7 @@ public class SucculentBlock extends CoralParentBlock implements Fertilizable{
 
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
       BlockPos blockPos = pos.down();
-      return world.getBlockState(blockPos).isSideSolid(world, blockPos, Direction.UP, SideShapeType.CENTER) || world.getBlockState(blockPos).isIn(HibiscusTags.Blocks.SUCCULENT_VERTICAL_PLACEMENT_OVERRIDE);
+      return world.getBlockState(blockPos).isSideSolid(world, blockPos, Direction.UP, SideShapeType.CENTER) || world.getBlockState(blockPos).isIn(NSTags.Blocks.SUCCULENT_VERTICAL_PLACEMENT_OVERRIDE);
    }
 
    @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {

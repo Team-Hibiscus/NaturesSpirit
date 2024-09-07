@@ -3,8 +3,8 @@ package net.hibiscus.naturespirit.world.tree_decorator;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
@@ -24,7 +24,7 @@ public class MapleGroundTreeDecorator extends TreeDecorator {
    }
 
    protected TreeDecoratorType <?> getType() {
-      return HibiscusWorldGen.MAPLE_GROUND_TREE_DECORATOR;
+      return NSWorldGen.MAPLE_GROUND_TREE_DECORATOR;
    }
 
    public void generate(Generator generator) {
@@ -76,7 +76,7 @@ public class MapleGroundTreeDecorator extends TreeDecorator {
             generator.replace(blockPos, this.provider2.get(generator.getRandom(), origin));
 
             if(generator.isAir(blockPos.up(1)) && generator.getRandom().nextInt(50) == 0) {
-               generator.replace(blockPos.up(1), HibiscusMiscBlocks.SHIITAKE_MUSHROOM.getDefaultState());
+               generator.replace(blockPos.up(1), NSMiscBlocks.SHIITAKE_MUSHROOM.getDefaultState());
             }
             break;
          }

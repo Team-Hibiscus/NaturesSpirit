@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.datagen.NaturesSpiritConfiguredFeatures;
+import net.hibiscus.naturespirit.datagen.NSConfiguredFeatures;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -26,7 +26,7 @@ public class RedMossBlock extends Block implements Fertilizable {
    }
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) -> registry.getEntry(NaturesSpiritConfiguredFeatures.RED_MOSS_PATCH_BONEMEAL)).ifPresent((reference) -> {
+      world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) -> registry.getEntry(NSConfiguredFeatures.RED_MOSS_PATCH_BONEMEAL)).ifPresent((reference) -> {
          reference.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up());
       });
    }

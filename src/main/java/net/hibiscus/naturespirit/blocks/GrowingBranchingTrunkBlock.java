@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -49,7 +49,7 @@ public class GrowingBranchingTrunkBlock extends BranchingTrunkBlock implements F
    }
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
       boolean bl = neighborState.isSideSolid(world, pos, direction.getOpposite(), SideShapeType.CENTER) || neighborState.getBlock() instanceof BranchingTrunkBlock || neighborState.isIn(BlockTags.LEAVES) || (direction == Direction.UP && neighborState.isIn(
-              HibiscusTags.Blocks.SUCCULENTS));
+              NSTags.Blocks.SUCCULENTS));
       return !state.get(SHEARED) ? state.with(FACING_PROPERTIES.get(direction), bl) : state;
    }
 

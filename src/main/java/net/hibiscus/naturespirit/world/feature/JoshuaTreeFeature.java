@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
-import net.hibiscus.naturespirit.registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.NSWoods;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -45,7 +45,7 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
    }
 
    private static boolean generate2(WorldAccess world, BlockPos pos, Random random, BlockPos rootPos, int size, int layer) {
-      BranchingTrunkBlock branchingTrunkBlock = (BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog();
+      BranchingTrunkBlock branchingTrunkBlock = (BranchingTrunkBlock) NSWoods.JOSHUA.getLog();
       int i = random.nextInt(4) + 1;
       if(layer == 0) {
          ++i;
@@ -88,36 +88,36 @@ public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
 
                if(world.isAir(blockPos2.up())) {
 
-                  world.setBlockState(blockPos2.up(), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                  world.setBlockState(blockPos2, ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
+                  world.setBlockState(blockPos2.up(), NSWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
+                  world.setBlockState(blockPos2, ((BranchingTrunkBlock) NSWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
 
                   Direction direction2 = Direction.Type.HORIZONTAL.random(random);
                   if(random.nextBoolean() && world.isAir(blockPos2.offset(direction, 1))) {
-                     world.setBlockState(blockPos2.offset(direction2, 1), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                     world.setBlockState(blockPos2, ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
+                     world.setBlockState(blockPos2.offset(direction2, 1), NSWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
+                     world.setBlockState(blockPos2, ((BranchingTrunkBlock) NSWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2), 2);
                   }
                }
                else if((world.isAir(blockPos2.up(2)) && !world.isAir(blockPos2.up()))) {
 
-                  world.setBlockState(blockPos2.up(2), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                  world.setBlockState(blockPos2.up(1), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
+                  world.setBlockState(blockPos2.up(2), NSWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
+                  world.setBlockState(blockPos2.up(1), ((BranchingTrunkBlock) NSWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
 
                   Direction direction2 = Direction.Type.HORIZONTAL.random(random);
                   if(random.nextBoolean() && world.isAir(blockPos2.up().offset(direction, 1))) {
-                     world.setBlockState(blockPos2.up().offset(direction2, 1), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-                     world.setBlockState(blockPos2.up(), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
+                     world.setBlockState(blockPos2.up().offset(direction2, 1), NSWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
+                     world.setBlockState(blockPos2.up(), ((BranchingTrunkBlock) NSWoods.JOSHUA.getLog()).withConnectionProperties(world, blockPos2.up()), 2);
                   }
                }
             }
          }
          return true;
       }
-      world.setBlockState(pos.up(i), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-      world.setBlockState(pos.up(i - 1), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
+      world.setBlockState(pos.up(i), NSWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
+      world.setBlockState(pos.up(i - 1), ((BranchingTrunkBlock) NSWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
       Direction direction = Direction.Type.HORIZONTAL.random(random);
       if(random.nextBoolean() && world.isAir(pos.up(i - 1).offset(direction, 1))) {
-         world.setBlockState(pos.up(i - 1).offset(direction, 1), HibiscusWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
-         world.setBlockState(pos.up(i - 1), ((BranchingTrunkBlock) HibiscusWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
+         world.setBlockState(pos.up(i - 1).offset(direction, 1), NSWoods.JOSHUA.getLeaves().getDefaultState().with(LeavesBlock.DISTANCE, 1), 2);
+         world.setBlockState(pos.up(i - 1), ((BranchingTrunkBlock) NSWoods.JOSHUA.getLog()).withConnectionProperties(world, pos.up(i - 1)), 2);
       }
       return true;
    }

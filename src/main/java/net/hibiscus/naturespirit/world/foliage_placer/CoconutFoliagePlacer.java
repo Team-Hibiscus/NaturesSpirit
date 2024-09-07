@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.foliage_placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.fluid.Fluids;
@@ -26,7 +26,7 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
    }
 
    protected FoliagePlacerType <?> getType() {
-      return HibiscusWorldGen.COCONUT_FOLIAGE_PLACER_TYPE;
+      return NSWorldGen.COCONUT_FOLIAGE_PLACER_TYPE;
    }
 
    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {

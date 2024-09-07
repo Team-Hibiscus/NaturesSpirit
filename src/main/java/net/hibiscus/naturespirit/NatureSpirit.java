@@ -1,21 +1,20 @@
 package net.hibiscus.naturespirit;
 
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
-import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.registration.*;
-import net.hibiscus.naturespirit.registration.HibiscusBiomes;
-import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
+import net.hibiscus.naturespirit.config.NSConfig;
+import net.hibiscus.naturespirit.entity.NSBoatEntity;
+import net.hibiscus.naturespirit.items.NSBoatDispenserBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
-import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
-import net.hibiscus.naturespirit.util.HibiscusEvents;
-import net.hibiscus.naturespirit.util.HibiscusVillagers;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.*;
+import net.hibiscus.naturespirit.util.NSCauldronBehavior;
+import net.hibiscus.naturespirit.util.NSEvents;
+import net.hibiscus.naturespirit.util.NSVillagers;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.particle.DefaultParticleType;
@@ -46,7 +45,7 @@ public class NatureSpirit implements ModInitializer {
 
       Optional <ModContainer> modContainer = FabricLoader.getInstance().getModContainer("natures_spirit");
       try {
-         HibiscusConfig.main();
+         NSConfig.main();
       }
       catch(IOException e) {
          throw new RuntimeException(e);
@@ -55,57 +54,57 @@ public class NatureSpirit implements ModInitializer {
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_vanilla_trees"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_vanilla_trees"),
-                 HibiscusConfig.vanilla_trees_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.vanilla_trees_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_flower_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_flower_forest"),
-                 HibiscusConfig.flower_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.flower_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_birch_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_birch_forest"),
-                 HibiscusConfig.birch_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.birch_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_jungle"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_jungle"),
-                 HibiscusConfig.jungle_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.jungle_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_swamp"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_swamp"),
-                 HibiscusConfig.swamp_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.swamp_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_desert"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_desert"),
-                 HibiscusConfig.desert_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.desert_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_badlands"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_badlands"),
-                 HibiscusConfig.badlands_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.badlands_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_mountain_biomes"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_mountain_biomes"),
-                 HibiscusConfig.mountain_biomes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.mountain_biomes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_savannas"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_savannas"),
-                 HibiscusConfig.savanna_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.savanna_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_dark_forest"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_dark_forest"),
-                 HibiscusConfig.dark_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.dark_forest_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "modified_windswept_hills"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_windswept_hills"),
-                 HibiscusConfig.windswept_hills_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+                 NSConfig.windswept_hills_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
          );
          ResourceManagerHelper.registerBuiltinResourcePack(
                  new Identifier(MOD_ID, "plank_consistency"), modContainer.get(),
@@ -152,28 +151,28 @@ public class NatureSpirit implements ModInitializer {
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "milk"), MILK_PARTICLE);
       Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
-      HibiscusEntityTypes.registerEntityTypes();
-      HibiscusVillagers.registerVillagers();
-      HibiscusBiomes.registerBiomes();
-      HibiscusWoods.registerWoods();
-      HibiscusMiscBlocks.registerMiscBlocks();
-      HibiscusColoredBlocks.registerColoredBlocks();
+      NSEntityTypes.registerEntityTypes();
+      NSBiomes.registerBiomes();
+      NSItemGroups.registerItemGroup();
+      NSWoods.registerWoods();
+      NSMiscBlocks.registerMiscBlocks();
+      NSColoredBlocks.registerColoredBlocks();
+      NSVillagers.registerVillagers();
       if (FabricLoader.getInstance().isModLoaded("dye_depot")) {
-         HibiscusDyeDepotCompatibility.registerColoredBlocks();
+         NSDyeDepotCompatibility.registerColoredBlocks();
       }
       if (FabricLoader.getInstance().isModLoaded("mint")) {
-         HibiscusMintCompatibility.registerColoredBlocks();
+         NSMintCompatibility.registerColoredBlocks();
       }
-      HibiscusEvents.registerEvents();
-      HibiscusWorldGen.registerWorldGen();
-      HibiscusItemGroups.registerItemGroup();
-      HibiscusSounds.registerSounds();
-      HibiscusCriteria.registerCriteria();
-      HibiscusCauldronBehavior.registerBehavior();
+      NSEvents.registerEvents();
+      NSWorldGen.registerWorldGen();
+      NSSounds.registerSounds();
+      NSCriteria.registerCriteria();
+      NSCauldronBehavior.registerBehavior();
 
-      for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {
-         DispenserBlock.registerBehavior(boat.boat(), new HibiscusBoatDispensorBehavior(boat, false));
-         DispenserBlock.registerBehavior(boat.chestBoat(), new HibiscusBoatDispensorBehavior(boat, true));
+      for(NSBoatEntity.HibiscusBoat boat : NSBoatEntity.HibiscusBoat.values()) {
+         DispenserBlock.registerBehavior(boat.boat(), new NSBoatDispenserBehavior(boat, false));
+         DispenserBlock.registerBehavior(boat.chestBoat(), new NSBoatDispenserBehavior(boat, true));
       }
 
       Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(new Identifier(MOD_ID, "textures/entity/cat/trans" + ".png")));

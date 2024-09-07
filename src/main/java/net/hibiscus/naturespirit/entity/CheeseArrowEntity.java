@@ -1,8 +1,8 @@
 package net.hibiscus.naturespirit.entity;
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSEntityTypes;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -17,11 +17,11 @@ public class CheeseArrowEntity extends PersistentProjectileEntity {
    }
 
    public CheeseArrowEntity(World world, LivingEntity owner) {
-      super(HibiscusEntityTypes.CHEESE_ARROW, owner, world);
+      super(NSEntityTypes.CHEESE_ARROW, owner, world);
    }
 
    public CheeseArrowEntity(World world, double x, double y, double z) {
-      super(HibiscusEntityTypes.CHEESE_ARROW, x, y, z, world);
+      super(NSEntityTypes.CHEESE_ARROW, x, y, z, world);
    }
 
    public void tick() {
@@ -33,7 +33,7 @@ public class CheeseArrowEntity extends PersistentProjectileEntity {
    }
 
    protected ItemStack asItemStack() {
-      return new ItemStack(HibiscusMiscBlocks.CHEESE_ARROW);
+      return new ItemStack(NSMiscBlocks.CHEESE_ARROW);
    }
 
    protected void onHit(LivingEntity target) {

@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -30,7 +30,7 @@ public class PizzaItem extends AliasedBlockItem {
       NbtCompound nbtCompound = pizza.getOrCreateSubNbt("BlockEntityTag");
       NbtCompound nbtCompound2 = pizza.getOrCreateSubNbt("BlockStateTag");
       assert nbtCompound != null;
-      int pizzaSlice = this.asItem() == HibiscusMiscBlocks.WHOLE_PIZZA ? 0 : this.asItem() == HibiscusMiscBlocks.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == HibiscusMiscBlocks.HALF_PIZZA ? 2 : 3;
+      int pizzaSlice = this.asItem() == NSMiscBlocks.WHOLE_PIZZA ? 0 : this.asItem() == NSMiscBlocks.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == NSMiscBlocks.HALF_PIZZA ? 2 : 3;
       nbtCompound.putInt("pizza_bites", pizzaSlice);
       nbtCompound2.putInt("pizza_bites", pizzaSlice);
    }
@@ -68,7 +68,7 @@ public class PizzaItem extends AliasedBlockItem {
 
    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
       ItemStack itemStack = super.finishUsing(stack, world, user);
-      Item pizzaSlice = this.asItem() == HibiscusMiscBlocks.WHOLE_PIZZA ? HibiscusMiscBlocks.THREE_QUARTERS_PIZZA : this.asItem() == HibiscusMiscBlocks.THREE_QUARTERS_PIZZA ? HibiscusMiscBlocks.HALF_PIZZA : this.asItem() == HibiscusMiscBlocks.HALF_PIZZA ? HibiscusMiscBlocks.QUARTER_PIZZA : Items.AIR;
+      Item pizzaSlice = this.asItem() == NSMiscBlocks.WHOLE_PIZZA ? NSMiscBlocks.THREE_QUARTERS_PIZZA : this.asItem() == NSMiscBlocks.THREE_QUARTERS_PIZZA ? NSMiscBlocks.HALF_PIZZA : this.asItem() == NSMiscBlocks.HALF_PIZZA ? NSMiscBlocks.QUARTER_PIZZA : Items.AIR;
 
       PlayerEntity holder = (PlayerEntity) user;
       holder.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);

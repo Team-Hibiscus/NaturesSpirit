@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.mixin;
 
-import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
+import net.hibiscus.naturespirit.entity.NSBoatEntity;
+import net.hibiscus.naturespirit.items.NSBoatDispenserBehavior;
 import net.minecraft.block.dispenser.BoatDispenserBehavior;
 import net.minecraft.entity.vehicle.BoatEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
    @ModifyVariable(method = "dispenseSilently", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;setVariant(Lnet/minecraft/entity/vehicle/BoatEntity$Type;)V"), allow = 1)
    private BoatEntity modifyBoat(BoatEntity original) {
       // noinspection ConstantConditions
-      if((Object) this instanceof HibiscusBoatDispensorBehavior boat) {
-         return HibiscusBoatEntity.copy(original, boat.getBoatData());
+      if((Object) this instanceof NSBoatDispenserBehavior boat) {
+         return NSBoatEntity.copy(original, boat.getBoatData());
       }
 
       return original;

@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.blocks.LotusStemBlock;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.FluidTags;
@@ -29,8 +29,8 @@ public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
       int j = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if(structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER) || structureWorldAccess.isAir(blockPos2)) {
-         BlockState blockState = HibiscusMiscBlocks.LOTUS_FLOWER.getDefaultState();
-         BlockState blockState2 = HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, structureWorldAccess.getFluidState(blockPos2).isIn(FluidTags.WATER));
+         BlockState blockState = NSMiscBlocks.LOTUS_FLOWER.getDefaultState();
+         BlockState blockState2 = NSMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, structureWorldAccess.getFluidState(blockPos2).isIn(FluidTags.WATER));
          Optional <BlockPos> optional = LotusStemBlock.getStemHeadWaterPos(structureWorldAccess, blockPos2, Blocks.AIR);
          int k = optional.map(pos -> pos.getY() - j - random.nextInt(3)).orElseGet(() -> 1 + random.nextInt(10));
 
@@ -59,7 +59,7 @@ public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
                break;
             }
             else if(structureWorldAccess.isAir(blockPos2)) {
-               if(blockState.canPlaceAt(structureWorldAccess, blockPos2) && structureWorldAccess.getBlockState(blockPos2.down()).isOf(HibiscusMiscBlocks.LOTUS_STEM)) {
+               if(blockState.canPlaceAt(structureWorldAccess, blockPos2) && structureWorldAccess.getBlockState(blockPos2.down()).isOf(NSMiscBlocks.LOTUS_STEM)) {
                   structureWorldAccess.setBlockState(blockPos2, blockState, 2);
                   ++i;
                }

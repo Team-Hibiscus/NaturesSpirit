@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.world.trunk;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -25,7 +25,7 @@ public class RedwoodTrunkPlacer extends TrunkPlacer {
    }
 
    @Override protected TrunkPlacerType <?> getType() {
-      return HibiscusWorldGen.REDWOOD_TRUNK_PLACER;
+      return NSWorldGen.REDWOOD_TRUNK_PLACER;
    }
    public List<FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {
       BlockPos blockPos = startPos.down();

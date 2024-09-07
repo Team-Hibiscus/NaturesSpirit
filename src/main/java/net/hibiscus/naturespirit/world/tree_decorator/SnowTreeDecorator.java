@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
@@ -16,7 +16,7 @@ public class SnowTreeDecorator extends TreeDecorator {
    public SnowTreeDecorator() {}
 
    protected TreeDecoratorType <?> getType() {
-      return HibiscusWorldGen.SNOW_DECORATOR;
+      return NSWorldGen.SNOW_DECORATOR;
    }
 
    public void generate(Generator generator) {

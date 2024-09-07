@@ -12,10 +12,10 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
-import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.items.HibiscusBoatItem;
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
+import net.hibiscus.naturespirit.entity.NSBoatEntity;
+import net.hibiscus.naturespirit.items.NSBoatItem;
+import net.hibiscus.naturespirit.registration.NSEntityTypes;
+import net.hibiscus.naturespirit.registration.NSItemGroups;
 import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
@@ -35,7 +35,7 @@ import net.minecraft.village.TradeOffers;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.*;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
 
 public class WoodSet {
    private final ItemConvertible leavesBefore;
@@ -119,7 +119,7 @@ public class WoodSet {
    private Item chestBoatItem;
    private TagKey <Item> itemLogsTag;
    private TagKey <Block> blockLogsTag;
-   private final HibiscusBoatEntity.HibiscusBoat boatType;
+   private final NSBoatEntity.HibiscusBoat boatType;
    private EntityType<BoatEntity> boatEntityType;
    private EntityType<BoatEntity> chestBoatEntityType;
    private final SaplingGenerator saplingGenerator;
@@ -289,14 +289,14 @@ public class WoodSet {
       signItem = createSignItem();
       hangingSignItem = createHangingSignItem();
 
-      boatEntityType = HibiscusEntityTypes.registerEntityType(getName() + "_boat", HibiscusEntityTypes.createBoatType(false, boatType));
-      chestBoatEntityType = HibiscusEntityTypes.registerEntityType(getName() + "_chest_boat", HibiscusEntityTypes.createBoatType(true, boatType));
+      boatEntityType = NSEntityTypes.registerEntityType(getName() + "_boat", NSEntityTypes.createBoatType(false, boatType));
+      chestBoatEntityType = NSEntityTypes.registerEntityType(getName() + "_chest_boat", NSEntityTypes.createBoatType(true, boatType));
 
       boatItem = createItem(getName() + "_boat",
-              new HibiscusBoatItem(false, boatType, new Item.Settings().maxCount(1))
+              new NSBoatItem(false, boatType, new Item.Settings().maxCount(1))
       );
       chestBoatItem = createItem(getName() + "_chest_boat",
-              new HibiscusBoatItem(true, boatType, new Item.Settings().maxCount(1))
+              new NSBoatItem(true, boatType, new Item.Settings().maxCount(1))
       );
       RenderLayerHashMap.put(getName() + "_door", door);
       RenderLayerHashMap.put(getName() + "_trapdoor", trapDoor);
@@ -316,13 +316,13 @@ public class WoodSet {
       itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(getModID(), getName() + "_logs"));
       addToBuildingTab(buttonBefore, logBefore, signBefore, boatBefore, this);
 
-      for(Block item : registeredBlocksList) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
-      for(Item item : registeredItemsList) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Block item : registeredBlocksList) ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Item item : registeredItemsList) ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
 
 
-   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset, boolean hasMosaic){
+   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore, NSBoatEntity.HibiscusBoat boatType, SaplingGenerator saplingGenerator, WoodPreset woodPreset, boolean hasMosaic){
       this.woodPreset = woodPreset;
       this.name = name;
       this.sideColor = sideColor;
@@ -605,7 +605,7 @@ public class WoodSet {
    }
 
 
-   public HibiscusBoatEntity.HibiscusBoat getboatType() {
+   public NSBoatEntity.HibiscusBoat getboatType() {
       return boatType;
    }
    public EntityType <BoatEntity> getBoatEntityType() {

@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks.block_entities;
 
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
@@ -18,21 +18,21 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 public class PizzaBlockEntity extends BlockEntity {
-   public ArrayList<String> TOPPINGS = new ArrayList<String>();
-   public int TOPPING_NUMBER = TOPPINGS != null ? TOPPINGS.size() : 0;
-   public int BITES = 0;
+   public ArrayList<String> toppings = new ArrayList<String>();
+   public int topping_number = toppings != null ? toppings.size() : 0;
+   public int bites = 0;
    public PizzaBlockEntity(BlockPos pos, BlockState state) {
-      super(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
+      super(NSMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
    }
    @Override
    public void writeNbt(NbtCompound nbt) {
       NbtList nbtElement = new NbtList();
-      for(String string : TOPPINGS) {
+      for(String string : toppings) {
          nbtElement.add(NbtString.of(string));
       }
       nbt.put("topping_types", nbtElement);
-      nbt.putInt("toppings_number", this.TOPPING_NUMBER);
-      nbt.putInt("pizza_bites", this.BITES);
+      nbt.putInt("toppings_number", this.topping_number);
+      nbt.putInt("pizza_bites", this.bites);
       this.markDirty();
 
       super.writeNbt(nbt);
@@ -41,25 +41,25 @@ public class PizzaBlockEntity extends BlockEntity {
    public void readNbt(NbtCompound nbt) {
       NbtList nbt2 = ((NbtList)nbt.get("topping_types"));
       if (nbt2 != null) {
-         TOPPINGS.clear();
+         toppings.clear();
          for(int i = 0; i < nbt2.size(); i++) {
-            TOPPINGS.add(i, nbt2.getString(i));
+            toppings.add(i, nbt2.getString(i));
          }
       }
-      this.TOPPING_NUMBER = nbt.getInt("toppings_number");
-      this.BITES = nbt.getInt("pizza_bites");
+      this.topping_number = nbt.getInt("toppings_number");
+      this.bites = nbt.getInt("pizza_bites");
 
       super.readNbt(nbt);
    }
    public boolean checkTopping(ItemStack itemStack) {
-      return itemStack.isIn(HibiscusTags.Items.PIZZA_TOPPINGS);
+      return itemStack.isIn(NSTags.Items.PIZZA_TOPPINGS);
    }
    public boolean canPlaceTopping(ItemStack itemStack, PizzaBlockEntity pizzaBlockEntity) {
       boolean pizzaTopping = checkTopping(itemStack);
       String itemId = Registries.ITEM.getId(itemStack.getItem()).toString();
-      boolean bl = pizzaBlockEntity.BITES == 0 && pizzaBlockEntity.TOPPING_NUMBER < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && pizzaTopping && !TOPPINGS.contains(itemId);
+      boolean bl = pizzaBlockEntity.bites == 0 && pizzaBlockEntity.topping_number < 4 && !(itemStack.isIn(NSTags.Items.DISABLED_PIZZA_TOPPINGS)) && pizzaTopping && !toppings.contains(itemId);
       if (bl) {
-         TOPPINGS.add(itemId);
+         toppings.add(itemId);
       }
       this.markDirty();
      return bl;
