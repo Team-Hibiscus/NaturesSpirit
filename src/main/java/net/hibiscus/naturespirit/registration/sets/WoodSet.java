@@ -315,9 +315,6 @@ public class WoodSet {
       blockLogsTag = TagKey.of(RegistryKeys.BLOCK, new Identifier(getModID(), getName() + "_logs"));
       itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(getModID(), getName() + "_logs"));
       addToBuildingTab(buttonBefore, logBefore, signBefore, boatBefore, this);
-
-      for(Block item : registeredBlocksList) ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
-      for(Item item : registeredItemsList) ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
 
@@ -628,7 +625,6 @@ public class WoodSet {
    }
 
    private Block createBlockWithItem(String blockID, Block block){
-      registerBlockItem(blockID, block);
       Block listBlock = registerBlock(blockID, block);
       registeredBlocksList.add(listBlock);
       return listBlock;
@@ -765,7 +761,7 @@ public class WoodSet {
       return vinesBlock;
    }
    private Block createVinesPlant(Block vines) {
-      Block vinesPlant = registerBlock(getName() + "_vines_plant", new DownwardsVinePlantBlock(FabricBlockSettings
+      Block vinesPlant = registerBlockWithoutTab(getName() + "_vines_plant", new DownwardsVinePlantBlock(FabricBlockSettings
               .create()
               .pistonBehavior(PistonBehavior.DESTROY)
               .noCollision()
@@ -777,7 +773,7 @@ public class WoodSet {
       return vinesPlant;
    }
    private Block createVinesPlant(String prefix, Block vines) {
-      Block vinesPlant = registerBlock(prefix + getName() + "_vines_plant", new DownwardsVinePlantBlock(FabricBlockSettings
+      Block vinesPlant = registerBlockWithoutTab(prefix + getName() + "_vines_plant", new DownwardsVinePlantBlock(FabricBlockSettings
               .create()
               .pistonBehavior(PistonBehavior.DESTROY)
               .noCollision()
@@ -825,16 +821,16 @@ public class WoodSet {
       return createBlockWithItem(getName() + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), blockSetType));
    }
    private Block createSign(){
-      return registerBlock(getName() + "_sign", new SignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(topColor), woodType));
+      return registerBlockWithoutTab(getName() + "_sign", new SignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(topColor), woodType));
    }
    private Block createWallSign(){
-      return registerBlock(getName() + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(topColor).dropsLike(sign), woodType));
+      return registerBlockWithoutTab(getName() + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(topColor).dropsLike(sign), woodType));
    }
    private Block createHangingSign(){
-      return registerBlock(getName() + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.copy(getHangingSignBase()).mapColor(topColor), woodType));
+      return registerBlockWithoutTab(getName() + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.copy(getHangingSignBase()).mapColor(topColor), woodType));
    }
    private Block createWallHangingSign(){
-      return registerBlock(getName() + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.copy(getHangingSignBase()).mapColor(topColor).dropsLike(hangingSign), woodType));
+      return registerBlockWithoutTab(getName() + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.copy(getHangingSignBase()).mapColor(topColor).dropsLike(hangingSign), woodType));
    }
 
    public Block createSapling(SaplingGenerator saplingGenerator) {
@@ -850,7 +846,7 @@ public class WoodSet {
       return block;
    }
    public Block createPottedSapling(Block sapling) {
-      Block pot = registerBlock("potted_" + getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      Block pot = registerBlockWithoutTab("potted_" + getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
       RenderLayerHashMap.put("potted_" + getName() + "_sapling", pot);
       return pot;
    }
@@ -867,7 +863,7 @@ public class WoodSet {
       return block;
    }
    public Block createPottedSapling(String prefix, Block sapling) {
-      Block pot = registerBlock("potted_" + prefix + getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+      Block pot = registerBlockWithoutTab("potted_" + prefix + getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
       RenderLayerHashMap.put("potted_" + prefix + getName() + "_sapling", pot);
       return pot;
    }

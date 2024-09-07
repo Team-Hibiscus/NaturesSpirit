@@ -14,8 +14,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerPlantBlock;
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerPottedPlant;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
 
 public class FlowerSet {
 
@@ -72,7 +71,6 @@ public class FlowerSet {
                       .burnable()
                       .offset(AbstractBlock.OffsetType.XZ)
                       .pistonBehavior(PistonBehavior.DESTROY)),
-              NSItemGroups.NS_ITEM_GROUP,
               itemBefore,
               0.4f
       );
@@ -89,7 +87,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), NSItemGroups.NS_ITEM_GROUP, itemBefore, 0.4f);
+         ), itemBefore, 0.4f);
       } else
       if(preset == FlowerPreset.SMALL) {
          flowerBlock = registerPlantBlock(name, new FlowerBlock(
@@ -103,7 +101,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), NSItemGroups.NS_ITEM_GROUP, itemBefore, 0.3f);
+         ), itemBefore, 0.3f);
       }else
       if(preset == FlowerPreset.MID_SMALL) {
          flowerBlock = registerPlantBlock(name, new MidFlowerBlock(
@@ -117,10 +115,10 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), NSItemGroups.NS_ITEM_GROUP, itemBefore, 0.3f);
+         ), itemBefore, 0.3f);
       }
       if (hasFlowerPot()) {
-         pottedFlowerBlock = registerPottedPlant(name, flowerBlock);
+         pottedFlowerBlock = registerTransparentBlockWithoutTab("potted_" + name, new FlowerPotBlock(flowerBlock, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
          registeredBlocksList.add(pottedFlowerBlock);
       }
       registeredBlocksList.add(flowerBlock);

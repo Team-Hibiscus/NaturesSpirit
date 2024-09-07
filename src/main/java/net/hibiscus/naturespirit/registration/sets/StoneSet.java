@@ -1,10 +1,12 @@
 package net.hibiscus.naturespirit.registration.sets;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.hibiscus.naturespirit.registration.NSItemGroups;
 import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.data.family.BlockFamily;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.util.Identifier;
@@ -164,8 +166,7 @@ public class StoneSet {
       registerStone();
    }
    private Block createBlockWithItem(String blockID, Block block){
-      registerBlockItem(blockID, block);
-      Block listBlock = NSRegistryHelper.registerBlock(blockID, block);
+      Block listBlock = registerBlock(blockID, block);
       registeredBlocksList.add(listBlock);
       return listBlock;
    }

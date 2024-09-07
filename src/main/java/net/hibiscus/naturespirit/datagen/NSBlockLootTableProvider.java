@@ -31,9 +31,6 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.HashMap;
 import java.util.stream.IntStream;
-
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerBlock;
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerPaperLanternBlock;
 import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
 
 class NSBlockLootTableProvider extends FabricBlockLootTableProvider {
