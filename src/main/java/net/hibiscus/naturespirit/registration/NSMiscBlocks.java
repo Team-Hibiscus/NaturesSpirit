@@ -317,7 +317,7 @@ public class NSMiscBlocks {
            0.3f
    );
    public static final Block GREEN_BEARBERRIES = registerPlantBlock("green_bearberries",
-           new BearberriesBlock(AbstractBlock.Settings
+           new BearberryBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
                    .replaceable()
@@ -330,7 +330,7 @@ public class NSMiscBlocks {
            0.3f
    );
    public static final Block RED_BEARBERRIES = registerPlantBlock("red_bearberries",
-           new BearberriesBlock(AbstractBlock.Settings
+           new BearberryBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
                    .replaceable()
@@ -343,7 +343,7 @@ public class NSMiscBlocks {
            0.3f
    );
    public static final Block PURPLE_BEARBERRIES = registerPlantBlock("purple_bearberries",
-           new BearberriesBlock(AbstractBlock.Settings
+           new BearberryBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
                    .replaceable()
@@ -395,7 +395,7 @@ public class NSMiscBlocks {
            0.3f
    );
    public static final Block CATTAIL = registerPlantBlock("cattail",
-           new CattailsBlock(AbstractBlock.Settings
+           new CattailBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.DARK_GREEN)
                    .noCollision()

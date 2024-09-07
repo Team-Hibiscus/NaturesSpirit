@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
-public class CattailsBlock extends TallPlantBlock implements Waterloggable, Fertilizable {
+public class CattailBlock extends TallPlantBlock implements Waterloggable, Fertilizable {
    public static final EnumProperty <DoubleBlockHalf> HALF;
    public static final BooleanProperty WATERLOGGED;
 
@@ -34,7 +34,7 @@ public class CattailsBlock extends TallPlantBlock implements Waterloggable, Fert
       SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
    }
 
-   public CattailsBlock(Settings properties) {
+   public CattailBlock(Settings properties) {
       super(properties);
       this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(HALF, DoubleBlockHalf.LOWER));
    }

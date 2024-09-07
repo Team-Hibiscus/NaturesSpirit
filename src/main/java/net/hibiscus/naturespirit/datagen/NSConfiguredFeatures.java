@@ -368,8 +368,8 @@ public class NSConfiguredFeatures {
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(3, 0, 2, OptionalInt.of(5))
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.65F,
-              new NSSimpleBlockStateProvider(NSWoods.WILLOW.getWillowVinesPlant().getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WILLOW.getWillowVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(23, 25)),
+              new NSSimpleBlockStateProvider(NSWoods.WILLOW.getVinesPlant().getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WILLOW.getVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(23, 25)),
               new NSSimpleBlockStateProvider(NSWoods.WILLOW.getLeaves().getDefaultState()),
               new NSSimpleBlockStateProvider(NSWoods.WILLOW.getLeaves().getDefaultState()),
               5
@@ -389,8 +389,8 @@ public class NSConfiguredFeatures {
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getWhiteWisteriaVinesPlant().getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getWhiteWisteriaVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
+              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getWhiteVinesPlant().getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getWhiteVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPartWhiteLeaves().getDefaultState()),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getWhiteLeaves().getDefaultState()),
               2
@@ -409,8 +409,8 @@ public class NSConfiguredFeatures {
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPinkWisteriaVinesPlant().getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getPinkWisteriaVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
+              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPinkVinesPlant().getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getPinkVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPartPinkLeaves().getDefaultState()),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPinkLeaves().getDefaultState()),
               2
@@ -429,8 +429,8 @@ public class NSConfiguredFeatures {
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getBlueWisteriaVinesPlant().getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getBlueWisteriaVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
+              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getBlueVinesPlant().getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getBlueVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPartBlueLeaves().getDefaultState()),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getBlueLeaves().getDefaultState()),
               2
@@ -449,8 +449,8 @@ public class NSConfiguredFeatures {
               new WisteriaFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(2, 0, 2)
       ).decorators(List.of(new WisteriaVinesTreeDecorator(0.45F,
-              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPurpleWisteriaVinesPlant().getDefaultState()),
-              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getPurpleWisteriaVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
+              new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPurpleVinesPlant().getDefaultState()),
+              new RandomizedIntBlockStateProvider(BlockStateProvider.of(NSWoods.WISTERIA.getPurpleVines().getDefaultState()), DownwardVineBlock.AGE, UniformIntProvider.create(22, 25)),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPartPurpleLeaves().getDefaultState()),
               new NSSimpleBlockStateProvider(NSWoods.WISTERIA.getPurpleLeaves().getDefaultState()),
               2

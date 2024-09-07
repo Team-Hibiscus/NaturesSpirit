@@ -8,10 +8,10 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class BearberriesBlock extends ShortPlantBlock {
+public class BearberryBlock extends ShortPlantBlock {
 
 
-   public BearberriesBlock(Settings properties) {
+   public BearberryBlock(Settings properties) {
       super(properties);
    }
    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {

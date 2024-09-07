@@ -183,65 +183,6 @@ public class NSConfig {
          } catch(final IOException e) {
             System.err.println("An error occurred, delete the natures_spirit.config file in .minecraft/config and relaunch");
          }
-      NatureSpirit.LOGGER.info("terra_ferax_frequency = " + terra_ferax_weight);
-      NatureSpirit.LOGGER.info("terra_solaris_frequency = " + terra_solaris_weight);
-      NatureSpirit.LOGGER.info("terra_flava_frequency = " + terra_flava_weight);
-      NatureSpirit.LOGGER.info("terra_laeta_frequency = " + terra_laeta_weight);
-
-
-
-      NatureSpirit.LOGGER.info("has_sugi_forest = " + has_sugi_forest);
-      NatureSpirit.LOGGER.info("has_windswept_sugi_forest = " + has_windswept_sugi_forest);
-      NatureSpirit.LOGGER.info("has_blooming_sugi_forest = " + has_blooming_sugi_forest);
-      NatureSpirit.LOGGER.info("has_lavender_fields = " + has_lavender_fields);
-      NatureSpirit.LOGGER.info("has_marsh = " + has_marsh);
-      NatureSpirit.LOGGER.info("has_bamboo_wetlands = " + has_bamboo_wetlands);
-      NatureSpirit.LOGGER.info("has_wisteria_forest = " + has_wisteria_forest);
-      NatureSpirit.LOGGER.info("has_redwood_forest = " + has_redwood_forest);
-      NatureSpirit.LOGGER.info("has_snowy_redwood_forest = " + has_snowy_redwood_forest);
-      NatureSpirit.LOGGER.info("has_aspen_forest = " + has_aspen_forest);
-      NatureSpirit.LOGGER.info("has_maple_woodlands = " + has_maple_woodlands);
-      NatureSpirit.LOGGER.info("has_golden_wilds = " + has_golden_wilds);
-      NatureSpirit.LOGGER.info("has_marigold_meadows = " + has_marigold_meadows);
-      NatureSpirit.LOGGER.info("has_fir_forest = " + has_fir_forest);
-      NatureSpirit.LOGGER.info("has_snowy_fir_forest = " + has_snowy_fir_forest);
-      NatureSpirit.LOGGER.info("has_cypress_fields = " + has_cypress_fields);
-      NatureSpirit.LOGGER.info("has_carnation_fields = " + has_carnation_fields);
-      NatureSpirit.LOGGER.info("has_stratified_desert = " + has_stratified_desert);
-      NatureSpirit.LOGGER.info("has_blooming_dunes = " + has_blooming_dunes);
-      NatureSpirit.LOGGER.info("has_lively_dunes = " + has_lively_dunes);
-      NatureSpirit.LOGGER.info("has_drylands = " + has_drylands);
-      NatureSpirit.LOGGER.info("has_wooded_drylands = " + has_wooded_drylands);
-      NatureSpirit.LOGGER.info("has_xeric_plains = " + has_xeric_plains);
-      NatureSpirit.LOGGER.info("has_white_cliffs = " + has_white_cliffs);
-      NatureSpirit.LOGGER.info("has_prairie = " + has_prairie);
-      NatureSpirit.LOGGER.info("has_oak_savanna = " + has_oak_savanna);
-      NatureSpirit.LOGGER.info("has_heather_fields = " + has_heather_fields);
-      NatureSpirit.LOGGER.info("has_tundra = " + has_tundra);
-      NatureSpirit.LOGGER.info("has_alpine_clearings = " + has_alpine_clearings);
-      NatureSpirit.LOGGER.info("has_alpine_highlands = " + has_alpine_highlands);
-      NatureSpirit.LOGGER.info("has_coniferous_covert = " + has_coniferous_covert);
-      NatureSpirit.LOGGER.info("has_boreal_taiga = " + has_boreal_taiga);
-      NatureSpirit.LOGGER.info("has_tropical_shores = " + has_tropical_shores);
-      NatureSpirit.LOGGER.info("has_tropical_woods = " + has_tropical_woods);
-      NatureSpirit.LOGGER.info("has_sparse_tropical_woods = " + has_sparse_tropical_woods);
-      NatureSpirit.LOGGER.info("has_tropical_basin = " + has_tropical_basin);
-      NatureSpirit.LOGGER.info("has_arid_savanna = " + has_arid_savanna);
-      NatureSpirit.LOGGER.info("has_scorched_dunes = " + has_scorched_dunes);
-      NatureSpirit.LOGGER.info("has_flowering_shrubland = " + has_flowering_shrubland);
-      NatureSpirit.LOGGER.info("has_shrubland = " + has_shrubland);
-      NatureSpirit.LOGGER.info("has_arid_highlands = " + has_arid_highlands);
-      NatureSpirit.LOGGER.info("has_shrubby_highlands = " + has_shrubby_highlands);
-      NatureSpirit.LOGGER.info("has_woody_highlands = " + has_woody_highlands);
-      NatureSpirit.LOGGER.info("has_red_peaks = " + has_red_peaks);
-      NatureSpirit.LOGGER.info("has_dusty_slopes = " + has_dusty_slopes);
-      NatureSpirit.LOGGER.info("has_snowcapped_red_peaks = " + has_snowcapped_red_peaks);
-      NatureSpirit.LOGGER.info("has_sleeted_slopes = " + has_sleeted_slopes);
-      NatureSpirit.LOGGER.info("has_blooming_highlands = " + has_blooming_highlands);
-      NatureSpirit.LOGGER.info("has_chaparral = " + has_chaparral);
-      NatureSpirit.LOGGER.info("has_floral_ridges = " + has_floral_ridges);
-
-      System.out.println("Thanks for viewing your messages");
    }
 
    @NotNull private static JsonObject getJsonObject() {
