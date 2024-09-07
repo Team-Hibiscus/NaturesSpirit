@@ -128,26 +128,26 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);
         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(PAPER_TRAPDOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_TRAPDOOR);
         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
-                NSWoods.WISTERIA.getBlueWisteriaVines(),
-                NSWoods.WISTERIA.getBlueWisteriaVinesPlant(),
-                NSWoods.WISTERIA.getWhiteWisteriaVines(),
-                NSWoods.WISTERIA.getWhiteWisteriaVinesPlant(),
-                NSWoods.WISTERIA.getPinkWisteriaVines(),
-                NSWoods.WISTERIA.getPinkWisteriaVinesPlant(),
-                NSWoods.WISTERIA.getPurpleWisteriaVines(),
-                NSWoods.WISTERIA.getPurpleWisteriaVinesPlant(),
-                NSWoods.WILLOW.getWillowVinesPlant(),
-                NSWoods.WILLOW.getWillowVines()
+                NSWoods.WISTERIA.getBlueVines(),
+                NSWoods.WISTERIA.getBlueVinesPlant(),
+                NSWoods.WISTERIA.getWhiteVines(),
+                NSWoods.WISTERIA.getWhiteVinesPlant(),
+                NSWoods.WISTERIA.getPinkVines(),
+                NSWoods.WISTERIA.getPinkVinesPlant(),
+                NSWoods.WISTERIA.getPurpleVines(),
+                NSWoods.WISTERIA.getPurpleVinesPlant(),
+                NSWoods.WILLOW.getVinesPlant(),
+                NSWoods.WILLOW.getVines()
         );
         getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(
-                NSWoods.WISTERIA.getBlueWisteriaVines(),
-                NSWoods.WISTERIA.getBlueWisteriaVinesPlant(),
-                NSWoods.WISTERIA.getWhiteWisteriaVines(),
-                NSWoods.WISTERIA.getWhiteWisteriaVinesPlant(),
-                NSWoods.WISTERIA.getPinkWisteriaVines(),
-                NSWoods.WISTERIA.getPinkWisteriaVinesPlant(),
-                NSWoods.WISTERIA.getPurpleWisteriaVines(),
-                NSWoods.WISTERIA.getPurpleWisteriaVinesPlant(),
+                NSWoods.WISTERIA.getBlueVines(),
+                NSWoods.WISTERIA.getBlueVinesPlant(),
+                NSWoods.WISTERIA.getWhiteVines(),
+                NSWoods.WISTERIA.getWhiteVinesPlant(),
+                NSWoods.WISTERIA.getPinkVines(),
+                NSWoods.WISTERIA.getPinkVinesPlant(),
+                NSWoods.WISTERIA.getPurpleVines(),
+                NSWoods.WISTERIA.getPurpleVinesPlant(),
                 LOTUS_FLOWER
         );
         getOrCreateTagBuilder(BlockTags.CROPS).add(NSMiscBlocks.DESERT_TURNIP_STEM);

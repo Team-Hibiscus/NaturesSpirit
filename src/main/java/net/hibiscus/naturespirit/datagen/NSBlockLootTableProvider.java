@@ -221,11 +221,11 @@ class NSBlockLootTableProvider extends FabricBlockLootTableProvider {
         this.addDropWithSilkTouch(SMALL_CALCITE_BUD);
         this.addDropWithSilkTouch(LARGE_CALCITE_BUD);
 
-        addVinePlantDrop(NSWoods.WISTERIA.getWhiteWisteriaVines(), NSWoods.WISTERIA.getWhiteWisteriaVinesPlant());
-        addVinePlantDrop(NSWoods.WISTERIA.getBlueWisteriaVines(), NSWoods.WISTERIA.getBlueWisteriaVinesPlant());
-        addVinePlantDrop(NSWoods.WISTERIA.getPurpleWisteriaVines(), NSWoods.WISTERIA.getPurpleWisteriaVinesPlant());
-        addVinePlantDrop(NSWoods.WISTERIA.getPinkWisteriaVines(), NSWoods.WISTERIA.getPinkWisteriaVinesPlant());
-        addVinePlantDrop(NSWoods.WILLOW.getWillowVines(), NSWoods.WILLOW.getWillowVinesPlant());
+        addVinePlantDrop(NSWoods.WISTERIA.getWhiteVines(), NSWoods.WISTERIA.getWhiteVinesPlant());
+        addVinePlantDrop(NSWoods.WISTERIA.getBlueVines(), NSWoods.WISTERIA.getBlueVinesPlant());
+        addVinePlantDrop(NSWoods.WISTERIA.getPurpleVines(), NSWoods.WISTERIA.getPurpleVinesPlant());
+        addVinePlantDrop(NSWoods.WISTERIA.getPinkVines(), NSWoods.WISTERIA.getPinkVinesPlant());
+        addVinePlantDrop(NSWoods.WILLOW.getVines(), NSWoods.WILLOW.getVinesPlant());
         this.addDrop(NSWoods.FIR.getFrostyLeaves(), leavesDrops(NSWoods.FIR.getFrostyLeaves(), NSWoods.FIR.getSapling(), SAPLING_DROP_CHANCE));
         this.addDrop(ALLUAUDIA);
         this.addDrop(ALLUAUDIA_BUNDLE);

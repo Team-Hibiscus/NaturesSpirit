@@ -87,16 +87,16 @@ public class WoodSet {
    private Block partWhiteLeaves;
    private Block whiteSapling;
    private Block pottedWhiteSapling;
-   private Block willowVines;
-   private Block willowVinesPlant;
-   private Block blueWisteriaVines;
-   private Block purpleWisteriaVines;
-   private Block pinkWisteriaVines;
-   private Block whiteWisteriaVines;
-   private Block blueWisteriaVinesPlant;
-   private Block purpleWisteriaVinesPlant;
-   private Block pinkWisteriaVinesPlant;
-   private Block whiteWisteriaVinesPlant;
+   private Block vines;
+   private Block vinesPlant;
+   private Block blueVines;
+   private Block purpleVines;
+   private Block pinkVines;
+   private Block whiteVines;
+   private Block blueVinesPlant;
+   private Block purpleVinesPlant;
+   private Block pinkVinesPlant;
+   private Block whiteVinesPlant;
    private Block planks;
    private Block stairs;
    private Block slab;
@@ -176,11 +176,11 @@ public class WoodSet {
       }
 
       if (woodPreset == WoodPreset.WILLOW){
-         leaves = createVinesLeavesBlock(willowVinesPlant, willowVines);
+         leaves = createVinesLeavesBlock(vinesPlant, vines);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(leavesBefore, leaves.asItem()));
 
-         willowVines = createVines(willowVinesPlant);
-         willowVinesPlant = createVinesPlant(willowVines);
+         vines = createVines(vinesPlant);
+         vinesPlant = createVinesPlant(vines);
 
          sapling = createSapling(saplingGenerator);
          pottedSapling = createPottedSapling(sapling);
@@ -189,22 +189,22 @@ public class WoodSet {
          TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(new TradeOffers.SellItemFactory(sapling, 5, 1, 8, 1)));
       }
       if (woodPreset == WoodPreset.WISTERIA) {
-         whiteLeaves = createVinesLeavesBlock("white_", whiteWisteriaVinesPlant, whiteWisteriaVines);
-         blueLeaves = createVinesLeavesBlock("blue_", blueWisteriaVinesPlant, blueWisteriaVines);
-         pinkLeaves = createVinesLeavesBlock("pink_", pinkWisteriaVinesPlant, pinkWisteriaVines);
-         purpleLeaves = createVinesLeavesBlock("purple_", purpleWisteriaVinesPlant, purpleWisteriaVines);
-         partWhiteLeaves = createVinesLeavesBlock("part_white_", whiteWisteriaVinesPlant, whiteWisteriaVines);
-         partBlueLeaves = createVinesLeavesBlock("part_blue_", blueWisteriaVinesPlant, blueWisteriaVines);
-         partPinkLeaves = createVinesLeavesBlock("part_pink_", pinkWisteriaVinesPlant, pinkWisteriaVines);
-         partPurpleLeaves = createVinesLeavesBlock("part_purple_", purpleWisteriaVinesPlant, purpleWisteriaVines);
-         whiteWisteriaVines = createVines("white_", whiteWisteriaVines);
-         blueWisteriaVines = createVines("blue_", blueWisteriaVines);
-         pinkWisteriaVines = createVines("pink_", pinkWisteriaVines);
-         purpleWisteriaVines = createVines("purple_", purpleWisteriaVines);
-         whiteWisteriaVinesPlant = createVinesPlant("white_", whiteWisteriaVines);
-         blueWisteriaVinesPlant = createVinesPlant("blue_", blueWisteriaVines);
-         pinkWisteriaVinesPlant = createVinesPlant("pink_", pinkWisteriaVines);
-         purpleWisteriaVinesPlant = createVinesPlant("purple_", purpleWisteriaVines);
+         whiteLeaves = createVinesLeavesBlock("white_", whiteVinesPlant, whiteVines);
+         blueLeaves = createVinesLeavesBlock("blue_", blueVinesPlant, blueVines);
+         pinkLeaves = createVinesLeavesBlock("pink_", pinkVinesPlant, pinkVines);
+         purpleLeaves = createVinesLeavesBlock("purple_", purpleVinesPlant, purpleVines);
+         partWhiteLeaves = createVinesLeavesBlock("part_white_", whiteVinesPlant, whiteVines);
+         partBlueLeaves = createVinesLeavesBlock("part_blue_", blueVinesPlant, blueVines);
+         partPinkLeaves = createVinesLeavesBlock("part_pink_", pinkVinesPlant, pinkVines);
+         partPurpleLeaves = createVinesLeavesBlock("part_purple_", purpleVinesPlant, purpleVines);
+         whiteVines = createVines("white_", whiteVines);
+         blueVines = createVines("blue_", blueVines);
+         pinkVines = createVines("pink_", pinkVines);
+         purpleVines = createVines("purple_", purpleVines);
+         whiteVinesPlant = createVinesPlant("white_", whiteVines);
+         blueVinesPlant = createVinesPlant("blue_", blueVines);
+         pinkVinesPlant = createVinesPlant("pink_", pinkVines);
+         purpleVinesPlant = createVinesPlant("purple_", purpleVines);
          whiteSapling = createSapling("white_", new WhiteWisteriaSaplingGenerator());
          blueSapling = createSapling("blue_", new BlueWisteriaSaplingGenerator());
          pinkSapling = createSapling("pink_", new PinkWisteriaSaplingGenerator());
@@ -214,10 +214,10 @@ public class WoodSet {
          pottedPinkSapling = createPottedSapling("pink_", pinkSapling);
          pottedPurpleSapling = createPottedSapling("purple_",purpleSapling);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(leavesBefore, whiteLeaves.asItem(), partWhiteLeaves, blueLeaves, partBlueLeaves, pinkLeaves, partPinkLeaves, purpleLeaves, partPurpleLeaves));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Blocks.VINE, whiteWisteriaVines.asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(whiteWisteriaVines, blueWisteriaVines.asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blueWisteriaVines, pinkWisteriaVines.asItem()));
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(pinkWisteriaVines, purpleWisteriaVines.asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Blocks.VINE, whiteVines.asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(whiteVines, blueVines.asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blueVines, pinkVines.asItem()));
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(pinkVines, purpleVines.asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(saplingBefore, whiteSapling.asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(whiteSapling, blueSapling.asItem()));
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(blueSapling, pinkSapling.asItem()));
@@ -238,9 +238,9 @@ public class WoodSet {
          });
       }
       if (woodPreset == WoodPreset.MAPLE) {
-         redLeaves = createMapleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE);
-         orangeLeaves = createMapleLeaves("orange_", NatureSpirit.ORANGE_MAPLE_LEAVES_PARTICLE);
-         yellowLeaves = createMapleLeaves("yellow_", NatureSpirit.YELLOW_MAPLE_LEAVES_PARTICLE);
+         redLeaves = createParticleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE, 150);
+         orangeLeaves = createParticleLeaves("orange_", NatureSpirit.ORANGE_MAPLE_LEAVES_PARTICLE, 150);
+         yellowLeaves = createParticleLeaves("yellow_", NatureSpirit.YELLOW_MAPLE_LEAVES_PARTICLE, 150);
          redSapling = createSapling("red_", new RedMapleSaplingGenerator());
          orangeSapling = createSapling("orange_", new OrangeMapleSaplingGenerator());
          yellowSapling = createSapling("yellow_", new YellowMapleSaplingGenerator());
@@ -355,9 +355,6 @@ public class WoodSet {
    public WoodPreset getWoodPreset() {
       return woodPreset;
    }
-   public MapColor getSideColor() {
-      return sideColor;
-   }
    public MapColor getTopColor() {
       return topColor;
    }
@@ -446,9 +443,9 @@ public class WoodSet {
    public Block getFrostyLeaves() {return frostyLeaves;}
    public Block getSapling() {return sapling;}
    public Block getPottedSapling() {return pottedSapling;}
-   public Block getWillowVines() {return willowVines;}
-   public Block getWillowVinesPlant() {
-      return willowVinesPlant;
+   public Block getVines() {return vines;}
+   public Block getVinesPlant() {
+      return vinesPlant;
    }
    public Block getRedLeaves() {
       return redLeaves;
@@ -511,14 +508,14 @@ public class WoodSet {
    public Block getWhiteSapling() {
       return whiteSapling;
    }
-   public Block getBlueWisteriaVines() {return blueWisteriaVines;}
-   public Block getPurpleWisteriaVines() {return purpleWisteriaVines;}
-   public Block getPinkWisteriaVines() {return pinkWisteriaVines;}
-   public Block getWhiteWisteriaVines() {return whiteWisteriaVines;}
-   public Block getBlueWisteriaVinesPlant() {return blueWisteriaVinesPlant;}
-   public Block getPurpleWisteriaVinesPlant() {return purpleWisteriaVinesPlant;}
-   public Block getPinkWisteriaVinesPlant() {return pinkWisteriaVinesPlant;}
-   public Block getWhiteWisteriaVinesPlant() {return whiteWisteriaVinesPlant;}
+   public Block getBlueVines() {return blueVines;}
+   public Block getPurpleVines() {return purpleVines;}
+   public Block getPinkVines() {return pinkVines;}
+   public Block getWhiteVines() {return whiteVines;}
+   public Block getBlueVinesPlant() {return blueVinesPlant;}
+   public Block getPurpleVinesPlant() {return purpleVinesPlant;}
+   public Block getPinkVinesPlant() {return pinkVinesPlant;}
+   public Block getWhiteVinesPlant() {return whiteVinesPlant;}
    public Block getPartBlueLeaves() {
       return partBlueLeaves;
    }
@@ -702,8 +699,16 @@ public class WoodSet {
       LeavesHashMap.put(prefix + getName(), block);
       return block;
    }
-   private Block createMapleLeaves(String prefix, ParticleEffect particle) {
-      Block block = createBlockWithItem(prefix + getName() + "_leaves", new ParticleLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, 150));
+   private Block createParticleLeaves(ParticleEffect particle, int chance) {
+      Block block = createBlockWithItem(getName() + "_leaves", new ParticleLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, chance));
+      RenderLayerHashMap.put(getName() + "_leaves", block);
+      CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
+      FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
+      LeavesHashMap.put(getName(), block);
+      return block;
+   }
+   private Block createParticleLeaves(String prefix, ParticleEffect particle, int chance) {
+      Block block = createBlockWithItem(prefix + getName() + "_leaves", new ParticleLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, chance));
       RenderLayerHashMap.put(prefix + getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);

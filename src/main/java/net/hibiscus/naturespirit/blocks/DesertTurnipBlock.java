@@ -28,8 +28,4 @@ public class DesertTurnipBlock extends FacingBlock {
    protected void appendProperties(StateManager.Builder <Block, BlockState> builder) {
       builder.add(FACING);
    }
-
-   public DesertTurnipStemBlock getStem() {
-      return (DesertTurnipStemBlock) NSMiscBlocks.DESERT_TURNIP_STEM;
-   }
 }

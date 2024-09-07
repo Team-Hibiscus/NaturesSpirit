@@ -19,6 +19,6 @@ import net.minecraft.client.world.ClientWorld;
       float f = this.random.nextBoolean() ? 0.133333F : 0.19999999995F;
       this.scale = f;
       this.setBoundingBoxSpacing(f, f);
-      this.velocityMultiplier = 0.68F;
+      this.velocityMultiplier = 0.78F;
    }
 }

@@ -577,11 +577,11 @@ class NSModelGenerator extends FabricModelProvider {
         generateLargeFlower(OAT_GRASS, POTTED_OAT_GRASS, blockStateModelGenerator);
         generateTintedLargeFlower(LUSH_FERN, POTTED_LUSH_FERN, blockStateModelGenerator);
         generateTintedLargeFlower(MELIC_GRASS, POTTED_MELIC_GRASS, blockStateModelGenerator);
-        generateVineBlockStateModels(NSWoods.WISTERIA.getBlueWisteriaVines(), NSWoods.WISTERIA.getBlueWisteriaVinesPlant(), blockStateModelGenerator);
-        generateVineBlockStateModels(NSWoods.WISTERIA.getWhiteWisteriaVines(), NSWoods.WISTERIA.getWhiteWisteriaVinesPlant(), blockStateModelGenerator);
-        generateVineBlockStateModels(NSWoods.WISTERIA.getPurpleWisteriaVines(), NSWoods.WISTERIA.getPurpleWisteriaVinesPlant(), blockStateModelGenerator);
-        generateVineBlockStateModels(NSWoods.WISTERIA.getPinkWisteriaVines(), NSWoods.WISTERIA.getPinkWisteriaVinesPlant(), blockStateModelGenerator);
-        generateVineBlockStateModels(NSWoods.WILLOW.getWillowVines(), NSWoods.WILLOW.getWillowVinesPlant(), blockStateModelGenerator);
+        generateVineBlockStateModels(NSWoods.WISTERIA.getBlueVines(), NSWoods.WISTERIA.getBlueVinesPlant(), blockStateModelGenerator);
+        generateVineBlockStateModels(NSWoods.WISTERIA.getWhiteVines(), NSWoods.WISTERIA.getWhiteVinesPlant(), blockStateModelGenerator);
+        generateVineBlockStateModels(NSWoods.WISTERIA.getPurpleVines(), NSWoods.WISTERIA.getPurpleVinesPlant(), blockStateModelGenerator);
+        generateVineBlockStateModels(NSWoods.WISTERIA.getPinkVines(), NSWoods.WISTERIA.getPinkVinesPlant(), blockStateModelGenerator);
+        generateVineBlockStateModels(NSWoods.WILLOW.getVines(), NSWoods.WILLOW.getVinesPlant(), blockStateModelGenerator);
         registerAzolla(AZOLLA_ITEM, AZOLLA, blockStateModelGenerator);
 
         blockStateModelGenerator.registerLog(ALLUAUDIA_BUNDLE).log(ALLUAUDIA_BUNDLE);
