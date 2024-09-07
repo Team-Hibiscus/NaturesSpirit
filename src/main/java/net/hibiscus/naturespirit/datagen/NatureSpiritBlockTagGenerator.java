@@ -2,13 +2,13 @@ package net.hibiscus.naturespirit.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.hibiscus.naturespirit.registration.FlowerSet;
+import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.sets.FlowerSet;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.registration.StoneSet;
-import net.hibiscus.naturespirit.registration.WoodSet;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.sets.StoneSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
 
 public class NatureSpiritBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 

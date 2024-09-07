@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.entity;
 
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
@@ -47,133 +47,133 @@ public class HibiscusBoatEntity extends BoatEntity {
    public enum HibiscusBoat implements StringIdentifiable {
       REDWOOD(
               "redwood",
-              () -> HibiscusWoods.REDWOOD.getPlanks(),
-              () -> HibiscusWoods.REDWOOD.getBoatItem(),
-              () -> HibiscusWoods.REDWOOD.getChestBoatItem(),
-              () -> HibiscusWoods.REDWOOD.getBoatEntityType(),
-              () -> HibiscusWoods.REDWOOD.getChestBoatEntityType()
+              HibiscusWoods.REDWOOD::getPlanks,
+              HibiscusWoods.REDWOOD::getBoatItem,
+              HibiscusWoods.REDWOOD::getChestBoatItem,
+              HibiscusWoods.REDWOOD::getBoatEntityType,
+              HibiscusWoods.REDWOOD::getChestBoatEntityType
       ),
-      SUGI("sugi", () -> HibiscusWoods.SUGI.getPlanks(), () -> HibiscusWoods.SUGI.getBoatItem(), () -> HibiscusWoods.SUGI.getChestBoatItem(), () -> HibiscusWoods.SUGI.getBoatEntityType(), () -> HibiscusWoods.SUGI.getChestBoatEntityType()),
+      SUGI("sugi", HibiscusWoods.SUGI::getPlanks, HibiscusWoods.SUGI::getBoatItem, HibiscusWoods.SUGI::getChestBoatItem, HibiscusWoods.SUGI::getBoatEntityType, HibiscusWoods.SUGI::getChestBoatEntityType),
       WISTERIA(
               "wisteria",
-              () -> HibiscusWoods.WISTERIA.getPlanks(),
-              () -> HibiscusWoods.WISTERIA.getBoatItem(),
-              () -> HibiscusWoods.WISTERIA.getChestBoatItem(),
-              () -> HibiscusWoods.WISTERIA.getBoatEntityType(),
-              () -> HibiscusWoods.WISTERIA.getChestBoatEntityType()
+              HibiscusWoods.WISTERIA::getPlanks,
+              HibiscusWoods.WISTERIA::getBoatItem,
+              HibiscusWoods.WISTERIA::getChestBoatItem,
+              HibiscusWoods.WISTERIA::getBoatEntityType,
+              HibiscusWoods.WISTERIA::getChestBoatEntityType
       ),
-      FIR("fir", () -> HibiscusWoods.FIR.getPlanks(), () -> HibiscusWoods.FIR.getBoatItem(), () -> HibiscusWoods.FIR.getChestBoatItem(), () -> HibiscusWoods.FIR.getBoatEntityType(), () -> HibiscusWoods.FIR.getChestBoatEntityType()),
+      FIR("fir", HibiscusWoods.FIR::getPlanks, HibiscusWoods.FIR::getBoatItem, HibiscusWoods.FIR::getChestBoatItem, HibiscusWoods.FIR::getBoatEntityType, HibiscusWoods.FIR::getChestBoatEntityType),
       WILLOW(
               "willow",
-              () -> HibiscusWoods.WILLOW.getPlanks(),
-              () -> HibiscusWoods.WILLOW.getBoatItem(),
-              () -> HibiscusWoods.WILLOW.getChestBoatItem(),
-              () -> HibiscusWoods.WILLOW.getBoatEntityType(),
-              () -> HibiscusWoods.WILLOW.getChestBoatEntityType()
+              HibiscusWoods.WILLOW::getPlanks,
+              HibiscusWoods.WILLOW::getBoatItem,
+              HibiscusWoods.WILLOW::getChestBoatItem,
+              HibiscusWoods.WILLOW::getBoatEntityType,
+              HibiscusWoods.WILLOW::getChestBoatEntityType
       ),
       ASPEN(
               "aspen",
-              () -> HibiscusWoods.ASPEN.getPlanks(),
-              () -> HibiscusWoods.ASPEN.getBoatItem(),
-              () -> HibiscusWoods.ASPEN.getChestBoatItem(),
-              () -> HibiscusWoods.ASPEN.getBoatEntityType(),
-              () -> HibiscusWoods.ASPEN.getChestBoatEntityType()
+              HibiscusWoods.ASPEN::getPlanks,
+              HibiscusWoods.ASPEN::getBoatItem,
+              HibiscusWoods.ASPEN::getChestBoatItem,
+              HibiscusWoods.ASPEN::getBoatEntityType,
+              HibiscusWoods.ASPEN::getChestBoatEntityType
       ),
       MAPLE(
               "maple",
-              () -> HibiscusWoods.MAPLE.getPlanks(),
-              () -> HibiscusWoods.MAPLE.getBoatItem(),
-              () -> HibiscusWoods.MAPLE.getChestBoatItem(),
-              () -> HibiscusWoods.MAPLE.getBoatEntityType(),
-              () -> HibiscusWoods.MAPLE.getChestBoatEntityType()
+              HibiscusWoods.MAPLE::getPlanks,
+              HibiscusWoods.MAPLE::getBoatItem,
+              HibiscusWoods.MAPLE::getChestBoatItem,
+              HibiscusWoods.MAPLE::getBoatEntityType,
+              HibiscusWoods.MAPLE::getChestBoatEntityType
       ),
       CYPRESS(
               "cypress",
-              () -> HibiscusWoods.CYPRESS.getPlanks(),
-              () -> HibiscusWoods.CYPRESS.getBoatItem(),
-              () -> HibiscusWoods.CYPRESS.getChestBoatItem(),
-              () -> HibiscusWoods.CYPRESS.getBoatEntityType(),
-              () -> HibiscusWoods.CYPRESS.getChestBoatEntityType()
+              HibiscusWoods.CYPRESS::getPlanks,
+              HibiscusWoods.CYPRESS::getBoatItem,
+              HibiscusWoods.CYPRESS::getChestBoatItem,
+              HibiscusWoods.CYPRESS::getBoatEntityType,
+              HibiscusWoods.CYPRESS::getChestBoatEntityType
       ),
       OLIVE(
               "olive",
-              () -> HibiscusWoods.OLIVE.getPlanks(),
-              () -> HibiscusWoods.OLIVE.getBoatItem(),
-              () -> HibiscusWoods.OLIVE.getChestBoatItem(),
-              () -> HibiscusWoods.OLIVE.getBoatEntityType(),
-              () -> HibiscusWoods.OLIVE.getChestBoatEntityType()
+              HibiscusWoods.OLIVE::getPlanks,
+              HibiscusWoods.OLIVE::getBoatItem,
+              HibiscusWoods.OLIVE::getChestBoatItem,
+              HibiscusWoods.OLIVE::getBoatEntityType,
+              HibiscusWoods.OLIVE::getChestBoatEntityType
       ),
       SAXAUL(
               "saxaul",
-              () -> HibiscusWoods.SAXAUL.getPlanks(),
-              () -> HibiscusWoods.SAXAUL.getBoatItem(),
-              () -> HibiscusWoods.SAXAUL.getChestBoatItem(),
-              () -> HibiscusWoods.SAXAUL.getBoatEntityType(),
-              () -> HibiscusWoods.SAXAUL.getChestBoatEntityType()
+              HibiscusWoods.SAXAUL::getPlanks,
+              HibiscusWoods.SAXAUL::getBoatItem,
+              HibiscusWoods.SAXAUL::getChestBoatItem,
+              HibiscusWoods.SAXAUL::getBoatEntityType,
+              HibiscusWoods.SAXAUL::getChestBoatEntityType
       ),
       JOSHUA(
               "joshua",
-              () -> HibiscusWoods.JOSHUA.getPlanks(),
-              () -> HibiscusWoods.JOSHUA.getBoatItem(),
-              () -> HibiscusWoods.JOSHUA.getChestBoatItem(),
-              () -> HibiscusWoods.JOSHUA.getBoatEntityType(),
-              () -> HibiscusWoods.JOSHUA.getChestBoatEntityType()
+              HibiscusWoods.JOSHUA::getPlanks,
+              HibiscusWoods.JOSHUA::getBoatItem,
+              HibiscusWoods.JOSHUA::getChestBoatItem,
+              HibiscusWoods.JOSHUA::getBoatEntityType,
+              HibiscusWoods.JOSHUA::getChestBoatEntityType
       ),
       GHAF(
               "ghaf",
-                      () -> HibiscusWoods.GHAF.getPlanks(),
-              () -> HibiscusWoods.GHAF.getBoatItem(),
-              () -> HibiscusWoods.GHAF.getChestBoatItem(),
-              () -> HibiscusWoods.GHAF.getBoatEntityType(),
-              () -> HibiscusWoods.GHAF.getChestBoatEntityType()
+                      HibiscusWoods.GHAF::getPlanks,
+              HibiscusWoods.GHAF::getBoatItem,
+              HibiscusWoods.GHAF::getChestBoatItem,
+              HibiscusWoods.GHAF::getBoatEntityType,
+              HibiscusWoods.GHAF::getChestBoatEntityType
               ),
       PALO_VERDE(
               "palo_verde",
-              () -> HibiscusWoods.PALO_VERDE.getPlanks(),
-              () -> HibiscusWoods.PALO_VERDE.getBoatItem(),
-              () -> HibiscusWoods.PALO_VERDE.getChestBoatItem(),
-              () -> HibiscusWoods.PALO_VERDE.getBoatEntityType(),
-              () -> HibiscusWoods.PALO_VERDE.getChestBoatEntityType()
+              HibiscusWoods.PALO_VERDE::getPlanks,
+              HibiscusWoods.PALO_VERDE::getBoatItem,
+              HibiscusWoods.PALO_VERDE::getChestBoatItem,
+              HibiscusWoods.PALO_VERDE::getBoatEntityType,
+              HibiscusWoods.PALO_VERDE::getChestBoatEntityType
       ),
       CEDAR(
               "cedar",
-              () -> HibiscusWoods.CEDAR.getPlanks(),
-              () -> HibiscusWoods.CEDAR.getBoatItem(),
-              () -> HibiscusWoods.CEDAR.getChestBoatItem(),
-              () -> HibiscusWoods.CEDAR.getBoatEntityType(),
-              () -> HibiscusWoods.CEDAR.getChestBoatEntityType()
+              HibiscusWoods.CEDAR::getPlanks,
+              HibiscusWoods.CEDAR::getBoatItem,
+              HibiscusWoods.CEDAR::getChestBoatItem,
+              HibiscusWoods.CEDAR::getBoatEntityType,
+              HibiscusWoods.CEDAR::getChestBoatEntityType
       ),
       LARCH(
               "larch",
-              () -> HibiscusWoods.LARCH.getPlanks(),
-              () -> HibiscusWoods.LARCH.getBoatItem(),
-              () -> HibiscusWoods.LARCH.getChestBoatItem(),
-              () -> HibiscusWoods.LARCH.getBoatEntityType(),
-              () -> HibiscusWoods.LARCH.getChestBoatEntityType()
+              HibiscusWoods.LARCH::getPlanks,
+              HibiscusWoods.LARCH::getBoatItem,
+              HibiscusWoods.LARCH::getChestBoatItem,
+              HibiscusWoods.LARCH::getBoatEntityType,
+              HibiscusWoods.LARCH::getChestBoatEntityType
       ),
       MAHOGANY(
               "mahogany",
-              () -> HibiscusWoods.MAHOGANY.getPlanks(),
-              () -> HibiscusWoods.MAHOGANY.getBoatItem(),
-              () -> HibiscusWoods.MAHOGANY.getChestBoatItem(),
-              () -> HibiscusWoods.MAHOGANY.getBoatEntityType(),
-              () -> HibiscusWoods.MAHOGANY.getChestBoatEntityType()
+              HibiscusWoods.MAHOGANY::getPlanks,
+              HibiscusWoods.MAHOGANY::getBoatItem,
+              HibiscusWoods.MAHOGANY::getChestBoatItem,
+              HibiscusWoods.MAHOGANY::getBoatEntityType,
+              HibiscusWoods.MAHOGANY::getChestBoatEntityType
       ),
 //      BANYAN(
 //              "banyan",
-//              () -> HibiscusWoods.BANYAN.getPlanks(),
-//              () -> HibiscusWoods.BANYAN.getBoatItem(),
-//              () -> HibiscusWoods.BANYAN.getChestBoatItem(),
-//              () -> HibiscusWoods.BANYAN.getBoatEntityType(),
-//              () -> HibiscusWoods.BANYAN.getChestBoatEntityType()
+//              HibiscusWoods.BANYAN::getPlanks,
+//              HibiscusWoods.BANYAN::getBoatItem,
+//              HibiscusWoods.BANYAN::getChestBoatItem,
+//              HibiscusWoods.BANYAN::getBoatEntityType,
+//              HibiscusWoods.BANYAN::getChestBoatEntityType
 //      ),
       COCONUT(
               "coconut",
-                      () -> HibiscusWoods.COCONUT.getPlanks(),
-              () -> HibiscusWoods.COCONUT.getBoatItem(),
-              () -> HibiscusWoods.COCONUT.getChestBoatItem(),
-              () -> HibiscusWoods.COCONUT.getBoatEntityType(),
-              () -> HibiscusWoods.COCONUT.getChestBoatEntityType()
+              HibiscusWoods.COCONUT::getPlanks,
+              HibiscusWoods.COCONUT::getBoatItem,
+              HibiscusWoods.COCONUT::getChestBoatItem,
+              HibiscusWoods.COCONUT::getBoatEntityType,
+              HibiscusWoods.COCONUT::getChestBoatEntityType
               );
 
       private final String name;

@@ -1,0 +1,18 @@
+{
+  "feature": "natures_spirit:drylands_ponds",
+  "placement": [
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 50,
+      "noise_offset": -0.25,
+      "noise_to_count_ratio": 7
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

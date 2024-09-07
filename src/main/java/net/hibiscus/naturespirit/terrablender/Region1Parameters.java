@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.world.HibiscusBiomes;
+import net.hibiscus.naturespirit.registration.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;

@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;

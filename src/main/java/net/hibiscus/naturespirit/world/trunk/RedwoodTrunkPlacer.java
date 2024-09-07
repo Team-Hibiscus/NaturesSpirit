@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.world.trunk;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.world.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;

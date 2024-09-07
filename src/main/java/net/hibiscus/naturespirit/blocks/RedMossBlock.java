@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.datagen.HibiscusConfiguredFeatures;
+import net.hibiscus.naturespirit.datagen.NaturesSpiritConfiguredFeatures;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -10,8 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.UndergroundConfiguredFeatures;
 
 public class RedMossBlock extends Block implements Fertilizable {
 
@@ -28,7 +26,7 @@ public class RedMossBlock extends Block implements Fertilizable {
    }
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) -> registry.getEntry(HibiscusConfiguredFeatures.RED_MOSS_PATCH_BONEMEAL)).ifPresent((reference) -> {
+      world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) -> registry.getEntry(NaturesSpiritConfiguredFeatures.RED_MOSS_PATCH_BONEMEAL)).ifPresent((reference) -> {
          reference.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up());
       });
    }

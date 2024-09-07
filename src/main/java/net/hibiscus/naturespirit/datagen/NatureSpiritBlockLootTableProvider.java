@@ -2,19 +2,17 @@ package net.hibiscus.naturespirit.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.hibiscus.naturespirit.blocks.PaperLanternBlock;
 import net.hibiscus.naturespirit.registration.*;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMintCompatibility;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusColoredBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.sets.FlowerSet;
+import net.hibiscus.naturespirit.registration.sets.StoneSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.block.enums.Instrument;
-import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -24,21 +22,19 @@ import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
-import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.HashMap;
 import java.util.stream.IntStream;
 
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerBlock;
 import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerPaperLanternBlock;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
 
 class NatureSpiritBlockLootTableProvider extends FabricBlockLootTableProvider {
     private static final LootCondition.Builder WITH_SILK_TOUCH_OR_SHEARS = WITH_SHEARS.or(WITH_SILK_TOUCH);

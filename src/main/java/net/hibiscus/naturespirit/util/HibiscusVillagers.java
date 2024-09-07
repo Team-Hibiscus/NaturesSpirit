@@ -1,14 +1,10 @@
 package net.hibiscus.naturespirit.util;
 
-import com.google.common.collect.ImmutableMap;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerTypeHelper;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.world.HibiscusBiomes;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBiomes;
 import net.minecraft.util.Identifier;
-import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerType;
 

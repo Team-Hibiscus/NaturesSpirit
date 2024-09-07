@@ -1,12 +1,12 @@
 package net.hibiscus.naturespirit.world;
 
 import com.google.common.collect.ImmutableList;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusBiomes;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusColoredBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.VerticalSurfaceType;
-import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
@@ -299,7 +299,7 @@ public class NatureSpiritSurfaceRules {
       );
 
 
-      MaterialRules.MaterialRule alpineRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.CONIFEROUS_COVERT, HibiscusBiomes.AMBER_COVERT, HibiscusBiomes.HEATHER_FIELDS),
+      MaterialRules.MaterialRule alpineRule = MaterialRules.condition(MaterialRules.biome(HibiscusBiomes.ALPINE_CLEARINGS, HibiscusBiomes.ALPINE_HIGHLANDS, HibiscusBiomes.CONIFEROUS_COVERT, HibiscusBiomes.HEATHER_FIELDS),
               MaterialRules.sequence(
                       MaterialRules.condition(MaterialRules.stoneDepth(0, true, VerticalSurfaceType.FLOOR),
                               MaterialRules.condition(noiseCondition2, MaterialRules.condition(materialCondition7, COARSE_DIRT))),

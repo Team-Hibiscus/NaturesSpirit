@@ -1,8 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.Tilt;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,21 +9,16 @@ import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockLocating;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 1.5D, 14.0D);
@@ -124,10 +118,10 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
       }
 
       if (world.getBlockState(pos.down()).isOf(HibiscusMiscBlocks.LOTUS_STEM)) {
-         LotusStem lotusStem = (LotusStem) world.getBlockState(pos.down()).getBlock();
-         lotusStem.grow(world, random, pos.down(), world.getBlockState(pos.down()));
+         LotusStemBlock lotusStemBlock = (LotusStemBlock) world.getBlockState(pos.down()).getBlock();
+         lotusStemBlock.grow(world, random, pos.down(), world.getBlockState(pos.down()));
       } else {
-         world.setBlockState(pos, HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStem.WATERLOGGED, false));
+         world.setBlockState(pos, HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, false));
          world.setBlockState(pos.up(), this.getDefaultState());
       }
 

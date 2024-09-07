@@ -1,23 +1,6 @@
 package net.hibiscus.naturespirit.items;
 
-import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
-import net.minecraft.block.entity.DispenserBlockEntity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPointer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
 
 public class HibiscusVinegarDispenserBehavior extends FallibleItemDispenserBehavior {
 //   protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {

@@ -15,11 +15,10 @@ import net.hibiscus.naturespirit.client.render.pizza_models.Topping0;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping1;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping2;
 import net.hibiscus.naturespirit.client.render.pizza_models.Topping3;
-import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
@@ -30,26 +29,14 @@ import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.minecraft.client.render.entity.ArrowEntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
 import net.minecraft.util.math.BlockPos;
 
-import java.io.IOException;
-
 import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 @Environment(EnvType.CLIENT) public class NatureSpiritClient implements ClientModInitializer {
-
-//   public static final EntityModelLayer BISON_MODEL_LAYER = new EntityModelLayer(new Identifier(MOD_ID, "bison"), "main");
    @Override public void onInitializeClient() {
-
-//      EntityRendererRegistry.register(HibiscusEntityTypes.BISON, BisonEntityRenderer::new);
-//
-//      new ImmutableMap.Builder<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>()
-//              .put(BISON_MODEL_LAYER, new BisonTexturedModelDataProvider())
-//              .build().forEach(EntityModelLayerRegistry::registerModelLayer);
-
 
       BlockEntityRendererFactories.register(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, PizzaBlockEntityRenderer::new);
 
@@ -119,6 +106,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH_SLAB, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(HibiscusWoods.XERIC_THATCH_STAIRS, RenderLayer.getCutout());
+
       EntityRendererRegistry.register(HibiscusEntityTypes.CHEESE_ARROW, CheeseArrowEntityRenderer::new);
 
 
@@ -133,7 +121,7 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
               ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
       ParticleFactoryRegistry.getInstance().register(MILK_PARTICLE, SuspendParticle.Factory::new);
-      ParticleFactoryRegistry.getInstance().register(CALCITE_BUBBLE_PARTICLE, CalciteBubbleParticle.BubbleFactory::new);
+//      ParticleFactoryRegistry.getInstance().register(CALCITE_BUBBLE_PARTICLE, CalciteBubbleParticle.BubbleFactory::new);
 
 
       for(HibiscusBoatEntity.HibiscusBoat boat : HibiscusBoatEntity.HibiscusBoat.values()) {

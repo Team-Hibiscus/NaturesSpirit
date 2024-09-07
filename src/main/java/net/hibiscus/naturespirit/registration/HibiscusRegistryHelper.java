@@ -6,10 +6,12 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.hibiscus.naturespirit.registration.sets.FlowerSet;
+import net.hibiscus.naturespirit.registration.sets.StoneSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
@@ -23,7 +25,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HibiscusRegistryHelper {

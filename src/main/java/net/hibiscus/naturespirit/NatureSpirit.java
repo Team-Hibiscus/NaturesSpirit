@@ -7,21 +7,15 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.registration.HibiscusCriteria;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusDyeDepotCompatibility;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMintCompatibility;
-import net.hibiscus.naturespirit.world.HibiscusBiomes;
+import net.hibiscus.naturespirit.registration.*;
+import net.hibiscus.naturespirit.registration.HibiscusBiomes;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
 import net.hibiscus.naturespirit.items.HibiscusBoatDispensorBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
-import net.hibiscus.naturespirit.registration.HibiscusEntityTypes;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.registration.HibiscusSounds;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
 import net.hibiscus.naturespirit.util.HibiscusEvents;
 import net.hibiscus.naturespirit.util.HibiscusVillagers;
-import net.hibiscus.naturespirit.world.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.particle.DefaultParticleType;
@@ -161,9 +155,9 @@ public class NatureSpirit implements ModInitializer {
       HibiscusEntityTypes.registerEntityTypes();
       HibiscusVillagers.registerVillagers();
       HibiscusBiomes.registerBiomes();
-      HibiscusBlocks.registerWoods();
-      HibiscusBlocks.registerColoredBlocks();
-      HibiscusBlocks.registerMisc();
+      HibiscusWoods.registerWoods();
+      HibiscusMiscBlocks.registerMiscBlocks();
+      HibiscusColoredBlocks.registerColoredBlocks();
       if (FabricLoader.getInstance().isModLoaded("dye_depot")) {
          HibiscusDyeDepotCompatibility.registerColoredBlocks();
       }

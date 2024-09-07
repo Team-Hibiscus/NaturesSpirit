@@ -3,9 +3,12 @@ package net.hibiscus.naturespirit.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.hibiscus.naturespirit.registration.*;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusColoredBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.sets.FlowerSet;
+import net.hibiscus.naturespirit.registration.sets.StoneSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -16,8 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
-import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusBiomes.BiomesHashMap;
 
 class NatureSpiritLangGenerator extends FabricLanguageProvider {
 

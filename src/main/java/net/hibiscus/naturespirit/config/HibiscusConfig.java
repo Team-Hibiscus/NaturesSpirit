@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.fabricmc.loader.api.FabricLoader;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.world.HibiscusBiomes;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -66,7 +65,6 @@ public class HibiscusConfig {
    public static boolean has_alpine_clearings;
    public static boolean has_alpine_highlands;
    public static boolean has_coniferous_covert;
-   public static boolean has_amber_covert;
    public static boolean has_boreal_taiga;
    public static boolean has_tropical_shores;
    public static boolean has_tropical_woods;
@@ -138,7 +136,6 @@ public class HibiscusConfig {
             has_alpine_clearings = biomes.get("has_alpine_clearings").getAsBoolean();
             has_alpine_highlands = biomes.get("has_alpine_highlands").getAsBoolean();
             has_coniferous_covert = biomes.get("has_coniferous_covert").getAsBoolean();
-            has_amber_covert = biomes.get("has_amber_covert").getAsBoolean();
             has_boreal_taiga = biomes.get("has_boreal_taiga").getAsBoolean();
             has_tropical_shores = biomes.get("has_tropical_shores").getAsBoolean();
             has_tropical_woods = biomes.get("has_tropical_woods").getAsBoolean();
@@ -222,7 +219,6 @@ public class HibiscusConfig {
       NatureSpirit.LOGGER.info("has_alpine_clearings = " + has_alpine_clearings);
       NatureSpirit.LOGGER.info("has_alpine_highlands = " + has_alpine_highlands);
       NatureSpirit.LOGGER.info("has_coniferous_covert = " + has_coniferous_covert);
-      NatureSpirit.LOGGER.info("has_amber_covert = " + has_amber_covert);
       NatureSpirit.LOGGER.info("has_boreal_taiga = " + has_boreal_taiga);
       NatureSpirit.LOGGER.info("has_tropical_shores = " + has_tropical_shores);
       NatureSpirit.LOGGER.info("has_tropical_woods = " + has_tropical_woods);
@@ -317,7 +313,6 @@ public class HibiscusConfig {
       biomesObject.addProperty("has_alpine_clearings", true);
       biomesObject.addProperty("has_alpine_highlands", true);
       biomesObject.addProperty("has_coniferous_covert", true);
-      biomesObject.addProperty("has_amber_covert", true);
       biomesObject.addProperty("has_boreal_taiga", true);
       biomesObject.addProperty("has_tropical_shores", true);
       biomesObject.addProperty("has_tropical_woods", true);

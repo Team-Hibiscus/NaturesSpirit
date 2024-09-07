@@ -3,18 +3,14 @@ package net.hibiscus.naturespirit.world.tree_decorator;
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.blocks.CoconutBlock;
 import net.hibiscus.naturespirit.blocks.YoungCoconutBlock;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.world.HibiscusWorldGen;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CocoaBlock;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class CoconutTreeDecorator extends TreeDecorator {
@@ -42,17 +38,10 @@ public class CoconutTreeDecorator extends TreeDecorator {
                   Direction direction2 = direction.getOpposite();
                   BlockPos blockPos = pos.add(direction2.getOffsetX(), 0, direction2.getOffsetZ());
                   if(generator.isAir(blockPos)) {
-                     if (random.nextBoolean()) {
-                        generator.replace(blockPos, HibiscusWoods.COCONUT_BLOCK.getDefaultState().with(
-                                CoconutBlock.FACING,
-                                direction.getOpposite()
-                        ));
-                     } else {
-                        generator.replace(blockPos, HibiscusWoods.YOUNG_COCONUT_BLOCK.getDefaultState().with(
-                                YoungCoconutBlock.FACING,
-                                direction.getOpposite()
-                        ));
-                     }
+                     generator.replace(blockPos, HibiscusWoods.COCONUT_BLOCK.getDefaultState().with(
+                             CoconutBlock.FACING,
+                             direction.getOpposite()
+                     ));
                   }
                }
             }

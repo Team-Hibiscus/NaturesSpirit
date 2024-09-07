@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;

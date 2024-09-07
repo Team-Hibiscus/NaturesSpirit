@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;

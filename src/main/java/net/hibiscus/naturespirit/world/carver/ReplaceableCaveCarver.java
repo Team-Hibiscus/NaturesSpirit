@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.world.carver;
 import com.mojang.serialization.Codec;
 import java.util.function.Function;
 
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.entry.RegistryEntry;

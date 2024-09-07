@@ -1,8 +1,8 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.blocks.LotusStem;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.blocks.LotusStemBlock;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.FluidTags;
@@ -30,17 +30,17 @@ public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if(structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER) || structureWorldAccess.isAir(blockPos2)) {
          BlockState blockState = HibiscusMiscBlocks.LOTUS_FLOWER.getDefaultState();
-         BlockState blockState2 = HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStem.WATERLOGGED, structureWorldAccess.getFluidState(blockPos2).isIn(FluidTags.WATER));
-         Optional <BlockPos> optional = LotusStem.getStemHeadWaterPos(structureWorldAccess, blockPos2, Blocks.AIR);
+         BlockState blockState2 = HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, structureWorldAccess.getFluidState(blockPos2).isIn(FluidTags.WATER));
+         Optional <BlockPos> optional = LotusStemBlock.getStemHeadWaterPos(structureWorldAccess, blockPos2, Blocks.AIR);
          int k = optional.map(pos -> pos.getY() - j - random.nextInt(3)).orElseGet(() -> 1 + random.nextInt(10));
 
          for(int l = 0; l <= k; ++l) {
             if(structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER) && blockState2.canPlaceAt(structureWorldAccess, blockPos2)) {
                if(l == k) {
-                  structureWorldAccess.setBlockState(blockPos2, blockState2.with(LotusStem.AGE, 2), 2);
+                  structureWorldAccess.setBlockState(blockPos2, blockState2.with(LotusStemBlock.AGE, 2), 2);
                }
                else {
-                  structureWorldAccess.setBlockState(blockPos2, blockState2.with(LotusStem.AGE, 3), 2);
+                  structureWorldAccess.setBlockState(blockPos2, blockState2.with(LotusStemBlock.AGE, 3), 2);
                }
                ++i;
             }
@@ -52,7 +52,7 @@ public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
                         structureWorldAccess.setBlockState(blockPos2.up(o), blockState, 2);
                         break;
                      }
-                     structureWorldAccess.setBlockState(blockPos2.up(o), blockState2.with(LotusStem.WATERLOGGED, false).with(LotusStem.AGE, 3), 2);
+                     structureWorldAccess.setBlockState(blockPos2.up(o), blockState2.with(LotusStemBlock.WATERLOGGED, false).with(LotusStemBlock.AGE, 3), 2);
                   }
                   ++i;
                }

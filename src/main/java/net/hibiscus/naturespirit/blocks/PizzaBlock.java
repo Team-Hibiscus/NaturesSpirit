@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;

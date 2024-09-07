@@ -13,10 +13,10 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.World;
 
 public class ProjectileLeavesBlock extends LeavesBlock {
-   private Block endBlock;
+   private final Block END_BLOCK;
    public ProjectileLeavesBlock(Settings settings, Block block) {
       super(settings);
-      this.endBlock = block;
+      this.END_BLOCK = block;
    }
 
    @Override public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
@@ -26,7 +26,7 @@ public class ProjectileLeavesBlock extends LeavesBlock {
          if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
             serverPlayerEntity.incrementStat(Stats.TARGET_HIT);
          }
-         world.setBlockState(hit.getBlockPos(), this.endBlock.getStateWithProperties(state));
+         world.setBlockState(hit.getBlockPos(), this.END_BLOCK.getStateWithProperties(state));
       }
    }
 }
