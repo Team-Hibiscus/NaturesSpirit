@@ -15,7 +15,7 @@ public class TallLargeDesertFernBlock extends TallPlantBlock {
    }
 
    @Override protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-      return floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.isOf(Blocks.FARMLAND);
+      return floor.isIn(NSTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.isOf(Blocks.FARMLAND);
    }
 
 }

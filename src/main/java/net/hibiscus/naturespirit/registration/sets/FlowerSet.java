@@ -2,8 +2,8 @@ package net.hibiscus.naturespirit.registration.sets;
 
 import net.hibiscus.naturespirit.blocks.LargeFlowerBlock;
 import net.hibiscus.naturespirit.blocks.MidFlowerBlock;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.NSItemGroups;
+import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffect;
@@ -14,8 +14,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerPlantBlock;
-import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerPottedPlant;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerPlantBlock;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerPottedPlant;
 
 public class FlowerSet {
 
@@ -72,7 +72,7 @@ public class FlowerSet {
                       .burnable()
                       .offset(AbstractBlock.OffsetType.XZ)
                       .pistonBehavior(PistonBehavior.DESTROY)),
-              HibiscusItemGroups.NS_ITEM_GROUP,
+              NSItemGroups.NS_ITEM_GROUP,
               itemBefore,
               0.4f
       );
@@ -89,7 +89,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), HibiscusItemGroups.NS_ITEM_GROUP, itemBefore, 0.4f);
+         ), NSItemGroups.NS_ITEM_GROUP, itemBefore, 0.4f);
       } else
       if(preset == FlowerPreset.SMALL) {
          flowerBlock = registerPlantBlock(name, new FlowerBlock(
@@ -103,7 +103,7 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), HibiscusItemGroups.NS_ITEM_GROUP, itemBefore, 0.3f);
+         ), NSItemGroups.NS_ITEM_GROUP, itemBefore, 0.3f);
       }else
       if(preset == FlowerPreset.MID_SMALL) {
          flowerBlock = registerPlantBlock(name, new MidFlowerBlock(
@@ -117,14 +117,14 @@ public class FlowerSet {
                          .sounds(BlockSoundGroup.GRASS)
                          .offset(AbstractBlock.OffsetType.XZ)
                          .pistonBehavior(PistonBehavior.DESTROY)
-         ), HibiscusItemGroups.NS_ITEM_GROUP, itemBefore, 0.3f);
+         ), NSItemGroups.NS_ITEM_GROUP, itemBefore, 0.3f);
       }
       if (hasFlowerPot()) {
          pottedFlowerBlock = registerPottedPlant(name, flowerBlock);
          registeredBlocksList.add(pottedFlowerBlock);
       }
       registeredBlocksList.add(flowerBlock);
-      HibiscusRegistryHelper.FlowerHashMap.put(name, this);
+      NSRegistryHelper.FlowerHashMap.put(name, this);
    }
 
    public int getDyeNumber() {

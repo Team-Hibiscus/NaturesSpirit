@@ -9,7 +9,7 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.RegistryCodecs;
@@ -52,7 +52,7 @@ public class CoconutTrunkPlacer extends TrunkPlacer {
    }
 
    protected TrunkPlacerType <?> getType() {
-      return HibiscusWorldGen.COCONUT_TRUNK_PLACER;
+      return NSWorldGen.COCONUT_TRUNK_PLACER;
    }
 
    public List <TreeNode> generate(TestableWorld world, BiConsumer <BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {

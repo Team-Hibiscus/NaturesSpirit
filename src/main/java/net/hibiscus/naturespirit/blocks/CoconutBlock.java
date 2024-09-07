@@ -1,8 +1,8 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.HibiscusCriteria;
-import net.hibiscus.naturespirit.registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.NSCriteria;
+import net.hibiscus.naturespirit.registration.NSWoods;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;
@@ -79,7 +79,7 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
    public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
       Entity entity = projectile.getOwner();
       if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
-         HibiscusCriteria.COCONUT_HIT_CRITERION.trigger(serverPlayerEntity, projectile);
+         NSCriteria.COCONUT_HIT_CRITERION.trigger(serverPlayerEntity, projectile);
       }
       if (canFallThrough(world.getBlockState(hit.getBlockPos().down())) && !state.get(WATERLOGGED)) {
          world.setBlockState(hit.getBlockPos(), state.with(FACING, Direction.UP));
@@ -158,7 +158,7 @@ public class CoconutBlock extends FallingBlock implements Fertilizable, Waterlog
    }
 
    @Override public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      world.setBlockState(pos, HibiscusWoods.COCONUT_SPROUT.getDefaultState());
+      world.setBlockState(pos, NSWoods.COCONUT_SPROUT.getDefaultState());
    }
    static {
       WATERLOGGED = Properties.WATERLOGGED;

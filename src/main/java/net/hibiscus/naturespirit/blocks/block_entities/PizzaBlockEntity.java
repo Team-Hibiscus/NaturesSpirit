@@ -23,32 +23,32 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 public class PizzaBlockEntity extends BlockEntity {
-   public ArrayList <PizzaToppingVariant> TOPPINGS = new ArrayList <>();
-   public int TOPPING_NUMBER = 0;
+   public ArrayList <PizzaToppingVariant> toppings = new ArrayList <>();
+   public int topping_number = 0;
    public PizzaBlockEntity(BlockPos pos, BlockState state) {
-      super(HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
+      super(NSMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, pos, state);
    }
    protected void readComponents(BlockEntity.ComponentsAccess components) {
       super.readComponents(components);
-      if (components.get(HibiscusDataComponents.TOPPINGS) != null) {
-         TOPPINGS = new ArrayList <>(components.get(HibiscusDataComponents.TOPPINGS));
+      if (components.get(HibiscusDataComponents.toppings) != null) {
+         toppings = new ArrayList <>(components.get(HibiscusDataComponents.toppings));
       }
-      this.TOPPING_NUMBER = TOPPINGS != null ? TOPPINGS.size() : 0;
+      this.topping_number = toppings != null ? toppings.size() : 0;
       this.markDirty();
    }
 
    protected void addComponents(ComponentMap.Builder componentMapBuilder) {
       super.addComponents(componentMapBuilder);
-      componentMapBuilder.add(HibiscusDataComponents.TOPPINGS, TOPPINGS);
+      componentMapBuilder.add(HibiscusDataComponents.TOPPINGS, toppings);
       this.markDirty();
    }
 
    public boolean canPlaceTopping(ItemStack itemStack, World world, PizzaBlockEntity pizzaBlockEntity) {
       Identifier itemId = Registries.ITEM.getId(itemStack.getItem());
       PizzaToppingVariant toppingVariant = getVariantFromItem(itemId, world);
-      boolean bl = pizzaBlockEntity.getCachedState().get(PizzaBlock.BITES) == 0 && pizzaBlockEntity.TOPPING_NUMBER < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && toppingVariant != null && !TOPPINGS.contains(toppingVariant);
+      boolean bl = pizzaBlockEntity.getCachedState().get(PizzaBlock.BITES) == 0 && pizzaBlockEntity.topping_number < 4 && !(itemStack.isIn(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS)) && toppingVariant != null && !toppings.contains(toppingVariant);
       if (bl) {
-         TOPPINGS.add(toppingVariant);
+         toppings.add(toppingVariant);
       }
       this.markDirty();
      return bl;

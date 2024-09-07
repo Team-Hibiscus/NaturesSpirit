@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -33,13 +33,13 @@ public class SedgeGrassBlock extends ShortPlantBlock implements Waterloggable {
          return floor.isSideSolidFullSquare(world, pos, Direction.UP) && !floor.isOf(Blocks.MAGMA_BLOCK);
       }
       else {
-         return floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.isOf(Blocks.FARMLAND);
+         return floor.isIn(NSTags.Blocks.TURNIP_STEM_GROWS_ON) || floor.isOf(Blocks.FARMLAND);
       }
    }
 
 
    public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
-      return !useContext.getStack().isOf(HibiscusMiscBlocks.AZOLLA_ITEM);
+      return !useContext.getStack().isOf(NSMiscBlocks.AZOLLA_ITEM);
    }
 
    public BlockState getPlacementState(ItemPlacementContext context) {
@@ -48,7 +48,7 @@ public class SedgeGrassBlock extends ShortPlantBlock implements Waterloggable {
    }
 
    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-      TallPlantBlock tallPlantBlock = (TallPlantBlock) HibiscusMiscBlocks.TALL_SEDGE_GRASS;
+      TallPlantBlock tallPlantBlock = (TallPlantBlock) NSMiscBlocks.TALL_SEDGE_GRASS;
       if(tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
          TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
       }

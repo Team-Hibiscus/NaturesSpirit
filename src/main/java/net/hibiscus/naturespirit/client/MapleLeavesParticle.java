@@ -7,12 +7,13 @@ package net.hibiscus.naturespirit.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.particle.CherryLeavesParticle;
 import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteBillboardParticle;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 
-@Environment(EnvType.CLIENT) public class MapleLeavesParticle extends SpriteBillboardParticle {
+@Environment(EnvType.CLIENT) public class MapleLeavesParticle extends CherryLeavesParticle {
    private static final float field_43372 = 0.0025F;
    private static final int field_43373 = 300;
    private static final int field_43366 = 300;
@@ -23,7 +24,7 @@ import net.minecraft.client.world.ClientWorld;
    private final float field_43371;
 
    protected MapleLeavesParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
-      super(world, x, y, z);
+      super(world, x, y, z, spriteProvider);
       this.setSprite(spriteProvider.getSprite(this.random.nextInt(12), 12));
       this.field_43369 = (float) Math.toRadians(this.random.nextBoolean() ? -30.0D : 30.0D);
       this.field_43370 = this.random.nextFloat();

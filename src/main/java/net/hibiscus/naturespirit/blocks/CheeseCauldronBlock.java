@@ -1,7 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
+import net.hibiscus.naturespirit.util.NSCauldronBehavior;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -13,7 +12,7 @@ import net.minecraft.world.WorldView;
 
 public class CheeseCauldronBlock extends AbstractCauldronBlock {
    public CheeseCauldronBlock(AbstractBlock.Settings settings) {
-      super(settings, HibiscusCauldronBehavior.CHEESE_CAULDRON_BEHAVIOR);
+      super(settings, NSCauldronBehavior.CHEESE_CAULDRON_BEHAVIOR);
    }
 
    @Override protected MapCodec <? extends AbstractCauldronBlock> getCodec() {

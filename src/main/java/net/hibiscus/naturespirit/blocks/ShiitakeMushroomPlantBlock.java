@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;
@@ -44,20 +44,21 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
    }
 
    public static boolean isMushroom(BlockPos pos, ServerWorld world) {
-      return world.getBlockState(pos).isOf(HibiscusMiscBlocks.SHIITAKE_MUSHROOM);
+      return world.getBlockState(pos).isOf(NSMiscBlocks.SHIITAKE_MUSHROOM);
    }
 
    public static boolean isPodzol(BlockPos pos, ServerWorld world) {
-      return world.getBlockState(pos).isOf(Blocks.PODZOL) || world.getBlockState(pos).isIn(BlockTags.DIRT) && (!world.getBlockState(pos).isOf(Blocks.GRASS_BLOCK) && !world.getBlockState(pos).isOf(HibiscusMiscBlocks.SANDY_SOIL));
+      return world.getBlockState(pos).isOf(Blocks.PODZOL) || world.getBlockState(pos).isIn(BlockTags.DIRT) && (!world.getBlockState(pos).isOf(Blocks.GRASS_BLOCK) && !world.getBlockState(pos).isOf(
+              NSMiscBlocks.SANDY_SOIL));
    }
    public static boolean isDirt(BlockPos pos, ServerWorld world) {
-      return world.getBlockState(pos).isOf(Blocks.COARSE_DIRT) || world.getBlockState(pos).isOf(HibiscusMiscBlocks.SANDY_SOIL);
+      return world.getBlockState(pos).isOf(Blocks.COARSE_DIRT) || world.getBlockState(pos).isOf(NSMiscBlocks.SANDY_SOIL);
    }
 
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
       BlockPos blockPos = pos.down();
       BlockState blockState = world.getBlockState(blockPos);
-      if(blockState.isIn(HibiscusTags.Blocks.SHIITAKE_MUSHROOM_GROW_BLOCK)) {
+      if(blockState.isIn(NSTags.Blocks.SHIITAKE_MUSHROOM_GROW_BLOCK)) {
          return true;
       }
       else {
@@ -111,7 +112,7 @@ public class ShiitakeMushroomPlantBlock extends MushroomPlantBlock {
                }
                if(getCompletedCoarseDirt(world, pos)) {
                   if(random.nextInt(25) == 0) {
-                     world.setBlockState(blockPos2, HibiscusMiscBlocks.SANDY_SOIL.getDefaultState(), 2);
+                     world.setBlockState(blockPos2, NSMiscBlocks.SANDY_SOIL.getDefaultState(), 2);
                   }
                }
             }

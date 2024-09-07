@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.hibiscus.naturespirit.blocks.GrowingBranchingTrunkBlock;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -46,7 +46,7 @@ public class AlluaudiaFeature extends Feature <DefaultFeatureConfig> {
    }
 
    private static void generate2(WorldAccess world, BlockPos pos, Random random, BlockPos rootPos, int size, int layer) {
-      GrowingBranchingTrunkBlock branchingTrunkBlock = (GrowingBranchingTrunkBlock) HibiscusMiscBlocks.ALLUAUDIA;
+      GrowingBranchingTrunkBlock branchingTrunkBlock = (GrowingBranchingTrunkBlock) NSMiscBlocks.ALLUAUDIA;
       int i = random.nextInt(1) + 2;
       if(layer == 0) {
          ++i;

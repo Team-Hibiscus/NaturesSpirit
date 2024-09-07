@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FluidState;
@@ -35,7 +35,7 @@ public class AzollaBlock extends FlowerbedBlock {
    @Override public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
       if (context instanceof EntityShapeContext) {
          Entity entity = ((EntityShapeContext) context).getEntity();
-         if (entity != null && entity.getType().isIn(HibiscusTags.EntityTypes.IMPERMEABLE_TO_AZOLLA)) return COLLISION_SHAPE;
+         if (entity != null && entity.getType().isIn(NSTags.EntityTypes.IMPERMEABLE_TO_AZOLLA)) return COLLISION_SHAPE;
       }
          return VoxelShapes.empty();
    }

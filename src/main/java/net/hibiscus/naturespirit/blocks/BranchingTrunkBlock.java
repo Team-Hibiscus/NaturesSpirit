@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
@@ -44,7 +44,8 @@ public class BranchingTrunkBlock extends ConnectingBlock implements Waterloggabl
               blockState.isIn(BlockTags.LEAVES) || (blockState.getBlock() instanceof BranchingTrunkBlock && !(blockState.getBlock() instanceof GrowingBranchingTrunkBlock)) || (blockState.getBlock() instanceof GrowingBranchingTrunkBlock && !blockState.get(GrowingBranchingTrunkBlock.SHEARED)) || blockState.isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER)
       ).with(
               UP,
-              blockState2.isIn(BlockTags.LEAVES) || (blockState2.getBlock() instanceof BranchingTrunkBlock && !(blockState2.getBlock() instanceof GrowingBranchingTrunkBlock)) || (blockState2.getBlock() instanceof GrowingBranchingTrunkBlock && !blockState2.get(GrowingBranchingTrunkBlock.SHEARED)) || blockState2.isSideSolid(world, pos, Direction.DOWN, SideShapeType.CENTER) || blockState2.isIn(HibiscusTags.Blocks.SUCCULENTS)
+              blockState2.isIn(BlockTags.LEAVES) || (blockState2.getBlock() instanceof BranchingTrunkBlock && !(blockState2.getBlock() instanceof GrowingBranchingTrunkBlock)) || (blockState2.getBlock() instanceof GrowingBranchingTrunkBlock && !blockState2.get(GrowingBranchingTrunkBlock.SHEARED)) || blockState2.isSideSolid(world, pos, Direction.DOWN, SideShapeType.CENTER) || blockState2.isIn(
+                      NSTags.Blocks.SUCCULENTS)
       ).with(NORTH, blockState3.isIn(BlockTags.LEAVES) || (blockState3.getBlock() instanceof BranchingTrunkBlock && !(blockState3.getBlock() instanceof GrowingBranchingTrunkBlock)) || (blockState3.getBlock() instanceof GrowingBranchingTrunkBlock && !blockState3.get(GrowingBranchingTrunkBlock.SHEARED)) || blockState3.isSideSolid(world, pos, Direction.SOUTH, SideShapeType.CENTER)).with(
               EAST,
               blockState4.isIn(BlockTags.LEAVES) || (blockState4.getBlock() instanceof BranchingTrunkBlock && !(blockState4.getBlock() instanceof GrowingBranchingTrunkBlock)) || (blockState4.getBlock() instanceof GrowingBranchingTrunkBlock && !blockState4.get(GrowingBranchingTrunkBlock.SHEARED)) || blockState4.isSideSolid(world, pos, Direction.WEST, SideShapeType.CENTER)
@@ -81,7 +82,7 @@ public class BranchingTrunkBlock extends ConnectingBlock implements Waterloggabl
    }
    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
       boolean bl = neighborState.isSideSolid(world, pos, direction.getOpposite(), SideShapeType.CENTER) || neighborState.getBlock() instanceof BranchingTrunkBlock || neighborState.isIn(BlockTags.LEAVES) || (direction == Direction.UP && neighborState.isIn(
-              HibiscusTags.Blocks.SUCCULENTS));
+              NSTags.Blocks.SUCCULENTS));
       return state.with(FACING_PROPERTIES.get(direction), bl);
    }
 

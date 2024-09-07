@@ -18,7 +18,7 @@ public class SnowTreeDecorator extends TreeDecorator {
    public SnowTreeDecorator() {}
 
    protected TreeDecoratorType <?> getType() {
-      return HibiscusWorldGen.SNOW_DECORATOR;
+      return NSWorldGen.SNOW_DECORATOR;
    }
 
    public void generate(Generator generator) {

@@ -52,13 +52,13 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
 
    protected static ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
       if(player.canConsume(false)) {
-         Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
+         Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, NSMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
          if(optionalPizzaBlockEntity.isPresent()) {
             PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
             player.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
             int foodAmount = 2;
             float saturationModifier = 0.2F;
-            for(PizzaToppingVariant pizzaToppingVariant: pizzaBlockEntity.TOPPINGS) {
+            for(PizzaToppingVariant pizzaToppingVariant: pizzaBlockEntity.toppings) {
                foodAmount+= pizzaToppingVariant.hunger();
                saturationModifier += pizzaToppingVariant.saturation();
             }
@@ -122,7 +122,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
             }
 
             world.playSound(null, pos, SoundEvents.BLOCK_MOSS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            pizzaBlockEntity.TOPPING_NUMBER++;
+            pizzaBlockEntity.topping_number++;
             world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
 

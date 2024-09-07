@@ -59,7 +59,7 @@ public class WaterFlowerbedBlock extends PlantBlock implements Fertilizable {
 
    @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
       Hand hand = player.getActiveHand();
-      boolean bl = player.getStackInHand(hand).isOf(HibiscusMiscBlocks.HELVOLA_FLOWER_ITEM) && (Integer)state.get(FLOWER_AMOUNT) < 4;
+      boolean bl = player.getStackInHand(hand).isOf(NSMiscBlocks.HELVOLA_FLOWER_ITEM) && (Integer)state.get(FLOWER_AMOUNT) < 4;
       if (bl) {
          world.setBlockState(pos, state.with(FLOWER_AMOUNT, Math.min(4, (Integer)state.get(FLOWER_AMOUNT) + 1)));
          if (!player.isCreative() && !player.isSpectator()) {

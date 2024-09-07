@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
@@ -41,7 +41,7 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
             world.breakBlock(new BlockPos(pos), true, entity);
          }
          BlockState blockstate = world.getBlockState(pos.down());
-         if (blockstate.isOf(HibiscusMiscBlocks.LOTUS_STEM) && isEntityAbove(pos, entity) && !isPowered(world, pos)) {
+         if (blockstate.isOf(NSMiscBlocks.LOTUS_STEM) && isEntityAbove(pos, entity) && !isPowered(world, pos)) {
             world.scheduleBlockTick(pos, this, 4);
          }
       }
@@ -59,7 +59,7 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
           if (world.isReceivingRedstonePower(mutable)) {
              return world.getReceivedRedstonePower(mutable);
           }
-       } while(blockState.isOf(HibiscusMiscBlocks.LOTUS_STEM));
+       } while(blockState.isOf(NSMiscBlocks.LOTUS_STEM));
 
       return 0;
    }
@@ -81,7 +81,7 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
       super.scheduledTick(state, world, pos, random);
 
       BlockState blockstate = world.getBlockState(pos.down());
-      if (blockstate.isOf(HibiscusMiscBlocks.LOTUS_STEM) && isEntityAbove(pos, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 1.25D, false)) && !isPowered(world, pos)) {
+      if (blockstate.isOf(NSMiscBlocks.LOTUS_STEM) && isEntityAbove(pos, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 1.25D, false)) && !isPowered(world, pos)) {
          world.breakBlock(pos, false);
          world.setBlockState(pos.down(), this.getDefaultState());
       }
@@ -92,8 +92,8 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
       return entity.isOnGround() && entity.getPos().y > (double)((float)pos.getY()) && entity.isSneaking();
    }
 
-   public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-      return new ItemStack(HibiscusMiscBlocks.LOTUS_FLOWER_ITEM);
+   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+      return new ItemStack(NSMiscBlocks.LOTUS_FLOWER_ITEM);
    }
 
 
@@ -105,7 +105,7 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
       FluidState fluidState = world.getFluidState(pos);
       FluidState fluidState2 = world.getFluidState(pos.up());
       return ((fluidState.getFluid() == Fluids.WATER || floor.isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER)) && fluidState2.getFluid() == Fluids.EMPTY) || floor.isOf(
-              HibiscusMiscBlocks.LOTUS_STEM);
+              NSMiscBlocks.LOTUS_STEM);
    }
 
    @Override public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
@@ -123,11 +123,11 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
          player.move(MovementType.SHULKER_BOX, new Vec3d(0, 1.01, 0));
       }
 
-      if (world.getBlockState(pos.down()).isOf(HibiscusMiscBlocks.LOTUS_STEM)) {
+      if (world.getBlockState(pos.down()).isOf(NSMiscBlocks.LOTUS_STEM)) {
          LotusStemBlock lotusStemBlock = (LotusStemBlock) world.getBlockState(pos.down()).getBlock();
          lotusStemBlock.grow(world, random, pos.down(), world.getBlockState(pos.down()));
       } else {
-         world.setBlockState(pos, HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, false));
+         world.setBlockState(pos, NSMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, false));
          world.setBlockState(pos.up(), this.getDefaultState());
       }
 

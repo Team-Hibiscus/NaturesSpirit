@@ -7,7 +7,6 @@
     "AnvilBlockMixin",
     "AxeItemMixin",
     "BlockEntityTypeMixin",
-    "BlockStateProviderMixin",
     "BoatDispenserBehaviorMixin",
     "BoatEntityMixin",
     "CoralBlockBlockMixin",

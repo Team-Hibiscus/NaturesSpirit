@@ -1,8 +1,8 @@
 package net.hibiscus.naturespirit.registration.sets;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.hibiscus.naturespirit.registration.HibiscusItemGroups;
-import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
+import net.hibiscus.naturespirit.registration.NSItemGroups;
+import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.data.family.BlockFamily;
 import net.minecraft.item.Item;
@@ -12,8 +12,7 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.StoneHashMap;
-import static net.hibiscus.naturespirit.registration.HibiscusRegistryHelper.registerBlockItem;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
 import static net.minecraft.data.family.BlockFamilies.register;
 
 public class StoneSet {
@@ -135,7 +134,7 @@ public class StoneSet {
       addToBuildingTab(itemBefore, item2Before, this);
       StoneHashMap.put(getName(), this);
 
-      for(Block item : registeredBlocksList) ItemGroupEvents.modifyEntriesEvent(HibiscusItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
+      for(Block item : registeredBlocksList) ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
    public StoneSet(Identifier name, MapColor mapColor, Item itemBefore, Item item2Before, float hardness, boolean hasCobbled, boolean hasCracked, boolean hasMossy, boolean hasTiles){
@@ -166,7 +165,7 @@ public class StoneSet {
    }
    private Block createBlockWithItem(String blockID, Block block){
       registerBlockItem(blockID, block);
-      Block listBlock = HibiscusRegistryHelper.registerBlock(blockID, block);
+      Block listBlock = NSRegistryHelper.registerBlock(blockID, block);
       registeredBlocksList.add(listBlock);
       return listBlock;
    }

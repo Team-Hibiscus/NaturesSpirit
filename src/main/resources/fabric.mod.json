@@ -13,16 +13,16 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "net.hibiscus.naturespirit.client.NatureSpiritClient"
+      "net.hibiscus.naturespirit.client.NSClient"
     ],
     "main": [
       "net.hibiscus.naturespirit.NatureSpirit"
     ],
     "terrablender": [
-      "net.hibiscus.naturespirit.terrablender.NatureSpiritTerraBlender"
+      "net.hibiscus.naturespirit.terrablender.NSTerraBlender"
     ],
     "fabric-datagen": [
-    "net.hibiscus.naturespirit.datagen.NatureSpiritDataGen"
+      "net.hibiscus.naturespirit.datagen.NSDataGen"
     ]
   },
   "accessWidener": "natures_spirit.accesswidener",

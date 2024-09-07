@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.NSWoods;
 import net.minecraft.block.*;
 import net.minecraft.entity.MovementType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,7 +48,7 @@ public class LotusStemBlock extends AbstractPlantBlock implements Waterloggable 
    }
 
    protected AbstractPlantStemBlock getStem() {
-      return (AbstractPlantStemBlock) HibiscusWoods.WISTERIA.getBlueWisteriaVines();
+      return (AbstractPlantStemBlock) NSWoods.WISTERIA.getBlueWisteriaVines();
    }
 
    @Nullable public BlockState getPlacementState(ItemPlacementContext ctx) {

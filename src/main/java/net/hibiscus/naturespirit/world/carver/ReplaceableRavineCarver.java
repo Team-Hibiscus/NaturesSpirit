@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.world.carver;
 
 
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -88,7 +88,7 @@ private void carveRavine(CarverContext context, ReplaceableRavineCarverConfig co
 
    protected boolean carveAtPoint(CarverContext context, ReplaceableRavineCarverConfig config, Chunk chunk, Function<BlockPos, RegistryEntry<Biome>> posToBiome, CarvingMask mask, BlockPos.Mutable pos, BlockPos.Mutable tmp, AquiferSampler aquiferSampler, MutableBoolean replacedGrassy) {
       BlockState blockState = chunk.getBlockState(pos);
-      if (blockState.isOf(Blocks.GRASS_BLOCK) || blockState.isOf(Blocks.MYCELIUM) || blockState.isOf(HibiscusMiscBlocks.RED_MOSS_BLOCK)) {
+      if (blockState.isOf(Blocks.GRASS_BLOCK) || blockState.isOf(Blocks.MYCELIUM) || blockState.isOf(NSMiscBlocks.RED_MOSS_BLOCK)) {
          replacedGrassy.setTrue();
       }
       if (!this.canAlwaysCarveBlock(config, blockState) && !isDebug(config)) {

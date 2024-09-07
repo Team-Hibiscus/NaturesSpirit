@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.world.trunk;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
@@ -27,7 +27,7 @@ public class MegaSugiTrunkPlacer extends TrunkPlacer {
    }
 
    protected TrunkPlacerType <?> getType() {
-      return HibiscusWorldGen.MEGA_SUGI_TRUNK_PLACER;
+      return NSWorldGen.MEGA_SUGI_TRUNK_PLACER;
    }
 
    public List <FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer <BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {

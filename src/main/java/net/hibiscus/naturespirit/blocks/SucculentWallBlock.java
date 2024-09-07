@@ -73,7 +73,7 @@ public class SucculentWallBlock
       Direction direction = state.get(FACING);
       BlockPos blockPos = pos.offset(direction.getOpposite());
       BlockState blockState = world.getBlockState(blockPos);
-      return blockState.isSideSolid(world, blockPos, direction, SideShapeType.CENTER) || blockState.isIn(HibiscusTags.Blocks.SUCCULENT_HORIZONTAL_PLACEMENT_OVERRIDE);
+      return blockState.isSideSolid(world, blockPos, direction, SideShapeType.CENTER) || blockState.isIn(NSTags.Blocks.SUCCULENT_HORIZONTAL_PLACEMENT_OVERRIDE);
    }
 
    @Override

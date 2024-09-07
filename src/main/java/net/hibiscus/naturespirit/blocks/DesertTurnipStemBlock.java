@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -49,7 +49,7 @@ public class DesertTurnipStemBlock extends PlantBlock implements Fertilizable {
       super(settings);
       this.rootBlock = rootBlock;
       this.vegetableBlock = vegetableBlock;
-      this.pickBlockItem = () -> HibiscusMiscBlocks.DESERT_TURNIP;
+      this.pickBlockItem = () -> NSMiscBlocks.DESERT_TURNIP;
       this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
    }
 
@@ -102,7 +102,7 @@ public class DesertTurnipStemBlock extends PlantBlock implements Fertilizable {
    }
 
    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-      return floor.isOf(Blocks.FARMLAND) || floor.isIn(HibiscusTags.Blocks.TURNIP_STEM_GROWS_ON);
+      return floor.isOf(Blocks.FARMLAND) || floor.isIn(NSTags.Blocks.TURNIP_STEM_GROWS_ON);
    }
 
    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -124,8 +124,8 @@ public class DesertTurnipStemBlock extends PlantBlock implements Fertilizable {
                BlockPos blockPos2 = pos.offset(direction, 3);
                BlockState blockState = world.getBlockState(blockPos);
                BlockState blockState2 = world.getBlockState(blockPos2);
-               boolean bl = blockState.isIn(HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE);
-               boolean bl2 = blockState2.isIn(HibiscusTags.Blocks.TURNIP_ROOT_REPLACEABLE);
+               boolean bl = blockState.isIn(NSTags.Blocks.TURNIP_ROOT_REPLACEABLE);
+               boolean bl2 = blockState2.isIn(NSTags.Blocks.TURNIP_ROOT_REPLACEABLE);
                if(bl) {
                   if(bl2 || blockState2.isOf(this.vegetableBlock)) {
                      world.setBlockState(blockPos, this.rootBlock.getDefaultState());

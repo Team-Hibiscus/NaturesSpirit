@@ -4,7 +4,7 @@ import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusWorldGen;
+import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.random.Random;
@@ -31,7 +31,7 @@ public class BirchFoliagePlacer extends FoliagePlacer {
    }
 
    protected FoliagePlacerType<?> getType() {
-      return HibiscusWorldGen.BIRCH_FOLIAGE_PLACER_TYPE;
+      return NSWorldGen.BIRCH_FOLIAGE_PLACER_TYPE;
    }
 
    protected void generate(TestableWorld world, FoliagePlacer.BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, FoliagePlacer.TreeNode treeNode, int foliageHeight, int radius, int offset) {

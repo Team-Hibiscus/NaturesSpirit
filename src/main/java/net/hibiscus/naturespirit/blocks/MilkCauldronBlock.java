@@ -2,9 +2,9 @@ package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
-import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.util.NSCauldronBehavior;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.AbstractCauldronBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,7 +29,7 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
  public static BooleanProperty ageIntoCheese = BooleanProperty.of("age_into_cheese");
 
    public MilkCauldronBlock(Settings settings) {
-      super(settings, HibiscusCauldronBehavior.MILK_CAULDRON_BEHAVIOR);
+      super(settings, NSCauldronBehavior.MILK_CAULDRON_BEHAVIOR);
       this.setDefaultState(this.stateManager.getDefaultState().with(ageIntoCheese, false));
    }
 
@@ -46,7 +46,7 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
    }
 
    @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-      if (player.getStackInHand(player.getActiveHand()).isIn(HibiscusTags.Items.CHEESE_MAKER) && !state.get(ageIntoCheese)) {
+      if (player.getStackInHand(player.getActiveHand()).isIn(NSTags.Items.CHEESE_MAKER) && !state.get(ageIntoCheese)) {
          world.setBlockState(pos, state.with(ageIntoCheese, true), 2);
          BlockState blockState = world.getBlockState(pos);
          world.playSound(null, pos, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -78,7 +78,7 @@ public class MilkCauldronBlock extends AbstractCauldronBlock {
 
    @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
       if (random.nextInt(25) == 0) {
-         world.setBlockState(pos, HibiscusMiscBlocks.CHEESE_CAULDRON.getDefaultState(), 2);
+         world.setBlockState(pos, NSMiscBlocks.CHEESE_CAULDRON.getDefaultState(), 2);
       }
       super.randomTick(state, world, pos, random);
    }
