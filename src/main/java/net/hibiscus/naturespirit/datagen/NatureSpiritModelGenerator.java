@@ -5,10 +5,9 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.blocks.AzollaBlock;
-import net.hibiscus.naturespirit.blocks.DesertPlantBlock;
+import net.hibiscus.naturespirit.blocks.DesertTurnipStemBlock;
 import net.hibiscus.naturespirit.entity.HibiscusBoatEntity;
-import net.hibiscus.naturespirit.registration.FlowerSet;
+import net.hibiscus.naturespirit.registration.sets.FlowerSet;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
 import net.hibiscus.naturespirit.registration.StoneSet;
 import net.hibiscus.naturespirit.registration.WoodSet;
@@ -28,7 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
 
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
 import static net.minecraft.data.client.BlockStateModelGenerator.*;
 import static net.minecraft.data.client.TexturedModel.makeFactory;
 

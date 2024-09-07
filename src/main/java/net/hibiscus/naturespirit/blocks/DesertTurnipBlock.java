@@ -1,7 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
-import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -34,7 +33,7 @@ public class DesertTurnipBlock extends FacingBlock {
       builder.add(FACING);
    }
 
-   public DesertPlantBlock getStem() {
-      return (DesertPlantBlock) HibiscusMiscBlocks.DESERT_TURNIP_STEM;
+   public DesertTurnipStemBlock getStem() {
+      return (DesertTurnipStemBlock) HibiscusMiscBlocks.DESERT_TURNIP_STEM;
    }
 }

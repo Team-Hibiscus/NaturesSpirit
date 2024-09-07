@@ -2,9 +2,9 @@ package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.hibiscus.naturespirit.util.HibiscusCauldronBehavior;
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.HibiscusTags;
 import net.minecraft.block.AbstractCauldronBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

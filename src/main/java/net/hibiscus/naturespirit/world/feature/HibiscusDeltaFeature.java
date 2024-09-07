@@ -3,7 +3,8 @@ package net.hibiscus.naturespirit.world.feature;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -41,7 +42,7 @@ public class HibiscusDeltaFeature extends Feature <DeltaFeatureConfig> {
               HibiscusWoods.WISTERIA.getPinkLeaves(),
               HibiscusWoods.WILLOW.getLeaves()
       );
-      CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRASS_BLOCK, Blocks.MUD, Blocks.SAND);
+      CAN_REPLACE = ImmutableList.of(Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.GRASS_BLOCK, Blocks.MUD, Blocks.SAND, HibiscusMiscBlocks.PINK_SAND);
       DIRECTIONS = Direction.values();
    }
 

@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
 import net.hibiscus.naturespirit.registration.*;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.registry.*;
 
 import java.util.concurrent.CompletableFuture;
@@ -34,8 +35,8 @@ public class NatureSpiritDataGen implements DataGeneratorEntrypoint {
    }
 
    @Override public void buildRegistry(RegistryBuilder registryBuilder) {
-      registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, HibiscusConfiguredFeatures::bootstrap);
-      registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, HibiscusPlacedFeatures::bootstrap);
+      registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, NaturesSpiritConfiguredFeatures::bootstrap);
+      registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, NaturesSpiritPlacedFeatures::bootstrap);
       System.out.println("Built Registry");
    }
 

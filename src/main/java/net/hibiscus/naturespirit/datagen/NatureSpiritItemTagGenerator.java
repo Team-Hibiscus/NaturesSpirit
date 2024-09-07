@@ -3,10 +3,10 @@ package net.hibiscus.naturespirit.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.registration.StoneSet;
-import net.hibiscus.naturespirit.registration.WoodSet;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.HibiscusTags;
+import net.hibiscus.naturespirit.registration.sets.StoneSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
 
 public class NatureSpiritItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
@@ -89,11 +89,8 @@ public class NatureSpiritItemTagGenerator extends FabricTagProvider.ItemTagProvi
         );
         this.getOrCreateTagBuilder(HibiscusTags.Items.COCONUT_ITEMS).add(
                 HibiscusWoods.COCONUT_BLOCK.asItem(),
-                HibiscusWoods.YOUNG_COCONUT_BLOCK.asItem(),
                 HibiscusWoods.COCONUT_HALF,
-                HibiscusWoods.YOUNG_COCONUT_HALF,
-                HibiscusWoods.COCONUT_SHELL,
-                HibiscusWoods.YOUNG_COCONUT_SHELL
+                HibiscusWoods.COCONUT_SHELL
         );
     }
 }

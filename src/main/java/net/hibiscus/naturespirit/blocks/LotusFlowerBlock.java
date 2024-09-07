@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
@@ -124,10 +124,10 @@ public class LotusFlowerBlock extends PlantBlock implements Fertilizable{
       }
 
       if (world.getBlockState(pos.down()).isOf(HibiscusMiscBlocks.LOTUS_STEM)) {
-         LotusStem lotusStem = (LotusStem) world.getBlockState(pos.down()).getBlock();
-         lotusStem.grow(world, random, pos.down(), world.getBlockState(pos.down()));
+         LotusStemBlock lotusStemBlock = (LotusStemBlock) world.getBlockState(pos.down()).getBlock();
+         lotusStemBlock.grow(world, random, pos.down(), world.getBlockState(pos.down()));
       } else {
-         world.setBlockState(pos, HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStem.WATERLOGGED, false));
+         world.setBlockState(pos, HibiscusMiscBlocks.LOTUS_STEM.getDefaultState().with(LotusStemBlock.WATERLOGGED, false));
          world.setBlockState(pos.up(), this.getDefaultState());
       }
 

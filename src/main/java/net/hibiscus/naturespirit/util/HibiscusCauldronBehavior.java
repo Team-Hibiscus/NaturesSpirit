@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.util;
 
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;

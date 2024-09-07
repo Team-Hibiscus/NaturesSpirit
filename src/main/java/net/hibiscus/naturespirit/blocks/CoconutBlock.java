@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.HibiscusCriteria;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;

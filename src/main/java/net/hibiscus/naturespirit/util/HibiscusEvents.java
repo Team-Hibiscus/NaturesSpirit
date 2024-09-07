@@ -2,8 +2,8 @@ package net.hibiscus.naturespirit.util;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusWoods;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

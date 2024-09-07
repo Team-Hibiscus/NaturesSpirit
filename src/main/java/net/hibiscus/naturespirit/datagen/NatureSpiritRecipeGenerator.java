@@ -2,15 +2,10 @@ package net.hibiscus.naturespirit.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.hibiscus.naturespirit.registration.FlowerSet;
-import net.hibiscus.naturespirit.registration.HibiscusRegistryHelper;
-import net.hibiscus.naturespirit.registration.StoneSet;
-import net.hibiscus.naturespirit.registration.WoodSet;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusColoredBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusWoods;
-import net.hibiscus.naturespirit.util.HibiscusTags;
-import net.minecraft.advancement.AdvancementCriterion;
+import net.hibiscus.naturespirit.registration.*;
+import net.hibiscus.naturespirit.registration.sets.FlowerSet;
+import net.hibiscus.naturespirit.registration.sets.StoneSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.family.BlockFamily;
 import net.minecraft.data.server.recipe.*;
@@ -30,7 +25,7 @@ import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
 import static net.minecraft.data.family.BlockFamilies.register;
 
 public class NatureSpiritRecipeGenerator extends FabricRecipeProvider {

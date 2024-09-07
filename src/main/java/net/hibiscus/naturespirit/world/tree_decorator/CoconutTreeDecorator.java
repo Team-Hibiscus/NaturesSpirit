@@ -39,17 +39,10 @@ public class CoconutTreeDecorator extends TreeDecorator {
                   Direction direction2 = direction.getOpposite();
                   BlockPos blockPos = pos.add(direction2.getOffsetX(), 0, direction2.getOffsetZ());
                   if(generator.isAir(blockPos)) {
-                     if (random.nextBoolean()) {
-                        generator.replace(blockPos, HibiscusWoods.COCONUT_BLOCK.getDefaultState().with(
-                                CoconutBlock.FACING,
-                                direction.getOpposite()
-                        ));
-                     } else {
-                        generator.replace(blockPos, HibiscusWoods.YOUNG_COCONUT_BLOCK.getDefaultState().with(
-                                YoungCoconutBlock.FACING,
-                                direction.getOpposite()
-                        ));
-                     }
+                     generator.replace(blockPos, HibiscusWoods.COCONUT_BLOCK.getDefaultState().with(
+                             CoconutBlock.FACING,
+                             direction.getOpposite()
+                     ));
                   }
                }
             }

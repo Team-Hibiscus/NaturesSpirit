@@ -2,20 +2,16 @@ package net.hibiscus.naturespirit.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.HibiscusTags;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -46,7 +42,7 @@ public class PolyporeBlock extends MushroomPlantBlock {
    }
    @Override
    public BlockState rotate(BlockState state, BlockRotation rotation) {
-      return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
+      return state.with(FACING, rotation.rotate(state.get(FACING)));
    }
 
    @Override
@@ -54,11 +50,10 @@ public class PolyporeBlock extends MushroomPlantBlock {
       return state.rotate(mirror.getRotation(state.get(FACING)));
    }
    public BlockState getPlacementState(ItemPlacementContext ctx) {
-      Direction[] directions;
       BlockState blockState = super.getPlacementState(ctx);
       World worldView = ctx.getWorld();
       BlockPos blockPos = ctx.getBlockPos();
-      for (Direction direction : directions = ctx.getPlacementDirections()) {
+      for (Direction direction : ctx.getPlacementDirections()) {
          if (!direction.getAxis().isHorizontal() || !(blockState = blockState.with(FACING, direction.getOpposite())).canPlaceAt(worldView, blockPos)) continue;
          return blockState;
       }

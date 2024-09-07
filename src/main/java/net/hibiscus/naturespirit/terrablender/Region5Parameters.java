@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
 import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.world.HibiscusBiomes;
+import net.hibiscus.naturespirit.registration.HibiscusBiomes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
@@ -76,8 +76,8 @@ public class Region5Parameters {
    RegistryKey<Biome> nearBiomeForestCold = HibiscusConfig.has_alpine_highlands ? HibiscusBiomes.ALPINE_HIGHLANDS : (HibiscusConfig.has_alpine_clearings ? BiomeKeys.MEADOW : BiomeKeys.FOREST);
    RegistryKey<Biome> commonBiomeTaiga = HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.TAIGA;
    RegistryKey<Biome> commonBiomeOldTaiga = HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA;
-   RegistryKey<Biome> uncommonBiomeOldTaiga = HibiscusConfig.has_amber_covert ? HibiscusBiomes.AMBER_COVERT : (HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT: BiomeKeys.OLD_GROWTH_PINE_TAIGA);
-   RegistryKey<Biome> uncommonBiomeTaiga = HibiscusConfig.has_amber_covert ? HibiscusBiomes.AMBER_COVERT : (HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT: BiomeKeys.OLD_GROWTH_PINE_TAIGA);
+   RegistryKey<Biome> uncommonBiomeOldTaiga = HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
+   RegistryKey<Biome> uncommonBiomeTaiga = HibiscusConfig.has_coniferous_covert ? HibiscusBiomes.CONIFEROUS_COVERT : BiomeKeys.OLD_GROWTH_PINE_TAIGA;
    RegistryKey<Biome> specialNearBiomeCherryCold = HibiscusConfig.has_heather_fields ? HibiscusBiomes.HEATHER_FIELDS : (HibiscusConfig.has_alpine_clearings ? HibiscusBiomes.ALPINE_CLEARINGS: BiomeKeys.CHERRY_GROVE);
    RegistryKey<Biome> commonBiomeSnowyTaigaFrozen = HibiscusConfig.has_boreal_taiga ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;
    RegistryKey<Biome> uncommonBiomeSnowyTaigaFrozen = HibiscusConfig.has_boreal_taiga ? HibiscusBiomes.BOREAL_TAIGA : BiomeKeys.SNOWY_TAIGA;

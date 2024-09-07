@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.mixin;
 
 import net.hibiscus.naturespirit.config.HibiscusConfig;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.tag.BlockTags;

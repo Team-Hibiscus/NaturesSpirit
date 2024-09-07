@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks.*;
-import static net.hibiscus.naturespirit.world.HibiscusBiomes.BiomesHashMap;
+import static net.hibiscus.naturespirit.registration.HibiscusMiscBlocks.*;
+import static net.hibiscus.naturespirit.registration.HibiscusBiomes.BiomesHashMap;
 
 class NatureSpiritLangGenerator extends FabricLanguageProvider {
 
