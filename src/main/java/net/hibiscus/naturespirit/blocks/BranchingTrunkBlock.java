@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;

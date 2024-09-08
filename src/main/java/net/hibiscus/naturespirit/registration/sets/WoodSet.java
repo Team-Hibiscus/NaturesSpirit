@@ -10,11 +10,11 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.*;
+import net.hibiscus.naturespirit.datagen.NSConfiguredFeatures;
 import net.hibiscus.naturespirit.entity.NSBoatEntity;
 import net.hibiscus.naturespirit.items.NSBoatItem;
 import net.hibiscus.naturespirit.registration.NSEntityTypes;
 import net.hibiscus.naturespirit.registration.NSItemGroups;
-import net.hibiscus.naturespirit.world.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -211,10 +211,10 @@ public class WoodSet {
          blueVinesPlant = createVinesPlant("blue_", blueVines);
          pinkVinesPlant = createVinesPlant("pink_", pinkVines);
          purpleVinesPlant = createVinesPlant("purple_", purpleVines);
-         whiteSapling = createSapling("white_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE), Optional.empty()));
-         blueSapling = createSapling("blue_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.BLUE_WISTERIA_TREE), Optional.empty()));
-         pinkSapling = createSapling("pink_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.PINK_WISTERIA_TREE), Optional.empty()));
-         purpleSapling = createSapling("purple_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.PURPLE_WISTERIA_TREE), Optional.empty()));
+         whiteSapling = createSapling("white_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.WHITE_WISTERIA_TREE), Optional.empty()));
+         blueSapling = createSapling("blue_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.BLUE_WISTERIA_TREE), Optional.empty()));
+         pinkSapling = createSapling("pink_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.PINK_WISTERIA_TREE), Optional.empty()));
+         purpleSapling = createSapling("purple_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.PURPLE_WISTERIA_TREE), Optional.empty()));
          pottedWhiteSapling = createPottedSapling("white_",whiteSapling);
          pottedBlueSapling = createPottedSapling("blue_", blueSapling);
          pottedPinkSapling = createPottedSapling("pink_", pinkSapling);
@@ -247,9 +247,9 @@ public class WoodSet {
          redLeaves = createParticleLeaves("red_", NatureSpirit.RED_MAPLE_LEAVES_PARTICLE, 150);
          orangeLeaves = createParticleLeaves("orange_", NatureSpirit.ORANGE_MAPLE_LEAVES_PARTICLE, 150);
          yellowLeaves = createParticleLeaves("yellow_", NatureSpirit.YELLOW_MAPLE_LEAVES_PARTICLE, 150);
-         redSapling = createSapling("red_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.RED_MAPLE_TREE), Optional.empty()));
-         orangeSapling = createSapling("orange_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.ORANGE_MAPLE_TREE), Optional.empty()));
-         yellowSapling = createSapling("yellow_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(HibiscusConfiguredFeatures.YELLOW_MAPLE_TREE), Optional.empty()));
+         redSapling = createSapling("red_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.RED_MAPLE_TREE), Optional.empty()));
+         orangeSapling = createSapling("orange_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.ORANGE_MAPLE_TREE), Optional.empty()));
+         yellowSapling = createSapling("yellow_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.YELLOW_MAPLE_TREE), Optional.empty()));
         pottedRedSapling = createPottedSapling("red_", redSapling);
          pottedOrangeSapling = createPottedSapling("orange_", orangeSapling);
          pottedYellowSapling = createPottedSapling("yellow_", yellowSapling);
@@ -346,7 +346,7 @@ public class WoodSet {
       registerWood();
       WoodHashMap.put(this.getName(), this);
    }
-   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore,HibiscusBoatEntity.HibiscusBoat boatType, WoodPreset woodPreset, boolean hasMosaic, Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature, Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature2){
+   public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore, NSBoatEntity.HibiscusBoat boatType, WoodPreset woodPreset, boolean hasMosaic, Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature, Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature2){
       this.woodPreset = woodPreset;
       this.name = name;
       this.sideColor = sideColor;
@@ -665,7 +665,7 @@ public class WoodSet {
       return listItem;
    }
    private PillarBlock createLogBlock(MapColor topMapColor, MapColor sideMapColor) {
-      return new PillarBlock(FabricBlockSettings.create().mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sounds(this.getBlockSetType().soundType()));
+      return new PillarBlock(AbstractBlock.Settings.create().mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sounds(this.getBlockSetType().soundType()));
    }
    private Block createLog() {
       return createBlockWithItem(getLogName(), createLogBlock(sideColor, topColor));
@@ -692,7 +692,7 @@ public class WoodSet {
       return createBlockWithItem("stripped_" + getWoodName(), createLogBlock(topColor, topColor));
    }
    private Block createLeaves() {
-      Block block = createBlockWithItem(getName() + "_leaves", new LeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
+      Block block = createBlockWithItem(getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       RenderLayerHashMap.put(getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -700,7 +700,7 @@ public class WoodSet {
       return block;
    }
    private Block createLeaves(String prefix) {
-      Block block = createBlockWithItem(prefix + getName() + "_leaves", new LeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
+      Block block = createBlockWithItem(prefix + getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never)));
       RenderLayerHashMap.put(prefix + getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -709,7 +709,7 @@ public class WoodSet {
    }
    private Block createFrostableLeaves() {
       Block block = createBlockWithItem(getName() + "_leaves",
-              new ProjectileLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), frostyLeaves));
+              new ProjectileLeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), frostyLeaves));
       RenderLayerHashMap.put(getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -718,7 +718,7 @@ public class WoodSet {
    }
    private Block createFrostableLeaves(String prefix) {
       Block block = createBlockWithItem(prefix + getName() + "_leaves",
-              new ProjectileLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), frostyLeaves));
+              new ProjectileLeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), frostyLeaves));
       RenderLayerHashMap.put(prefix + getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -726,7 +726,7 @@ public class WoodSet {
       return block;
    }
    private Block createParticleLeaves(ParticleEffect particle, int chance) {
-      Block block = createBlockWithItem(getName() + "_leaves", new ParticleLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, chance));
+      Block block = createBlockWithItem(getName() + "_leaves", new ParticleLeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, chance));
       RenderLayerHashMap.put(getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -734,7 +734,7 @@ public class WoodSet {
       return block;
    }
    private Block createParticleLeaves(String prefix, ParticleEffect particle, int chance) {
-      Block block = createBlockWithItem(prefix + getName() + "_leaves", new ParticleLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, chance));
+      Block block = createBlockWithItem(prefix + getName() + "_leaves", new ParticleLeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never), particle, chance));
       RenderLayerHashMap.put(prefix + getName() + "_leaves", block);
       CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
       FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
@@ -815,25 +815,25 @@ public class WoodSet {
       return vinesPlant;
    }
    private Block createPlanks(){
-      return createBlockWithItem(getName() + "_planks", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_planks", new Block(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createStairs(){
-      return createBlockWithItem(getName() + "_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_stairs", new StairsBlock(getBase().getDefaultState(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createSlab(){
-      return createBlockWithItem(getName() + "_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_slab", new SlabBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createMosaic(){
-      return createBlockWithItem(getName() + "_mosaic", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_mosaic", new Block(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createMosaicStairs(){
-      return createBlockWithItem(getName() + "_mosaic_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_mosaic_stairs", new StairsBlock(getBase().getDefaultState(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createMosaicSlab(){
-      return createBlockWithItem(getName() + "_mosaic_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_mosaic_slab", new SlabBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createFence(){
-      return createBlockWithItem(getName() + "_fence", new FenceBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
+      return createBlockWithItem(getName() + "_fence", new FenceBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
    }
    private Block createFenceGate(){
       return createBlockWithItem(getName() + "_fence_gate", new FenceGateBlock(getWoodType(), AbstractBlock.Settings.create().mapColor(getBase().getDefaultMapColor()).solid().instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).burnable()));
@@ -898,10 +898,10 @@ public class WoodSet {
       return pot;
    }
    private Item createSignItem(){
-      return createItem(getName() + "_sign", new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign));
+      return createItem(getName() + "_sign", new SignItem(new Item.Settings().maxCount(16), sign, wallSign));
    }
    private Item createHangingSignItem(){
-      return createItem(getName() + "_hanging_sign", new HangingSignItem(hangingSign, hangingWallSign, new FabricItemSettings().maxCount(16)));
+      return createItem(getName() + "_hanging_sign", new HangingSignItem(hangingSign, hangingWallSign, new Item.Settings().maxCount(16)));
    }
 
    private BlockSetType createBlockSetType(){

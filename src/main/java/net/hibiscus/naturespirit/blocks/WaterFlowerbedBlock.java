@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

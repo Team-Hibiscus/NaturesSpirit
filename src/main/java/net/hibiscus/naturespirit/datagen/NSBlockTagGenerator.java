@@ -35,10 +35,10 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
          getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(new Block[]{woodSet.getSlab()});
          getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(new Block[]{woodSet.getFence()});
          getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedLog(), woodSet.getLog());
-         getOrCreateTagBuilder(HibiscusTags.Blocks.STRIPPED_LOGS).add(woodSet.getStrippedLog());
+         getOrCreateTagBuilder(NSTags.Blocks.STRIPPED_LOGS).add(woodSet.getStrippedLog());
          if (woodSet.hasBark()) {
             getOrCreateTagBuilder(woodSet.getBlockLogsTag()).add(woodSet.getStrippedWood(), woodSet.getWood());
-            getOrCreateTagBuilder(HibiscusTags.Blocks.STRIPPED_LOGS).add(woodSet.getStrippedWood());
+            getOrCreateTagBuilder(NSTags.Blocks.STRIPPED_LOGS).add(woodSet.getStrippedWood());
          }
          if(woodSet.hasMosaic()) {
             getOrCreateTagBuilder(BlockTags.SLABS).add(woodSet.getMosaicSlab());
@@ -108,10 +108,10 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
       }
    }
    @Override protected void configure(RegistryWrapper.WrapperLookup arg) {
-      addWoodTags(HibiscusRegistryHelper.WoodHashMap);
-      addStoneTags(HibiscusRegistryHelper.StoneHashMap);
-      addTreeTags(HibiscusRegistryHelper.SaplingHashMap, HibiscusRegistryHelper.LeavesHashMap);
-      for (FlowerSet flowerSet : HibiscusRegistryHelper.FlowerHashMap.values()) {
+      addWoodTags(NSRegistryHelper.WoodHashMap);
+      addStoneTags(NSRegistryHelper.StoneHashMap);
+      addTreeTags(NSRegistryHelper.SaplingHashMap, NSRegistryHelper.LeavesHashMap);
+      for (FlowerSet flowerSet : NSRegistryHelper.FlowerHashMap.values()) {
          if (flowerSet.isTall()) {
             getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(flowerSet.getFlowerBlock());
          } else {
@@ -122,38 +122,38 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
       getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(AZOLLA);
       getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(CATTAIL);
       getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(LOTUS_FLOWER);
-      getOrCreateTagBuilder(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES).add(STRIPPED_ALLUAUDIA_BUNDLE, ALLUAUDIA_BUNDLE);
-      getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(HibiscusTags.Blocks.ALLUAUDIA_BUNDLES);
+      getOrCreateTagBuilder(NSTags.Blocks.ALLUAUDIA_BUNDLES).add(STRIPPED_ALLUAUDIA_BUNDLE, ALLUAUDIA_BUNDLE);
+      getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(NSTags.Blocks.ALLUAUDIA_BUNDLES);
       getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);
       getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(PAPER_TRAPDOOR, FRAMED_PAPER_TRAPDOOR, BLOOMING_PAPER_TRAPDOOR);
       getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
-              HibiscusWoods.WISTERIA.getBlueWisteriaVines(),
-              HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(),
-              HibiscusWoods.WISTERIA.getWhiteWisteriaVines(),
-              HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(),
-              HibiscusWoods.WISTERIA.getPinkWisteriaVines(),
-              HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(),
-              HibiscusWoods.WISTERIA.getPurpleWisteriaVines(),
-              HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(),
-              HibiscusWoods.WILLOW.getWillowVinesPlant(),
-              HibiscusWoods.WILLOW.getWillowVines()
+              NSWoods.WISTERIA.getBlueVines(),
+              NSWoods.WISTERIA.getBlueVinesPlant(),
+              NSWoods.WISTERIA.getWhiteVines(),
+              NSWoods.WISTERIA.getWhiteVinesPlant(),
+              NSWoods.WISTERIA.getPinkVines(),
+              NSWoods.WISTERIA.getPinkVinesPlant(),
+              NSWoods.WISTERIA.getPurpleVines(),
+              NSWoods.WISTERIA.getPurpleVinesPlant(),
+              NSWoods.WILLOW.getPinkVinesPlant(),
+              NSWoods.WILLOW.getPinkVines()
       );
       getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(
-              HibiscusWoods.WISTERIA.getBlueWisteriaVines(),
-              HibiscusWoods.WISTERIA.getBlueWisteriaVinesPlant(),
-              HibiscusWoods.WISTERIA.getWhiteWisteriaVines(),
-              HibiscusWoods.WISTERIA.getWhiteWisteriaVinesPlant(),
-              HibiscusWoods.WISTERIA.getPinkWisteriaVines(),
-              HibiscusWoods.WISTERIA.getPinkWisteriaVinesPlant(),
-              HibiscusWoods.WISTERIA.getPurpleWisteriaVines(),
-              HibiscusWoods.WISTERIA.getPurpleWisteriaVinesPlant(),
+              NSWoods.WISTERIA.getBlueVines(),
+              NSWoods.WISTERIA.getBlueVinesPlant(),
+              NSWoods.WISTERIA.getWhiteVines(),
+              NSWoods.WISTERIA.getWhiteVinesPlant(),
+              NSWoods.WISTERIA.getPinkVines(),
+              NSWoods.WISTERIA.getPinkVinesPlant(),
+              NSWoods.WISTERIA.getPurpleVines(),
+              NSWoods.WISTERIA.getPurpleVinesPlant(),
               LOTUS_FLOWER
       );
-      getOrCreateTagBuilder(BlockTags.CROPS).add(HibiscusMiscBlocks.DESERT_TURNIP_STEM);
-      getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(HibiscusMiscBlocks.DESERT_TURNIP_STEM);
+      getOrCreateTagBuilder(BlockTags.CROPS).add(DESERT_TURNIP_STEM);
+      getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(DESERT_TURNIP_STEM);
       getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(
-              HibiscusMiscBlocks.SCORCHED_GRASS,
-              HibiscusMiscBlocks.TALL_SCORCHED_GRASS,
+              SCORCHED_GRASS,
+              TALL_SCORCHED_GRASS,
               BEACH_GRASS,
               TALL_BEACH_GRASS,
               SEDGE_GRASS,
@@ -174,24 +174,24 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
               RED_BITTER_SPROUTS,
               PURPLE_BITTER_SPROUTS,
               GREEN_BITTER_SPROUTS,
-              HibiscusWoods.COCONUT_THATCH,
-              HibiscusWoods.COCONUT_THATCH_STAIRS,
-              HibiscusWoods.COCONUT_THATCH_CARPET,
-              HibiscusWoods.COCONUT_THATCH_SLAB,
-              HibiscusWoods.EVERGREEN_THATCH,
-              HibiscusWoods.EVERGREEN_THATCH_STAIRS,
-              HibiscusWoods.EVERGREEN_THATCH_CARPET,
-              HibiscusWoods.EVERGREEN_THATCH_SLAB,
-              HibiscusWoods.XERIC_THATCH,
-              HibiscusWoods.XERIC_THATCH_STAIRS,
-              HibiscusWoods.XERIC_THATCH_CARPET,
-              HibiscusWoods.XERIC_THATCH_SLAB,
+              NSWoods.COCONUT_THATCH,
+              NSWoods.COCONUT_THATCH_STAIRS,
+              NSWoods.COCONUT_THATCH_CARPET,
+              NSWoods.COCONUT_THATCH_SLAB,
+              NSWoods.EVERGREEN_THATCH,
+              NSWoods.EVERGREEN_THATCH_STAIRS,
+              NSWoods.EVERGREEN_THATCH_CARPET,
+              NSWoods.EVERGREEN_THATCH_SLAB,
+              NSWoods.XERIC_THATCH,
+              NSWoods.XERIC_THATCH_STAIRS,
+              NSWoods.XERIC_THATCH_CARPET,
+              NSWoods.XERIC_THATCH_SLAB,
               RED_MOSS_BLOCK,
               RED_MOSS_CARPET, ORNATE_SUCCULENT, AUREATE_SUCCULENT, SAGE_SUCCULENT, FOAMY_SUCCULENT, IMPERIAL_SUCCULENT, REGAL_SUCCULENT
       );
       getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(
-              HibiscusMiscBlocks.SCORCHED_GRASS,
-              HibiscusMiscBlocks.TALL_SCORCHED_GRASS,
+              SCORCHED_GRASS,
+              TALL_SCORCHED_GRASS,
               BEACH_GRASS,
               TALL_BEACH_GRASS,
               SEDGE_GRASS,
@@ -216,8 +216,8 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
               GREEN_BITTER_SPROUTS
       );
       getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(
-              HibiscusMiscBlocks.SCORCHED_GRASS,
-              HibiscusMiscBlocks.TALL_SCORCHED_GRASS,
+              SCORCHED_GRASS,
+              TALL_SCORCHED_GRASS,
               BEACH_GRASS,
               TALL_BEACH_GRASS,
               SEDGE_GRASS,
@@ -237,18 +237,18 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
       getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS).add(PINK_SAND);
       getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(PINK_SAND, SANDY_SOIL);
       getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-              .forceAddTag(HibiscusTags.Blocks.KAOLIN)
-              .forceAddTag(HibiscusTags.Blocks.KAOLIN_STAIRS)
-              .forceAddTag(HibiscusTags.Blocks.KAOLIN_SLABS)
-              .forceAddTag(HibiscusTags.Blocks.KAOLIN_BRICKS)
-              .forceAddTag(HibiscusTags.Blocks.KAOLIN_BRICK_STAIRS)
-              .forceAddTag(HibiscusTags.Blocks.KAOLIN_BRICK_SLABS)
-              .forceAddTag(HibiscusTags.Blocks.CHALK)
-              .forceAddTag(HibiscusTags.Blocks.CHALK_STAIRS)
-              .forceAddTag(HibiscusTags.Blocks.CHALK_SLABS)
-              .add(HibiscusMiscBlocks.CHERT_COAL_ORE, HibiscusMiscBlocks.CHERT_COPPER_ORE, HibiscusMiscBlocks.CHERT_DIAMOND_ORE, HibiscusMiscBlocks.CHERT_GOLD_ORE, HibiscusMiscBlocks.CHERT_EMERALD_ORE, HibiscusMiscBlocks.CHERT_IRON_ORE, HibiscusMiscBlocks.CHERT_LAPIS_ORE, HibiscusMiscBlocks.CHERT_REDSTONE_ORE, PINK_SANDSTONE, SMOOTH_PINK_SANDSTONE, CUT_PINK_SANDSTONE, PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS, PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, PINK_SANDSTONE_WALL, CHISELED_PINK_SANDSTONE);
-      getOrCreateTagBuilder(BlockTags.STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS, HibiscusWoods.EVERGREEN_THATCH_STAIRS, HibiscusWoods.COCONUT_THATCH_STAIRS);
-      getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, HibiscusWoods.EVERGREEN_THATCH_SLAB, HibiscusWoods.COCONUT_THATCH_SLAB);
+              .forceAddTag(NSTags.Blocks.KAOLIN)
+              .forceAddTag(NSTags.Blocks.KAOLIN_STAIRS)
+              .forceAddTag(NSTags.Blocks.KAOLIN_SLABS)
+              .forceAddTag(NSTags.Blocks.KAOLIN_BRICKS)
+              .forceAddTag(NSTags.Blocks.KAOLIN_BRICK_STAIRS)
+              .forceAddTag(NSTags.Blocks.KAOLIN_BRICK_SLABS)
+              .forceAddTag(NSTags.Blocks.CHALK)
+              .forceAddTag(NSTags.Blocks.CHALK_STAIRS)
+              .forceAddTag(NSTags.Blocks.CHALK_SLABS)
+              .add(CHERT_COAL_ORE, CHERT_COPPER_ORE, CHERT_DIAMOND_ORE, CHERT_GOLD_ORE, CHERT_EMERALD_ORE, CHERT_IRON_ORE, CHERT_LAPIS_ORE, CHERT_REDSTONE_ORE, PINK_SANDSTONE, SMOOTH_PINK_SANDSTONE, CUT_PINK_SANDSTONE, PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS, PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, PINK_SANDSTONE_WALL, CHISELED_PINK_SANDSTONE);
+      getOrCreateTagBuilder(BlockTags.STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS, NSWoods.EVERGREEN_THATCH_STAIRS, NSWoods.COCONUT_THATCH_STAIRS);
+      getOrCreateTagBuilder(BlockTags.SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB, NSWoods.EVERGREEN_THATCH_SLAB, NSWoods.COCONUT_THATCH_SLAB);
       getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
       getOrCreateTagBuilder(BlockTags.CAULDRONS).add(CHEESE_CAULDRON, MILK_CAULDRON);
       getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(
@@ -273,21 +273,21 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
       getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(PAPER_WALL_HANGING_SIGN);
       getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(new Block[]{PAPER_SIGN});
       getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(new Block[]{PAPER_WALL_SIGN});
-      getOrCreateTagBuilder(BlockTags.COAL_ORES).add(HibiscusMiscBlocks.CHERT_COAL_ORE);
-      getOrCreateTagBuilder(BlockTags.COPPER_ORES).add(HibiscusMiscBlocks.CHERT_COPPER_ORE);
-      getOrCreateTagBuilder(BlockTags.DIAMOND_ORES).add(HibiscusMiscBlocks.CHERT_DIAMOND_ORE);
-      getOrCreateTagBuilder(BlockTags.GOLD_ORES).add(HibiscusMiscBlocks.CHERT_GOLD_ORE);
-      getOrCreateTagBuilder(BlockTags.EMERALD_ORES).add(HibiscusMiscBlocks.CHERT_EMERALD_ORE);
-      getOrCreateTagBuilder(BlockTags.IRON_ORES).add(HibiscusMiscBlocks.CHERT_IRON_ORE);
-      getOrCreateTagBuilder(BlockTags.LAPIS_ORES).add(HibiscusMiscBlocks.CHERT_LAPIS_ORE);
-      getOrCreateTagBuilder(BlockTags.REDSTONE_ORES).add(HibiscusMiscBlocks.CHERT_REDSTONE_ORE);
+      getOrCreateTagBuilder(BlockTags.COAL_ORES).add(CHERT_COAL_ORE);
+      getOrCreateTagBuilder(BlockTags.COPPER_ORES).add(CHERT_COPPER_ORE);
+      getOrCreateTagBuilder(BlockTags.DIAMOND_ORES).add(CHERT_DIAMOND_ORE);
+      getOrCreateTagBuilder(BlockTags.GOLD_ORES).add(CHERT_GOLD_ORE);
+      getOrCreateTagBuilder(BlockTags.EMERALD_ORES).add(CHERT_EMERALD_ORE);
+      getOrCreateTagBuilder(BlockTags.IRON_ORES).add(CHERT_IRON_ORE);
+      getOrCreateTagBuilder(BlockTags.LAPIS_ORES).add(CHERT_LAPIS_ORE);
+      getOrCreateTagBuilder(BlockTags.REDSTONE_ORES).add(CHERT_REDSTONE_ORE);
       getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(CHERT_EMERALD_ORE, CHERT_DIAMOND_ORE, CHERT_GOLD_ORE, CHERT_REDSTONE_ORE);
       getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(CHERT_COPPER_ORE, CHERT_IRON_ORE, CHERT_LAPIS_ORE);
       getOrCreateTagBuilder(BlockTags.STONE_ORE_REPLACEABLES).add(TRAVERTINE.getBase());
       getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(TRAVERTINE.getBase());
       getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(CHERT.getBase());
-      getOrCreateTagBuilder(BlockTags.STAIRS).forceAddTag(HibiscusTags.Blocks.CHALK_STAIRS).forceAddTag(HibiscusTags.Blocks.KAOLIN_STAIRS).forceAddTag(HibiscusTags.Blocks.KAOLIN_BRICK_STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS);
-      getOrCreateTagBuilder(BlockTags.SLABS).forceAddTag(HibiscusTags.Blocks.CHALK_SLABS).forceAddTag(HibiscusTags.Blocks.KAOLIN_SLABS).forceAddTag(HibiscusTags.Blocks.KAOLIN_SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB);
+      getOrCreateTagBuilder(BlockTags.STAIRS).forceAddTag(NSTags.Blocks.CHALK_STAIRS).forceAddTag(NSTags.Blocks.KAOLIN_STAIRS).forceAddTag(NSTags.Blocks.KAOLIN_BRICK_STAIRS).add(PINK_SANDSTONE_STAIRS, SMOOTH_PINK_SANDSTONE_STAIRS);
+      getOrCreateTagBuilder(BlockTags.SLABS).forceAddTag(NSTags.Blocks.CHALK_SLABS).forceAddTag(NSTags.Blocks.KAOLIN_SLABS).forceAddTag(NSTags.Blocks.KAOLIN_SLABS).add(PINK_SANDSTONE_SLAB, SMOOTH_PINK_SANDSTONE_SLAB, CUT_PINK_SANDSTONE_SLAB);
       getOrCreateTagBuilder(BlockTags.WALLS).add(PINK_SANDSTONE_WALL);
    }
 }

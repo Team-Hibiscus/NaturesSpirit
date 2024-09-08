@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.blocks;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
-import net.hibiscus.naturespirit.registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +15,6 @@ import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -90,11 +89,11 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    @Override public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, NSMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          int BITE_STATE = state.get(BITES);
-         Item item = BITE_STATE == 0 ? HibiscusMiscBlocks.WHOLE_PIZZA : BITE_STATE == 1 ? HibiscusMiscBlocks.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? HibiscusMiscBlocks.HALF_PIZZA : HibiscusMiscBlocks.QUARTER_PIZZA;
+         Item item = BITE_STATE == 0 ? NSMiscBlocks.WHOLE_PIZZA : BITE_STATE == 1 ? NSMiscBlocks.THREE_QUARTERS_PIZZA : BITE_STATE == 2 ? NSMiscBlocks.HALF_PIZZA : NSMiscBlocks.QUARTER_PIZZA;
          ItemStack itemStack = new ItemStack(item);
          pizzaBlockEntity.setStackNbt(itemStack, world.getRegistryManager());
          return itemStack;
@@ -108,7 +107,7 @@ public class PizzaBlock extends Block implements BlockEntityProvider {
    }
 
    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, HibiscusMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
+      Optional<PizzaBlockEntity> optionalPizzaBlockEntity = world.getBlockEntity(pos, NSMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE);
       if (optionalPizzaBlockEntity.isPresent()) {
          PizzaBlockEntity pizzaBlockEntity = optionalPizzaBlockEntity.get();
          ItemStack itemStack = player.getStackInHand(player.getActiveHand());

@@ -2,10 +2,9 @@ package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
-import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
-import net.hibiscus.naturespirit.registration.HibiscusDataComponents;
-import net.hibiscus.naturespirit.registration.block_registration.HibiscusMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSDataComponents;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BlockStateComponent;
@@ -21,7 +20,6 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -35,7 +33,7 @@ public class PizzaItem extends AliasedBlockItem {
    public void addBitesToPizza(ItemStack pizza) {
       BlockStateComponent blockStateComponent = pizza.getOrDefault(DataComponentTypes.BLOCK_STATE, BlockStateComponent.DEFAULT);
       NbtComponent blockEntityComponent = pizza.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-      int pizzaSlice = this.asItem() == HibiscusMiscBlocks.WHOLE_PIZZA ? 0 : this.asItem() == HibiscusMiscBlocks.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == HibiscusMiscBlocks.HALF_PIZZA ? 2 : 3;
+      int pizzaSlice = this.asItem() == NSMiscBlocks.WHOLE_PIZZA ? 0 : this.asItem() == NSMiscBlocks.THREE_QUARTERS_PIZZA ? 1 : this.asItem() == NSMiscBlocks.HALF_PIZZA ? 2 : 3;
       pizza.set(DataComponentTypes.BLOCK_STATE, blockStateComponent.with(PizzaBlock.BITES, pizzaSlice));
       if (blockEntityComponent == null) {
          NbtCompound nbtCompound = new NbtCompound();
@@ -52,7 +50,7 @@ public class PizzaItem extends AliasedBlockItem {
       super.appendTooltip(stack, context, tooltip, type);
 
 
-      List <PizzaToppingVariant> list = stack.get(HibiscusDataComponents.TOPPINGS);
+      List <PizzaToppingVariant> list = stack.get(NSDataComponents.TOPPINGS);
       if (list != null) {
          for(PizzaToppingVariant pizzaToppingVariant: list) {
             tooltip.add(Text.translatable("block.natures_spirit.pizza." + pizzaToppingVariant.translationKey().replace(":", ".")).formatted(Formatting.GRAY));
@@ -66,7 +64,7 @@ public class PizzaItem extends AliasedBlockItem {
 
       PlayerEntity holder = (PlayerEntity) user;
       holder.incrementStat(NatureSpirit.EAT_PIZZA_SLICE);
-      List<PizzaToppingVariant> list = stack.get(HibiscusDataComponents.TOPPINGS);
+      List<PizzaToppingVariant> list = stack.get(NSDataComponents.TOPPINGS);
       if (list != null) {
             int foodAmount = 2;
             float saturationModifier = 0.2F;

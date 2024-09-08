@@ -14,7 +14,6 @@ import net.hibiscus.naturespirit.datagen.NSConfiguredFeatures;
 import net.hibiscus.naturespirit.items.AzollaItem;
 import net.hibiscus.naturespirit.items.CheeseArrowItem;
 import net.hibiscus.naturespirit.items.DesertTurnipItem;
-import net.hibiscus.naturespirit.config.HibiscusConfig;
 import net.hibiscus.naturespirit.items.PizzaItem;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
 import net.hibiscus.naturespirit.registration.sets.StoneSet;
@@ -42,47 +41,47 @@ public class NSMiscBlocks {
 
    public static final Block SANDY_SOIL = registerBlock("sandy_soil",
            new Block(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).sounds(BlockSoundGroup.GRAVEL)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Blocks.FARMLAND,
            ItemGroups.NATURAL
    );
    public static final Block PINK_SAND = registerBlock("pink_sand",
-           new ColoredFallingBlock(new ColorCode(14331784), AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sounds(BlockSoundGroup.SAND)), HibiscusItemGroups.NS_ITEM_GROUP
+           new ColoredFallingBlock(new ColorCode(14331784), AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sounds(BlockSoundGroup.SAND)), NSItemGroups.NS_ITEM_GROUP
    );
 
    public static final Block PINK_SANDSTONE = registerBlock("pink_sandstone",
-           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_ITEM_GROUP
+           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), NSItemGroups.NS_ITEM_GROUP
    );
 
    public static final Block CHISELED_PINK_SANDSTONE = registerBlock("chiseled_pink_sandstone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(
-           NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_ITEM_GROUP);
+           NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), NSItemGroups.NS_ITEM_GROUP);
 
    public static final Block CUT_PINK_SANDSTONE = registerBlock("cut_pink_sandstone",
-           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), HibiscusItemGroups.NS_ITEM_GROUP
+           new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(0.8F)), NSItemGroups.NS_ITEM_GROUP
    );
 
    public static final Block SMOOTH_PINK_SANDSTONE = registerBlock("smooth_pink_sandstone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(
-           NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_ITEM_GROUP);
+           NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), NSItemGroups.NS_ITEM_GROUP);
 
    public static final Block PINK_SANDSTONE_STAIRS = registerBlock(
            "pink_sandstone_stairs",
-           new StairsBlock(PINK_SANDSTONE.getDefaultState(), AbstractBlock.Settings.copy(PINK_SANDSTONE)), HibiscusItemGroups.NS_ITEM_GROUP
+           new StairsBlock(PINK_SANDSTONE.getDefaultState(), AbstractBlock.Settings.copy(PINK_SANDSTONE)), NSItemGroups.NS_ITEM_GROUP
    );
 
    public static final Block SMOOTH_PINK_SANDSTONE_STAIRS = registerBlock("smooth_pink_sandstone_stairs",
-           new StairsBlock(SMOOTH_PINK_SANDSTONE.getDefaultState(), AbstractBlock.Settings.copy(SMOOTH_PINK_SANDSTONE)), HibiscusItemGroups.NS_ITEM_GROUP
+           new StairsBlock(SMOOTH_PINK_SANDSTONE.getDefaultState(), AbstractBlock.Settings.copy(SMOOTH_PINK_SANDSTONE)), NSItemGroups.NS_ITEM_GROUP
    );
 
    public static final Block PINK_SANDSTONE_SLAB = registerBlock("pink_sandstone_slab", new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(
-           NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_ITEM_GROUP);
+           NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), NSItemGroups.NS_ITEM_GROUP);
 
    public static final Block CUT_PINK_SANDSTONE_SLAB = registerBlock("cut_pink_sandstone_slab",
-           new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), HibiscusItemGroups.NS_ITEM_GROUP
+           new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2.0F, 6.0F)), NSItemGroups.NS_ITEM_GROUP
    );
 
-   public static final Block SMOOTH_PINK_SANDSTONE_SLAB = registerBlock("smooth_pink_sandstone_slab", new SlabBlock(AbstractBlock.Settings.copy(SMOOTH_PINK_SANDSTONE)), HibiscusItemGroups.NS_ITEM_GROUP);
+   public static final Block SMOOTH_PINK_SANDSTONE_SLAB = registerBlock("smooth_pink_sandstone_slab", new SlabBlock(AbstractBlock.Settings.copy(SMOOTH_PINK_SANDSTONE)), NSItemGroups.NS_ITEM_GROUP);
 
-   public static final Block PINK_SANDSTONE_WALL = registerBlock("pink_sandstone_wall", new WallBlock(AbstractBlock.Settings.copy(PINK_SANDSTONE).solid()), HibiscusItemGroups.NS_ITEM_GROUP);
+   public static final Block PINK_SANDSTONE_WALL = registerBlock("pink_sandstone_wall", new WallBlock(AbstractBlock.Settings.copy(PINK_SANDSTONE).solid()), NSItemGroups.NS_ITEM_GROUP);
 
    public static final Block TALL_FRIGID_GRASS = registerPlantBlock("tall_frigid_grass",
            new SemiTallGrassBlock(AbstractBlock.Settings
@@ -408,7 +407,7 @@ public class NSMiscBlocks {
            0.4f
    );
 
-   public static final Block AZOLLA = HibiscusRegistryHelper.registerPlantBlock("azolla",
+   public static final Block AZOLLA = NSRegistryHelper.registerPlantBlock("azolla",
            new AzollaBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.GREEN)
@@ -487,7 +486,7 @@ public class NSMiscBlocks {
 
    public static final Block SHIITAKE_MUSHROOM_BLOCK = registerBlock("shiitake_mushroom_block",
            new MushroomBlock(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(NoteBlockInstrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Blocks.RED_MUSHROOM_BLOCK,
            ItemGroups.NATURAL
    );
@@ -507,7 +506,7 @@ public class NSMiscBlocks {
 
    public static final Block GRAY_POLYPORE_BLOCK = registerBlock("gray_polypore_block",
            new MushroomBlock(AbstractBlock.Settings.create().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(0.2F).sounds(BlockSoundGroup.WOOD).burnable()),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            SHIITAKE_MUSHROOM_BLOCK,
            ItemGroups.NATURAL
    );
@@ -540,7 +539,7 @@ public class NSMiscBlocks {
    public static final FlowerSet SILVERBUSH = new FlowerSet("silverbush", RUBY_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
 
-   public static final Block HELVOLA = HibiscusRegistryHelper.registerPlantBlock("helvola",
+   public static final Block HELVOLA = NSRegistryHelper.registerPlantBlock("helvola",
            new WaterFlowerbedBlock(AbstractBlock.Settings
                    .create()
                    .pistonBehavior(PistonBehavior.DESTROY)
@@ -564,7 +563,7 @@ public class NSMiscBlocks {
            ItemGroups.NATURAL
    );
 
-   public static final Block LOTUS_FLOWER = HibiscusRegistryHelper.registerPlantBlock("lotus_flower",
+   public static final Block LOTUS_FLOWER = NSRegistryHelper.registerPlantBlock("lotus_flower",
            new LotusFlowerBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.PINK)
@@ -591,10 +590,10 @@ public class NSMiscBlocks {
            .breakInstantly()
            .sounds(BlockSoundGroup.LILY_PAD), LOTUS_FLOWER), NSItemGroups.NS_ITEM_GROUP, LOTUS_FLOWER, 0.2F);
 
-   public static final Block ALLUAUDIA = registerPlantBlock("alluaudia", new GrowingBranchingTrunkBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_ITEM_GROUP, Items.CACTUS, .2f);
-   public static final Block STRIPPED_ALLUAUDIA = registerPlantBlock("stripped_alluaudia", new GrowingBranchingTrunkBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), HibiscusItemGroups.NS_ITEM_GROUP, HibiscusMiscBlocks.ALLUAUDIA, .2f);
-   public static final Block ALLUAUDIA_BUNDLE = registerPlantBlock("alluaudia_bundle", new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_ITEM_GROUP, STRIPPED_ALLUAUDIA, .2f);
-   public static final Block STRIPPED_ALLUAUDIA_BUNDLE = registerPlantBlock("stripped_alluaudia_bundle", new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), HibiscusItemGroups.NS_ITEM_GROUP, ALLUAUDIA_BUNDLE, .2f);
+   public static final Block ALLUAUDIA = registerPlantBlock("alluaudia", new GrowingBranchingTrunkBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), NSItemGroups.NS_ITEM_GROUP, Items.CACTUS, .2f);
+   public static final Block STRIPPED_ALLUAUDIA = registerPlantBlock("stripped_alluaudia", new GrowingBranchingTrunkBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.5f).strength(.5f).notSolid()), NSItemGroups.NS_ITEM_GROUP, NSMiscBlocks.ALLUAUDIA, .2f);
+   public static final Block ALLUAUDIA_BUNDLE = registerPlantBlock("alluaudia_bundle", new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), NSItemGroups.NS_ITEM_GROUP, STRIPPED_ALLUAUDIA, .2f);
+   public static final Block STRIPPED_ALLUAUDIA_BUNDLE = registerPlantBlock("stripped_alluaudia_bundle", new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).nonOpaque().sounds(BlockSoundGroup.VINE).hardness(.6f).strength(.6f)), NSItemGroups.NS_ITEM_GROUP, ALLUAUDIA_BUNDLE, .2f);
 
 
 
@@ -606,7 +605,7 @@ public class NSMiscBlocks {
 
    public static final Item GREEN_OLIVES = registerPlantItem("green_olives",
            new Item(new Item.Settings().food(GREEN_OLIVE_COMPONENT)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.BEETROOT,
            ItemGroups.FOOD_AND_DRINK,
            0.3F
@@ -614,7 +613,7 @@ public class NSMiscBlocks {
 
    public static final Item BLACK_OLIVES = registerPlantItem("black_olives",
            new Item(new Item.Settings().food(BLACK_OLIVE_COMPONENT)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            GREEN_OLIVES,
            ItemGroups.FOOD_AND_DRINK,
            0.3F
@@ -622,15 +621,15 @@ public class NSMiscBlocks {
 
    public static final Block DESERT_TURNIP_ROOT_BLOCK = registerBlock("desert_turnip_root_block",
            new PillarBlock(AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.SPRUCE_BROWN).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Blocks.SHROOMLIGHT,
            ItemGroups.NATURAL
    );
 
    public static final Block DESERT_TURNIP_BLOCK = registerBlock("desert_turnip_block",
            new DesertTurnipBlock(AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.PALE_PURPLE).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
-           HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK,
+           NSItemGroups.NS_ITEM_GROUP,
+           NSMiscBlocks.DESERT_TURNIP_ROOT_BLOCK,
            ItemGroups.NATURAL
    );
 
@@ -675,7 +674,7 @@ public class NSMiscBlocks {
    public static final FoodComponent STANDARD_PIZZA_COMPONENT = (new FoodComponent.Builder()).nutrition(2).saturationModifier(0.2F).build();
 
    public static final Block PIZZA_BLOCK = registerBlock("pizza_block", new PizzaBlock(AbstractBlock.Settings.copy(Blocks.CAKE)));
-   public static final BlockEntityType <PizzaBlockEntity> PIZZA_BLOCK_ENTITY_TYPE = HibiscusRegistryHelper.registerBlockEntity("pizza_block_entity", BlockEntityType.Builder.create(PizzaBlockEntity::new, PIZZA_BLOCK));
+   public static final BlockEntityType <PizzaBlockEntity> PIZZA_BLOCK_ENTITY_TYPE = NSRegistryHelper.registerBlockEntity("pizza_block_entity", BlockEntityType.Builder.create(PizzaBlockEntity::new, PIZZA_BLOCK));
 
    public static final Item WHOLE_PIZZA = registerItem("whole_pizza",
            new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT)),
@@ -713,14 +712,14 @@ public class NSMiscBlocks {
 
    public static final Block LARGE_CALCITE_BUD = registerBlock("large_calcite_bud",
            new AmethystClusterBlock(4, 3, AbstractBlock.Settings.copy(CALCITE_CLUSTER).sounds(BlockSoundGroup.CALCITE).solid().pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            CALCITE_CLUSTER,
            ItemGroups.NATURAL
    );
 
    public static final Block SMALL_CALCITE_BUD = registerBlock("small_calcite_bud",
            new AmethystClusterBlock(3, 4, AbstractBlock.Settings.copy(CALCITE_CLUSTER).sounds(BlockSoundGroup.CALCITE).solid().pistonBehavior(PistonBehavior.DESTROY)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            LARGE_CALCITE_BUD,
            ItemGroups.NATURAL
    );
@@ -731,49 +730,49 @@ public class NSMiscBlocks {
 
    public static final Block CHERT_GOLD_ORE = registerBlock("chert_gold_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.GOLD_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.GOLD_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_IRON_ORE = registerBlock("chert_iron_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.IRON_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.IRON_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_COAL_ORE = registerBlock("chert_coal_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.copyShallow(Blocks.COAL_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.COAL_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_LAPIS_ORE = registerBlock("chert_lapis_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copyShallow(Blocks.LAPIS_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.LAPIS_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_DIAMOND_ORE = registerBlock("chert_diamond_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.DIAMOND_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.DIAMOND_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_REDSTONE_ORE = registerBlock("chert_redstone_ore",
            new RedstoneOreBlock(AbstractBlock.Settings.copyShallow(Blocks.REDSTONE_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.REDSTONE_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_EMERALD_ORE = registerBlock("chert_emerald_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.EMERALD_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.EMERALD_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_COPPER_ORE = registerBlock("chert_copper_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.COPPER_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           NSItemGroups.NS_ITEM_GROUP,
            Items.COPPER_ORE,
            ItemGroups.NATURAL
    );
@@ -783,74 +782,74 @@ public class NSMiscBlocks {
    public static final WoodType PAPER_WOOD_TYPE = new WoodTypeBuilder().register(Identifier.of(MOD_ID, "paper"), PAPER_BLOCK_SET);
 
    public static final Block PAPER_BLOCK = registerBlock("paper_block",
-           new Block(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new Block(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
+           NSItemGroups.NS_ITEM_GROUP,
            Items.WARPED_BUTTON,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block PAPER_PANEL = registerBlock("paper_panel",
-           new PaneBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new PaneBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
+           NSItemGroups.NS_ITEM_GROUP,
            PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block PAPER_DOOR = registerDoorBlock("paper_door",
-           new DoorBlock(PAPER_BLOCK_SET, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getDoor())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new DoorBlock(PAPER_BLOCK_SET, AbstractBlock.Settings.copy(NSWoods.SUGI.getDoor())),
+           NSItemGroups.NS_ITEM_GROUP,
            PAPER_PANEL
    );
    public static final Block PAPER_TRAPDOOR = registerDoorBlock("paper_trapdoor", new TrapdoorBlock(           PAPER_BLOCK_SET,
-           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
-   ), HibiscusItemGroups.NS_ITEM_GROUP, PAPER_DOOR);
+           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(NSRegistryHelper::never).nonOpaque()
+   ), NSItemGroups.NS_ITEM_GROUP, PAPER_DOOR);
    public static final Block FRAMED_PAPER_BLOCK = registerBlock("framed_paper_block",
-           new Block(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new Block(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
+           NSItemGroups.NS_ITEM_GROUP,
            PAPER_TRAPDOOR,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block FRAMED_PAPER_PANEL = registerBlock("framed_paper_panel",
-           new PaneBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new PaneBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
+           NSItemGroups.NS_ITEM_GROUP,
            FRAMED_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block FRAMED_PAPER_DOOR = registerDoorBlock("framed_paper_door",
-           new DoorBlock(PAPER_BLOCK_SET, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getDoor())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new DoorBlock(PAPER_BLOCK_SET, AbstractBlock.Settings.copy(NSWoods.SUGI.getDoor())),
+           NSItemGroups.NS_ITEM_GROUP,
            FRAMED_PAPER_PANEL
    );
    public static final Block FRAMED_PAPER_TRAPDOOR = registerDoorBlock("framed_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
-           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
+           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(NSRegistryHelper::never).nonOpaque()
 
-   ), HibiscusItemGroups.NS_ITEM_GROUP, FRAMED_PAPER_DOOR);
+   ), NSItemGroups.NS_ITEM_GROUP, FRAMED_PAPER_DOOR);
    public static final Block BLOOMING_PAPER_BLOCK = registerBlock("blooming_paper_block",
-           new GlazedTerracottaBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new GlazedTerracottaBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
+           NSItemGroups.NS_ITEM_GROUP,
            FRAMED_PAPER_TRAPDOOR,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block BLOOMING_PAPER_PANEL = registerBlock("blooming_paper_panel",
-           new PaneBlock(AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getPlanks())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new PaneBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
+           NSItemGroups.NS_ITEM_GROUP,
            BLOOMING_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block BLOOMING_PAPER_DOOR = registerDoorBlock("blooming_paper_door",
-           new DoorBlock(PAPER_BLOCK_SET, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getDoor())),
-           HibiscusItemGroups.NS_ITEM_GROUP,
+           new DoorBlock(PAPER_BLOCK_SET, AbstractBlock.Settings.copy(NSWoods.SUGI.getDoor())),
+           NSItemGroups.NS_ITEM_GROUP,
            BLOOMING_PAPER_PANEL
    );
    public static final Block BLOOMING_PAPER_TRAPDOOR = registerDoorBlock("blooming_paper_trapdoor", new TrapdoorBlock(PAPER_BLOCK_SET,
-           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(HibiscusRegistryHelper::never).nonOpaque()
-   ), HibiscusItemGroups.NS_ITEM_GROUP, BLOOMING_PAPER_DOOR);
+           AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).strength(3.0f).sounds(BlockSoundGroup.WOOD).allowsSpawning(NSRegistryHelper::never).nonOpaque()
+   ), NSItemGroups.NS_ITEM_GROUP, BLOOMING_PAPER_DOOR);
 
 
-   public static final Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign())));
-   public static final Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getSign()).dropsLike(PAPER_SIGN)));
-   public static final Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign())));
-   public static final Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(HibiscusWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN)));
-   public static final Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new Item.Settings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), HibiscusItemGroups.NS_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
-   public static final Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)), HibiscusItemGroups.NS_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
+   public static final Block PAPER_SIGN = registerBlock("paper_sign", new SignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(NSWoods.SUGI.getSign())));
+   public static final Block PAPER_WALL_SIGN = registerBlock("paper_wall_sign", new WallSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(NSWoods.SUGI.getSign()).dropsLike(PAPER_SIGN)));
+   public static final Block PAPER_HANGING_SIGN =  registerBlock("paper_hanging_sign", new HangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(NSWoods.SUGI.getHangingSign())));
+   public static final Block PAPER_WALL_HANGING_SIGN = registerBlock("paper_wall_hanging_sign", new WallHangingSignBlock(PAPER_WOOD_TYPE, AbstractBlock.Settings.copy(NSWoods.SUGI.getHangingSign()).dropsLike(PAPER_HANGING_SIGN)));
+   public static final Item PAPER_SIGN_ITEM = registerItem( "paper_sign", new SignItem(new Item.Settings().maxCount(16), PAPER_SIGN, PAPER_WALL_SIGN), NSItemGroups.NS_ITEM_GROUP, Items.WARPED_SIGN, ItemGroups.FUNCTIONAL);
+   public static final Item PAPER_HANGING_SIGN_ITEM = registerItem( "paper_hanging_sign", new HangingSignItem(PAPER_HANGING_SIGN, PAPER_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)), NSItemGroups.NS_ITEM_GROUP, PAPER_SIGN_ITEM, ItemGroups.FUNCTIONAL);
 
    public static void registerMiscBlocks() {
       NSColoredBlocks.registerColoredBlocks();

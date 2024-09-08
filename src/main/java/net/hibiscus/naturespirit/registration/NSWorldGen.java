@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit.registration;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarverConfig;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarver;
@@ -117,7 +117,7 @@ public class NSWorldGen {
            new LeveledRandomPatch(RandomPatchFeatureConfig.CODEC)
    );
 
-   private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, MapCodec<P> codec) {
+   private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, MapCodec <P> codec) {
       return (FoliagePlacerType)Registry.register(Registries.FOLIAGE_PLACER_TYPE, Identifier.of (MOD_ID, id), new FoliagePlacerType(codec));
    }
    private static <P extends TrunkPlacer> TrunkPlacerType<P> registerTrunkPlacer(String id, MapCodec<P> codec) {

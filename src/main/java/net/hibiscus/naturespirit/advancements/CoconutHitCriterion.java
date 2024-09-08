@@ -2,7 +2,7 @@ package net.hibiscus.naturespirit.advancements;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.hibiscus.naturespirit.registration.HibiscusCriteria;
+import net.hibiscus.naturespirit.registration.NSCriteria;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.entity.Entity;
@@ -36,7 +36,7 @@ public class CoconutHitCriterion extends AbstractCriterion <CoconutHitCriterion.
          return instance.group(EntityPredicate.LOOT_CONTEXT_PREDICATE_CODEC.optionalFieldOf("player").forGetter(CoconutHitCriterion.Conditions::player), EntityPredicate.LOOT_CONTEXT_PREDICATE_CODEC.optionalFieldOf("projectile").forGetter(CoconutHitCriterion.Conditions::projectile)).apply(instance, CoconutHitCriterion.Conditions::new);
       });
       public static AdvancementCriterion <CoconutHitCriterion.Conditions> create(Optional<LootContextPredicate> projectile) {
-         return HibiscusCriteria.COCONUT_HIT_CRITERION.create(new CoconutHitCriterion.Conditions(Optional.empty(), projectile));
+         return NSCriteria.COCONUT_HIT_CRITERION.create(new CoconutHitCriterion.Conditions(Optional.empty(), projectile));
       }
 
       public boolean test(LootContext projectileContext) {

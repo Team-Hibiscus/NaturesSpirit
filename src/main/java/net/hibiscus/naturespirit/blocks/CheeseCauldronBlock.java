@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.hibiscus.naturespirit.util.NSCauldronBehavior;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;

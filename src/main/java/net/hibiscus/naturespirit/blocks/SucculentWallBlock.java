@@ -3,7 +3,7 @@ package net.hibiscus.naturespirit.blocks;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.util.HibiscusTags;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -34,7 +34,7 @@ public class SucculentWallBlock
 
    public SucculentWallBlock(AbstractBlock.Settings settings) {
       super(settings);
-      this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(WATERLOGGED, false));
+      this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
    }
 
    @Override
@@ -84,7 +84,7 @@ public class SucculentWallBlock
       World worldView = ctx.getWorld();
       BlockPos blockPos = ctx.getBlockPos();
       for (Direction direction : directions = ctx.getPlacementDirections()) {
-         if (!direction.getAxis().isHorizontal() || !(blockState = (BlockState)blockState.with(FACING, direction.getOpposite())).canPlaceAt(worldView, blockPos)) continue;
+         if (!direction.getAxis().isHorizontal() || !(blockState = blockState.with(FACING, direction.getOpposite())).canPlaceAt(worldView, blockPos)) continue;
          return blockState;
       }
       return null;

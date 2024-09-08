@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.items;
 
 import net.hibiscus.naturespirit.entity.NSBoatEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.item.ItemStack;

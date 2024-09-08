@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.blocks;
 
 import net.hibiscus.naturespirit.registration.NSTags;
 import net.minecraft.block.*;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;

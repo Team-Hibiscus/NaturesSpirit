@@ -33,7 +33,7 @@ public class NSEntityTypes {
 //      return entityType;
 //   }
 
-   public static EntityType <BoatEntity> createBoatType(boolean chest, HibiscusBoatEntity.HibiscusBoat boat) {
+   public static EntityType <BoatEntity> createBoatType(boolean chest, NSBoatEntity.HibiscusBoat boat) {
       return EntityType.Builder.create(boat.factory(chest), SpawnGroup.MISC).dimensions(1.375f, 0.5625f).maxTrackingRange(10).build();
    }
 

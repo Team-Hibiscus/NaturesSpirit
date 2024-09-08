@@ -3,10 +3,10 @@ package net.hibiscus.naturespirit.registration;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.CoconutBlock;
 import net.hibiscus.naturespirit.blocks.SproutingCoconutBlock;
+import net.hibiscus.naturespirit.datagen.NSConfiguredFeatures;
 import net.hibiscus.naturespirit.entity.NSBoatEntity;
 import net.hibiscus.naturespirit.items.CoconutHalfItem;
-import net.hibiscus.naturespirit.registration.NSItemGroups;
-import net.hibiscus.naturespirit.registration.WoodSet;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.component.type.FoodComponent;
@@ -35,8 +35,8 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.REDWOOD,
            WoodSet.WoodPreset.FROSTABLE,
            false,
-           Optional.of(HibiscusConfiguredFeatures.REDWOOD_TREE),
-           Optional.of(HibiscusConfiguredFeatures.LARGE_REDWOOD_TREE)
+           Optional.of(NSConfiguredFeatures.REDWOOD_TREE),
+           Optional.of(NSConfiguredFeatures.LARGE_REDWOOD_TREE)
    );
    public static final WoodSet SUGI = new WoodSet(
            Identifier.of(MOD_ID, "sugi"),
@@ -51,7 +51,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.SUGI,
            WoodSet.WoodPreset.FANCY,
            true,
-           Optional.of(HibiscusConfiguredFeatures.SUGI_TREE),
+           Optional.of(NSConfiguredFeatures.SUGI_TREE),
            Optional.empty()
    );
 
@@ -68,7 +68,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.WISTERIA,
            WoodSet.WoodPreset.WISTERIA,
            false,
-           HibiscusConfiguredFeatures.WHITE_WISTERIA_TREE
+           NSConfiguredFeatures.WHITE_WISTERIA_TREE
    );
    public static final WoodSet FIR = new WoodSet(
            Identifier.of(MOD_ID, "fir"),
@@ -83,7 +83,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.FIR,
            WoodSet.WoodPreset.FROSTABLE,
            false,
-           HibiscusConfiguredFeatures.FIR_TREE
+           NSConfiguredFeatures.FIR_TREE
    );
    public static final WoodSet WILLOW = new WoodSet(
            Identifier.of(MOD_ID, "willow"),
@@ -98,7 +98,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.WILLOW,
            WoodSet.WoodPreset.WILLOW,
            false,
-           HibiscusConfiguredFeatures.WILLOW_TREE
+           NSConfiguredFeatures.WILLOW_TREE
    );
    public static final WoodSet ASPEN = new WoodSet(
            Identifier.of(MOD_ID, "aspen"),
@@ -113,7 +113,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.ASPEN,
            WoodSet.WoodPreset.DEFAULT,
            false,
-           HibiscusConfiguredFeatures.ASPEN_TREE
+           NSConfiguredFeatures.ASPEN_TREE
    );
    public static final WoodSet MAPLE = new WoodSet(
            Identifier.of(MOD_ID,"maple"),
@@ -128,7 +128,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.MAPLE,
            WoodSet.WoodPreset.MAPLE,
            false,
-           HibiscusConfiguredFeatures.RED_MAPLE_TREE
+           NSConfiguredFeatures.RED_MAPLE_TREE
    );
    public static final WoodSet CYPRESS = new WoodSet(
            Identifier.of(MOD_ID, "cypress"),
@@ -143,7 +143,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.CYPRESS,
            WoodSet.WoodPreset.DEFAULT,
            false,
-           HibiscusConfiguredFeatures.CYPRESS_TREE
+           NSConfiguredFeatures.CYPRESS_TREE
    );
    public static final WoodSet OLIVE = new WoodSet(
            Identifier.of(MOD_ID, "olive"),
@@ -158,7 +158,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.OLIVE,
            WoodSet.WoodPreset.DEFAULT,
            false,
-           HibiscusConfiguredFeatures.OLIVE_TREE
+           NSConfiguredFeatures.OLIVE_TREE
    );
    public static final WoodSet JOSHUA = new WoodSet(
            Identifier.of(MOD_ID, "joshua"),
@@ -173,7 +173,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.JOSHUA,
            WoodSet.WoodPreset.JOSHUA,
            true,
-           HibiscusConfiguredFeatures.JOSHUA_TREE
+           NSConfiguredFeatures.JOSHUA_TREE
    );
    public static final WoodSet GHAF = new WoodSet(
            Identifier.of(MOD_ID, "ghaf"),
@@ -188,7 +188,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.GHAF,
            WoodSet.WoodPreset.SANDY,
            false,
-           HibiscusConfiguredFeatures.GHAF_TREE
+           NSConfiguredFeatures.GHAF_TREE
    );
 
    public static final Block XERIC_THATCH = registerBlock("xeric_thatch",
@@ -214,7 +214,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.PALO_VERDE,
            WoodSet.WoodPreset.SANDY,
            false,
-           HibiscusConfiguredFeatures.PALO_VERDE_TREE
+           NSConfiguredFeatures.PALO_VERDE_TREE
    );
    public static final WoodSet COCONUT = new WoodSet(
            Identifier.of(MOD_ID, "coconut"),
@@ -229,7 +229,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.COCONUT,
            WoodSet.WoodPreset.NO_SAPLING,
            true,
-           HibiscusConfiguredFeatures.COCONUT_TREE
+           NSConfiguredFeatures.COCONUT_TREE
    );
 
    public static final Block COCONUT_THATCH = registerBlock("coconut_thatch",
@@ -246,7 +246,7 @@ public class NSWoods {
            AbstractBlock.Settings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), NSItemGroups.NS_ITEM_GROUP, Items.SWEET_BERRIES, 0.2F);
    public static final Block COCONUT_SPROUT = registerPlantBlock("coconut_sprout", new SproutingCoconutBlock(
-           new SaplingGenerator(NatureSpirit.MOD_ID + "_coconut", Optional.empty(), Optional.of(HibiscusConfiguredFeatures.COCONUT_TREE), Optional.empty()),
+           new SaplingGenerator(NatureSpirit.MOD_ID + "_coconut", Optional.empty(), Optional.of(NSConfiguredFeatures.COCONUT_TREE), Optional.empty()),
            AbstractBlock.Settings.create().strength(1.0F).sounds(BlockSoundGroup.GRASS).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)
    ), NSItemGroups.NS_ITEM_GROUP, PALO_VERDE.getSapling(), 0.2F);
    public static final FoodComponent COCONUT_COMPONENT = (new FoodComponent.Builder()).nutrition(6).saturationModifier(0.6F).build();
@@ -278,7 +278,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.CEDAR,
            WoodSet.WoodPreset.DEFAULT,
            false,
-           HibiscusConfiguredFeatures.CEDAR_TREE
+           NSConfiguredFeatures.CEDAR_TREE
    );
 
    public static final WoodSet LARCH = new WoodSet(
@@ -294,7 +294,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.LARCH,
            WoodSet.WoodPreset.FROSTABLE,
            false,
-           HibiscusConfiguredFeatures.LARCH_TREE
+           NSConfiguredFeatures.LARCH_TREE
    );
    public static final Block EVERGREEN_THATCH = registerBlock("evergreen_thatch",
            new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_GRAY).strength(0.4F).sounds(BlockSoundGroup.GRASS)), NSItemGroups.NS_ITEM_GROUP, LARCH.getChestBoatItem());
@@ -321,7 +321,7 @@ public class NSWoods {
               WoodSet.WoodPreset.DEFAULT,
               true,
               Optional.empty(),
-              Optional.of(HibiscusConfiguredFeatures.MAHOGANY_TREE)
+              Optional.of(NSConfiguredFeatures.MAHOGANY_TREE)
       );
 
    public static final WoodSet SAXAUL = new WoodSet(
@@ -337,7 +337,7 @@ public class NSWoods {
            NSBoatEntity.HibiscusBoat.SAXAUL,
            WoodSet.WoodPreset.SANDY,
            false,
-           HibiscusConfiguredFeatures.SAXAUL_TREE
+           NSConfiguredFeatures.SAXAUL_TREE
    );
 
 //   public static final WoodSet BANYAN = new WoodSet(

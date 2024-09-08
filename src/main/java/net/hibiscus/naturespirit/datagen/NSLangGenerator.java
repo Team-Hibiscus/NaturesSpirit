@@ -102,10 +102,10 @@ class NSLangGenerator extends FabricLanguageProvider {
 
    @Override public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
       generateBiomeTranslations(translationBuilder);
-      generateWoodTranslations(HibiscusRegistryHelper.WoodHashMap ,translationBuilder);
-      generateStoneTranslations(HibiscusRegistryHelper.StoneHashMap ,translationBuilder);
-      generateFlowerTranslations(HibiscusRegistryHelper.FlowerHashMap ,translationBuilder);
-      translationBuilder.add(HibiscusItemGroups.NS_ITEM_GROUP, "Nature's Spirit");
+      generateWoodTranslations(NSRegistryHelper.WoodHashMap ,translationBuilder);
+      generateStoneTranslations(NSRegistryHelper.StoneHashMap ,translationBuilder);
+      generateFlowerTranslations(NSRegistryHelper.FlowerHashMap ,translationBuilder);
+      translationBuilder.add(NSItemGroups.NS_ITEM_GROUP, "Nature's Spirit");
       translationBuilder.add("stat.minecraft.eat_pizza_slice", "Pizza Slices Eaten");
 
 
@@ -123,9 +123,9 @@ class NSLangGenerator extends FabricLanguageProvider {
       translationBuilder.add("advancements.adventure.sandy_forage.title", "Sandy Forage");
 
       translationBuilder.add(CHALK_POWDER, "Chalk Powder");
-      translationBuilder.add(HibiscusMiscBlocks.GREEN_OLIVES, "Green Olives");
-      translationBuilder.add(HibiscusMiscBlocks.BLACK_OLIVES, "Black Olives");
-      translationBuilder.add(HibiscusMiscBlocks.DESERT_TURNIP, "Desert Turnip");
+      translationBuilder.add(NSMiscBlocks.GREEN_OLIVES, "Green Olives");
+      translationBuilder.add(NSMiscBlocks.BLACK_OLIVES, "Black Olives");
+      translationBuilder.add(NSMiscBlocks.DESERT_TURNIP, "Desert Turnip");
       translationBuilder.add(CALCITE_SHARD, "Calcite Shard");
       translationBuilder.add(SMALL_CALCITE_BUD, "Small Calcite Bud");
       translationBuilder.add(LARGE_CALCITE_BUD, "Large Calcite Bud");
@@ -170,10 +170,10 @@ class NSLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(PAPER_PANEL, translationBuilder);
       generateBlockTranslations(FRAMED_PAPER_PANEL, translationBuilder);
       generateBlockTranslations(BLOOMING_PAPER_PANEL, translationBuilder);
-      generateBlockTranslations(HibiscusColoredBlocks.PAPER_LANTERN, translationBuilder);
-      generateBlockTranslations(HibiscusMiscBlocks.CATTAIL, translationBuilder);
-      generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_ROOT_BLOCK, translationBuilder);
-      generateBlockTranslations(HibiscusMiscBlocks.DESERT_TURNIP_BLOCK, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.PAPER_LANTERN, translationBuilder);
+      generateBlockTranslations(NSMiscBlocks.CATTAIL, translationBuilder);
+      generateBlockTranslations(NSMiscBlocks.DESERT_TURNIP_ROOT_BLOCK, translationBuilder);
+      generateBlockTranslations(NSMiscBlocks.DESERT_TURNIP_BLOCK, translationBuilder);
       translationBuilder.add(HELVOLA_PAD_ITEM, "Helvola Pad");
       generateItemTranslations(HELVOLA_FLOWER_ITEM, translationBuilder);
       generateBlockTranslations(AZOLLA, translationBuilder);
@@ -195,35 +195,32 @@ class NSLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(CHERT_LAPIS_ORE, translationBuilder);
       generateBlockTranslations(CHERT_REDSTONE_ORE, translationBuilder);
 
-      generateBlockTranslations(HibiscusColoredBlocks.KAOLIN, translationBuilder);
-      generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_BRICKS, translationBuilder);
-      generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_SLAB, translationBuilder);
-      generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_BRICK_SLAB, translationBuilder);
-      generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_STAIRS, translationBuilder);
-      generateBlockTranslations(HibiscusColoredBlocks.KAOLIN_BRICK_STAIRS, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.KAOLIN, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.KAOLIN_BRICKS, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.KAOLIN_SLAB, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.KAOLIN_BRICK_SLAB, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.KAOLIN_STAIRS, translationBuilder);
+      generateBlockTranslations(NSColoredBlocks.KAOLIN_BRICK_STAIRS, translationBuilder);
 
-      generateBlockTranslations(HibiscusWoods.COCONUT_BLOCK, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.YOUNG_COCONUT_BLOCK, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.COCONUT_SPROUT, translationBuilder);
-      generateItemTranslations(HibiscusWoods.COCONUT_SHELL, translationBuilder);
-      generateItemTranslations(HibiscusWoods.YOUNG_COCONUT_SHELL, translationBuilder);
-      generateItemTranslations(HibiscusWoods.COCONUT_HALF, translationBuilder);
-      generateItemTranslations(HibiscusWoods.YOUNG_COCONUT_HALF, translationBuilder);
+      generateBlockTranslations(NSWoods.COCONUT_BLOCK, translationBuilder);
+      generateBlockTranslations(NSWoods.COCONUT_SPROUT, translationBuilder);
+      generateItemTranslations(NSWoods.COCONUT_SHELL, translationBuilder);
+      generateItemTranslations(NSWoods.COCONUT_HALF, translationBuilder);
 
-      generateBlockTranslations(HibiscusWoods.COCONUT_THATCH, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_SLAB, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_STAIRS, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.COCONUT_THATCH_CARPET, translationBuilder);
+      generateBlockTranslations(NSWoods.COCONUT_THATCH, translationBuilder);
+      generateBlockTranslations(NSWoods.COCONUT_THATCH_SLAB, translationBuilder);
+      generateBlockTranslations(NSWoods.COCONUT_THATCH_STAIRS, translationBuilder);
+      generateBlockTranslations(NSWoods.COCONUT_THATCH_CARPET, translationBuilder);
 
-      generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_SLAB, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_STAIRS, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.EVERGREEN_THATCH_CARPET, translationBuilder);
+      generateBlockTranslations(NSWoods.EVERGREEN_THATCH, translationBuilder);
+      generateBlockTranslations(NSWoods.EVERGREEN_THATCH_SLAB, translationBuilder);
+      generateBlockTranslations(NSWoods.EVERGREEN_THATCH_STAIRS, translationBuilder);
+      generateBlockTranslations(NSWoods.EVERGREEN_THATCH_CARPET, translationBuilder);
 
-      generateBlockTranslations(HibiscusWoods.XERIC_THATCH, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.XERIC_THATCH_SLAB, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.XERIC_THATCH_STAIRS, translationBuilder);
-      generateBlockTranslations(HibiscusWoods.XERIC_THATCH_CARPET, translationBuilder);
+      generateBlockTranslations(NSWoods.XERIC_THATCH, translationBuilder);
+      generateBlockTranslations(NSWoods.XERIC_THATCH_SLAB, translationBuilder);
+      generateBlockTranslations(NSWoods.XERIC_THATCH_STAIRS, translationBuilder);
+      generateBlockTranslations(NSWoods.XERIC_THATCH_CARPET, translationBuilder);
 
       generateBlockTranslations(ORNATE_SUCCULENT, translationBuilder);
       generateBlockTranslations(DROWSY_SUCCULENT, translationBuilder);
@@ -245,7 +242,7 @@ class NSLangGenerator extends FabricLanguageProvider {
       generateBlockTranslations(CUT_PINK_SANDSTONE, translationBuilder);
       generateBlockTranslations(CUT_PINK_SANDSTONE_SLAB, translationBuilder);
 
-      generateBlockTranslations(HibiscusMiscBlocks.SANDY_SOIL, translationBuilder);
+      generateBlockTranslations(NSMiscBlocks.SANDY_SOIL, translationBuilder);
       generateBlockTranslations(CHEESE_BLOCK, translationBuilder);
       generateBlockTranslations(CHEESE_CAULDRON, translationBuilder);
       generateBlockTranslations(MILK_CAULDRON, translationBuilder);
@@ -260,10 +257,10 @@ class NSLangGenerator extends FabricLanguageProvider {
       translationBuilder.add("block.natures_spirit.pizza.cooked_cod", "With Cooked Cod");
       translationBuilder.add("block.natures_spirit.pizza.cooked_porkchop", "With Cooked Porkchop");
       translationBuilder.add("block.natures_spirit.pizza.cooked_rabbit", "With Cooked Rabbit");
-      translationBuilder.add(HibiscusMiscBlocks.HALF_PIZZA, "Half of a Pizza");
-      translationBuilder.add(HibiscusMiscBlocks.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
-      translationBuilder.add(HibiscusMiscBlocks.QUARTER_PIZZA, "Quarter of a Pizza");
-      translationBuilder.add(HibiscusMiscBlocks.WHOLE_PIZZA, "Pizza");
+      translationBuilder.add(NSMiscBlocks.HALF_PIZZA, "Half of a Pizza");
+      translationBuilder.add(NSMiscBlocks.THREE_QUARTERS_PIZZA, "Three Quarters of a Pizza");
+      translationBuilder.add(NSMiscBlocks.QUARTER_PIZZA, "Quarter of a Pizza");
+      translationBuilder.add(NSMiscBlocks.WHOLE_PIZZA, "Pizza");
       translationBuilder.add("pack.natures_spirit.bushy_leaves_compatibility", "Bushy Leaves Compat");
       translationBuilder.add("pack.natures_spirit.plank_consistency", "Plank Consistency");
       translationBuilder.add("pack.natures_spirit.emissive_ores_compatibility", "Emissive Ores Compat");
@@ -285,32 +282,32 @@ class NSLangGenerator extends FabricLanguageProvider {
       translationBuilder.add("painting.natures_spirit.aspen.author", "Aeramisu");
       translationBuilder.add("painting.natures_spirit.sandy_trees.title", "Lost");
       translationBuilder.add("painting.natures_spirit.sandy_trees.author", "Aeramisu");
-      generateItemTagTranslations(HibiscusTags.Items.PIZZA_TOPPINGS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.DISABLED_PIZZA_TOPPINGS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.CHEESE_MAKER, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.EVERGREEN_LEAVES, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.XERIC_LEAVES, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.COCONUT_ITEMS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.SUCCULENTS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.STRIPPED_LOGS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.ALLUAUDIA_BUNDLES, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.KAOLIN, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_STAIRS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_SLABS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_BRICKS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_BRICK_STAIRS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.KAOLIN_BRICK_SLABS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.CHALK, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.CHALK_STAIRS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.CHALK_SLABS, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.COCONUT_HALVES, translationBuilder);
-      generateItemTagTranslations(HibiscusTags.Items.OLIVES, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.PIZZA_TOPPINGS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.DISABLED_PIZZA_TOPPINGS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.CHEESE_MAKER, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.EVERGREEN_LEAVES, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.XERIC_LEAVES, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.COCONUT_ITEMS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.SUCCULENTS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.STRIPPED_LOGS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.ALLUAUDIA_BUNDLES, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.KAOLIN, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.KAOLIN_STAIRS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.KAOLIN_SLABS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.KAOLIN_BRICKS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.KAOLIN_BRICK_STAIRS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.KAOLIN_BRICK_SLABS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.CHALK, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.CHALK_STAIRS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.CHALK_SLABS, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.COCONUT_HALVES, translationBuilder);
+      generateItemTagTranslations(NSTags.Items.OLIVES, translationBuilder);
 
 
       generateArchExTranslations("kaolin", translationBuilder);
       generateArchExTranslations("kaolin_bricks", translationBuilder);
 
-      for (var color : List.of(NatureSpiritDataGen.DYE_COLORS)) {
+      for (var color : List.of(NSDataGen.DYE_COLORS)) {
 
 
          generateArchExTranslations(color + "_kaolin", translationBuilder);

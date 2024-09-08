@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
-public class HibiscusDataComponents {
+public class NSDataComponents {
    public static final ComponentType<List <PizzaToppingVariant>> TOPPINGS = register("toppings", (builder) -> {
       return builder.codec(PizzaToppingVariant.CODEC.listOf()).cache();
    });

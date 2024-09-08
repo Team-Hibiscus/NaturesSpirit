@@ -182,7 +182,7 @@ public class NSBoatEntity extends BoatEntity {
       private final Supplier <ItemConvertible> chestBoat;
       private final Supplier <EntityType <BoatEntity>> entityType;
       private final Supplier <EntityType <BoatEntity>> chestEntityType;
-      public static final StringIdentifiable.Codec <HibiscusBoat> CODEC = StringIdentifiable.createCodec(NSBoatEntity.HibiscusBoat::values);
+      public static final StringIdentifiable.EnumCodec <HibiscusBoat> CODEC = StringIdentifiable.createCodec(HibiscusBoat::values);
 
       HibiscusBoat(String name, Supplier <ItemConvertible> planks, Supplier <ItemConvertible> boat, Supplier <ItemConvertible> chestBoat, Supplier <EntityType <BoatEntity>> entityType, Supplier <EntityType <BoatEntity>> chestEntityType
       ) {
@@ -219,7 +219,7 @@ public class NSBoatEntity extends BoatEntity {
       }
 
       public Identifier id() {
-         return new Identifier(MOD_ID, name);
+         return Identifier.of(MOD_ID, name);
       }
 
       @Override public String asString() {
