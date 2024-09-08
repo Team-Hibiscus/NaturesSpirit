@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.registration;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
@@ -40,12 +41,6 @@ public class NSRegistryHelper {
       return false;
    }
 
-   public static Block registerPottedPlant(String name, Block plant) {
-      Block pottedPlant = registerBlock("potted_" + name, new FlowerPotBlock(plant, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
-      RenderLayerHashMap.put("potted_" + name, pottedPlant);
-      return pottedPlant;
-   }
-
    public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(String name, BlockEntityType.Builder<T> factory) {
       return Registry.register(
               Registries.BLOCK_ENTITY_TYPE,
@@ -54,101 +49,81 @@ public class NSRegistryHelper {
       );
    }
 
-   public static Block registerBlock(String name, Block block) {
+
+   public static Block registerBlockWithoutTab(String name, Block block) {
       return Registry.register(Registries.BLOCK, Identifier.of(NatureSpirit.MOD_ID, name), block);
    }
 
-   public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab) {
-      registerBlockItem(name, block, tab);
-      return registerBlock(name, block);
+   public static Block registerBlock(String name, Block block) {
+      registerItem(name, new BlockItem(block, new Item.Settings()));
+      return registerBlockWithoutTab(name, block);
    }
-
-   public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab) {
-      Block block1 = registerBlock(name, block, tab);
+   public static Block registerBlock(String name, Block block, ItemConvertible blockBefore) {
+      Block block1 = registerBlockWithoutTab(name, block);
+      registerItemWithoutTab(name, new BlockItem(block, new Item.Settings()));
+      ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
+      return block1;
+   }
+   public static Block registerBlock(String name, Block block, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab) {
+      Block block1 = registerBlock(name, block);
       ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
       return block1;
    }
-
-   public static Block registerPaperLanternBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab, RegistryKey<ItemGroup> thirdTab) {
-      Block block1 = registerBlock(name, block, tab, blockBefore, secondaryTab);
-      ItemGroupEvents.modifyEntriesEvent(thirdTab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
-      RenderLayerHashMap.put(name, block);
-      return block1;
-   }
-
-   public static Block registerPaperLanternBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab, RegistryKey<ItemGroup> thirdTab, ItemConvertible blockBefore2) {
-      Block block1 = registerBlock(name, block, tab, blockBefore, secondaryTab);
+   public static Block registerBlock(String name, Block block, ItemConvertible blockBefore, RegistryKey <ItemGroup> secondaryTab, ItemConvertible blockBefore2, RegistryKey<ItemGroup> thirdTab) {
+      Block block1 = registerBlock(name, block, blockBefore, secondaryTab);
       ItemGroupEvents.modifyEntriesEvent(thirdTab).register(entries -> entries.addAfter(blockBefore2, block1.asItem()));
-      RenderLayerHashMap.put(name, block);
       return block1;
    }
 
-   public static Block registerBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible blockBefore) {
-      Block block1 = registerBlock(name, block);
-      registerBlockItem(name, block);
-      ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(blockBefore, block1.asItem()));
+
+   public static Block registerTransparentBlockWithoutTab(String name, Block block) {
+      Block block1 = registerBlockWithoutTab(name, block);
+      RenderLayerHashMap.put(name, block1);
       return block1;
    }
-
-   public static Block registerDoorBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore) {
+   public static Block registerTransparentBlock(String name, Block block) {
       Block block1 = registerBlock(name, block);
-      registerBlockItem(name, block, tab, itemBefore, ItemGroups.BUILDING_BLOCKS);
+      RenderLayerHashMap.put(name, block1);
+      return block1;
+   }
+   public static Block registerTransparentBlock(String name, Block block, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
+      Block block1 = registerBlock(name, block, itemBefore, secondaryTab);
+      RenderLayerHashMap.put(name, block1);
+      return block1;
+   }
+   public static Block registerTransparentBlock(String name, Block block, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab, ItemConvertible blockBefore2, RegistryKey<ItemGroup> thirdTab) {
+      Block block1 = registerBlock(name, block, itemBefore, secondaryTab, blockBefore2, thirdTab);
       RenderLayerHashMap.put(name, block1);
       return block1;
    }
 
 
-   public static Block registerPlantBlock(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, float compost) {
-      Block Plant = registerBlock(name, block, tab, itemBefore, ItemGroups.NATURAL);
-      RenderLayerHashMap.put(name, block);
+   public static Block registerPlantBlock(String name, Block block, ItemConvertible itemBefore, float compost) {
+      Block Plant = registerTransparentBlock(name, block, itemBefore, ItemGroups.NATURAL);
       CompostingChanceRegistry.INSTANCE.add(block, compost);
       return Plant;
    }
 
-   public static Item registerPlantWallBlockItem(String name, Block block, Block wallBlock, RegistryKey<ItemGroup> tab, ItemConvertible itemBefore, float compost) {
-      Item item = registerItem(name, new VerticallyAttachableBlockItem(block, wallBlock, new Item.Settings(), Direction.DOWN), tab);
-      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(itemBefore, item.asItem()));
-      return item;
-   }
 
-   public static Block registerPlantBlock(String name, Block block) {
-      Block Plant = registerBlock(name, block);
-      RenderLayerHashMap.put(name, block);
-      return Plant;
-   }
-
-   public static void registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab) {
-      registerItem(name, new BlockItem(block, new Item.Settings()), tab);
-   }
-   public static void registerBlockItem(String name, Block block) {
-      registerItem(name, new BlockItem(block, new Item.Settings()));
-   }
-
-   public static void registerBlockItem(String name, Block block, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
-      Item item = registerItem(name, new BlockItem(block, new Item.Settings()));
-      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
-      ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(itemBefore, item.asItem()));
-   }
-
-   public static Item registerItem(String name, Item item) {
+   public static Item registerItemWithoutTab(String name, Item item) {
       Item item1 = Registry.register(Registries.ITEM, Identifier.of(NatureSpirit.MOD_ID, name), item);
       NatureSpiritItemHashMap.put(name, item1);
       return item1;
    }
-
-   public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab) {
-      ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.add(item.asItem()));
+   public static Item registerItem(String name, Item item) {
+      Item item1 = Registry.register(Registries.ITEM, Identifier.of(NatureSpirit.MOD_ID, name), item);
+      ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item1));
+      NatureSpiritItemHashMap.put(name, item1);
+      return item1;
+   }
+   public static Item registerItem(String name, Item item, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
+      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item));
       return registerItem(name, item);
    }
 
 
-   public static Item registerItem(String name, Item item, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab) {
-      ItemGroupEvents.modifyEntriesEvent(secondaryTab).register(entries -> entries.addAfter(itemBefore, item));
-      return registerItem(name, item, tab);
-   }
-
-   public static Item registerPlantItem(String name, Item item, RegistryKey <ItemGroup> tab, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab, float compost) {
+   public static Item registerPlantItem(String name, Item item, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab, float compost) {
       CompostingChanceRegistry.INSTANCE.add(item, compost);
-      return registerItem(name, item, tab, itemBefore, secondaryTab);
+      return registerItem(name, item, itemBefore, secondaryTab);
    }
 }

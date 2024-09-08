@@ -623,7 +623,7 @@ public class TerraLaetaParameters {
             RegistryKey <Biome> registryKey2 = this.getBadlandsOrRegularBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey3 = this.getMountainStartBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey4 = this.getShoreBiome(i, j);
-            RegistryKey <Biome> registryKey5 = HibiscusConfig.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey): this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
+            RegistryKey <Biome> registryKey5 = NSConfig.has_white_cliffs ? this.getBiomeOrChalkCliffs(i, j, weirdness, registryKey): this.getBiomeOrWindsweptSavanna(i, j, weirdness, registryKey);
             RegistryKey <Biome> registryKey6 = this.getErodedShoreBiome(i, j, weirdness);
             RegistryKey <Biome> registryKey8 = this.getShoreCliffBiome(i, j, weirdness);
 
@@ -644,7 +644,7 @@ public class TerraLaetaParameters {
                     MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[3]),
                     weirdness,
                     0.0F,
-                    HibiscusConfig.has_white_cliffs ? registryKey8 : registryKey
+                    NSConfig.has_white_cliffs ? registryKey8 : registryKey
             );
             this.writeBiomeParameters(parameters,
                     parameterRange,

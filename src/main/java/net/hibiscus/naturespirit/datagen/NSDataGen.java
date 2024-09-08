@@ -30,7 +30,7 @@ public class NSDataGen implements DataGeneratorEntrypoint {
       pack.addProvider(NSBlockLootTableProvider::new);
       NSBlockTagGenerator blockTagProvider = pack.addProvider(NSBlockTagGenerator::new);
       pack.addProvider((output, registries) -> new NSItemTagGenerator(output, registries, blockTagProvider));
-      pack.addProvider(NatureSpiritEntityTypeGenerator::new);
+      pack.addProvider(NSEntityTypeGenerator::new);
       System.out.println("Initialized Data Generator");
    }
 
@@ -46,9 +46,9 @@ public class NSDataGen implements DataGeneratorEntrypoint {
    }
 
 
-   public static class NatureSpiritEntityTypeGenerator extends FabricTagProvider.EntityTypeTagProvider {
+   public static class NSEntityTypeGenerator extends FabricTagProvider.EntityTypeTagProvider {
 
-      public NatureSpiritEntityTypeGenerator(FabricDataOutput output, CompletableFuture <RegistryWrapper.WrapperLookup> completableFuture) {
+      public NSEntityTypeGenerator(FabricDataOutput output, CompletableFuture <RegistryWrapper.WrapperLookup> completableFuture) {
          super(output, completableFuture);
       }
 

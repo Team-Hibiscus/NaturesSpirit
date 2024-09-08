@@ -135,8 +135,8 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
               NSWoods.WISTERIA.getPinkVinesPlant(),
               NSWoods.WISTERIA.getPurpleVines(),
               NSWoods.WISTERIA.getPurpleVinesPlant(),
-              NSWoods.WILLOW.getPinkVinesPlant(),
-              NSWoods.WILLOW.getPinkVines()
+              NSWoods.WILLOW.getVinesPlant(),
+              NSWoods.WILLOW.getVines()
       );
       getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(
               NSWoods.WISTERIA.getBlueVines(),

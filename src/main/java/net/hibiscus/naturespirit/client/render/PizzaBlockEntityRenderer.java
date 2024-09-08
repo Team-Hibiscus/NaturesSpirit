@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;

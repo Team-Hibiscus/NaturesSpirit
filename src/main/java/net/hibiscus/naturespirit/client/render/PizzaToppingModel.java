@@ -28,7 +28,7 @@ public class PizzaToppingModel extends Model {
     modelPartData.addChild("slice3", ModelPartBuilder.create().uv(3, 11).cuboid(3.0F, 2.04F, 8.0F, 5.0F, 0.0F, 5.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
       return TexturedModelData.of(modelData, 32, 32);
 	}
-	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-	}
+   @Override public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
+
+   }
 }

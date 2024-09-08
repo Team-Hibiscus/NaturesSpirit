@@ -13,10 +13,10 @@ import static net.minecraft.village.VillagerType.BIOME_TO_TYPE;
 import static net.minecraft.village.VillagerType.DESERT;
 
 public class NSVillagers {
-   public static final VillagerType WISTERIA = VillagerTypeHelper.register(new Identifier(MOD_ID, "wisteria"));
-   public static final VillagerType CYPRESS = VillagerTypeHelper.register(new Identifier(MOD_ID, "cypress"));
-   public static final VillagerType ADOBE = VillagerTypeHelper.register(new Identifier(MOD_ID, "adobe"));
-   public static final VillagerType COCONUT = VillagerTypeHelper.register(new Identifier(MOD_ID, "coconut"));
+   public static final VillagerType WISTERIA = VillagerTypeHelper.register(Identifier.of(MOD_ID, "wisteria"));
+   public static final VillagerType CYPRESS = VillagerTypeHelper.register(Identifier.of(MOD_ID, "cypress"));
+   public static final VillagerType ADOBE = VillagerTypeHelper.register(Identifier.of(MOD_ID, "adobe"));
+   public static final VillagerType COCONUT = VillagerTypeHelper.register(Identifier.of(MOD_ID, "coconut"));
 
    public static void registerVillagers() {
       BIOME_TO_TYPE.put(NSBiomes.WISTERIA_FOREST, WISTERIA);

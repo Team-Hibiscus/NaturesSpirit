@@ -133,8 +133,6 @@ public class StoneSet {
       }
       addToBuildingTab(itemBefore, item2Before, this);
       StoneHashMap.put(getName(), this);
-
-      for(Block item : registeredBlocksList) ItemGroupEvents.modifyEntriesEvent(NSItemGroups.NS_ITEM_GROUP).register(entries -> entries.add(item));
    }
 
    public StoneSet(Identifier name, MapColor mapColor, Item itemBefore, Item item2Before, float hardness, boolean hasCobbled, boolean hasCracked, boolean hasMossy, boolean hasTiles){
@@ -164,7 +162,6 @@ public class StoneSet {
       registerStone();
    }
    private Block createBlockWithItem(String blockID, Block block){
-      registerBlockItem(blockID, block);
       Block listBlock = NSRegistryHelper.registerBlock(blockID, block);
       registeredBlocksList.add(listBlock);
       return listBlock;
