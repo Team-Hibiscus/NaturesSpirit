@@ -84,7 +84,7 @@ public class NSMiscBlocks {
 
    public static final Block PINK_SANDSTONE_WALL = registerBlock("pink_sandstone_wall", new WallBlock(AbstractBlock.Settings.copy(PINK_SANDSTONE).solid()));
 
-   public static final Block TALL_FRIGID_GRASS = registerPlantBlock("tall_frigid_grass",
+   public static final Block TALL_FRIGID_GRASS = registerTallPlantBlock("tall_frigid_grass",
            new SemiTallGrassBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
@@ -100,7 +100,7 @@ public class NSMiscBlocks {
    );
 
    public static final Block FRIGID_GRASS = registerPlantBlock("frigid_grass",
-           new HibiscusFernBlock(AbstractBlock.Settings
+           new NSFernBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
                    .noCollision()
@@ -114,7 +114,7 @@ public class NSMiscBlocks {
            0.3f
    );
 
-   public static final Block TALL_SCORCHED_GRASS = registerPlantBlock("tall_scorched_grass",
+   public static final Block TALL_SCORCHED_GRASS = registerTallPlantBlock("tall_scorched_grass",
            new TallLargeDesertFernBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.LICHEN_GREEN)
@@ -143,7 +143,7 @@ public class NSMiscBlocks {
            Blocks.FERN,
            0.3f
    );
-   public static final Block TALL_BEACH_GRASS = registerPlantBlock("tall_beach_grass",
+   public static final Block TALL_BEACH_GRASS = registerTallPlantBlock("tall_beach_grass",
            new TallLargeDesertFernBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.YELLOW)
@@ -173,7 +173,7 @@ public class NSMiscBlocks {
            0.3f
    );
 
-   public static final Block TALL_SEDGE_GRASS = registerPlantBlock("tall_sedge_grass",
+   public static final Block TALL_SEDGE_GRASS = registerTallPlantBlock("tall_sedge_grass",
            new TallSedgeGrassBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.DARK_GREEN)
@@ -203,7 +203,7 @@ public class NSMiscBlocks {
            0.3f
    );
 
-   public static final Block LARGE_FLAXEN_FERN = registerPlantBlock("large_flaxen_fern",
+   public static final Block LARGE_FLAXEN_FERN = registerTallPlantBlock("large_flaxen_fern",
            new TallPlantBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
@@ -218,7 +218,7 @@ public class NSMiscBlocks {
    );
 
    public static final Block FLAXEN_FERN = registerPlantBlock("flaxen_fern",
-           new HibiscusFernBlock(AbstractBlock.Settings
+           new NSFernBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
                    .replaceable()
@@ -230,7 +230,7 @@ public class NSMiscBlocks {
            SEDGE_GRASS,
            0.3f
    );
-   public static final Block TALL_OAT_GRASS = registerPlantBlock("tall_oat_grass",
+   public static final Block TALL_OAT_GRASS = registerTallPlantBlock("tall_oat_grass",
            new SemiTallGrassBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.PALE_YELLOW)
@@ -246,7 +246,7 @@ public class NSMiscBlocks {
    );
 
    public static final Block OAT_GRASS = registerPlantBlock("oat_grass",
-           new HibiscusFernBlock(AbstractBlock.Settings
+           new NSFernBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.PALE_YELLOW)
                    .noCollision()
@@ -260,7 +260,7 @@ public class NSMiscBlocks {
            0.3f
    );
 
-   public static final Block LARGE_LUSH_FERN = registerPlantBlock("large_lush_fern",
+   public static final Block LARGE_LUSH_FERN = registerTallPlantBlock("large_lush_fern",
            new TallPlantBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
@@ -275,7 +275,7 @@ public class NSMiscBlocks {
    );
 
    public static final Block LUSH_FERN = registerPlantBlock("lush_fern",
-           new HibiscusFernBlock(AbstractBlock.Settings
+           new NSFernBlock(AbstractBlock.Settings
                    .create()
                    .noCollision()
                    .replaceable()
@@ -287,7 +287,7 @@ public class NSMiscBlocks {
            OAT_GRASS,
            0.3f
    );
-   public static final Block TALL_MELIC_GRASS = registerPlantBlock("tall_melic_grass",
+   public static final Block TALL_MELIC_GRASS = registerTallPlantBlock("tall_melic_grass",
            new TallPlantBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.GREEN)
@@ -303,7 +303,7 @@ public class NSMiscBlocks {
    );
 
    public static final Block MELIC_GRASS = registerPlantBlock("melic_grass",
-           new HibiscusFernBlock(AbstractBlock.Settings
+           new NSFernBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.GREEN)
                    .noCollision()

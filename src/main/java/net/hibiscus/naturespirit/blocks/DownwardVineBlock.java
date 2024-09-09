@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -12,15 +13,19 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.WorldView;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 
 public class DownwardVineBlock extends AbstractPlantStemBlock {
    protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-   private final Block vinePlant;
+   private final Supplier <Block> vinesPlantBlock;
 
-   public DownwardVineBlock(Settings properties, Block vinePlant) {
+   public DownwardVineBlock(Settings properties, Supplier <Block> vinesPlantBlock) {
       super(properties, Direction.DOWN, SHAPE, false, 0.1D);
-      this.vinePlant = vinePlant;
+      this.vinesPlantBlock = vinesPlantBlock;
    }
 
    @Override protected MapCodec <? extends AbstractPlantStemBlock> getCodec() {
@@ -31,8 +36,8 @@ public class DownwardVineBlock extends AbstractPlantStemBlock {
       return VineLogic.getGrowthLength(randomSource);
    }
 
-   public Block getPlant() {
-      return vinePlant;
+   @Override public Block getPlant() {
+      return vinesPlantBlock.get();
    }
 
    public boolean chooseStemState(BlockState state) {

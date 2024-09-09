@@ -34,6 +34,9 @@ import net.minecraft.village.TradeOffers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
 
@@ -181,11 +184,11 @@ public class WoodSet {
       }
 
       if (woodPreset == WoodPreset.WILLOW){
+         vines = createVines(this::getVinesPlant);
+         vinesPlant = createVinesPlant(vines);
+
          leaves = createVinesLeavesBlock(vinesPlant, vines);
          ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(leavesBefore, leaves.asItem()));
-
-         vines = createVines(vinesPlant);
-         vinesPlant = createVinesPlant(vines);
 
          saplingGenerator = new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), configuredFeature2, configuredFeature, Optional.empty());
          sapling = createSapling(saplingGenerator);
@@ -195,6 +198,14 @@ public class WoodSet {
          TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(new TradeOffers.SellItemFactory(sapling, 5, 1, 8, 1)));
       }
       if (woodPreset == WoodPreset.WISTERIA) {
+         whiteVines = createVines("white_", this::getWhiteVinesPlant);
+         blueVines = createVines("blue_", this::getBlueVinesPlant);
+         pinkVines = createVines("pink_", this::getPinkVinesPlant);
+         purpleVines = createVines("purple_", this::getPurpleVinesPlant);
+         whiteVinesPlant = createVinesPlant("white_", whiteVines);
+         blueVinesPlant = createVinesPlant("blue_", blueVines);
+         pinkVinesPlant = createVinesPlant("pink_", pinkVines);
+         purpleVinesPlant = createVinesPlant("purple_", purpleVines);
          whiteLeaves = createVinesLeavesBlock("white_", whiteVinesPlant, whiteVines);
          blueLeaves = createVinesLeavesBlock("blue_", blueVinesPlant, blueVines);
          pinkLeaves = createVinesLeavesBlock("pink_", pinkVinesPlant, pinkVines);
@@ -203,14 +214,6 @@ public class WoodSet {
          partBlueLeaves = createVinesLeavesBlock("part_blue_", blueVinesPlant, blueVines);
          partPinkLeaves = createVinesLeavesBlock("part_pink_", pinkVinesPlant, pinkVines);
          partPurpleLeaves = createVinesLeavesBlock("part_purple_", purpleVinesPlant, purpleVines);
-         whiteVines = createVines("white_", whiteVines);
-         blueVines = createVines("blue_", blueVines);
-         pinkVines = createVines("pink_", pinkVines);
-         purpleVines = createVines("purple_", purpleVines);
-         whiteVinesPlant = createVinesPlant("white_", whiteVines);
-         blueVinesPlant = createVinesPlant("blue_", blueVines);
-         pinkVinesPlant = createVinesPlant("pink_", pinkVines);
-         purpleVinesPlant = createVinesPlant("purple_", purpleVines);
          whiteSapling = createSapling("white_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.WHITE_WISTERIA_TREE), Optional.empty()));
          blueSapling = createSapling("blue_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.BLUE_WISTERIA_TREE), Optional.empty()));
          pinkSapling = createSapling("pink_", new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), Optional.empty(), Optional.of(NSConfiguredFeatures.PINK_WISTERIA_TREE), Optional.empty()));
@@ -323,7 +326,6 @@ public class WoodSet {
       addToBuildingTab(buttonBefore, logBefore, signBefore, boatBefore, this);
 
    }
-
 
 
    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ItemConvertible leavesBefore, ItemConvertible logBefore, ItemConvertible signBefore, ItemConvertible boatBefore, ItemConvertible buttonBefore, ItemConvertible saplingBefore, NSBoatEntity.HibiscusBoat boatType, WoodPreset woodPreset, boolean hasMosaic, RegistryKey<ConfiguredFeature<?, ?>> configuredFeature){
@@ -759,7 +761,7 @@ public class WoodSet {
       LeavesHashMap.put(prefix + getName(), block);
       return block;
    }
-   private Block createVines(Block vinesPlantBlock) {
+   private Block createVines(Supplier<Block> vinesPlantBlock) {
       Block vinesBlock = createBlockWithItem(getName() + "_vines",
               new DownwardVineBlock(AbstractBlock.Settings
                       .create()
@@ -773,7 +775,7 @@ public class WoodSet {
       CompostingChanceRegistry.INSTANCE.add(vinesBlock, 0.3F);
       return vinesBlock;
    }
-   private Block createVines(String prefix, Block vinesPlantBlock) {
+   private Block createVines(String prefix, Supplier<Block> vinesPlantBlock) {
       Block vinesBlock = createBlockWithItem(prefix + getName() + "_vines",
               new DownwardVineBlock(AbstractBlock.Settings
                       .create()

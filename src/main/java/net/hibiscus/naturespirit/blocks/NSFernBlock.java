@@ -8,11 +8,11 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 
-public class HibiscusFernBlock extends ShortPlantBlock {
+public class NSFernBlock extends ShortPlantBlock {
 
    TallPlantBlock tallPlantBlock;
 
-   public HibiscusFernBlock(Settings properties, TallPlantBlock tallPlantBlock) {
+   public NSFernBlock(Settings properties, TallPlantBlock tallPlantBlock) {
       super(properties);
       this.tallPlantBlock = tallPlantBlock;
    }

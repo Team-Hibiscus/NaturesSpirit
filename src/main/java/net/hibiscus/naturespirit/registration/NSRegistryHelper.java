@@ -99,9 +99,9 @@ public class NSRegistryHelper {
 
 
    public static Block registerPlantBlock(String name, Block block, ItemConvertible itemBefore, float compost) {
-      Block Plant = registerTransparentBlock(name, block, itemBefore, ItemGroups.NATURAL);
+      Block plant = registerTransparentBlock(name, block, itemBefore, ItemGroups.NATURAL);
       CompostingChanceRegistry.INSTANCE.add(block, compost);
-      return Plant;
+      return plant;
    }
 
 
@@ -125,5 +125,13 @@ public class NSRegistryHelper {
    public static Item registerPlantItem(String name, Item item, ItemConvertible itemBefore, RegistryKey <ItemGroup> secondaryTab, float compost) {
       CompostingChanceRegistry.INSTANCE.add(item, compost);
       return registerItem(name, item, itemBefore, secondaryTab);
+   }
+   public static Block registerTallPlantBlock(String name, Block block, ItemConvertible itemBefore, float compost) {
+      Block plant = registerBlockWithoutTab(name, block);
+      registerItem(name, new TallBlockItem(block, new Item.Settings()));
+      ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(itemBefore, plant.asItem()));
+      RenderLayerHashMap.put(name, plant);
+      CompostingChanceRegistry.INSTANCE.add(block, compost);
+      return plant;
    }
 }

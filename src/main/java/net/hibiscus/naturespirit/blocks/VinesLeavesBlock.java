@@ -19,9 +19,10 @@ public class VinesLeavesBlock extends LeavesBlock implements Fertilizable {
 
    public Block vinePlantBlock;
    public Block vineTipBlock;
-   public VinesLeavesBlock(Settings properties, Block vinePlantBlock, Block vineTipBlock) {
-
+   public VinesLeavesBlock(Settings properties, Block vinePlantBlockInput, Block vineTipBlockInput) {
       super(properties);
+      vinePlantBlock = vinePlantBlockInput;
+      vineTipBlock = vineTipBlockInput;
    }
 
    @Override public boolean isFertilizable(@NotNull WorldView levelReader, @NotNull BlockPos blockPos, BlockState state) {

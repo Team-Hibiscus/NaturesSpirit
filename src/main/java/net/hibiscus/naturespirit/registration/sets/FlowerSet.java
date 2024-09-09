@@ -14,8 +14,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerPlantBlock;
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerTransparentBlockWithoutTab;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
 
 public class FlowerSet {
 
@@ -63,7 +62,7 @@ public class FlowerSet {
 
    private void registerFlower() {
       if(isTall()) {
-      flowerBlock = registerPlantBlock(name,
+      flowerBlock = registerTallPlantBlock(name,
               new TallFlowerBlock(AbstractBlock.Settings
                       .create()
                       .noCollision()
@@ -75,7 +74,8 @@ public class FlowerSet {
               itemBefore,
               0.4f
       );
-   } else
+
+      } else
       if(preset == FlowerPreset.BIG_SMALL) {
          flowerBlock = registerPlantBlock(name, new LargeFlowerBlock(
                  statusEffect,

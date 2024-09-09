@@ -118,10 +118,25 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
             getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(flowerSet.getPottedFlowerBlock());
             getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(flowerSet.getFlowerBlock());
          }
+         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(flowerSet.getFlowerBlock());
+         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(flowerSet.getFlowerBlock());
       }
       getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(AZOLLA);
       getOrCreateTagBuilder(BlockTags.TALL_FLOWERS).add(CATTAIL);
-      getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(LOTUS_FLOWER);
+      getOrCreateTagBuilder(BlockTags.FLOWERS).add(LOTUS_FLOWER,
+              NSWoods.WISTERIA.getBlueVines(),
+              NSWoods.WISTERIA.getBlueVinesPlant(),
+              NSWoods.WISTERIA.getWhiteVines(),
+              NSWoods.WISTERIA.getWhiteVinesPlant(),
+              NSWoods.WISTERIA.getPinkVines(),
+              NSWoods.WISTERIA.getPinkVinesPlant(),
+              NSWoods.WISTERIA.getPurpleVines(),
+              NSWoods.WISTERIA.getPurpleVinesPlant(),
+              NSWoods.WISTERIA.getBlueLeaves(),
+              NSWoods.WISTERIA.getWhiteLeaves(),
+              NSWoods.WISTERIA.getPinkLeaves(),
+              NSWoods.WISTERIA.getPurpleLeaves()
+              );
       getOrCreateTagBuilder(NSTags.Blocks.ALLUAUDIA_BUNDLES).add(STRIPPED_ALLUAUDIA_BUNDLE, ALLUAUDIA_BUNDLE);
       getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(NSTags.Blocks.ALLUAUDIA_BUNDLES);
       getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(PAPER_DOOR, FRAMED_PAPER_DOOR, BLOOMING_PAPER_DOOR);
