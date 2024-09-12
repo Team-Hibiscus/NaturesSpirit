@@ -18,62 +18,73 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(CoralBlockBlock.class) @Debug(export = true) public abstract class CoralBlockBlockMixin extends Block {
-   public CoralBlockBlockMixin(Settings settings) {
-      super(settings);
-   }
+@Mixin(CoralBlockBlock.class)
+@Debug(export = true)
+public abstract class CoralBlockBlockMixin extends Block {
 
-   private static Optional <BlockPos> findColumnEnd(BlockView world, BlockPos pos, TagKey <Block> intermediateBlocks, Direction direction, Block endBlock, int searchLimit) {
-      BlockPos.Mutable mutable = pos.mutableCopy();
+	public CoralBlockBlockMixin(Settings settings) {
+		super(settings);
+	}
 
-      BlockState blockState;
-      int i = 0;
-      do {
-         mutable.move(direction);
-         blockState = world.getBlockState(mutable);
-         ++i;
-      } while(blockState.isIn(intermediateBlocks) && i < searchLimit);
+	@Unique
+	private static Optional<BlockPos> findColumnEnd(
+		BlockView world,
+		BlockPos pos,
+		TagKey<Block> intermediateBlocks,
+		Direction direction,
+		Block endBlock,
+		int searchLimit
+	) {
+		BlockPos.Mutable mutable = pos.mutableCopy();
 
-      return blockState.isOf(endBlock) ? Optional.of(mutable) : Optional.empty();
-   }
+		BlockState blockState;
+		int i = 0;
+		do {
+			mutable.move(direction);
+			blockState = world.getBlockState(mutable);
+			++i;
+		} while (blockState.isIn(intermediateBlocks) && i < searchLimit);
 
-   @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-      if (NSConfig.calcite_generator) {
-         if(findColumnEnd(world, pos, BlockTags.CORAL_BLOCKS, Direction.DOWN, Blocks.BUBBLE_COLUMN, 10).isPresent()) {
-            for(Direction direction : Direction.Type.HORIZONTAL) {
-               if(random.nextInt(25) == 0) {
-                  if(world.getBlockState(pos.offset(direction, 1)).isOf(Blocks.WATER)) {
-                     world.setBlockState(pos.offset(direction, 1),
-                             NSMiscBlocks.SMALL_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, true),
-                             2
-                     );
-                  }
-                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(NSMiscBlocks.SMALL_CALCITE_BUD)) {
-                     world.setBlockState(pos.offset(direction, 1),
-                             NSMiscBlocks.LARGE_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
-                                     1
-                             )).getFluidState().isOf(Fluids.WATER)),
-                             2
-                     );
-                  }
-                  else if(world.getBlockState(pos.offset(direction, 1)).isOf(NSMiscBlocks.LARGE_CALCITE_BUD)) {
-                     world.setBlockState(pos.offset(direction, 1),
-                             NSMiscBlocks.CALCITE_CLUSTER.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
-                                     1
-                             )).getFluidState().isOf(Fluids.WATER)),
-                             2
-                     );
-                  }
-               }
-            }
-         }
-      }
+		return blockState.isOf(endBlock) ? Optional.of(mutable) : Optional.empty();
+	}
 
-   }
+	@Override
+	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		if (NSConfig.calcite_generator) {
+			if (findColumnEnd(world, pos, BlockTags.CORAL_BLOCKS, Direction.DOWN, Blocks.BUBBLE_COLUMN, 10).isPresent()) {
+				for (Direction direction : Direction.Type.HORIZONTAL) {
+					if (random.nextInt(25) == 0) {
+						if (world.getBlockState(pos.offset(direction, 1)).isOf(Blocks.WATER)) {
+							world.setBlockState(pos.offset(direction, 1),
+								NSMiscBlocks.SMALL_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, true),
+								Block.NOTIFY_LISTENERS
+							);
+						} else if (world.getBlockState(pos.offset(direction, 1)).isOf(NSMiscBlocks.SMALL_CALCITE_BUD)) {
+							world.setBlockState(pos.offset(direction, 1),
+								NSMiscBlocks.LARGE_CALCITE_BUD.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
+									1
+								)).getFluidState().isOf(Fluids.WATER)),
+								Block.NOTIFY_LISTENERS
+							);
+						} else if (world.getBlockState(pos.offset(direction, 1)).isOf(NSMiscBlocks.LARGE_CALCITE_BUD)) {
+							world.setBlockState(pos.offset(direction, 1),
+								NSMiscBlocks.CALCITE_CLUSTER.getDefaultState().with(AmethystClusterBlock.FACING, direction).with(AmethystClusterBlock.WATERLOGGED, world.getBlockState(pos.offset(direction,
+									1
+								)).getFluidState().isOf(Fluids.WATER)),
+								Block.NOTIFY_LISTENERS
+							);
+						}
+					}
+				}
+			}
+		}
 
-   public boolean hasRandomTicks(BlockState state) {
-      return true;
-   }
+	}
 
+	@Override
+	public boolean hasRandomTicks(BlockState state) {
+		return true;
+	}
 }

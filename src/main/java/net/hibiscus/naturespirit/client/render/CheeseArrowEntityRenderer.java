@@ -9,14 +9,15 @@ import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class CheeseArrowEntityRenderer extends ProjectileEntityRenderer <CheeseArrowEntity> {
-   public static final Identifier TEXTURE = Identifier.of(NatureSpirit.MOD_ID, "textures/entity/projectiles/cheese_arrow.png");
+public class CheeseArrowEntityRenderer extends ProjectileEntityRenderer<CheeseArrowEntity> {
+	public static final Identifier TEXTURE = Identifier.of(NatureSpirit.MOD_ID, "textures/entity/projectiles/cheese_arrow.png");
 
-   public CheeseArrowEntityRenderer(EntityRendererFactory.Context context) {
-      super(context);
-   }
+	public CheeseArrowEntityRenderer(EntityRendererFactory.Context context) {
+		super(context);
+	}
 
-   public Identifier getTexture(CheeseArrowEntity spectralArrowEntity) {
-      return TEXTURE;
-   }
+	@Override
+	public Identifier getTexture(CheeseArrowEntity spectralArrowEntity) {
+		return TEXTURE;
+	}
 }

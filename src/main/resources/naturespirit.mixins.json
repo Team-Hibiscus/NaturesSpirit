@@ -6,7 +6,6 @@
   "mixins": [
     "AnvilBlockMixin",
     "AxeItemMixin",
-    "BlockEntityTypeMixin",
     "CoralBlockBlockMixin",
     "StatsTypeAccessor",
     "entity.boat.BoatDropsMixin",

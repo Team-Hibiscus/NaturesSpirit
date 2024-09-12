@@ -11,13 +11,14 @@ import terrablender.api.Region;
 import terrablender.api.RegionType;
 
 public class TerraLaetaRegion extends Region {
-   public TerraLaetaRegion(Identifier name, int weight) {
-      super(name, RegionType.OVERWORLD, weight);
-   }
+	public TerraLaetaRegion(Identifier name, int weight) {
+		super(name, RegionType.OVERWORLD, weight);
+	}
 
-   @Override public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
+	@Override
+	public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
 
-      (new TerraLaetaParameters()).writeOverworldBiomeParameters(mapper);
-   }
+		(new TerraLaetaParameters()).writeOverworldBiomeParameters(mapper);
+	}
 
 }

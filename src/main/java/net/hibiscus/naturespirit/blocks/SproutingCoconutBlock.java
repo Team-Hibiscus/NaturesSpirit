@@ -11,16 +11,19 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class SproutingCoconutBlock extends SaplingBlock {
+	private static final VoxelShape OUTLINE_SHAPE = Block.createCuboidShape(3D, 0D, 3D, 13D, 10D, 13D);;
 
-   public SproutingCoconutBlock(SaplingGenerator generator, Settings settings) {
-      super(generator, settings);
-   }
+	public SproutingCoconutBlock(SaplingGenerator generator, Settings settings) {
+		super(generator, settings);
+	}
 
-   protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-      return floor.isSideSolidFullSquare(world, pos, Direction.DOWN);
-   }
+	@Override
+	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+		return floor.isSideSolidFullSquare(world, pos, Direction.DOWN);
+	}
 
-   public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-      return Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 10.0, 13.0);
-   }
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return OUTLINE_SHAPE;
+	}
 }

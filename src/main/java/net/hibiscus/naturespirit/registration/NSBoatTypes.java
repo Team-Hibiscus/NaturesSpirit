@@ -62,5 +62,6 @@ public class NSBoatTypes {
 		BoatEntity.Type.values();
 	}
 
-	public static void init() {}
+	public static void init() {
+	}
 }

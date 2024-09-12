@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
@@ -48,6 +49,7 @@ import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.block.WallHangingSignBlock;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodType;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.vehicle.BoatEntity;
@@ -322,6 +324,14 @@ public class WoodSet {
 		hangingWallSign = createWallHangingSign();
 		signItem = createSignItem();
 		hangingSignItem = createHangingSignItem();
+
+		var signEntity = (FabricBlockEntityType) BlockEntityType.SIGN;
+		signEntity.addSupportedBlock(sign);
+		signEntity.addSupportedBlock(wallSign);
+
+		var hangingSignEntity = (FabricBlockEntityType) BlockEntityType.HANGING_SIGN;
+		hangingSignEntity.addSupportedBlock(hangingSign);
+		hangingSignEntity.addSupportedBlock(hangingWallSign);
 
 		BoatEntity.Type boatType = boatTypeSupplier.get();
 		String boatTypeName = boatType.getName().replace("natures_spirit_", "");

@@ -11,12 +11,13 @@ import terrablender.api.Region;
 import terrablender.api.RegionType;
 
 public class TerraFlavaRegion extends Region {
-   public TerraFlavaRegion(Identifier name, int weight) {
-      super(name, RegionType.OVERWORLD, weight);
-   }
+	public TerraFlavaRegion(Identifier name, int weight) {
+		super(name, RegionType.OVERWORLD, weight);
+	}
 
-   @Override public void addBiomes(Registry <Biome> registry, Consumer <Pair <MultiNoiseUtil.NoiseHypercube, RegistryKey <Biome>>> mapper) {
-      (new TerraFlavaParameters()).writeOverworldBiomeParameters(mapper);
-   }
+	@Override
+	public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
+		(new TerraFlavaParameters()).writeOverworldBiomeParameters(mapper);
+	}
 
 }
