@@ -9,6 +9,8 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -27,9 +29,6 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer.TreeNode;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
-
-import java.util.List;
-import java.util.function.BiConsumer;
 
 public class SaxaulTrunkPlacer extends TrunkPlacer {
    public static final MapCodec <SaxaulTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {

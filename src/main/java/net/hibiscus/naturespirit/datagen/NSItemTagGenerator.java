@@ -1,7 +1,9 @@
 package net.hibiscus.naturespirit.datagen;
 
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
 import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.hibiscus.naturespirit.registration.NSTags;
 import net.hibiscus.naturespirit.registration.NSWoods;
@@ -12,10 +14,6 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.concurrent.CompletableFuture;
-
-import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
 
 public class NSItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 

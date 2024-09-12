@@ -2,33 +2,44 @@ package net.hibiscus.naturespirit.datagen;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.Optional;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.hibiscus.naturespirit.blocks.DesertTurnipStemBlock;
 import net.hibiscus.naturespirit.registration.NSBoatTypes;
+import net.hibiscus.naturespirit.registration.NSColoredBlocks;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
+import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.hibiscus.naturespirit.registration.NSWoods;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
-import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.hibiscus.naturespirit.registration.sets.StoneSet;
 import net.hibiscus.naturespirit.registration.sets.WoodSet;
-import net.hibiscus.naturespirit.registration.NSColoredBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.data.client.*;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import static net.minecraft.data.client.BlockStateModelGenerator.*;
+import net.minecraft.data.client.BlockStateVariant;
+import net.minecraft.data.client.BlockStateVariantMap;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.ModelIds;
+import net.minecraft.data.client.Models;
+import net.minecraft.data.client.MultipartBlockStateSupplier;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.TexturedModel;
+import static net.minecraft.data.client.TexturedModel.makeFactory;
+import net.minecraft.data.client.VariantSettings;
+import net.minecraft.data.client.VariantsBlockStateSupplier;
+import net.minecraft.data.client.When;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Optional;
-
-import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
-import static net.minecraft.data.client.BlockStateModelGenerator.*;
-import static net.minecraft.data.client.TexturedModel.makeFactory;
 
 class NSModelGenerator extends FabricModelProvider {
 

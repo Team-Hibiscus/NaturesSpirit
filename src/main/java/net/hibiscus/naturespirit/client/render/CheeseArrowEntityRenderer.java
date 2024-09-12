@@ -6,7 +6,6 @@ import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.entity.CheeseArrowEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.ProjectileEntityRenderer;
-import net.minecraft.entity.projectile.SpectralArrowEntity;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)

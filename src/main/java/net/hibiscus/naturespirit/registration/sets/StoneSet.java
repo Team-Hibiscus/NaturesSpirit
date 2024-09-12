@@ -1,19 +1,23 @@
 package net.hibiscus.naturespirit.registration.sets;
 
+import java.util.ArrayList;
+import java.util.List;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.hibiscus.naturespirit.registration.NSItemGroups;
 import net.hibiscus.naturespirit.registration.NSRegistryHelper;
-import net.minecraft.block.*;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.StoneHashMap;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.PillarBlock;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WallBlock;
+import static net.minecraft.data.family.BlockFamilies.register;
 import net.minecraft.data.family.BlockFamily;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.util.Identifier;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
-import static net.minecraft.data.family.BlockFamilies.register;
 
 public class StoneSet {
 

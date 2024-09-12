@@ -1,15 +1,13 @@
 package net.hibiscus.naturespirit.terrablender;
 
+import java.io.IOException;
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import net.hibiscus.naturespirit.config.NSConfig;
 import net.hibiscus.naturespirit.world.NSSurfaceRules;
 import net.minecraft.util.Identifier;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 import terrablender.api.TerraBlenderApi;
-
-import java.io.IOException;
-
-import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 public class NSTerraBlender implements TerraBlenderApi {
    @Override public void onTerraBlenderInitialized() {

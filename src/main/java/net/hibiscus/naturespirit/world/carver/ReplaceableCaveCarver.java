@@ -2,13 +2,16 @@ package net.hibiscus.naturespirit.world.carver;
 
 import com.mojang.serialization.Codec;
 import java.util.function.Function;
-
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.ChunkSectionPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
@@ -21,8 +24,6 @@ import net.minecraft.world.gen.chunk.AquiferSampler;
 import net.minecraft.world.gen.densityfunction.DensityFunction;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Function;
 
 public class ReplaceableCaveCarver extends Carver <ReplaceableCaveCarverConfig> {
 public ReplaceableCaveCarver(Codec<ReplaceableCaveCarverConfig> codec) {

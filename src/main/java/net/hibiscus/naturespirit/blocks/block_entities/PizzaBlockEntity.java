@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks.block_entities;
 
+import java.util.ArrayList;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.PizzaBlock;
 import net.hibiscus.naturespirit.registration.NSDataComponents;
@@ -19,8 +20,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
 
 public class PizzaBlockEntity extends BlockEntity {
    public ArrayList <PizzaToppingVariant> toppings = new ArrayList <>();

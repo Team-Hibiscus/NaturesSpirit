@@ -1,10 +1,18 @@
 package net.hibiscus.naturespirit.datagen;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.hibiscus.naturespirit.registration.*;
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
+import static net.hibiscus.naturespirit.registration.NSBiomes.BiomesHashMap;
 import net.hibiscus.naturespirit.registration.NSColoredBlocks;
+import net.hibiscus.naturespirit.registration.NSItemGroups;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
+import net.hibiscus.naturespirit.registration.NSRegistryHelper;
+import net.hibiscus.naturespirit.registration.NSTags;
 import net.hibiscus.naturespirit.registration.NSWoods;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
 import net.hibiscus.naturespirit.registration.sets.StoneSet;
@@ -16,14 +24,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.world.biome.Biome;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
-import static net.hibiscus.naturespirit.registration.NSBiomes.BiomesHashMap;
 
 class NSLangGenerator extends FabricLanguageProvider {
 

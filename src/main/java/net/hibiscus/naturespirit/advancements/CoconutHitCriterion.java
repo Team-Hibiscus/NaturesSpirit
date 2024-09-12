@@ -2,6 +2,7 @@ package net.hibiscus.naturespirit.advancements;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import net.hibiscus.naturespirit.registration.NSCriteria;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.criterion.AbstractCriterion;
@@ -12,8 +13,6 @@ import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.predicate.entity.LootContextPredicateValidator;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 public class CoconutHitCriterion extends AbstractCriterion <CoconutHitCriterion.Conditions> {
 

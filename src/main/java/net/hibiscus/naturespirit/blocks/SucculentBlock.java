@@ -1,8 +1,14 @@
 package net.hibiscus.naturespirit.blocks;
 
-import net.hibiscus.naturespirit.registration.NSTags;
-import net.minecraft.block.*;
 import com.mojang.serialization.MapCodec;
+import net.hibiscus.naturespirit.registration.NSTags;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CoralParentBlock;
+import net.minecraft.block.Fertilizable;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.SideShapeType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;

@@ -1,6 +1,5 @@
 package net.hibiscus.naturespirit.entity;
 
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.NSEntityTypes;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.hibiscus.naturespirit.registration.NSParticleTypes;

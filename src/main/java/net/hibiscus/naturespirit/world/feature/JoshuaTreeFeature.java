@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
+import java.util.Iterator;
 import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
 import net.hibiscus.naturespirit.registration.NSWoods;
 import net.minecraft.block.LeavesBlock;
@@ -14,8 +15,6 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Iterator;
 
 public class JoshuaTreeFeature extends Feature <DefaultFeatureConfig> {
    public JoshuaTreeFeature(Codec <DefaultFeatureConfig> codec) {

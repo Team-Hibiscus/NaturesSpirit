@@ -1,15 +1,19 @@
 package net.hibiscus.naturespirit.registration;
 
 import net.hibiscus.naturespirit.blocks.PaperLanternBlock;
-import net.minecraft.block.*;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerBlock;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerTransparentBlock;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
-
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.registerTransparentBlock;
 
 public class NSColoredBlocks {
 

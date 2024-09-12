@@ -2,8 +2,14 @@ package net.hibiscus.naturespirit.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import java.util.Map;
 import net.hibiscus.naturespirit.registration.NSTags;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.MushroomPlantBlock;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.SideShapeType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.state.StateManager;
@@ -17,8 +23,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-
-import java.util.Map;
 
 public class PolyporeBlock extends MushroomPlantBlock {
    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;

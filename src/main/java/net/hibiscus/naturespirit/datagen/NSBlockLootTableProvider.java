@@ -1,9 +1,13 @@
 package net.hibiscus.naturespirit.datagen;
 
+import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.IntStream;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.hibiscus.naturespirit.registration.NSColoredBlocks;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
 import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.hibiscus.naturespirit.registration.NSWoods;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
@@ -32,12 +36,6 @@ import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-
-import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
-
-import java.util.HashMap;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.IntStream;
 
 class NSBlockLootTableProvider extends FabricBlockLootTableProvider {
 

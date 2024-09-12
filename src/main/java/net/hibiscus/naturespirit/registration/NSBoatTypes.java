@@ -1,15 +1,15 @@
 package net.hibiscus.naturespirit.registration;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Pair;
 import org.jetbrains.annotations.NotNull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 public class NSBoatTypes {
 	private static final Map<BoatEntity.Type, Pair<Item, Item>> BOAT_TYPES_TO_ITEMS = new Object2ObjectLinkedOpenHashMap<>();

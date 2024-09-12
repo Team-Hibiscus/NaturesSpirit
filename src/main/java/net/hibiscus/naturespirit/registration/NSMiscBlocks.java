@@ -6,24 +6,81 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.blocks.*;
-import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
+import net.hibiscus.naturespirit.blocks.AzollaBlock;
+import net.hibiscus.naturespirit.blocks.BearberryBlock;
+import net.hibiscus.naturespirit.blocks.CattailBlock;
+import net.hibiscus.naturespirit.blocks.CheeseBlock;
+import net.hibiscus.naturespirit.blocks.CheeseCauldronBlock;
+import net.hibiscus.naturespirit.blocks.DesertTurnipBlock;
+import net.hibiscus.naturespirit.blocks.DesertTurnipStemBlock;
+import net.hibiscus.naturespirit.blocks.GrowingBranchingTrunkBlock;
+import net.hibiscus.naturespirit.blocks.LargeDesertFernBlock;
+import net.hibiscus.naturespirit.blocks.LargeSproutsBlock;
+import net.hibiscus.naturespirit.blocks.LotusFlowerBlock;
+import net.hibiscus.naturespirit.blocks.LotusStemBlock;
+import net.hibiscus.naturespirit.blocks.MilkCauldronBlock;
+import net.hibiscus.naturespirit.blocks.NSFernBlock;
+import net.hibiscus.naturespirit.blocks.PizzaBlock;
+import net.hibiscus.naturespirit.blocks.PolyporeBlock;
+import net.hibiscus.naturespirit.blocks.RedMossBlock;
+import net.hibiscus.naturespirit.blocks.SedgeGrassBlock;
 import net.hibiscus.naturespirit.blocks.SemiTallGrassBlock;
+import net.hibiscus.naturespirit.blocks.ShiitakeMushroomPlantBlock;
+import net.hibiscus.naturespirit.blocks.SucculentBlock;
+import net.hibiscus.naturespirit.blocks.SucculentWallBlock;
+import net.hibiscus.naturespirit.blocks.TallLargeDesertFernBlock;
+import net.hibiscus.naturespirit.blocks.TallSedgeGrassBlock;
+import net.hibiscus.naturespirit.blocks.WaterFlowerbedBlock;
+import net.hibiscus.naturespirit.blocks.block_entities.PizzaBlockEntity;
 import net.hibiscus.naturespirit.config.NSConfig;
 import net.hibiscus.naturespirit.datagen.NSConfiguredFeatures;
 import net.hibiscus.naturespirit.items.AzollaItem;
 import net.hibiscus.naturespirit.items.CheeseArrowItem;
 import net.hibiscus.naturespirit.items.DesertTurnipItem;
 import net.hibiscus.naturespirit.items.PizzaItem;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
 import net.hibiscus.naturespirit.registration.sets.StoneSet;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.AmethystClusterBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSetType;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.CarpetBlock;
+import net.minecraft.block.ColoredFallingBlock;
+import net.minecraft.block.DoorBlock;
+import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.GlazedTerracottaBlock;
+import net.minecraft.block.HangingSignBlock;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.MushroomBlock;
+import net.minecraft.block.PaneBlock;
+import net.minecraft.block.PillarBlock;
+import net.minecraft.block.RedstoneOreBlock;
+import net.minecraft.block.SignBlock;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.WallBlock;
+import net.minecraft.block.WallHangingSignBlock;
+import net.minecraft.block.WallSignBlock;
+import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
+import net.minecraft.item.HangingSignItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
+import net.minecraft.item.PlaceableOnWaterItem;
+import net.minecraft.item.PowderSnowBucketItem;
+import net.minecraft.item.SignItem;
+import net.minecraft.item.VerticallyAttachableBlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ColorCode;
@@ -32,9 +89,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
-import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
-
 public class NSMiscBlocks {
 
    public static final Block RED_MOSS_BLOCK = registerBlock("red_moss_block", new RedMossBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).strength(0.1F).sounds(BlockSoundGroup.MOSS_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),  Items.MOSS_BLOCK, ItemGroups.NATURAL);
@@ -42,7 +96,7 @@ public class NSMiscBlocks {
 
    public static final Block SANDY_SOIL = registerBlock("sandy_soil",
            new Block(AbstractBlock.Settings.create().mapColor(MapColor.DIRT_BROWN).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).sounds(BlockSoundGroup.GRAVEL)),
-           
+
            Blocks.FARMLAND,
            ItemGroups.NATURAL
    );
@@ -94,7 +148,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            Blocks.LARGE_FERN,
            0.3f
    );
@@ -109,7 +163,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_FRIGID_GRASS),
-           
+
            Blocks.FERN,
            0.3f
    );
@@ -124,7 +178,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            Blocks.LARGE_FERN,
            0.3f
    );
@@ -139,7 +193,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_SCORCHED_GRASS),
-           
+
            Blocks.FERN,
            0.3f
    );
@@ -153,7 +207,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            Blocks.LARGE_FERN,
            0.3f
    );
@@ -168,7 +222,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_BEACH_GRASS),
-           
+
            Blocks.FERN,
            0.3f
    );
@@ -183,7 +237,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            TALL_SCORCHED_GRASS,
            0.3f
    );
@@ -198,7 +252,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            SCORCHED_GRASS,
            0.3f
    );
@@ -212,7 +266,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            TALL_SEDGE_GRASS,
            0.3f
    );
@@ -226,7 +280,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) LARGE_FLAXEN_FERN),
-           
+
            SEDGE_GRASS,
            0.3f
    );
@@ -240,7 +294,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            LARGE_FLAXEN_FERN,
            0.3f
    );
@@ -255,7 +309,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_OAT_GRASS),
-           
+
            FLAXEN_FERN,
            0.3f
    );
@@ -269,7 +323,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            TALL_OAT_GRASS,
            0.3f
    );
@@ -283,7 +337,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) LARGE_LUSH_FERN),
-           
+
            OAT_GRASS,
            0.3f
    );
@@ -297,7 +351,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            LARGE_LUSH_FERN,
            0.3f
    );
@@ -312,7 +366,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY), (TallPlantBlock) TALL_MELIC_GRASS),
-           
+
            LUSH_FERN,
            0.3f
    );
@@ -325,7 +379,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            MELIC_GRASS,
            0.3f
    );
@@ -338,7 +392,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            GREEN_BEARBERRIES,
            0.3f
    );
@@ -351,7 +405,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XYZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            RED_BEARBERRIES,
            0.3f
    );
@@ -364,7 +418,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            PURPLE_BEARBERRIES,
            0.3f
    );
@@ -377,7 +431,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .offset(AbstractBlock.OffsetType.XZ)
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            GREEN_BITTER_SPROUTS,
            0.3f
    );
@@ -402,7 +456,7 @@ public class NSMiscBlocks {
                    .sounds(BlockSoundGroup.GRASS)
                    .burnable()
                    .pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            Blocks.LARGE_FERN,
            0.4f
    );
@@ -421,7 +475,7 @@ public class NSMiscBlocks {
 
    public static final Item AZOLLA_ITEM = registerItem("azolla",
            new AzollaItem(AZOLLA, new Item.Settings()),
-           
+
            Items.LILY_PAD,
            ItemGroups.NATURAL
    );
@@ -552,14 +606,14 @@ public class NSMiscBlocks {
 
    public static final Item HELVOLA_PAD_ITEM = registerItem("helvola_pad",
            new PlaceableOnWaterItem(HELVOLA, new Item.Settings()),
-           
+
            Items.LILY_PAD,
            ItemGroups.NATURAL
    );
 
    public static final Item HELVOLA_FLOWER_ITEM = registerItem("helvola_flower",
            new Item(new Item.Settings()),
-           
+
            HELVOLA_PAD_ITEM,
            ItemGroups.NATURAL
    );
@@ -577,7 +631,7 @@ public class NSMiscBlocks {
 
    public static final Item LOTUS_FLOWER_ITEM = registerItem("lotus_flower",
            new PlaceableOnWaterItem(LOTUS_FLOWER, new Item.Settings()),
-           
+
            HELVOLA_FLOWER_ITEM,
            ItemGroups.NATURAL
    );
@@ -602,7 +656,7 @@ public class NSMiscBlocks {
 
    public static final Item GREEN_OLIVES = registerPlantItem("green_olives",
            new Item(new Item.Settings().food(GREEN_OLIVE_COMPONENT)),
-           
+
            Items.BEETROOT,
            ItemGroups.FOOD_AND_DRINK,
            0.3F
@@ -610,7 +664,7 @@ public class NSMiscBlocks {
 
    public static final Item BLACK_OLIVES = registerPlantItem("black_olives",
            new Item(new Item.Settings().food(BLACK_OLIVE_COMPONENT)),
-           
+
            GREEN_OLIVES,
            ItemGroups.FOOD_AND_DRINK,
            0.3F
@@ -618,14 +672,14 @@ public class NSMiscBlocks {
 
    public static final Block DESERT_TURNIP_ROOT_BLOCK = registerBlock("desert_turnip_root_block",
            new PillarBlock(AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.SPRUCE_BROWN).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
-           
+
            Blocks.SHROOMLIGHT,
            ItemGroups.NATURAL
    );
 
    public static final Block DESERT_TURNIP_BLOCK = registerBlock("desert_turnip_block",
            new DesertTurnipBlock(AbstractBlock.Settings.create().burnable().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.PALE_PURPLE).strength(1.0F).sounds(BlockSoundGroup.ROOTS)),
-           
+
            NSMiscBlocks.DESERT_TURNIP_ROOT_BLOCK,
            ItemGroups.NATURAL
    );
@@ -639,7 +693,7 @@ public class NSMiscBlocks {
 
    public static final Item DESERT_TURNIP = registerItem("desert_turnip",
            new DesertTurnipItem(DESERT_TURNIP_STEM, (new Item.Settings()).food(DESERT_TURNIP_FOOD_COMPONENT)),
-           
+
            Items.BEETROOT,
            ItemGroups.FOOD_AND_DRINK
    );
@@ -647,7 +701,7 @@ public class NSMiscBlocks {
    public static final Item CHALK_POWDER = registerItem(
            "chalk_powder",
            new Item((new Item.Settings())),
-           
+
            Items.HONEYCOMB,
            ItemGroups.INGREDIENTS
    );
@@ -658,7 +712,7 @@ public class NSMiscBlocks {
 
    public static final Item CHEESE_BUCKET = registerItem("cheese_bucket",
            new PowderSnowBucketItem(CHEESE_BLOCK, SoundEvents.ITEM_BUCKET_EMPTY, (new Item.Settings()).maxCount(1).recipeRemainder(Items.BUCKET)),
-           
+
            Items.MILK_BUCKET,
            ItemGroups.FOOD_AND_DRINK
    );
@@ -675,7 +729,7 @@ public class NSMiscBlocks {
 
    public static final Item WHOLE_PIZZA = registerItem("whole_pizza",
            new PizzaItem(PIZZA_BLOCK, new Item.Settings().maxCount(1).food(STANDARD_PIZZA_COMPONENT)),
-           
+
            Items.BREAD,
            ItemGroups.FOOD_AND_DRINK
    );
@@ -689,7 +743,7 @@ public class NSMiscBlocks {
    public static final Item CALCITE_SHARD = registerItem(
            "calcite_shard",
            new Item(new Item.Settings()),
-           
+
            Items.AMETHYST_SHARD,
            ItemGroups.INGREDIENTS
    );
@@ -709,14 +763,14 @@ public class NSMiscBlocks {
 
    public static final Block LARGE_CALCITE_BUD = registerBlock("large_calcite_bud",
            new AmethystClusterBlock(4, 3, AbstractBlock.Settings.copy(CALCITE_CLUSTER).sounds(BlockSoundGroup.CALCITE).solid().pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            CALCITE_CLUSTER,
            ItemGroups.NATURAL
    );
 
    public static final Block SMALL_CALCITE_BUD = registerBlock("small_calcite_bud",
            new AmethystClusterBlock(3, 4, AbstractBlock.Settings.copy(CALCITE_CLUSTER).sounds(BlockSoundGroup.CALCITE).solid().pistonBehavior(PistonBehavior.DESTROY)),
-           
+
            LARGE_CALCITE_BUD,
            ItemGroups.NATURAL
    );
@@ -727,49 +781,49 @@ public class NSMiscBlocks {
 
    public static final Block CHERT_GOLD_ORE = registerBlock("chert_gold_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.GOLD_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           
+
            Items.GOLD_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_IRON_ORE = registerBlock("chert_iron_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.IRON_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           
+
            Items.IRON_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_COAL_ORE = registerBlock("chert_coal_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.copyShallow(Blocks.COAL_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           
+
            Items.COAL_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_LAPIS_ORE = registerBlock("chert_lapis_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copyShallow(Blocks.LAPIS_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           
+
            Items.LAPIS_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_DIAMOND_ORE = registerBlock("chert_diamond_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.DIAMOND_ORE).mapColor(MapColor.OAK_TAN).strength(.9f)),
-           
+
            Items.DIAMOND_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_REDSTONE_ORE = registerBlock("chert_redstone_ore",
            new RedstoneOreBlock(AbstractBlock.Settings.copyShallow(Blocks.REDSTONE_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
-           
+
            Items.REDSTONE_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_EMERALD_ORE = registerBlock("chert_emerald_ore",
            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copyShallow(Blocks.EMERALD_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
-           
+
            Items.EMERALD_ORE,
            ItemGroups.NATURAL
    );
    public static final Block CHERT_COPPER_ORE = registerBlock("chert_copper_ore",
            new ExperienceDroppingBlock(ConstantIntProvider.create(0), AbstractBlock.Settings.copyShallow(Blocks.COPPER_ORE).mapColor(MapColor.OAK_TAN).strength(.6f)),
-           
+
            Items.COPPER_ORE,
            ItemGroups.NATURAL
    );
@@ -780,13 +834,13 @@ public class NSMiscBlocks {
 
    public static final Block PAPER_BLOCK = registerBlock("paper_block",
            new Block(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
-           
+
            Items.WARPED_BUTTON,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block PAPER_PANEL = registerBlock("paper_panel",
            new PaneBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
-           
+
            PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
@@ -800,13 +854,13 @@ public class NSMiscBlocks {
    ), PAPER_DOOR, ItemGroups.BUILDING_BLOCKS);
    public static final Block FRAMED_PAPER_BLOCK = registerBlock("framed_paper_block",
            new Block(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
-           
+
            PAPER_TRAPDOOR,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block FRAMED_PAPER_PANEL = registerBlock("framed_paper_panel",
            new PaneBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
-           
+
            FRAMED_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );
@@ -820,13 +874,13 @@ public class NSMiscBlocks {
    ),  FRAMED_PAPER_DOOR, ItemGroups.BUILDING_BLOCKS);
    public static final Block BLOOMING_PAPER_BLOCK = registerBlock("blooming_paper_block",
            new GlazedTerracottaBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
-           
+
            FRAMED_PAPER_TRAPDOOR,
            ItemGroups.BUILDING_BLOCKS
    );
    public static final Block BLOOMING_PAPER_PANEL = registerBlock("blooming_paper_panel",
            new PaneBlock(AbstractBlock.Settings.copy(NSWoods.SUGI.getPlanks())),
-           
+
            BLOOMING_PAPER_BLOCK,
            ItemGroups.BUILDING_BLOCKS
    );

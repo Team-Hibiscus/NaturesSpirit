@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit.blocks;
 
+import java.util.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -12,8 +13,6 @@ import net.minecraft.world.BlockLocating;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 public class VinesLeavesBlock extends LeavesBlock implements Fertilizable {
 

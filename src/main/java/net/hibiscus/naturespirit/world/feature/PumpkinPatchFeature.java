@@ -1,6 +1,10 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.function.Function;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkSectionPos;
@@ -13,11 +17,6 @@ import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.function.Function;
 
 
 public class PumpkinPatchFeature extends Feature <OreFeatureConfig> {

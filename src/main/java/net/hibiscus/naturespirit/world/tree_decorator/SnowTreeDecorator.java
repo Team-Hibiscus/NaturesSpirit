@@ -1,14 +1,13 @@
 package net.hibiscus.naturespirit.world.tree_decorator;
 
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-
-import java.util.List;
 
 public class SnowTreeDecorator extends TreeDecorator {
    public static final MapCodec <SnowTreeDecorator> CODEC = MapCodec.unit(SnowTreeDecorator::new);

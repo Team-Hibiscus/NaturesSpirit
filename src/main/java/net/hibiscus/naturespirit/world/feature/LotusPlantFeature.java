@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.world.feature;
 
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 import net.hibiscus.naturespirit.blocks.LotusStemBlock;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.BlockState;
@@ -13,8 +14,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-
-import java.util.Optional;
 
 public class LotusPlantFeature extends Feature <DefaultFeatureConfig> {
    public LotusPlantFeature(Codec <DefaultFeatureConfig> codec) {

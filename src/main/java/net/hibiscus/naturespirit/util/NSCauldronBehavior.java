@@ -2,11 +2,10 @@ package net.hibiscus.naturespirit.util;
 
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.cauldron.CauldronBehavior;
+import static net.minecraft.block.cauldron.CauldronBehavior.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvents;
-
-import static net.minecraft.block.cauldron.CauldronBehavior.*;
 
 public interface NSCauldronBehavior {
 

@@ -1,5 +1,10 @@
 package net.hibiscus.naturespirit.registration.sets;
 
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
@@ -9,15 +14,49 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.hibiscus.naturespirit.NatureSpirit;
-import net.hibiscus.naturespirit.blocks.*;
+import net.hibiscus.naturespirit.blocks.BranchingTrunkBlock;
+import net.hibiscus.naturespirit.blocks.DownwardVineBlock;
+import net.hibiscus.naturespirit.blocks.DownwardsVinePlantBlock;
+import net.hibiscus.naturespirit.blocks.ParticleLeavesBlock;
+import net.hibiscus.naturespirit.blocks.ProjectileLeavesBlock;
+import net.hibiscus.naturespirit.blocks.SandySaplingBlock;
+import net.hibiscus.naturespirit.blocks.VinesLeavesBlock;
 import net.hibiscus.naturespirit.datagen.NSConfiguredFeatures;
 import net.hibiscus.naturespirit.registration.NSBoatTypes;
 import net.hibiscus.naturespirit.registration.NSParticleTypes;
-import net.minecraft.block.*;
+import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSetType;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ButtonBlock;
+import net.minecraft.block.DoorBlock;
+import net.minecraft.block.FenceBlock;
+import net.minecraft.block.FenceGateBlock;
+import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.HangingSignBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.PillarBlock;
+import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.block.SaplingBlock;
+import net.minecraft.block.SaplingGenerator;
+import net.minecraft.block.SignBlock;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
+import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.WallHangingSignBlock;
+import net.minecraft.block.WallSignBlock;
+import net.minecraft.block.WoodType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.BoatItem;
+import net.minecraft.item.HangingSignItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.SignItem;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -25,15 +64,8 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.village.TradeOffers;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-
-import static net.hibiscus.naturespirit.registration.NSRegistryHelper.*;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
 public class WoodSet {
 	private final ItemConvertible leavesBefore;
@@ -123,7 +155,8 @@ public class WoodSet {
 	private Optional<RegistryKey<ConfiguredFeature<?, ?>>> configuredFeature2;
 	private boolean hasLargeTree;
 	private boolean hasMosaic;
-
+	private final List<Block> leavesList = new ArrayList<>();
+	private final List<Block> saplingList = new ArrayList<>();
 
 	private void registerWood() {
 		blockSetType = createBlockSetType();
@@ -754,11 +787,19 @@ public class WoodSet {
 	}
 
 	public List<Block> getRegisteredBlocksList() {
-		return registeredBlocksList;
+		return ImmutableList.copyOf(registeredBlocksList);
 	}
 
 	public List<Item> getRegisteredItemsList() {
-		return registeredItemsList;
+		return ImmutableList.copyOf(registeredItemsList);
+	}
+
+	public List<Block> getLeavesList() {
+		return ImmutableList.copyOf(leavesList);
+	}
+
+	public List<Block> getsaplingList() {
+		return ImmutableList.copyOf(saplingList);
 	}
 
 	private Block createBlockWithItem(String blockID, Block block) {
@@ -815,6 +856,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -824,6 +866,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(prefix + getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -834,6 +877,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -844,6 +888,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(prefix + getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -853,6 +898,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -862,6 +908,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(prefix + getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -873,6 +920,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -885,6 +933,7 @@ public class WoodSet {
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		FlammableBlockRegistry.getDefaultInstance().add(block, 5, 20);
 		LeavesHashMap.put(prefix + getName(), block);
+		leavesList.add(block);
 		return block;
 	}
 
@@ -1012,6 +1061,7 @@ public class WoodSet {
 		Block block = createBlockWithItem(getName() + "_sapling", new SaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		RenderLayerHashMap.put(getName() + "_sapling", block);
+		saplingList.add(block);
 		return block;
 	}
 
@@ -1019,6 +1069,7 @@ public class WoodSet {
 		Block block = createBlockWithItem(getName() + "_sapling", new SandySaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		RenderLayerHashMap.put(getName() + "_sapling", block);
+		saplingList.add(block);
 		return block;
 	}
 
@@ -1030,6 +1081,7 @@ public class WoodSet {
 		Block block = createBlockWithItem(prefix + getName() + "_sapling", new SaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		RenderLayerHashMap.put(prefix + getName() + "_sapling", block);
+		saplingList.add(block);
 		return block;
 	}
 
@@ -1037,6 +1089,7 @@ public class WoodSet {
 		Block block = createBlockWithItem(prefix + getName() + "_sapling", new SandySaplingBlock(saplingGenerator, AbstractBlock.Settings.copy(Blocks.SPRUCE_SAPLING)));
 		CompostingChanceRegistry.INSTANCE.add(block, 0.3F);
 		RenderLayerHashMap.put(prefix + getName() + "_sapling", block);
+		saplingList.add(block);
 		return block;
 	}
 

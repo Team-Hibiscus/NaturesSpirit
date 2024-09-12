@@ -3,6 +3,8 @@ package net.hibiscus.naturespirit.world.trunk;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 import net.hibiscus.naturespirit.registration.NSWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -12,9 +14,6 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
-
-import java.util.List;
-import java.util.function.BiConsumer;
 
 public class RedwoodTrunkPlacer extends TrunkPlacer {
    public static final MapCodec <RedwoodTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {

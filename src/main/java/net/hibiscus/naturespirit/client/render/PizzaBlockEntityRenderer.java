@@ -15,7 +15,6 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class PizzaBlockEntityRenderer implements BlockEntityRenderer<PizzaBlockEntity> {

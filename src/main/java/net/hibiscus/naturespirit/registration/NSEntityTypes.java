@@ -1,13 +1,12 @@
 package net.hibiscus.naturespirit.registration;
 
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 import net.hibiscus.naturespirit.entity.CheeseArrowEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-
-import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 public class NSEntityTypes {
 

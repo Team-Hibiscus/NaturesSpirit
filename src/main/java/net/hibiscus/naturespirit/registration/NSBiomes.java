@@ -1,13 +1,12 @@
 package net.hibiscus.naturespirit.registration;
 
 
+import java.util.HashMap;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
-
-import java.util.HashMap;
 
 public class NSBiomes {
 

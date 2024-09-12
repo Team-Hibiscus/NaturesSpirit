@@ -1,8 +1,13 @@
 package net.hibiscus.naturespirit.mixin;
 
+import java.util.Optional;
 import net.hibiscus.naturespirit.config.NSConfig;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
-import net.minecraft.block.*;
+import net.minecraft.block.AmethystClusterBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.CoralBlockBlock;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
@@ -13,8 +18,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
-
-import java.util.Optional;
 
 @Mixin(CoralBlockBlock.class) @Debug(export = true) public abstract class CoralBlockBlockMixin extends Block {
    public CoralBlockBlockMixin(Settings settings) {

@@ -2,15 +2,14 @@ package net.hibiscus.naturespirit.world;
 
 import com.google.common.collect.ImmutableList;
 import net.hibiscus.naturespirit.registration.NSBiomes;
-import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.hibiscus.naturespirit.registration.NSColoredBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
-
 import static net.minecraft.world.gen.surfacebuilder.MaterialRules.*;
 
 public class NSSurfaceRules {

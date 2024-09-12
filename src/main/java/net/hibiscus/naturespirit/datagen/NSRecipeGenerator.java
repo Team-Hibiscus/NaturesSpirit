@@ -1,15 +1,29 @@
 package net.hibiscus.naturespirit.datagen;
 
+import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.hibiscus.naturespirit.registration.*;
+import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
+import net.hibiscus.naturespirit.registration.NSColoredBlocks;
+import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
+import net.hibiscus.naturespirit.registration.NSRegistryHelper;
+import net.hibiscus.naturespirit.registration.NSTags;
+import net.hibiscus.naturespirit.registration.NSWoods;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
 import net.hibiscus.naturespirit.registration.sets.StoneSet;
 import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.block.Blocks;
+import static net.minecraft.data.family.BlockFamilies.register;
 import net.minecraft.data.family.BlockFamily;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeProvider;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.StonecuttingRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -21,13 +35,6 @@ import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.HashMap;
-import java.util.concurrent.CompletableFuture;
-
-import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
-import static net.hibiscus.naturespirit.registration.NSMiscBlocks.*;
-import static net.minecraft.data.family.BlockFamilies.register;
 
 public class NSRecipeGenerator extends FabricRecipeProvider {
    public NSRecipeGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
