@@ -29,20 +29,19 @@ import net.minecraft.world.WorldView;
 public class DesertTurnipStemBlock extends PlantBlock implements Fertilizable {
 	public static final int MAX_AGE = 7;
 	public static final IntProperty AGE;
-	protected static final float field_31256 = 1.0F;
 	protected static final VoxelShape[] AGE_TO_SHAPE;
 
 	static {
 		AGE = Properties.AGE_7;
 		AGE_TO_SHAPE = new VoxelShape[]{
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
-			Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 2D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 4D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 6D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 8D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 10D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 12D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 14D, 16D),
+			Block.createCuboidShape(0D, 0D, 0D, 16D, 16D, 16D)
 		};
 	}
 
@@ -162,7 +161,7 @@ public class DesertTurnipStemBlock extends PlantBlock implements Fertilizable {
 
 	@Override
 	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-		return state.get(AGE) < 7;
+		return state.get(AGE) < MAX_AGE;
 	}
 
 	@Override
