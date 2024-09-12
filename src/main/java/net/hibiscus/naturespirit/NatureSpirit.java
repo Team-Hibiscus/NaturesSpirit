@@ -1,25 +1,19 @@
 package net.hibiscus.naturespirit;
 
-
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
-import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.config.NSConfig;
-import net.hibiscus.naturespirit.entity.NSBoatEntity;
-import net.hibiscus.naturespirit.items.NSBoatDispenserBehavior;
 import net.hibiscus.naturespirit.mixin.StatsTypeAccessor;
 import net.hibiscus.naturespirit.registration.*;
 import net.hibiscus.naturespirit.util.NSCauldronBehavior;
 import net.hibiscus.naturespirit.util.NSEvents;
 import net.hibiscus.naturespirit.util.NSVillagers;
-import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.passive.CatVariant;
-import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -33,28 +27,21 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class NatureSpirit implements ModInitializer {
-
    public static final String MOD_ID = "natures_spirit";
    public static final Logger LOGGER = LoggerFactory.getLogger("Nature's Spirit");
    public static final Identifier EAT_PIZZA_SLICE = StatsTypeAccessor.registerNew("eat_pizza_slice", StatFormatter.DEFAULT);
    public static final Identifier EAT_CHEESE = StatsTypeAccessor.registerNew("eat_cheese", StatFormatter.DEFAULT);
-   public static final SimpleParticleType RED_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
-   public static final SimpleParticleType ORANGE_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
-   public static final SimpleParticleType YELLOW_MAPLE_LEAVES_PARTICLE = FabricParticleTypes.simple(false);
-   public static final SimpleParticleType MILK_PARTICLE = FabricParticleTypes.simple(false);
-   public static final SimpleParticleType CALCITE_BUBBLE_PARTICLE = FabricParticleTypes.simple(false);
    public static final RegistryKey <Registry<PizzaToppingVariant>> PIZZA_TOPPING_VARIANT = RegistryKey.ofRegistry(Identifier.of(MOD_ID, "pizza_topping_variant"));
 
    @Override public void onInitialize() {
-
       Optional <ModContainer> modContainer = FabricLoader.getInstance().getModContainer("natures_spirit");
       try {
          NSConfig.main();
-      }
-      catch(IOException e) {
+      } catch(IOException e) {
          throw new RuntimeException(e);
       }
-      if(modContainer.isPresent()) {
+
+      if (modContainer.isPresent()) {
          ResourceManagerHelper.registerBuiltinResourcePack(
                  Identifier.of(MOD_ID, "modified_vanilla_trees"), modContainer.get(),
                  Text.translatable("pack.natures_spirit.modified_vanilla_trees"),
@@ -128,11 +115,7 @@ public class NatureSpirit implements ModInitializer {
                  ResourcePackActivationType.NORMAL
          );
       }
-      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "red_maple_leaves"), RED_MAPLE_LEAVES_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "orange_maple_leaves"), ORANGE_MAPLE_LEAVES_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "yellow_maple_leaves"), YELLOW_MAPLE_LEAVES_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "milk"), MILK_PARTICLE);
-      Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "calcite_bubble"), CALCITE_BUBBLE_PARTICLE);
+
       NSSounds.registerSounds();
       NSDataComponents.registerDataComponents();
       NSEntityTypes.registerEntityTypes();
@@ -149,13 +132,7 @@ public class NatureSpirit implements ModInitializer {
       NSCauldronBehavior.registerBehavior();
       DynamicRegistries.registerSynced(PIZZA_TOPPING_VARIANT, PizzaToppingVariant.CODEC);
 
-      for(NSBoatEntity.HibiscusBoat boat : NSBoatEntity.HibiscusBoat.values()) {
-         DispenserBlock.registerBehavior(boat.boat(), new NSBoatDispenserBehavior(boat, false));
-         DispenserBlock.registerBehavior(boat.chestBoat(), new NSBoatDispenserBehavior(boat, true));
-      }
-
       Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
-
 
    }
 }

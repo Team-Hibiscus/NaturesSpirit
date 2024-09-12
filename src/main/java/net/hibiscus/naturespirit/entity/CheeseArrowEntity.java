@@ -3,6 +3,7 @@ package net.hibiscus.naturespirit.entity;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.registration.NSEntityTypes;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSParticleTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -28,7 +29,7 @@ public class CheeseArrowEntity extends PersistentProjectileEntity {
    public void tick() {
       super.tick();
       if (this.getWorld().isClient && !this.inGround) {
-         this.getWorld().addParticle(NatureSpirit.MILK_PARTICLE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+         this.getWorld().addParticle(NSParticleTypes.MILK_PARTICLE, this.getX(), this.getY(), this.getZ(), 0D, 0D, 0D);
       }
 
    }

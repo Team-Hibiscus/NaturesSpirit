@@ -13,13 +13,12 @@ import net.minecraft.util.Identifier;
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
 
 public class NSItemGroups {
-
    public static final RegistryKey <ItemGroup> NS_ITEM_GROUP = register("tab");
 
    public static void registerItemGroup() {
       build(
-              NS_ITEM_GROUP,
-              FabricItemGroup.builder().displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".item_group")).icon(() -> new ItemStack(NSWoods.REDWOOD.getSapling())).build()
+		  NS_ITEM_GROUP,
+		  FabricItemGroup.builder().displayName(Text.translatable("itemGroup" + ".natures_spirit" + ".item_group")).icon(() -> new ItemStack(NSWoods.REDWOOD.getSapling())).build()
       );
    }
 

@@ -4,9 +4,8 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.blocks.DesertTurnipStemBlock;
-import net.hibiscus.naturespirit.entity.NSBoatEntity;
+import net.hibiscus.naturespirit.registration.NSBoatTypes;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.hibiscus.naturespirit.registration.NSWoods;
 import net.hibiscus.naturespirit.registration.sets.FlowerSet;
@@ -48,12 +47,12 @@ class NSModelGenerator extends FabricModelProvider {
    private static final Model CROP = block("crop", TextureKey.CROP);
    private static final Model PAPER_LANTERN = block("template_paper_lantern", TextureKey.TOP, TextureKey.SIDE);
    private static final Model HANGING_PAPER_LANTERN = block("template_hanging_paper_lantern", "_hanging", TextureKey.TOP, TextureKey.SIDE);
-   
+
    private static final Model AZOLLA_1 = block("template_azolla_1", "_1", TextureKey.PLANT);
    private static final Model AZOLLA_2 = block("template_azolla_2", "_2", TextureKey.PLANT);
    private static final Model AZOLLA_3 = block("template_azolla_3", "_3", TextureKey.PLANT);
    private static final Model AZOLLA_4 = block("template_azolla_4", "_4", TextureKey.PLANT);
-   
+
    public static TextureMap paperLantern(Block block) {
       return (new TextureMap()).put(TextureKey.SIDE, getId(block)).put(TextureKey.TOP, getId(block).withSuffixedPath("_top"));
    }
@@ -582,7 +581,7 @@ class NSModelGenerator extends FabricModelProvider {
       generateVineBlockStateModels(NSWoods.WISTERIA.getPinkVines(), NSWoods.WISTERIA.getPinkVinesPlant(), blockStateModelGenerator);
       generateVineBlockStateModels(NSWoods.WILLOW.getVines(), NSWoods.WILLOW.getVinesPlant(), blockStateModelGenerator);
       registerAzolla(AZOLLA_ITEM, AZOLLA, blockStateModelGenerator);
-      
+
       blockStateModelGenerator.registerLog(ALLUAUDIA_BUNDLE).log(ALLUAUDIA_BUNDLE);
       blockStateModelGenerator.registerLog(STRIPPED_ALLUAUDIA_BUNDLE).log(STRIPPED_ALLUAUDIA_BUNDLE);
 
@@ -814,9 +813,7 @@ class NSModelGenerator extends FabricModelProvider {
       itemModelGenerator.register(CHEESE_ARROW, Models.GENERATED);
       itemModelGenerator.register(HELVOLA_FLOWER_ITEM, Models.GENERATED);
       itemModelGenerator.register(HELVOLA_PAD_ITEM, Models.GENERATED);
-      for(NSBoatEntity.HibiscusBoat boat : NSBoatEntity.HibiscusBoat.values()) {
-         itemModelGenerator.register(boat.boat().asItem(), Models.GENERATED);
-         itemModelGenerator.register(boat.chestBoat().asItem(), Models.GENERATED);
-      }
+
+	   NSBoatTypes.getAllBoatItems().forEach(item -> itemModelGenerator.register(item, Models.GENERATED));
    }
 }

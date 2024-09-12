@@ -12,9 +12,9 @@ import net.hibiscus.naturespirit.client.render.CheeseArrowEntityRenderer;
 import net.hibiscus.naturespirit.client.render.NSEntityModelLayers;
 import net.hibiscus.naturespirit.client.render.PizzaBlockEntityRenderer;
 import net.hibiscus.naturespirit.client.render.PizzaToppingModel;
-import net.hibiscus.naturespirit.entity.NSBoatEntity;
 import net.hibiscus.naturespirit.registration.NSEntityTypes;
 import net.hibiscus.naturespirit.registration.NSMiscBlocks;
+import net.hibiscus.naturespirit.registration.NSParticleTypes;
 import net.hibiscus.naturespirit.registration.NSWoods;
 import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.minecraft.block.Block;
@@ -24,17 +24,15 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.particle.SuspendParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.minecraft.client.render.entity.model.BoatEntityModel;
-import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.FoliageColors;
 import net.minecraft.world.biome.GrassColors;
 
-import static net.hibiscus.naturespirit.NatureSpirit.*;
+@Environment(EnvType.CLIENT)
+public class NSClient implements ClientModInitializer {
 
-@Environment(EnvType.CLIENT) public class NSClient implements ClientModInitializer {
-   @Override public void onInitializeClient() {
-
+   @Override
+   public void onInitializeClient() {
       BlockEntityRendererFactories.register(NSMiscBlocks.PIZZA_BLOCK_ENTITY_TYPE, PizzaBlockEntityRenderer::new);
 
       ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
@@ -77,8 +75,6 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
       NSEntityModelLayers.registerEntityModelLayers();
       EntityModelLayerRegistry.registerModelLayer(NSEntityModelLayers.PIZZA_TOPPING, PizzaToppingModel::getTexturedModelData);
 
-
-
       BlockRenderLayerMap.INSTANCE.putBlock(NSMiscBlocks.PIZZA_BLOCK, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(NSMiscBlocks.LARGE_CALCITE_BUD, RenderLayer.getCutout());
       BlockRenderLayerMap.INSTANCE.putBlock(NSMiscBlocks.SMALL_CALCITE_BUD, RenderLayer.getCutout());
@@ -105,32 +101,17 @@ import static net.hibiscus.naturespirit.NatureSpirit.*;
 
 
 
-      ParticleFactoryRegistry.getInstance().register(RED_MAPLE_LEAVES_PARTICLE,
-              ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
+      ParticleFactoryRegistry.getInstance().register(NSParticleTypes.RED_MAPLE_LEAVES_PARTICLE,
+		  ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
-      ParticleFactoryRegistry.getInstance().register(ORANGE_MAPLE_LEAVES_PARTICLE,
-              ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
+      ParticleFactoryRegistry.getInstance().register(NSParticleTypes.ORANGE_MAPLE_LEAVES_PARTICLE,
+		  ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
-      ParticleFactoryRegistry.getInstance().register(YELLOW_MAPLE_LEAVES_PARTICLE,
-              ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
+      ParticleFactoryRegistry.getInstance().register(NSParticleTypes.YELLOW_MAPLE_LEAVES_PARTICLE,
+		  ((spriteProvider) -> (parameters, world, x, y, z, velocityX, velocityY, velocityZ) -> new MapleLeavesParticle(world, x, y, z, spriteProvider))
       );
-      ParticleFactoryRegistry.getInstance().register(MILK_PARTICLE, SuspendParticle.Factory::new);
-//      ParticleFactoryRegistry.getInstance().register(CALCITE_BUBBLE_PARTICLE, CalciteBubbleParticle.BubbleFactory::new);
-
-
-      for(NSBoatEntity.HibiscusBoat boat : NSBoatEntity.HibiscusBoat.values()) {
-         registerBoatModel(true, boat);
-         registerBoatModel(false, boat);
-      }
-   }
-
-   private static void registerBoatModel(boolean chest, NSBoatEntity.HibiscusBoat boat) {
-      var type = boat.entityType(chest);
-      EntityRendererRegistry.register(type, context -> new NSBoatEntityRenderer(context, chest, boat));
-      EntityModelLayerRegistry.registerModelLayer(
-              NSBoatEntityRenderer.getModelLayer(boat, chest),
-              () -> chest ? ChestBoatEntityModel.getTexturedModelData() : BoatEntityModel.getTexturedModelData()
-      );
+      ParticleFactoryRegistry.getInstance().register(NSParticleTypes.MILK_PARTICLE, SuspendParticle.Factory::new);
+//    ParticleFactoryRegistry.getInstance().register(CALCITE_BUBBLE_PARTICLE, CalciteBubbleParticle.BubbleFactory::new);
    }
 }
 

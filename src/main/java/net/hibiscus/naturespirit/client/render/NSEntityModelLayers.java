@@ -12,9 +12,9 @@ public class NSEntityModelLayers {
    private static EntityModelLayer registerMain(String id) {
       return register(id, "main");
    }
+
    private static EntityModelLayer register(String id, String layer) {
       return create(id, layer);
-
    }
 
    private static EntityModelLayer create(String id, String layer) {

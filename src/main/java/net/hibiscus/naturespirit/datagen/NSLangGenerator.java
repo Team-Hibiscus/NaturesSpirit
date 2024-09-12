@@ -67,8 +67,6 @@ class NSLangGenerator extends FabricLanguageProvider {
          generateBlockTranslations(woodSet.getHangingSign(), translationBuilder);
             translationBuilder.add(woodSet.getBoatItem(), capitalizeString(woodSet.getName().replace("_", " ")) + " Boat");
             translationBuilder.add(woodSet.getChestBoatItem(), capitalizeString(woodSet.getName().replace("_", " ")) + " Boat with Chest");
-            translationBuilder.add(woodSet.getChestBoatEntityType(), "Boat with Chest");
-            translationBuilder.add(woodSet.getBoatEntityType(), "Boat");
          generateArchExTranslations(woodSet.getName(), translationBuilder);
       }
    }
