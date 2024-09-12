@@ -299,6 +299,7 @@ public class WoodSet {
 			new BoatItem(true, boatType, new Item.Settings().maxCount(1))
 		);
 		NSBoatTypes.addBoatTypeItems(boatType, boatItem, chestBoatItem);
+		NSBoatTypes.setBoatTypeBaseItem(boatType, planks);
 
 		RenderLayerHashMap.put(getName() + "_door", door);
 		RenderLayerHashMap.put(getName() + "_trapdoor", trapDoor);
