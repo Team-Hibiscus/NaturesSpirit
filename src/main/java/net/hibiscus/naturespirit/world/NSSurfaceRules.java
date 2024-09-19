@@ -307,6 +307,13 @@ public class NSSurfaceRules {
                       MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS))));
 
 
+      MaterialRules.MaterialRule sugiRule = MaterialRules.condition(MaterialRules.biome(NSBiomes.SUGI_FOREST),
+              MaterialRules.sequence(
+                      MaterialRules.condition(MaterialRules.stoneDepth(0, true, VerticalSurfaceType.FLOOR),
+                              MaterialRules.condition(noiseCondition2, MaterialRules.condition(materialCondition7, COARSE_DIRT))),
+                      MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS))));
+
+
 
       ImmutableList.Builder <MaterialRules.MaterialRule> builder = ImmutableList.builder();
       MaterialRules.MaterialRule dustySurfaceRule = MaterialRules.condition(MaterialRules.surface(), dustyRule);

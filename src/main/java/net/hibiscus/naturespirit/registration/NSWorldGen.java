@@ -1,6 +1,7 @@
 package net.hibiscus.naturespirit.registration;
 
 import com.mojang.serialization.MapCodec;
+import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarverConfig;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarver;
@@ -13,13 +14,17 @@ import net.hibiscus.naturespirit.world.tree_decorator.*;
 import net.hibiscus.naturespirit.world.trunk.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.world.gen.carver.Carver;
 import net.minecraft.world.gen.carver.CarverConfig;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
+import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
@@ -67,6 +72,10 @@ public class NSWorldGen {
 
    public static final Carver <ReplaceableCaveCarverConfig> REPLACEABLE_CAVE_CARVER = registerCaveCarver("replaceable_cave", new ReplaceableCaveCarver(ReplaceableCaveCarverConfig.CAVE_CODEC));
    public static final Carver <ReplaceableRavineCarverConfig> REPLACEABLE_RAVINE_CARVER = registerCaveCarver("replaceable_canyon", new ReplaceableRavineCarver(ReplaceableRavineCarverConfig.RAVINE_CODEC));
+
+   public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> SUGI_PILLAR = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "sugi_pillar"));
+   public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> SUGI_PILLAR_ROOF = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "sugi_pillar_roof"));
+   public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> SUGI_SURFACE = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "sugi_surface"));
 
    public static final Feature <DeltaFeatureConfig> HIBISCUS_DELTA_FEATURE = Registry.register(Registries.FEATURE,
            Identifier.of(MOD_ID, "water_delta_feature"),

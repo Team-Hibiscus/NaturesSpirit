@@ -9,6 +9,7 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -185,8 +186,16 @@ public class NSPlacedFeatures {
 //      registerKey(context, BANYAN_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(NSConfiguredFeatures.BANYAN_TREE), PlacedFeatures.wouldSurvive(NSWoods.BANYAN.getSapling()));
       registerKey(context, OLIVE_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(NSConfiguredFeatures.OLIVE_TREE), PlacedFeatures.wouldSurvive(NSWoods.OLIVE.getSapling()));
 
-      registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(NSConfiguredFeatures.OAK_BUSH), BlockFilterPlacementModifier.of(BlockPredicate.anyOf(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(),
-              BlockPos.ORIGIN), BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.down(), NSTags.Blocks.KAOLIN))));
+      registerKey(context, OAK_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(NSConfiguredFeatures.OAK_BUSH), BlockFilterPlacementModifier.of(BlockPredicate.anyOf(
+              BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN),
+              BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.down(), NSTags.Blocks.KAOLIN),
+              BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.down(), BlockTags.BASE_STONE_OVERWORLD),
+              BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.east(), BlockTags.BASE_STONE_OVERWORLD),
+              BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.west(), BlockTags.BASE_STONE_OVERWORLD),
+              BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.south(), BlockTags.BASE_STONE_OVERWORLD),
+              BlockPredicate.matchingBlockTag(BlockPos.ORIGIN.north(), BlockTags.BASE_STONE_OVERWORLD)
+              )
+      ));
       registerKey(context, SPRUCE_BUSH_CHECKED, configuredFeatureRegistryEntryLookup.getOrThrow(NSConfiguredFeatures.SPRUCE_BUSH), PlacedFeatures.wouldSurvive(Blocks.SPRUCE_SAPLING));
 
       registerKey(context,

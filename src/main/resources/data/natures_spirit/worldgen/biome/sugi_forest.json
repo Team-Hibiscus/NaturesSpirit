@@ -30,7 +30,7 @@
   },
   "features": [
     [
-      "natures_spirit:stone_cliff"
+//      "natures_spirit:stone_cliff"
     ],
     [
       "minecraft:lake_lava_underground",
@@ -86,7 +86,7 @@
       "minecraft:glow_lichen",
       "natures_spirit:patch_tall_grass_2",
       "natures_spirit:sugi_placed",
-      "natures_spirit:oak_bush_placed",
+      "natures_spirit:oak_bush_placed_dense",
       "natures_spirit:patch_grass_field",
       "natures_spirit:flower_sugi_placed",
       "minecraft:forest_flowers",

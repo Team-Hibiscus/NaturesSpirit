@@ -10,7 +10,8 @@
     "BoatDispenserBehaviorMixin",
     "BoatEntityMixin",
     "CoralBlockBlockMixin",
-    "StatsTypeAccessor"
+    "StatsTypeAccessor",
+    "SurfaceBuilderMixin"
   ],
   "client": [
   ],
