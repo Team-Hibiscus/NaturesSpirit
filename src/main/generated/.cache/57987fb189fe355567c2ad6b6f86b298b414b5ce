@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-08T17:04:39.8358824	Nature's Spirit/Recipes
+// 1.21.1	2024-09-20T19:49:39.1681864	Nature's Spirit/Recipes
 2435f1829ce9b8148fd9fd8f05355608d7c433ac data\natures_spirit\recipe\aspen_hanging_sign.json
 d96df68f676f7439efb4d4045b5f0f1d8709d1c2 data\natures_spirit\recipe\red_dye_from_carnation.json
 842a5434a5bac176adf419998b65ee800f835e20 data\natures_spirit\recipe\wisteria_boat.json
@@ -55,8 +55,8 @@ e02e6203bc8e96c364a4748786525aea869d0547 data\natures_spirit\advancement\recipes
 ed7ee27c8487b60bfbc9f4f10fc64e61ad965e88 data\natures_spirit\recipe\red_dye_from_ruby_blossoms.json
 c69d51cc4a7cea6a2c0893f0ad235933abc27c6e data\natures_spirit\advancement\recipes\decorations\saxaul_sign.json
 2fbf1943b6b82931c337fb7215a09c7aacf7a20c data\natures_spirit\advancement\recipes\building_blocks\coconut_mosaic.json
-dac1ac6320d8a76cb47b6c023873ba2590079199 data\natures_spirit\recipe\polished_travertine.json
 7f178cf7eabbe312ad5a1ef4b6149bbf8d190409 data\natures_spirit\recipe\travertine_stairs.json
+dac1ac6320d8a76cb47b6c023873ba2590079199 data\natures_spirit\recipe\polished_travertine.json
 6d2315ff50e30ac1cdedeeaf97e4abe1d273d3a6 data\natures_spirit\recipe\coconut_hanging_sign.json
 656ff6f4cde7a50e0a9acbcda688125662af73b1 data\natures_spirit\advancement\recipes\decorations\red_moss_carpet.json
 01a538662e151b70b23860ae36b69500f70ea783 data\natures_spirit\advancement\recipes\building_blocks\saxaul_planks.json

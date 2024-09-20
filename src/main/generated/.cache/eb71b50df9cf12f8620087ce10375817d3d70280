@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-08T17:04:39.853471	Nature's Spirit/Tags for minecraft:block
+// 1.21.1	2024-09-20T19:49:39.182696	Nature's Spirit/Tags for minecraft:block
 0c79637aa00eb227f04b461170cade15b2029b2b data\minecraft\tags\block\wooden_slabs.json
 3454f45223c112a6a3e047fa111c252ffc2f4198 data\natures_spirit\tags\block\aspen_logs.json
 09dbbda287df77e8ed3198133d4ca017c9748add data\natures_spirit\tags\block\palo_verde_logs.json
@@ -9,8 +9,8 @@ fbc07fa9c51cb29a52ffc0583255355312f150f9 data\minecraft\tags\block\coal_ores.jso
 0c38c44b15d9764e6d071c4b8a51f5685ec2562a data\minecraft\tags\block\mineable\shovel.json
 64088f24775ef90de419afe283e1b4cc54fd91e0 data\natures_spirit\tags\block\cedar_logs.json
 90a52115dd929a8e1825ebda035728cdf2c05a2d data\minecraft\tags\block\fence_gates.json
-3d5f461f6c2aafcbd6cc697a05662edbe50a3f28 data\minecraft\tags\block\emerald_ores.json
 c64c4eaaa55f48c55db496909de64e43a0a56c59 data\minecraft\tags\block\replaceable_by_trees.json
+3d5f461f6c2aafcbd6cc697a05662edbe50a3f28 data\minecraft\tags\block\emerald_ores.json
 2c0b3c4857b2a26ca3a4af87751fd5322d0313f7 data\minecraft\tags\block\ceiling_hanging_signs.json
 464ba58e07fa0189b6f94531dba9aa625faa8efb data\minecraft\tags\block\maintains_farmland.json
 0539102afbfcbad57466f6aa555e88abd093869d data\minecraft\tags\block\base_stone_overworld.json
@@ -41,8 +41,8 @@ b50320fce662e85bee0c7cda06ef700f3f736e40 data\minecraft\tags\block\copper_ores.j
 3c6fdb0cf9a0aeaaf1e6cf9a52a8b25b341eb399 data\minecraft\tags\block\wooden_stairs.json
 530e46c6f22e13aabf30abab551f7d3130cac7bf data\minecraft\tags\block\diamond_ores.json
 e901f8ec43303ed93e4f6f5c380971050402d5f4 data\minecraft\tags\block\standing_signs.json
-9c30158bebf03067e12abc22f6ec59f3a80f98bd data\minecraft\tags\block\mineable\axe.json
 0c38c44b15d9764e6d071c4b8a51f5685ec2562a data\minecraft\tags\block\sand.json
+9c30158bebf03067e12abc22f6ec59f3a80f98bd data\minecraft\tags\block\mineable\axe.json
 3486af8c9b1be42a54431a1fdb39310567ad6dc3 data\minecraft\tags\block\flower_pots.json
 e1b8d30e6b91a446df439d7ef8817272d5b489ea data\minecraft\tags\block\iron_ores.json
 b0491aebb3b8f45ed5e7cfd81da579c95c2e3e23 data\minecraft\tags\block\leaves.json
@@ -56,8 +56,8 @@ c377c2c8f77381aaef99bda580584e2e00c6f77c data\minecraft\tags\block\slabs.json
 047d3ed58eeb2ee86bc6af0ba8330d950eca2fb8 data\minecraft\tags\block\overworld_natural_logs.json
 430f9f548a98862f42e2b3012d58cccc2802b502 data\minecraft\tags\block\stone_ore_replaceables.json
 3bf892437850cb0f4f20797255a4baddfd0ee95f data\natures_spirit\tags\block\olive_logs.json
-e8d63acfd1ec1b7c1ad7b55f187c313fcdec4dd4 data\minecraft\tags\block\gold_ores.json
 3a7e14f87fe78b255566c63080a92a3b06583416 data\minecraft\tags\block\small_flowers.json
+e8d63acfd1ec1b7c1ad7b55f187c313fcdec4dd4 data\minecraft\tags\block\gold_ores.json
 8e8adaa977e503a74f60447903ea2c751133177f data\minecraft\tags\block\wooden_pressure_plates.json
 e1c158c7b2f25932cc4fe2031eeb68ad2766cd56 data\minecraft\tags\block\needs_iron_tool.json
 db4314b9140e8bf51ee0581afab727742852b4c8 data\natures_spirit\tags\block\willow_logs.json
