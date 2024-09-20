@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_evergreen_thatch": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natures_spirit:evergreen_thatch"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:evergreen_thatch_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_evergreen_thatch"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:evergreen_thatch_carpet"
+    ]
+  }
+}

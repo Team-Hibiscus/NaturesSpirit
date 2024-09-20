@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "natures_spirit:block/tall_oat_grass_bottom"
+    },
+    "half=upper": {
+      "model": "natures_spirit:block/tall_oat_grass_top"
+    }
+  }
+}

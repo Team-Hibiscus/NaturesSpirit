@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/tinted_large_cross",
+  "textures": {
+    "cross": "natures_spirit:block/large_lush_fern_bottom"
+  }
+}

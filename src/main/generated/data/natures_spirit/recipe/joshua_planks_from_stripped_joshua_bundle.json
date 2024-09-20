@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "natures_spirit:stripped_joshua_bundle"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "natures_spirit:joshua_planks"
+  }
+}

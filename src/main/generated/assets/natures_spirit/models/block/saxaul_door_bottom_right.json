@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "natures_spirit:block/saxaul_door_bottom",
+    "top": "natures_spirit:block/saxaul_door_top"
+  }
+}

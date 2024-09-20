@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "natures_spirit:block/redwood_planks"
+  }
+}

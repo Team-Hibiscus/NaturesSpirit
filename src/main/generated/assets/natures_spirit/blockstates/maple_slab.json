@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/maple_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/maple_planks"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/maple_slab_top"
+    }
+  }
+}

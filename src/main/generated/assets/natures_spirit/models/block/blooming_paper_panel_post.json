@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "natures_spirit:block/blooming_paper_panel_top",
+    "pane": "natures_spirit:block/blooming_paper_block"
+  }
+}

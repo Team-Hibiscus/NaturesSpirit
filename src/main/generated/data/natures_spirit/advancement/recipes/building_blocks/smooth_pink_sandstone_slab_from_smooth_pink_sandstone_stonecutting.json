@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_pink_sandstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natures_spirit:smooth_pink_sandstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:smooth_pink_sandstone_slab_from_smooth_pink_sandstone_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smooth_pink_sandstone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:smooth_pink_sandstone_slab_from_smooth_pink_sandstone_stonecutting"
+    ]
+  }
+}

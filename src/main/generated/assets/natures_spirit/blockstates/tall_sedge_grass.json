@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "natures_spirit:block/tall_sedge_grass_bottom"
+    },
+    "half=upper": {
+      "model": "natures_spirit:block/tall_sedge_grass_top"
+    }
+  }
+}

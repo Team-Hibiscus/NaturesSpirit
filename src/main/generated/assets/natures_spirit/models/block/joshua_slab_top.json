@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "natures_spirit:block/joshua_planks",
+    "side": "natures_spirit:block/joshua_planks",
+    "top": "natures_spirit:block/joshua_planks"
+  }
+}

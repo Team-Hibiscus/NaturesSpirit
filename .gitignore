@@ -1,7 +1,6 @@
 # User-specific stuff
 .idea/
 bin/
-src/main/generated/
 
 *.iml
 *.ipr

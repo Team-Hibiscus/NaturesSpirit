@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/flower_pot_succulent",
+  "textures": {
+    "plant": "natures_spirit:block/aureate_succulent"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "natures_spirit:block/large_lush_fern_bottom"
+    },
+    "half=upper": {
+      "model": "natures_spirit:block/large_lush_fern_top"
+    }
+  }
+}

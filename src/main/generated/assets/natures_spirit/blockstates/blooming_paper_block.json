@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "natures_spirit:block/blooming_paper_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "natures_spirit:block/blooming_paper_block"
+    },
+    "facing=south": {
+      "model": "natures_spirit:block/blooming_paper_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "natures_spirit:block/blooming_paper_block",
+      "y": 270
+    }
+  }
+}

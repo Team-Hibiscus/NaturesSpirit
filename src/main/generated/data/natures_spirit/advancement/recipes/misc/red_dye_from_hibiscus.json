@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hibiscus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natures_spirit:hibiscus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:red_dye_from_hibiscus"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hibiscus"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:red_dye_from_hibiscus"
+    ]
+  }
+}

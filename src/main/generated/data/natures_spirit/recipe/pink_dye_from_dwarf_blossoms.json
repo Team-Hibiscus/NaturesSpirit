@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "minecraft:pink_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:dwarf_blossoms"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:pink_dye"
+  }
+}

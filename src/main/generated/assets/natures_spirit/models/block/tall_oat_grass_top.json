@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/large_cross",
+  "textures": {
+    "cross": "natures_spirit:block/tall_oat_grass_top"
+  }
+}

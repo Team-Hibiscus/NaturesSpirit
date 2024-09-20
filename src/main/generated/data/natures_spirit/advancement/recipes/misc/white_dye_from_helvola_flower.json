@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_helvola_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natures_spirit:helvola_flower"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:white_dye_from_helvola_flower"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_helvola_flower"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:white_dye_from_helvola_flower"
+    ]
+  }
+}

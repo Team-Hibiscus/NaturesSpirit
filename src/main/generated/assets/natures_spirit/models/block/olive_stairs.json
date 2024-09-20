@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "natures_spirit:block/olive_planks",
+    "side": "natures_spirit:block/olive_planks",
+    "top": "natures_spirit:block/olive_planks"
+  }
+}

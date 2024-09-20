@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "minecraft:pink_dye",
+  "ingredients": [
+    {
+      "item": "natures_spirit:bleeding_heart"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:pink_dye"
+  }
+}

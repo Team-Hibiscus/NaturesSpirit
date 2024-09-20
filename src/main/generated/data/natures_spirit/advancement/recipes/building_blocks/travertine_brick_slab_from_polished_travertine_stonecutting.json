@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_travertine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natures_spirit:polished_travertine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natures_spirit:travertine_brick_slab_from_polished_travertine_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polished_travertine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natures_spirit:travertine_brick_slab_from_polished_travertine_stonecutting"
+    ]
+  }
+}

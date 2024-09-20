@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "natures_spirit:sugi_foliage_placer",
+      "offset": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 0,
+        "min_inclusive": 0
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 1,
+        "min_inclusive": 1
+      }
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "natures_spirit:sugi_leaves",
+        "Properties": {
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 1
+    },
+    "trunk_placer": {
+      "type": "natures_spirit:mega_sugi_trunk_placer",
+      "base_height": 18,
+      "height_rand_a": 0,
+      "height_rand_b": 5
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "natures_spirit:sugi_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

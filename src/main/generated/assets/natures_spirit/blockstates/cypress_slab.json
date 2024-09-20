@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "natures_spirit:block/cypress_slab"
+    },
+    "type=double": {
+      "model": "natures_spirit:block/cypress_planks"
+    },
+    "type=top": {
+      "model": "natures_spirit:block/cypress_slab_top"
+    }
+  }
+}

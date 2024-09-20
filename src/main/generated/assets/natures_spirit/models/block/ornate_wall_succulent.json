@@ -1,0 +1,6 @@
+{
+  "parent": "natures_spirit:block/succulent_wall",
+  "textures": {
+    "plant": "natures_spirit:block/ornate_succulent"
+  }
+}

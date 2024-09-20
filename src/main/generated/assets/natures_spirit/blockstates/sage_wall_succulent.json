@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "natures_spirit:block/sage_wall_succulent",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "natures_spirit:block/sage_wall_succulent"
+    },
+    "facing=south": {
+      "model": "natures_spirit:block/sage_wall_succulent",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "natures_spirit:block/sage_wall_succulent",
+      "y": 270
+    }
+  }
+}

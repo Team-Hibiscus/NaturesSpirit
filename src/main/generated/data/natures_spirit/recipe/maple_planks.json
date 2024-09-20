@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "natures_spirit:maple_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "natures_spirit:maple_planks"
+  }
+}

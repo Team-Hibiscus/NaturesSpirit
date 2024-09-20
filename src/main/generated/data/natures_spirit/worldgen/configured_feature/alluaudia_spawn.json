@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "natures_spirit:alluaudia_checked",
+    "features": [
+      {
+        "chance": 0.325,
+        "feature": "natures_spirit:alluaudia_checked"
+      }
+    ]
+  }
+}
