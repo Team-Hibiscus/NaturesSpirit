@@ -12,18 +12,19 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(AnvilBlock.class) public class AnvilBlockMixin {
+@Mixin(AnvilBlock.class)
+public class AnvilBlockMixin {
 
-   @Inject(method = "onLanding", at = @At("HEAD"))
-   private void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo ci) {
-      if (NSConfig.deepslate_generator) {
-         if(world.getBlockState(pos.down()).isOf(Blocks.STONE) && world.getBlockState(pos.down(2)).isOf(Blocks.MAGMA_BLOCK)) {
-            world.setBlockState(
-                    pos.down(),
-                    Blocks.DEEPSLATE.getDefaultState(),
-                    2
-            );
-         }
-      }
-   }
+	@Inject(method = "onLanding", at = @At("HEAD"))
+	private void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo info) {
+		if (NSConfig.deepslate_generator) {
+			if (world.getBlockState(pos.down()).isOf(Blocks.STONE) && world.getBlockState(pos.down(2)).isOf(Blocks.MAGMA_BLOCK)) {
+				world.setBlockState(
+					pos.down(),
+					Blocks.DEEPSLATE.getDefaultState(),
+					AnvilBlock.NOTIFY_LISTENERS
+				);
+			}
+		}
+	}
 }
