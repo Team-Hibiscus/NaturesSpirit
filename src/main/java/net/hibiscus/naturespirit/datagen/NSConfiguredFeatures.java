@@ -468,7 +468,7 @@ public class NSConfiguredFeatures {
       );
 
       register(context, SUGI_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(NSWoods.SUGI.getLog()),
-              new SugiTrunkPlacer(12, 1, 1, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              new SugiTrunkPlacer(12, 1, 7, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
               BlockStateProvider.of(NSWoods.SUGI.getLeaves()),
               new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))

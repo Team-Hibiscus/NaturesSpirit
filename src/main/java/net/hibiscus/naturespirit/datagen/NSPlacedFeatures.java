@@ -467,7 +467,7 @@ public class NSPlacedFeatures {
       registerKey(context,
               SUGI_PLACED,
               configuredFeatureRegistryEntryLookup.getOrThrow(NSConfiguredFeatures.SUGI_SPAWN),
-              CountPlacementModifier.of(1),
+              CountPlacementModifier.of(6),
               SquarePlacementModifier.of(),
               TREE_THRESHOLD,
               PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,

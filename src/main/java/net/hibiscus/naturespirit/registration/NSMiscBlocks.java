@@ -407,7 +407,7 @@ public class NSMiscBlocks {
            0.4f
    );
 
-   public static final Block AZOLLA = NSRegistryHelper.registerTransparentBlock("azolla",
+   public static final Block AZOLLA = NSRegistryHelper.registerTransparentBlockWithoutTab("azolla",
            new AzollaBlock(AbstractBlock.Settings
                    .create()
                    .mapColor(MapColor.GREEN)
@@ -540,7 +540,7 @@ public class NSMiscBlocks {
    public static final FlowerSet SILVERBUSH = new FlowerSet("silverbush", RUBY_BLOSSOMS.getFlowerBlock().asItem(), FlowerSet.FlowerPreset.BIG_TALL);
 
 
-   public static final Block HELVOLA = registerTransparentBlock("helvola",
+   public static final Block HELVOLA = registerTransparentBlockWithoutTab("helvola",
            new WaterFlowerbedBlock(AbstractBlock.Settings
                    .create()
                    .pistonBehavior(PistonBehavior.DESTROY)

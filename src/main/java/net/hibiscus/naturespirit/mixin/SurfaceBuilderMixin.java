@@ -11,6 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.util.math.random.RandomSplitter;
 import net.minecraft.world.HeightLimitView;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.BiomeAccess;
@@ -46,17 +47,18 @@ public class SurfaceBuilderMixin {
    private void injectSugiPillars(NoiseConfig noiseConfig, BiomeAccess biomeAccess, Registry <Biome> biomeRegistry, boolean useLegacyRandom, HeightContext heightContext,
            Chunk chunk, ChunkNoiseSampler chunkNoiseSampler, MaterialRules.MaterialRule materialRule,
            CallbackInfo ci,
-           @Local RegistryEntry <Biome> registryEntry, @Local(ordinal = 4) int m, @Local(ordinal = 5) int n, @Local(ordinal = 6) int o, @Local BlockColumn blockColumn)  {
-      if (registryEntry.matchesKey(NSBiomes.SUGI_FOREST)) {
+           @Local RegistryEntry <Biome> registryEntry, @Local(ordinal = 2) int k, @Local(ordinal = 3) int l, @Local(ordinal = 4) int m, @Local(ordinal = 5) int n, @Local BlockColumn blockColumn)  {
+      int o = chunk.sampleHeightmap(Heightmap.Type.OCEAN_FLOOR_WG, k, l) + 1;
+      if (registryEntry.matchesKey(NSBiomes.SUGI_FOREST) || registryEntry.matchesKey(NSBiomes.BLOOMING_SUGI_FOREST)) {
          this.placeSugiPillar(blockColumn, m, n, o, chunk);
       }
    }
 
    @Unique private void placeSugiPillar(BlockColumn column, int x, int z, int surfaceY, HeightLimitView chunk) {
-      double e = Math.min(Math.abs(sugiSurfaceNoise.sample(x, 0.0, z) * 8.25), sugiPillarNoise.sample((double)x * 0.2, 0.0, (double)z * 0.2) * 15.0);
+      double e = Math.min(Math.abs(sugiSurfaceNoise.sample(x, 0.0, z) * 8.5), sugiPillarNoise.sample((double)x * 0.2, 0.0, (double)z * 0.2) * 15.0);
       if (!(e <= 0.0)) {
          double h = Math.abs(sugiPillarRoofNoise.sample((double)x * 0.75, 0.0, (double)z * 0.75) * 2.25);
-         double i = 64.0 + Math.min(e * e * 5.5, Math.ceil(h * 50.0) + 12.0);
+         double i = 44.0 + Math.min(e * e * 4.5, Math.ceil(h * 50.0) + 38.0);
          int j = MathHelper.floor(i);
          if (surfaceY <= j) {
             int k;
@@ -65,13 +67,9 @@ public class SurfaceBuilderMixin {
                if (blockState.isOf(this.defaultState.getBlock())) {
                   break;
                }
-
-               if (blockState.isOf(Blocks.WATER)) {
-                  return;
-               }
             }
 
-            for(k = j; k >= chunk.getBottomY() && column.getState(k).isAir(); --k) {
+            for(k = j; k >= chunk.getBottomY() && (column.getState(k).isAir() || column.getState(k).isOf(Blocks.WATER)); --k) {
                column.setState(k, this.defaultState);
             }
 

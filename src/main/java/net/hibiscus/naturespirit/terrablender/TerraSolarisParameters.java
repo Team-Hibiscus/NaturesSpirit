@@ -624,15 +624,6 @@ public class TerraSolarisParameters {
               weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.FROZEN_RIVER
       );
       this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
-              this.defaultParameter,
-              this.coastContinentalness,
-              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
-              weirdness,
-              0.0F,
-              weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.RIVER
-      );
-      this.writeBiomeParameters(parameters,
               this.frozenTemperature,
               this.defaultParameter,
               this.nearInlandContinentalness,
@@ -640,15 +631,6 @@ public class TerraSolarisParameters {
               weirdness,
               0.0F,
               BiomeKeys.FROZEN_RIVER
-      );
-      this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
-              this.defaultParameter,
-              this.nearInlandContinentalness,
-              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
-              weirdness,
-              0.0F,
-              BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters,
               this.frozenTemperature,
@@ -658,15 +640,6 @@ public class TerraSolarisParameters {
               weirdness,
               0.0F,
               BiomeKeys.FROZEN_RIVER
-      );
-      this.writeBiomeParameters(parameters,
-              this.nonFrozenTemperatureParameters,
-              this.defaultParameter,
-              MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
-              MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[4]),
-              weirdness,
-              0.0F,
-              BiomeKeys.RIVER
       );
       this.writeBiomeParameters(parameters, this.frozenTemperature, this.defaultParameter, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, BiomeKeys.FROZEN_RIVER);
       this.writeBiomeParameters(parameters,
@@ -678,6 +651,35 @@ public class TerraSolarisParameters {
               0.0F,
               BiomeKeys.FROZEN_RIVER
       );
+      if (!NSConfig.has_sugi_forest) {
+         this.writeBiomeParameters(parameters,
+                 this.nonFrozenTemperatureParameters,
+                 this.defaultParameter,
+                 this.coastContinentalness,
+                 MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+                 weirdness,
+                 0.0F,
+                 weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.RIVER
+         );
+         this.writeBiomeParameters(parameters,
+                 this.nonFrozenTemperatureParameters,
+                 this.defaultParameter,
+                 this.nearInlandContinentalness,
+                 MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+                 weirdness,
+                 0.0F,
+                 BiomeKeys.RIVER
+         );
+         this.writeBiomeParameters(parameters,
+                 this.nonFrozenTemperatureParameters,
+                 this.defaultParameter,
+                 MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
+                 MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[4]),
+                 weirdness,
+                 0.0F,
+                 BiomeKeys.RIVER
+         );
+      }
 
       for(int i = 0; i < this.temperatureParameters.length; ++i) {
          MultiNoiseUtil.ParameterRange parameterRange = this.temperatureParameters[i];
@@ -703,6 +705,66 @@ public class TerraSolarisParameters {
                     0.0F,
                     this.getWetlandType2(i, j, weirdness)
             );
+            if (NSConfig.has_sugi_forest) {
+               if (i == 2 && j < 4 && j > 0) {
+                  this.writeBiomeParameters(parameters,
+                          parameterRange,
+                          parameterRange2,
+                          this.coastContinentalness,
+                          MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+                          weirdness,
+                          0.0F,
+                          NSBiomes.SUGI_FOREST
+                  );
+                  this.writeBiomeParameters(parameters,
+                          parameterRange,
+                          parameterRange2,
+                          this.nearInlandContinentalness,
+                          MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+                          weirdness,
+                          0.0F,
+                          NSBiomes.SUGI_FOREST
+                  );
+                  this.writeBiomeParameters(parameters,
+                          parameterRange,
+                          parameterRange2,
+                          MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
+                          MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[4]),
+                          weirdness,
+                          0.0F,
+                          NSBiomes.SUGI_FOREST
+                  );
+               }
+               else if (i > 0) {
+                  this.writeBiomeParameters(parameters,
+                          parameterRange,
+                          parameterRange2,
+                          this.coastContinentalness,
+                          MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+                          weirdness,
+                          0.0F,
+                          weirdness.max() < 0L ? BiomeKeys.STONY_SHORE : BiomeKeys.RIVER
+                  );
+                  this.writeBiomeParameters(parameters,
+                          parameterRange,
+                          parameterRange2,
+                          this.nearInlandContinentalness,
+                          MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[0], this.erosionParameters[1]),
+                          weirdness,
+                          0.0F,
+                          BiomeKeys.RIVER
+                  );
+                  this.writeBiomeParameters(parameters,
+                          parameterRange,
+                          parameterRange2,
+                          MultiNoiseUtil.ParameterRange.combine(this.coastContinentalness, this.farInlandContinentalness),
+                          MultiNoiseUtil.ParameterRange.combine(this.erosionParameters[2], this.erosionParameters[4]),
+                          weirdness,
+                          0.0F,
+                          BiomeKeys.RIVER
+                  );
+               }
+            }
          }
       }
 
@@ -772,7 +834,7 @@ public class TerraSolarisParameters {
          return NSBiomes.WISTERIA_FOREST;
       } else
       if(temperature == 2 && NSConfig.has_sugi_forest) {
-         return BiomeKeys.RIVER;
+         return NSBiomes.SUGI_FOREST;
       }
       else if(temperature == 3 && humidity > 2 && NSConfig.has_bamboo_wetlands) {
          return NSBiomes.BAMBOO_WETLANDS;
