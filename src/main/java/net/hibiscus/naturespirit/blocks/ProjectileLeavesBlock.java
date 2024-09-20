@@ -12,20 +12,21 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.World;
 
 public class ProjectileLeavesBlock extends LeavesBlock {
-   private final Block END_BLOCK;
-   public ProjectileLeavesBlock(Settings settings, Block block) {
-      super(settings);
-      this.END_BLOCK = block;
-   }
+	private final Block END_BLOCK;
 
-   @Override public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
+	public ProjectileLeavesBlock(Settings settings, Block block) {
+		super(settings);
+		this.END_BLOCK = block;
+	}
 
-      if (projectile instanceof SnowballEntity) {
-         Entity entity = projectile.getOwner();
-         if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
-            serverPlayerEntity.incrementStat(Stats.TARGET_HIT);
-         }
-         world.setBlockState(hit.getBlockPos(), this.END_BLOCK.getStateWithProperties(state));
-      }
-   }
+	@Override
+	public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
+		if (projectile instanceof SnowballEntity) {
+			Entity entity = projectile.getOwner();
+			if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
+				serverPlayerEntity.incrementStat(Stats.TARGET_HIT);
+			}
+			world.setBlockState(hit.getBlockPos(), this.END_BLOCK.getStateWithProperties(state));
+		}
+	}
 }

@@ -1,7 +1,7 @@
 package net.hibiscus.naturespirit.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.hibiscus.naturespirit.registration.sets.WoodSet;
+import java.util.function.Supplier;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,48 +13,48 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.WorldView;
 
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 
 public class DownwardVineBlock extends AbstractPlantStemBlock {
-   protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+	protected static final VoxelShape SHAPE = Block.createCuboidShape(4D, 9D, 4D, 12D, 16D, 12D);
 
-   private final Supplier <Block> vinesPlantBlock;
+	private final Supplier<Block> vinesPlantBlock;
 
-   public DownwardVineBlock(Settings properties, Supplier <Block> vinesPlantBlock) {
-      super(properties, Direction.DOWN, SHAPE, false, 0.1D);
-      this.vinesPlantBlock = vinesPlantBlock;
-   }
+	public DownwardVineBlock(Settings properties, Supplier<Block> vinesPlantBlock) {
+		super(properties, Direction.DOWN, SHAPE, false, 0.1D);
+		this.vinesPlantBlock = vinesPlantBlock;
+	}
 
-   @Override protected MapCodec <? extends AbstractPlantStemBlock> getCodec() {
-      return null;
-   }
+	@Override
+	protected MapCodec<? extends AbstractPlantStemBlock> getCodec() {
+		return null;
+	}
 
-   protected int getGrowthLength(Random randomSource) {
-      return VineLogic.getGrowthLength(randomSource);
-   }
+	@Override
+	protected int getGrowthLength(Random randomSource) {
+		return VineLogic.getGrowthLength(randomSource);
+	}
 
-   @Override public Block getPlant() {
-      return vinesPlantBlock.get();
-   }
+	@Override
+	public Block getPlant() {
+		return vinesPlantBlock.get();
+	}
 
-   public boolean chooseStemState(BlockState state) {
-      return state.isAir();
-   }
+	@Override
+	public boolean chooseStemState(BlockState state) {
+		return state.isAir();
+	}
 
-   @Override public boolean canPlaceAt(BlockState state, WorldView levelReader, BlockPos pos) {
-      BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
-      BlockState blockState = levelReader.getBlockState(blockPos);
-      if(!this.canAttachTo(blockState)) {
-         return false;
-      }
-      else {
-         return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(levelReader,
-                 blockPos,
-                 this.growthDirection
-         ) || blockState.isIn(BlockTags.LEAVES);
-      }
-   }
+	@Override
+	public boolean canPlaceAt(BlockState state, WorldView levelReader, BlockPos pos) {
+		BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
+		BlockState blockState = levelReader.getBlockState(blockPos);
+		if (!this.canAttachTo(blockState)) {
+			return false;
+		} else {
+			return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(levelReader,
+				blockPos,
+				this.growthDirection
+			) || blockState.isIn(BlockTags.LEAVES);
+		}
+	}
 }

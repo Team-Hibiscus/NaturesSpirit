@@ -13,40 +13,41 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class CoconutHalfItem extends Item {
+	private final Item LeftOverItem;
 
-   private final Item LeftOverItem;
-   public CoconutHalfItem(Item.Settings settings, Item item) {
-      super(settings);
-      LeftOverItem = item;
-   }
+	public CoconutHalfItem(Item.Settings settings, Item item) {
+		super(settings);
+		LeftOverItem = item;
+	}
 
-   public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-      super.finishUsing(stack, world, user);
-      if (user instanceof ServerPlayerEntity serverPlayerEntity) {
-         Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
-         serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-      }
+	@Override
+	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+		super.finishUsing(stack, world, user);
+		if (user instanceof ServerPlayerEntity serverPlayerEntity) {
+			Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
+			serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+		}
 
-      if (!world.isClient) {
-         user.clearStatusEffects();
-      }
+		if (!world.isClient) {
+			user.clearStatusEffects();
+		}
 
-      if (stack.isEmpty()) {
-         return new ItemStack(LeftOverItem);
-      } else {
-         if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
-            ItemStack itemStack = new ItemStack(LeftOverItem);
-            PlayerEntity playerEntity = (PlayerEntity)user;
-            if (!playerEntity.getInventory().insertStack(itemStack)) {
-               playerEntity.dropItem(itemStack, false);
-            }
-         }
+		if (stack.isEmpty()) {
+			return new ItemStack(LeftOverItem);
+		} else {
+			if (user instanceof PlayerEntity playerEntity && !playerEntity.getAbilities().creativeMode) {
+				ItemStack itemStack = new ItemStack(LeftOverItem);
+				if (!playerEntity.getInventory().insertStack(itemStack)) {
+					playerEntity.dropItem(itemStack, false);
+				}
+			}
 
-         return stack;
-      }
-   }
+			return stack;
+		}
+	}
 
-   public TypedActionResult <ItemStack> use(World world, PlayerEntity user, Hand hand) {
-      return ItemUsage.consumeHeldItem(world, user, hand);
-   }
+	@Override
+	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+		return ItemUsage.consumeHeldItem(world, user, hand);
+	}
 }

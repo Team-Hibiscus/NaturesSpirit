@@ -1,17 +1,16 @@
 {
   "required": true,
-  "minVersion": "0.8",
+  "minVersion": "0.8.5",
   "package": "net.hibiscus.naturespirit.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AnvilBlockMixin",
     "AxeItemMixin",
-    "BlockEntityTypeMixin",
-    "BoatDispenserBehaviorMixin",
-    "BoatEntityMixin",
     "CoralBlockBlockMixin",
     "StatsTypeAccessor",
-    "SurfaceBuilderMixin"
+    "entity.boat.BoatDropsMixin",
+    "entity.boat.BoatTypeMixin",
+    "entity.boat.ChestBoatDropsMixin"
   ],
   "client": [
   ],
