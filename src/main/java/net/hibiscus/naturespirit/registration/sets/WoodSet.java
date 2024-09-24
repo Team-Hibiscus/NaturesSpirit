@@ -298,6 +298,19 @@ public class WoodSet {
 				factories.add(new TradeOffers.SellItemFactory(yellowSapling, 5, 1, 8, 1));
 			});
 		}
+     if (woodPreset == WoodPreset.ASPEN) {
+        leaves = createLeaves();
+        yellowLeaves = createLeaves("yellow_");
+        sapling = createSapling(new SaplingGenerator(NatureSpirit.MOD_ID + "_" + this.getName(), 0.25f, Optional.empty(), Optional.empty(), Optional.of(NSConfiguredFeatures.YELLOW_ASPEN_TREE), Optional.of(NSConfiguredFeatures.ASPEN_TREE), Optional.empty(), Optional.empty()));
+        pottedSapling = createPottedSapling(sapling);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(leavesBefore, yellowLeaves.asItem()));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(leavesBefore, leaves.asItem()));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(saplingBefore, sapling.asItem()));
+        SaplingHashMap.put(getName(), new Block[]{sapling, pottedSapling});
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> {
+           factories.add(new TradeOffers.SellItemFactory(sapling, 5, 1, 8, 1));
+        });
+     }
 		if (this.hasMosaic()) {
 			mosaic = createMosaic();
 			mosaicStairs = createMosaicStairs();
@@ -1148,7 +1161,7 @@ public class WoodSet {
 	}
 
 	public enum WoodPreset {
-		DEFAULT, MAPLE, FROSTABLE, JOSHUA, SANDY, NO_SAPLING, WISTERIA, WILLOW, FANCY, NETHER, BAMBOO
+		DEFAULT, MAPLE, ASPEN, FROSTABLE, JOSHUA, SANDY, NO_SAPLING, WISTERIA, WILLOW, FANCY, NETHER, BAMBOO
 	}
 
 	public static void addToBuildingTab(ItemConvertible proceedingItem, ItemConvertible logPlacement, ItemConvertible signPlacement, ItemConvertible boatPlacement, WoodSet woodset) {

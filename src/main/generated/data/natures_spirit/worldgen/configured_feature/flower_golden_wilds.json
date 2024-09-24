@@ -29,10 +29,7 @@
                 "Name": "minecraft:dandelion"
               },
               {
-                "Name": "natures_spirit:marigold",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "natures_spirit:marigold"
               },
               {
                 "Name": "natures_spirit:large_flaxen_fern",

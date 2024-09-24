@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-20T19:49:39.1681864	Nature's Spirit/Recipes
+// 1.21.1	2024-09-23T19:45:12.3416747	Nature's Spirit/Recipes
 2435f1829ce9b8148fd9fd8f05355608d7c433ac data\natures_spirit\recipe\aspen_hanging_sign.json
 d96df68f676f7439efb4d4045b5f0f1d8709d1c2 data\natures_spirit\recipe\red_dye_from_carnation.json
 842a5434a5bac176adf419998b65ee800f835e20 data\natures_spirit\recipe\wisteria_boat.json
@@ -227,8 +227,8 @@ e0b275f86e33488c0d587ebde9644ad19f306a94 data\natures_spirit\advancement\recipes
 a180208ee78eeaa35ac0d81bc5dfd56d9a056d4c data\natures_spirit\advancement\recipes\redstone\wisteria_door.json
 aa4956a48a90116a474b398994f462f2e73161dc data\natures_spirit\advancement\recipes\building_blocks\aspen_slab.json
 05cdf419132970c9ef8e27f70e5526f5b6a5a467 data\natures_spirit\advancement\recipes\building_blocks\cypress_slab.json
-480b2974ec7ebac7e8b4d1deea780436cee4e134 data\natures_spirit\recipe\chiseled_travertine.json
 83d5b63f20699a3fc33ca7071ccb9cb5014c56b3 data\natures_spirit\recipe\cobbled_travertine_stairs.json
+480b2974ec7ebac7e8b4d1deea780436cee4e134 data\natures_spirit\recipe\chiseled_travertine.json
 447db7fb9df2bc483da4aebe0bb493633ea727b3 data\natures_spirit\advancement\recipes\redstone\wisteria_button.json
 b60e01c74f45e3340f7ec2b7ac25abe526c7f302 data\natures_spirit\recipe\polished_travertine_slab_from_cobbled_travertine_stonecutting.json
 3c6502b6f4a2735fc9a2c2514075685e671daeb1 data\natures_spirit\advancement\recipes\decorations\redwood_sign.json

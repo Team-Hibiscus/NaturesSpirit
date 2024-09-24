@@ -97,7 +97,7 @@ public class NSBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 			Block leavesType = leaves.get(i);
 			getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(leavesType);
 			getOrCreateTagBuilder(BlockTags.LEAVES).add(leavesType);
-			if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") && !i.startsWith("part") && !i.startsWith("frosty")) {
+			if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "coconut") && !i.startsWith("part") && !i.startsWith("frosty") && !Objects.equals(i, "yellow_aspen")) {
 				Block[] saplingType = saplings.get(i);
 				getOrCreateTagBuilder(BlockTags.SAPLINGS).add(new Block[]{saplingType[0]});
 				getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(new Block[]{saplingType[1]});

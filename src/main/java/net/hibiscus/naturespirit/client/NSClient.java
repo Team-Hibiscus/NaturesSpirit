@@ -47,6 +47,9 @@ public class NSClient implements ClientModInitializer {
 		ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
 			blockPos
 		) : -1, NSWoods.LARCH.getLeaves());
+     ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getFoliageColor(blockAndTintGetter,
+             blockPos
+     ) : -1, NSWoods.ASPEN.getLeaves());
 		ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getGrassColor(blockAndTintGetter,
 			blockPos
 		) : -1, NSMiscBlocks.LOTUS_STEM);
@@ -69,6 +72,7 @@ public class NSClient implements ClientModInitializer {
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), NSWoods.SUGI.getLeaves());
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), NSWoods.LARCH.getLeaves());
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), NSWoods.MAHOGANY.getLeaves());
+		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), NSWoods.ASPEN.getLeaves());
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getDefaultColor(), NSMiscBlocks.LUSH_FERN);
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getDefaultColor(), NSMiscBlocks.LARGE_LUSH_FERN);
 

@@ -203,7 +203,9 @@ class NSBlockLootTableProvider extends FabricBlockLootTableProvider {
 					default ->
 						this.addDrop(leavesType, (block) -> this.leavesDrops(block, saplingType[0], SAPLING_DROP_CHANCE));
 				}
-			} else {
+			} else if (i.equals("yellow_aspen")) {
+         this.addDrop(leavesType, (block) -> this.leavesDrops(block, NSWoods.ASPEN.getSapling(), SAPLING_DROP_CHANCE));
+      } else {
 				this.addDrop(leavesType, this::noSaplingLeavesDrop);
 			}
 		}

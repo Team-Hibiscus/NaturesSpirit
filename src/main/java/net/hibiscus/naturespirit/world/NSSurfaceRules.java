@@ -26,6 +26,7 @@ public class NSSurfaceRules {
 	private static final MaterialRules.MaterialRule SANDY_SOIL = makeStateRule(NSMiscBlocks.SANDY_SOIL);
 	private static final MaterialRules.MaterialRule RED_MOSS_BLOCK = makeStateRule(NSMiscBlocks.RED_MOSS_BLOCK);
 	private static final MaterialRules.MaterialRule COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
+	private static final MaterialRules.MaterialRule MOSS_BLOCK = makeStateRule(Blocks.MOSS_BLOCK);
 	private static final MaterialRules.MaterialRule WHITE_KAOLIN = makeStateRule(NSColoredBlocks.WHITE_KAOLIN);
 	private static final MaterialRules.MaterialRule PINK_SANDSTONE = makeStateRule(NSMiscBlocks.PINK_SANDSTONE);
 	private static final MaterialRules.MaterialRule RED_SANDSTONE = makeStateRule(Blocks.RED_SANDSTONE);
@@ -238,12 +239,17 @@ public class NSSurfaceRules {
 		);
 		MaterialRules.MaterialRule aspenRule = MaterialRules.condition(MaterialRules.biome(NSBiomes.ASPEN_FOREST),
 			MaterialRules.sequence(
-				MaterialRules.condition(above62, MaterialRules.sequence(
-					MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS),
-					MaterialRules.condition(MaterialRules.stoneDepth(4, false, VerticalSurfaceType.FLOOR), MaterialRules.sequence(MaterialRules.condition(noiseCondition2, ROOTED_DIRT), MaterialRules.condition(noiseCondition3, ROOTED_DIRT), DIRT))
-				)),
-				MaterialRules.condition(MaterialRules.stoneDepth(36, false, VerticalSurfaceType.FLOOR), GRANITE)
-			)
+				MaterialRules.condition(above62,
+					MaterialRules.condition(MaterialRules.stoneDepth(4, false, VerticalSurfaceType.FLOOR),
+                  MaterialRules.sequence(
+                          MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 2.4 / 8.25, Double.MAX_VALUE), COARSE_DIRT),
+                          MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, 1.6 / 8.25, Double.MAX_VALUE), ROOTED_DIRT),
+                          MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.6 / 8.25, Double.MAX_VALUE), MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS)),
+                          MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -1.4 / 8.25, Double.MAX_VALUE), ROOTED_DIRT),
+                          MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), GRASS),
+                          DIRT
+                  ))),
+				MaterialRules.condition(MaterialRules.stoneDepth(36, false, VerticalSurfaceType.FLOOR), GRANITE))
 		);
 		MaterialRules.MaterialRule drylandsRule = MaterialRules.condition(MaterialRules.biome(NSBiomes.DRYLANDS),
 			MaterialRules.condition(belowWater,
@@ -306,7 +312,7 @@ public class NSSurfaceRules {
 				MaterialRules.MaterialRule sugiRule = MaterialRules.condition(MaterialRules.biome(NSBiomes.SUGI_FOREST),
 				MaterialRules.sequence(
 								MaterialRules.condition(MaterialRules.stoneDepth(0, true, VerticalSurfaceType.FLOOR),
-												MaterialRules.condition(noiseCondition2, MaterialRules.condition(materialCondition7, COARSE_DIRT))),
+												MaterialRules.condition(noiseCondition2, MaterialRules.condition(MaterialRules.stoneDepth(1, true, VerticalSurfaceType.FLOOR), COARSE_DIRT))),
 								MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.FLOOR), MaterialRules.condition(materialCondition7, GRASS))));
 
 
@@ -331,6 +337,7 @@ public class NSSurfaceRules {
 		MaterialRules.MaterialRule snowySteppeSurfaceRule = MaterialRules.condition(MaterialRules.surface(), snowySteppeRule);
 		MaterialRules.MaterialRule redwoodForestSurfaceRule = MaterialRules.condition(MaterialRules.surface(), redwoodForestRule);
 		MaterialRules.MaterialRule alpineSurfaceRule = MaterialRules.condition(MaterialRules.surface(), alpineRule);
+    MaterialRules.MaterialRule sugiSurfaceRule = MaterialRules.condition(MaterialRules.surface(), sugiRule);
 		builder.add(dustySurfaceRule);
 		builder.add(stratifiedDesertSurfaceRule);
 		builder.add(stratifiedUndergroundRule);
@@ -354,6 +361,7 @@ public class NSSurfaceRules {
 		builder.add(steppeUndergroundRule);
 		builder.add(redwoodForestSurfaceRule);
 		builder.add(alpineSurfaceRule);
+		builder.add(sugiSurfaceRule);
 		return MaterialRules.sequence(builder
 			.build()
 			.toArray(MaterialRules.MaterialRule[]::new));

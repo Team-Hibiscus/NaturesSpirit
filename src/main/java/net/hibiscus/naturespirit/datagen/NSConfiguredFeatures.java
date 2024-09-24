@@ -251,7 +251,7 @@ public class NSConfiguredFeatures {
 
 		register(context, ASPEN_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(NSWoods.ASPEN.getLog()),
 			new StraightTrunkPlacer(14, 2, 5),
-			BlockStateProvider.of(NSWoods.ASPEN.getLeaves()),
+			new NoiseBlockStateProvider(2445, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0), 0.330833334f, List.of(NSWoods.ASPEN.getLeaves().getDefaultState(), NSWoods.ASPEN.getYellowLeaves().getDefaultState())),
 			new AspenFoliagePlacer(UniformIntProvider.create(2, 2), UniformIntProvider.create(2, 3), UniformIntProvider.create(4, 18)),
 			new TwoLayersFeatureSize(1, 0, 1)
 		).ignoreVines().build());
@@ -262,14 +262,6 @@ public class NSConfiguredFeatures {
 			new TwoLayersFeatureSize(1, 0, 1)
 		).ignoreVines().decorators(List.of(new BeehiveTreeDecorator(1.0F))).build());
 
-		register(
-			context,
-			ASPEN_TREE_SPAWN,
-			Feature.RANDOM_SELECTOR,
-			new RandomFeatureConfig(List.of(new RandomFeatureEntry(placedFeatureRegistryEntryLookup.getOrThrow(NSPlacedFeatures.ASPEN_BEES_CHECKED), 0.01f)),
-				placedFeatureRegistryEntryLookup.getOrThrow(NSPlacedFeatures.ASPEN_CHECKED)
-			)
-		);
 
 		register(context, RED_MAPLE_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(NSWoods.MAPLE.getLog()),
 			new MapleTrunkPlacer(9, 2, 0, new WeightedListIntProvider(DataPool
@@ -509,7 +501,7 @@ public class NSConfiguredFeatures {
 		);
 
       register(context, SUGI_TREE, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(NSWoods.SUGI.getLog()),
-              new SugiTrunkPlacer(12, 1, 7, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+              new SugiTrunkPlacer(12, 1, 12, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
               BlockStateProvider.of(NSWoods.SUGI.getLeaves()),
               new SugiFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
               new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))

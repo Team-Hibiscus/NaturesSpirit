@@ -47,8 +47,8 @@
     [],
     [],
     [
-      "minecraft:ore_dirt",
-      "minecraft:ore_gravel",
+//      "minecraft:ore_dirt",
+//      "minecraft:ore_gravel",
       "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
       "minecraft:ore_diorite_upper",
@@ -84,8 +84,10 @@
     ],
     [
       "minecraft:glow_lichen",
+      "minecraft:bamboo_light",
       "natures_spirit:patch_tall_grass_2",
       "natures_spirit:trees_cherry_forest",
+      "natures_spirit:oak_bush_placed_sugi",
       "natures_spirit:oak_bush_placed",
       "natures_spirit:patch_grass_field",
       "natures_spirit:flower_sugi_placed",

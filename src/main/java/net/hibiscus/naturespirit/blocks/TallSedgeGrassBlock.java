@@ -31,11 +31,6 @@ public class TallSedgeGrassBlock extends TallPlantBlock implements Waterloggable
 	}
 
 	@Override
-	public boolean canReplace(BlockState state, ItemPlacementContext useContext) {
-		return true;
-	}
-
-	@Override
 	protected boolean canPlantOnTop(BlockState state, BlockView level, BlockPos pos) {
 		if (level.getFluidState(pos.up()).isIn(FluidTags.WATER)) {
 			return state.isSideSolidFullSquare(level, pos, Direction.UP) && !state.isOf(Blocks.MAGMA_BLOCK);

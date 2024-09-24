@@ -122,7 +122,7 @@ public class NSWoods {
 		WILLOW.getButton(),
 		WILLOW.getSapling(),
 		() -> NSBoatTypes.ASPEN,
-		WoodSet.WoodPreset.DEFAULT,
+		WoodSet.WoodPreset.ASPEN,
 		false,
 		NSConfiguredFeatures.ASPEN_TREE
 	);

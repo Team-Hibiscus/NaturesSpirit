@@ -325,7 +325,7 @@ class NSModelGenerator extends FabricModelProvider {
 				blockStateModelGenerator.registerSingleton(leavesType, TexturedModel.LEAVES);
 				if (i.equals("redwood")) {
 					generatePottedAnemone(saplingType[0], saplingType[1], blockStateModelGenerator);
-				} else if (!Objects.equals(i, "wisteria") && !i.startsWith("part") && !i.startsWith("frosty")) {
+				} else if (!Objects.equals(i, "wisteria") && !Objects.equals(i, "yellow_aspen") && !i.startsWith("part") && !i.startsWith("frosty")) {
 					blockStateModelGenerator.registerFlowerPotPlant(saplingType[0], saplingType[1], TintType.NOT_TINTED);
 				}
 			}

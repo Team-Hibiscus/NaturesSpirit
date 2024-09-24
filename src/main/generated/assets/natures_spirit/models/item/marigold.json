@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "natures_spirit:block/marigold_top"
+    "layer0": "natures_spirit:item/marigold"
   }
 }

@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:no_bonemeal_flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "natures_spirit:large_flaxen_fern",
+                  "Properties": {
+                    "half": "lower"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "natures_spirit:flaxen_fern"
+                },
+                "weight": 3
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 76,
+    "xz_spread": 6,
+    "y_spread": 2
+  }
+}

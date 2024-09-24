@@ -8,6 +8,7 @@
     "AxeItemMixin",
     "CoralBlockBlockMixin",
     "StatsTypeAccessor",
+    "SurfaceBuilderMixin",
     "entity.boat.BoatDropsMixin",
     "entity.boat.BoatTypeMixin",
     "entity.boat.ChestBoatDropsMixin"

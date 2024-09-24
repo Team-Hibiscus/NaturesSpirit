@@ -48,7 +48,7 @@
         "min_inclusive": 4
       },
       "height_rand_a": 1,
-      "height_rand_b": 7,
+      "height_rand_b": 12,
       "place_branch_per_log_probability": 0.85
     },
     "trunk_provider": {
