@@ -1,0 +1,22 @@
+{
+    "natures_spirit:sounds/music.overworld.aspen": {
+        "album": "Nature's Spirit",
+        "author": "LudoCrypt",
+        "title": "Aspen"
+    },
+    "natures_spirit:sounds/music.overworld.maple": {
+        "album": "Nature's Spirit",
+        "author": "LudoCrypt",
+        "title": "Maple"
+    },
+    "natures_spirit:sounds/music.overworld.redwood": {
+        "album": "Nature's Spirit",
+        "author": "LudoCrypt",
+        "title": "Redwood"
+    },
+    "natures_spirit:sounds/music.overworld.wisteria": {
+        "album": "Nature's Spirit",
+        "author": "LudoCrypt",
+        "title": "Wisteria"
+    }
+}
