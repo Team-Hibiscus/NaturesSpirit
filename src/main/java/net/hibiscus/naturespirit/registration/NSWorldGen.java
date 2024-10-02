@@ -116,6 +116,10 @@ public class NSWorldGen {
    public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> SUGI_PILLAR_ROOF = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "sugi_pillar_roof"));
    public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> SUGI_SURFACE = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "sugi_surface"));
 
+   public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> STRATIFIED_DESERT_PILLAR = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "stratified_desert_pillar"));
+   public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> STRATIFIED_DESERT_PILLAR_ROOF = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "stratified_desert_pillar_roof"));
+   public static final RegistryKey <DoublePerlinNoiseSampler.NoiseParameters> STRATIFIED_DESERT_SURFACE = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, Identifier.of(MOD_ID, "stratified_desert_surface"));
+
    public static final Feature <DeltaFeatureConfig> HIBISCUS_DELTA_FEATURE = Registry.register(Registries.FEATURE,
            Identifier.of(MOD_ID, "water_delta_feature"),
            new NSDeltaFeature(DeltaFeatureConfig.CODEC)

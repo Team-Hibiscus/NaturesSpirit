@@ -35,12 +35,18 @@ public class SurfaceBuilderMixin {
    @Unique private DoublePerlinNoiseSampler sugiPillarNoise;
    @Unique private DoublePerlinNoiseSampler sugiPillarRoofNoise;
    @Unique private DoublePerlinNoiseSampler sugiSurfaceNoise;
+   @Unique private DoublePerlinNoiseSampler stratifiedDesertPillarNoise;
+   @Unique private DoublePerlinNoiseSampler stratifiedDesertPillarRoofNoise;
+   @Unique private DoublePerlinNoiseSampler stratifiedDesertSurfaceNoise;
 
    @Inject(method = "<init>", at = @At(value = "TAIL"))
    private void injectSugiNoise(NoiseConfig noiseConfig, BlockState defaultState, int seaLevel, RandomSplitter randomDeriver, CallbackInfo ci)  {
       sugiPillarNoise = noiseConfig.getOrCreateSampler(NSWorldGen.SUGI_PILLAR);
       sugiPillarRoofNoise = noiseConfig.getOrCreateSampler(NSWorldGen.SUGI_PILLAR_ROOF);
       sugiSurfaceNoise = noiseConfig.getOrCreateSampler(NSWorldGen.SUGI_SURFACE);
+      stratifiedDesertPillarNoise = noiseConfig.getOrCreateSampler(NSWorldGen.STRATIFIED_DESERT_PILLAR);
+      stratifiedDesertPillarRoofNoise = noiseConfig.getOrCreateSampler(NSWorldGen.STRATIFIED_DESERT_PILLAR_ROOF);
+      stratifiedDesertSurfaceNoise = noiseConfig.getOrCreateSampler(NSWorldGen.STRATIFIED_DESERT_SURFACE);
    }
 
    @Inject(method = "buildSurface", at = @At(value = "INVOKE", target = "Lnet/minecraft/registry/entry/RegistryEntry;matchesKey(Lnet/minecraft/registry/RegistryKey;)Z", ordinal = 0))
@@ -52,13 +58,38 @@ public class SurfaceBuilderMixin {
       if (registryEntry.matchesKey(NSBiomes.SUGI_FOREST) || registryEntry.matchesKey(NSBiomes.BLOOMING_SUGI_FOREST)) {
          this.placeSugiPillar(blockColumn, m, n, o, chunk);
       }
+      if (registryEntry.matchesKey(NSBiomes.STRATIFIED_DESERT) || registryEntry.matchesKey(NSBiomes.LIVELY_DUNES)  || registryEntry.matchesKey(NSBiomes.BLOOMING_DUNES)) {
+         this.placeStratifiedDesertPillar(blockColumn, m, n, o, chunk);
+      }
    }
 
    @Unique private void placeSugiPillar(BlockColumn column, int x, int z, int surfaceY, HeightLimitView chunk) {
-      double e = Math.min(Math.abs(sugiSurfaceNoise.sample(x, 0.0, z) * 8.5), sugiPillarNoise.sample((double)x * 0.2, 0.0, (double)z * 0.2) * 15.0);
+      double e = Math.min(Math.abs(stratifiedDesertSurfaceNoise.sample(x, 0.0, z) * 8.5), stratifiedDesertPillarNoise.sample((double)x * 0.2, 0.0, (double)z * 0.2) * 15.0);
       if (!(e <= 0.0)) {
-         double h = Math.abs(sugiPillarRoofNoise.sample((double)x * 0.75, 0.0, (double)z * 0.75) * 2.25);
-         double i = 44.0 + Math.min(e * e * 4.5, Math.ceil(h * 50.0) + 38.0);
+         double h = Math.abs(stratifiedDesertPillarRoofNoise.sample((double)x * 0.75, 0.0, (double)z * 0.75) * 2.25);
+         double i = 44.0 + Math.min(e * e * 4.5, Math.ceil(h * 30.0) + 38.0);
+         int j = MathHelper.floor(i);
+         if (surfaceY <= j) {
+            int k;
+            for(k = j; k >= chunk.getBottomY(); --k) {
+               BlockState blockState = column.getState(k);
+               if (blockState.isOf(this.defaultState.getBlock())) {
+                  break;
+               }
+            }
+
+            for(k = j; k >= chunk.getBottomY() && (column.getState(k).isAir() || column.getState(k).isOf(Blocks.WATER)); --k) {
+               column.setState(k, this.defaultState);
+            }
+
+         }
+      }
+   }
+   @Unique private void placeStratifiedDesertPillar(BlockColumn column, int x, int z, int surfaceY, HeightLimitView chunk) {
+      double e = Math.min(Math.abs(stratifiedDesertSurfaceNoise.sample(x, 0.0, z) * 8.5), stratifiedDesertPillarNoise.sample((double)x * 0.2, 0.0, (double)z * 0.2) * 16.0);
+      if (!(e <= 0.0)) {
+         double h = Math.abs(stratifiedDesertPillarRoofNoise.sample((double)x * 0.75, 0.0, (double)z * 0.75) * 2.25);
+         double i = 54.0 + Math.min(e * e * 3.5, Math.ceil(h * 30.0) + 38.0);
          int j = MathHelper.floor(i);
          if (surfaceY <= j) {
             int k;

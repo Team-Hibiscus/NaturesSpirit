@@ -17,6 +17,7 @@ import net.hibiscus.naturespirit.registration.NSMiscBlocks;
 import net.hibiscus.naturespirit.registration.NSParticleTypes;
 import net.hibiscus.naturespirit.registration.NSRegistryHelper;
 import net.hibiscus.naturespirit.registration.NSWoods;
+import net.hibiscus.naturespirit.registration.sets.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -85,6 +86,7 @@ public class NSClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(NSMiscBlocks.CALCITE_CLUSTER, RenderLayer.getCutout());
 
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NSRegistryHelper.RenderLayerHashMap.values().toArray(new Block[0]));
+    BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(), NSRegistryHelper.LeavesHashMap.values().toArray(new Block[0]));
 
 		BlockRenderLayerMap.INSTANCE.putBlock(NSWoods.COCONUT_THATCH_CARPET, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(NSWoods.COCONUT_THATCH_SLAB, RenderLayer.getCutout());
