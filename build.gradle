@@ -15,6 +15,7 @@ repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = 'https://maven.parchmentmc.org' }
     maven { url = "https://api.modrinth.com/maven"}
+    maven { url = "https://maven.terraformersmc.com/"}
 }
 
 dependencies {
@@ -26,11 +27,7 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation('dev.lukebemish:biomesquisher:0.4.1') {
-        capabilities {
-            requireCapability('dev.lukebemish:biomesquisher-fabric')
-        }
-    }
+    include modImplementation("com.terraformersmc:biolith-fabric:${project.biolith_version}")
 }
 
 processResources {

@@ -29,8 +29,8 @@
   "depends": {
     "fabricloader": ">=0.14.25",
     "fabric": "*",
-    "minecraft": "1.21.*",
-    "biomesquisher": "*"
+    "minecraft": ">=1.21 <=1.21.1",
+    "biolith": "*"
   },
   "custom": {
     "modmenu": {

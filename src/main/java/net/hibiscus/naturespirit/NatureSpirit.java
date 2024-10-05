@@ -2,6 +2,9 @@ package net.hibiscus.naturespirit;
 
 import java.io.IOException;
 import java.util.Optional;
+
+import com.google.gson.JsonObject;
+import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -22,8 +25,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.apache.commons.lang3.function.Failable.getAsBoolean;
 
 public class NatureSpirit implements ModInitializer {
 	public static final String MOD_ID = "natures_spirit";
@@ -132,7 +138,24 @@ public class NatureSpirit implements ModInitializer {
 		NSCauldronBehavior.registerBehavior();
 		DynamicRegistries.registerSynced(PIZZA_TOPPING_VARIANT, PizzaToppingVariant.CODEC);
 
-		Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
+		if (NSConfig.cat_variants) {
+			Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
+		}
 
+		if (NSConfig.has_aspen_forest) {
+			BiomePlacement.replaceOverworld(BiomeKeys.BIRCH_FOREST, NSBiomes.ASPEN_FOREST, 0.25D);
+		}
+
+		if (NSConfig.has_fir_forest) {
+			BiomePlacement.replaceOverworld(BiomeKeys.TAIGA, NSBiomes.FIR_FOREST, 0.25D);
+		}
+
+		if (NSConfig.has_snowy_fir_forest) {
+			BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_TAIGA, NSBiomes.SNOWY_FIR_FOREST, 0.25D);
+		}
+
+		if (NSConfig.has_redwood_forest) {
+			BiomePlacement.replaceOverworld(BiomeKeys.OLD_GROWTH_PINE_TAIGA, NSBiomes.REDWOOD_FOREST, 0.25D);
+		}
 	}
 }
