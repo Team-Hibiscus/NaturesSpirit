@@ -95,7 +95,6 @@ public class NSConfig {
 				pw.flush();
 				pw.close();
 			}
-
 			JsonObject obj = (JsonObject) JsonParser.parseReader(new FileReader(configPath.toString()));
 			JsonObject biomes = (JsonObject) obj.get("biomes");
 			JsonObject misc_features = (JsonObject) obj.get("misc_features");
@@ -155,7 +154,7 @@ public class NSConfig {
 			calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
 			deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
 			cheese_arrow = misc_features.get("cheese_arrow").getAsBoolean();
-			cat_variants = datapack_toggles.get("cat_variants").getAsBoolean();
+			cat_variants = misc_features.get("cat_variants").getAsBoolean();
 
 			vanilla_trees_toggle = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
 			birch_forest_toggle = datapack_toggles.get("birch_forest_toggle").getAsBoolean();
