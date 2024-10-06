@@ -2,6 +2,8 @@ package net.hibiscus.naturespirit;
 
 import java.io.IOException;
 import java.util.Optional;
+
+import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -15,6 +17,8 @@ import net.hibiscus.naturespirit.registration.*;
 import net.hibiscus.naturespirit.util.NSCauldronBehavior;
 import net.hibiscus.naturespirit.util.NSEvents;
 import net.hibiscus.naturespirit.util.NSVillagers;
+import net.hibiscus.naturespirit.world.NSSurfaceRules;
+import net.hibiscus.naturespirit.world.biolith.NSBiomeGen;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -98,6 +102,11 @@ public class NatureSpirit implements ModInitializer {
 				NSConfig.windswept_hills_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
 			);
 			ResourceManagerHelper.registerBuiltinResourcePack(
+					Identifier.of(MOD_ID, "improved_biome_sizes"), modContainer.get(),
+					Text.translatable("pack.natures_spirit.improved_biome_sizes"),
+					NSConfig.improved_biome_sizes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+			);
+			ResourceManagerHelper.registerBuiltinResourcePack(
 				Identifier.of(MOD_ID, "better_leaves_compatibility"), modContainer.get(),
 				Text.translatable("pack.natures_spirit.bushy_leaves_compatibility"),
 				ResourcePackActivationType.NORMAL
@@ -125,6 +134,7 @@ public class NatureSpirit implements ModInitializer {
 		NSWoods.registerWoods();
 		NSColoredBlocks.registerColoredBlocks();
 		NSMiscBlocks.registerMiscBlocks();
+		NSBiomeGen.createBiomePlacement();
 		NSEvents.registerEvents();
 		NSWorldGen.registerWorldGen();
 		NSItemGroups.registerItemGroup();
@@ -132,7 +142,14 @@ public class NatureSpirit implements ModInitializer {
 		NSCauldronBehavior.registerBehavior();
 		DynamicRegistries.registerSynced(PIZZA_TOPPING_VARIANT, PizzaToppingVariant.CODEC);
 
-		Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
+		if (NSConfig.cat_variants) {
+			Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
+		}
 
+		// SURFACE RULES
+
+		SurfaceGeneration.addOverworldSurfaceRules(
+				Identifier.of("natures_spirit", "rules/overworld"), NSSurfaceRules.makeRules()
+		);
 	}
 }

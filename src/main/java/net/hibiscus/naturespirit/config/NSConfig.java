@@ -8,16 +8,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+
 import net.fabricmc.loader.api.FabricLoader;
 import org.jetbrains.annotations.NotNull;
 
 public class NSConfig {
-
-	public static int terra_ferax_weight;
-	public static int terra_solaris_weight;
-	public static int terra_flava_weight;
-	public static int terra_laeta_weight;
-	public static int terra_mater_weight;
 
 	public static boolean cheese_arrow;
 	public static boolean calcite_generator;
@@ -33,6 +28,8 @@ public class NSConfig {
 	public static boolean savanna_toggle;
 	public static boolean dark_forest_toggle;
 	public static boolean windswept_hills_toggle;
+	public static boolean improved_biome_sizes_toggle;
+	public static boolean cat_variants;
 
 	public static boolean has_sugi_forest;
 	public static boolean has_windswept_sugi_forest;
@@ -85,7 +82,6 @@ public class NSConfig {
 	public static boolean has_chaparral;
 	public static boolean has_floral_ridges;
 
-
 	public NSConfig() {
 	}
 
@@ -102,7 +98,6 @@ public class NSConfig {
 			}
 			JsonObject obj = (JsonObject) JsonParser.parseReader(new FileReader(configPath.toString()));
 			JsonObject biomes = (JsonObject) obj.get("biomes");
-			JsonObject region_weights = (JsonObject) obj.get("region_weights");
 			JsonObject misc_features = (JsonObject) obj.get("misc_features");
 			JsonObject datapack_toggles = (JsonObject) obj.get("datapack_toggles");
 
@@ -157,17 +152,13 @@ public class NSConfig {
 			has_chaparral = biomes.get("has_chaparral").getAsBoolean();
 			has_floral_ridges = biomes.get("has_floral_ridges").getAsBoolean();
 
-			terra_ferax_weight = region_weights.get("terra_ferax_frequency").getAsInt();
-			terra_solaris_weight = region_weights.get("terra_solaris_frequency").getAsInt();
-			terra_flava_weight = region_weights.get("terra_flava_frequency").getAsInt();
-			terra_laeta_weight = region_weights.get("terra_laeta_frequency").getAsInt();
-			terra_mater_weight = region_weights.get("terra_mater_frequency").getAsInt();
-
 			calcite_generator = misc_features.get("calcite_generator").getAsBoolean();
 			deepslate_generator = misc_features.get("deepslate_generator").getAsBoolean();
 			cheese_arrow = misc_features.get("cheese_arrow").getAsBoolean();
+			cat_variants = misc_features.get("cat_variants").getAsBoolean();
 
 			vanilla_trees_toggle = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
+			improved_biome_sizes_toggle = datapack_toggles.get("improved_biome_sizes_toggle").getAsBoolean();
 			birch_forest_toggle = datapack_toggles.get("birch_forest_toggle").getAsBoolean();
 			flower_forest_toggle = datapack_toggles.get("flower_forest_toggle").getAsBoolean();
 			jungle_toggle = datapack_toggles.get("jungle_toggle").getAsBoolean();
@@ -204,10 +195,12 @@ public class NSConfig {
 		miscObject.addProperty("deepslate_generator", true);
 		miscObject.addProperty("calcite_generator", true);
 		miscObject.addProperty("cheese_arrow", true);
+		miscObject.addProperty("cat_variants", true);
 		jsonObjects.add("misc_features", miscObject);
 
 		JsonObject datapackTogglesObject = new JsonObject();
 		datapackTogglesObject.addProperty("vanilla_trees_toggle", false);
+		datapackTogglesObject.addProperty("improved_biome_sizes_toggle", false);
 		datapackTogglesObject.addProperty("birch_forest_toggle", true);
 		datapackTogglesObject.addProperty("flower_forest_toggle", true);
 		datapackTogglesObject.addProperty("jungle_toggle", true);
