@@ -28,6 +28,7 @@ public class NSConfig {
 	public static boolean savanna_toggle;
 	public static boolean dark_forest_toggle;
 	public static boolean windswept_hills_toggle;
+	public static boolean improved_biome_sizes_toggle;
 	public static boolean cat_variants;
 
 	public static boolean has_sugi_forest;
@@ -157,6 +158,7 @@ public class NSConfig {
 			cat_variants = misc_features.get("cat_variants").getAsBoolean();
 
 			vanilla_trees_toggle = datapack_toggles.get("vanilla_trees_toggle").getAsBoolean();
+			improved_biome_sizes_toggle = datapack_toggles.get("improved_biome_sizes_toggle").getAsBoolean();
 			birch_forest_toggle = datapack_toggles.get("birch_forest_toggle").getAsBoolean();
 			flower_forest_toggle = datapack_toggles.get("flower_forest_toggle").getAsBoolean();
 			jungle_toggle = datapack_toggles.get("jungle_toggle").getAsBoolean();
@@ -198,6 +200,7 @@ public class NSConfig {
 
 		JsonObject datapackTogglesObject = new JsonObject();
 		datapackTogglesObject.addProperty("vanilla_trees_toggle", false);
+		datapackTogglesObject.addProperty("improved_biome_sizes_toggle", false);
 		datapackTogglesObject.addProperty("birch_forest_toggle", true);
 		datapackTogglesObject.addProperty("flower_forest_toggle", true);
 		datapackTogglesObject.addProperty("jungle_toggle", true);

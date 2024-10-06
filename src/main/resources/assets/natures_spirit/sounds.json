@@ -19,7 +19,12 @@
     "sounds": [
       {
         "name": "natures_spirit:music.overworld.aspen",
-        "stream": true
+        "stream": true,
+        "weight": 3
+      },
+      {
+        "name": "minecraft:music.overworld.forest",
+        "type": "event"
       }
     ]
   },
@@ -43,7 +48,12 @@
     "sounds": [
       {
         "name": "natures_spirit:music.overworld.maple",
-        "stream": true
+        "stream": true,
+        "weight": 3
+      },
+      {
+        "name": "minecraft:music.overworld.forest",
+        "type": "event"
       }
     ]
   },
@@ -51,7 +61,12 @@
     "sounds": [
       {
         "name": "natures_spirit:music.overworld.wisteria",
-        "stream": true
+        "stream": true,
+        "weight": 3
+      },
+      {
+        "name": "minecraft:music.overworld.swamp",
+        "type": "event"
       }
     ]
   },
@@ -59,7 +74,12 @@
     "sounds": [
       {
         "name": "natures_spirit:music.overworld.redwood",
-        "stream": true
+        "stream": true,
+        "weight": 3
+      },
+      {
+        "name": "minecraft:music.overworld.old_growth_taiga",
+        "type": "event"
       }
     ]
   }
