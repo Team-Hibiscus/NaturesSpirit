@@ -7,6 +7,9 @@ import com.google.gson.JsonObject;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
 import com.terraformersmc.biolith.api.biome.sub.RatioTargets;
+import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
+import com.terraformersmc.biolith.impl.data.SurfaceGenerationMarshaller;
+import com.terraformersmc.biolith.impl.surface.SurfaceRuleCollector;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -20,6 +23,7 @@ import net.hibiscus.naturespirit.registration.*;
 import net.hibiscus.naturespirit.util.NSCauldronBehavior;
 import net.hibiscus.naturespirit.util.NSEvents;
 import net.hibiscus.naturespirit.util.NSVillagers;
+import net.hibiscus.naturespirit.world.NSSurfaceRules;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -146,15 +150,20 @@ public class NatureSpirit implements ModInitializer {
 			Registry.register(Registries.CAT_VARIANT, "trans", new CatVariant(Identifier.of(MOD_ID, "textures/entity/cat/trans" + ".png")));
 		}
 
+		// SURFACE RULES
+
+		SurfaceGeneration.addOverworldSurfaceRules(
+				Identifier.of("natures_spirit", "rules/overworld"), NSSurfaceRules.makeRules()
+		);
+
 		// BIOME GENERATION
 
-		// Fir Forest Biomes
+		// Fir Forest Region
 		if (NSConfig.has_fir_forest) {
 			BiomePlacement.replaceOverworld(BiomeKeys.TAIGA, NSBiomes.FIR_FOREST, 0.25D);
 		}
 		if (NSConfig.has_snowy_fir_forest) {
 			BiomePlacement.addSubOverworld(NSBiomes.FIR_FOREST, NSBiomes.SNOWY_FIR_FOREST, CriterionBuilder.neighbor(BiomeKeys.SNOWY_TAIGA));
-			BiomePlacement.addSubOverworld(NSBiomes.PRAIRIE, NSBiomes.SNOWY_FIR_FOREST, CriterionBuilder.neighbor(BiomeKeys.SNOWY_TAIGA));
 		}
 		if (NSConfig.has_redwood_forest) {
 			BiomePlacement.addSubOverworld(NSBiomes.FIR_FOREST, NSBiomes.REDWOOD_FOREST, anyOf(CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA),CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_PINE_TAIGA)));
@@ -162,11 +171,19 @@ public class NatureSpirit implements ModInitializer {
 		if (NSConfig.has_prairie) {
 			BiomePlacement.addSubOverworld(NSBiomes.FIR_FOREST, NSBiomes.PRAIRIE, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_HILL),CriterionBuilder.neighbor(BiomeKeys.PLAINS),CriterionBuilder.neighbor(BiomeKeys.SUNFLOWER_PLAINS),CriterionBuilder.neighbor(BiomeKeys.MEADOW)));
 		}
+
+		// Tundra Region
 		if (NSConfig.has_tundra) {
-			BiomePlacement.addSubOverworld(NSBiomes.FIR_FOREST, NSBiomes.TUNDRA, anyOf(CriterionBuilder.neighbor(BiomeKeys.SNOWY_TAIGA),CriterionBuilder.neighbor(BiomeKeys.SNOWY_PLAINS),CriterionBuilder.neighbor(BiomeKeys.GROVE),CriterionBuilder.neighbor(BiomeKeys.WINDSWEPT_FOREST)));
+			BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_PLAINS, NSBiomes.TUNDRA, 0.2D);
+		}
+		if (NSConfig.has_snowy_fir_forest) {
+			BiomePlacement.addSubOverworld(NSBiomes.TUNDRA, NSBiomes.SNOWY_FIR_FOREST, CriterionBuilder.neighbor(BiomeKeys.SNOWY_TAIGA));
+		}
+		if (NSConfig.has_fir_forest) {
+			BiomePlacement.addSubOverworld(NSBiomes.TUNDRA, NSBiomes.FIR_FOREST, CriterionBuilder.neighbor(BiomeKeys.FOREST));
 		}
 
-		// Wisteria Forest
+		// Wisteria Forest Region
 		if (NSConfig.has_wisteria_forest) {
 			BiomePlacement.replaceOverworld(BiomeKeys.SWAMP, NSBiomes.WISTERIA_FOREST, 0.25D);
 			BiomePlacement.addSubOverworld(NSBiomes.WISTERIA_FOREST, NSBiomes.WISTERIA_FOREST, CriterionBuilder.neighbor(BiomeKeys.MANGROVE_SWAMP));
@@ -176,9 +193,10 @@ public class NatureSpirit implements ModInitializer {
 		if (NSConfig.has_marsh) {
 			BiomePlacement.addSubOverworld(BiomeKeys.SWAMP, NSBiomes.MARSH, anyOf((allOf(ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeTags.IS_OCEAN))),(CriterionBuilder.RIVERSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
 			BiomePlacement.addSubOverworld(BiomeKeys.MANGROVE_SWAMP, NSBiomes.MARSH, anyOf((allOf(ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeTags.IS_OCEAN))),(CriterionBuilder.RIVERSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
+			BiomePlacement.addSubOverworld(BiomeKeys.DESERT, NSBiomes.MARSH, anyOf(CriterionBuilder.neighbor(BiomeKeys.SWAMP)));
 		}
 
-		// Sugi Forest Biomes
+		// Sugi Forest Region
 		if (NSConfig.has_sugi_forest) {
 			BiomePlacement.replaceOverworld(BiomeKeys.DARK_FOREST, NSBiomes.SUGI_FOREST, 0.2D);
 		}
@@ -189,7 +207,7 @@ public class NatureSpirit implements ModInitializer {
 			BiomePlacement.addSubOverworld(NSBiomes.SUGI_FOREST, NSBiomes.WINDSWEPT_SUGI_FOREST, CriterionBuilder.neighbor(BiomeTags.IS_HILL));
 		}
 
-		// Cypress Fields Biomes
+		// Cypress Fields Region
 		if (NSConfig.has_cypress_fields) {
 			BiomePlacement.replaceOverworld(BiomeKeys.PLAINS, NSBiomes.CYPRESS_FIELDS, 0.1D);
 		}
@@ -203,7 +221,7 @@ public class NatureSpirit implements ModInitializer {
 			BiomePlacement.addSubOverworld(NSBiomes.CYPRESS_FIELDS, NSBiomes.XERIC_PLAINS, anyOf(CriterionBuilder.neighbor(BiomeKeys.SAVANNA),CriterionBuilder.neighbor(BiomeKeys.SAVANNA_PLATEAU),CriterionBuilder.neighbor(BiomeKeys.DESERT)));
 		}
 
-		// Maple Woodlands Biomes
+		// Maple Woodlands Region
 		if (NSConfig.has_maple_woodlands) {
 			BiomePlacement.replaceOverworld(BiomeKeys.FOREST, NSBiomes.MAPLE_WOODLANDS, 0.2D);
 			BiomePlacement.addSubOverworld(NSBiomes.MAPLE_WOODLANDS, NSBiomes.MAPLE_WOODLANDS, anyOf(CriterionBuilder.neighbor(BiomeKeys.BIRCH_FOREST)));
@@ -214,37 +232,39 @@ public class NatureSpirit implements ModInitializer {
 		if (NSConfig.has_marigold_meadows) {
 			BiomePlacement.addSubOverworld(NSBiomes.MAPLE_WOODLANDS, NSBiomes.MARIGOLD_MEADOWS, anyOf(CriterionBuilder.neighbor(BiomeKeys.MEADOW),CriterionBuilder.neighbor(BiomeKeys.FLOWER_FOREST),CriterionBuilder.neighbor(BiomeKeys.CHERRY_GROVE)));
 		}
+		if (NSConfig.has_aspen_forest) {
+			BiomePlacement.addSubOverworld(NSBiomes.MAPLE_WOODLANDS, NSBiomes.ASPEN_FOREST, CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_BIRCH_FOREST));
+		}
 
-		// Aspen Forest
+		// Aspen Forest Region
 		if (NSConfig.has_aspen_forest) {
 			BiomePlacement.replaceOverworld(BiomeKeys.OLD_GROWTH_PINE_TAIGA, NSBiomes.ASPEN_FOREST, 0.3D);
-			BiomePlacement.addSubOverworld(NSBiomes.MAPLE_WOODLANDS, NSBiomes.ASPEN_FOREST, CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_BIRCH_FOREST));
 			BiomePlacement.addSubOverworld(NSBiomes.ASPEN_FOREST, NSBiomes.ASPEN_FOREST, CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_BIRCH_FOREST));
 		}
 
-		// Coniferous Covert Biomes
-		if (NSConfig.has_coniferous_covert) {
-			BiomePlacement.replaceOverworld(BiomeKeys.TAIGA, NSBiomes.CONIFEROUS_COVERT, 0.1D);
+		// Coniferous Covert Region
+		if (NSConfig.has_boreal_taiga) {
+			BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_TAIGA, NSBiomes.CONIFEROUS_COVERT, 0.2D);
 		}
 		if (NSConfig.has_alpine_clearings) {
-			BiomePlacement.addSubOverworld(NSBiomes.CONIFEROUS_COVERT, NSBiomes.ALPINE_CLEARINGS, anyOf(CriterionBuilder.neighbor(BiomeKeys.PLAINS),CriterionBuilder.neighbor(BiomeKeys.SUNFLOWER_PLAINS),CriterionBuilder.neighbor(BiomeKeys.SNOWY_PLAINS)));
+			BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.ALPINE_CLEARINGS, anyOf(CriterionBuilder.neighbor(BiomeKeys.SNOWY_PLAINS)));
 		}
-		if (NSConfig.has_boreal_taiga) {
-			BiomePlacement.addSubOverworld(NSBiomes.CONIFEROUS_COVERT, NSBiomes.BOREAL_TAIGA, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_HILL),CriterionBuilder.neighbor(BiomeKeys.TAIGA)));
+		if (NSConfig.has_coniferous_covert) {
+			BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.CONIFEROUS_COVERT, anyOf(CriterionBuilder.neighbor(BiomeKeys.TAIGA),CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_PINE_TAIGA),CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA)));
 		}
 		if (NSConfig.has_alpine_highlands) {
-			BiomePlacement.addSubOverworld(NSBiomes.CONIFEROUS_COVERT, NSBiomes.ALPINE_HIGHLANDS, anyOf(CriterionBuilder.neighbor(BiomeKeys.PLAINS),CriterionBuilder.neighbor(BiomeKeys.MEADOW)));
+			BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.ALPINE_HIGHLANDS, anyOf(CriterionBuilder.neighbor(BiomeKeys.SNOWY_SLOPES),CriterionBuilder.neighbor(BiomeKeys.MEADOW)));
 		}
 		if (NSConfig.has_woody_highlands) {
-			BiomePlacement.addSubOverworld(NSBiomes.CONIFEROUS_COVERT, NSBiomes.WOODY_HIGHLANDS, anyOf(CriterionBuilder.neighbor(BiomeKeys.SUNFLOWER_PLAINS),CriterionBuilder.neighbor(BiomeKeys.MEADOW)));
+			BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.WOODY_HIGHLANDS, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_HILL),CriterionBuilder.neighbor(BiomeKeys.GROVE)));
 		}
 
-		// Tropical Woods Biomes
+		// Tropical Woods Region
 		if (NSConfig.has_tropical_woods) {
 			BiomePlacement.replaceOverworld(BiomeKeys.JUNGLE, NSBiomes.TROPICAL_WOODS, 0.25D);
 		}
 		if (NSConfig.has_sparse_tropical_woods) {
-			BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.SPARSE_TROPICAL_WOODS, CriterionBuilder.ratioMax(RatioTargets.CENTER, 0.3F));
+			BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.SPARSE_TROPICAL_WOODS, CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F));
 		}
 		if (NSConfig.has_tropical_basin) {
 			BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.TROPICAL_BASIN, CriterionBuilder.ratioMax(RatioTargets.CENTER, 0.3F));
