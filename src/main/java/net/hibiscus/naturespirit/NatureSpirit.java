@@ -102,9 +102,9 @@ public class NatureSpirit implements ModInitializer {
 				NSConfig.windswept_hills_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
 			);
 			ResourceManagerHelper.registerBuiltinResourcePack(
-					Identifier.of(MOD_ID, "improved_biome_sizes"), modContainer.get(),
-					Text.translatable("pack.natures_spirit.improved_biome_sizes"),
-					NSConfig.improved_biome_sizes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
+				Identifier.of(MOD_ID, "improved_biome_sizes"), modContainer.get(),
+				Text.translatable("pack.natures_spirit.improved_biome_sizes"),
+				NSConfig.improved_biome_sizes_toggle ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL
 			);
 			ResourceManagerHelper.registerBuiltinResourcePack(
 				Identifier.of(MOD_ID, "better_leaves_compatibility"), modContainer.get(),

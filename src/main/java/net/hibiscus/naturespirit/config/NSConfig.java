@@ -86,7 +86,7 @@ public class NSConfig {
 	}
 
 	public static void main() throws IOException {
-		Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_1.6.3-1.21.1.json");
+		Path configPath = Path.of(FabricLoader.getInstance().getConfigDir().toString(), "natures_spirit_2.0.0-1.21.1.json");
 		try {
 			if (configPath.toFile().createNewFile()) {
 				JsonObject jsonObjects = getJsonObject();
