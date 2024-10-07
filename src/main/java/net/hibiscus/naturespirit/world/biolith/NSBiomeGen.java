@@ -30,11 +30,11 @@ public class NSBiomeGen {
 
         // Redwood Forest Region
         if (NSConfig.has_redwood_forest) {
-            BiomePlacement.replaceOverworld(BiomeKeys.OLD_GROWTH_PINE_TAIGA, NSBiomes.REDWOOD_FOREST, 0.2D);
-            BiomePlacement.addSubOverworld(NSBiomes.REDWOOD_FOREST, NSBiomes.REDWOOD_FOREST, CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA));
+            BiomePlacement.replaceOverworld(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, NSBiomes.REDWOOD_FOREST, 0.2D);
+            BiomePlacement.addSubOverworld(NSBiomes.REDWOOD_FOREST, NSBiomes.REDWOOD_FOREST, CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_PINE_TAIGA));
         }
         if (NSConfig.has_snowy_redwood_forest) {
-            BiomePlacement.addSubOverworld(NSBiomes.SNOWY_REDWOOD_FOREST, NSBiomes.REDWOOD_FOREST, CriterionBuilder.neighbor(BiomeKeys.SNOWY_TAIGA));
+            BiomePlacement.addSubOverworld(NSBiomes.REDWOOD_FOREST, NSBiomes.SNOWY_REDWOOD_FOREST, CriterionBuilder.neighbor(BiomeKeys.SNOWY_TAIGA));
         }
 
         // Tundra Region
@@ -56,9 +56,8 @@ public class NSBiomeGen {
 
         // Marsh
         if (NSConfig.has_marsh) {
-            BiomePlacement.addSubOverworld(BiomeKeys.SWAMP, NSBiomes.MARSH, anyOf((allOf(ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeTags.IS_OCEAN))),(CriterionBuilder.RIVERSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
-            BiomePlacement.addSubOverworld(BiomeKeys.MANGROVE_SWAMP, NSBiomes.MARSH, anyOf((allOf(ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeTags.IS_OCEAN))),(CriterionBuilder.RIVERSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
-            BiomePlacement.addSubOverworld(BiomeKeys.DESERT, NSBiomes.MARSH, anyOf(CriterionBuilder.neighbor(BiomeKeys.SWAMP)));
+            BiomePlacement.addSubOverworld(BiomeKeys.SWAMP, NSBiomes.MARSH, anyOf((allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F),CriterionBuilder.neighbor(BiomeTags.IS_OCEAN))),(CriterionBuilder.OCEANSIDE),(CriterionBuilder.RIVERSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
+            BiomePlacement.addSubOverworld(BiomeKeys.MANGROVE_SWAMP, NSBiomes.MARSH, anyOf((allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F),CriterionBuilder.neighbor(BiomeTags.IS_OCEAN))),(CriterionBuilder.OCEANSIDE),(CriterionBuilder.RIVERSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
         }
 
         // Sugi Forest Region
@@ -105,18 +104,21 @@ public class NSBiomeGen {
             BiomePlacement.addSubOverworld(NSBiomes.ASPEN_FOREST, NSBiomes.ASPEN_FOREST, CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_BIRCH_FOREST));
         }
 
-        // Coniferous Covert Region
+        // Boreal Taiga Region
         if (NSConfig.has_boreal_taiga) {
             BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_TAIGA, NSBiomes.BOREAL_TAIGA, 0.2D);
         }
         if (NSConfig.has_alpine_clearings) {
-            BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.ALPINE_CLEARINGS, anyOf(CriterionBuilder.neighbor(BiomeKeys.TAIGA),CriterionBuilder.neighbor(BiomeKeys.SNOWY_PLAINS)));
+            BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.ALPINE_CLEARINGS, CriterionBuilder.neighbor(BiomeKeys.SNOWY_PLAINS));
         }
         if (NSConfig.has_alpine_highlands) {
             BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.ALPINE_HIGHLANDS, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_HILL),CriterionBuilder.neighbor(BiomeKeys.SNOWY_SLOPES),CriterionBuilder.neighbor(BiomeKeys.GROVE)));
         }
         if (NSConfig.has_coniferous_covert) {
-            BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.CONIFEROUS_COVERT, anyOf(CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA),CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_PINE_TAIGA)));
+            BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.CONIFEROUS_COVERT, CriterionBuilder.neighbor(BiomeKeys.TAIGA));
+        }
+        if (NSConfig.has_heather_fields) {
+            BiomePlacement.addSubOverworld(NSBiomes.BOREAL_TAIGA, NSBiomes.HEATHER_FIELDS, CriterionBuilder.neighbor(BiomeKeys.FOREST));
         }
 
         // Woody Highlands Region
@@ -142,23 +144,19 @@ public class NSBiomeGen {
             BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.SPARSE_TROPICAL_WOODS, anyOf(CriterionBuilder.neighbor(BiomeKeys.FOREST),CriterionBuilder.neighbor(BiomeKeys.PLAINS),CriterionBuilder.neighbor(BiomeKeys.SUNFLOWER_PLAINS)));
         }
         if (NSConfig.has_tropical_basin) {
-            BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.TROPICAL_BASIN, CriterionBuilder.neighbor(BiomeKeys.MANGROVE_SWAMP));
-        }
-        if (NSConfig.has_tropical_shores) {
-            BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.TROPICAL_SHORES, CriterionBuilder.neighbor(BiomeKeys.BEACH));
+            BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.TROPICAL_BASIN, anyOf(CriterionBuilder.neighbor(BiomeKeys.MANGROVE_SWAMP),CriterionBuilder.neighbor(BiomeKeys.SWAMP)));
         }
 
         // Bamboo Wetlands
         if (NSConfig.has_bamboo_wetlands) {
-            BiomePlacement.addSubOverworld(BiomeKeys.JUNGLE, NSBiomes.BAMBOO_WETLANDS, anyOf((CriterionBuilder.OCEANSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.SWAMP)),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
-            BiomePlacement.addSubOverworld(BiomeKeys.BAMBOO_JUNGLE, NSBiomes.BAMBOO_WETLANDS, anyOf((CriterionBuilder.OCEANSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.SWAMP)),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
-            BiomePlacement.addSubOverworld(BiomeKeys.SPARSE_JUNGLE, NSBiomes.BAMBOO_WETLANDS, anyOf((CriterionBuilder.OCEANSIDE),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.SWAMP)),CriterionBuilder.allOf(NEAR_BORDER, neighbor(BiomeKeys.MANGROVE_SWAMP))));
+            BiomePlacement.addSubOverworld(BiomeKeys.JUNGLE, NSBiomes.BAMBOO_WETLANDS, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_OCEAN),(allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeKeys.MANGROVE_SWAMP))),(allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeKeys.SWAMP)))));
+            BiomePlacement.addSubOverworld(BiomeKeys.BAMBOO_JUNGLE, NSBiomes.BAMBOO_WETLANDS, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_OCEAN),(allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeKeys.MANGROVE_SWAMP))),(allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeKeys.SWAMP)))));
+            BiomePlacement.addSubOverworld(BiomeKeys.SPARSE_JUNGLE, NSBiomes.BAMBOO_WETLANDS, anyOf(CriterionBuilder.neighbor(BiomeTags.IS_OCEAN),(allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeKeys.MANGROVE_SWAMP))),(allOf(CriterionBuilder.ratioMax(RatioTargets.EDGE, 0.3F), neighbor(BiomeKeys.SWAMP)))));
         }
 
         // Lively Dunes Region
         if (NSConfig.has_lively_dunes) {
             BiomePlacement.replaceOverworld(BiomeKeys.DESERT, NSBiomes.LIVELY_DUNES, 0.2D);
-            BiomePlacement.addSubOverworld(NSBiomes.LIVELY_DUNES, NSBiomes.LIVELY_DUNES, CriterionBuilder.neighbor(BiomeKeys.DESERT));
         }
         if (NSConfig.has_blooming_dunes) {
             BiomePlacement.addSubOverworld(NSBiomes.LIVELY_DUNES, NSBiomes.BLOOMING_DUNES, anyOf(CriterionBuilder.neighbor(BiomeKeys.SAVANNA),CriterionBuilder.neighbor(BiomeKeys.SAVANNA_PLATEAU)));
@@ -166,7 +164,7 @@ public class NSBiomeGen {
 
         // Stratified Desert Region
         if (NSConfig.has_stratified_desert) {
-            BiomePlacement.replaceOverworld(BiomeKeys.BADLANDS, NSBiomes.STRATIFIED_DESERT, 0.2D);
+            BiomePlacement.replaceOverworld(BiomeKeys.BADLANDS, NSBiomes.STRATIFIED_DESERT, 0.4D);
             BiomePlacement.addSubOverworld(NSBiomes.STRATIFIED_DESERT, NSBiomes.STRATIFIED_DESERT, anyOf(CriterionBuilder.neighbor(BiomeKeys.ERODED_BADLANDS),CriterionBuilder.neighbor(BiomeKeys.BADLANDS)));
         }
         if (NSConfig.has_lively_dunes) {
@@ -174,6 +172,11 @@ public class NSBiomeGen {
         }
         if (NSConfig.has_chaparral) {
             BiomePlacement.addSubOverworld(NSBiomes.STRATIFIED_DESERT, NSBiomes.CHAPARRAL, anyOf(CriterionBuilder.neighbor(BiomeKeys.WOODED_BADLANDS),CriterionBuilder.neighbor(BiomeKeys.SAVANNA_PLATEAU)));
+        }
+
+        // Tropical Shores
+        if (NSConfig.has_tropical_shores) {
+            BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.TROPICAL_SHORES, allOf(CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, 0.2F, 0.55F),CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, 0.1F, 1F)));
         }
     }
 }
