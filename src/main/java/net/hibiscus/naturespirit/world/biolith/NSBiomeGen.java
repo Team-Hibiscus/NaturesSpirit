@@ -176,7 +176,12 @@ public class NSBiomeGen {
 
         // Tropical Shores
         if (NSConfig.has_tropical_shores) {
-            BiomePlacement.addSubOverworld(NSBiomes.TROPICAL_WOODS, NSBiomes.TROPICAL_SHORES, allOf(CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, 0.2F, 0.55F),CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, 0.1F, 1F)));
+            BiomePlacement.addSubOverworld(BiomeKeys.BEACH, NSBiomes.TROPICAL_SHORES, allOf(CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, 0.2F, 0.55F),CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, 0.1F, 1F)));
+        }
+
+        if (NSConfig.has_red_peaks) {
+            BiomePlacement.addSubOverworld(BiomeKeys.BADLANDS, NSBiomes.RED_PEAKS, CriterionBuilder.neighbor(BiomeKeys.STONY_PEAKS));
+            BiomePlacement.addSubOverworld(NSBiomes.STRATIFIED_DESERT, NSBiomes.RED_PEAKS, CriterionBuilder.neighbor(BiomeKeys.STONY_PEAKS));
         }
     }
 }
