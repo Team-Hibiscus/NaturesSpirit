@@ -1,1 +1,1 @@
-Fork of Nature's Spirit to remove Terrablender and instead generate biomes using Biome Squisher.
+Nature's Spirit branch for reworking biome gen to use Biolith, for Nature's Spirit 2.0
