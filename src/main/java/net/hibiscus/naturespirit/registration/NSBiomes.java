@@ -1,16 +1,18 @@
 package net.hibiscus.naturespirit.registration;
 
 
+import com.mojang.logging.LogUtils;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import org.slf4j.Logger;
 
 import java.util.HashMap;
 
 public class NSBiomes {
-
+  private static final Logger LOGGER = LogUtils.getLogger();
   public static HashMap<String, ResourceKey<Biome>> BiomesHashMap = new HashMap<>();
   public static final ResourceKey<Biome> SUGI_FOREST = register("sugi_forest");
   public static final ResourceKey<Biome> WINDSWEPT_SUGI_FOREST = register("windswept_sugi_forest");
@@ -65,7 +67,7 @@ public class NSBiomes {
   public static final ResourceKey<Biome> FLORAL_RIDGES = register("floral_ridges");
 
   private static ResourceKey<Biome> register(String name) {
-    System.out.println("Registered Resource Key for biome: " + name);
+    LOGGER.debug("Registered Resource Key for biome: {}", name);
     ResourceKey<Biome> registryKey = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name));
     BiomesHashMap.put(name, registryKey);
     return registryKey;
