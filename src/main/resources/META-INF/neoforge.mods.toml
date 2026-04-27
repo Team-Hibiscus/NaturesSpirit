@@ -29,8 +29,8 @@ versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies."${mod_id}"]]
-modId = "terrablender"
+modId = "biolith"
 mandatory = true
-versionRange = "[1,)"
+versionRange = "${biolith_version_range}"
 ordering = "NONE"
 side = "BOTH"
