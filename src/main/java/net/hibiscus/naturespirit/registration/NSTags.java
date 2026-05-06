@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class NSTags {
@@ -74,6 +75,18 @@ public class NSTags {
 
     private static TagKey<Block> createTag(String name) {
       return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name));
+    }
+  }
+
+  public static class Biomes {
+    public static final TagKey<Biome> IS_TERRA_FERAX = createTag("terra_ferax");
+    public static final TagKey<Biome> IS_TERRA_FLAVA = createTag("terra_flava");
+    public static final TagKey<Biome> IS_TERRA_LAETA = createTag("terra_laeta");
+    public static final TagKey<Biome> IS_TERRA_MATER = createTag("terra_mater");
+    public static final TagKey<Biome> IS_TERRA_SOLARIS = createTag("terra_solaris");
+
+    private static TagKey<Biome> createTag(String name) {
+      return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name));
     }
   }
 }
