@@ -63,26 +63,39 @@ repositories {
         name = "Forge"
         url = "https://maven.minecraftforge.net"
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 
     maven { url 'https://maven.terraformersmc.com/' }
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    implementation 'com.github.glitchfiend:TerraBlender-neoforge:' + minecraft_version + '-' + terrablender_version
-    implementation "com.terraformersmc:biolith-neoforge:$biolith_version"
-
+    //implementation 'com.github.glitchfiend:TerraBlender-neoforge:' + minecraft_version + '-' + terrablender_version
+    //implementation "com.terraformersmc:biolith-neoforge:$biolith_version"
+    implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-21.1"
 }
+
 tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [            minecraft_version      : minecraft_version,
-                                         minecraft_version_range: minecraft_version_range,
-                                         neo_version            : neo_version,
-                                         neo_version_range      : neo_version_range,
-                                         loader_version_range   : loader_version_range,
-                                         mod_id                 : mod_id,
-                                         mod_version            : mod_version,
-                                         biolith_version_range  : biolith_version_range
-            ]
+    var replaceProperties = [
+            minecraft_version           : minecraft_version,
+            minecraft_version_range     : minecraft_version_range,
+            neo_version                 : neo_version,
+            neo_version_range           : neo_version_range,
+            loader_version_range        : loader_version_range,
+            mod_id                      : mod_id,
+            mod_version                 : mod_version,
+            lithostitched_version_range : lithostitched_version_range
+    ]
 
     inputs.properties replaceProperties
 

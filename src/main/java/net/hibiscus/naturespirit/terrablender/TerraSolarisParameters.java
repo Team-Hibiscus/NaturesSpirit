@@ -1,3 +1,4 @@
+/*
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
@@ -992,3 +993,4 @@ public class TerraSolarisParameters extends OverworldBiomeBuilder {
     ));
   }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
@@ -22,3 +23,4 @@ public class TerraFeraxRegion extends Region {
     (new TerraFeraxParameters()).addBiomes(mapper);
   }
 }
+*/

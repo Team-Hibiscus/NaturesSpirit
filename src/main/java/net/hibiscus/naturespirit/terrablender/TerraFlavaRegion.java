@@ -1,3 +1,4 @@
+/*
 package net.hibiscus.naturespirit.terrablender;
 
 import com.mojang.datafixers.util.Pair;
@@ -23,3 +24,4 @@ public class TerraFlavaRegion extends Region {
   }
 
 }
+*/

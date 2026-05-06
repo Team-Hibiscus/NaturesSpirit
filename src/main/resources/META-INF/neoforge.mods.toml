@@ -29,8 +29,8 @@ versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies."${mod_id}"]]
-modId = "biolith"
+modId = "lithostitched"
 mandatory = true
-versionRange = "${biolith_version_range}"
+versionRange = "${lithostitched_version_range}"
 ordering = "NONE"
 side = "BOTH"

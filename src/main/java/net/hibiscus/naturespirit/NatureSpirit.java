@@ -1,26 +1,18 @@
 package net.hibiscus.naturespirit;
 
-import com.google.common.collect.ImmutableMap;
 import net.hibiscus.naturespirit.registration.NSDataComponents;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.config.NSConfig;
 import net.hibiscus.naturespirit.registration.*;
 import net.hibiscus.naturespirit.registration.compat.NSArtsAndCraftsCompat;
 import net.hibiscus.naturespirit.registration.sets.WoodSet;
-import net.hibiscus.naturespirit.terrablender.*;
 import net.hibiscus.naturespirit.blocks.NSCauldronBehavior;
 import net.hibiscus.naturespirit.registration.NSVillagers;
-import net.hibiscus.naturespirit.world.NSSurfaceRules;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackSelectionConfig;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.PathPackResources;
-import net.minecraft.server.packs.repository.KnownPack;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -42,8 +34,6 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
-import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,12 +81,12 @@ public class NatureSpirit {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        Regions.register(new TerraFeraxRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_ferax"), NSConfig.terraFeraxWeight));
-        Regions.register(new TerraSolarisRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_solaris"), NSConfig.terraSolarisWeight));
-        Regions.register(new TerraFlavaRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_flava"), NSConfig.terraFlavaWeight));
-        Regions.register(new TerraMaterRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_mater"), NSConfig.terraMaterWeight));
-        Regions.register(new TerraLaetaRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_laeta"), NSConfig.terraLaetaWeight));
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, NSSurfaceRules.makeRules());
+        //Regions.register(new TerraFeraxRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_ferax"), NSConfig.terraFeraxWeight));
+        //Regions.register(new TerraSolarisRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_solaris"), NSConfig.terraSolarisWeight));
+        //Regions.register(new TerraFlavaRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_flava"), NSConfig.terraFlavaWeight));
+        //Regions.register(new TerraMaterRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_mater"), NSConfig.terraMaterWeight));
+        //Regions.register(new TerraLaetaRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_laeta"), NSConfig.terraLaetaWeight));
+        //SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, NSSurfaceRules.makeRules());
 
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NSBlocks.SCORCHED_GRASS.getId(), NSBlocks.POTTED_SCORCHED_GRASS);
