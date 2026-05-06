@@ -74,14 +74,10 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
-
-    maven { url 'https://maven.terraformersmc.com/' }
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    //implementation 'com.github.glitchfiend:TerraBlender-neoforge:' + minecraft_version + '-' + terrablender_version
-    //implementation "com.terraformersmc:biolith-neoforge:$biolith_version"
     implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-21.1"
 }
 

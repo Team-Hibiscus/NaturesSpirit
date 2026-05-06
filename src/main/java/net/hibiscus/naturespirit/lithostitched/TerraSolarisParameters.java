@@ -1,5 +1,4 @@
-/*
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.lithostitched;
 
 import com.mojang.datafixers.util.Pair;
 import net.hibiscus.naturespirit.config.NSConfig;
@@ -12,21 +11,26 @@ import net.minecraft.world.level.biome.OverworldBiomeBuilder;
 import java.util.function.Consumer;
 
 
-public class TerraFlavaParameters extends OverworldBiomeBuilder {
+public class TerraSolarisParameters extends OverworldBiomeBuilder {
 
   private final Climate.Parameter defaultParameter = Climate.Parameter.span(-1.0F, 1.0F);
+
   private final Climate.Parameter[] temperatureParameters = new Climate.Parameter[]{
-      Climate.Parameter.span(-1.0F, -0.45F), Climate.Parameter.span(-0.45F, -0.15F), Climate.Parameter.span(-0.15F, 0.2F),
-      Climate.Parameter.span(0.2F,
-          0.55F
-      ), Climate.Parameter.span(0.55F, 1.0F)
+      Climate.Parameter.span(-1.0F, -0.45F),
+      Climate.Parameter.span(-0.45F, -0.15F),
+      Climate.Parameter.span(-0.15F, 0.2F),
+      Climate.Parameter.span(0.2F, 0.55F),
+      Climate.Parameter.span(0.55F, 1.0F)
   };
+
   private final Climate.Parameter[] humidityParameters = new Climate.Parameter[]{
-      Climate.Parameter.span(-1.0F, -0.35F), Climate.Parameter.span(-0.35F, -0.1F), Climate.Parameter.span(-0.1F, 0.1F),
-      Climate.Parameter.span(0.1F,
-          0.3F
-      ), Climate.Parameter.span(0.3F, 1.0F)
+      Climate.Parameter.span(-1.0F, -0.35F),
+      Climate.Parameter.span(-0.35F, -0.1F),
+      Climate.Parameter.span(-0.1F, 0.1F),
+      Climate.Parameter.span(0.1F, 0.3F),
+      Climate.Parameter.span(0.3F, 1.0F)
   };
+
   private final Climate.Parameter[] erosionParameters = new Climate.Parameter[]{
       Climate.Parameter.span(-1.0F, -0.78F),
       Climate.Parameter.span(-0.78F, -0.375F),
@@ -36,42 +40,84 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
       Climate.Parameter.span(0.45F, 0.55F),
       Climate.Parameter.span(0.55F, 1.0F)
   };
-  private final Climate.Parameter frozenTemperature;
-  private final Climate.Parameter nonFrozenTemperatureParameters;
-  private final Climate.Parameter mushroomFieldsContinentalness;
-  private final Climate.Parameter deepOceanContinentalness;
-  private final Climate.Parameter oceanContinentalness;
-  private final Climate.Parameter coastContinentalness;
-  private final Climate.Parameter riverContinentalness;
-  private final Climate.Parameter nearInlandContinentalness;
-  private final Climate.Parameter midInlandContinentalness;
-  private final Climate.Parameter farInlandContinentalness;
-  private final ResourceKey<Biome>[][] oceanBiomes;
-  private final ResourceKey<Biome>[][] commonBiomes;
-  private final ResourceKey<Biome>[][] uncommonBiomes;
-  private final ResourceKey<Biome>[][] nearMountainBiomes;
-  private final ResourceKey<Biome>[][] specialNearMountainBiomes;
-  private final ResourceKey<Biome>[][] windsweptBiomes;
-  ResourceKey<Biome> commonBiomePlainsCold = NSConfig.hasGoldenWilds ? NSBiomes.GOLDEN_WILDS : Biomes.PLAINS;
-  ResourceKey<Biome> mountainBiomeMeadowCold = NSConfig.hasGoldenWilds ? NSBiomes.GOLDEN_WILDS : Biomes.MEADOW;
-  ResourceKey<Biome> mountainBiomeForestCold = NSConfig.hasGoldenWilds ? NSBiomes.GOLDEN_WILDS : Biomes.FOREST;
-  ResourceKey<Biome> mountainBiomeMeadowCold2 = NSConfig.hasMarigoldMeadows ? NSBiomes.MARIGOLD_MEADOWS : (NSConfig.hasGoldenWilds ? NSBiomes.GOLDEN_WILDS : Biomes.MEADOW);
-  ResourceKey<Biome> uncommonBiomeCold = NSConfig.hasMarigoldMeadows ? NSBiomes.MARIGOLD_MEADOWS : null;
-  ResourceKey<Biome> commonBiomeForestCold = NSConfig.hasMapleWoodlands ? NSBiomes.MAPLE_WOODLANDS : Biomes.FOREST;
-  ResourceKey<Biome> commonBiomeTaigaCold = NSConfig.hasAspenForest ? NSBiomes.ASPEN_FOREST : Biomes.TAIGA;
-  ResourceKey<Biome> commonBiomeOldSpruceCold = NSConfig.hasAspenForest ? NSBiomes.ASPEN_FOREST : Biomes.OLD_GROWTH_SPRUCE_TAIGA;
-  ResourceKey<Biome> uncommonBiomeOldPineCold = NSConfig.hasAspenForest ? null : Biomes.OLD_GROWTH_PINE_TAIGA;
-  ResourceKey<Biome> commonBiomeDesertHot = NSConfig.hasDrylands ? NSBiomes.DRYLANDS : Biomes.DESERT;
-  ResourceKey<Biome> commonBiomeDesertHot2 = NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : Biomes.DESERT;
-  ResourceKey<Biome> commonBiomeSavannaWarm = NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : Biomes.SAVANNA;
-  ResourceKey<Biome> commonBiomeForestWarm = NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : Biomes.FOREST;
-  ResourceKey<Biome> nearBiomeSavannaPlateauWarm = NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : Biomes.SAVANNA_PLATEAU;
-  ResourceKey<Biome> nearBiomeBadlandsHot = NSConfig.hasDrylands ? NSBiomes.DRYLANDS : Biomes.BADLANDS;
-  ResourceKey<Biome> nearBiomeWoodedBadlandsHot = NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : Biomes.WOODED_BADLANDS;
-  ResourceKey<Biome> nearBiomeBadlandsHot2 = NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : Biomes.BADLANDS;
-  ResourceKey<Biome> specialBiomeErodedBadlandsHot = NSConfig.hasDrylands ? null : Biomes.ERODED_BADLANDS;
 
-  public TerraFlavaParameters() {
+  private final Climate.Parameter frozenTemperature;
+
+  private final Climate.Parameter nonFrozenTemperatureParameters;
+
+  private final Climate.Parameter mushroomFieldsContinentalness;
+
+  private final Climate.Parameter deepOceanContinentalness;
+
+  private final Climate.Parameter oceanContinentalness;
+
+  private final Climate.Parameter coastContinentalness;
+
+  private final Climate.Parameter riverContinentalness;
+
+  private final Climate.Parameter nearInlandContinentalness;
+
+  private final Climate.Parameter midInlandContinentalness;
+
+  private final Climate.Parameter farInlandContinentalness;
+
+  private final ResourceKey<Biome>[][] oceanBiomes;
+
+  private final ResourceKey<Biome>[][] commonBiomes;
+
+  private final ResourceKey<Biome>[][] uncommonBiomes;
+
+  private final ResourceKey<Biome>[][] nearMountainBiomes;
+
+  private final ResourceKey<Biome>[][] specialNearMountainBiomes;
+
+  private final ResourceKey<Biome>[][] windsweptBiomes;
+
+  ResourceKey<Biome> commonBiomeForestCold = NSConfig.hasWoodyHighlands ? NSBiomes.WOODY_HIGHLANDS : Biomes.FOREST;
+
+  ResourceKey<Biome> nearBiomeForestCold = NSConfig.hasBloomingHighlands ? NSBiomes.BLOOMING_HIGHLANDS : Biomes.FOREST;
+
+  ResourceKey<Biome> commonBiomeTaigaCold = NSConfig.hasWoodyHighlands ? NSBiomes.WOODY_HIGHLANDS : Biomes.TAIGA;
+
+  ResourceKey<Biome> commonBiomeOldSpruceCold = NSConfig.hasWoodyHighlands ? NSBiomes.WOODY_HIGHLANDS : Biomes.OLD_GROWTH_SPRUCE_TAIGA;
+
+  ResourceKey<Biome> uncommonBiomeOldPineCold = NSConfig.hasWoodyHighlands ? null : Biomes.OLD_GROWTH_PINE_TAIGA;
+
+  ResourceKey<Biome> commonPlains = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.PLAINS;
+
+  ResourceKey<Biome> commonForest = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.FOREST;
+
+  ResourceKey<Biome> uncommonNull = NSConfig.hasBloomingSugiForest ? NSBiomes.BLOOMING_SUGI_FOREST : null;
+
+  ResourceKey<Biome> specialForest = NSConfig.hasBloomingSugiForest ? NSBiomes.BLOOMING_SUGI_FOREST : Biomes.FOREST;
+
+  ResourceKey<Biome> commonBirchForest = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.BIRCH_FOREST;
+
+  ResourceKey<Biome> uncommonBirchForest = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.OLD_GROWTH_BIRCH_FOREST;
+
+  ResourceKey<Biome> mountainMeadow = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.MEADOW;
+
+  ResourceKey<Biome> windsweptHills = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.WINDSWEPT_HILLS;
+
+  ResourceKey<Biome> windsweptHills2 = NSConfig.hasFloralRidges ? NSBiomes.FLORAL_RIDGES : Biomes.WINDSWEPT_HILLS;
+
+  ResourceKey<Biome> windsweptForest = NSConfig.hasSugiForest ? NSBiomes.SUGI_FOREST : Biomes.WINDSWEPT_FOREST;
+
+  ResourceKey<Biome> plainsCold = NSConfig.hasShrubbyHighlands ? NSBiomes.SHRUBBY_HIGHLANDS : Biomes.PLAINS;
+
+  ResourceKey<Biome> meadowCold = NSConfig.hasBloomingHighlands ? NSBiomes.BLOOMING_HIGHLANDS : Biomes.MEADOW;
+
+  ResourceKey<Biome> nullCold = NSConfig.hasAridHighlands ? NSBiomes.ARID_HIGHLANDS : null;
+
+  ResourceKey<Biome> cherryCold = NSConfig.hasAridHighlands ? NSBiomes.ARID_HIGHLANDS : Biomes.CHERRY_GROVE;
+
+  ResourceKey<Biome> windsweptGravelyHillsCold = NSConfig.hasAridHighlands ? NSBiomes.ARID_HIGHLANDS : Biomes.WINDSWEPT_GRAVELLY_HILLS;
+
+  ResourceKey<Biome> windsweptHillsCold = NSConfig.hasShrubbyHighlands ? NSBiomes.SHRUBBY_HIGHLANDS : Biomes.WINDSWEPT_HILLS;
+
+  ResourceKey<Biome> windsweptForestCold = NSConfig.hasShrubbyHighlands ? NSBiomes.SHRUBBY_HIGHLANDS : Biomes.WINDSWEPT_FOREST;
+
+  public TerraSolarisParameters() {
     this.frozenTemperature = this.temperatureParameters[0];
     this.nonFrozenTemperatureParameters = Climate.Parameter.span(this.temperatureParameters[1], this.temperatureParameters[4]);
     this.mushroomFieldsContinentalness = Climate.Parameter.span(-1.2F, -1.05F);
@@ -93,52 +139,50 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         {
             Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA
         }, {
-        commonBiomePlainsCold, commonBiomePlainsCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
+        plainsCold, plainsCold, commonBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
     }, {
-        Biomes.FLOWER_FOREST, Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST
+        Biomes.FLOWER_FOREST, commonPlains, commonForest, commonBirchForest, Biomes.DARK_FOREST
     }, {
-        commonBiomeSavannaWarm, commonBiomeSavannaWarm, commonBiomeForestWarm, Biomes.JUNGLE, Biomes.JUNGLE
+        Biomes.SAVANNA, Biomes.SAVANNA, Biomes.FOREST, Biomes.JUNGLE, Biomes.JUNGLE
     }, {
-        commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot, commonBiomeDesertHot2
+        Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT
     }
     };
     this.uncommonBiomes = new ResourceKey[][]{
-        {Biomes.ICE_SPIKES, null, Biomes.SNOWY_TAIGA, null, null}, {uncommonBiomeCold, null, null, null, uncommonBiomeOldPineCold}, {
-        Biomes.SUNFLOWER_PLAINS, null, null, Biomes.OLD_GROWTH_BIRCH_FOREST, null
+        {Biomes.ICE_SPIKES, null, Biomes.SNOWY_TAIGA, null, null}, {null, null, null, null, uncommonBiomeOldPineCold}, {
+        Biomes.SUNFLOWER_PLAINS, uncommonNull, uncommonNull, uncommonBirchForest, null
     }, {
-        null, null, null, Biomes.SPARSE_JUNGLE, null
+        null, null, Biomes.PLAINS, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE
     }, {null, null, null, null, null}
     };
     this.nearMountainBiomes = new ResourceKey[][]{
         {
             Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA
         }, {
-        mountainBiomeMeadowCold2, mountainBiomeMeadowCold, mountainBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
+        meadowCold, meadowCold, nearBiomeForestCold, commonBiomeTaigaCold, commonBiomeOldSpruceCold
     }, {
-        Biomes.MEADOW, Biomes.MEADOW, Biomes.MEADOW, Biomes.MEADOW, Biomes.DARK_FOREST
+        Biomes.MEADOW, Biomes.MEADOW, mountainMeadow, mountainMeadow, Biomes.DARK_FOREST
     }, {
-        nearBiomeSavannaPlateauWarm, nearBiomeSavannaPlateauWarm, commonBiomeForestWarm, Biomes.FOREST, Biomes.JUNGLE
+        Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, Biomes.FOREST, Biomes.FOREST, Biomes.JUNGLE
     }, {
-        nearBiomeBadlandsHot, nearBiomeBadlandsHot, nearBiomeBadlandsHot2, nearBiomeWoodedBadlandsHot, nearBiomeWoodedBadlandsHot
+        Biomes.BADLANDS, Biomes.BADLANDS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.WOODED_BADLANDS
     }
     };
     this.specialNearMountainBiomes = new ResourceKey[][]{
         {Biomes.ICE_SPIKES, null, null, null, null}, {
-        null, uncommonBiomeCold, null, null, uncommonBiomeOldPineCold
+        cherryCold, nullCold, meadowCold, meadowCold, uncommonBiomeOldPineCold
     }, {
-        Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, Biomes.FOREST, Biomes.BIRCH_FOREST, null
+        Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, specialForest, commonBirchForest, null
     }, {null, null, null, null, null}, {
-        specialBiomeErodedBadlandsHot, specialBiomeErodedBadlandsHot, null, null, null
+        Biomes.ERODED_BADLANDS, Biomes.ERODED_BADLANDS, null, null, null
     }
     };
     this.windsweptBiomes = new ResourceKey[][]{
-        {
-            Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_FOREST, Biomes.WINDSWEPT_FOREST
-        }, {
-        Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_FOREST, Biomes.WINDSWEPT_FOREST
-    }, {
-        Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_FOREST, Biomes.WINDSWEPT_FOREST
-    }, {null, null, null, null, null}, {null, null, null, null, null}
+        {Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_FOREST, Biomes.WINDSWEPT_FOREST},
+        {windsweptGravelyHillsCold, windsweptGravelyHillsCold, windsweptHillsCold, windsweptForestCold, windsweptForestCold},
+        {windsweptHills2, windsweptHills2, windsweptHills, windsweptForest, windsweptForest},
+        {null, null, null, null, null},
+        {null, null, null, null, null}
     };
   }
 
@@ -162,10 +206,26 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
 
     for (int i = 0; i < this.temperatureParameters.length; ++i) {
       Climate.Parameter parameterRange = this.temperatureParameters[i];
-      this.addSurfaceBiome(parameters, parameterRange, this.defaultParameter, this.deepOceanContinentalness, this.defaultParameter, this.defaultParameter, 0.0F,
-          this.oceanBiomes[0][i]);
-      this.addSurfaceBiome(parameters, parameterRange, this.defaultParameter, this.oceanContinentalness, this.defaultParameter, this.defaultParameter, 0.0F,
-          this.oceanBiomes[1][i]);
+      this.addSurfaceBiome(
+          parameters,
+          parameterRange,
+          this.defaultParameter,
+          this.deepOceanContinentalness,
+          this.defaultParameter,
+          this.defaultParameter,
+          0.0F,
+          this.oceanBiomes[0][i]
+      );
+      this.addSurfaceBiome(
+          parameters,
+          parameterRange,
+          this.defaultParameter,
+          this.oceanContinentalness,
+          this.defaultParameter,
+          this.defaultParameter,
+          0.0F,
+          this.oceanBiomes[1][i]
+      );
     }
 
   }
@@ -193,7 +253,7 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
       for (int j = 0; j < this.humidityParameters.length; ++j) {
         Climate.Parameter parameterRange2 = this.humidityParameters[j];
         ResourceKey<Biome> registryKey = this.pickMiddleBiome(i, j, weirdness);
-        ResourceKey<Biome> registryKey2 = this.getWoodedDrylandsOrRegularBiome(i, j, weirdness);
+        ResourceKey<Biome> registryKey2 = this.pickMiddleBiomeOrBadlandsIfHot(i, j, weirdness);
         ResourceKey<Biome> registryKey3 = this.pickMiddleBiomeOrBadlandsIfHotOrSlopeIfCold(i, j, weirdness);
         ResourceKey<Biome> registryKey4 = this.pickPlateauBiome(i, j, weirdness);
         ResourceKey<Biome> registryKey5 = this.pickShatteredBiome(i, j, weirdness);
@@ -253,7 +313,7 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             this.erosionParameters[4],
             weirdness,
             0.0F,
-            NSConfig.hasDrylands ? registryKey2 : registryKey
+            registryKey
         );
         this.addSurfaceBiome(parameters,
             parameterRange,
@@ -294,7 +354,7 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
       for (int j = 0; j < this.humidityParameters.length; ++j) {
         Climate.Parameter parameterRange2 = this.humidityParameters[j];
         ResourceKey<Biome> registryKey = this.pickMiddleBiome(i, j, weirdness);
-        ResourceKey<Biome> registryKey2 = this.getWoodedDrylandsOrRegularBiome(i, j, weirdness);
+        ResourceKey<Biome> registryKey2 = this.pickMiddleBiomeOrBadlandsIfHot(i, j, weirdness);
         ResourceKey<Biome> registryKey3 = this.pickMiddleBiomeOrBadlandsIfHotOrSlopeIfCold(i, j, weirdness);
         ResourceKey<Biome> registryKey4 = this.pickPlateauBiome(i, j, weirdness);
         ResourceKey<Biome> registryKey5 = this.pickShatteredBiome(i, j, weirdness);
@@ -401,24 +461,6 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         0.0F,
         Biomes.STONY_SHORE
     );
-    this.addSurfaceBiome(parameters,
-        Climate.Parameter.span(this.temperatureParameters[1], this.temperatureParameters[2]),
-        this.defaultParameter,
-        Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
-        this.erosionParameters[6],
-        weirdness,
-        0.0F,
-        Biomes.SWAMP
-    );
-    this.addSurfaceBiome(parameters,
-        Climate.Parameter.span(this.temperatureParameters[3], this.temperatureParameters[4]),
-        this.defaultParameter,
-        Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
-        this.erosionParameters[6],
-        weirdness,
-        0.0F,
-        Biomes.MANGROVE_SWAMP
-    );
 
     for (int i = 0; i < this.temperatureParameters.length; ++i) {
       Climate.Parameter parameterRange = this.temperatureParameters[i];
@@ -434,6 +476,16 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         ResourceKey<Biome> registryKey7 = this.maybePickWindsweptSavannaBiome(i, j, weirdness, registryKey);
         ResourceKey<Biome> registryKey8 = this.pickShatteredCoastBiome(i, j, weirdness);
         ResourceKey<Biome> registryKey9 = this.pickSlopeBiome(i, j, weirdness);
+
+        this.addSurfaceBiome(parameters,
+            parameterRange,
+            parameterRange2,
+            Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
+            this.erosionParameters[6],
+            weirdness,
+            0.0F,
+            this.getWetlandType(i, j, weirdness)
+        );
         this.addSurfaceBiome(parameters,
             parameterRange,
             parameterRange2,
@@ -452,11 +504,18 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             0.0F,
             registryKey3
         );
-        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[1], weirdness, 0.0F,
-            i == 0 ? registryKey9 : registryKey5);
+        this.addSurfaceBiome(
+            parameters,
+            parameterRange,
+            parameterRange2,
+            this.farInlandContinentalness,
+            this.erosionParameters[1],
+            weirdness,
+            0.0F,
+            i == 0 ? registryKey9 : registryKey5
+        );
         this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey);
-        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F,
-            NSConfig.hasDrylands ? registryKey : registryKey2);
+        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.midInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey2);
         this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.farInlandContinentalness, this.erosionParameters[2], weirdness, 0.0F, registryKey5);
         this.addSurfaceBiome(parameters,
             parameterRange,
@@ -474,7 +533,7 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             this.erosionParameters[3],
             weirdness,
             0.0F,
-            NSConfig.hasDrylands ? registryKey : registryKey2
+            registryKey2
         );
         if (weirdness.max() < 0L) {
           this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[4], weirdness, 0.0F, registryKey6);
@@ -498,9 +557,6 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
               registryKey
           );
         }
-
-        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey8);
-        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey7);
         this.addSurfaceBiome(parameters,
             parameterRange,
             parameterRange2,
@@ -510,22 +566,13 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             0.0F,
             registryKey4
         );
+        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey8);
+        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey7);
+
         if (weirdness.max() < 0L) {
           this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey6);
         } else {
           this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey);
-        }
-
-        if (i == 0) {
-          this.addSurfaceBiome(parameters,
-              parameterRange,
-              parameterRange2,
-              Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
-              this.erosionParameters[6],
-              weirdness,
-              0.0F,
-              registryKey
-          );
         }
       }
     }
@@ -542,24 +589,6 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         0.0F,
         Biomes.STONY_SHORE
     );
-    this.addSurfaceBiome(parameters,
-        Climate.Parameter.span(this.temperatureParameters[1], this.temperatureParameters[2]),
-        this.defaultParameter,
-        Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
-        this.erosionParameters[6],
-        weirdness,
-        0.0F,
-        Biomes.SWAMP
-    );
-    this.addSurfaceBiome(parameters,
-        Climate.Parameter.span(this.temperatureParameters[3], this.temperatureParameters[4]),
-        this.defaultParameter,
-        Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
-        this.erosionParameters[6],
-        weirdness,
-        0.0F,
-        Biomes.MANGROVE_SWAMP
-    );
 
     for (int i = 0; i < this.temperatureParameters.length; ++i) {
       Climate.Parameter parameterRange = this.temperatureParameters[i];
@@ -575,11 +604,20 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         this.addSurfaceBiome(parameters,
             parameterRange,
             parameterRange2,
+            Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
+            this.erosionParameters[6],
+            weirdness,
+            0.0F,
+            this.getWetlandType(i, j, weirdness)
+        );
+        this.addSurfaceBiome(parameters,
+            parameterRange,
+            parameterRange2,
             this.nearInlandContinentalness,
             Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
             weirdness,
             0.0F,
-            NSConfig.hasDrylands ? registryKey : registryKey2
+            registryKey2
         );
         this.addSurfaceBiome(parameters,
             parameterRange,
@@ -606,7 +644,7 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[3]),
             weirdness,
             0.0F,
-            NSConfig.hasDrylands ? registryKey : registryKey2
+            registryKey2
         );
         this.addSurfaceBiome(parameters,
             parameterRange,
@@ -626,8 +664,6 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             0.0F,
             registryKey
         );
-        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey6);
-        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey5);
         this.addSurfaceBiome(parameters,
             parameterRange,
             parameterRange2,
@@ -637,18 +673,9 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             0.0F,
             registryKey
         );
+        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey6);
+        this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.nearInlandContinentalness, this.erosionParameters[5], weirdness, 0.0F, registryKey5);
         this.addSurfaceBiome(parameters, parameterRange, parameterRange2, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F, registryKey4);
-        if (i == 0) {
-          this.addSurfaceBiome(parameters,
-              parameterRange,
-              parameterRange2,
-              Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness),
-              this.erosionParameters[6],
-              weirdness,
-              0.0F,
-              registryKey
-          );
-        }
       }
     }
 
@@ -665,71 +692,32 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         weirdness.max() < 0L ? Biomes.STONY_SHORE : Biomes.FROZEN_RIVER
     );
     this.addSurfaceBiome(parameters,
-        this.nonFrozenTemperatureParameters,
+        this.frozenTemperature,
+        this.defaultParameter,
+        this.nearInlandContinentalness,
+        Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+        weirdness,
+        0.0F,
+        Biomes.FROZEN_RIVER
+    );
+    this.addSurfaceBiome(parameters,
+        this.frozenTemperature,
+        this.defaultParameter,
+        Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
+        Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[5]),
+        weirdness,
+        0.0F,
+        Biomes.FROZEN_RIVER
+    );
+    this.addSurfaceBiome(
+        parameters,
+        this.frozenTemperature,
         this.defaultParameter,
         this.coastContinentalness,
-        Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
-        weirdness,
-        0.0F,
-        weirdness.max() < 0L ? Biomes.STONY_SHORE : Biomes.RIVER
-    );
-    this.addSurfaceBiome(parameters,
-        this.frozenTemperature,
-        this.defaultParameter,
-        this.nearInlandContinentalness,
-        Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
-        weirdness,
-        0.0F,
-        Biomes.FROZEN_RIVER
-    );
-    this.addSurfaceBiome(parameters,
-        this.nonFrozenTemperatureParameters,
-        this.defaultParameter,
-        this.nearInlandContinentalness,
-        Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
-        weirdness,
-        0.0F,
-        Biomes.RIVER
-    );
-    this.addSurfaceBiome(parameters,
-        this.frozenTemperature,
-        this.defaultParameter,
-        Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
-        Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[5]),
-        weirdness,
-        0.0F,
-        Biomes.FROZEN_RIVER
-    );
-    this.addSurfaceBiome(parameters,
-        this.nonFrozenTemperatureParameters,
-        this.defaultParameter,
-        Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
-        Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[5]),
-        weirdness,
-        0.0F,
-        Biomes.RIVER
-    );
-    this.addSurfaceBiome(parameters, this.frozenTemperature, this.defaultParameter, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F,
-        Biomes.FROZEN_RIVER);
-    this.addSurfaceBiome(parameters, this.nonFrozenTemperatureParameters, this.defaultParameter, this.coastContinentalness, this.erosionParameters[6], weirdness, 0.0F,
-        Biomes.RIVER);
-    this.addSurfaceBiome(parameters,
-        Climate.Parameter.span(this.temperatureParameters[1], this.temperatureParameters[2]),
-        this.defaultParameter,
-        Climate.Parameter.span(this.riverContinentalness, this.farInlandContinentalness),
         this.erosionParameters[6],
         weirdness,
         0.0F,
-        Biomes.SWAMP
-    );
-    this.addSurfaceBiome(parameters,
-        Climate.Parameter.span(this.temperatureParameters[3], this.temperatureParameters[4]),
-        this.defaultParameter,
-        Climate.Parameter.span(this.riverContinentalness, this.farInlandContinentalness),
-        this.erosionParameters[6],
-        weirdness,
-        0.0F,
-        Biomes.MANGROVE_SWAMP
+        Biomes.FROZEN_RIVER
     );
     this.addSurfaceBiome(parameters,
         this.frozenTemperature,
@@ -740,13 +728,42 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
         0.0F,
         Biomes.FROZEN_RIVER
     );
+    if (!NSConfig.hasSugiForest) {
+      this.addSurfaceBiome(parameters,
+          this.nonFrozenTemperatureParameters,
+          this.defaultParameter,
+          this.coastContinentalness,
+          Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+          weirdness,
+          0.0F,
+          weirdness.max() < 0L ? Biomes.STONY_SHORE : Biomes.RIVER
+      );
+      this.addSurfaceBiome(parameters,
+          this.nonFrozenTemperatureParameters,
+          this.defaultParameter,
+          this.nearInlandContinentalness,
+          Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+          weirdness,
+          0.0F,
+          Biomes.RIVER
+      );
+      this.addSurfaceBiome(parameters,
+          this.nonFrozenTemperatureParameters,
+          this.defaultParameter,
+          Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
+          Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[4]),
+          weirdness,
+          0.0F,
+          Biomes.RIVER
+      );
+    }
 
     for (int i = 0; i < this.temperatureParameters.length; ++i) {
       Climate.Parameter parameterRange = this.temperatureParameters[i];
 
       for (int j = 0; j < this.humidityParameters.length; ++j) {
         Climate.Parameter parameterRange2 = this.humidityParameters[j];
-        ResourceKey<Biome> registryKey = NSConfig.hasDrylands ? this.pickMiddleBiome(i, j, weirdness) : this.pickMiddleBiomeOrBadlandsIfHot(i, j, weirdness);
+        ResourceKey<Biome> registryKey = this.pickMiddleBiomeOrBadlandsIfHot(i, j, weirdness);
         this.addSurfaceBiome(parameters,
             parameterRange,
             parameterRange2,
@@ -756,6 +773,74 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
             0.0F,
             registryKey
         );
+        this.addSurfaceBiome(parameters,
+            parameterRange,
+            parameterRange2,
+            Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
+            this.erosionParameters[6],
+            weirdness,
+            0.0F,
+            this.getWetlandType2(i, j, weirdness)
+        );
+        if (NSConfig.hasSugiForest) {
+          if (i == 2 && j < 4 && j > 0) {
+            this.addSurfaceBiome(parameters,
+                parameterRange,
+                parameterRange2,
+                this.coastContinentalness,
+                Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+                weirdness,
+                0.0F,
+                NSBiomes.SUGI_FOREST
+            );
+            this.addSurfaceBiome(parameters,
+                parameterRange,
+                parameterRange2,
+                this.nearInlandContinentalness,
+                Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+                weirdness,
+                0.0F,
+                NSBiomes.SUGI_FOREST
+            );
+            this.addSurfaceBiome(parameters,
+                parameterRange,
+                parameterRange2,
+                Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
+                Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[4]),
+                weirdness,
+                0.0F,
+                NSBiomes.SUGI_FOREST
+            );
+          } else if (i > 0) {
+            this.addSurfaceBiome(parameters,
+                parameterRange,
+                parameterRange2,
+                this.coastContinentalness,
+                Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+                weirdness,
+                0.0F,
+                weirdness.max() < 0L ? Biomes.STONY_SHORE : Biomes.RIVER
+            );
+            this.addSurfaceBiome(parameters,
+                parameterRange,
+                parameterRange2,
+                this.nearInlandContinentalness,
+                Climate.Parameter.span(this.erosionParameters[0], this.erosionParameters[1]),
+                weirdness,
+                0.0F,
+                Biomes.RIVER
+            );
+            this.addSurfaceBiome(parameters,
+                parameterRange,
+                parameterRange2,
+                Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness),
+                Climate.Parameter.span(this.erosionParameters[2], this.erosionParameters[4]),
+                weirdness,
+                0.0F,
+                Biomes.RIVER
+            );
+          }
+        }
       }
     }
 
@@ -770,28 +855,55 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
     }
   }
 
-  private ResourceKey<Biome> pickMiddleBiomeOrBadlandsIfHotOrSlopeIfCold(int temperature, int humidity, Climate.Parameter weirdness) {
-    return temperature == 0 ? this.pickSlopeBiome(temperature, humidity, weirdness) : this.pickMiddleBiome(temperature, humidity, weirdness);
-  }
-
-  private ResourceKey<Biome> maybePickWindsweptSavannaBiome(int temperature, int humidity, Climate.Parameter weirdness, ResourceKey<Biome> biomeKey) {
-    return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? Biomes.WINDSWEPT_SAVANNA : biomeKey;
-  }
-
-  private ResourceKey<Biome> getWoodedDrylandsOrRegularBiome(int temperature, int humidity, Climate.Parameter weirdness) {
-    return temperature == 4 && NSConfig.hasWoodedDrylands ? NSBiomes.WOODED_DRYLANDS : this.pickMiddleBiome(temperature, humidity, weirdness);
-  }
-
-  private ResourceKey<Biome> pickBadlandsBiome(int humidity, Climate.Parameter weirdness) {
-    if (humidity < 2) {
-      return weirdness.max() < 0L ? Biomes.BADLANDS : Biomes.ERODED_BADLANDS;
+  private ResourceKey<Biome> getWetlandType(int temperature, int humidity, Climate.Parameter weirdness) {
+    if (temperature == 0) {
+      return this.pickMiddleBiome(temperature, humidity, weirdness);
+    } else if (temperature >= 2 && temperature <= 3 && humidity < 3 && NSConfig.hasWisteriaForest) {
+      return NSBiomes.WISTERIA_FOREST;
+    } else if (temperature == 3 && humidity > 2 && NSConfig.hasBambooWetlands) {
+      return NSBiomes.BAMBOO_WETLANDS;
+    } else if ((humidity <= 3 || temperature == 4) && NSConfig.hasMarsh) {
+      return NSBiomes.MARSH;
     } else {
-      return humidity < 3 ? Biomes.BADLANDS : Biomes.WOODED_BADLANDS;
+      return Biomes.SWAMP;
+    }
+  }
+
+  private ResourceKey<Biome> getWetlandType2(int temperature, int humidity, Climate.Parameter weirdness) {
+    if (temperature == 0) {
+      return this.pickMiddleBiome(temperature, humidity, weirdness);
+    } else if (temperature == 3 && humidity < 3 && NSConfig.hasWisteriaForest) {
+      return NSBiomes.WISTERIA_FOREST;
+    } else if (temperature == 2 && NSConfig.hasSugiForest) {
+      return NSBiomes.SUGI_FOREST;
+    } else if (temperature == 3 && humidity > 2 && NSConfig.hasBambooWetlands) {
+      return NSBiomes.BAMBOO_WETLANDS;
+    } else if ((humidity <= 3 || temperature == 4) && NSConfig.hasMarsh) {
+      return NSBiomes.MARSH;
+    } else {
+      return Biomes.SWAMP;
     }
   }
 
   private ResourceKey<Biome> pickMiddleBiomeOrBadlandsIfHot(int temperature, int humidity, Climate.Parameter weirdness) {
-    return temperature == 4 ? this.pickBadlandsBiome(humidity, weirdness) : this.pickMiddleBiome(temperature, humidity, weirdness);
+    return temperature == 4 ? this.pickBadlandsBiome(humidity, weirdness) : (temperature == 1 ? this.getSteppeBiome(temperature, humidity, weirdness) : this.pickMiddleBiome(
+        temperature,
+        humidity,
+        weirdness
+    ));
+  }
+
+  private ResourceKey<Biome> pickMiddleBiomeOrBadlandsIfHotOrSlopeIfCold(int temperature, int humidity, Climate.Parameter weirdness) {
+    return temperature == 0 ? this.pickSlopeBiome(temperature, humidity, weirdness) : this.pickMiddleBiomeOrBadlandsIfHot(temperature, humidity, weirdness);
+  }
+
+  private ResourceKey<Biome> maybePickWindsweptSavannaBiome(int temperature, int humidity, Climate.Parameter weirdness, ResourceKey<Biome> biomeKey) {
+    if (temperature == 2 && humidity < 4 && NSConfig.hasSugiForest) {
+      return weirdness.max() >= 0L ? NSBiomes.WINDSWEPT_SUGI_FOREST : biomeKey;
+    } else if (temperature == 3 && humidity < 4 && NSConfig.hasFloralRidges) {
+      return weirdness.max() >= 0L ? NSBiomes.FLORAL_RIDGES : biomeKey;
+    }
+    return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? Biomes.WINDSWEPT_SAVANNA : biomeKey;
   }
 
   private ResourceKey<Biome> pickShatteredCoastBiome(int temperature, int humidity, Climate.Parameter weirdness) {
@@ -805,7 +917,27 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
     } else if (temperature == 3 && NSConfig.hasTropicalShores) {
       return NSBiomes.TROPICAL_SHORES;
     } else {
-      return temperature == 4 ? (NSConfig.hasDrylands ? NSBiomes.DRYLANDS : (Biomes.DESERT)) : Biomes.BEACH;
+      return temperature == 4 ? Biomes.DESERT : Biomes.BEACH;
+    }
+  }
+
+  private ResourceKey<Biome> pickBadlandsBiome(int humidity, Climate.Parameter weirdness) {
+    if (humidity < 2) {
+      return weirdness.max() < 0L ? Biomes.BADLANDS : Biomes.ERODED_BADLANDS;
+    } else {
+      return humidity < 3 ? Biomes.BADLANDS : Biomes.WOODED_BADLANDS;
+    }
+  }
+
+  private ResourceKey<Biome> getSteppeBiome(int temperature, int humidity, Climate.Parameter weirdness) {
+    if (humidity < 3 && NSConfig.hasAridHighlands) {
+      return NSBiomes.ARID_HIGHLANDS;
+    } else {
+      return humidity < 4 && NSConfig.hasShrubbyHighlands ? NSBiomes.SHRUBBY_HIGHLANDS : (NSConfig.hasWoodyHighlands ? NSBiomes.WOODY_HIGHLANDS : this.pickMiddleBiome(
+          temperature,
+          humidity,
+          weirdness
+      ));
     }
   }
 
@@ -821,16 +953,22 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
   }
 
   private ResourceKey<Biome> pickPeakBiome(int temperature, int humidity, Climate.Parameter weirdness) {
+    if (temperature == 1 && NSConfig.hasSnowcappedRedPeaks) {
+      return NSBiomes.SNOWCAPPED_RED_PEAKS;
+    }
     if (temperature <= 2) {
       return weirdness.max() < 0L ? Biomes.JAGGED_PEAKS : Biomes.FROZEN_PEAKS;
     } else {
-      return Biomes.STONY_PEAKS;
+      return temperature == 3 ? Biomes.STONY_PEAKS : this.pickBadlandsBiome(humidity, weirdness);
     }
   }
 
   private ResourceKey<Biome> pickSlopeBiome(int temperature, int humidity, Climate.Parameter weirdness) {
     if (temperature >= 3) {
       return this.pickPlateauBiome(temperature, humidity, weirdness);
+    }
+    if (temperature == 1 && NSConfig.hasSleetedSlopes) {
+      return NSBiomes.SLEETED_SLOPES;
     } else {
       return humidity <= 1 ? Biomes.SNOWY_SLOPES : Biomes.GROVE;
     }
@@ -844,10 +982,13 @@ public class TerraFlavaParameters extends OverworldBiomeBuilder {
   private void addSurfaceBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> parameters, Climate.Parameter temperature,
       Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness,
       float offset, ResourceKey<Biome> biome) {
-    parameters.accept(
-        Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(0.0F), weirdness, offset), biome));
-    parameters.accept(
-        Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(1.0F), weirdness, offset), biome));
+    parameters.accept(Pair.of(
+        Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(0.0F), weirdness, offset),
+        biome
+    ));
+    parameters.accept(Pair.of(
+        Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(1.0F), weirdness, offset),
+        biome
+    ));
   }
 }
-*/

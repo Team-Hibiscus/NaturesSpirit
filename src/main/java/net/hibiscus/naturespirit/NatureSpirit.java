@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit;
 
-import net.hibiscus.naturespirit.lithostitched.NSRegions;
+import net.hibiscus.naturespirit.lithostitched.LithostitchedEventHandlers;
 import net.hibiscus.naturespirit.registration.NSDataComponents;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.config.NSConfig;
@@ -35,7 +35,6 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
-import dev.worldgen.lithostitched.api.event.AddRegionsEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,13 +82,10 @@ public class NatureSpirit {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        NSRegions.init();
-        //Regions.register(new TerraFeraxRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_ferax"), NSConfig.terraFeraxWeight));
-        //Regions.register(new TerraSolarisRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_solaris"), NSConfig.terraSolarisWeight));
-        //Regions.register(new TerraFlavaRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_flava"), NSConfig.terraFlavaWeight));
-        //Regions.register(new TerraMaterRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_mater"), NSConfig.terraMaterWeight));
-        //Regions.register(new TerraLaetaRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "terra_laeta"), NSConfig.terraLaetaWeight));
-        //SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, NSSurfaceRules.makeRules());
+        // Lithostitched
+        LithostitchedEventHandlers.handleAddRegionsEvent();
+        LithostitchedEventHandlers.handleAddBiomeInjectorsEvent();
+        LithostitchedEventHandlers.handleAddWorldgenModifiersEvent();  // surface rules
 
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NSBlocks.SCORCHED_GRASS.getId(), NSBlocks.POTTED_SCORCHED_GRASS);

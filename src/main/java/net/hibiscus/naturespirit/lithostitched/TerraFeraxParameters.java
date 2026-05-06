@@ -1,5 +1,4 @@
-/*
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.lithostitched;
 
 import com.mojang.datafixers.util.Pair;
 import net.hibiscus.naturespirit.config.NSConfig;
@@ -841,4 +840,3 @@ public class TerraFeraxParameters extends OverworldBiomeBuilder {
         Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(1.0F), weirdness, offset), biome));
   }
 }
-*/

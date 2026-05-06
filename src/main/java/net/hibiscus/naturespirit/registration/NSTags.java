@@ -77,16 +77,4 @@ public class NSTags {
       return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name));
     }
   }
-
-  public static class Biomes {
-    public static final TagKey<Biome> IS_TERRA_FERAX = createTag("is_terra_ferax");
-    public static final TagKey<Biome> IS_TERRA_FLAVA = createTag("is_terra_flava");
-    public static final TagKey<Biome> IS_TERRA_LAETA = createTag("is_terra_laeta");
-    public static final TagKey<Biome> IS_TERRA_MATER = createTag("is_terra_mater");
-    public static final TagKey<Biome> IS_TERRA_SOLARIS = createTag("is_terra_solaris");
-
-    private static TagKey<Biome> createTag(String name) {
-      return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name));
-    }
-  }
 }
