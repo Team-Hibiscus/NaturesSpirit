@@ -1,5 +1,7 @@
 package net.hibiscus.naturespirit.platform.services;
 
+import java.nio.file.Path;
+
 public interface IPlatformHelper {
 
     /**
@@ -16,6 +18,13 @@ public interface IPlatformHelper {
      * @return True if the mod is loaded, false otherwise.
      */
     boolean isModLoaded(String modId);
+
+    /**
+     * Gets the directory that mod config files live in.
+     *
+     * @return The loader's config directory.
+     */
+    Path getConfigDir();
 
     /**
      * Check if the game is currently in a development environment.

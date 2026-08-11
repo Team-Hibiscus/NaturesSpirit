@@ -27,7 +27,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -72,7 +71,6 @@ public class NatureSpirit {
         NSCriteria.CRITERIA.register(modEventBus);
 
         NeoForge.EVENT_BUS.addListener(this::wandererTrades);
-        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, NSConfig.SPEC);
 
 
         if(ModList.get().isLoaded("arts_and_crafts")) {

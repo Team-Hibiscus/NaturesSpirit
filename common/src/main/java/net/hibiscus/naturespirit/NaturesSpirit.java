@@ -1,5 +1,6 @@
 package net.hibiscus.naturespirit;
 
+import net.hibiscus.naturespirit.config.NSConfig;
 import net.hibiscus.naturespirit.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -24,6 +25,8 @@ public class NaturesSpirit {
     // write the majority of your code here and load it from your loader specific projects. This example has some
     // code that gets invoked by the entry point of the loader specific projects.
     public static void init() {
+
+        NSConfig.load(Services.PLATFORM.getConfigDir());
 
         LOG.info("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
         LOG.info("The ID for diamonds is {}", BuiltInRegistries.ITEM.getKey(Items.DIAMOND));
