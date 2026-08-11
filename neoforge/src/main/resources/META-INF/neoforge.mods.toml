@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "${neoforge_loader_version_range}"
+license = "${license}"
+[[mods]]
+modId = "${mod_id}"
+version = "${version}"
+displayName = "${mod_name}"
+updateJSONURL = "https://api.modrinth.com/updates/WBvnqHfV/forge_updates.json"
+displayURL = "https://astonishing-chord-210.notion.site/194f058bb4ac80c2979fdfe22fb8010e"
+logoFile = "assets/natures_spirit/icon.png"
+credits = "${credits}"
+authors = "${mod_author}"
+description = '''${description}'''
+[[mixins]]
+config = "${mod_id}.mixins.json"
+[[mixins]]
+config = "${mod_id}.neoforge.mixins.json"
+[[dependencies.${mod_id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neoforge_version},)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.${mod_id}]]
+modId = "lithostitched"
+type = "required"
+versionRange = "${lithostitched_version_range}"
+ordering = "NONE"
+side = "BOTH"

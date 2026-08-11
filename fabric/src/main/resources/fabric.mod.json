@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "sources": "https://github.com/${github_owner}/${github_repo}",
+        "homepage": "https://astonishing-chord-210.notion.site/194f058bb4ac80c2979fdfe22fb8010e"
+    },
+    "license": "${license}",
+    "icon": "assets/natures_spirit/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+          "net.hibiscus.naturespirit.NaturesSpiritFabric"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "minecraft": "~${minecraft_version}",
+        "java": ">=${java_version}",
+        "lithostitched": "*"
+    },
+    "custom": {
+        "modmenu": {
+            "links": {
+                "modmenu.discord": "https://discord.gg/T6X8KGyt5C"
+            },
+            "update_checker": true
+        }
+    }
+}

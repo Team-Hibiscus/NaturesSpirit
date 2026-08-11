@@ -1,0 +1,138 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+base {
+    archivesName = "${mod_id}-${project.name}"
+}
+
+def isSnapshotPublish = gradle.startParameter.taskNames.any { it.toLowerCase().contains('snapshot') } || project.hasProperty('snapshot')
+version = isSnapshotPublish
+        ? "${project.version}+${minecraft_version}-SNAPSHOT"
+        : "${project.version}+${minecraft_version}"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(java_version)
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral() // NightConfig, MixinExtras
+
+    maven {
+        url = uri("https://api.modrinth.com/maven")
+        content { includeGroup("maven.modrinth") } // Lithostitched
+    }
+    maven {
+        url = uri("https://maven.terraformersmc.com/releases")
+        content { includeGroup("com.terraformersmc") } // ModMenu
+    }
+    maven {
+        url = 'https://maven.fabricmc.net/' // sponge-mixin, needed by common's annotation processor
+    }
+}
+
+sourcesJar {
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_${mod_name}" }
+    }
+}
+
+jar {
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_${mod_name}" }
+    }
+
+    manifest {
+        attributes([
+                'Specification-Title'   : mod_name,
+                'Specification-Vendor'  : mod_author,
+                'Specification-Version' : project.jar.archiveVersion,
+                'Implementation-Title'  : project.name,
+                'Implementation-Version': project.jar.archiveVersion,
+                'Implementation-Vendor' : mod_author,
+                'Built-On-Minecraft'    : minecraft_version
+        ])
+    }
+}
+
+processResources {
+    var expandProps = [
+            'version'                      : version,
+            'group'                        : project.group, //Else we target the task's group.
+            'minecraft_version'            : minecraft_version,
+            'minecraft_version_range'      : minecraft_version_range,
+            'fabric_version'               : fabric_version,
+            'fabric_loader_version'        : fabric_loader_version,
+            'mod_name'                     : mod_name,
+            'mod_author'                   : mod_author,
+            'mod_id'                       : mod_id,
+            'license'                      : license,
+            'description'                  : project.description,
+            'neoforge_version'             : neoforge_version,
+            'neoforge_loader_version_range': neoforge_loader_version_range,
+            'credits'                      : credits,
+            'java_version'                 : java_version,
+            'github_owner'                 : github_owner,
+            'github_repo'                  : github_repo,
+            'lithostitched_version'        : lithostitched_version,
+            'lithostitched_version_range'  : lithostitched_version_range
+    ]
+
+    var jsonExpandProps = expandProps.collectEntries {
+        key, value -> [(key): value instanceof String ? value.replace("\n", "\\\\n") : value]
+    }
+
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
+        expand expandProps
+    }
+
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', '*.mixins.json']) {
+        expand jsonExpandProps
+    }
+
+    inputs.properties(expandProps)
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifactId base.archivesName.get()
+            from components.java
+        }
+    }
+    repositories {
+        // Only the matching repo is registered so a stray `./gradlew publish` can't push
+        // a non-SNAPSHOT artifact at the snapshots URL (or vice versa). Use the root-level
+        // `publishToSnapshots` / `publishToReleases` aggregators rather than `publish`.
+        if (isSnapshotPublish) {
+            maven {
+                name = 'muonSnapshots'
+                url = System.getenv('SNAPSHOT_MAVEN_URL') ?: 'https://maven.muon.rip/snapshots/'
+                credentials {
+                    username = System.getenv('MAVEN_USERNAME')
+                    password = System.getenv('MAVEN_PASSWORD')
+                }
+            }
+        } else {
+            maven {
+                name = 'muonReleases'
+                url = System.getenv('MAVEN_URL') ?: 'https://maven.muon.rip/releases/'
+                credentials {
+                    username = System.getenv('MAVEN_USERNAME')
+                    password = System.getenv('MAVEN_PASSWORD')
+                }
+            }
+        }
+    }
+}
+
+
+// Publishing is configured once at the root project (see build.gradle) — the
+// mod-publish-plugin docs recommend centralising multi-loader setup there with
+// named curseforge/modrinth/github entries and shared option blocks.
