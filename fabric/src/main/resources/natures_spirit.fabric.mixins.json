@@ -4,7 +4,7 @@
   "package": "net.hibiscus.naturespirit.mixin",
   "plugin": "net.hibiscus.naturespirit.MixinConfigPluginFabric",
   "refmap": "${mod_id}.refmap.json",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [],
   "client": [],
   "server": [],
@@ -12,4 +12,3 @@
     "defaultRequire": 1
   }
 }
-  

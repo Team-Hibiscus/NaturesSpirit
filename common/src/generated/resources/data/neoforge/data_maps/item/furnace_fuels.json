@@ -1,0 +1,49 @@
+{
+  "values": {
+    "natures_spirit:coconut_mosaic": {
+      "burn_time": 300
+    },
+    "natures_spirit:coconut_mosaic_slab": {
+      "burn_time": 150
+    },
+    "natures_spirit:coconut_mosaic_stairs": {
+      "burn_time": 300
+    },
+    "natures_spirit:joshua_mosaic": {
+      "burn_time": 300
+    },
+    "natures_spirit:joshua_mosaic_slab": {
+      "burn_time": 150
+    },
+    "natures_spirit:joshua_mosaic_stairs": {
+      "burn_time": 300
+    },
+    "natures_spirit:mahogany_mosaic": {
+      "burn_time": 300
+    },
+    "natures_spirit:mahogany_mosaic_slab": {
+      "burn_time": 150
+    },
+    "natures_spirit:mahogany_mosaic_stairs": {
+      "burn_time": 300
+    },
+    "natures_spirit:sugi_mosaic": {
+      "burn_time": 300
+    },
+    "natures_spirit:sugi_mosaic_slab": {
+      "burn_time": 150
+    },
+    "natures_spirit:sugi_mosaic_stairs": {
+      "burn_time": 300
+    },
+    "natures_spirit:wisteria_mosaic": {
+      "burn_time": 300
+    },
+    "natures_spirit:wisteria_mosaic_slab": {
+      "burn_time": 150
+    },
+    "natures_spirit:wisteria_mosaic_stairs": {
+      "burn_time": 300
+    }
+  }
+}

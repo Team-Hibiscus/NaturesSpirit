@@ -1,0 +1,12 @@
+{
+  "gives": {
+    "count": 5,
+    "id": "natures_spirit:fir_sapling"
+  },
+  "max_uses": 8.0,
+  "reputation_discount": 0.5,
+  "wants": {
+    "count": 5.0,
+    "id": "minecraft:emerald"
+  }
+}

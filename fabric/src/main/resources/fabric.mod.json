@@ -17,18 +17,22 @@
     "entrypoints": {
         "main": [
           "net.hibiscus.naturespirit.NaturesSpiritFabric"
+        ],
+        "client": [
+          "net.hibiscus.naturespirit.NaturesSpiritFabricClient"
         ]
     },
     "mixins": [
         "${mod_id}.mixins.json",
         "${mod_id}.fabric.mixins.json"
     ],
+    "accessWidener": "natures_spirit.accesswidener",
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "~${minecraft_version}",
         "java": ">=${java_version}",
-        "lithostitched": "*"
+        "lithostitched": ">=${lithostitched_version}"
     },
     "custom": {
         "modmenu": {

@@ -2,16 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.hibiscus.naturespirit.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "refmap": "natures_spirit.refmap.json",
-  "mixins": [
-    "AnvilBlockMixin",
-    "BrushItemMixin",
-    "CoralBlockBlockMixin",
-    "SurfaceBuilderMixin"
-  ],
-  "client": [
-  ],
+  "plugin": "net.hibiscus.naturespirit.MixinConfigPluginNeoforge",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }
