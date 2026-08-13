@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:magenta_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:anemone"
-    }
+    "natures_spirit:anemone"
   ],
   "result": {
     "count": 1,

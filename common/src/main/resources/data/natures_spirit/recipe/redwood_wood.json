@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "natures_spirit:redwood_log"
-    }
+    "#": "natures_spirit:redwood_log"
   },
   "pattern": [
     "##",

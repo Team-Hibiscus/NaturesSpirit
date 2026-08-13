@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_stairs",
   "key": {
-    "#": {
-      "item": "natures_spirit:mahogany_planks"
-    }
+    "#": "natures_spirit:mahogany_planks"
   },
   "pattern": [
     "#  ",

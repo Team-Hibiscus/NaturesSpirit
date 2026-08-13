@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_button",
   "ingredients": [
-    {
-      "item": "natures_spirit:cypress_planks"
-    }
+    "natures_spirit:cypress_planks"
   ],
   "result": {
     "count": 1,

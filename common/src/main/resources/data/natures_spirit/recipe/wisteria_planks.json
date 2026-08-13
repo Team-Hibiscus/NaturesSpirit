@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "natures_spirit:wisteria_logs"
-    }
+    "#natures_spirit:wisteria_logs"
   ],
   "result": {
     "count": 4,

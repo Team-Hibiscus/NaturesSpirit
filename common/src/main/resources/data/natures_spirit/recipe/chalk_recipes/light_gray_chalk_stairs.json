@@ -8,10 +8,8 @@
     "###"
   ],
   "key": {
-      "#": {
-        "item": "natures_spirit:light_gray_chalk"
-      }
-    },
+    "#": "natures_spirit:light_gray_chalk"
+  },
   "result": {
     "id": "natures_spirit:light_gray_chalk_stairs",
     "count": 4

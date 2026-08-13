@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_button",
   "ingredients": [
-    {
-      "item": "natures_spirit:ghaf_planks"
-    }
+    "natures_spirit:ghaf_planks"
   ],
   "result": {
     "count": 1,

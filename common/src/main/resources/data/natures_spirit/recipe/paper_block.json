@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "tag": "minecraft:planks"
-    },
-    "A": {
-      "item": "minecraft:paper"
-    }
+    "#": "#minecraft:planks",
+    "A": "minecraft:paper"
   },
   "pattern": [
     " A ",

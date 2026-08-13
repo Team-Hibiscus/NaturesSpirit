@@ -3,12 +3,8 @@
   "category": "building",
   "group": "paper_lantern",
   "ingredients": [
-    {
-      "item": "natures_spirit:paper_lantern"
-    },
-    {
-      "item": "minecraft:gray_dye"
-    }
+    "natures_spirit:paper_lantern",
+    "minecraft:gray_dye"
   ],
   "result": {
     "id": "natures_spirit:gray_paper_lantern",

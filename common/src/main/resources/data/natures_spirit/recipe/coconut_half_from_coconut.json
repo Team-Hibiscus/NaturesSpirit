@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "coconut_half",
   "ingredients": [
-    {
-      "item": "natures_spirit:coconut"
-    }
+    "natures_spirit:coconut"
   ],
   "result": {
     "count": 2,

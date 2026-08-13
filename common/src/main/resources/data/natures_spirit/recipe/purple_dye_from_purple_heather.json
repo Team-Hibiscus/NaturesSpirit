@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:purple_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:purple_heather"
-    }
+    "natures_spirit:purple_heather"
   ],
   "result": {
     "count": 2,

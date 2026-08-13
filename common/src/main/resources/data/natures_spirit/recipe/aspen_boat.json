@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "natures_spirit:aspen_planks"
-    }
+    "#": "natures_spirit:aspen_planks"
   },
   "pattern": [
     "# #",

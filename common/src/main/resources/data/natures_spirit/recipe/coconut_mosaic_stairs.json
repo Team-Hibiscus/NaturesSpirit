@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:coconut_mosaic"
-    }
+    "#": "natures_spirit:coconut_mosaic"
   },
   "pattern": [
     "#  ",

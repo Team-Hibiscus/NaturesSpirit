@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "tag": "natures_spirit:xeric_leaves"
-    }
+    "#": "#natures_spirit:xeric_leaves"
   },
   "pattern": [
     "##",

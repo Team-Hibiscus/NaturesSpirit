@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:pink_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:bleeding_heart"
-    }
+    "natures_spirit:bleeding_heart"
   ],
   "result": {
     "count": 4,

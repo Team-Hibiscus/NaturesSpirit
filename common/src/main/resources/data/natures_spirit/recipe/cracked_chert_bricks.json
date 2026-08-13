@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "natures_spirit:chert_bricks"
-  },
+  "ingredient": "natures_spirit:chert_bricks",
   "result": {
     "id": "natures_spirit:cracked_chert_bricks"
   }

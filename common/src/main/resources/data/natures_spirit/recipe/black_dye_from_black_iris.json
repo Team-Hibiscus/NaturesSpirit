@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:black_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:black_iris"
-    }
+    "natures_spirit:black_iris"
   ],
   "result": {
     "count": 1,

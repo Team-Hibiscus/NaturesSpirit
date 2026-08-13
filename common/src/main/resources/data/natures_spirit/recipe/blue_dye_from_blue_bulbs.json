@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:blue_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:blue_bulbs"
-    }
+    "natures_spirit:blue_bulbs"
   ],
   "result": {
     "count": 4,

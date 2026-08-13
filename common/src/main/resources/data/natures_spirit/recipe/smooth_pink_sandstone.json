@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "natures_spirit:pink_sandstone"
-  },
+  "ingredient": "natures_spirit:pink_sandstone",
   "result": {
     "id": "natures_spirit:smooth_pink_sandstone"
   }

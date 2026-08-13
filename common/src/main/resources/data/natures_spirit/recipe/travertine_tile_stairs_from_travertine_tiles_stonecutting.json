@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "natures_spirit:travertine_tiles"
-  },
+  "ingredient": "natures_spirit:travertine_tiles",
   "result": {
     "count": 1,
     "id": "natures_spirit:travertine_tile_stairs"

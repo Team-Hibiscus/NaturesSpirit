@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:alluaudia"
-    }
+    "#": "natures_spirit:alluaudia"
   },
   "pattern": [
     "##",

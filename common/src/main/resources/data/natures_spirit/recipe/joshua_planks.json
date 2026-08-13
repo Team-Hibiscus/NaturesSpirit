@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "natures_spirit:joshua_logs"
-    }
+    "#natures_spirit:joshua_logs"
   ],
   "result": {
     "count": 4,

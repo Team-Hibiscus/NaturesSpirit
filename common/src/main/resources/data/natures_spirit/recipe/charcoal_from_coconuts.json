@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 125,
   "experience": 0.15,
-  "ingredient": {
-    "tag": "natures_spirit:coconut_items"
-  },
+  "ingredient": "#natures_spirit:coconut_items",
   "result": {
     "id": "minecraft:charcoal"
   }

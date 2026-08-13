@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "natures_spirit:joshua_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "natures_spirit:joshua_planks"
   },
   "pattern": [
     "W#W",

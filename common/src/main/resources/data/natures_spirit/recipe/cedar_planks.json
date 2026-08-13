@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "natures_spirit:cedar_logs"
-    }
+    "#natures_spirit:cedar_logs"
   ],
   "result": {
     "count": 4,

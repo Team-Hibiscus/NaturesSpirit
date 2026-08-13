@@ -1,5 +1,13 @@
 {
   "asset_id": "natures_spirit:lavender",
+  "author": {
+    "color": "gray",
+    "translate": "painting.natures_spirit.lavender.author"
+  },
   "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.natures_spirit.lavender.title"
+  },
   "width": 2
 }

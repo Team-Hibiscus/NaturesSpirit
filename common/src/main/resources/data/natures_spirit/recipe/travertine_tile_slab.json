@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:travertine_tiles"
-    }
+    "#": "natures_spirit:travertine_tiles"
   },
   "pattern": [
     "###"

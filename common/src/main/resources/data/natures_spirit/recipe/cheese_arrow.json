@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "minecraft:arrow"
-    },
-    "X": {
-      "item": "natures_spirit:cheese_bucket"
-    }
+    "#": "minecraft:arrow",
+    "X": "natures_spirit:cheese_bucket"
   },
   "pattern": [
     " # ",

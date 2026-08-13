@@ -30,12 +30,6 @@
         "probability": 0.05
       }
     ],
-    "dirt_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:dirt"
-      }
-    },
     "foliage_placer": {
       "type": "natures_spirit:redwood_foliage_placer",
       "offset": 0,
@@ -57,7 +51,6 @@
         }
       }
     },
-    "force_dirt": false,
     "ignore_vines": false,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",

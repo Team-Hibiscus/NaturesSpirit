@@ -6,7 +6,7 @@
       {
         "chance": 0.9,
         "feature": {
-          "feature": "minecraft:fancy_oak_bees_0002",
+          "feature": "minecraft:fancy_oak_bees_0002_leaf_litter",
           "placement": [
             {
               "type": "minecraft:block_predicate_filter",

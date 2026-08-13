@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "bowl",
   "ingredients": [
-    {
-      "item": "natures_spirit:coconut_shell"
-    }
+    "natures_spirit:coconut_shell"
   ],
   "result": {
     "count": 1,

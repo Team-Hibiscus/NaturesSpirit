@@ -3,33 +3,15 @@
   "category": "building",
   "group": "chalk",
   "ingredients": [
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "natures_spirit:white_chalk"
-    },
-    {
-      "item": "minecraft:lime_dye"
-    }
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "natures_spirit:white_chalk",
+    "minecraft:lime_dye"
   ],
   "result": {
     "id": "natures_spirit:lime_chalk",

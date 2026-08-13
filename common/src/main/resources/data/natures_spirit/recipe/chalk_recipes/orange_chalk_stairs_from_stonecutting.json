@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
   "count": 1,
-  "ingredient": {
-    "item": "natures_spirit:orange_chalk"
-  },
-  "result": {"id": "natures_spirit:orange_chalk_stairs"
-}}
+  "ingredient": "natures_spirit:orange_chalk",
+  "result": {
+    "id": "natures_spirit:orange_chalk_stairs"
+  }
+}

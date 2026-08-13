@@ -3,33 +3,15 @@
   "category": "building",
   "group": "kaolin",
   "ingredients": [
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "minecraft:purple_dye"
-    }
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "minecraft:purple_dye"
   ],
   "result": {
     "id": "natures_spirit:purple_kaolin",

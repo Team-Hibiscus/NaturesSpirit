@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:red_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:red_heather"
-    }
+    "natures_spirit:red_heather"
   ],
   "result": {
     "count": 2,

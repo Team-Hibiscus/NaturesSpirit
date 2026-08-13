@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "minecraft:chest"
-    },
-    {
-      "item": "natures_spirit:maple_boat"
-    }
+    "minecraft:chest",
+    "natures_spirit:maple_boat"
   ],
   "result": {
     "count": 1,

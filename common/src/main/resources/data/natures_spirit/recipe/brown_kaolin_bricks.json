@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "natures_spirit:brown_kaolin"
-    }
+    "S": "natures_spirit:brown_kaolin"
   },
   "pattern": [
     "SS",

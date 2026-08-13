@@ -3,12 +3,8 @@
   "category": "building",
   "group": "mossy_cobblestone",
   "ingredients": [
-    {
-      "item": "natures_spirit:cobbled_travertine"
-    },
-    {
-      "item": "minecraft:moss_block"
-    }
+    "natures_spirit:cobbled_travertine",
+    "minecraft:moss_block"
   ],
   "result": {
     "count": 1,

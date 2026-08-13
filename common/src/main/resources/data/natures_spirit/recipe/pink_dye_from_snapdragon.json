@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:pink_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:snapdragon"
-    }
+    "natures_spirit:snapdragon"
   ],
   "result": {
     "count": 2,

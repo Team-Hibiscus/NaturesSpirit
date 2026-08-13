@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:pink_sand"
-    }
+    "#": "natures_spirit:pink_sand"
   },
   "pattern": [
     "##",

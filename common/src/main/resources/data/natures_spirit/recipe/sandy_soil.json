@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "minecraft:dirt"
-    },
-    {
-      "item": "minecraft:dirt"
-    },
-    {
-      "item": "minecraft:sand"
-    },
-    {
-      "item": "minecraft:sand"
-    }
+    "minecraft:dirt",
+    "minecraft:dirt",
+    "minecraft:sand",
+    "minecraft:sand"
   ],
   "result": {
     "id": "natures_spirit:sandy_soil",

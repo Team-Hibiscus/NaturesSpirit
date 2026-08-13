@@ -1,61 +1,42 @@
 {
-  "type": "minecraft:flower",
+  "type": "minecraft:simple_block",
   "config": {
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:noise_provider",
-            "noise": {
-              "amplitudes": [
-                1.0
-              ],
-              "firstOctave": 0
-            },
-            "scale": 0.030833334,
-            "seed": 2445,
-            "states": [
-              {
-                "Name": "minecraft:air"
-              },
-              {
-                "Name": "natures_spirit:lush_fern"
-              },
-              {
-                "Name": "natures_spirit:lush_fern"
-              },
-              {
-                "Name": "natures_spirit:large_lush_fern",
-                "Properties": {
-                  "half": "lower"
-                }
-              },
-              {
-                "Name": "natures_spirit:lush_fern"
-              },
-              {
-                "Name": "natures_spirit:lush_fern"
-              },
-              {
-                "Name": "minecraft:air"
-              }
-            ]
-          }
-        }
+    "to_place": {
+      "type": "minecraft:noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
       },
-      "placement": [
+      "scale": 0.030833334,
+      "seed": 2445,
+      "states": [
         {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:lush_fern"
+        },
+        {
+          "Name": "natures_spirit:lush_fern"
+        },
+        {
+          "Name": "natures_spirit:large_lush_fern",
+          "Properties": {
+            "half": "lower"
           }
+        },
+        {
+          "Name": "natures_spirit:lush_fern"
+        },
+        {
+          "Name": "natures_spirit:lush_fern"
+        },
+        {
+          "Name": "minecraft:air"
         }
       ]
-    },
-    "tries": 300,
-    "xz_spread": 10,
-    "y_spread": 2
+    }
   }
 }

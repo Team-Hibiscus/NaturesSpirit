@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_stairs",
   "key": {
-    "#": {
-      "item": "natures_spirit:cedar_planks"
-    }
+    "#": "natures_spirit:cedar_planks"
   },
   "pattern": [
     "#  ",

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "natures_spirit:polished_travertine"
-    }
+    "#": "natures_spirit:polished_travertine"
   },
   "pattern": [
     "###",

@@ -2,12 +2,6 @@
   "type": "minecraft:tree",
   "config": {
     "decorators": [],
-    "dirt_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:dirt"
-      }
-    },
     "foliage_placer": {
       "type": "natures_spirit:grounded_bush_foliage_placer",
       "foliage_height": 1,
@@ -40,11 +34,10 @@
             "distance": "7",
             "persistent": "false",
             "waterlogged": "false"
-            }
           }
-        ]
+        }
+      ]
     },
-    "force_dirt": false,
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",

@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:mushroom_grow_block",
+    "minecraft:mycelium",
+    "minecraft:podzol",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
     "minecraft:grass_block"
   ]
 }

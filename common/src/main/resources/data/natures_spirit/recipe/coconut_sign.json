@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_sign",
   "key": {
-    "#": {
-      "item": "natures_spirit:coconut_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "natures_spirit:coconut_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

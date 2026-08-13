@@ -1,0 +1,32 @@
+{
+  "values": [
+    "minecraft:flower_warm",
+    "natures_spirit:flower_blooming_dunes",
+    "natures_spirit:flower_cypress_fields",
+    "natures_spirit:flower_eroded_river",
+    "natures_spirit:flower_fir_forest",
+    "natures_spirit:flower_floral_ridge",
+    "natures_spirit:flower_flowering_shrubland",
+    "natures_spirit:flower_golden_wilds",
+    "natures_spirit:flower_heather_fields",
+    "natures_spirit:flower_helvola",
+    "natures_spirit:flower_lavender_field",
+    "natures_spirit:flower_oak_savanna",
+    "natures_spirit:flower_redwood_forest",
+    "natures_spirit:flower_steppe",
+    "natures_spirit:flower_stratified_desert",
+    "natures_spirit:flower_sugi_forest",
+    "natures_spirit:flower_tropical_woods",
+    "natures_spirit:flower_wisteria_forest",
+    "natures_spirit:flower_xeric",
+    "natures_spirit:patch_azolla",
+    "natures_spirit:patch_drylands_grass",
+    "natures_spirit:patch_lush_fern",
+    "natures_spirit:patch_melic_grass",
+    "natures_spirit:patch_savanna_vegetation",
+    "natures_spirit:patch_tundra_red_vegetation",
+    "natures_spirit:patch_xeric_grass",
+    "natures_spirit:succulent_patch",
+    "natures_spirit:succulent_patch_2"
+  ]
+}

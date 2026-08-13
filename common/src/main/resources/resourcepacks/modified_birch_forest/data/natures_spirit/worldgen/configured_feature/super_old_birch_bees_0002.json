@@ -11,12 +11,6 @@
         "probability": 0.025
       }
     ],
-    "dirt_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:dirt"
-      }
-    },
     "foliage_placer": {
       "type": "natures_spirit:birch_foliage_placer",
       "height": 7,
@@ -34,7 +28,6 @@
         }
       }
     },
-    "force_dirt": false,
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",

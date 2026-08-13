@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:blooming_paper_block"
-    }
+    "#": "natures_spirit:blooming_paper_block"
   },
   "pattern": [
     "##",

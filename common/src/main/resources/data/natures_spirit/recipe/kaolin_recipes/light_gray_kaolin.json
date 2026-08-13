@@ -3,33 +3,15 @@
   "category": "building",
   "group": "kaolin",
   "ingredients": [
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "natures_spirit:kaolin"
-    },
-    {
-      "item": "minecraft:light_gray_dye"
-    }
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "minecraft:light_gray_dye"
   ],
   "result": {
     "id": "natures_spirit:light_gray_kaolin",

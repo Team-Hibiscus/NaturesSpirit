@@ -6,10 +6,8 @@
     "###"
   ],
   "key": {
-      "#": {
-        "item": "natures_spirit:pink_kaolin"
-      }
-    },
+    "#": "natures_spirit:pink_kaolin"
+  },
   "result": {
     "id": "natures_spirit:pink_kaolin_slab",
     "count": 6

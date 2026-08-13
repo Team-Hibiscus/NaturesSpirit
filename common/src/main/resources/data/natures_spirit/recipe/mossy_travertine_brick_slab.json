@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:mossy_travertine_bricks"
-    }
+    "#": "natures_spirit:mossy_travertine_bricks"
   },
   "pattern": [
     "###"

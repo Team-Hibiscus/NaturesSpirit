@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "natures_spirit:coconut_logs"
-    }
+    "#natures_spirit:coconut_logs"
   ],
   "result": {
     "count": 4,

@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:yellow_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:yellow_wildflower"
-    }
+    "natures_spirit:yellow_wildflower"
   ],
   "result": {
     "count": 2,

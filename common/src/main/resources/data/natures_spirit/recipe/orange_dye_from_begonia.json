@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:orange_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:begonia"
-    }
+    "natures_spirit:begonia"
   ],
   "result": {
     "count": 2,

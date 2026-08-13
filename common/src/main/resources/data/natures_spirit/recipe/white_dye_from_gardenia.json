@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:white_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:gardenia"
-    }
+    "natures_spirit:gardenia"
   ],
   "result": {
     "count": 2,

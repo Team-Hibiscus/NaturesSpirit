@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "natures_spirit:ghaf_log"
-    }
+    "#": "natures_spirit:ghaf_log"
   },
   "pattern": [
     "##",

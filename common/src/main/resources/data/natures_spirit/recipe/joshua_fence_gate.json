@@ -3,12 +3,8 @@
   "category": "redstone",
   "group": "wooden_fence_gate",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "natures_spirit:joshua_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "natures_spirit:joshua_planks"
   },
   "pattern": [
     "#W#",

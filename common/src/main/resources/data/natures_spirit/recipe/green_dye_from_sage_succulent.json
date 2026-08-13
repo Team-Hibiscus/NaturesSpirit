@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "green_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:sage_succulent"
-    }
+    "natures_spirit:sage_succulent"
   ],
   "result": {
     "count": 1,

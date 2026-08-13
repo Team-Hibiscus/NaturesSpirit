@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "lime_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:drowsy_succulent"
-    }
+    "natures_spirit:drowsy_succulent"
   ],
   "result": {
     "count": 1,

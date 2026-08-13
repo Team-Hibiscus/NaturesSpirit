@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "natures_spirit:larch_planks"
-    }
+    "#": "natures_spirit:larch_planks"
   },
   "pattern": [
     "# #",

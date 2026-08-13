@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "pink_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:regal_succulent"
-    }
+    "natures_spirit:regal_succulent"
   ],
   "result": {
     "count": 1,

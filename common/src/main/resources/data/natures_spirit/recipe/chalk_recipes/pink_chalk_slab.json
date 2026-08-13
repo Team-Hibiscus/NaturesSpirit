@@ -6,10 +6,8 @@
     "###"
   ],
   "key": {
-      "#": {
-        "item": "natures_spirit:pink_chalk"
-      }
-    },
+    "#": "natures_spirit:pink_chalk"
+  },
   "result": {
     "id": "natures_spirit:pink_chalk_slab",
     "count": 6

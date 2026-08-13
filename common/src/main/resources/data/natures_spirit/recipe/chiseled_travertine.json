@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:cobbled_travertine_slab"
-    }
+    "#": "natures_spirit:cobbled_travertine_slab"
   },
   "pattern": [
     "#",

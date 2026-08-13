@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:xeric_thatch"
-    }
+    "#": "natures_spirit:xeric_thatch"
   },
   "pattern": [
     "#  ",

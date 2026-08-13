@@ -1,5 +1,13 @@
 {
   "asset_id": "natures_spirit:sandy_trees",
+  "author": {
+    "color": "gray",
+    "translate": "painting.natures_spirit.sandy_trees.author"
+  },
   "height": 1,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.natures_spirit.sandy_trees.title"
+  },
   "width": 2
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "natures_spirit:palo_verde_logs"
-    }
+    "#natures_spirit:palo_verde_logs"
   ],
   "result": {
     "count": 4,

@@ -3,33 +3,15 @@
   "category": "building",
   "group": "kaolin_bricks",
   "ingredients": [
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "natures_spirit:kaolin_bricks"
-    },
-    {
-      "item": "minecraft:gray_dye"
-    }
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "minecraft:gray_dye"
   ],
   "result": {
     "id": "natures_spirit:gray_kaolin_bricks",

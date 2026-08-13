@@ -3,12 +3,8 @@
   "category": "building",
   "key": {
     "#": [
-      {
-        "item": "natures_spirit:pink_sandstone"
-      },
-      {
-        "item": "natures_spirit:chiseled_pink_sandstone"
-      }
+      "natures_spirit:pink_sandstone",
+      "natures_spirit:chiseled_pink_sandstone"
     ]
   },
   "pattern": [

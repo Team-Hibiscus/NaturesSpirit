@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "natures_spirit:willow_logs"
-    }
+    "#natures_spirit:willow_logs"
   ],
   "result": {
     "count": 4,

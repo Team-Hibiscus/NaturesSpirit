@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:paper_block"
-    },
-    "a": {
-      "item": "minecraft:chain"
-    }
+    "#": "natures_spirit:paper_block",
+    "a": "minecraft:iron_chain"
   },
   "pattern": [
     "a a",

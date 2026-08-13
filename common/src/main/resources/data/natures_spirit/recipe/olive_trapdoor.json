@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_trapdoor",
   "key": {
-    "#": {
-      "item": "natures_spirit:olive_planks"
-    }
+    "#": "natures_spirit:olive_planks"
   },
   "pattern": [
     "###",

@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "red_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:ornate_succulent"
-    }
+    "natures_spirit:ornate_succulent"
   ],
   "result": {
     "count": 1,

@@ -1,29 +1,32 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "natures_spirit:music.overworld.desert"
+      }
+    },
+    "minecraft:visual/fog_color": 12638463,
+    "minecraft:visual/sky_color": 7254527,
+    "minecraft:visual/water_fog_color": 329011
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 0.0,
   "effects": {
-    "fog_color": 12638463,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "natures_spirit:music.overworld.desert"
-    },
-    "sky_color": 7254527,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": 4159204
   },
   "features": [
     [
@@ -88,7 +91,6 @@
       "natures_spirit:rooted_desert_turnip_placed",
       "natures_spirit:patch_drylands_grass",
       "natures_spirit:ghaf_placed",
-//      "natures_spirit:coconut_drylands_placed",
       "minecraft:patch_dead_bush_2",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
@@ -105,83 +107,83 @@
   "spawners": {
     "ambient": [
       {
-        "type": "minecraft:bat",
         "maxCount": 8,
         "minCount": 8,
+        "type": "minecraft:bat",
         "weight": 10
       }
     ],
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:rabbit",
         "maxCount": 3,
         "minCount": 2,
+        "type": "minecraft:rabbit",
         "weight": 4
       }
     ],
     "misc": [],
     "monster": [
       {
-        "type": "minecraft:spider",
         "maxCount": 4,
         "minCount": 4,
+        "type": "minecraft:spider",
         "weight": 100
       },
       {
-        "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
+        "type": "minecraft:zombie",
         "weight": 19
       },
       {
-        "type": "minecraft:zombie_villager",
         "maxCount": 1,
         "minCount": 1,
+        "type": "minecraft:zombie_villager",
         "weight": 1
       },
       {
+        "maxCount": 4,
+        "minCount": 4,
         "type": "minecraft:skeleton",
-        "maxCount": 4,
-        "minCount": 4,
         "weight": 100
       },
       {
+        "maxCount": 4,
+        "minCount": 4,
         "type": "minecraft:creeper",
-        "maxCount": 4,
-        "minCount": 4,
         "weight": 100
       },
       {
+        "maxCount": 4,
+        "minCount": 4,
         "type": "minecraft:slime",
-        "maxCount": 4,
-        "minCount": 4,
         "weight": 100
       },
       {
-        "type": "minecraft:enderman",
         "maxCount": 4,
         "minCount": 1,
+        "type": "minecraft:enderman",
         "weight": 10
       },
       {
-        "type": "minecraft:witch",
         "maxCount": 1,
         "minCount": 1,
+        "type": "minecraft:witch",
         "weight": 5
       },
       {
-        "type": "minecraft:husk",
         "maxCount": 4,
         "minCount": 4,
+        "type": "minecraft:husk",
         "weight": 80
       }
     ],
     "underground_water_creature": [
       {
-        "type": "minecraft:glow_squid",
         "maxCount": 6,
         "minCount": 4,
+        "type": "minecraft:glow_squid",
         "weight": 10
       }
     ],

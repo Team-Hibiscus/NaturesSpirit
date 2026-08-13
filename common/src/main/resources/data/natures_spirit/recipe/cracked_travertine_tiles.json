@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "natures_spirit:travertine_tiles"
-  },
+  "ingredient": "natures_spirit:travertine_tiles",
   "result": {
     "id": "natures_spirit:cracked_travertine_tiles"
   }

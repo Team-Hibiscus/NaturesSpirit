@@ -2,33 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    },
-    {
-      "item": "natures_spirit:desert_turnip"
-    }
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip"
   ],
   "result": {
     "count": 1,

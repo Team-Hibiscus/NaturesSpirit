@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "natures_spirit:stripped_aspen_log"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "natures_spirit:stripped_aspen_log",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

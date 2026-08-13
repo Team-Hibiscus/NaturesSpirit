@@ -1,6 +1,21 @@
 {
-  "angry_texture": "natures_spirit:entity/wolf/wolf_autumn_angry",
-  "biomes": "#natures_spirit:is_autumn",
-  "tame_texture": "natures_spirit:entity/wolf/wolf_autumn_tame",
-  "wild_texture": "natures_spirit:entity/wolf/wolf_autumn"
+  "assets": {
+    "angry": "natures_spirit:entity/wolf/wolf_autumn_angry",
+    "tame": "natures_spirit:entity/wolf/wolf_autumn_tame",
+    "wild": "natures_spirit:entity/wolf/wolf_autumn"
+  },
+  "baby_assets": {
+    "angry": "natures_spirit:entity/wolf/wolf_autumn_angry",
+    "tame": "natures_spirit:entity/wolf/wolf_autumn_tame",
+    "wild": "natures_spirit:entity/wolf/wolf_autumn"
+  },
+  "spawn_conditions": [
+    {
+      "condition": {
+        "type": "minecraft:biome",
+        "biomes": "#natures_spirit:is_autumn"
+      },
+      "priority": 1
+    }
+  ]
 }

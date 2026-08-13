@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:purple_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:lavender"
-    }
+    "natures_spirit:lavender"
   ],
   "result": {
     "count": 4,

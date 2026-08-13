@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "Z": {
-      "item": "natures_spirit:cheese_bucket"
-    },
-    "X": {
-      "item": "minecraft:wheat"
-    },
-    "Y": {
-      "item": "minecraft:beetroot"
-    }
+    "Z": "natures_spirit:cheese_bucket",
+    "X": "minecraft:wheat",
+    "Y": "minecraft:beetroot"
   },
   "pattern": [
     "YZY",

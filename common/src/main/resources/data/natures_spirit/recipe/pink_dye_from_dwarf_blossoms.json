@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "minecraft:pink_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:dwarf_blossoms"
-    }
+    "natures_spirit:dwarf_blossoms"
   ],
   "result": {
     "count": 1,

@@ -8,10 +8,8 @@
     "###"
   ],
   "key": {
-      "#": {
-        "item": "natures_spirit:kaolin_bricks"
-      }
-    },
+    "#": "natures_spirit:kaolin_bricks"
+  },
   "result": {
     "id": "natures_spirit:kaolin_brick_stairs",
     "count": 4

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "natures_spirit:joshua_mosaic"
-    }
+    "#": "natures_spirit:joshua_mosaic"
   },
   "pattern": [
     "#  ",

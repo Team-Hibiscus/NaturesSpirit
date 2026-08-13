@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "planks",
   "ingredients": [
-    {
-      "item": "natures_spirit:stripped_joshua_bundle"
-    }
+    "natures_spirit:stripped_joshua_bundle"
   ],
   "result": {
     "count": 4,

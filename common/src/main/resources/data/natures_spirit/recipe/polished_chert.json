@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "natures_spirit:chert"
-    }
+    "S": "natures_spirit:chert"
   },
   "pattern": [
     "SS",

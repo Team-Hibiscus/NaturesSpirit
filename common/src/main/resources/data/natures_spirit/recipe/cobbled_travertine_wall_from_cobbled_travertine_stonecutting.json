@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "natures_spirit:cobbled_travertine"
-  },
+  "ingredient": "natures_spirit:cobbled_travertine",
   "result": {
     "count": 1,
     "id": "natures_spirit:cobbled_travertine_wall"

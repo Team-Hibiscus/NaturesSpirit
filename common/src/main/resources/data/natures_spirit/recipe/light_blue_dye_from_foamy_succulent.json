@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "light_blue_dye",
   "ingredients": [
-    {
-      "item": "natures_spirit:foamy_succulent"
-    }
+    "natures_spirit:foamy_succulent"
   ],
   "result": {
     "count": 1,

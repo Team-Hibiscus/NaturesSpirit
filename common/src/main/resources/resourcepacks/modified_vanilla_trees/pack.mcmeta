@@ -1,8 +1,7 @@
 {
   "pack": {
-    "pack_format": 26,
-    "description": "\u00A7f-\u00A7eMake Vanilla Oak Trees Larger\u00A7f-\n\u00A7f       -\u00A76\u00A7f-\u00A74",
-    "forge:resource_pack_format": 12,
-    "forge:data_pack_format": 10
+    "description": "\u00a7f-\u00a7eMake Vanilla Oak Trees Larger\u00a7f-\n\u00a7f       -\u00a76\u00a7f-\u00a74",
+    "min_format": 101,
+    "max_format": 101
   }
 }

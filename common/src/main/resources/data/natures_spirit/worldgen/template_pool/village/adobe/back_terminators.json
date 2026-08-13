@@ -9,15 +9,6 @@
       },
       "weight": 2
     }
-    //         {
-    //   "element": {
-    //     "element_type": "minecraft:single_pool_element",
-    //     "location": "natures_spirit:village/wisteria/terminators",
-    //     "processors": "minecraft:empty",
-    //     "projection": "rigid"
-    //   },
-    //   "weight": 4
-    // }
   ],
   "fallback": "minecraft:empty"
 }
