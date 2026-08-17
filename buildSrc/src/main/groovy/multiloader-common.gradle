@@ -35,6 +35,14 @@ repositories {
     maven {
         url = 'https://maven.fabricmc.net/' // sponge-mixin, needed by common's annotation processor
     }
+    maven {
+        url = 'https://maven.blamejared.com'
+        content { includeGroup 'mezz.jei' } // JEI, dev runtime
+    }
+    maven {
+        url = uri("https://cursemaven.com")
+        content { includeGroup("curse.maven") } // Jade, dev runtime
+    }
 }
 
 sourcesJar {

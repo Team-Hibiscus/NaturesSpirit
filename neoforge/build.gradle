@@ -14,6 +14,9 @@ configurations {
 
 dependencies {
     implementation("maven.modrinth:lithostitched:${lithostitched_version}-neoforge-${lithostitched_mc}")
+
+    localRuntime("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    localRuntime("curse.maven:jade-324717:8068368")
 }
 
 def commonGenerated = project(':common').file('src/generated/resources').absolutePath

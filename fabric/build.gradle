@@ -19,6 +19,9 @@ dependencies {
     // All java references to dependencies like this need to be fully optional/guarded against classloading
     compileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
     localRuntime("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+    localRuntime("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+    localRuntime("curse.maven:jade-324717:8048381")
 }
 
 loom {
