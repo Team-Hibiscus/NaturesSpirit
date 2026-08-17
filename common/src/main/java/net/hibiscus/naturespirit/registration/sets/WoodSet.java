@@ -683,7 +683,7 @@ public class WoodSet {
   }
 
   private NSBlockHolder<TintedParticleLeavesBlock> createLeaves(String prefix) {
-    return flammable(createBlockWithItem(prefix + getName() + "_leaves", properties -> new TintedParticleLeavesBlock(0.0F, properties), leavesProperties()), 30, 60);
+    return flammable(createBlockWithItem(prefix + getName() + "_leaves", properties -> new TintedParticleLeavesBlock(0.01F, properties), leavesProperties()), 30, 60);
   }
 
   private NSBlockHolder<ProjectileLeavesBlock> createFrostableLeaves() {
