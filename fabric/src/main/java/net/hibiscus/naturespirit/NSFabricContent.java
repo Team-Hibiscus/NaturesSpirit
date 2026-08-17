@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.function.Supplier;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
 import net.fabricmc.fabric.api.registry.CompostableRegistry;
@@ -22,9 +21,8 @@ import net.hibiscus.naturespirit.registration.NSCompostables;
 import net.hibiscus.naturespirit.registration.NSFlammables;
 import net.hibiscus.naturespirit.registration.NSFuels;
 import net.hibiscus.naturespirit.registration.NSStrippables;
-import net.hibiscus.naturespirit.util.NSEvents;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.npc.villager.VillagerType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -47,7 +45,6 @@ public final class NSFabricContent {
         registerCompostables();
         registerCauldronInteractions();
         registerVillagerBiomeTypes();
-        registerEventCallbacks();
     }
 
     private static void registerBuiltinPacks() {
@@ -118,11 +115,12 @@ public final class NSFabricContent {
 
     private static void registerCauldronInteractions() {
         Map<Identifier, CauldronInteraction.Dispatcher> dispatchers = new HashMap<>();
+        dispatchers.put(NSCauldronBehavior.EMPTY_DISPATCHER_ID, CauldronInteractions.EMPTY);
         for (NSCauldronBehavior.DispatcherEntry entry : NSCauldronBehavior.DISPATCHERS) {
             dispatchers.put(entry.id(), entry.dispatcher());
         }
         for (NSCauldronBehavior.InteractionEntry entry : NSCauldronBehavior.INTERACTIONS) {
-            dispatchers.get(entry.dispatcherId()).put(entry.item(), entry.interaction());
+            dispatchers.get(entry.dispatcherId()).put(entry.item().get(), entry.interaction());
         }
     }
 
@@ -130,13 +128,6 @@ public final class NSFabricContent {
         for (NSCommonHooks.VillagerBiomeType entry : NSCommonHooks.VILLAGER_BIOME_TYPES) {
             VillagerType.BY_BIOME.put(entry.biome(), entry.villagerType());
         }
-    }
-
-    private static void registerEventCallbacks() {
-        UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
-            BlockPos pos = hitResult.getBlockPos();
-            return NSEvents.onCauldronBucketUse(player, level, hand, pos, level.getBlockState(pos), player.getItemInHand(hand));
-        });
     }
 
     private static NSCommonHooks.TabOutput adapt(FabricCreativeModeTabOutput output) {

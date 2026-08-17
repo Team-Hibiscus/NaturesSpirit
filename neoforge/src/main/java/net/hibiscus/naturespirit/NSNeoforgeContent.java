@@ -3,14 +3,9 @@ package net.hibiscus.naturespirit;
 import java.util.function.Supplier;
 import net.hibiscus.naturespirit.blocks.NSCauldronBehavior;
 import net.hibiscus.naturespirit.registration.NSFlammables;
-import net.hibiscus.naturespirit.util.NSEvents;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.TriState;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
@@ -22,7 +17,6 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.RegisterCauldronInteractionEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
 @EventBusSubscriber(modid = NaturesSpirit.MOD_ID)
@@ -82,19 +76,7 @@ public final class NSNeoforgeContent {
     @SubscribeEvent
     public static void onRegisterCauldronInteractions(RegisterCauldronInteractionEvent.Interaction event) {
         for (NSCauldronBehavior.InteractionEntry entry : NSCauldronBehavior.INTERACTIONS) {
-            event.register(entry.dispatcherId(), entry.item(), entry.interaction());
-        }
-    }
-
-    @SubscribeEvent
-    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Level level = event.getLevel();
-        BlockPos pos = event.getPos();
-        InteractionResult result = NSEvents.onCauldronBucketUse(event.getEntity(), level, event.getHand(), pos, level.getBlockState(pos), event.getItemStack());
-        if (result != InteractionResult.PASS) {
-            event.setUseItem(TriState.FALSE);
-            event.setCancellationResult(result);
-            event.setCanceled(true);
+            event.register(entry.dispatcherId(), entry.item().get(), entry.interaction());
         }
     }
 
