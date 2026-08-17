@@ -52,6 +52,10 @@
         },
         "number": 2,
         "probability": 0.45
+      },
+      {
+        "type": "minecraft:beehive",
+        "probability": 0.05
       }
     ],
     "foliage_placer": {

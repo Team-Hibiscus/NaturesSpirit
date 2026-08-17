@@ -19,6 +19,10 @@
             "Name": "minecraft:coarse_dirt"
           }
         }
+      },
+      {
+        "type": "minecraft:beehive",
+        "probability": 0.02
       }
     ],
     "foliage_placer": {
