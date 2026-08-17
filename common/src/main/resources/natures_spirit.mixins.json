@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "AnvilBlockMixin",
+    "BiomeMixin",
     "BrushItemMixin",
     "CoralBlockBlockMixin",
     "DataFixersMixin",

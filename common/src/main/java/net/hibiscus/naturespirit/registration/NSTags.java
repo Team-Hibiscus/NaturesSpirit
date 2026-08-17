@@ -6,6 +6,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class NSTags {
@@ -49,6 +50,15 @@ public class NSTags {
 
     private static TagKey<EntityType<?>> createTag(String name) {
       return TagKey.create(Registries.ENTITY_TYPE, NaturesSpirit.id(name));
+    }
+  }
+
+  public static class Biomes {
+
+    public static final TagKey<Biome> FORCE_ICE = createTag("force_ice");
+
+    private static TagKey<Biome> createTag(String name) {
+      return TagKey.create(Registries.BIOME, NaturesSpirit.id(name));
     }
   }
 
