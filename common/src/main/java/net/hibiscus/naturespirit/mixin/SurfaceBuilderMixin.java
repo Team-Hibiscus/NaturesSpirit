@@ -25,11 +25,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = SurfaceSystem.class, remap = false)
-public class SurfaceBuilderMixin {
+public abstract class SurfaceBuilderMixin {
 
   @Final
   @Shadow
   private BlockState defaultBlock;
+
+  @Shadow
+  protected abstract BlockState getBand(int x, int y, int z);
   @Unique
   private NormalNoise naturespirit$sugiPillarNoise;
   @Unique
@@ -112,7 +115,7 @@ public class SurfaceBuilderMixin {
         }
 
         for (k = j; k >= chunk.getMinY() && (column.getBlock(k).isAir() || column.getBlock(k).is(Blocks.WATER)); --k) {
-          column.setBlock(k, this.defaultBlock);
+          column.setBlock(k, this.getBand(x, k, z));
         }
 
       }

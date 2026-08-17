@@ -101,7 +101,7 @@ public class NSSurfaceRules {
     );
     RuleSource steppeUndergroundRule = SurfaceRules.ifTrue(
         SurfaceRules.isBiome(NSBiomes.SLEETED_SLOPES, NSBiomes.BLOOMING_HIGHLANDS, NSBiomes.SNOWCAPPED_RED_PEAKS, NSBiomes.SHRUBBY_HIGHLANDS, NSBiomes.WOODY_HIGHLANDS,
-            NSBiomes.ARID_HIGHLANDS, NSBiomes.STRATIFIED_DESERT),
+            NSBiomes.ARID_HIGHLANDS, NSBiomes.STRATIFIED_DESERT, NSBiomes.LIVELY_DUNES, NSBiomes.BLOOMING_DUNES),
         SurfaceRules.ifTrue(above25, SurfaceRules.bandlands())
     );
 
