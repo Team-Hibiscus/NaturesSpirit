@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "natures_spirit:paper_block"
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "id": "natures_spirit:paper_door",
+    "count": 3
+  },
+  "show_notification": true
+}

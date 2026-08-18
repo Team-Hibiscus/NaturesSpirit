@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "natures_spirit:paper_block",
+    "a": "minecraft:iron_chain"
+  },
+  "pattern": [
+    "a a",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "natures_spirit:paper_hanging_sign",
+    "count": 6
+  },
+  "show_notification": true
+}

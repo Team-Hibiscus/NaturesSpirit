@@ -1,0 +1,87 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
+      },
+      "scale": 0.030833334,
+      "seed": 2445,
+      "states": [
+        {
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:green_bitter_sprouts"
+        },
+        {
+          "Name": "natures_spirit:green_bearberries"
+        },
+        {
+          "Name": "natures_spirit:red_bearberries"
+        },
+        {
+          "Name": "natures_spirit:red_bitter_sprouts"
+        },
+        {
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:purple_bitter_sprouts"
+        },
+        {
+          "Name": "natures_spirit:purple_bearberries"
+        },
+        {
+          "Name": "natures_spirit:purple_bitter_sprouts"
+        },
+        {
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:red_bitter_sprouts"
+        },
+        {
+          "Name": "natures_spirit:red_bearberries"
+        },
+        {
+          "Name": "natures_spirit:red_bitter_sprouts"
+        },
+        {
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:green_bitter_sprouts"
+        },
+        {
+          "Name": "natures_spirit:green_bearberries"
+        },
+        {
+          "Name": "natures_spirit:green_bitter_sprouts"
+        },
+        {
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:red_bitter_sprouts"
+        },
+        {
+          "Name": "natures_spirit:red_bearberries"
+        },
+        {
+          "Name": "natures_spirit:purple_bearberries"
+        },
+        {
+          "Name": "natures_spirit:purple_bitter_sprouts"
+        },
+        {
+          "Name": "minecraft:air"
+        }
+      ]
+    }
+  }
+}

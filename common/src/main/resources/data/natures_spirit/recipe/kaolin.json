@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:clay",
+    "minecraft:clay",
+    "minecraft:clay",
+    "minecraft:clay"
+  ],
+  "result": {
+    "id": "natures_spirit:kaolin",
+    "count": 9
+  }
+}

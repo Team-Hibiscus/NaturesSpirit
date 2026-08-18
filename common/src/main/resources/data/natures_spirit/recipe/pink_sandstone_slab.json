@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": [
+      "natures_spirit:pink_sandstone",
+      "natures_spirit:chiseled_pink_sandstone"
+    ]
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "natures_spirit:pink_sandstone_slab"
+  }
+}

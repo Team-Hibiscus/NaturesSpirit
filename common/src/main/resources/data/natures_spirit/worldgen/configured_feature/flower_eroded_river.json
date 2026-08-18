@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
+      },
+      "scale": 0.030833334,
+      "seed": 2445,
+      "states": [
+        {
+          "Name": "minecraft:lily_of_the_valley"
+        },
+        {
+          "Name": "natures_spirit:bleeding_heart",
+          "Properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "Name": "natures_spirit:anemone"
+        },
+        {
+          "Name": "natures_spirit:hibiscus"
+        }
+      ]
+    }
+  }
+}

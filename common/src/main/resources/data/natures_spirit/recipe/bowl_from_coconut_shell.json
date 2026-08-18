@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bowl",
+  "ingredients": [
+    "natures_spirit:coconut_shell"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  }
+}

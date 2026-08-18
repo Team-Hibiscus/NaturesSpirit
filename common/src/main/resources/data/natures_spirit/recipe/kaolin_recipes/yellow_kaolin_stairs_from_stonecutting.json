@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": "natures_spirit:yellow_kaolin",
+  "result": {
+    "id": "natures_spirit:yellow_kaolin_stairs"
+  }
+}

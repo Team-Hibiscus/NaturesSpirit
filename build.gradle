@@ -1,104 +1,103 @@
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        maven {
-            name = "Forge"
-            url = "https://maven.minecraftforge.net"
+plugins {
+    // see https://fabricmc.net/develop/ for new versions
+    id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT' apply false
+    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
+    id 'net.neoforged.moddev' version '2.0.141' apply false
+    id "me.modmuss50.mod-publish-plugin" version "2.2.0"
+}
+
+// Multi-loader publishing — see https://modmuss50.github.io/mod-publish-plugin/multi_platform/
+// for the recommended root-level pattern. One named entry per loader points at that
+// subproject's jar, sharing common options via the `*Options { ... }` blocks.
+evaluationDependsOn(':common')
+evaluationDependsOn(':fabric')
+evaluationDependsOn(':neoforge')
+
+// Maven publish aggregators. Run `./gradlew publishToSnapshots` to push a `-SNAPSHOT`
+// artifact (republishable, refreshes consumers per cacheChangingModulesFor); run
+// `publishToReleases` for an immutable release. Mode is detected by task name in
+// multiloader-common.gradle, which also picks the matching repo URL.
+tasks.register('publishToSnapshots') {
+    group = 'publishing'
+    description = 'Publish all subprojects to maven.muon.rip/snapshots with -SNAPSHOT suffix.'
+    dependsOn subprojects.collect { "${it.path}:publishMavenJavaPublicationToMuonSnapshotsRepository" }
+}
+
+tasks.register('publishToReleases') {
+    group = 'publishing'
+    description = 'Publish all subprojects to maven.muon.rip/releases.'
+    dependsOn subprojects.collect { "${it.path}:publishMavenJavaPublicationToMuonReleasesRepository" }
+}
+
+// Compute all GString values OUTSIDE the publishMods closure. Inside the closure, Groovy's
+// delegate-first resolution shadows `version` (and `project.version` in some nested option
+// closures) with the extension's own Property<String>, whose toString is the descriptor
+// "property 'version'" — that string otherwise leaks into tagName / displayName.
+def projectVersion = project.version.toString()
+def mcVersion = project.minecraft_version.toString()
+def publishVersion = "${projectVersion}+${mcVersion}".toString()
+def fabricDisplayName = "Fabric ${projectVersion}+${mcVersion}".toString()
+def neoforgeDisplayName = "NeoForge ${projectVersion}+${mcVersion}".toString()
+
+publishMods {
+    changelog = rootProject.file("CHANGELOG.md").getText()
+    version = publishVersion
+    type = STABLE
+
+    if (project.findProperty('curseforge_id')) {
+        def cfOptions = curseforgeOptions {
+            accessToken = providers.environmentVariable('CF_TOKEN')
+            projectId = project.curseforge_id
+            projectSlug = project.mod_id
+            minecraftVersions.add(mcVersion)
+            // Required since 2.0.0: CurseForge rejects uploads unless at least one side is declared.
+            client = true
+            server = true
+            requires {
+                slug = 'lithostitched'
+            }
+        }
+
+        curseforge('curseforgeFabric') {
+            from cfOptions
+            file = project(':fabric').tasks.named('jar', Jar).flatMap { it.archiveFile }
+            modLoaders.add('fabric')
+            displayName = fabricDisplayName
+        }
+        curseforge('curseforgeNeoforge') {
+            from cfOptions
+            file = project(':neoforge').tasks.named('jar', Jar).flatMap { it.archiveFile }
+            modLoaders.add('neoforge')
+            displayName = neoforgeDisplayName
         }
     }
-    dependencies {
-        classpath 'gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:1.1.7'
-    }
-}
 
-plugins {
-    id 'java-library'
-    id 'idea'
-    id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.183'
-}
+    if (project.findProperty('modrinth_id')) {
+        def mrOptions = modrinthOptions {
+            accessToken = providers.environmentVariable('MODRINTH_TOKEN')
+            projectId = project.modrinth_id
+            minecraftVersions.add(mcVersion)
+            environment = CLIENT_AND_SERVER
+            requires {
+                slug = 'lithostitched'
+            }
+        }
 
-group = mod_group_id
-version = mod_version
-
-base {
-    archivesName = mod_id
-}
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-
-minecraft {
-    mappings {
-        channel = official()
-        version.put "minecraft", minecraft_version
-    }
-    accessTransformers.file('src/main/resources/META-INF/accesstransformer.cfg')
-}
-
-runs {
-    configureEach {
-        systemProperty 'forge.logging.markers', 'REGISTRIES'
-        systemProperty 'forge.logging.console.level', 'debug'
-        modSource project.sourceSets.main
+        modrinth('modrinthFabric') {
+            from mrOptions
+            file = project(':fabric').tasks.named('jar', Jar).flatMap { it.archiveFile }
+            modLoaders.add('fabric')
+            displayName = fabricDisplayName
+        }
+        modrinth('modrinthNeoforge') {
+            from mrOptions
+            file = project(':neoforge').tasks.named('jar', Jar).flatMap { it.archiveFile }
+            modLoaders.add('neoforge')
+            displayName = neoforgeDisplayName
+        }
     }
 
-    client {
-        workingDirectory.set(project.file('run'))
-        systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
-    }
-
-    server {
-        workingDirectory.set(project.file('run'))
-        systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
-        programArgument '--nogui'
-    }
-
-    data {
-        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
-    }
 }
-
-repositories {
-    maven {
-        name = "Forge"
-        url = "https://maven.minecraftforge.net"
-    }
-}
-
-dependencies {
-    implementation "net.neoforged:neoforge:${neo_version}"
-    implementation 'com.github.glitchfiend:TerraBlender-neoforge:' + minecraft_version + '-' + terrablender_version
-
-}
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [            minecraft_version      : minecraft_version,
-                                         minecraft_version_range: minecraft_version_range,
-                                         neo_version            : neo_version,
-                                         neo_version_range      : neo_version_range,
-                                         loader_version_range   : loader_version_range,
-                                         mod_id                 : mod_id,
-                                         mod_version            : mod_version
-            ]
-
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/neoforge.mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
-}
-
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes(["Specification-Title"     : mod_id,
-                    "Specification-Vendor"    : "Team Hibiscus",
-                    "Specification-Version"   : "1", // We are version 1 of ourselves
-                    "Implementation-Title"    : project.name,
-                    "Implementation-Version"  : project.jar.archiveVersion,
-                    "Implementation-Vendor"   : "Team Hibiscus",
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
+// GitHub release publishing intentionally omitted — we only use github_owner / github_repo for
+// source/issues links in fabric.mod.json and neoforge.mods.toml. Anyone who wants GitHub releases
+// can wire it up from the mod-publish-plugin docs: https://modmuss50.github.io/mod-publish-plugin/

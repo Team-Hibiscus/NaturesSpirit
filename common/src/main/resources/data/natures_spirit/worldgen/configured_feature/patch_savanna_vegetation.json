@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
+      },
+      "scale": 0.030833334,
+      "seed": 2445,
+      "states": [
+        {
+          "Name": "minecraft:air"
+        },
+        {
+          "Name": "natures_spirit:oat_grass"
+        },
+        {
+          "Name": "natures_spirit:oat_grass"
+        },
+        {
+          "Name": "natures_spirit:tall_oat_grass",
+          "Properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "Name": "natures_spirit:oat_grass"
+        },
+        {
+          "Name": "natures_spirit:oat_grass"
+        },
+        {
+          "Name": "minecraft:air"
+        }
+      ]
+    }
+  }
+}

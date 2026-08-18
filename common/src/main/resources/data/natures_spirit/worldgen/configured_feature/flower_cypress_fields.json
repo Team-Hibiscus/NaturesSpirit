@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
+      },
+      "scale": 0.030833334,
+      "seed": 2445,
+      "states": [
+        {
+          "Name": "minecraft:short_grass"
+        },
+        {
+          "Name": "minecraft:tall_grass",
+          "Properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "Name": "minecraft:poppy"
+        },
+        {
+          "Name": "natures_spirit:carnation",
+          "Properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "Name": "minecraft:poppy"
+        },
+        {
+          "Name": "minecraft:short_grass"
+        },
+        {
+          "Name": "minecraft:poppy"
+        },
+        {
+          "Name": "natures_spirit:carnation",
+          "Properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "Name": "minecraft:poppy"
+        },
+        {
+          "Name": "minecraft:tall_grass",
+          "Properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "Name": "minecraft:short_grass"
+        }
+      ]
+    }
+  }
+}

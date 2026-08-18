@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cyan_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:cyan_kaolin"
+  },
+  "result": {
+    "id": "natures_spirit:cyan_kaolin_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cyan_chalk",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:cyan_chalk"
+  },
+  "result": {
+    "id": "natures_spirit:cyan_chalk_stairs",
+    "count": 4
+  }
+}

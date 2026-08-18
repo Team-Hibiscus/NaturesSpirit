@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "yellow_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:yellow_kaolin"
+  },
+  "result": {
+    "id": "natures_spirit:yellow_kaolin_stairs",
+    "count": 4
+  }
+}

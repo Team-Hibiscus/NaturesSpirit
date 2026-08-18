@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "kaolin_bricks",
+  "ingredients": [
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "natures_spirit:kaolin_bricks",
+    "minecraft:lime_dye"
+  ],
+  "result": {
+    "id": "natures_spirit:lime_kaolin_bricks",
+    "count": 8
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:stone",
+    "minecraft:calcite"
+  ],
+  "result": {
+    "id": "natures_spirit:travertine",
+    "count": 2
+  },
+  "show_notification": true
+}

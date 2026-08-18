@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:poppy"
+          },
+          "weight": 3
+        },
+        {
+          "data": {
+            "Name": "minecraft:dandelion"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:anemone"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

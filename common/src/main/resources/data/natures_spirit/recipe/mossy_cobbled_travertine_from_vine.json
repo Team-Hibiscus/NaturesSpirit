@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "mossy_cobblestone",
+  "ingredients": [
+    "natures_spirit:cobbled_travertine",
+    "minecraft:vine"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natures_spirit:mossy_cobbled_travertine"
+  }
+}

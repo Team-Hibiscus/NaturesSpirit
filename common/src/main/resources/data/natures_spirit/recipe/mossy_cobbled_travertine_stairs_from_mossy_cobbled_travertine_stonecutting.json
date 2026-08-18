@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "natures_spirit:mossy_cobbled_travertine",
+  "result": {
+    "count": 1,
+    "id": "natures_spirit:mossy_cobbled_travertine_stairs"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "lime_chalk",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:lime_chalk"
+  },
+  "result": {
+    "id": "natures_spirit:lime_chalk_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip",
+    "natures_spirit:desert_turnip"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natures_spirit:desert_turnip_block"
+  }
+}

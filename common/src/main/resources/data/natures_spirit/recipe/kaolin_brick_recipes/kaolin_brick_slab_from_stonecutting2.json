@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": "natures_spirit:kaolin",
+  "result": {
+    "id": "natures_spirit:kaolin_brick_slab",
+    "count": 2
+  }
+}

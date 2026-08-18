@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "natures_spirit:large_flaxen_fern",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:flaxen_fern"
+          },
+          "weight": 3
+        }
+      ]
+    }
+  }
+}

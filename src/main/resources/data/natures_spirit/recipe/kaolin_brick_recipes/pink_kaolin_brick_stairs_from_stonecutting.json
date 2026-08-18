@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "natures_spirit:pink_kaolin_bricks"
-  },
-  "result": {"id": "natures_spirit:pink_kaolin_brick_stairs"
-}}

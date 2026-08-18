@@ -1,8 +1,0 @@
-{
-  "pack": {
-    "pack_format": 26,
-    "description": "Adds emissive ore textures to a Nature's Spirit.",
-    "forge:resource_pack_format": 12,
-    "forge:data_pack_format": 10
-  }
-}

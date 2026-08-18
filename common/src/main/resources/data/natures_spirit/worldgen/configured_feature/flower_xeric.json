@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "natures_spirit:hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:blue_iris"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:black_iris"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:anemone"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

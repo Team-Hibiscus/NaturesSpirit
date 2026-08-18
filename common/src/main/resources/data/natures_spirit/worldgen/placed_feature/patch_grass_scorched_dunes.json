@@ -1,0 +1,47 @@
+{
+  "feature": "natures_spirit:patch_drylands_grass",
+  "placement": [
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 40.0,
+      "noise_offset": 0.0,
+      "noise_to_count_ratio": 8
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 100
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 7,
+        "min": -7,
+        "plateau": 0
+      },
+      "y_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 2,
+        "min": -2,
+        "plateau": 0
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+      }
+    }
+  ]
+}

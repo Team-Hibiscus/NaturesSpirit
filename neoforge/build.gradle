@@ -1,0 +1,112 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
+}
+
+// Loom provides `localRuntime` out of the box; MDG does not, so wire it up here.
+// Deps in `localRuntime` are on the dev runtime classpath but aren't exposed in
+// `runtimeElements`, so they don't propagate transitively to maven consumers.
+configurations {
+    localRuntime
+    runtimeClasspath.extendsFrom(localRuntime)
+    testRuntimeClasspath.extendsFrom(localRuntime)
+}
+
+dependencies {
+    implementation("maven.modrinth:lithostitched:${lithostitched_version}-neoforge-${lithostitched_mc}")
+
+    localRuntime("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    localRuntime("curse.maven:jade-324717:8068368")
+}
+
+def commonGenerated = project(':common').file('src/generated/resources').absolutePath
+def commonExisting = project(':common').file('src/main/resources').absolutePath
+
+neoForge {
+    version = neoforge_version
+    // Automatically enable neoforge AccessTransformers if the file exists
+    def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
+            systemProperty 'forge.logging.console.level', 'debug'
+            systemProperty 'forge.logging.file.level', 'info' // You can change this to DEBUG or TRACE, but beware performance impact
+            jvmArgument '-Xmx6G'
+            jvmArgument '-Xms2G'
+        }
+        client {
+            client()
+            gameDirectory = this.mkdir(this.file("runs/client"))
+        }
+
+        clientExtra {
+            client()
+            gameDirectory = this.mkdir(this.file("runs/client2"))
+            programArguments.addAll('--username', 'Dev2')
+        }
+
+        data {
+            // 26.x replaced the single `data` run type with clientData/serverData. NeoForge 26.1.2
+            // ships no `data` type at all, and only clientData can generate models and item assets.
+            clientData()
+            gameDirectory = this.mkdir(this.file("runs/data"))
+            // DataGen can be run by - "./gradlew :neoforge:runData" in Terminal.
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', commonGenerated, '--existing', commonExisting
+        }
+
+        server {
+            server()
+            this.file("runs/server").createParentDirectories()
+            gameDirectory = this.mkdir(this.file("runs/server"))
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+// Generated resources are in :common (see the data run above), not here.
+
+// Implement mcgradleconventions loader attribute
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+    configurations.named("$variant") {
+        attributes {
+            attribute(loaderAttribute, 'neoforge')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName, it.getTaskName(null, 'jarJar')].each { variant ->
+        configurations.named("$variant") {
+            attributes {
+                attribute(loaderAttribute, 'neoforge')
+            }
+        }
+    }
+}
+
+if (project.findProperty('neoforge_modpack_path')) {
+    def neoModpackDest = new File(project.neoforge_modpack_path).with { f ->
+        f.absolute ? f : new File(System.getProperty('user.home'), project.neoforge_modpack_path)
+    }
+    tasks.register('sendToModpackNeo', Copy) {
+        group = 'publishing'
+        description = "Copies the NeoForge dev jar into ${neoModpackDest}"
+        dependsOn tasks.named('jar')
+        from tasks.named('jar').flatMap { it.archiveFile }
+        into neoModpackDest
+        rename { String fileName ->
+            fileName.replace(project.version.toString(), 'dev')
+        }
+        doLast {
+            println "NeoForge dev jar sent to: ${neoModpackDest}"
+        }
+    }
+}

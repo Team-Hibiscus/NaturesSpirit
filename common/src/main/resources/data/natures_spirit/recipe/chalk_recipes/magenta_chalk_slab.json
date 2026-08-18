@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "magenta_chalk",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:magenta_chalk"
+  },
+  "result": {
+    "id": "natures_spirit:magenta_chalk_slab",
+    "count": 6
+  }
+}

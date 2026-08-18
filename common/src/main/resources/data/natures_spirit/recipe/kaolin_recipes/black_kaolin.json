@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "kaolin",
+  "ingredients": [
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "natures_spirit:kaolin",
+    "minecraft:black_dye"
+  ],
+  "result": {
+    "id": "natures_spirit:black_kaolin",
+    "count": 8
+  }
+}

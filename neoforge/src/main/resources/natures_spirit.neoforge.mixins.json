@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.hibiscus.naturespirit.mixin",
+  "plugin": "net.hibiscus.naturespirit.MixinConfigPluginNeoforge",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

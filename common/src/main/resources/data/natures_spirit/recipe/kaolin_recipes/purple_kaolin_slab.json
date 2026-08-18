@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "purple_kaolin",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:purple_kaolin"
+  },
+  "result": {
+    "id": "natures_spirit:purple_kaolin_slab",
+    "count": 6
+  }
+}

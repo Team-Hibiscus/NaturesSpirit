@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "natures_spirit:bluebell"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "natures_spirit:anemone"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

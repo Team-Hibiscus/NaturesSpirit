@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natures_spirit:paper_block",
+    "#minecraft:saplings"
+  ],
+  "result": {
+    "id": "natures_spirit:blooming_paper_block"
+  },
+  "show_notification": true
+}

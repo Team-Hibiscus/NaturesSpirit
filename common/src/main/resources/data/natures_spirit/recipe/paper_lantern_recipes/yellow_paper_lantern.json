@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "paper_lantern",
+  "ingredients": [
+    "natures_spirit:paper_lantern",
+    "minecraft:yellow_dye"
+  ],
+  "result": {
+    "id": "natures_spirit:yellow_paper_lantern",
+    "count": 1
+  }
+}

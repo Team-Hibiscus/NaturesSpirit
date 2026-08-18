@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "blue_kaolin",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:blue_kaolin"
+  },
+  "result": {
+    "id": "natures_spirit:blue_kaolin_stairs",
+    "count": 4
+  }
+}

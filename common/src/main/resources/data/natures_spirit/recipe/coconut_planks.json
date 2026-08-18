@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#natures_spirit:coconut_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "natures_spirit:coconut_planks"
+  }
+}

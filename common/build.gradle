@@ -1,0 +1,73 @@
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+    // Automatically enable AccessTransformers if the file exists
+    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+}
+
+// Datagen output, written by `:neoforge:runData`. Registered before the artifacts block below so it
+// is exposed to the loader modules alongside src/main/resources.
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+dependencies {
+
+    // Neoforge bundles Fabric's Mixin fork, so it's safe to use in common.
+    // This lets us mixin to interfaces and extend enums
+    compileOnly(annotationProcessor("net.fabricmc:sponge-mixin:${fabric_mixin_version}"))
+    // Fabric and Neoforge both also bundle MixinExtras
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
+
+    // Lithostitched publishes no loader-agnostic artifact, but their API is identical between loaders,
+    // so we can safely reference it here in common
+    compileOnly("maven.modrinth:lithostitched:${lithostitched_version}-neoforge-${lithostitched_mc}")
+
+    // NightConfig. Compile-only here: NeoForge-provided (Neoforge Configs use it)
+    // For Fabric, we `include` it.
+    compileOnly("com.electronwill.night-config:core:${nightconfig_version}")
+    compileOnly("com.electronwill.night-config:toml:${nightconfig_version}")
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    // One artifact per resource srcDir. `singleFile` throws once src/generated/resources is added.
+    sourceSets.main.resources.sourceDirectories.each {
+        add('commonResources', it)
+    }
+}
+
+// Implement mcgradleconventions loader attribute
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+    configurations.named("$variant") {
+        attributes {
+            attribute(loaderAttribute, 'common')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant->
+        configurations.named("$variant") {
+            attributes {
+                attribute(loaderAttribute, 'common')
+            }
+        }
+    }
+}

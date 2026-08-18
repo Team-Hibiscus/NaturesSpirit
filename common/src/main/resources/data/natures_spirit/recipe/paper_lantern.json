@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:paper",
+    "a": "minecraft:torch"
+  },
+  "pattern": [
+    "###",
+    "#a#",
+    "###"
+  ],
+  "result": {
+    "id": "natures_spirit:paper_lantern"
+  },
+  "show_notification": true
+}

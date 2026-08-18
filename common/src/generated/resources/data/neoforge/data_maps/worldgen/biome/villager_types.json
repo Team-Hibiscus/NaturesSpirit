@@ -1,0 +1,34 @@
+{
+  "values": {
+    "natures_spirit:blooming_dunes": {
+      "villager_type": "natures_spirit:adobe"
+    },
+    "natures_spirit:carnation_fields": {
+      "villager_type": "natures_spirit:cypress"
+    },
+    "natures_spirit:cypress_fields": {
+      "villager_type": "natures_spirit:cypress"
+    },
+    "natures_spirit:drylands": {
+      "villager_type": "minecraft:desert"
+    },
+    "natures_spirit:lavender_fields": {
+      "villager_type": "natures_spirit:cypress"
+    },
+    "natures_spirit:lively_dunes": {
+      "villager_type": "natures_spirit:adobe"
+    },
+    "natures_spirit:stratified_desert": {
+      "villager_type": "natures_spirit:adobe"
+    },
+    "natures_spirit:tropical_shores": {
+      "villager_type": "natures_spirit:coconut"
+    },
+    "natures_spirit:wisteria_forest": {
+      "villager_type": "natures_spirit:wisteria"
+    },
+    "natures_spirit:wooded_drylands": {
+      "villager_type": "minecraft:desert"
+    }
+  }
+}

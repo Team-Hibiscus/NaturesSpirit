@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Z": "natures_spirit:cheese_bucket",
+    "X": "minecraft:wheat",
+    "Y": "minecraft:beetroot"
+  },
+  "pattern": [
+    "YZY",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natures_spirit:whole_pizza"
+  },
+  "show_notification": true
+}

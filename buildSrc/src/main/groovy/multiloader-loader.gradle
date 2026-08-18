@@ -1,0 +1,52 @@
+plugins {
+    id 'multiloader-common'
+}
+
+configurations {
+    commonJava{
+        canBeResolved = true
+    }
+    commonResources{
+        canBeResolved = true
+    }
+}
+
+dependencies {
+    compileOnly(project(':common')) {
+        def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+        attributes {
+            attribute(loaderAttribute, 'common')
+        }
+    }
+    commonJava project(path: ':common', configuration: 'commonJava')
+    commonResources project(path: ':common', configuration: 'commonResources')
+}
+
+tasks.named('compileJava', JavaCompile) {
+    dependsOn(configurations.commonJava)
+    source(configurations.commonJava)
+}
+
+processResources {
+    dependsOn(configurations.commonResources)
+    from(configurations.commonResources)
+    // A path present in both common's main and generated resources would be a silent overwrite
+    // Fail instead so any stale hand-written copy of a now-generated file is caught at build time.
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    // NeoForge's datagen hash cache is written inside the output dir and would ship in the jar.
+    exclude '.cache/**'
+}
+
+tasks.named('javadoc', Javadoc).configure {
+    dependsOn(configurations.commonJava)
+    source(configurations.commonJava)
+}
+
+tasks.named('sourcesJar', Jar) {
+    dependsOn(configurations.commonJava)
+    from(configurations.commonJava)
+    dependsOn(configurations.commonResources)
+    from(configurations.commonResources)
+}
+
+// Publishing is configured once at the root project (see build.gradle).

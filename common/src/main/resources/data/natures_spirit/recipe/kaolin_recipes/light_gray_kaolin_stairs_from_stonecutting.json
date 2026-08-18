@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": "natures_spirit:light_gray_kaolin",
+  "result": {
+    "id": "natures_spirit:light_gray_kaolin_stairs"
+  }
+}

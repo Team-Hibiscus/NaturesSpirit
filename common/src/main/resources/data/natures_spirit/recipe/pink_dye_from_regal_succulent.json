@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "pink_dye",
+  "ingredients": [
+    "natures_spirit:regal_succulent"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:pink_dye"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "kaolin_bricks",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:gray_kaolin_bricks"
+  },
+  "result": {
+    "id": "natures_spirit:gray_kaolin_brick_slab",
+    "count": 6
+  }
+}

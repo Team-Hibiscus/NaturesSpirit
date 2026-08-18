@@ -1,0 +1,13 @@
+{
+  "asset_id": "natures_spirit:aspen",
+  "author": {
+    "color": "gray",
+    "translate": "painting.natures_spirit.aspen.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.natures_spirit.aspen.title"
+  },
+  "width": 2
+}

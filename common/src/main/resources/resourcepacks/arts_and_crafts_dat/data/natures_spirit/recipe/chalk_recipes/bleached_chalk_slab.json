@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "chalk",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "natures_spirit:bleached_chalk"
+  },
+  "result": {
+    "id": "natures_spirit:bleached_chalk_slab",
+    "count": 6
+  }
+}
