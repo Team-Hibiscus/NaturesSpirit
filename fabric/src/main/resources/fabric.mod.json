@@ -1,45 +1,53 @@
 {
-    "schemaVersion": 1,
-    "id": "${mod_id}",
-    "version": "${version}",
-    "name": "${mod_name}",
-    "description": "${description}",
-    "authors": [
-        "${mod_author}"
+  "schemaVersion": 1,
+  "id": "natures_spirit",
+  "version": "2.3.0+26.1-release",
+  "name": "Nature's Spirit",
+  "description": "Nature expanded for Minecraft 26.1 Fabric \u2014 Terralith-ready Lithostitched blend, polished worldgen, and pack-friendly defaults.",
+  "authors": [
+    "Team Hibiscus"
+  ],
+  "contact": {
+    "sources": "https://github.com/Team-Hibiscus/NatureSpiritForge",
+    "homepage": "https://astonishing-chord-210.notion.site/194f058bb4ac80c2979fdfe22fb8010e"
+  },
+  "license": "All Rights Reserved",
+  "icon": "assets/natures_spirit/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.hibiscus.naturespirit.NaturesSpiritFabric"
     ],
-    "contact": {
-        "sources": "https://github.com/${github_owner}/${github_repo}",
-        "homepage": "https://astonishing-chord-210.notion.site/194f058bb4ac80c2979fdfe22fb8010e"
-    },
-    "license": "${license}",
-    "icon": "assets/natures_spirit/icon.png",
-    "environment": "*",
-    "entrypoints": {
-        "main": [
-          "net.hibiscus.naturespirit.NaturesSpiritFabric"
-        ],
-        "client": [
-          "net.hibiscus.naturespirit.NaturesSpiritFabricClient"
-        ]
-    },
-    "mixins": [
-        "${mod_id}.mixins.json",
-        "${mod_id}.fabric.mixins.json"
-    ],
-    "accessWidener": "natures_spirit.accesswidener",
-    "depends": {
-        "fabricloader": ">=${fabric_loader_version}",
-        "fabric-api": "*",
-        "minecraft": "~${minecraft_version}",
-        "java": ">=${java_version}",
-        "lithostitched": ">=${lithostitched_version}"
-    },
-    "custom": {
-        "modmenu": {
-            "links": {
-                "modmenu.discord": "https://discord.gg/T6X8KGyt5C"
-            },
-            "update_checker": true
-        }
+    "client": [
+      "net.hibiscus.naturespirit.NaturesSpiritFabricClient"
+    ]
+  },
+  "mixins": [
+    "natures_spirit.mixins.json",
+    "natures_spirit.fabric.mixins.json"
+  ],
+  "accessWidener": "natures_spirit.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "fabric-api": "*",
+    "minecraft": "~26.1",
+    "java": ">=25",
+    "lithostitched": ">=1.7.13"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/T6X8KGyt5C"
+      },
+      "update_checker": false
     }
+  },
+  "jars": [
+    {
+      "file": "META-INF/jars/core-3.8.3.jar"
+    },
+    {
+      "file": "META-INF/jars/toml-3.8.3.jar"
+    }
+  ]
 }

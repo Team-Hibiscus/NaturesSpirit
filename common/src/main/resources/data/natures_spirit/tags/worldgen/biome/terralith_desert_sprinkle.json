@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "terralith:desert_canyon",
+    "terralith:desert_oasis",
+    "terralith:desert_spires",
+    "terralith:lush_desert",
+    "terralith:bryce_canyon",
+    "terralith:savanna_badlands",
+    "terralith:red_oasis",
+    "terralith:ancient_sands",
+    "terralith:sandstone_valley",
+    "terralith:warped_mesa"
+  ]
+}
