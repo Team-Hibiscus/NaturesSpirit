@@ -149,8 +149,6 @@ This 26.1 port is distributed for compatibility and upstream contribution purpos
 
 <div align="center">
 
-**Made for Minecraft 26.1** · Multiloader · Built to be merge-ready
-
-*If you're from Team Hibiscus: thank you for Nature's Spirit — this branch is meant to help bring it forward.*
+**Made for Minecraft 26.1** · Multiloader
 
 </div>
