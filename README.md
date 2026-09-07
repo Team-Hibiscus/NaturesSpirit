@@ -54,8 +54,6 @@ Worldgen integration uses **[Lithostitched](https://modrinth.com/mod/lithostitch
 | NeoForge | `26.1.0.19-beta` (pinned for MC 26.1) |
 | Lithostitched | `>= 1.7.13` (**required**) |
 
-Optional but recommended for exploration packs: Terralith, Tectonic, Sodium / Iris (Fabric).
-
 ---
 
 ## Highlights in this branch
