@@ -44,19 +44,6 @@ Worldgen integration uses **[Lithostitched](https://modrinth.com/mod/lithostitch
 
 ---
 
-## Why 26.1?
-
-Minecraft **26.1** is a major platform jump (Java 25, updated loaders, new worldgen plumbing). Official Nature's Spirit builds historically targeted earlier lines (for example 1.20–1.21).
-
-This port exists to:
-
-- Keep Nature's Spirit playable on **true 26.1** (not accidentally pulled onto 26.1.1 / 26.1.2 via NeoForge bumps)
-- Ship **Fabric + NeoForge** from one multiloader tree
-- Fix 26.1-era worldgen friction with Terralith / Lithostitched (feature-order cycles, snow borders)
-- Stay structured like upstream so Team Hibiscus can review and, hopefully, merge
-
----
-
 ## Requirements
 
 | Dependency | Version / notes |
