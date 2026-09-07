@@ -1,9 +1,15 @@
 package net.hibiscus.naturespirit;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 import net.hibiscus.naturespirit.blocks.NSCauldronBehavior;
 import net.hibiscus.naturespirit.registration.NSFlammables;
+import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.core.cauldron.CauldronInteractions;
+import net.minecraft.core.cauldron.NSCauldronRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +22,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.RegisterCauldronInteractionEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
 @EventBusSubscriber(modid = NaturesSpirit.MOD_ID)
@@ -29,6 +34,9 @@ public final class NSNeoforgeContent {
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(NSNeoforgeContent::registerFlowerPots);
         event.enqueueWork(NSNeoforgeContent::registerFlammables);
+        // NeoForge 26.1.0.x has no RegisterCauldronInteractionEvent (added in 26.1.1.8-beta).
+        // Register the same way Fabric does so we stay on Minecraft 26.1.
+        event.enqueueWork(NSNeoforgeContent::registerCauldronInteractions);
     }
 
     @SubscribeEvent
@@ -66,17 +74,14 @@ public final class NSNeoforgeContent {
         }
     }
 
-    @SubscribeEvent
-    public static void onRegisterCauldronDispatchers(RegisterCauldronInteractionEvent.Dispatcher event) {
+    private static void registerCauldronInteractions() {
+        Map<Identifier, CauldronInteraction.Dispatcher> dispatchers = new HashMap<>();
+        dispatchers.put(NSCauldronBehavior.EMPTY_DISPATCHER_ID, CauldronInteractions.EMPTY);
         for (NSCauldronBehavior.DispatcherEntry entry : NSCauldronBehavior.DISPATCHERS) {
-            event.register(entry.id(), entry.dispatcher());
+            dispatchers.put(entry.id(), entry.dispatcher());
         }
-    }
-
-    @SubscribeEvent
-    public static void onRegisterCauldronInteractions(RegisterCauldronInteractionEvent.Interaction event) {
         for (NSCauldronBehavior.InteractionEntry entry : NSCauldronBehavior.INTERACTIONS) {
-            event.register(entry.dispatcherId(), entry.item().get(), entry.interaction());
+            NSCauldronRegistration.put(dispatchers.get(entry.dispatcherId()), entry.item().get(), entry.interaction());
         }
     }
 

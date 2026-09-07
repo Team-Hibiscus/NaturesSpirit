@@ -6,13 +6,16 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.hibiscus.naturespirit.client.NSClient;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.properties.WoodType;
 
 public final class NSFabricClient {
 
@@ -20,10 +23,24 @@ public final class NSFabricClient {
     }
 
     public static void run() {
+        registerWoodTypes();
         registerBlockTints();
         registerLayerDefinitions();
         registerParticles();
         registerEntityRenderers();
+    }
+
+    /**
+     * MC 26.1 removed Sheets.addWoodType. Sign/hanging-sign sprites are filled from
+     * WoodType.values() at Sheets class-init, so mod woods registered later must be put in manually.
+     */
+    private static void registerWoodTypes() {
+        for (Supplier<WoodType> woodTypeSupplier : NSClient.SHEET_WOOD_TYPES) {
+            WoodType woodType = woodTypeSupplier.get();
+            Identifier id = Identifier.parse(woodType.name());
+            Sheets.SIGN_SPRITES.put(woodType, Sheets.SIGN_MAPPER.apply(id));
+            Sheets.HANGING_SIGN_SPRITES.put(woodType, Sheets.HANGING_SIGN_MAPPER.apply(id));
+        }
     }
 
     private static void registerBlockTints() {

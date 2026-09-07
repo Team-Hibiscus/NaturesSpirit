@@ -43,6 +43,7 @@ public abstract class CoralBlockBlockMixin extends Block {
 
   @Override
   public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+    super.randomTick(state, world, pos, random);
     if (NSConfig.calciteGenerator) {
       if (naturespirit$findColumnEnd(world, pos).isPresent()) {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
@@ -78,6 +79,6 @@ public abstract class CoralBlockBlockMixin extends Block {
 
   @Override
   public boolean isRandomlyTicking(BlockState state) {
-    return true;
+    return super.isRandomlyTicking(state) || NSConfig.calciteGenerator;
   }
 }

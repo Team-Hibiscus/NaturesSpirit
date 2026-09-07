@@ -1,0 +1,22 @@
+{
+  "predicate": {
+    "type": "lithostitched:mod_loaded",
+    "mod_id": "terralith"
+  },
+  "type": "lithostitched:add_features",
+  "priority": 1500,
+  "biomes": [
+    "terralith:desert_canyon",
+    "terralith:desert_oasis",
+    "terralith:desert_spires",
+    "terralith:lush_desert",
+    "terralith:bryce_canyon",
+    "terralith:savanna_badlands",
+    "terralith:red_oasis",
+    "terralith:ancient_sands",
+    "terralith:sandstone_valley",
+    "terralith:warped_mesa"
+  ],
+  "features": "natures_spirit:compat_terralith_desert_sprinkle",
+  "step": "vegetal_decoration"
+}

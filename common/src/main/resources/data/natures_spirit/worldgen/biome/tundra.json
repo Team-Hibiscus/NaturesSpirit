@@ -102,7 +102,7 @@
       "natures_spirit:snowy_grass_fixer"
     ]
   ],
-  "has_precipitation": false,
+  "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {
     "ambient": [

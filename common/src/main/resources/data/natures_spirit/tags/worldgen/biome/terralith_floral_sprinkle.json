@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "terralith:blooming_plateau",
+    "terralith:blooming_valley",
+    "terralith:lavender_forest",
+    "terralith:lavender_valley",
+    "terralith:sakura_grove",
+    "terralith:sakura_valley",
+    "terralith:moonlight_grove",
+    "terralith:moonlight_valley",
+    "terralith:orchid_swamp",
+    "terralith:lush_valley",
+    "terralith:mirage_isles",
+    "terralith:alpha_islands",
+    "terralith:cloud_forest",
+    "terralith:forested_highlands",
+    "terralith:temperate_highlands",
+    "terralith:amethyst_rainforest",
+    "terralith:skylands_spring",
+    "terralith:skylands_summer",
+    "terralith:skylands_autumn"
+  ]
+}

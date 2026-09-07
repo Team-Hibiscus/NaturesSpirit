@@ -24,3 +24,10 @@ run
 runs
 
 /common/src/generated/resources/.cache/
+
+# local / accidental artifacts (do not commit)
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.disabled
+.DS_Store
+Thumbs.db
