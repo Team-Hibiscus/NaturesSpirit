@@ -4,8 +4,7 @@
 
 # Nature's Spirit — Minecraft 26.1
 
-**Community multiloader port** of [Nature's Spirit](https://github.com/Team-Hibiscus/NaturesSpirit) for **Minecraft 26.1**  
-Fabric · NeoForge · Lithostitched worldgen
+Fabric · NeoForge
 
 <br/>
 
