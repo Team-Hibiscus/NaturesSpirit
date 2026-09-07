@@ -110,16 +110,11 @@ Outputs:
 └── settings.gradle
 ```
 
-Same shape as a modern Fabric + NeoForge multiloader port — intentional, so upstream review stays familiar.
-
----
-
 ## Credits
 
 - **Team Hibiscus** — authors of Nature's Spirit  
   Original projects: [NaturesSpirit](https://github.com/Team-Hibiscus/NaturesSpirit) · [NatureSpiritForge](https://github.com/Team-Hibiscus/NatureSpiritForge)
 - **Lithostitched** — biome / climate injection used for 26.1 worldgen blend
-- Community testers and pack authors who pushed for Terralith-friendly 26.1 support
 
 This port does **not** claim ownership of Nature's Spirit. All rights remain with Team Hibiscus under their license. Please support the official Modrinth / CurseForge pages and Discord.
 
