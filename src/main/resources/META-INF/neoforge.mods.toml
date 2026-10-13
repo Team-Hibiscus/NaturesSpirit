@@ -30,7 +30,15 @@ ordering = "NONE"
 side = "BOTH"
 [[dependencies."${mod_id}"]]
 modId = "terrablender"
-mandatory = true
+mandatory = false
+type = "optional"
+versionRange = "[1,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies."${mod_id}"]]
+modId = "lithostitched"
+mandatory = false
+type = "optional"
 versionRange = "[1,)"
 ordering = "NONE"
 side = "BOTH"

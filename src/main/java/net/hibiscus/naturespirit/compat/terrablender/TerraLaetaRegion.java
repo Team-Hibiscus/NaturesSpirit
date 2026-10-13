@@ -1,6 +1,7 @@
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.compat.terrablender;
 
 import com.mojang.datafixers.util.Pair;
+import net.hibiscus.naturespirit.world.parameters.TerraLaetaParameters;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
 
@@ -11,15 +12,16 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 
-public class TerraFlavaRegion extends Region {
+public class TerraLaetaRegion extends Region {
 
-  public TerraFlavaRegion(ResourceLocation name, int weight) {
+  public TerraLaetaRegion(ResourceLocation name, int weight) {
     super(name, RegionType.OVERWORLD, weight);
   }
 
   @Override
   public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
-    (new TerraFlavaParameters()).addBiomes(mapper);
+
+    (new TerraLaetaParameters()).addBiomes(mapper);
   }
 
 }

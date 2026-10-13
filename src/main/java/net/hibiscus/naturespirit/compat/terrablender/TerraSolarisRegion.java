@@ -1,6 +1,7 @@
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.compat.terrablender;
 
 import com.mojang.datafixers.util.Pair;
+import net.hibiscus.naturespirit.world.parameters.TerraSolarisParameters;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
 
@@ -11,15 +12,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 
-public class TerraMaterRegion extends Region {
+public class TerraSolarisRegion extends Region {
 
-  public TerraMaterRegion(ResourceLocation name, int weight) {
+  public TerraSolarisRegion(ResourceLocation name, int weight) {
     super(name, RegionType.OVERWORLD, weight);
   }
 
   @Override
   public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
-    (new TerraMaterParameters()).addBiomes(mapper);
+    (new TerraSolarisParameters()).addBiomes(mapper);
   }
-
 }

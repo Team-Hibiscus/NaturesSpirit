@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.terrablender;
+package net.hibiscus.naturespirit.world.parameters;
 
 import com.mojang.datafixers.util.Pair;
 import net.hibiscus.naturespirit.config.NSConfig;
@@ -186,7 +186,7 @@ public class TerraSolarisParameters extends OverworldBiomeBuilder {
     };
   }
 
-  protected void addBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> parameters) {
+  public void addBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> parameters) {
     this.addOffCoastBiomes(parameters);
     this.addInlandBiomes(parameters);
     this.addUndergroundBiomes(parameters);
