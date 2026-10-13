@@ -124,3 +124,5 @@ run/
 *.bin
 *.lock
 runs/junit/junit_test_args.txt
+
+neoforge/runs/
