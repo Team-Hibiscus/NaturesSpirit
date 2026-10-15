@@ -1001,6 +1001,16 @@ public class NatureSpirit {
                     Pack.Position.TOP
             );
         }
+        if (NSConfig.taigaToggle) {
+            event.addPackFinders(
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "resourcepacks/modified_taiga"),
+                    PackType.SERVER_DATA,
+                    Component.translatable("pack.natures_spirit.modified_windswept_hills"),
+                    PackSource.BUILT_IN,
+                    true,
+                    Pack.Position.TOP
+            );
+        }
 
     }
 

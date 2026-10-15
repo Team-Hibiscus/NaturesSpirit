@@ -30,6 +30,7 @@ public class NSConfig {
   public static final ModConfigSpec.BooleanValue MOUNTAIN_BIOMES_TOGGLE = BUILDER.define("datapack.mountain_biomes_toggle", true);
   public static final ModConfigSpec.BooleanValue SAVANNA_TOGGLE = BUILDER.define("datapack.savanna_toggle", true);
   public static final ModConfigSpec.BooleanValue DARK_FOREST_TOGGLE = BUILDER.define("datapack.dark_forest_toggle", true);
+  public static final ModConfigSpec.BooleanValue TAIGA_TOGGLE = BUILDER.define("datapack.taiga_toggle", true);
   public static final ModConfigSpec.BooleanValue WINDSWEPT_HILLS_TOGGLE = BUILDER.define("datapack.windswept_hills_toggle", true);
   public static final ModConfigSpec.BooleanValue HAS_SUGI_FOREST = BUILDER.define("biome.has_sugi_forest", true);
   public static final ModConfigSpec.BooleanValue HAS_WINDSWEPT_SUGI_FOREST = BUILDER.define("biome.has_windswept_sugi_forest", true);
@@ -104,6 +105,7 @@ public class NSConfig {
   public static boolean mountainBiomesToggle;
   public static boolean savannaToggle;
   public static boolean darkForestToggle;
+  public static boolean taigaToggle;
   public static boolean windsweptHillsToggle;
   public static boolean hasSugiForest;
   public static boolean hasWindsweptSugiForest;
@@ -178,6 +180,7 @@ public class NSConfig {
     mountainBiomesToggle = MOUNTAIN_BIOMES_TOGGLE.get();
     savannaToggle = SAVANNA_TOGGLE.get();
     darkForestToggle = DARK_FOREST_TOGGLE.get();
+    taigaToggle = TAIGA_TOGGLE.get();
     windsweptHillsToggle = WINDSWEPT_HILLS_TOGGLE.get();
     hasSugiForest = HAS_SUGI_FOREST.get();
     hasWindsweptSugiForest = HAS_WINDSWEPT_SUGI_FOREST.get();
