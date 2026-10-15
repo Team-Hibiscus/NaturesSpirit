@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.compat.lithostiched;
+package net.hibiscus.naturespirit.compat.lithostitched;
 
 public class LithostitchedSetup {
     public static void registerLithostitchedBiomes() {

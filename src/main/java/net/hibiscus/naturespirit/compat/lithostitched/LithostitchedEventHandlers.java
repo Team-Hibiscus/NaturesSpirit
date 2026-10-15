@@ -1,4 +1,4 @@
-package net.hibiscus.naturespirit.compat.lithostiched;
+package net.hibiscus.naturespirit.compat.lithostitched;
 
 import com.mojang.datafixers.util.Pair;
 import dev.worldgen.lithostitched.api.event.AddBiomeInjectorsEvent;
@@ -12,6 +12,7 @@ import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
 import dev.worldgen.lithostitched.impl.worldgen.biomeinjector.region.Region;
 import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.config.NSConfig;
+import net.hibiscus.naturespirit.registration.NSBiomes;
 import net.hibiscus.naturespirit.world.NSSurfaceRules;
 import net.hibiscus.naturespirit.world.parameters.*;
 import net.minecraft.core.Holder;
@@ -23,6 +24,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 
 import java.util.ArrayList;
@@ -55,6 +57,26 @@ public class LithostitchedEventHandlers {
             addBiomeInjector(registries, consumer, "terra_laeta", new TerraLaetaParameters()::addBiomes, TERRA_LAETA);
             addBiomeInjector(registries, consumer, "terra_mater", new TerraMaterParameters()::addBiomes, TERRA_MATER);
             addBiomeInjector(registries, consumer, "terra_solaris", new TerraSolarisParameters()::addBiomes, TERRA_SOLARIS);
+
+            if (NSConfig.hasMarsh) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "marsh_humidity"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.SWAMP),
+                                registries.holderOrThrow(NSBiomes.MARSH),
+                                ParameterBuilder.create().climateMax(BiomeInjector.ClimateParameter.HUMIDITY, .1F)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "marsh_temperature"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.SWAMP),
+                                registries.holderOrThrow(NSBiomes.MARSH),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                        )
+                );
+            }
+
         });
     }
 
@@ -81,7 +103,7 @@ public class LithostitchedEventHandlers {
         Climate.ParameterList<Holder<Biome>> regionLayout = new Climate.ParameterList<>(regionPoints);
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name),
-                BiomeInjector.builder(Level.OVERWORLD).dispatchAlternateLayout(
+                BiomeInjector.builder(Level.OVERWORLD).priority(1).dispatchAlternateLayout(
                         ParameterBuilder.create().region(region),
                         regionLayout)
         );

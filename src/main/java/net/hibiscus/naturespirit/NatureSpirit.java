@@ -1,6 +1,6 @@
 package net.hibiscus.naturespirit;
 
-import net.hibiscus.naturespirit.compat.lithostiched.LithostitchedSetup;
+import net.hibiscus.naturespirit.compat.lithostitched.LithostitchedSetup;
 import net.hibiscus.naturespirit.registration.NSDataComponents;
 import net.hibiscus.naturespirit.blocks.block_entities.PizzaToppingVariant;
 import net.hibiscus.naturespirit.config.NSConfig;
