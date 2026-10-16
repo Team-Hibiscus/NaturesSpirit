@@ -60,7 +60,7 @@ public class LithostitchedEventHandlers {
 
             if (NSConfig.hasMarsh) {
                 consumer.accept(
-                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "marsh_humidity"),
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "marsh_1"),
                         BiomeInjector.builder(Level.OVERWORLD).replacePartially(
                                 registries.holderOrThrow(Biomes.SWAMP),
                                 registries.holderOrThrow(NSBiomes.MARSH),
@@ -68,11 +68,320 @@ public class LithostitchedEventHandlers {
                         )
                 );
                 consumer.accept(
-                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "marsh_temperature"),
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "marsh_2"),
                         BiomeInjector.builder(Level.OVERWORLD).replacePartially(
                                 registries.holderOrThrow(Biomes.SWAMP),
                                 registries.holderOrThrow(NSBiomes.MARSH),
                                 ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                        )
+                );
+            }
+
+            if (NSConfig.hasAridRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "arid_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.ARID_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -.45F, -.15F).region(TERRA_SOLARIS)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "arid_river_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.ARID_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F).region(TERRA_FERAX)
+                        )
+                );
+            }
+
+            if (NSConfig.hasAutumnalRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "autumnal_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.AUTUMNAL_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -.45F, -.15F).region(TERRA_FLAVA)
+                        )
+                );
+            }
+
+            if (NSConfig.hasTundraRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "tundra_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.TUNDRA_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -1F, -.45F).region(TERRA_LAETA)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "tundra_river_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.TUNDRA_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -1F, -.45F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -1F, .1F).region(TERRA_FERAX)
+                        )
+                );
+            }
+
+            if (NSConfig.hasAlpineRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "alpine_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.ALPINE_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -.45F, -.15F).region(TERRA_LAETA)
+                        )
+                );
+            }
+
+            if (NSConfig.hasPrairieRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "prairie_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.PRAIRIE_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -.45F, -.15F).region(TERRA_FERAX)
+                        )
+                );
+            }
+
+
+            if (NSConfig.hasXericRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "xeric_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.XERIC_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -1, -0.1F).region(TERRA_LAETA)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "xeric_river_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.XERIC_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                                        .climateRange(BiomeInjector.ClimateParameter.EROSION, -.375F, .050F)
+                                        .climateRange(BiomeInjector.ClimateParameter.CONTINENTALNESS, .03F, 1F).region(TERRA_LAETA)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "xeric_river_3"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.XERIC_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                                        .climateRange(BiomeInjector.ClimateParameter.EROSION, -1F, -.375F)
+                                        .climateRange(BiomeInjector.ClimateParameter.CONTINENTALNESS, -.110F, .03F).region(TERRA_LAETA)
+                        )
+                );
+            }
+
+            if (NSConfig.hasPinkSandyRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "pink_sandy_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1900).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.PINK_SANDY_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F).region(TERRA_LAETA)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "pink_sandy_river_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.PINK_SANDY_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F).region(TERRA_FLAVA)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "pink_sandy_river_3"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.PINK_SANDY_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -1, 0.1F).region(TERRA_FLAVA)
+                        )
+                );
+            }
+
+            if (NSConfig.hasRedSandyRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "scorched_dunes_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.RED_SANDY_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F).region(TERRA_MATER)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "mesa_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1800).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.RED_SANDY_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                                        .climateRange(BiomeInjector.ClimateParameter.EROSION, -.375F, .050F)
+                                        .climateRange(BiomeInjector.ClimateParameter.CONTINENTALNESS, .03F, 1F)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "mesa_river_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(1800).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.RED_SANDY_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                                        .climateRange(BiomeInjector.ClimateParameter.EROSION, -1F, -.375F)
+                                        .climateRange(BiomeInjector.ClimateParameter.CONTINENTALNESS, -.110F, .03F)
+                        )
+                );
+            }
+
+            if (NSConfig.hasSandyRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "sandy_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(2000).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.SANDY_RIVER),
+                                ParameterBuilder.create().climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .55F, 1.0F)
+                        )
+                );
+            }
+
+            if (NSConfig.hasLushRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "lush_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(2000).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.LUSH_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .1, 1F)
+                        )
+                );
+                if (NSConfig.hasCypressFields) {
+                    consumer.accept(
+                            ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "cypress_river"),
+                            BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                    registries.holderOrThrow(NSBiomes.LUSH_RIVER),
+                                    registries.holderOrThrow(Biomes.RIVER),
+                                    ParameterBuilder.create()
+                                            .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                            .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .1, 1F).region(TERRA_LAETA)
+                            )
+                    );
+                }
+                if (NSConfig.hasChaparral) {
+                    consumer.accept(
+                            ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "chaparral_river"),
+                            BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                    registries.holderOrThrow(NSBiomes.LUSH_RIVER),
+                                    registries.holderOrThrow(Biomes.RIVER),
+                                    ParameterBuilder.create()
+                                            .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                            .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .1, 1F).region(TERRA_FERAX)
+                            )
+                    );
+                }
+            }
+
+            if (NSConfig.hasSavannaRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "savanna_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(2000).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.SAVANNA_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -1, -0.1F)
+                        )
+                );
+            }
+
+            if (NSConfig.hasTaigaRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "taiga_river_1"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(2000).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.TAIGA_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -.45F, -.15F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .1F, 1)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "taiga_river_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).priority(2000).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.TAIGA_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -1F, -.45F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .3F, 1)
+                        )
+                );
+            }
+
+
+            if (NSConfig.hasColdBeach) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "cold_beach"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.BEACH),
+                                registries.holderOrThrow(NSBiomes.COLD_BEACH),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -.45F, -.15F)
+                        )
+                );
+            }
+
+            if (NSConfig.hasLukewarmBeach) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "lukewarm_beach"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.BEACH),
+                                registries.holderOrThrow(NSBiomes.LUKEWARM_BEACH),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, .55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -1, .1F)
+                        )
+                );
+            }
+
+            if (NSConfig.hasRedBeach) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "red_beach"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.BEACH),
+                                registries.holderOrThrow(NSBiomes.RED_BEACH),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, .55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .7F, 1)
+                        )
+                );
+            }
+
+            if (NSConfig.hasTropicalShores) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "tropical_shores"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.BEACH),
+                                registries.holderOrThrow(NSBiomes.TROPICAL_SHORES),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, .55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .1F, .7F)
                         )
                 );
             }

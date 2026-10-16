@@ -64,6 +64,26 @@ public class NSBiomes {
   public static final ResourceKey<Biome> CHAPARRAL = register("chaparral");
   public static final ResourceKey<Biome> FLORAL_RIDGES = register("floral_ridges");
 
+  public static final ResourceKey<Biome> SANDY_RIVER = register("sandy_river");
+  public static final ResourceKey<Biome> PINK_SANDY_RIVER = register("pink_sandy_river");
+  public static final ResourceKey<Biome> RED_SANDY_RIVER = register("red_sandy_river");
+  public static final ResourceKey<Biome> ARID_RIVER = register("arid_river");
+  public static final ResourceKey<Biome> XERIC_RIVER = register("xeric_river");
+  public static final ResourceKey<Biome> TUNDRA_RIVER = register("tundra_river");
+  public static final ResourceKey<Biome> LUSH_RIVER = register("lush_river");
+  public static final ResourceKey<Biome> SAVANNA_RIVER = register("savanna_river");
+  public static final ResourceKey<Biome> TAIGA_RIVER = register("taiga_river");
+  public static final ResourceKey<Biome> ALPINE_RIVER = register("alpine_river");
+  public static final ResourceKey<Biome> PRAIRIE_RIVER = register("prairie_river");
+  public static final ResourceKey<Biome> AUTUMNAL_RIVER = register("autumnal_river");
+
+  public static final ResourceKey<Biome> COLD_BEACH = register("cold_beach");
+  public static final ResourceKey<Biome> LUKEWARM_BEACH = register("lukewarm_beach");
+  public static final ResourceKey<Biome> RED_BEACH = register("red_beach");
+
+
+
+
   private static ResourceKey<Biome> register(String name) {
     System.out.println("Registered Resource Key for biome: " + name);
     ResourceKey<Biome> registryKey = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, name));

@@ -1,8 +1,10 @@
 package net.hibiscus.naturespirit.world;
 
 import com.google.common.collect.ImmutableList;
+import net.hibiscus.naturespirit.config.NSConfig;
 import net.hibiscus.naturespirit.registration.NSBiomes;
 import net.hibiscus.naturespirit.registration.NSBlocks;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -27,8 +29,10 @@ public class NSSurfaceRules {
   private static final RuleSource COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
   private static final RuleSource WHITE_KAOLIN = makeStateRule(NSBlocks.WHITE_KAOLIN.get());
   private static final RuleSource PINK_SANDSTONE = makeStateRule(NSBlocks.PINK_SANDSTONE.get());
+  private static final RuleSource SANDSTONE = makeStateRule(Blocks.SANDSTONE);
   private static final RuleSource RED_SANDSTONE = makeStateRule(Blocks.RED_SANDSTONE);
   private static final RuleSource RED_SAND = makeStateRule(Blocks.RED_SAND);
+  private static final RuleSource SAND = makeStateRule(Blocks.SAND);
   private static final RuleSource TRAVERTINE = makeStateRule(NSBlocks.TRAVERTINE.getBase().get());
   private static final RuleSource WHITE_CHALK = makeStateRule(NSBlocks.WHITE_CHALK.get());
   private static final RuleSource PINK_SAND = makeStateRule(NSBlocks.PINK_SAND.get());
@@ -69,6 +73,7 @@ public class NSSurfaceRules {
 
     RuleSource stoneOrGravel = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, STONE), GRAVEL);
     RuleSource pinkSandstoneOrPinkSand = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, PINK_SANDSTONE), PINK_SAND);
+    RuleSource sandstoneOrSand = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, SANDSTONE), SAND);
     RuleSource redSandstoneOrRedSand = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, RED_SANDSTONE), RED_SAND);
     RuleSource pinkSandstoneOrSoil = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, PINK_SANDSTONE), SANDY_SOIL);
     RuleSource travertineOrSoil = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, TRAVERTINE), SANDY_SOIL);
@@ -106,15 +111,15 @@ public class NSSurfaceRules {
     );
 
     RuleSource desertSteppeRule = SurfaceRules.sequence(
-        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,  SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.ARID_HIGHLANDS, NSBiomes.SHRUBBY_HIGHLANDS, NSBiomes.WOODY_HIGHLANDS, NSBiomes.BLOOMING_HIGHLANDS), SurfaceRules.sequence(
+        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,  SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.ARID_HIGHLANDS, NSBiomes.SHRUBBY_HIGHLANDS, NSBiomes.WOODY_HIGHLANDS, NSBiomes.BLOOMING_HIGHLANDS, NSBiomes.ARID_RIVER), SurfaceRules.sequence(
                 SurfaceRules.ifTrue(above256, CHERT),
                 SurfaceRules.ifTrue(above70, SurfaceRules.sequence(
                     SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SHRUBBY_HIGHLANDS, NSBiomes.ARID_HIGHLANDS), SurfaceRules.ifTrue(noiseCondition3, SANDY_SOIL)),
-                    SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.WOODY_HIGHLANDS, NSBiomes.BLOOMING_HIGHLANDS), SurfaceRules.ifTrue(noiseCondition3, GRASS)),
+                    SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.WOODY_HIGHLANDS, NSBiomes.BLOOMING_HIGHLANDS, NSBiomes.ARID_RIVER), SurfaceRules.ifTrue(noiseCondition3, GRASS)),
                     SurfaceRules.bandlands(),
                     SurfaceRules.ifTrue(SurfaceRules.not(above80), SurfaceRules.sequence(
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SHRUBBY_HIGHLANDS), SurfaceRules.ifTrue(noiseCondition6, GRASS)),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.WOODY_HIGHLANDS, NSBiomes.BLOOMING_HIGHLANDS), SurfaceRules.ifTrue(noiseCondition6, SANDY_SOIL))
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.WOODY_HIGHLANDS, NSBiomes.BLOOMING_HIGHLANDS, NSBiomes.ARID_RIVER), SurfaceRules.ifTrue(noiseCondition6, SANDY_SOIL))
                     ))
                 )),
                 SurfaceRules.ifTrue(materialCondition5, SurfaceRules.sequence(
@@ -144,13 +149,14 @@ public class NSSurfaceRules {
             SurfaceRules.sequence(
                 SurfaceRules.ifTrue(UNDER_FLOOR,
                     SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.XERIC_PLAINS, NSBiomes.CEDAR_THICKET), SurfaceRules.ifTrue(noiseCondition4, travertineOrSoil)),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.XERIC_PLAINS, NSBiomes.CEDAR_THICKET, NSBiomes.XERIC_RIVER), SurfaceRules.ifTrue(noiseCondition4, travertineOrSoil)),
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.ARID_SAVANNA), SurfaceRules.ifTrue(noiseCondition4, chertOrSoil)),
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.WOODED_DRYLANDS), SurfaceRules.ifTrue(noiseCondition4, pinkSandstoneOrSoil)),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.TUNDRA, NSBiomes.BOREAL_TAIGA), SurfaceRules.ifTrue(noiseCondition4, stoneOrMoss)),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SCORCHED_DUNES), SurfaceRules.sequence(SurfaceRules.ifTrue(noiseCondition4, redSandstoneOrRedSand), chertOrSoil)),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.TROPICAL_SHORES, NSBiomes.DRYLANDS), pinkSandstoneOrPinkSand),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SNOWY_FIR_FOREST, NSBiomes.TUNDRA), SurfaceRules.ifTrue(noiseCondition5, stoneOrSnow)),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.TUNDRA, NSBiomes.BOREAL_TAIGA, NSBiomes.TUNDRA_RIVER), SurfaceRules.ifTrue(noiseCondition4, stoneOrMoss)),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SCORCHED_DUNES, NSBiomes.RED_SANDY_RIVER, NSBiomes.RED_BEACH), SurfaceRules.sequence(SurfaceRules.ifTrue(noiseCondition4, redSandstoneOrRedSand), chertOrSoil)),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.TROPICAL_SHORES, NSBiomes.DRYLANDS, NSBiomes.PINK_SANDY_RIVER), pinkSandstoneOrPinkSand),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SANDY_RIVER, NSBiomes.LUKEWARM_BEACH, NSBiomes.COLD_BEACH), sandstoneOrSand),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SNOWY_FIR_FOREST, NSBiomes.TUNDRA, NSBiomes.TUNDRA_RIVER), SurfaceRules.ifTrue(noiseCondition5, stoneOrSnow)),
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.CHAPARRAL), SANDY_SOIL),
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SLEETED_SLOPES, NSBiomes.SNOWCAPPED_RED_PEAKS), SurfaceRules.ifTrue(materialCondition7, SNOW_BLOCK)),
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.SLEETED_SLOPES, NSBiomes.SNOWCAPPED_RED_PEAKS, NSBiomes.DUSTY_SLOPES, NSBiomes.RED_PEAKS),
@@ -173,7 +179,9 @@ public class NSSurfaceRules {
                             ))
                     )),
                 SurfaceRules.ifTrue(DEEP_UNDER_FLOOR, SurfaceRules.sequence(
-                    SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.TROPICAL_SHORES), PINK_SANDSTONE),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.RED_BEACH), RED_SANDSTONE),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.COLD_BEACH, NSBiomes.LUKEWARM_BEACH, NSBiomes.SANDY_RIVER), SANDSTONE),
+                    SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.TROPICAL_SHORES, NSBiomes.PINK_SANDY_RIVER), PINK_SANDSTONE),
                     SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.LIVELY_DUNES, NSBiomes.BLOOMING_DUNES), SANDY_SOIL)
                 )),
                 SurfaceRules.ifTrue(VERY_DEEP_UNDER_FLOOR, SurfaceRules.sequence(
@@ -223,7 +231,14 @@ public class NSSurfaceRules {
             SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(materialCondition7,
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(NSBiomes.ALPINE_CLEARINGS, NSBiomes.ALPINE_HIGHLANDS, NSBiomes.CONIFEROUS_COVERT, NSBiomes.HEATHER_FIELDS, NSBiomes.GOLDEN_WILDS, NSBiomes.SUGI_FOREST), GRASS))));
 
-    ImmutableList.Builder<RuleSource> builder = ImmutableList.builder();
+      RuleSource plainsRule = SurfaceRules.sequence(
+              SurfaceRules.ifTrue(STONE_DEPTH_FLOOR_DOWN_1_WITH_DEPTH, SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.PLAINS),
+                      SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SPAGHETTI_3D_2, -0.5454D, -0.0818D), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, -0.5454D, -0.4818D), COARSE_DIRT)))),
+              SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(materialCondition7,
+                      SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.PLAINS), GRASS))));
+
+
+      ImmutableList.Builder<RuleSource> builder = ImmutableList.builder();
     RuleSource stratifiedDesertSurfaceRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), stratifiedDesertRule);
     RuleSource chaparralSurfaceRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), chaparralRule);
     RuleSource chalkCliffsSurfaceRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), chalkCliffsRule);
@@ -244,6 +259,9 @@ public class NSSurfaceRules {
     builder.add(steppeUndergroundRule);
     builder.add(redwoodForestSurfaceRule);
     builder.add(alpineSurfaceRule);
+    if (NSConfig.plainsToggle) {
+        builder.add(plainsRule);
+    }
     return SurfaceRules.sequence(builder
         .build()
         .toArray(RuleSource[]::new));

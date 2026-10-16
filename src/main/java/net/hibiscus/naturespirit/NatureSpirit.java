@@ -1005,7 +1005,17 @@ public class NatureSpirit {
             event.addPackFinders(
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "resourcepacks/modified_taiga"),
                     PackType.SERVER_DATA,
-                    Component.translatable("pack.natures_spirit.modified_windswept_hills"),
+                    Component.translatable("pack.natures_spirit.modified_taiga"),
+                    PackSource.BUILT_IN,
+                    true,
+                    Pack.Position.TOP
+            );
+        }
+        if (NSConfig.plainsToggle) {
+            event.addPackFinders(
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "resourcepacks/modified_plains"),
+                    PackType.SERVER_DATA,
+                    Component.translatable("pack.natures_spirit.modified_plains"),
                     PackSource.BUILT_IN,
                     true,
                     Pack.Position.TOP

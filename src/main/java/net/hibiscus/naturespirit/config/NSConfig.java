@@ -1,5 +1,7 @@
 package net.hibiscus.naturespirit.config;
 import net.hibiscus.naturespirit.NatureSpirit;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.config.IConfigSpec;
@@ -11,11 +13,11 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class NSConfig {
   private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-  public static final ModConfigSpec.IntValue TERRA_FERAX_WEIGHT = BUILDER.defineInRange("region.terra_ferax_weight", 4, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_SOLARIS_WEIGHT = BUILDER.defineInRange("region.terra_solaris_weight", 4, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_FLAVA_WEIGHT = BUILDER.defineInRange("region.terra_flava_weight", 4, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_LAETA_WEIGHT = BUILDER.defineInRange("region.terra_laeta_weight", 4, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_MATER_WEIGHT = BUILDER.defineInRange("region.terra_mater_weight", 4, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_FERAX_WEIGHT = BUILDER.defineInRange("region.terra_ferax_weight", 30, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_SOLARIS_WEIGHT = BUILDER.defineInRange("region.terra_solaris_weight", 30, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_FLAVA_WEIGHT = BUILDER.defineInRange("region.terra_flava_weight", 30, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_LAETA_WEIGHT = BUILDER.defineInRange("region.terra_laeta_weight", 30, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_MATER_WEIGHT = BUILDER.defineInRange("region.terra_mater_weight", 30, 0, Integer.MAX_VALUE);
   public static final ModConfigSpec.BooleanValue CALCITE_GENERATOR = BUILDER.define("misc.calcite_generator", true);
   public static final ModConfigSpec.BooleanValue DEEPSLATE_GENERATOR = BUILDER.define("misc.deepslate_generator", true);
   public static final ModConfigSpec.BooleanValue CREATIVE_TAB = BUILDER.define("misc.creative_tab", true);
@@ -31,6 +33,7 @@ public class NSConfig {
   public static final ModConfigSpec.BooleanValue SAVANNA_TOGGLE = BUILDER.define("datapack.savanna_toggle", true);
   public static final ModConfigSpec.BooleanValue DARK_FOREST_TOGGLE = BUILDER.define("datapack.dark_forest_toggle", true);
   public static final ModConfigSpec.BooleanValue TAIGA_TOGGLE = BUILDER.define("datapack.taiga_toggle", true);
+  public static final ModConfigSpec.BooleanValue PLAINS_TOGGLE = BUILDER.define("datapack.plains_toggle", true);
   public static final ModConfigSpec.BooleanValue WINDSWEPT_HILLS_TOGGLE = BUILDER.define("datapack.windswept_hills_toggle", true);
   public static final ModConfigSpec.BooleanValue HAS_SUGI_FOREST = BUILDER.define("biome.has_sugi_forest", true);
   public static final ModConfigSpec.BooleanValue HAS_WINDSWEPT_SUGI_FOREST = BUILDER.define("biome.has_windswept_sugi_forest", true);
@@ -84,6 +87,23 @@ public class NSConfig {
   public static final ModConfigSpec.BooleanValue HAS_CHAPARRAL = BUILDER.define("biome.has_chaparral", true);
   public static final ModConfigSpec.BooleanValue HAS_FLORAL_RIDGES = BUILDER.define("biome.has_floral_ridges", true);
 
+  public static final ModConfigSpec.BooleanValue HAS_SANDY_RIVER = BUILDER.define("biome.has_sandy_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_PINK_SANDY_RIVER = BUILDER.define("biome.has_pink_sandy_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_RED_SANDY_RIVER = BUILDER.define("biome.has_red_sandy_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_ARID_RIVER = BUILDER.define("biome.has_arid_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_XERIC_RIVER = BUILDER.define("biome.has_xeric_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_TUNDRA_RIVER = BUILDER.define("biome.has_tundra_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_LUSH_RIVER = BUILDER.define("biome.has_lush_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_SAVANNA_RIVER = BUILDER.define("biome.has_savanna_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_TAIGA_RIVER = BUILDER.define("biome.has_taiga_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_ALPINE_RIVER = BUILDER.define("biome.has_alpine_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_PRAIRIE_RIVER = BUILDER.define("biome.has_prairie_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_AUTUMNAL_RIVER = BUILDER.define("biome.has_autumnal_river", true);
+
+  public static final ModConfigSpec.BooleanValue HAS_COLD_BEACH = BUILDER.define("biome.has_cold_beach", true);
+  public static final ModConfigSpec.BooleanValue HAS_LUKEWARM_BEACH = BUILDER.define("biome.lukewarm_beach", true);
+  public static final ModConfigSpec.BooleanValue HAS_RED_BEACH = BUILDER.define("biome.red_beach", true);
+
   public static final IConfigSpec SPEC = BUILDER.build();
 
   public static int terraFeraxWeight;
@@ -106,6 +126,7 @@ public class NSConfig {
   public static boolean savannaToggle;
   public static boolean darkForestToggle;
   public static boolean taigaToggle;
+  public static boolean plainsToggle;
   public static boolean windsweptHillsToggle;
   public static boolean hasSugiForest;
   public static boolean hasWindsweptSugiForest;
@@ -159,6 +180,23 @@ public class NSConfig {
   public static boolean hasChaparral;
   public static boolean hasFloralRidges;
 
+  public static boolean hasSandyRiver;
+  public static boolean hasPinkSandyRiver;
+  public static boolean hasRedSandyRiver;
+  public static boolean hasAridRiver;
+  public static boolean hasXericRiver;
+  public static boolean hasTundraRiver;
+  public static boolean hasLushRiver;
+  public static boolean hasSavannaRiver;
+  public static boolean hasTaigaRiver;
+  public static boolean hasAlpineRiver;
+  public static boolean hasPrairieRiver;
+  public static boolean hasAutumnalRiver;
+
+  public static boolean hasColdBeach;
+  public static boolean hasLukewarmBeach;
+  public static boolean hasRedBeach;
+
   @SubscribeEvent
   static void onLoad(final ModConfigEvent event) {
     terraFeraxWeight = TERRA_FERAX_WEIGHT.get();
@@ -180,6 +218,7 @@ public class NSConfig {
     mountainBiomesToggle = MOUNTAIN_BIOMES_TOGGLE.get();
     savannaToggle = SAVANNA_TOGGLE.get();
     darkForestToggle = DARK_FOREST_TOGGLE.get();
+    plainsToggle = PLAINS_TOGGLE.get();
     taigaToggle = TAIGA_TOGGLE.get();
     windsweptHillsToggle = WINDSWEPT_HILLS_TOGGLE.get();
     hasSugiForest = HAS_SUGI_FOREST.get();
@@ -233,5 +272,20 @@ public class NSConfig {
     hasBloomingHighlands = HAS_BLOOMING_HIGHLANDS.get();
     hasChaparral = HAS_CHAPARRAL.get();
     hasFloralRidges = HAS_FLORAL_RIDGES.get();
+    hasSandyRiver = HAS_SANDY_RIVER.get();
+    hasPinkSandyRiver = HAS_PINK_SANDY_RIVER.get();
+    hasRedSandyRiver = HAS_RED_SANDY_RIVER.get();
+    hasAridRiver = HAS_ARID_RIVER.get();
+    hasXericRiver = HAS_XERIC_RIVER.get();
+    hasTundraRiver = HAS_TUNDRA_RIVER.get();
+    hasLushRiver = HAS_LUSH_RIVER.get();
+    hasSavannaRiver = HAS_SAVANNA_RIVER.get();
+    hasTaigaRiver = HAS_TAIGA_RIVER.get();
+    hasAlpineRiver = HAS_ALPINE_RIVER.get();
+    hasPrairieRiver = HAS_PRAIRIE_RIVER.get();
+    hasAutumnalRiver = HAS_AUTUMNAL_RIVER.get();
+    hasColdBeach = HAS_COLD_BEACH.get();
+    hasLukewarmBeach = HAS_LUKEWARM_BEACH.get();
+    hasRedBeach = HAS_RED_BEACH.get();
   }
 }
