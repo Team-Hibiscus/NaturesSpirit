@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "natures_spirit:arid_savanna"
+    "natures_spirit:arid_savanna",
+    "natures_spirit:savanna_river"
   ]
 }

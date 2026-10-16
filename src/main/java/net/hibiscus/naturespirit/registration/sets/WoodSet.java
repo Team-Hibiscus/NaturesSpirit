@@ -824,7 +824,7 @@ public class WoodSet {
 
   private DeferredBlock<VinesLeavesBlock> createVinesLeavesBlock(DeferredBlock<DownwardsVinePlantBlock> vinesPlantBlock, DeferredBlock<DownwardVineBlock> vinesTipBlock) {
     DeferredBlock<VinesLeavesBlock> block = createBlockWithItem(getName() + "_leaves",
-            () -> new VinesLeavesBlock(Properties.of().strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion()
+            () -> new VinesLeavesBlock(Properties.of().strength(0.2F).randomTicks().sound(SoundType.GRASS).mapColor(MapColor.PLANT).noOcclusion()
             .isValidSpawn(NSRegistryHelper::ocelotOrParrot).isSuffocating(NSRegistryHelper::never).isViewBlocking(NSRegistryHelper::never).ignitedByLava().pushReaction(PushReaction.DESTROY)
             .isRedstoneConductor(NSRegistryHelper::never), vinesPlantBlock, vinesTipBlock){
               @Override
@@ -848,7 +848,7 @@ public class WoodSet {
 
   private DeferredBlock<VinesLeavesBlock> createVinesLeavesBlock(String prefix, DeferredBlock<DownwardsVinePlantBlock> vinesPlantBlock, DeferredBlock<DownwardVineBlock> vinesTipBlock) {
     DeferredBlock<VinesLeavesBlock> block = createBlockWithItem(prefix + getName() + "_leaves",
-            () -> new VinesLeavesBlock(Properties.of().strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion()
+            () -> new VinesLeavesBlock(Properties.of().strength(0.2F).randomTicks().sound(SoundType.GRASS).mapColor(MapColor.PLANT).noOcclusion()
             .isValidSpawn(NSRegistryHelper::ocelotOrParrot).isSuffocating(NSRegistryHelper::never).isViewBlocking(NSRegistryHelper::never).ignitedByLava()
             .pushReaction(PushReaction.DESTROY).isRedstoneConductor(NSRegistryHelper::never), vinesPlantBlock, vinesTipBlock){
               @Override

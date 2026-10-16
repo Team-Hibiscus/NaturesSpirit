@@ -38,6 +38,7 @@
     "natures_spirit:sleeted_slopes",
     "natures_spirit:snowcapped_red_peaks",
     "natures_spirit:snowy_fir_forest",
+    "natures_spirit:snowy_redwood_forest",
     "natures_spirit:sparse_tropical_woods",
     "natures_spirit:stratified_desert",
     "natures_spirit:sugi_forest",
@@ -50,6 +51,22 @@
     "natures_spirit:wisteria_forest",
     "natures_spirit:wooded_drylands",
     "natures_spirit:woody_highlands",
-    "natures_spirit:xeric_plains"
+    "natures_spirit:xeric_plains",
+    "natures_spirit:cold_beach",
+    "natures_spirit:lukewarm_beach",
+    "natures_spirit:red_beach",
+    "natures_spirit:sandy_river",
+    "natures_spirit:pink_sandy_river",
+    "natures_spirit:red_sandy_river",
+    "natures_spirit:arid_river",
+    "natures_spirit:xeric_river",
+    "natures_spirit:tundra_river",
+    "natures_spirit:lush_river",
+    "natures_spirit:savanna_river",
+    "natures_spirit:taiga_river",
+    "natures_spirit:alpine_river",
+    "natures_spirit:prairie_river",
+    "natures_spirit:autumnal_river",
+    "natures_spirit:birch_river"
   ]
 }

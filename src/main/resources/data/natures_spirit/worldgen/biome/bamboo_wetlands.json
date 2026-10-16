@@ -10,8 +10,9 @@
   "downfall": 0.9,
   "effects": {
     "foliage_color": 4952858,
-    "grass_color": 6009905,
-    "fog_color": 11660501,
+    "grass_color": 4631864,
+    "fog_color": 12778746,
+    "sky_color": 9166319,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -24,9 +25,8 @@
       "replace_current_music": false,
       "sound": "natures_spirit:music.overworld.tropical"
     },
-    "sky_color": 8054015,
-    "water_color": 7122047,
-    "water_fog_color": 2109234
+    "water_color": 4831160,
+    "water_fog_color": 11057
   },
   "features": [
     [

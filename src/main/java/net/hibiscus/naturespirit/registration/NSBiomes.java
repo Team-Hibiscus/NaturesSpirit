@@ -76,6 +76,7 @@ public class NSBiomes {
   public static final ResourceKey<Biome> ALPINE_RIVER = register("alpine_river");
   public static final ResourceKey<Biome> PRAIRIE_RIVER = register("prairie_river");
   public static final ResourceKey<Biome> AUTUMNAL_RIVER = register("autumnal_river");
+  public static final ResourceKey<Biome> BIRCH_RIVER = register("birch_river");
 
   public static final ResourceKey<Biome> COLD_BEACH = register("cold_beach");
   public static final ResourceKey<Biome> LUKEWARM_BEACH = register("lukewarm_beach");

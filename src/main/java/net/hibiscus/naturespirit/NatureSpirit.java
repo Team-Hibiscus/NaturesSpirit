@@ -333,6 +333,7 @@ public class NatureSpirit {
                 }
             }
             addAllAfterFirst(event, wood, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            addAllAfterFirst(event, new ArrayList<> (List.of(Items.WARPED_BUTTON, NSBlocks.PAPER_BLOCK, NSBlocks.PAPER_PANEL, NSBlocks.PAPER_DOOR, NSBlocks.PAPER_TRAPDOOR, NSBlocks.FRAMED_PAPER_BLOCK, NSBlocks.FRAMED_PAPER_PANEL, NSBlocks.FRAMED_PAPER_DOOR, NSBlocks.FRAMED_PAPER_TRAPDOOR, NSBlocks.BLOOMING_PAPER_BLOCK, NSBlocks.BLOOMING_PAPER_PANEL, NSBlocks.BLOOMING_PAPER_DOOR, NSBlocks.BLOOMING_PAPER_TRAPDOOR, NSBlocks.XERIC_THATCH, NSBlocks.XERIC_THATCH_STAIRS, NSBlocks.XERIC_THATCH_SLAB, NSBlocks.XERIC_THATCH_CARPET, NSBlocks.COCONUT_THATCH, NSBlocks.COCONUT_THATCH_STAIRS, NSBlocks.COCONUT_THATCH_SLAB, NSBlocks.COCONUT_THATCH_CARPET, NSBlocks.EVERGREEN_THATCH, NSBlocks.EVERGREEN_THATCH_STAIRS, NSBlocks.EVERGREEN_THATCH_SLAB, NSBlocks.EVERGREEN_THATCH_CARPET)), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.POLISHED_ANDESITE_SLAB.getDefaultInstance(), NSBlocks.TRAVERTINE.getBase().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.TRAVERTINE.getBase().get().asItem().getDefaultInstance(), NSBlocks.TRAVERTINE.getBaseStairs().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.TRAVERTINE.getBaseStairs().get().asItem().getDefaultInstance(), NSBlocks.TRAVERTINE.getBaseSlab().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -522,7 +523,8 @@ public class NatureSpirit {
             event.insertAfter(Items.CHERRY_LEAVES.getDefaultInstance(), NSBlocks.REDWOOD.getLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.REDWOOD.getLeaves().get().asItem().getDefaultInstance(), NSBlocks.REDWOOD.getFrostyLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.REDWOOD.getFrostyLeaves().get().asItem().getDefaultInstance(), NSBlocks.SUGI.getLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(NSBlocks.SUGI.getLeaves().get().asItem().getDefaultInstance(), NSBlocks.WISTERIA.getPurpleLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.SUGI.getLeaves().get().asItem().getDefaultInstance(), NSBlocks.WISTERIA.getLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.WISTERIA.getLeaves().get().asItem().getDefaultInstance(), NSBlocks.WISTERIA.getPurpleLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.WISTERIA.getPurpleLeaves().get().asItem().getDefaultInstance(), NSBlocks.WISTERIA.getWhiteLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.WISTERIA.getWhiteLeaves().get().asItem().getDefaultInstance(), NSBlocks.WISTERIA.getBlueLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.WISTERIA.getBlueLeaves().get().asItem().getDefaultInstance(), NSBlocks.WISTERIA.getPinkLeaves().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -570,6 +572,11 @@ public class NatureSpirit {
             event.insertAfter(NSBlocks.CEDAR.getSapling().get().asItem().getDefaultInstance(), NSBlocks.LARCH.getSapling().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.LARCH.getSapling().get().asItem().getDefaultInstance(), NSBlocks.MAHOGANY.getSapling().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.MAHOGANY.getSapling().get().asItem().getDefaultInstance(), NSBlocks.SAXAUL.getSapling().get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.SAXAUL.getSapling().get().asItem().getDefaultInstance(), NSBlocks.COCONUT_SPROUT.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.AMETHYST_CLUSTER.getDefaultInstance(), NSBlocks.SMALL_CALCITE_BUD.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.SMALL_CALCITE_BUD.get().asItem().getDefaultInstance(), NSBlocks.LARGE_CALCITE_BUD.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.LARGE_CALCITE_BUD.get().asItem().getDefaultInstance(), NSBlocks.CALCITE_CLUSTER.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.insertAfter(Items.BAMBOO_HANGING_SIGN.getDefaultInstance(), NSBlocks.REDWOOD.getSignItem().get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -606,8 +613,10 @@ public class NatureSpirit {
             event.insertAfter(NSBlocks.MAHOGANY.getSignItem().get().getDefaultInstance(), NSBlocks.MAHOGANY.getHangingSignItem().get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.MAHOGANY.getHangingSignItem().get().getDefaultInstance(), NSBlocks.SAXAUL.getSignItem().get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.SAXAUL.getSignItem().get().getDefaultInstance(), NSBlocks.SAXAUL.getHangingSignItem().get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            addAllAfterFirst(event, new ArrayList<> (List.of(Items.WARPED_HANGING_SIGN, NSBlocks.PAPER_SIGN_ITEM, NSBlocks.PAPER_HANGING_SIGN_ITEM)), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), NSBlocks.WHITE_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+            event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), NSBlocks.PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+            event.insertAfter(NSBlocks.PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.WHITE_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
             event.insertAfter(NSBlocks.WHITE_PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.LIGHT_GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
             event.insertAfter(NSBlocks.LIGHT_GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
             event.insertAfter(NSBlocks.GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.BLACK_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
@@ -813,7 +822,8 @@ public class NatureSpirit {
             event.insertAfter(NSBlocks.PURPLE_CHALK_SLAB.get().asItem().getDefaultInstance(), NSBlocks.MAGENTA_CHALK_SLAB.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.MAGENTA_CHALK_SLAB.get().asItem().getDefaultInstance(), NSBlocks.PINK_CHALK_SLAB.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             
-            event.insertAfter(Items.PINK_CANDLE.getDefaultInstance(), NSBlocks.WHITE_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.PINK_CANDLE.getDefaultInstance(), NSBlocks.PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.WHITE_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.WHITE_PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.LIGHT_GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.LIGHT_GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.GRAY_PAPER_LANTERN.get().asItem().getDefaultInstance(), NSBlocks.BLACK_PAPER_LANTERN.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -842,11 +852,17 @@ public class NatureSpirit {
             event.insertAfter(Items.HONEYCOMB.getDefaultInstance(), NSBlocks.CHALK_POWDER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.BOWL.getDefaultInstance(), NSBlocks.COCONUT_SHELL.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.insertAfter(Items.ARROW.getDefaultInstance(), NSBlocks.CHEESE_ARROW.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.insertAfter(Items.BEETROOT.getDefaultInstance(), NSBlocks.COCONUT_HALF.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.COCONUT_HALF.get().getDefaultInstance(), NSBlocks.DESERT_TURNIP.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(NSBlocks.DESERT_TURNIP.get().getDefaultInstance(), NSBlocks.OLIVES.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.BREAD.getDefaultInstance(), NSBlocks.WHOLE_PIZZA.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.WHOLE_PIZZA.get().getDefaultInstance(), NSBlocks.THREE_QUARTERS_PIZZA.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.THREE_QUARTERS_PIZZA.get().getDefaultInstance(), NSBlocks.HALF_PIZZA.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(NSBlocks.HALF_PIZZA.get().getDefaultInstance(), NSBlocks.QUARTER_PIZZA.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.MILK_BUCKET.getDefaultInstance(), NSBlocks.CHEESE_BUCKET.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }

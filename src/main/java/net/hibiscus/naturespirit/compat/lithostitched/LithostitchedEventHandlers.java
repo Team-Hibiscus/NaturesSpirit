@@ -275,7 +275,7 @@ public class LithostitchedEventHandlers {
                 if (NSConfig.hasCypressFields) {
                     consumer.accept(
                             ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "cypress_river"),
-                            BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                            BiomeInjector.builder(Level.OVERWORLD).priority(2500).replacePartially(
                                     registries.holderOrThrow(NSBiomes.LUSH_RIVER),
                                     registries.holderOrThrow(Biomes.RIVER),
                                     ParameterBuilder.create()
@@ -287,7 +287,7 @@ public class LithostitchedEventHandlers {
                 if (NSConfig.hasChaparral) {
                     consumer.accept(
                             ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "chaparral_river"),
-                            BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                            BiomeInjector.builder(Level.OVERWORLD).priority(2500).replacePartially(
                                     registries.holderOrThrow(NSBiomes.LUSH_RIVER),
                                     registries.holderOrThrow(Biomes.RIVER),
                                     ParameterBuilder.create()
@@ -296,11 +296,35 @@ public class LithostitchedEventHandlers {
                             )
                     );
                 }
+                if (NSConfig.hasSparseTropicalWoods) {
+                    consumer.accept(
+                            ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "sparse_tropical_woods_river"),
+                            BiomeInjector.builder(Level.OVERWORLD).priority(2500).replacePartially(
+                                    registries.holderOrThrow(Biomes.RIVER),
+                                    registries.holderOrThrow(NSBiomes.LUSH_RIVER),
+                                    ParameterBuilder.create()
+                                            .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                            .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -.1, .1F).region(TERRA_MATER)
+                            )
+                    );
+                }
+                if (NSConfig.hasSparseTropicalWoods) {
+                    consumer.accept(
+                            ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "sparse_tropical_woods_river"),
+                            BiomeInjector.builder(Level.OVERWORLD).priority(2500).replacePartially(
+                                    registries.holderOrThrow(Biomes.RIVER),
+                                    registries.holderOrThrow(NSBiomes.LUSH_RIVER),
+                                    ParameterBuilder.create()
+                                            .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, 0.55F)
+                                            .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -.1, .1F).region(TERRA_MATER)
+                            )
+                    );
+                }
             }
 
             if (NSConfig.hasSavannaRiver) {
                 consumer.accept(
-                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "savanna_river_1"),
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "savanna_river"),
                         BiomeInjector.builder(Level.OVERWORLD).priority(2000).replacePartially(
                                 registries.holderOrThrow(Biomes.RIVER),
                                 registries.holderOrThrow(NSBiomes.SAVANNA_RIVER),
@@ -309,6 +333,31 @@ public class LithostitchedEventHandlers {
                                         .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -1, -0.1F)
                         )
                 );
+            }
+
+            if (NSConfig.hasBirchRiver) {
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "birch_river"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(Biomes.RIVER),
+                                registries.holderOrThrow(NSBiomes.BIRCH_RIVER),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, 0.1F, 0.3F)
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -0.15F, 0.2F)
+                        )
+                );
+                if (NSConfig.hasSugiForest) {
+                    consumer.accept(
+                            ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "sugi_river"),
+                            BiomeInjector.builder(Level.OVERWORLD).priority(1700).replacePartially(
+                                    registries.holderOrThrow(NSBiomes.BIRCH_RIVER),
+                                    registries.holderOrThrow(Biomes.RIVER),
+                                    ParameterBuilder.create()
+                                            .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, 0.1F, 0.3F)
+                                            .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -0.15F, 0.2F).region(TERRA_SOLARIS)
+                            )
+                    );
+                }
             }
 
             if (NSConfig.hasTaigaRiver) {
@@ -362,9 +411,19 @@ public class LithostitchedEventHandlers {
 
             if (NSConfig.hasRedBeach) {
                 consumer.accept(
-                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "red_beach"),
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "red_beach_1"),
                         BiomeInjector.builder(Level.OVERWORLD).replacePartially(
                                 registries.holderOrThrow(Biomes.BEACH),
+                                registries.holderOrThrow(NSBiomes.RED_BEACH),
+                                ParameterBuilder.create()
+                                        .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, .55F)
+                                        .climateRange(BiomeInjector.ClimateParameter.HUMIDITY, .7F, 1)
+                        )
+                );
+                consumer.accept(
+                        ResourceLocation.fromNamespaceAndPath(NatureSpirit.MOD_ID, "red_beach_2"),
+                        BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                                registries.holderOrThrow(NSBiomes.TROPICAL_SHORES),
                                 registries.holderOrThrow(NSBiomes.RED_BEACH),
                                 ParameterBuilder.create()
                                         .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, .2F, .55F)

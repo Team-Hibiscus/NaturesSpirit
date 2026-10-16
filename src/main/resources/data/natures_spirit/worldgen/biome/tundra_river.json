@@ -6,13 +6,12 @@
       "natures_spirit:replaceable_canyon"
     ]
   },
-  "has_precipitation": false,
   "downfall": 0.3,
   "effects": {
     "sky_color": 9814505,
     "fog_color": 13950967,
-    "water_color": 5929949,
-    "water_fog_color": 1644857,
+    "water_color": 4022683,
+    "water_fog_color": 858671,
     "grass_color": 14932871,
     "foliage_color": 10399058,
     "mood_sound": {
@@ -81,9 +80,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_water",
-      "minecraft:flower_default",
-      "minecraft:patch_grass_badlands",
+      "natures_spirit:patch_tall_grass_wooded_drylands",
+      "natures_spirit:patch_grass_wooded_drylands",
+      "natures_spirit:patch_tall_frigid_grass_2",
+      "natures_spirit:patch_frigid_grass",
+      "natures_spirit:flower_fir_placed",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
@@ -95,7 +96,7 @@
       "natures_spirit:snowy_grass_fixer"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -190,5 +191,5 @@
       }
     ]
   },
-  "temperature": 0.15
+  "temperature": 1.05
 }

@@ -130,7 +130,7 @@ public class TerraLaetaParameters extends OverworldBiomeBuilder {
     this.uncommonBiomes = new ResourceKey[][]{
         {Biomes.ICE_SPIKES, null, uncommonBiomeSnowyTaigaFrozen, null, null},
         {uncommonBiomePlainsCold, null, null, uncommonBiomeTaiga, uncommonBiomeOldTaiga},
-        {null, null, null, null, null},
+        {Biomes.SUNFLOWER_PLAINS, null, null, Biomes.OLD_GROWTH_BIRCH_FOREST, null},
         {specialBiomeCedar, null, uncommonBiomePlainsWarm, uncommonSparseJungleWarm, uncommonBambooJungleWarm},
         {null, null, null, null, null}
     };
