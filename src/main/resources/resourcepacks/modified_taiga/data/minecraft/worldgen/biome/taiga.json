@@ -16,8 +16,8 @@
       "tick_delay": 6000
     },
     "sky_color": 8233983,
-    "grass_color": 7311730,
-    "foliage_color" : 6975545,
+    "grass_color": 6525297,
+    "foliage_color": 6582324,
     "water_color": 4022683,
     "water_fog_color": 858671
   },
@@ -78,11 +78,14 @@
       "minecraft:trees_taiga",
       "minecraft:flower_default",
       "minecraft:patch_grass_taiga",
+      "natures_spirit:patch_tall_grass_taiga",
       "minecraft:brown_mushroom_taiga",
       "minecraft:red_mushroom_taiga",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:patch_berry_common"
+      "minecraft:patch_berry_common",
+      "natures_spirit:bearberries_taiga",
+      "natures_spirit:taiga_bush"
     ],
     [
       "minecraft:freeze_top_layer"

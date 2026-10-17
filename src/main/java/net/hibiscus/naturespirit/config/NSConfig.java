@@ -13,11 +13,11 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class NSConfig {
   private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-  public static final ModConfigSpec.IntValue TERRA_FERAX_WEIGHT = BUILDER.defineInRange("region.terra_ferax_weight", 30, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_SOLARIS_WEIGHT = BUILDER.defineInRange("region.terra_solaris_weight", 30, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_FLAVA_WEIGHT = BUILDER.defineInRange("region.terra_flava_weight", 30, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_LAETA_WEIGHT = BUILDER.defineInRange("region.terra_laeta_weight", 30, 0, Integer.MAX_VALUE);
-  public static final ModConfigSpec.IntValue TERRA_MATER_WEIGHT = BUILDER.defineInRange("region.terra_mater_weight", 30, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_FERAX_WEIGHT = BUILDER.defineInRange("region.terra_ferax_weight", 35, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_SOLARIS_WEIGHT = BUILDER.defineInRange("region.terra_solaris_weight", 35, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_FLAVA_WEIGHT = BUILDER.defineInRange("region.terra_flava_weight", 35, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_LAETA_WEIGHT = BUILDER.defineInRange("region.terra_laeta_weight", 35, 0, Integer.MAX_VALUE);
+  public static final ModConfigSpec.IntValue TERRA_MATER_WEIGHT = BUILDER.defineInRange("region.terra_mater_weight", 35, 0, Integer.MAX_VALUE);
   public static final ModConfigSpec.BooleanValue CALCITE_GENERATOR = BUILDER.define("misc.calcite_generator", true);
   public static final ModConfigSpec.BooleanValue DEEPSLATE_GENERATOR = BUILDER.define("misc.deepslate_generator", true);
   public static final ModConfigSpec.BooleanValue CREATIVE_TAB = BUILDER.define("misc.creative_tab", true);

@@ -22,7 +22,8 @@
       "sound": "minecraft:music.overworld.old_growth_taiga"
     },
     "sky_color": 8233983,
-    "grass_color": 7311730,
+    "grass_color": 6525297,
+    "foliage_color": 6582324,
     "water_color": 4022683,
     "water_fog_color": 858671
   },
@@ -84,6 +85,7 @@
       "minecraft:trees_old_growth_spruce_taiga",
       "minecraft:flower_default",
       "minecraft:patch_grass_taiga",
+      "natures_spirit:patch_tall_grass_taiga",
       "minecraft:patch_dead_bush",
       "minecraft:brown_mushroom_old_growth",
       "minecraft:red_mushroom_old_growth",
@@ -91,7 +93,9 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:patch_berry_common"
+      "minecraft:patch_berry_common",
+      "natures_spirit:bearberries_taiga",
+      "natures_spirit:taiga_bush"
     ],
     [
       "minecraft:freeze_top_layer"
