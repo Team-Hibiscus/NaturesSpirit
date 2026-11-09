@@ -387,6 +387,7 @@
                       "type": "minecraft:biome",
                       "biome_is": [
                         "natures_spirit:wisteria_forest",
+                        "natures_spirit:cedar_thicket",
                         "natures_spirit:xeric_plains",
                         "natures_spirit:floral_ridges",
                         "natures_spirit:shrubland",
