@@ -1,0 +1,59 @@
+{
+  "type": "lithostitched:add_surface_rule",
+  "levels": [
+    "minecraft:overworld"
+  ],
+  "surface_rule":
+  {
+    "type": "minecraft:condition",
+    "if_true": { "type": "minecraft:above_preliminary_surface" },
+    "then_run": {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:stone_depth",
+        "offset": 1,
+        "add_surface_depth": true,
+        "secondary_depth_range": 12,
+        "surface_type": "floor"
+      },
+      "then_run": {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "natures_spirit:advanced_steep",
+          "height_difference": 3,
+          "sample_distance": 1
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "natures_spirit:bamboo_wetlands",
+                  "minecraft:jungle",
+                  "minecraft:sparse_jungle",
+                  "minecraft:bamboo_jungle"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:noise_threshold",
+                  "noise": "minecraft:patch",
+                  "min_threshold": -1,
+                  "max_threshold": 2.0
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": { "Name": "minecraft:terracotta" }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

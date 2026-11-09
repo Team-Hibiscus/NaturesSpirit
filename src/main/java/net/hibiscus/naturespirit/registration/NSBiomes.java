@@ -68,6 +68,7 @@ public class NSBiomes {
   public static final ResourceKey<Biome> PINK_SANDY_RIVER = register("pink_sandy_river");
   public static final ResourceKey<Biome> RED_SANDY_RIVER = register("red_sandy_river");
   public static final ResourceKey<Biome> ARID_RIVER = register("arid_river");
+  public static final ResourceKey<Biome> DUNES_RIVER = register("dunes_river");
   public static final ResourceKey<Biome> XERIC_RIVER = register("xeric_river");
   public static final ResourceKey<Biome> TUNDRA_RIVER = register("tundra_river");
   public static final ResourceKey<Biome> LUSH_RIVER = register("lush_river");

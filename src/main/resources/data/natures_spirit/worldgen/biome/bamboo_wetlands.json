@@ -29,9 +29,7 @@
     "water_fog_color": 11057
   },
   "features": [
-    [
-      "natures_spirit:terracotta_cliff"
-    ],
+    [],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"

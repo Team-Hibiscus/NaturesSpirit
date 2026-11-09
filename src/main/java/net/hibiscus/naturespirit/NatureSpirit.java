@@ -65,6 +65,8 @@ public class NatureSpirit {
         NSWorldGen.TRUNK_PLACERS.register(modEventBus);
         NSWorldGen.CARVERS.register(modEventBus);
         NSWorldGen.FEATURES.register(modEventBus);
+        NSWorldGen.CONDITIONS.register(modEventBus);
+        NSWorldGen.BANDLANDS.register(modEventBus);
         NSVillagers.VILLAGER_TYPES.register(modEventBus);
         modEventBus.addListener(this::creativeInventory);
         modEventBus.addListener(this::addPackFinders);

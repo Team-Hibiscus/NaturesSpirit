@@ -1,0 +1,23 @@
+{
+  "base": {
+    "Name": "natures_spirit:chert"
+  },
+  "bands": [
+    {
+      "type": "lithostitched:repeating",
+      "interval": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 2,
+        "max_inclusive": 5
+      },
+      "size": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 2,
+        "max_inclusive": 7
+      },
+      "state": {
+        "Name": "natures_spirit:light_gray_kaolin"
+      }
+    }
+  ]
+}

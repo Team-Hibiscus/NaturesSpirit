@@ -100,6 +100,7 @@ public class NSConfig {
   public static final ModConfigSpec.BooleanValue HAS_PRAIRIE_RIVER = BUILDER.define("biome.has_prairie_river", true);
   public static final ModConfigSpec.BooleanValue HAS_AUTUMNAL_RIVER = BUILDER.define("biome.has_autumnal_river", true);
   public static final ModConfigSpec.BooleanValue HAS_BIRCH_RIVER = BUILDER.define("biome.has_birch_river", true);
+  public static final ModConfigSpec.BooleanValue HAS_DUNES_RIVER = BUILDER.define("biome.has_dunes_river", true);
 
   public static final ModConfigSpec.BooleanValue HAS_COLD_BEACH = BUILDER.define("biome.has_cold_beach", true);
   public static final ModConfigSpec.BooleanValue HAS_LUKEWARM_BEACH = BUILDER.define("biome.lukewarm_beach", true);
@@ -194,6 +195,7 @@ public class NSConfig {
   public static boolean hasPrairieRiver;
   public static boolean hasAutumnalRiver;
   public static boolean hasBirchRiver;
+  public static boolean hasDunesRiver;
 
   public static boolean hasColdBeach;
   public static boolean hasLukewarmBeach;
@@ -278,6 +280,7 @@ public class NSConfig {
     hasPinkSandyRiver = HAS_PINK_SANDY_RIVER.get();
     hasRedSandyRiver = HAS_RED_SANDY_RIVER.get();
     hasAridRiver = HAS_ARID_RIVER.get();
+    hasDunesRiver = HAS_DUNES_RIVER.get();
     hasXericRiver = HAS_XERIC_RIVER.get();
     hasTundraRiver = HAS_TUNDRA_RIVER.get();
     hasLushRiver = HAS_LUSH_RIVER.get();

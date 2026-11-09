@@ -1,0 +1,521 @@
+{
+  "type": "lithostitched:add_surface_rule",
+  "levels": [
+    "minecraft:overworld"
+  ],
+  "surface_rule": {
+    "type": "minecraft:sequence",
+    "sequence": [
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:above_preliminary_surface"
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "offset": 1,
+            "add_surface_depth": true,
+            "secondary_depth_range": 12,
+            "surface_type": "floor"
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "natures_spirit:boreal_taiga",
+                "natures_spirit:tundra",
+                "natures_spirit:fir_forest",
+                "natures_spirit:snowy_fir_forest",
+                "natures_spirit:prairie",
+                "natures_spirit:oak_savanna",
+                "natures_spirit:windswept_sugi_forest",
+                "natures_spirit:tropical_woods",
+                "natures_spirit:sparse_tropical_woods",
+                "natures_spirit:tropical_basin",
+                "natures_spirit:carnation_fields",
+                "natures_spirit:lavender_fields",
+                "natures_spirit:cypress_fields",
+                "natures_spirit:arid_savanna",
+                "natures_spirit:scorched_dunes",
+                "natures_spirit:sleeted_slopes",
+                "natures_spirit:dusty_slopes",
+                "natures_spirit:wisteria_forest",
+                "natures_spirit:xeric_plains",
+                "natures_spirit:floral_ridges",
+                "natures_spirit:shrubland",
+                "natures_spirit:flowering_shrubland",
+                "natures_spirit:alpine_highlands",
+                "natures_spirit:alpine_clearings",
+                "natures_spirit:coniferous_covert",
+                "natures_spirit:heather_fields",
+                "natures_spirit:golden_wilds",
+                "natures_spirit:marigold_meadows",
+                "natures_spirit:maple_woodland",
+                "natures_spirit:drylands",
+                "natures_spirit:wooded_drylands",
+                "natures_spirit:white_cliffs"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "natures_spirit:advanced_steep",
+                "height_difference": 3,
+                "sample_distance": 1
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:boreal_taiga",
+                        "natures_spirit:tundra",
+                        "natures_spirit:fir_forest",
+                        "natures_spirit:snowy_fir_forest",
+                        "natures_spirit:prairie",
+                        "natures_spirit:oak_savanna",
+                        "natures_spirit:windswept_sugi_forest"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:stone"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:tropical_woods",
+                        "natures_spirit:sparse_tropical_woods",
+                        "natures_spirit:tropical_basin",
+                        "natures_spirit:carnation_fields",
+                        "natures_spirit:lavender_fields",
+                        "natures_spirit:cypress_fields"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:kaolin"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:arid_savanna",
+                        "natures_spirit:scorched_dunes",
+                        "natures_spirit:sleeted_slopes",
+                        "natures_spirit:dusty_slopes"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:chert"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:wisteria_forest",
+                        "natures_spirit:xeric_plains",
+                        "natures_spirit:floral_ridges",
+                        "natures_spirit:shrubland",
+                        "natures_spirit:flowering_shrubland"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:travertine"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:alpine_highlands",
+                        "natures_spirit:alpine_clearings",
+                        "natures_spirit:coniferous_covert",
+                        "natures_spirit:heather_fields"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:andesite"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:golden_wilds",
+                        "natures_spirit:marigold_meadows",
+                        "natures_spirit:maple_woodland"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:granite"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:drylands",
+                        "natures_spirit:wooded_drylands"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:pink_sandstone"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:white_cliffs"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:white_chalk"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:y_above",
+          "anchor": {
+            "absolute": 0
+          },
+          "surface_depth_multiplier": 0,
+          "add_stone_depth": false
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "offset": 14,
+            "add_surface_depth": true,
+            "secondary_depth_range": 5,
+            "surface_type": "floor"
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:not",
+              "invert": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "add_surface_depth": true,
+                "secondary_depth_range": 0,
+                "surface_type": "floor"
+              }
+            },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:tropical_woods",
+                        "natures_spirit:sparse_tropical_woods",
+                        "natures_spirit:tropical_basin",
+                        "natures_spirit:carnation_fields",
+                        "natures_spirit:lavender_fields",
+                        "natures_spirit:cypress_fields"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:kaolin"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:arid_savanna",
+                        "natures_spirit:scorched_dunes",
+                        "natures_spirit:sleeted_slopes",
+                        "natures_spirit:dusty_slopes"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:chert"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:wisteria_forest",
+                        "natures_spirit:xeric_plains",
+                        "natures_spirit:floral_ridges",
+                        "natures_spirit:shrubland",
+                        "natures_spirit:flowering_shrubland"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:travertine"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:alpine_highlands",
+                        "natures_spirit:alpine_clearings",
+                        "natures_spirit:coniferous_covert",
+                        "natures_spirit:heather_fields"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:andesite"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:golden_wilds",
+                        "natures_spirit:marigold_meadows",
+                        "natures_spirit:maple_woodland"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:granite"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:drylands",
+                        "natures_spirit:wooded_drylands"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:pink_sandstone"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "natures_spirit:white_cliffs"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:patch",
+                        "min_threshold": -1,
+                        "max_threshold": 2.0
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "natures_spirit:white_chalk"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -26,8 +26,7 @@
     "water_fog_color": 267827
   },
   "features": [
-    [
-      "natures_spirit:pink_sandstone_cliff"],
+    [],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"

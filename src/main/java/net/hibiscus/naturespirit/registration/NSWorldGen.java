@@ -1,18 +1,26 @@
 package net.hibiscus.naturespirit.registration;
 
+import com.mojang.serialization.MapCodec;
+import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries;
+import dev.worldgen.lithostitched.impl.registry.LithostitchedRegistrar;
+import dev.worldgen.lithostitched.impl.worldgen.bandlands.Bandlands;
+import net.hibiscus.naturespirit.NatureSpirit;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableCaveCarverConfig;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarver;
 import net.hibiscus.naturespirit.world.carver.ReplaceableRavineCarverConfig;
 import net.hibiscus.naturespirit.world.feature.*;
 import net.hibiscus.naturespirit.world.foliage_placer.*;
+import net.hibiscus.naturespirit.world.misc.AdvancedSteepCondition;
 import net.hibiscus.naturespirit.world.tree_decorator.*;
 import net.hibiscus.naturespirit.world.trunk.*;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
@@ -20,8 +28,10 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import static net.hibiscus.naturespirit.NatureSpirit.MOD_ID;
@@ -91,5 +101,13 @@ public class NSWorldGen {
   public static final Supplier<PolyporeFeature> POLYPORE_FEATURE = FEATURES.register("polypore_feature", () -> new PolyporeFeature(NoneFeatureConfiguration.CODEC));
   public static final Supplier<LotusPlantFeature> LOTUS_PLANT_FEATURE = FEATURES.register("lotus_plant_feature", () -> new LotusPlantFeature(NoneFeatureConfiguration.CODEC));
   public static final Supplier<LeveledRandomPatch> LEVELED_RANDOM_PATCH_FEATURE = FEATURES.register("leveled_random_patch_feature", () -> new LeveledRandomPatch(RandomPatchConfiguration.CODEC));
+
+  public static final DeferredRegister<MapCodec<? extends SurfaceRules.ConditionSource>> CONDITIONS = DeferredRegister.create(BuiltInRegistries.MATERIAL_CONDITION, MOD_ID);
+  public static final DeferredHolder<MapCodec<? extends SurfaceRules.ConditionSource>, MapCodec<AdvancedSteepCondition>> ADVANCED_STEEP = CONDITIONS.register("advanced_steep", AdvancedSteepCondition.CODEC::codec);
+
+  public static final DeferredRegister<Bandlands> BANDLANDS = DeferredRegister.create(LithostitchedRegistries.BANDLANDS, MOD_ID);
+  public static final DeferredHolder<Bandlands, Bandlands> STRATIFIED_DESERT_BANDLANDS = BANDLANDS.register("stratified_desert", () -> new Bandlands(NSBlocks.CHERT.getBase().get().defaultBlockState(), List.of()));
+  public static final DeferredHolder<Bandlands, Bandlands> STEPPE_BANDLANDS = BANDLANDS.register("steppe", () -> new Bandlands(NSBlocks.CHERT.getBase().get().defaultBlockState(), List.of()));
+
 
 }

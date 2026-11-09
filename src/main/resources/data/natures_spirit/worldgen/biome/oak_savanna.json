@@ -22,9 +22,7 @@
     "grass_color": 15067781
   },
   "features": [
-    [
-      "natures_spirit:stone_cliff"
-    ],
+    [],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
